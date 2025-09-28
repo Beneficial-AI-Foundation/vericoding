@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string)
 {
     |s| == 6 && forall i :: 0 <= i < 6 ==> 'a' <= s[i] <= 'z'
@@ -8,9 +9,10 @@ requires ValidInput(s)
 {
     s[2] == s[3] && s[4] == s[5]
 }
+// </vc-preamble>
 
 // <vc-helpers>
-
+// No helpers needed for this problem.
 // </vc-helpers>
 
 // <vc-spec>
@@ -21,11 +23,10 @@ ensures IsCoffeeLike(s) <==> result == "Yes"
 // </vc-spec>
 // <vc-code>
 {
-    if s[2] == s[3] && s[4] == s[5] {
-        result := "Yes";
-    } else {
-        result := "No";
-    }
+  if s[2] == s[3] && s[4] == s[5] {
+    result := "Yes";
+  } else {
+    result := "No";
+  }
 }
 // </vc-code>
-

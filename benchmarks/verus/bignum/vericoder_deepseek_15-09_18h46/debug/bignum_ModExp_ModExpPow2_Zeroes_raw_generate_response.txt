@@ -1,5 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 755 characters
---------------------------------------------------------------------------------
-["proof fn exp_int_recursive_property(x: nat, y: nat)\n    requires\n        y > 0,\n    ensures\n        Exp_int(x, y) == x * Exp_int(x, y - 1)\n{\n}", "{\n    if sy.is_empty() {\n        proof {\n            exp_int_recursive_property(Str2Int(sx@), 0);\n        }\n        return vec!['1'];\n    }\n    \n    let y_tail = &sy[..sy.len() - 1];\n    let y_last = sy[sy.len() - 1];\n    \n    let mut result: Vec<char> = vec![];\n    \n    if y_last == '1' {\n        let base_result = ModExp_ModExpPow2_Zeroes(sx, y_tail, sz);\n        result = base_result;\n        result.push('1');\n    } else {\n        let base_result = ModExp_ModExpPow2_Zeroes(sx, y_tail, sz);\n        result = base_result;\n        result.push('0');\n    }\n    \n    result\n}"]
---------------------------------------------------------------------------------

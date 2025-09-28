@@ -16,8 +16,7 @@ fn array(data: Vec<f64>) -> (result: Vec<f64>)
 // </vc-spec>
 // <vc-code>
 {
-    let result = data;
-    result
+    data
 }
 // </vc-code>
 

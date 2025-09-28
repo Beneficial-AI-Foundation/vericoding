@@ -20,7 +20,7 @@ spec fn remaining_water(a: int, b: int, c: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
+fn solve(input: Vec<i8>) -> (result: Vec<i8>)
     requires input.len() > 0
 // </vc-spec>
 // <vc-code>

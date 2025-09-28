@@ -1,0 +1,34 @@
+// <vc-preamble>
+predicate IsAlphaChar(c: char)
+{
+    ('A' <= c <= 'Z') || ('a' <= c <= 'z')
+}
+
+predicate StringIsAlpha(s: seq<char>)
+{
+    |s| > 0 && forall i :: 0 <= i < |s| ==> IsAlphaChar(s[i])
+}
+// </vc-preamble>
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+method IsAlpha(input: array<string>) returns (ret: array<bool>)
+    ensures
+        ret.Length == input.Length &&
+        forall i :: 0 <= i < input.Length ==> 
+            ret[i] == StringIsAlpha(input[i])
+// </vc-spec>
+// <vc-code>
+{
+  ret := new bool[input.Length];
+  for i := 0 to input.Length
+      invariant 0 <= i <= input.Length
+      invariant forall j :: 0 <= j < i ==> ret[j] == StringIsAlpha(input[j])
+  {
+    ret[i] := StringIsAlpha(input[i]);
+  }
+}
+// </vc-code>

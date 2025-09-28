@@ -35,9 +35,9 @@ spec fn sum_right(columns: Seq<(int, int)>) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(columns: Seq<(int, int)>) -> (result: int)
-    requires valid_input(columns)
-    ensures 0 <= result <= columns.len()
+fn solve(columns: Vec<(i8, i8)>) -> (result: i8)
+    requires valid_input(columns@.map(|i: int, pair: (i8, i8)| (pair.0 as int, pair.1 as int)))
+    ensures 0 <= result as int <= columns@.len()
 // </vc-spec>
 // <vc-code>
 {

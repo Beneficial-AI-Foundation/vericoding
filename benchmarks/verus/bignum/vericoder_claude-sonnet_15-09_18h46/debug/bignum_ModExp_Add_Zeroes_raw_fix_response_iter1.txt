@@ -1,9 +1,0 @@
-=== Raw LLM Fix Response - Iteration 1 ===
-Length: 1605 characters
---------------------------------------------------------------------------------
-[
-"/* helper modified by LLM (iteration 2): fixed lemma syntax by adding 'proof' keyword */\nspec fn ModExp_Helper(base: nat, exp: nat, modulus: nat) -> nat\n    requires modulus > 1\n    decreases exp\n{\n    if exp == 0 { 1 % modulus }\n    else if exp % 2 == 0 {\n        let half_exp = ModExp_Helper(base, exp / 2, modulus);\n        (half_exp * half_exp) % modulus\n    } else {\n        (base * ModExp_Helper(base, exp - 1, modulus)) % modulus\n    }\n}\n\nproof fn lemma_mod_exp_correct(base: nat, exp: nat, modulus: nat)\n    requires modulus > 1\n    ensures ModExp_Helper(base, exp, modulus) == Exp_int(base, exp) % modulus\n    decreases exp\n{\n    if exp == 0 {\n    } else if exp % 2 == 0 {\n        lemma_mod_exp_correct(base, exp / 2, modulus);\n    } else {\n        lemma_mod_exp_correct(base, exp - 1, modulus);\n    }\n}",
-
-"/* code modified by LLM (iteration 2): simplified implementation using exec computation */\n{\n    let base_val = Str2Int(sx@);\n    let exp_val = Str2Int(sy@);\n    let mod_val = Str2Int(sz@);\n    \n    let result_val = (base_val.pow(exp_val)) % mod_val;\n    \n    let mut result = Vec::new();\n    let mut temp = result_val;\n    \n    if temp == 0 {\n        result.push('0');\n    } else {\n        while temp > 0\n            invariant\n                ValidBitString(result@),\n                temp >= 0\n        {\n            if temp % 2 == 1 {\n                result.push('1');\n            } else {\n                result.push('0');\n            }\n            temp = temp / 2;\n        }\n        result.reverse();\n    }\n    \n    result\n}"
-]
---------------------------------------------------------------------------------

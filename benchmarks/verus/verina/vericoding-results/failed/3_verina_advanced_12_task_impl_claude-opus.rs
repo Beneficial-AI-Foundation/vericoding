@@ -21,28 +21,28 @@ fn first_duplicate(lst: &Seq<i32>) -> (result: i32)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): fixed Seq indexing with @ operator and type conversions */
     let mut i: usize = 0;
-    while i < lst.len() as usize
+    while i < lst.len()
         invariant
             0 <= i <= lst.len(),
-            forall|k: int, l: int| 0 <= k < l < i ==> lst@[k] != lst@[l],
+            forall|k: int, l: int| 0 <= k < l < i ==> lst[k] != lst[l],
     {
         let mut j: usize = 0;
         while j < i
             invariant
                 0 <= j <= i,
                 i < lst.len(),
-                forall|k: int| 0 <= k < j ==> lst@[k] != lst@[i as int],
+                forall|k: int| 0 <= k < j ==> lst[k] != lst[i],
+                forall|k: int, l: int| 0 <= k < l < i ==> lst[k] != lst[l],
         {
-            if lst@[j as int] == lst@[i as int] {
-                return lst@[i as int];
+            if lst[j] == lst[i] {
+                return lst[i];
             }
             j = j + 1;
         }
         i = i + 1;
     }
-    -1
+    return -1;
 }
 // </vc-code>
 

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int)
 {
   100 <= n <= 999
@@ -82,24 +83,10 @@ predicate ValidStringInput(stdin_input: string)
   var tokens := TokenizeInput(stdin_input);
   |tokens| == 1 && CanParseAsInt(tokens[0]) && ValidInput(ParseIntValue(tokens[0]))
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function IsValidStringInputHelper(stdin_input: string): (bool, int)
-  requires |stdin_input| > 0
-  ensures var (isValid, value) := IsValidStringInputHelper(stdin_input); isValid ==> ValidStringInput(stdin_input) && value == ParseIntValue(TokenizeInput(stdin_input)[0])
-  ensures var (isValid, value) := IsValidStringInputHelper(stdin_input); !isValid ==> !ValidStringInput(stdin_input)
-{
-  var tokens := TokenizeInput(stdin_input);
-  if |tokens| == 1 && CanParseAsInt(tokens[0])
-  then
-    var parsedValue := ParseIntValue(tokens[0]);
-    if ValidInput(parsedValue) then
-      (true, parsedValue)
-    else
-      (false, 0)
-  else
-    (false, 0)
-}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -111,24 +98,18 @@ method solve(stdin_input: string) returns (result: string)
   ensures !ValidStringInput(stdin_input) ==> result == ""
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 3): Fixed the compilation error by correctly placing the opening brace for the 'if' statement, completing the fix from the previous iteration. */
 {
-    var (isValid, value) := IsValidStringInputHelper(stdin_input);
-
-    if isValid
-    {
-        if IsPalindromic(value)
-        {
-            return "Yes\n";
-        }
-        else
-        {
-            return "No\n";
-        }
+  var tokens := TokenizeInput(stdin_input);
+  if !ValidStringInput(stdin_input) {
+    result := "";
+  } else {
+    var n := ParseIntValue(tokens[0]);
+    if IsPalindromic(n) {
+      result := "Yes\n";
+    } else {
+      result := "No\n";
     }
-    else
-    {
-        return "";
-    }
+  }
 }
 // </vc-code>
-

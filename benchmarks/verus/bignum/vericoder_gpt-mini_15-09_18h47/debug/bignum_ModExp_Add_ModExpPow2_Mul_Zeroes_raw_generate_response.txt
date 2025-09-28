@@ -1,5 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 124 characters
---------------------------------------------------------------------------------
-["spec fn VecValid(v: Vec<char>) -> bool { ValidBitString(v@) }","{\n    let res = Vec::<char>::new();\n    return res;\n}"]
---------------------------------------------------------------------------------

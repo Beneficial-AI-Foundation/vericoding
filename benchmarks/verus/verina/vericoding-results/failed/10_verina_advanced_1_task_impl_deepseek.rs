@@ -13,33 +13,7 @@ spec fn filter_equal(nums: Seq<i32>, x: i32) -> Seq<i32> {
 // </vc-preamble>
 
 // <vc-helpers>
-proof fn helper_find_single_number(nums: Seq<i32>, x1: i32, x2: i32) 
-    requires
-        nums.len() > 0,
-        exists|unique_elem: i32| count_occurrences(nums, unique_elem) == 1,
-        forall|elem: i32| nums.contains(elem) ==> (count_occurrences(nums, elem) == 1 || count_occurrences(nums, elem) == 2),
-        x1 != x2,
-        count_occurrences(nums, x1) == 2,
-        count_occurrences(nums, x2) == 2
-    ensures
-        exists|r: i32| #[trigger] nums.contains(r) && r != x1 && r != x2 && count_occurrences(nums.filter(|y: i32| y != x1 && y != x2), r) == 1
-{
-    let filtered = nums.filter(|y: i32| y != x1 && y != x2);
-    assert(filtered.len() > 0);
-    assert(forall|elem: i32| filtered.contains(elem) ==> count_occurrences(nums, elem) == 1) by {
-        forall|elem: i32|
-            ensures filtered.contains(elem) ==> count_occurrences(nums, elem) == 1
-        {
-            if filtered.contains(elem) {
-                assert(elem != x1 && elem != x2);
-                assert(nums.contains(elem));
-            }
-        }
-    };
-    assert(exists|unique_elem: i32| count_occurrences(filtered, unique_elem) == 1) by {
-        assert(exists|r: i32| count_occurrences(nums, r) == 1 && r != x1 && r != x2);
-    };
-}
+/* helper modified by LLM (iteration 5): Removed problematic nat/int conversion function */
 // </vc-helpers>
 
 // <vc-spec>
@@ -53,13 +27,21 @@ fn find_single_number(nums: &Vec<i32>) -> (result: i32)
         forall|x: i32| nums@.contains(x) ==> (x == result || count_occurrences(nums@, x) == 2),
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): Fixed ghost code usage by removing int casts and working directly with usize in loop */
 {
-    /* code modified by LLM (iteration 5): Fixed compilation by removing proof block from code section */
-    let mut result = 0;
-    for i in 0..nums.len() {
-        result = result ^ nums[i];
+    let mut xor_result = 0;
+    let mut i: usize = 0;
+    while i < nums.len()
+        invariant
+            xor_result == 0 || count_occurrences(nums@.subrange(0, i), xor_result) % 2 == 1,
+            forall|x: i32| count_occurrences(nums@.subrange(0, i), x) % 2 == 1 ==> x == xor_result,
+        decreases nums.len() - i,
+    {
+        xor_result = xor_result ^ nums[i];
+        i = i + 1;
     }
-    result
+    
+    xor_result
 }
 // </vc-code>
 

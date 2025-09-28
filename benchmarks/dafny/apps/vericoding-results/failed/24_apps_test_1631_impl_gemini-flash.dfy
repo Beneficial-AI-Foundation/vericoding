@@ -1,3 +1,4 @@
+// <vc-preamble>
 ghost predicate validInput(stdin_input: string, n: int)
 {
     exists lines :: (parseInput(stdin_input) == lines &&
@@ -52,293 +53,80 @@ ghost predicate alphabetOrder(c1: char, c2: char, alphabet: string)
 ghost function parseInput(input: string): seq<string>
 
 ghost function parseInt(s: string): int
+// </vc-preamble>
 
 // <vc-helpers>
-function getCharIndex(c: char, alphabet: string): int
-  requires |alphabet| == 26
-  requires forall i :: 0 <= i < |alphabet| ==> 'a' <= alphabet[i] <= 'z'
-  requires forall i, j :: 0 <= i < j < |alphabet| ==> alphabet[i] != alphabet[j]
-  requires 'a' <= c <= 'z'
-  requires exists i :: 0 <= i < |alphabet| && alphabet[i] == c
-  ensures 0 <= getCharIndex(c, alphabet) < |alphabet|
-  ensures alphabet[getCharIndex(c, alphabet)] == c
+function toChar(i: int): char
+    requires 0 <= i < 26
+    ensures 'a' <= toChar(i) <= 'z'
 {
-  var i := 0;
-  while i < |alphabet|
-    invariant 0 <= i <= |alphabet|
-    invariant forall k :: 0 <= k < i ==> alphabet[k] != c
-  {
-    if alphabet[i] == c then
-      return i;
-    i := i + 1;
-  }
-  assert false; // Should not reach here because c is guaranteed to be in alphabet
-  return -1; // Dummy return
+    'a' + i
 }
 
-// Function to find the lexicographical difference between two strings s1 and s2
-// Returns '1' if s1 < s2, '-1' if s1 > s2, '0' if s1 == s2
-function compareStrings(s1: string, s2: string, alphabet: string): int
-  requires |alphabet| == 26
-  requires forall i :: 0 <= i < |alphabet| ==> 'a' <= alphabet[i] <= 'z'
-  requires forall i, j :: 0 <= i < j < |alphabet| ==> alphabet[i] != alphabet[j]
-  requires forall i :: 0 <= i < |s1| ==> 'a' <= s1[i] <= 'z'
-  requires forall i :: 0 <= i < |s2| ==> 'a' <= s2[i] <= 'z'
-  ensures (compareStrings(s1, s2, alphabet) == 1) == lexicographicallyLessOrEqual(s1, s2, alphabet)
-  ensures (compareStrings(s1, s2, alphabet) == -1) == (lexicographicallyLessOrEqual(s2, s1, alphabet) && s1 != s2)
-  ensures (compareStrings(s1, s2, alphabet) == 0) == (s1 == s2)
+function toInt(c: char): int
+    requires 'a' <= c <= 'z'
+    ensures 0 <= toInt(c) < 26
 {
-  if s1 == s2 then
-    0
-  else if |s1| < |s2| && s1 == s2[..|s1|] then
-    1 // s1 is a prefix of s2
-  else if |s2| < |s1| && s2 == s1[..|s2|] then
-    -1 // s2 is a prefix of s1
-  else
-  {
-    var i := 0;
-    while i < |s1| && i < |s2| && s1[i] == s2[i]
-      invariant 0 <= i <= |s1|
-      invariant 0 <= i <= |s2|
-      invariant forall k :: 0 <= k < i ==> s1[k] == s2[k]
-    {
-      i := i + 1;
-    }
-    if i < |s1| && i < |s2| then
-      if alphabetOrder(s1[i], s2[i], alphabet) then 1 else -1
-    else if i == |s1| && i < |s2| then
-      1 // s1 is a prefix of s2
-    else if i < |s1| && i == |s2| then
-      -1 // s2 is a prefix of s1
-    else
-      0 // Should not happen, implies s1 == s2 already handled
-  }
+    c - 'a'
 }
 
-// Helper to check if a permutation is valid given the constraints
-predicate isValidPermutation(permutation: string, constraints: set<(char, char)>)
-  requires |permutation| == 26
-  requires forall i :: 0 <= i < |permutation| ==> 'a' <= permutation[i] <= 'z'
-  requires forall i, j :: 0 <= i < j < |permutation| ==> permutation[i] != permutation[j]
+lemma Lemma_FindChar(alpha: seq<char>, c: char, i: int)
+    requires 0 <= i < |alpha|
+    requires 'a' <= c <= 'z'
+    requires distinct_chars(alpha)
+    requires c in alpha[..i]
+    ensures exists k :: 0 <= k < i && alpha[k] == c
 {
-  forall c1, c2 :: (c1, c2) in constraints ==> alphabetOrder(c1, c2, permutation)
-}
-
-predicate isPermutationOfAlphabet(s: string)
-  requires |s| == 26
-  requires forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z'
-  requires forall i, j :: 0 <= i < j < |s| ==> s[i] != s[j]
-{
-  var counts := map<char, int>();
-  var c := 'a';
-  while c <= 'z'
-    invariant forall k :: 'a' <= k < c ==> counts.Contains(k) && counts[k] == 0
-    invariant c <= '{' // 'z' + 1
-  {
-    counts := counts[c := 0];
-    c := c + 1;
-  }
-
-  var i := 0;
-  while i < |s|
-    invariant 0 <= i <= |s|
-    invariant isSubset(mapDomain(counts), {'a', ..., 'z'})
-    invariant (forall k :: 'a' <= k <= 'z' ==> (counts.Contains(k) && counts[k] == (if exists j :: 0 <= j < i && s[j] == k then 1 else 0)) || !counts.Contains(k))
-  {
-    if counts.Contains(s[i]) then
-      counts := counts[s[i] := counts[s[i]] + 1];
-    else
-      counts := counts[s[i] := 1];
-    i := i + 1;
-  }
-
-  (forall k :: 'a' <= k <= 'z' ==> counts.Contains(k) && counts[k] == 1)
-}
-
-// Topological sort helper method
-method TopoSort(adj: map<char, set<char>>) returns (result: string)
-  requires forall c :: 'a' <= c <= 'z' ==> adj.Contains(c)
-  requires forall c1 :: adj.Contains(c1) ==> forall c2 :: c2 in adj[c1] ==> adj.Contains(c2)
-  requires forall c :: 'a' <= c <= 'z' ==> adj[c] <= {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'}
-  requires forall src, dest :: (src, dest) in GetEdges(adj) ==> !IsPath(adj, dest, src) // No cycles
-  ensures result == "Impossible" || (|result| == 26 && isPermutationOfAlphabet(result))
-  ensures result == "Impossible" || (forall c1, c2 :: c2 in adj[c1] ==> alphabetOrder(c1, c2, result))
-{
-  var inDegree := map<char, int>();
-  var q := new queue<char>();
-  var orderedChars := new char[26];
-  var k := 0; // index for orderedChars array
-
-  var ch := 'a';
-  while ch <= 'z'
-    invariant 'a' <= ch <= 'z' + 1
-    invariant forall c' :: 'a' <= c' < ch ==> inDegree.Contains(c')
-  {
-    inDegree := inDegree[ch := 0];
-    ch := ch + 1;
-  }
- 
-  ch := 'a';
-  while ch <= 'z'
-    invariant 'a' <= ch <= 'z' + 1
-    invariant forall u,v :: 'a' <= u < ch && v in adj[u] ==> inDegree.Contains(v) && inDegree[v] >= 0
-    invariant forall u :: 'a' <= u < ch ==> inDegree.Contains(u)
-  {
-    var dests := adj[ch];
-    for c_prime in dests {
-      inDegree := inDegree[c_prime := inDegree[c_prime] + 1];
-    }
-    ch := ch + 1;
-  }
-
-  ch := 'a';
-  while ch <= 'z'
-    invariant 'a' <= ch <= 'z' + 1
-    invariant forall c_key :: 'a' <= c_key < ch ==> inDegree.Contains(c_key)
-    invariant forall c_key :: 'a' <= c_key < ch ==> inDegree[c_key] >= 0
-    invariant forall c_inQ :: c_inQ in q.seq ==> inDegree[c_inQ] == 0
-  {
-    if inDegree[ch] == 0 {
-      q.enqueue(ch);
-    }
-    ch := ch + 1;
-  }
-
-  while !q.IsEmpty()
-    invariant k <= 26
-    invariant forall i :: 0 <= i < k ==> inDegree[orderedChars[i]] == -1 //标记为已处理
-    invariant forall c :: 'a' <= c <= 'z' ==> inDegree.Contains(c)
-    invariant forall c' :: c' in q.seq ==> inDegree[c'] == 0
-    invariant forall c1, c2 :: 'a' <= c1 <= 'z' && 'a' <= c2 <= 'z' && c2 in adj[c1] && inDegree.Contains(c1) && inDegree[c1] == -1 ==> (inDegree.Contains(c2) && inDegree[c2] != -1) ==> (inDegree[c2] >= 0)
-    invariant k + q.size() + (count c :: 'a' <= c <= 'z' && inDegree.Contains(c) && inDegree[c] > 0) == 26
-  {
-    var u := q.dequeue();
-    orderedChars[k] := u;
-    k := k + 1;
-    inDegree := inDegree[u := -1]; // Mark as processed
-
-    for v in adj[u] {
-      if inDegree.Contains(v) && inDegree[v] != -1 { // Only update if not yet processed
-        inDegree := inDegree[v := inDegree[v] - 1];
-        if inDegree[v] == 0 {
-          q.enqueue(v);
+    if alpha[i] == c {
+        // Handled by the postcondition with k=i, but we know c is in alpha[..i]
+    } else {
+        if i > 0 {
+            Lemma_FindChar(alpha, c, i-1);
         }
-      }
     }
-  }
-
-  if k == 26 then
-    result := new string(orderedChars);
-  else
-    result := "Impossible";
 }
 
-// BFS to check for cycles
-function IsPath(adj: map<char, set<char>>, startNode: char, endNode: char): bool
-  reads adj
-  requires forall c :: 'a' <= c <= 'z' ==> adj.Contains(c)
-  requires forall c1 :: adj.Contains(c1) ==> forall c2 :: c2 in adj[c1] ==> adj.Contains(c2)
+predicate distinct_chars(s: seq<char>)
 {
-  if startNode == endNode then return true; // Path to itself is always true if nodes are same
+    forall i, j :: 0 <= i < j < |s| ==> s[i] != s[j]
+}
 
-  var q := new queue<char>();
-  var visited := set<char>();
+lemma Lemma_AppendDistinct(s: seq<char>, c: char)
+    requires distinct_chars(s)
+    requires c !in s
+    ensures distinct_chars(s + [c])
+{
+    // Proof by contradiction or direct reasoning
+    // Assume distinct_chars(s + [c]) is false. Then there exist i, j such that (s + [c])[i] == (s + [c])[j]
+    // Since c is not in s, and s has distinct characters, the only case is if one of i, j refers to the appended c.
+    // Cases:
+    // 1. 0 <= i < j < |s|: s[i] == s[j], contradicts distinct_chars(s).
+    // 2. 0 <= i < |s| and j == |s|: s[i] == c, contradicts c !in s.
+    // 3. i == |s| and j == |s| is not possible (since i < j).
+}
 
-  q.enqueue(startNode);
-  visited := visited + {startNode};
-
-  while !q.IsEmpty()
-    invariant forall c_in_q :: c_in_q in q.seq ==> c_in_q in visited
-    invariant forall c_in_visited :: c_in_visited in visited ==> (c_in_visited == startNode || IsPath_Reach(adj, startNode, c_in_visited, visited))
-  {
-    var u := q.dequeue();
-
-    for v in adj[u] {
-      if v == endNode then
-        return true;
-      if !(v in visited) {
-        visited := visited + {v};
-        q.enqueue(v);
-      }
+lemma Lemma_RemoveChar(s: seq<char>, c: char)
+    requires distinct_chars(s)
+    requires c in s
+    ensures distinct_chars(s - [c])
+    ensures |s - [c]| == |s| - 1
+{
+    var index_c := -1;
+    for k := 0 to |s| 
+        invariant 0 <= k <= |s|
+        invariant forall p, q :: 0 <= p < q < k ==> s[p] != s[q]
+        invariant index_c == -1 || (0 <= index_c < k && s[index_c] == c && forall i :: 0 <= i < index_c ==> s[i] != c)
+    {
+        if s[k] == c && index_c == -1 {
+            index_c := k;
+        }
     }
-  }
-  return false;
-}
-
-// Helper predicate for IsPath
-predicate IsPath_Reach(adj: map<char, set<char>>, startNode: char, endNode: char, visited_nodes: set<char>)
-  reads adj
-{
-  if startNode == endNode then true
-  else exists neighbor :: neighbor in adj[startNode] && neighbor in visited_nodes && IsPath_Reach(adj, neighbor, endNode, visited_nodes)
-}
-
-function GetEdges(adj: map<char, set<char>>): set<(char, char)>
-  reads adj
-  requires forall c :: 'a' <= c <= 'z' ==> adj.Contains(c)
-  ensures forall c1, c2 :: (c1, c2) in GetEdges(adj) <==> c2 in adj[c1]
-{
-  var edges := set<(char, char)>();
-  var ch := 'a';
-  while ch <= 'z'
-    invariant 'a' <= ch <= 'z' + 1
-    invariant forall c1 :: 'a' <= c1 < ch ==> (forall c2 :: (c1, c2) in edges <==> c2 in adj[c1])
-    invariant forall x, y :: (x,y) in edges ==> x < ch
-  {
-    for dest in adj[ch] {
-      edges := edges + {(ch, dest)};
-    }
-    ch := ch + 1;
-  }
-  return edges;
-}
-
-// Queue for BFS/Topological Sort
-class queue<T> {
-  var elements: seq<T>;
-
-  constructor()
-    ensures elements == []
-  {
-    elements := [];
-  }
-
-  method Enqueue(value: T)
-    ensures elements == old(elements) + [value]
-  {
-    elements := elements + [value];
-  }
-
-  method Dequeue() returns (value: T)
-    requires |elements| > 0
-    ensures value == old(elements[0])
-    ensures elements == old(elements)[1..]
-  {
-    value := elements[0];
-    elements := elements[1..];
-  }
-
-  function IsEmpty(): bool
-    ensures IsEmpty() == (|elements| == 0)
-  {
-    return |elements| == 0;
-  }
-
-  function size(): nat
-    ensures size() == |elements|
-  {
-    return |elements|;
-  }
-
-  function seq(): seq<T>
-  {
-    return elements;
-  }
-}
-
-function mapDomain<K, V>(m: map<K, V>): set<K>
-{
-  set i | i in m
+    assert index_c != -1;
+    assert s[index_c] == c;
+    
+    // The distinct_chars(s - [c]) can be proven by observing that removing an element 
+    // from a distinct sequence keeps the remaining elements distinct. 
+    // The length is also directly observable.
 }
 // </vc-helpers>
 
@@ -352,55 +140,125 @@ method solve(stdin_input: string) returns (result: string)
 // </vc-spec>
 // <vc-code>
 {
-    var inputLines := parseInput(stdin_input);
-    var n := parseInt(inputLines[0]);
+    var lines := parseInput(stdin_input);
+    var n := parseInt(lines[0]);
 
-    var words := new string[n];
-    for i := 0 to n - 1 {
-        words[i] := inputLines[i + 1];
-    }
+    var adj_matrix: array<array<bool>> := new array<array<bool>>(26, (i: int) => new array<bool>(26, (j: int) => false));
+    var in_degree: array<int> := new array<int>(26, (i: int) => 0);
+    
+    var char_present: array<bool> := new array<bool>(26, (i: int) => false);
 
-    var adj := map<char, set<char>>();
-    var ch := 'a';
-    while ch <= 'z'
-        invariant 'a' <= ch <= 'z' + 1
-        invariant forall c' :: 'a' <= c' < ch ==> adj.Contains(c') && adj[c'] == set{}
-        invariant forall c' :: ch <= c' <= 'z' ==> !adj.Contains(c')
+    for i := 1 to n
+        invariant 1 <= i <= n
+        invariant forall x, y :: 0 <= x < 26 && 0 <= y < 26 ==> !adj_matrix[x][y] || (exists p, q :: 1 <= p < i && q < |lines[p]| && adj_matrix[x][y] == true && (
+            (exists k :: 0 <= k < |lines[p]| && k < |lines[p+1]| && lines[p][k] != lines[p+1][k] && x == toInt(lines[p][k]) && y == toInt(lines[p+1][k]) && (forall l :: 0 <= l < k ==> lines[p][l] == lines[p+1][l]))
+        ))
+        invariant forall x :: 0 <= x < 26 ==> in_degree[x] == (if char_present[x] then (count j :: 0 <= j < 26 && adj_matrix[j][x]) else 0)
+        invariant forall x :: 0 <= x < 26 ==> (char_present[x] == (exists p :: 1 <= p <= i && (exists k :: 0 <= k < |lines[p]| && toInt(lines[p][k]) == x)))
     {
-        adj := adj[ch := set()];
-        ch := ch + 1;
-    }
+        var s1 := lines[i];
+        var s2 := lines[i+1]; // Note: loop goes to n, so i+1 can be n+1, which is valid index for lines.
 
-    for i := 0 to n - 2
-        invariant 0 <= i <= n - 1
-        invariant forall c:: 'a' <= c <= 'z' ==> adj.Contains(c)
-        invariant forall c1, c2 :: ('a' <= c1 <= 'z' && 'a' <= c2 <= 'z' && c1 in mapDomain(adj) && c2 in adj[c1]) ==> !IsPath(adj, c2, c1)
-    {
-        var s1 := words[i];
-        var s2 := words[i+1];
-        var minLen := |s1|;
-        if |s2| < minLen then
-            minLen := |s2|;
-
-        var diffFound := false;
-        var j := 0;
-        while j < minLen
-            invariant 0 <= j <= minLen
-            invariant !diffFound ==> forall k :: 0 <= k < j ==> s1[k] == s2[k]
+        var k := 0;
+        while k < |s1| && k < |s2|
+            invariant 0 <= k <= |s1|
+            invariant 0 <= k <= |s2|
+            invariant forall l :: 0 <= l < k ==> s1[l] == s2[l]
         {
-            if s1[j] != s2[j] then
-                if IsPath(adj, s2[j], s1[j]) then // Check for cycle
-                    return "Impossible";
-                adj := adj[s1[j]] := adj[s1[j]] + {s2[j]};
-                diffFound := true;
-                break;
-            j := j + 1;
+            char_present[toInt(s1[k])] := true;
+            char_present[toInt(s2[k])] := true;
+            if s1[k] != s2[k] {
+                var u := toInt(s1[k]);
+                var v := toInt(s2[k]);
+                if !adj_matrix[u][v] {
+                    adj_matrix[u][v] := true;
+                    in_degree[v] := in_degree[v] + 1;
+                }
+                k := max(|s1|, |s2|); // Break out of loop, no more distinct chars if there are.
+            }
+            k := k + 1;
         }
-        if !diffFound && |s1| > |s2| then // s2 is a prefix of s1, but s1 != s2
-            return "Impossible";
+        while k < |s1| 
+            invariant k <= |s1|
+            invariant forall l :: 0 <= l < k ==> s1[l] == s2[l]
+        {
+            char_present[toInt(s1[k])] := true;
+            k := k + 1;
+        }
+         while k < |s2| 
+            invariant k <= |s2|
+            invariant forall l :: 0 <= l < k ==> s1[l] == s2[l]
+        {
+            char_present[toInt(s2[k])] := true;
+            k := k + 1;
+        }
+
+        if k == |s1| && k < |s2| {
+            // s1 is a prefix of s2, lexicographically valid
+        } else if k == |s2| && k < |s1| {
+            // s2 is a prefix of s1, invalid order
+            result := "Impossible";
+            return;
+        }
     }
 
-    result := TopoSort(adj);
+    var alphabet_order: seq<char> := [];
+    var q: seq<int> := [];
+
+    for i := 0 to 25
+        invariant 0 <= i <= 26
+        invariant forall j :: 0 <= j < i ==> (char_present[j] ==> (count k :: 0 <= k < 26 && adj_matrix[k][j]) == in_degree[j])
+        invariant q == (seq k | 0 <= k < i && char_present[k] && in_degree[k] == 0)
+    {
+        if char_present[i] && in_degree[i] == 0 {
+            q := q + [i];
+        }
+    }
+
+    while |q| > 0
+        invariant forall c :: c in alphabet_order ==> char_present[toInt(c)]
+        invariant (forall u :: 0 <= u < 26 && char_present[u] && in_degree[u] == 0 ==> u in q || u in alphabet_order)
+        invariant (forall u :: u in alphabet_order ==> forall v :: 0 <= v < 26 && adj_matrix[v][u] ==> v in alphabet_order )
+        invariant distinct_chars(alphabet_order)
+    {
+        var u := q[0];
+        q := q[1..];
+        alphabet_order := alphabet_order + [toChar(u)];
+
+        for v := 0 to 25
+            invariant 0 <= v <= 26
+            invariant (forall x :: x < v && char_present[x] && in_degree[x] == 0 ==> x in q || x in alphabet_order)
+            invariant (forall x :: x < v && adj_matrix[u][x] ==> in_degree[x] == (old(in_degree[x]) - 1))
+        {
+            if adj_matrix[u][v] {
+                in_degree[v] := in_degree[v] - 1;
+                if in_degree[v] == 0 {
+                    q := q + [v];
+                }
+            }
+        }
+    }
+
+    if |alphabet_order| == (count i :: 0 <= i < 26 && char_present[i]) {
+        // All present characters were added, no cycle detected.
+        // Fill remaining with unused characters.
+        var full_alphabet: seq<char> := alphabet_order;
+        for i := 0 to 25
+            invariant 0 <= i <= 26
+            invariant distinct_chars(full_alphabet)
+            invariant alphabet_order <= full_alphabet
+            invariant forall c :: c in full_alphabet[|alphabet_order|..] ==> c !in alphabet_order && !char_present[toInt(c)]
+        {
+            var c := toChar(i);
+            if !(c in full_alphabet) {
+                // Lemma_AppendDistinct(full_alphabet, c);
+                full_alphabet := full_alphabet + [c];
+            }
+        }
+        result := full_alphabet;
+    } else {
+        // Cycle detected, or some characters were left out (impossible case, given the count)
+        result := "Impossible";
+    }
 }
 // </vc-code>
-

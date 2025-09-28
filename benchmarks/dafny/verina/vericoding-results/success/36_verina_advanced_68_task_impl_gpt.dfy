@@ -6,16 +6,9 @@ predicate IsDigit(c: char)
 // </vc-preamble>
 
 // <vc-helpers>
-predicate IsNonDigit(c: char)
+predicate RLEFormat(s: string)
 {
-    !IsDigit(c)
-}
-
-predicate AlternatingCharDigit(s: string)
-{
-    forall i :: 0 <= i < |s| ==> 
-        (i % 2 == 0 ==> !IsDigit(s[i])) &&
-        (i % 2 == 1 ==> IsDigit(s[i]))
+  |s| == 0 || (forall i :: 0 <= i < |s| ==> ((i % 2 == 0 ==> !IsDigit(s[i])) && (i % 2 == 1 ==> IsDigit(s[i]))))
 }
 // </vc-helpers>
 

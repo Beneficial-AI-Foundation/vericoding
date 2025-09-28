@@ -9,12 +9,11 @@ verus! {
 
 // <vc-spec>
 fn legmulx(c: Vec<f32>) -> (result: Vec<f32>)
-    requires c.len() > 0,
+    requires c@.len() > 0,
     ensures
-        result.len() == c.len() + 1,
+        result@.len() == c@.len() + 1,
         result[0] == 0.0f32,
         result[1] == c[0],
-        true, // Polynomial coefficients exist (simplified)
 // </vc-spec>
 // <vc-code>
 {

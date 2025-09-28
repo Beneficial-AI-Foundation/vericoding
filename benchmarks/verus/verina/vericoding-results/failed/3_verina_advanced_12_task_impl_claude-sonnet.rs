@@ -5,9 +5,14 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): added predicate to check if no duplicates exist up to index */
-predicate no_duplicates_until(lst: &Seq<i32>, idx: int) {
-    forall|k: int, l: int| 0 <= k < l < idx ==> lst[k] != lst[l]
+/* helper modified by LLM (iteration 5): removed problematic helper functions */
+spec fn has_duplicate_at_or_before(lst: &Seq<i32>, pos: int) -> bool {
+    exists|i: int, j: int| 0 <= i < j <= pos && j < lst.len() && lst[i] == lst[j]
+}
+
+spec fn is_first_duplicate(lst: &Seq<i32>, val: i32) -> bool {
+    exists|i: int, j: int| 0 <= i < j < lst.len() && lst[i] == lst[j] && lst[i] == val &&
+        forall|k: int, l: int| 0 <= k < l < lst.len() && lst[k] == lst[l] && l < j ==> false
 }
 // </vc-helpers>
 
@@ -24,23 +29,22 @@ fn first_duplicate(lst: &Seq<i32>) -> (result: i32)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): fixed type mismatches and sequence indexing */
+    /* code modified by LLM (iteration 5): use direct indexing without converting to Vec */
     let mut i: usize = 0;
-    while i < lst.len() as usize
+    while i < lst.len()
         invariant
             0 <= i <= lst.len(),
-            forall|k: int, l: int| 0 <= k < l < i ==> lst@[k] != lst@[l],
+            forall|p: int, q: int| 0 <= p < q < i ==> lst[p] != lst[q]
     {
-        let mut j: usize = i + 1;
-        while j < lst.len() as usize
+        let mut j: usize = 0;
+        while j < i
             invariant
-                0 <= i < lst.len(),
-                i + 1 <= j <= lst.len(),
-                forall|k: int, l: int| 0 <= k < l < i ==> lst@[k] != lst@[l],
-                forall|l: int| i + 1 <= l < j ==> lst@[i as int] != lst@[l],
+                0 <= j <= i,
+                i < lst.len(),
+                forall|k: int| 0 <= k < j ==> lst[k] != lst[i as int]
         {
-            if lst@[i as int] == lst@[j as int] {
-                return lst@[i as int];
+            if lst[j as int] == lst[i as int] {
+                return lst[i as int];
             }
             j += 1;
         }

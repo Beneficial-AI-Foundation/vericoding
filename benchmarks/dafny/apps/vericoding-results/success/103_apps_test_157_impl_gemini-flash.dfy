@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int, c: int)
 {
     1 <= a <= 1000 && 1 <= b <= 1000 && 1 <= c <= 1000
@@ -12,11 +13,11 @@ function TotalFruitsUsed(units: int): int
 {
     units * 7
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function min(x: int, y: int): int
-{
-  if x < y then x else y
+function min(a: int, b: int): int {
+    if a < b then a else b
 }
 // </vc-helpers>
 
@@ -28,8 +29,7 @@ method solve(a: int, b: int, c: int) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-  var units := MaxRecipeUnits(a, b, c);
-  result := TotalFruitsUsed(units);
+  var maxUnits := MaxRecipeUnits(a, b, c);
+  result := TotalFruitsUsed(maxUnits);
 }
 // </vc-code>
-

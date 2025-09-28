@@ -5,20 +5,21 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): corrected spec functions with proper bitwise operations */
-spec fn bitwise_or_int(x: i32, y: i32) -> i32 {
+spec fn bitwiseør_or_int(x: i32, y: i32) -> i32 {
     x | y
 }
-
+/* helper modified by LLM (iteration 5): correction of bitwise or for integers */
 spec fn bitwise_and_int(x: i32, y: i32) -> i32 {
     x & y
 }
-
+/* helper modified by LLM (iteration 5): correction of bitwise and for integers */
 spec fn bitwise_or_vec(x: Seq<i32>, y: Seq<i32>) -> Seq<i32>
-    recommends x.len() == y.len()
+    recommends
+        x.len() == y.len()
 {
     Seq::new(x.len(), |i: int| bitwise_or_int(x[i], y[i]))
 }
+/* helper modified by LLM (iteration 5): correction of element-wise bitwise or for sequences */
 // </vc-helpers>
 
 // <vc-spec>
@@ -47,17 +48,11 @@ fn bitwise_or_fn(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
         result@ == bitwise_or_vec(x1@, x2@)
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): corrected invariant to use spec functions for exec bitwise operations */
 {
-    let mut result = Vec::new();
-    let mut i = 0;
-    while i < x1.len()
-        invariant forall|j: int| 0 <= j < i ==> result[j] == bitwise_or_int(x1[j], x2[j])
-        invariant result.len() == i
-        decreases x1.len() - i
-    {
+    /* code modified by LLM (iteration 5): implement element-wise bitwise or using a loop */
+    let mut result = Vec::with_capacity(x1.len());
+    for i in 0..x1.len() {
         result.push(x1[i] | x2[i]);
-        i += 1;
     }
     result
 }

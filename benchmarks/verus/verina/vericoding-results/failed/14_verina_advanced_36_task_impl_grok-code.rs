@@ -16,26 +16,7 @@ spec fn count_matches(xs: Seq<u64>, x: u64) -> nat
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 2): Changed 'i as nat' to 'i as int' to fix type mismatch in Seq::take method call. */
-fn count_matches_exec(xs: &Vec<u64>, x: u64) -> (c: usize)
-    ensures
-        c@ == count_matches(xs@, x)
-{
-    let mut count = 0;
-    let mut i = 0;
-    while i < xs.len()
-        invariant
-            i <= xs.len(),
-            count@ == count_matches(xs@.take(i as int), x)
-        decreases xs.len() - i
-    {
-        if xs[i] == x {
-            count = count + 1;
-        }
-        i = i + 1;
-    }
-    count
-}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -48,26 +29,42 @@ fn majority_element(xs: &Vec<u64>) -> (result: u64)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 2): Implemented majority element finder using a loop to find the element with maximum count via count_matches_exec. */
-    let n = xs.len();
-    let mut i = 0;
-    let mut max_x = 0;
-    let mut max_count = 0;
-    while i < n
+    /* code modified by LLM (iteration 5): Initialized candidate to xs[0] and count to 1, starting loop from i=1 */
+    let mut candidate = xs[0];
+    let mut count = 1;
+    let length = xs.len();
+    let mut i = 1;
+    while i < length
         invariant
-            i <= n,
-            i > 0 ==> max_count@ == count_matches(xs@, max_x)
-        decreases n - i
+            0 <= i <= length,
     {
-        let x = xs[i];
-        let c = count_matches_exec(xs, x);
-        if c > max_count {
-            max_count = c;
-            max_x = x;
+        if count == 0 {
+            candidate = xs[i];
+            count = 1;
+        } else if xs[i] == candidate {
+            count += 1;
+        } else {
+            count -= 1;
         }
-        i = i + 1;
+        i += 1;
     }
-    max_x
+    // Verification phase: count occurrences of candidate
+    let mut total_count = 0;
+    let mut j = 0;
+    while j < length
+        invariant
+            0 <= j <= length,
+            0 <= total_count <= j,
+    {
+        if xs[j] == candidate {
+            total_count += 1;
+        }
+        j += 1;
+    }
+    proof {
+        assert(total_count > length / 2);
+    }
+    candidate
 }
 // </vc-code>
 

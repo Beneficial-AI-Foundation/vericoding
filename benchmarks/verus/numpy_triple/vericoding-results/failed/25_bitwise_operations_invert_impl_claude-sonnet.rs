@@ -5,18 +5,27 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): add precondition to prevent overflow */
-fn can_invert_safely(value: i32) -> (result: bool)
-    ensures result == (value != i32::MIN)
+/* helper modified by LLM (iteration 5): added lemma to prove sign relationship for bitwise inversion */
+spec fn arithmetic_bounds(x: Vec<i32>) -> bool
 {
-    value != i32::MIN
+    forall|i: int| 0 <= i < x.len() ==> x[i] > i32::MIN && x[i] < i32::MAX
 }
 
-fn safe_invert(value: i32) -> (result: i32)
-    requires value != i32::MIN
-    ensures result == -(value + 1)
+proof fn lemma_invert_sign_relationship(x: i32)
+    requires x != -1
+    ensures (x > 0) <==> (-(x + 1) < 0)
 {
-    -(value + 1)
+    if x > 0 {
+        assert(x + 1 > 1);
+        assert(-(x + 1) < -1);
+        assert(-(x + 1) < 0);
+    } else {
+        assert(x < 0);
+        assert(x <= -2);
+        assert(x + 1 <= -1);
+        assert(-(x + 1) >= 1);
+        assert(-(x + 1) >= 0);
+    }
 }
 // </vc-helpers>
 
@@ -31,47 +40,32 @@ fn invert(x: Vec<i32>) -> (result: Vec<i32>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): fix type mismatch by converting index to int */
+    /* code modified by LLM (iteration 5): added proof calls to establish sign relationship */
     let mut result = Vec::new();
-    let mut i = 0;
-    
-    // Check all values can be safely inverted
-    while i < x.len()
-        invariant i <= x.len()
-        decreases x.len() - i
-    {
-        assert(x[i as int] != i32::MIN);
-        i += 1;
-    }
-    
-    i = 0;
+    let mut i: usize = 0;
     while i < x.len()
         invariant
-            i <= x.len(),
             result.len() == i,
-            forall|j: int| 0 <= j < i ==> result[j] == -(x[j] + 1)
+            i <= x.len(),
+            forall|j: int| 0 <= j < i ==> result[j] == -(x[j] + 1),
         decreases x.len() - i
     {
-        let current_val = x[i as int];
-        let inverted_value = -(current_val + 1);
-        result.push(inverted_value);
+        let x_val = x[i];
+        let inverted = if x_val == i32::MAX {
+            i32::MIN
+        } else {
+            -(x_val + 1)
+        };
+        
+        proof {
+            if x_val != -1 {
+                lemma_invert_sign_relationship(x_val);
+            }
+        }
+        
+        result.push(inverted);
         i += 1;
     }
-    
-    proof {
-        assert(result.len() == x.len());
-        assert(forall|j: int| 0 <= j < x.len() ==> result[j] == -(x[j] + 1));
-        
-        // The remaining postconditions follow from the arithmetic properties
-        assert(forall|j: int| 0 <= j < x.len() && x[j] == 0 ==> -(x[j] + 1) == -1);
-        assert(forall|j: int| 0 <= j < x.len() && x[j] == -1 ==> -(x[j] + 1) == 0);
-        
-        // For the sign relationship: if x[j] > 0, then -(x[j] + 1) < 0
-        // if x[j] < 0 and x[j] != -1, then x[j] <= -2, so -(x[j] + 1) >= 1 > 0
-        assert(forall|j: int| 0 <= j < x.len() && x[j] != -1 && x[j] > 0 ==> -(x[j] + 1) < 0);
-        assert(forall|j: int| 0 <= j < x.len() && x[j] != -1 && x[j] <= 0 ==> -(x[j] + 1) >= 1);
-    }
-    
     result
 }
 // </vc-code>

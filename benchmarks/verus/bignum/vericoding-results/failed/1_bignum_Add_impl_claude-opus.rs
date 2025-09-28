@@ -1,309 +1,157 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
-
-spec fn Str2Int(s: Seq<char>) -> nat
-  recommends ValidBitString(s)
+spec fn str2int(s: Seq<char>) -> nat
   decreases s.len()
 {
-  if s.len() == 0 {
-    0
-  } else {
-    2 * Str2Int(s.subrange(0, s.len() as int - 1))
-      + (if s.index(s.len() as int - 1) == '1' { 1nat } else { 0nat })
-  }
+  if s.len() == 0 { 0nat } else { 2nat * str2int(s.subrange(0, s.len() - 1)) + (if s[s.len() - 1] == '1' { 1nat } else { 0nat }) }
 }
 
-spec fn ValidBitString(s: Seq<char>) -> bool
+spec fn valid_bit_string(s: Seq<char>) -> bool
 {
-  // All characters must be '0' or '1'.
-  forall |i: int| 0 <= i && i < s.len() as int ==>
-    (s.index(i) == '0' || s.index(i) == '1')
+  forall|i: int| 0 <= i < s.len() ==> (s[i] == '0' || s[i] == '1')
 }
+// </vc-preamble>
 
 // <vc-helpers>
-use vstd::arithmetic::power2::*;
-
-proof fn str2int_append_bit(s: Seq<char>, bit: char)
-    requires 
-        ValidBitString(s),
-        bit == '0' || bit == '1',
-    ensures 
-        ValidBitString(s.push(bit)),
-        Str2Int(s.push(bit)) == 2 * Str2Int(s) + (if bit == '1' { 1nat } else { 0nat }),
-    decreases s.len(),
+/* helper modified by LLM (iteration 10): Added assertions for bit validity and fixed subrange proofs */
+spec fn pow2(n: nat) -> nat
+    decreases n
 {
-    assert(s.push(bit).len() == s.len() + 1);
-    assert(s.push(bit).subrange(0, s.len() as int) =~= s);
-    assert(s.push(bit).index(s.len() as int) == bit);
+    if n == 0 { 1nat } else { 2nat * pow2((n - 1) as nat) }
 }
 
-proof fn str2int_zero()
-    ensures Str2Int(Seq::<char>::empty()) == 0,
-{
+spec fn spec_min(a: int, b: int) -> int {
+    if a < b { a } else { b }
 }
 
-proof fn valid_bit_string_push(s: Seq<char>, c: char)
+proof fn str2int_append(s: Seq<char>, c: char)
     requires
-        ValidBitString(s),
-        c == '0' || c == '1',
-    ensures ValidBitString(s.push(c)),
+        valid_bit_string(s),
+        c == '0' || c == '1'
+    ensures
+        str2int(s.push(c)) == 2nat * str2int(s) + if c == '1' { 1nat } else { 0nat }
 {
-    assert forall |i: int| 0 <= i && i < s.push(c).len() as int implies
-        s.push(c).index(i) == '0' || s.push(c).index(i) == '1'
-    by {
-        if i < s.len() as int {
-            assert(s.push(c).index(i) == s.index(i));
-        } else {
-            assert(i == s.len() as int);
-            assert(s.push(c).index(i) == c);
-        }
-    }
+    let s_new = s.push(c);
+    assert(s_new.len() == s_new.len());
+    assert(s_new.subrange(0, s_new.len() - 1) =~= s);
+    assert(s_new[s_new.len() - 1] == c);
+}
+
+proof fn str2int_empty()
+    ensures str2int(Seq::<char>::empty()) == 0nat
+{
 }
 
 proof fn valid_bit_string_subrange(s: Seq<char>, start: int, end: int)
     requires
-        ValidBitString(s),
-        0 <= start <= end <= s.len() as int,
-    ensures ValidBitString(s.subrange(start, end)),
+        valid_bit_string(s),
+        0 <= start <= end <= s.len()
+    ensures
+        valid_bit_string(s.subrange(start, end))
 {
-    assert forall |i: int| 0 <= i && i < s.subrange(start, end).len() as int implies
-        s.subrange(start, end).index(i) == '0' || s.subrange(start, end).index(i) == '1'
-    by {
-        assert(s.subrange(start, end).index(i) == s.index(start + i));
-    }
+    assert forall|i: int| 0 <= i < s.subrange(start, end).len() implies
+        s.subrange(start, end)[i] == s[start + i] && (s[start + i] == '0' || s[start + i] == '1');
 }
 
-proof fn sum_division_lemma(sum: u8)
-    requires sum <= 3,
-    ensures 
-        sum == 2 * (sum >> 1) + (sum & 1),
-        (sum >> 1) <= 1,
+fn add_with_carry(bit1: char, bit2: char, carry: bool) -> (res: (char, bool))
+    requires
+        bit1 == '0' || bit1 == '1',
+        bit2 == '0' || bit2 == '1'
+    ensures
+        res.0 == '0' || res.0 == '1',
+        ({
+            let val1: int = if bit1 == '1' { 1int } else { 0int };
+            let val2: int = if bit2 == '1' { 1int } else { 0int };
+            let carry_val: int = if carry { 1int } else { 0int };
+            let sum = val1 + val2 + carry_val;
+            let res_bit = if res.0 == '1' { 1int } else { 0int };
+            let res_carry = if res.1 { 1int } else { 0int };
+            sum == res_bit + 2 * res_carry
+        })
 {
-    // Prove by cases with explicit assertions
+    let val1 = if bit1 == '1' { 1u8 } else { 0u8 };
+    let val2 = if bit2 == '1' { 1u8 } else { 0u8 };
+    let carry_val = if carry { 1u8 } else { 0u8 };
+    let sum = val1 + val2 + carry_val;
+    
     if sum == 0 {
-        assert(0u8 >> 1 == 0) by (compute);
-        assert(0u8 & 1 == 0) by (compute);
+        ('0', false)
     } else if sum == 1 {
-        assert(1u8 >> 1 == 0) by (compute);
-        assert(1u8 & 1 == 1) by (compute);
+        ('1', false)
     } else if sum == 2 {
-        assert(2u8 >> 1 == 1) by (compute);
-        assert(2u8 & 1 == 0) by (compute);
+        ('0', true)
     } else {
-        assert(sum == 3);
-        assert(3u8 >> 1 == 1) by (compute);
-        assert(3u8 & 1 == 1) by (compute);
+        ('1', true)
     }
 }
 // </vc-helpers>
 
 // <vc-spec>
-exec fn Add(s1: &[char], s2: &[char]) -> (res: Vec<char>)
-  requires ValidBitString(s1@),
-   ValidBitString(s2@),
-  ensures ValidBitString(res@), 
-    Str2Int(res@) == Str2Int(s1@) + Str2Int(s2@)
+fn add(s1: Vec<char>, s2: Vec<char>) -> (res: Vec<char>)
+  requires 
+    valid_bit_string(s1@) && valid_bit_string(s2@)
+  ensures 
+    valid_bit_string(res@) &&
+    str2int(res@) == str2int(s1@) + str2int(s2@)
 // </vc-spec>
 // <vc-code>
 {
+    /* code modified by LLM (iteration 10): Fixed bit validity assertions and subrange proofs */
     let mut result = Vec::<char>::new();
-    let mut carry: u8 = 0;
+    let mut carry = false;
     let mut i: usize = 0;
-    let len1 = s1.len();
-    let len2 = s2.len();
-    let max_len = if len1 >= len2 { len1 } else { len2 };
     
-    proof {
-        assert(0 <= 0 && 0 <= len1 as int);
-        assert(0 <= 0 && 0 <= len2 as int);
-        valid_bit_string_subrange(s1@, 0, 0);
-        valid_bit_string_subrange(s2@, 0, 0);
-    }
+    let max_len = if s1.len() > s2.len() { s1.len() } else { s2.len() };
     
-    while i < max_len
+    while i < max_len || carry
         invariant
             i <= max_len,
-            max_len == if len1 >= len2 { len1 } else { len2 },
-            len1 == s1@.len(),
-            len2 == s2@.len(),
-            carry <= 1,
-            ValidBitString(result@),
-            ValidBitString(s1@),
-            ValidBitString(s2@),
-            Str2Int(result@) + (carry as nat) * pow2(i as nat) == 
-                Str2Int(s1@.subrange(0, if i <= len1 { i as int } else { len1 as int })) + 
-                Str2Int(s2@.subrange(0, if i <= len2 { i as int } else { len2 as int })),
-        decreases max_len - i,
+            valid_bit_string(result@),
+            str2int(result@) == (str2int(s1@.subrange(0int, spec_min(i as int, s1.len() as int))) + str2int(s2@.subrange(0int, spec_min(i as int, s2.len() as int))) + if carry { 1nat } else { 0nat }) % pow2(i as nat),
+            (str2int(s1@.subrange(0int, spec_min(i as int, s1.len() as int))) + str2int(s2@.subrange(0int, spec_min(i as int, s2.len() as int))) + if carry { 1nat } else { 0nat }) / pow2(i as nat) <= 1nat
+        decreases (max_len - i) as int + if carry { 1int } else { 0int }
     {
-        let bit1: u8 = if i < len1 {
-            if s1[i] == '1' { 1 } else { 0 }
-        } else {
-            0
-        };
+        let bit1 = if i < s1.len() { s1[i] } else { '0' };
+        let bit2 = if i < s2.len() { s2[i] } else { '0' };
         
-        let bit2: u8 = if i < len2 {
-            if s2[i] == '1' { 1 } else { 0 }
-        } else {
-            0
-        };
+        // Assert bit validity
+        assert(bit1 == '0' || bit1 == '1');
+        assert(bit2 == '0' || bit2 == '1');
+        
+        let (res_bit, new_carry) = add_with_carry(bit1, bit2, carry);
+        result.push(res_bit);
         
         proof {
-            assert(bit1 <= 1);
-            assert(bit2 <= 1);
-            assert(carry <= 1);
+            str2int_append(result@.subrange(0int, (result.len() - 1) as int), res_bit);
+            if i < s1.len() {
+                assert(s1@.subrange(0int, (i + 1) as int) =~= s1@.subrange(0int, i as int).push(s1@[i as int]));
+                valid_bit_string_subrange(s1@, 0int, i as int);
+                str2int_append(s1@.subrange(0int, i as int), s1@[i as int]);
+            }
+            if i < s2.len() {
+                assert(s2@.subrange(0int, (i + 1) as int) =~= s2@.subrange(0int, i as int).push(s2@[i as int]));
+                valid_bit_string_subrange(s2@, 0int, i as int);
+                str2int_append(s2@.subrange(0int, i as int), s2@[i as int]);
+            }
         }
         
-        let sum = bit1 + bit2 + carry;
-        
-        proof {
-            assert(bit1 <= 1);
-            assert(bit2 <= 1);
-            assert(carry <= 1);
-            assert(sum <= 3);
-        }
-        
-        let new_bit = if (sum & 1) == 1 { '1' } else { '0' };
-        let new_carry = sum >> 1;
-        
-        proof {
-            sum_division_lemma(sum);
-            assert(sum == 2 * (sum >> 1) + (sum & 1));
-            assert(new_carry == sum >> 1);
-            assert(new_carry <= 1);
-            
-            if (sum & 1) == 1 {
-                assert(new_bit == '1');
-                assert((if new_bit == '1' { 1nat } else { 0nat }) == 1nat);
-                assert((sum & 1) as nat == 1nat);
-            } else {
-                assert((sum & 1) == 0);
-                assert(new_bit == '0');
-                assert((if new_bit == '1' { 1nat } else { 0nat }) == 0nat);
-                assert((sum & 1) as nat == 0nat);
-            }
-            assert((if new_bit == '1' { 1nat } else { 0nat }) == (sum & 1) as nat);
-            
-            let curr_end1 = if i <= len1 { i as int } else { len1 as int };
-            let curr_end2 = if i <= len2 { i as int } else { len2 as int };
-            let next_end1 = if (i + 1) <= len1 { (i + 1) as int } else { len1 as int };
-            let next_end2 = if (i + 1) <= len2 { (i + 1) as int } else { len2 as int };
-            
-            assert(0 <= 0 <= curr_end1 <= len1 as int);
-            assert(0 <= 0 <= curr_end2 <= len2 as int);
-            assert(0 <= 0 <= next_end1 <= len1 as int);
-            assert(0 <= 0 <= next_end2 <= len2 as int);
-            
-            valid_bit_string_subrange(s1@, 0, curr_end1);
-            valid_bit_string_subrange(s2@, 0, curr_end2);
-            valid_bit_string_subrange(s1@, 0, next_end1);
-            valid_bit_string_subrange(s2@, 0, next_end2);
-            
-            if i < len1 {
-                assert(next_end1 == (i + 1) as int);
-                assert(curr_end1 == i as int);
-                assert(s1@.subrange(0, next_end1) =~= 
-                       s1@.subrange(0, curr_end1).push(s1@.index(i as int)));
-                str2int_append_bit(s1@.subrange(0, curr_end1), s1@.index(i as int));
-                assert(Str2Int(s1@.subrange(0, next_end1)) == 
-                       2 * Str2Int(s1@.subrange(0, curr_end1)) + bit1 as nat);
-            } else {
-                assert(next_end1 == len1 as int);
-                assert(curr_end1 == len1 as int);
-                assert(s1@.subrange(0, next_end1) =~= s1@.subrange(0, curr_end1));
-                assert(Str2Int(s1@.subrange(0, next_end1)) == Str2Int(s1@.subrange(0, curr_end1)));
-                assert(bit1 == 0);
-            }
-            
-            if i < len2 {
-                assert(next_end2 == (i + 1) as int);
-                assert(curr_end2 == i as int);
-                assert(s2@.subrange(0, next_end2) =~= 
-                       s2@.subrange(0, curr_end2).push(s2@.index(i as int)));
-                str2int_append_bit(s2@.subrange(0, curr_end2), s2@.index(i as int));
-                assert(Str2Int(s2@.subrange(0, next_end2)) == 
-                       2 * Str2Int(s2@.subrange(0, curr_end2)) + bit2 as nat);
-            } else {
-                assert(next_end2 == len2 as int);
-                assert(curr_end2 == len2 as int);
-                assert(s2@.subrange(0, next_end2) =~= s2@.subrange(0, curr_end2));
-                assert(Str2Int(s2@.subrange(0, next_end2)) == Str2Int(s2@.subrange(0, curr_end2)));
-                assert(bit2 == 0);
-            }
-            
-            valid_bit_string_push(result@, new_bit);
-            str2int_append_bit(result@, new_bit);
-            
-            assert(i < max_len);
-            assert(i + 1 > 0);
-            lemma_pow2_unfold((i + 1) as nat);
-            assert(pow2((i + 1) as nat) == 2 * pow2(i as nat));
-            
-            assert(sum == bit1 + bit2 + carry);
-            assert(new_carry == sum >> 1);
-            assert((if new_bit == '1' { 1nat } else { 0nat }) == (sum & 1) as nat);
-            assert(sum as nat == 2 * new_carry as nat + (if new_bit == '1' { 1nat } else { 0nat }));
-            
-            assert(Str2Int(result@.push(new_bit)) == 2 * Str2Int(result@) + (if new_bit == '1' { 1nat } else { 0nat }));
-            
-            assert(Str2Int(result@) + (carry as nat) * pow2(i as nat) == 
-                   Str2Int(s1@.subrange(0, curr_end1)) + Str2Int(s2@.subrange(0, curr_end2)));
-            
-            assert(2 * Str2Int(result@) + 2 * (carry as nat) * pow2(i as nat) == 
-                   2 * Str2Int(s1@.subrange(0, curr_end1)) + 2 * Str2Int(s2@.subrange(0, curr_end2)));
-            
-            assert(2 * Str2Int(result@) + (sum & 1) as nat + 2 * (new_carry as nat) * pow2(i as nat) ==
-                   2 * Str2Int(result@) + (sum & 1) as nat + (new_carry as nat) * pow2((i + 1) as nat));
-            
-            assert(bit1 as nat + bit2 as nat + carry as nat == sum as nat);
-            assert(2 * (new_carry as nat) + (sum & 1) as nat == sum as nat);
-            assert(2 * (carry as nat) * pow2(i as nat) + (bit1 as nat + bit2 as nat) * 2 * pow2(i as nat) ==
-                   2 * Str2Int(s1@.subrange(0, curr_end1)) + 2 * Str2Int(s2@.subrange(0, curr_end2)));
-            
-            assert(Str2Int(s1@.subrange(0, next_end1)) + Str2Int(s2@.subrange(0, next_end2)) ==
-                   2 * Str2Int(s1@.subrange(0, curr_end1)) + bit1 as nat + 2 * Str2Int(s2@.subrange(0, curr_end2)) + bit2 as nat);
-            
-            assert(Str2Int(result@.push(new_bit)) + (new_carry as nat) * pow2((i + 1) as nat) ==
-                   Str2Int(s1@.subrange(0, next_end1)) + Str2Int(s2@.subrange(0, next_end2)));
-        }
-        
-        result.push(new_bit);
         carry = new_carry;
         i = i + 1;
     }
     
-    if carry == 1 {
-        proof {
-            valid_bit_string_push(result@, '1');
-            str2int_append_bit(result@, '1');
-            assert(i == max_len);
-            assert(s1@.subrange(0, len1 as int) =~= s1@);
-            assert(s2@.subrange(0, len2 as int) =~= s2@);
-            
-            assert(Str2Int(result@.push('1')) == 2 * Str2Int(result@) + 1);
-            assert(Str2Int(result@) + pow2(max_len as nat) == Str2Int(s1@) + Str2Int(s2@));
-            
-            if max_len > 0 {
-                lemma_pow2_unfold(max_len as nat);
-                lemma_pow2_is_power_of_2(max_len as nat);
-            }
-            
-            assert(Str2Int(result@.push('1')) == Str2Int(s1@) + Str2Int(s2@));
-        }
-        result.push('1');
-    } else {
-        proof {
-            assert(carry == 0);
-            assert(i == max_len);
-            assert(s1@.subrange(0, len1 as int) =~= s1@);
-            assert(s2@.subrange(0, len2 as int) =~= s2@);
-            assert(Str2Int(result@) == Str2Int(s1@) + Str2Int(s2@));
-        }
+    proof {
+        assert(s1@.subrange(0int, s1.len() as int) =~= s1@);
+        assert(s2@.subrange(0int, s2.len() as int) =~= s2@);
+        assert(!carry);
     }
     
     result
 }
 // </vc-code>
 
-fn main() {}
+
 }
+
+fn main() {}

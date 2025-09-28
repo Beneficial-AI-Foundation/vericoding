@@ -27,44 +27,70 @@ pub enum DType {
 // </vc-preamble>
 
 // <vc-helpers>
-spec fn is_same_dtype(from_dtype: DType, to_dtype: DType) -> bool { from_dtype == to_dtype }
-
-/* helper modified by LLM (iteration 5): removed pattern guards that caused move errors */
-fn is_safe_cast(from_dtype: DType, to_dtype: DType) -> bool {
-    match (from_dtype, to_dtype) {
-        (DType::Int8, DType::Int16) | (DType::Int8, DType::Int32) | (DType::Int8, DType::Int64) => true,
-        (DType::Int16, DType::Int32) | (DType::Int16, DType::Int64) => true,
-        (DType::Int32, DType::Int64) => true,
-        (DType::Float32, DType::Float64) => true,
-        (DType::Int8, DType::Float32) | (DType::Int8, DType::Float64) => true,
-        (DType::Int16, DType::Float32) | (DType::Int16, DType::Float64) => true,
-        (DType::Int32, DType::Float64) => true,
-        (DType::Complex64, DType::Complex128) => true,
-        (DType::Float32, DType::Complex64) | (DType::Float32, DType::Complex128) => true,
-        (DType::Float64, DType::Complex64) | (DType::Float64, DType::Complex128) => true,
-        (DType::Int8, DType::Int8) | (DType::Int16, DType::Int16) | (DType::Int32, DType::Int32) | (DType::Int64, DType::Int64) => true,
-        (DType::Float32, DType::Float32) | (DType::Float64, DType::Float64) => true,
-        (DType::Complex64, DType::Complex64) | (DType::Complex128, DType::Complex128) => true,
-        (DType::Bool, DType::Bool) => true,
+/* helper modified by LLM (iteration 5): removed dtypes_equal function to use built-in equality */
+spec fn is_integer_type(dtype: DType) -> bool
+{
+    match dtype {
+        DType::Int8 | DType::Int16 | DType::Int32 | DType::Int64 => true,
         _ => false,
     }
 }
 
-/* helper modified by LLM (iteration 5): kept match patterns without guards */
-fn is_same_kind_cast(from_dtype: DType, to_dtype: DType) -> bool {
+spec fn is_float_type(dtype: DType) -> bool
+{
+    match dtype {
+        DType::Float32 | DType::Float64 => true,
+        _ => false,
+    }
+}
+
+spec fn is_complex_type(dtype: DType) -> bool
+{
+    match dtype {
+        DType::Complex64 | DType::Complex128 => true,
+        _ => false,
+    }
+}
+
+spec fn is_safe_int_upcast(from_dtype: DType, to_dtype: DType) -> bool
+{
     match (from_dtype, to_dtype) {
-        (DType::Int8, DType::Int8) | (DType::Int8, DType::Int16) | (DType::Int8, DType::Int32) | (DType::Int8, DType::Int64) => true,
-        (DType::Int16, DType::Int8) | (DType::Int16, DType::Int16) | (DType::Int16, DType::Int32) | (DType::Int16, DType::Int64) => true,
-        (DType::Int32, DType::Int8) | (DType::Int32, DType::Int16) | (DType::Int32, DType::Int32) | (DType::Int32, DType::Int64) => true,
-        (DType::Int64, DType::Int8) | (DType::Int64, DType::Int16) | (DType::Int64, DType::Int32) | (DType::Int64, DType::Int64) => true,
-        (DType::Float32, DType::Float32) | (DType::Float32, DType::Float64) => true,
-        (DType::Float64, DType::Float32) | (DType::Float64, DType::Float64) => true,
-        (DType::Complex64, DType::Complex64) | (DType::Complex64, DType::Complex128) => true,
-        (DType::Complex128, DType::Complex64) | (DType::Complex128, DType::Complex128) => true,
-        (DType::Int8, DType::Float32) | (DType::Int8, DType::Float64) | (DType::Int8, DType::Complex64) | (DType::Int8, DType::Complex128) => true,
-        (DType::Int16, DType::Float32) | (DType::Int16, DType::Float64) | (DType::Int16, DType::Complex64) | (DType::Int16, DType::Complex128) => true,
-        (DType::Int32, DType::Float32) | (DType::Int32, DType::Float64) | (DType::Int32, DType::Complex64) | (DType::Int32, DType::Complex128) => true,
-        (DType::Int64, DType::Float32) | (DType::Int64, DType::Float64) | (DType::Int64, DType::Complex64) | (DType::Int64, DType::Complex128) => true,
+        (DType::Int8, DType::Int16) | (DType::Int8, DType::Int32) | (DType::Int8, DType::Int64) => true,
+        (DType::Int16, DType::Int32) | (DType::Int16, DType::Int64) => true,
+        (DType::Int32, DType::Int64) => true,
+        _ => false,
+    }
+}
+
+spec fn is_safe_float_upcast(from_dtype: DType, to_dtype: DType) -> bool
+{
+    match (from_dtype, to_dtype) {
+        (DType::Float32, DType::Float64) => true,
+        _ => false,
+    }
+}
+
+spec fn is_safe_int_to_float(from_dtype: DType, to_dtype: DType) -> bool
+{
+    match (from_dtype, to_dtype) {
+        (DType::Int8, DType::Float32) | (DType::Int8, DType::Float64) => true,
+        (DType::Int16, DType::Float32) | (DType::Int16, DType::Float64) => true,
+        (DType::Int32, DType::Float64) => true,
+        _ => false,
+    }
+}
+
+spec fn is_safe_complex_upcast(from_dtype: DType, to_dtype: DType) -> bool
+{
+    match (from_dtype, to_dtype) {
+        (DType::Complex64, DType::Complex128) => true,
+        _ => false,
+    }
+}
+
+spec fn is_safe_float_to_complex(from_dtype: DType, to_dtype: DType) -> bool
+{
+    match (from_dtype, to_dtype) {
         (DType::Float32, DType::Complex64) | (DType::Float32, DType::Complex128) => true,
         (DType::Float64, DType::Complex64) | (DType::Float64, DType::Complex128) => true,
         _ => false,
@@ -121,12 +147,29 @@ fn can_cast(from_dtype: DType, to_dtype: DType, casting: CastingRule) -> (result
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): fixed compilation errors by removing problematic pattern guards */
+    /* code modified by LLM (iteration 5): use built-in equality instead of custom function */
     match casting {
-        CastingRule::No => matches!((from_dtype, to_dtype), (DType::Int8, DType::Int8) | (DType::Int16, DType::Int16) | (DType::Int32, DType::Int32) | (DType::Int64, DType::Int64) | (DType::Float32, DType::Float32) | (DType::Float64, DType::Float64) | (DType::Complex64, DType::Complex64) | (DType::Complex128, DType::Complex128) | (DType::Bool, DType::Bool)),
-        CastingRule::Equiv => matches!((from_dtype, to_dtype), (DType::Int8, DType::Int8) | (DType::Int16, DType::Int16) | (DType::Int32, DType::Int32) | (DType::Int64, DType::Int64) | (DType::Float32, DType::Float32) | (DType::Float64, DType::Float64) | (DType::Complex64, DType::Complex64) | (DType::Complex128, DType::Complex128) | (DType::Bool, DType::Bool)),
-        CastingRule::Safe => is_safe_cast(from_dtype, to_dtype),
-        CastingRule::SameKind => is_same_kind_cast(from_dtype, to_dtype),
+        CastingRule::No => {
+            from_dtype == to_dtype
+        },
+        CastingRule::Equiv => {
+            from_dtype == to_dtype
+        },
+        CastingRule::Safe => {
+            from_dtype == to_dtype ||
+            is_safe_int_upcast(from_dtype, to_dtype) ||
+            is_safe_float_upcast(from_dtype, to_dtype) ||
+            is_safe_int_to_float(from_dtype, to_dtype) ||
+            is_safe_complex_upcast(from_dtype, to_dtype) ||
+            is_safe_float_to_complex(from_dtype, to_dtype)
+        },
+        CastingRule::SameKind => {
+            (is_integer_type(from_dtype) && is_integer_type(to_dtype)) ||
+            (is_float_type(from_dtype) && is_float_type(to_dtype)) ||
+            (is_complex_type(from_dtype) && is_complex_type(to_dtype)) ||
+            (is_integer_type(from_dtype) && (is_float_type(to_dtype) || is_complex_type(to_dtype))) ||
+            (is_float_type(from_dtype) && is_complex_type(to_dtype))
+        },
         CastingRule::Unrestricted => true,
     }
 }

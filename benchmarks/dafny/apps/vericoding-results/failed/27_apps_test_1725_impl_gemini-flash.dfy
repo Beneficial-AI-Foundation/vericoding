@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int, d: int, matrix: seq<seq<int>>)
 {
     n > 0 && m > 0 && d > 0 &&
@@ -40,45 +41,42 @@ function minimumOperationsToMakeEqual(simplified: seq<int>): int
     var maxVal := seqMax(simplified);
     minOpsInRange(simplified, minVal, maxVal)
 }
+// </vc-preamble>
 
 // <vc-helpers>
+/* helper modified by LLM (iteration 5): Add missing preconditions to minOpsInRange for seqMin and seqMax calls */
 function seqMin(s: seq<int>): int
     requires |s| > 0
-    ensures forall x :: x in s ==> seqMin(s) <= x
-    ensures exists i :: 0 <= i < |s| && s[i] == seqMin(s)
 {
     if |s| == 1 then s[0]
-    else var restMin := seqMin(s[1..]);
-         if s[0] < restMin then s[0] else restMin
+    else var res := seqMin(s[1..]); if s[0] < res then s[0] else res
 }
 
 function seqMax(s: seq<int>): int
     requires |s| > 0
-    ensures forall x :: x in s ==> seqMax(s) >= x
-    ensures exists i :: 0 <= i < |s| && s[i] == seqMax(s)
 {
     if |s| == 1 then s[0]
-    else var restMax := seqMax(s[1..]);
-         if s[0] > restMax then s[0] else restMax
+    else var res := seqMax(s[1..]); if s[0] > res then s[0] else res
 }
 
-function minOpsInRange(s: seq<int>, lower: int, upper: int): int
-    requires |s| > 0
-    requires lower <= upper
-    ensures minOpsInRange(s, lower, upper) >= 0
-    decreases upper - lower
-{
-    if lower == upper then
-        sumAbsDifferencesFromTarget(s, lower)
-    else
-        var mid := lower + (upper - lower) / 2;
-        var costMid := sumAbsDifferencesFromTarget(s, mid);
-        var costMidPlus1 := sumAbsDifferencesFromTarget(s, mid + 1);
+function min(a: int, b: int): int {
+    if a < b then a else b
+}
 
-        if costMid <= costMidPlus1 then
-            minOpsInRange(s, lower, mid)
-        else
-            minOpsInRange(s, mid + 1, upper)
+function minOpsInRange(simplified: seq<int>, lower: int, upper: int): int
+    requires |simplified| > 0
+    requires lower <= upper
+    requires forall i :: 0 <= i < |simplified| ==> seqMin(simplified) <= simplified[i] <= seqMax(simplified)
+    requires lower >= seqMin(simplified)
+    requires upper <= seqMax(simplified)
+decreases upper - lower
+{
+    if lower == upper then sumAbsDifferencesFromTarget(simplified, lower)
+    else
+        min(
+            sumAbsDifferencesFromTarget(simplified, lower),
+            minOpsInRange(simplified, lower + 1, upper)
+        )
 }
 // </vc-helpers>
 
@@ -90,17 +88,24 @@ method solve(n: int, m: int, d: int, matrix: seq<seq<int>>) returns (result: int
     ensures result >= 0 ==> (var flat := flatten(matrix); var simplified := divideSequenceByD(flat, d); result == minimumOperationsToMakeEqual(simplified))
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): Add assertions to prove preconditions of minOpsInRange for recursive call calculation */
 {
-    if !AllSameRemainder(matrix, d)
-    {
-        result := -1;
+    if !AllSameRemainder(matrix, d) {
+        return -1;
     }
-    else
-    {
-        var flat := flatten(matrix);
-        var simplified := divideSequenceByD(flat, d);
-        result := minimumOperationsToMakeEqual(simplified);
-    }
+
+    var flat := flatten(matrix);
+    var simplified := divideSequenceByD(flat, d);
+    
+    // The values in simplified are non-negative because matrix elements are positive and d > 0
+    // All simplified[i] are integers by property of integer division
+
+    // Prove that all elements simplified[i] are within the range [seqMin(simplified), seqMax(simplified)]
+    assert |simplified| > 0; // follows from |matrix| > 0 and flatten(matrix) retains elements
+    var minVal := seqMin(simplified);
+    var maxVal := seqMax(simplified);
+    assert forall i :: 0 <= i < |simplified| ==> minVal <= simplified[i] <= maxVal;
+
+    return minimumOperationsToMakeEqual(simplified);
 }
 // </vc-code>
-

@@ -17,36 +17,33 @@ ghost predicate IsStrictlyIncreasing(s: seq<int>)
 // </vc-preamble>
 
 // <vc-helpers>
-function ComputeSubsequenceLengths(xs: array<int>, i: int): (lengths: array<nat>)
-  requires 0 <= i <= xs.Length
-  ensures |lengths| == xs.Length
-  ensures forall j :: 0 <= j < xs.Length ==> 0 <= lengths[j] <= xs.Length
+/* helper modified by LLM (iteration 5): Fixed syntax error in ValidMemo predicate with proper parentheses and brackets */
+ghost function Max(a: nat, b: nat): nat
 {
-  var lengths_arr := new nat[xs.Length];
-  if i > 0 {
-    var pos := i - 1;
-    var maxTailLength := 0;
-    while pos >= 0
-      decreases pos + 1
-    {
-      if xs[pos] < xs[i] && lengths_arr[pos] > maxTailLength {
-        maxTailLength := lengths_arr[pos];
-      }
-      pos := pos - 1;
-    }
-    lengths_arr[i] := maxTailLength + 1;
-  } else {
-    lengths_arr[i] := 1;
-  }
-  lengths_arr
+    if a > b then a else b
 }
 
-lemma LemmaLongestIncreasingSubsequence(xs: seq<int>, subseq: seq<int>)
-  requires IsSubsequenceOf(subseq, xs) && IsStrictlyIncreasing(subseq)
-  ensures |subseq| <= xs.Length
+ghost predicate IsLongestIncreasingSubseq(subseq: seq<int>, xs: seq<int>)
 {
+    IsSubsequenceOf(subseq, xs) &&
+    IsStrictlyIncreasing(subseq) &&
+    (forall other: seq<int> ::
+        (IsSubsequenceOf(other, xs) && IsStrictlyIncreasing(other)) ==> |other| <= |subseq|)
 }
 
+ghost function MemoLookup(memo: seq<nat>, i: int): nat
+    requires 0 <= i < |memo|
+{
+    memo[i]
+}
+
+ghost predicate ValidMemo(memo: seq<nat>, xs: seq<int>)
+{
+    |memo| == |xs| &&
+    (forall i :: 0 <= i < |xs| ==> memo[i] >= 1) &&
+    (forall i :: 0 <= i < |xs| ==> 
+        memo[i] == 1 + (max j | 0 <= j < i && xs[j] < xs[i] :: (if 0 <= j < |memo| then memo[j] else 0)))
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -65,40 +62,48 @@ method LongestIncreasingSubseqLength(xs: array<int>) returns (result: nat)
 // </vc-spec>
 // <vc-code>
 {
+  /* code modified by LLM (iteration 5): Maintained implementation with corrected helper syntax */
   var n := xs.Length;
   if n == 0 {
     result := 0;
     return;
   }
   
-  var lengths : array<nat>;
-  lengths := new nat[n];
-  var maxLength := 0;
+  var memo : array<nat>;
+  memo := new nat[n];
+  var maxLength := 1;
   
-  for i := 0 to n - 1
+  var i := 0;
+  while i < n
     invariant 0 <= i <= n
-    invariant |lengths| == n
-    invariant forall j :: 0 <= j < i ==> 0 <= lengths[j] <= n
-    invariant maxLength >= 0 && maxLength <= n
-    invariant maxLength == 0 || exists j :: 0 <= j < i && lengths[j] == maxLength
-    decreases n - i
+    invariant forall k :: 0 <= k < i ==> memo[k] >= 1
+    invariant maxLength >= 1
+    invariant exists subseq: seq<int> :: IsSubsequenceOf(subseq, xs[..]) && IsStrictlyIncreasing(subseq) && |subseq| == maxLength
+    invariant forall k :: 0 <= k < i ==> 
+      memo[k] == 1 + (max j | 0 <= j < k && xs[j] < xs[k] :: (if 0 <= j < i then memo[j] else 0))
   {
+    memo[i] := 1;
+    var j := 0;
     var currentMax := 0;
-    for j := 0 to i - 1
-      invariant 0 <= j <= i
-      invariant currentMax >= 0 && currentMax <= n
-      invariant forall k :: 0 <= k < j ==> (xs[k] < xs[i] ==> lengths[k] <= currentMax)
-      decreases i - j
-    {
-      if xs[j] < xs[i] && lengths[j] > currentMax {
-        currentMax := lengths[j];
-      }
-    }
-    lengths[i] := currentMax + 1;
     
-    if lengths[i] > maxLength {
-      maxLength := lengths[i];
+    while j < i
+      invariant 0 <= j <= i
+      invariant memo[i] >= 1
+      invariant currentMax == (max k | 0 <= k < j && xs[k] < xs[i] :: memo[k])
+    {
+      if xs[j] < xs[i] && memo[j] > currentMax {
+        currentMax := memo[j];
+      }
+      j := j + 1;
     }
+    
+    memo[i] := 1 + currentMax;
+    
+    if memo[i] > maxLength {
+      maxLength := memo[i];
+    }
+    
+    i := i + 1;
   }
   
   result := maxLength;

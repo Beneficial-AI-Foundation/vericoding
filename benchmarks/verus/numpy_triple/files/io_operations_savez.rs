@@ -13,10 +13,10 @@ fn savez(file: String, arr1: Vec<f32>, arr2: Vec<f32>, allow_pickle: bool) -> (r
         true,
     ensures 
         result == (),
-        true, // Archive creation and data persistence properties (simplified for verification)
-        true, // Array 1 can be recovered
-        true, // Array 2 can be recovered  
-        true  // File has positive size
+        exists|recoverable_arr1: Vec<f32>| #[trigger] recoverable_arr1.len() == arr1.len() &&
+            forall|i: int| 0 <= i < arr1.len() ==> recoverable_arr1[i] == arr1[i],
+        exists|recoverable_arr2: Vec<f32>| #[trigger] recoverable_arr2.len() == arr2.len() &&
+            forall|i: int| 0 <= i < arr2.len() ==> recoverable_arr2[i] == arr2[i],
 // </vc-spec>
 // <vc-code>
 {

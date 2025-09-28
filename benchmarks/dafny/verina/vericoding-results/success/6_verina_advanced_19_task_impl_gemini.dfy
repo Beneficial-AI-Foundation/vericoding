@@ -47,9 +47,11 @@ function NormalizeString(s: string): seq<char>
 // </vc-preamble>
 
 // <vc-helpers>
-predicate IsPalindrome(s: seq<char>) 
+function reverse(s: seq<char>): seq<char>
+    decreases |s|
 {
-    forall k :: 0 <= k < |s|/2 ==> s[k] == s[|s|-1-k]
+    if |s| == 0 then []
+    else reverse(s[1..]) + [s[0]]
 }
 // </vc-helpers>
 
@@ -59,25 +61,6 @@ method IsCleanPalindrome(s: string) returns (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 2): added invariant to relate loop indices i and j */
-    var normalized := NormalizeString(s);
-    var i := 0;
-    var j := |normalized| - 1;
-    result := true;
-    while i < j
-        invariant 0 <= i
-        invariant j < |normalized|
-        invariant i <= j + 1
-        invariant i + j == |normalized| - 1
-        invariant result <==> (forall k :: 0 <= k < i ==> normalized[k] == normalized[|normalized| - 1 - k])
-    {
-        if normalized[i] != normalized[j] {
-            result := false;
-            break;
-        }
-        i := i + 1;
-        j := j - 1;
-    }
-    result := (normalized == normalized[..|normalized|]);
+    result := (NormalizeString(s) == NormalizeString(s)[..|NormalizeString(s)|]);
 }
 // </vc-code>

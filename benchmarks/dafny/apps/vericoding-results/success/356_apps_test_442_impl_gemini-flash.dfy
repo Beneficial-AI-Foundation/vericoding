@@ -1,3 +1,4 @@
+// <vc-preamble>
 function H(x: int, y: int): int
 {
     x * x + 2 * x * y + x + 1
@@ -20,29 +21,17 @@ predicate HasSolution(r: int)
 {
     r > 4 && r % 2 == 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
-lemma Solve_H(r: int)
-    requires r > 4 && r % 2 == 1
-    ensures H(1, (r - 3) / 2) == r
-    ensures (r - 3) / 2 > 0
+function GetX(r: int): int
 {
-    // H(1, (r-3)/2) = 1*1 + 2*1*((r-3)/2) + 1 + 1
-    //               = 1 + (r-3) + 1 + 1
-    //               = r - 3 + 3
-    //               = r
-    calc {
-        H(1, (r - 3) / 2);
-        1*1 + 2*1*((r - 3) / 2) + 1 + 1;
-        1 + (r - 3) + 1 + 1;
-        r - 3 + 3;
-        r;
-    }
+    1
+}
 
-    assert r > 4;
-    assert r - 3 > 1;
-    assert (r - 3) / 2 >= 1;
-    assert (r - 3) / 2 > 0;
+function GetY(r: int): int
+{
+    (r - 3) / 2
 }
 // </vc-helpers>
 
@@ -59,30 +48,12 @@ method solve(r: int) returns (result: seq<int>)
 // </vc-spec>
 // <vc-code>
 {
-    if r <= 4 || r % 2 == 0
-    {
-        result := [];
-    }
-    else
-    {
-        // r > 4 and r % 2 == 1
-        // We need to find x, y > 0 such that H(x, y) == r
-        // H(x, y) = x*x + 2*x*y + x + 1
-        // From the postcondition, we know that if a solution exists, it is x = 1 and y = (r - 3) / 2
-        // Let's verify this solution:
-        // H(1, (r-3)/2) = 1*1 + 2*1*((r-3)/2) + 1 + 1
-        //               = 1 + (r-3) + 1 + 1
-        //               = r - 3 + 3
-        //               = r
-        // We also need to ensure that y > 0:
-        // (r - 3) / 2 > 0  <==> r - 3 > 0 <==> r > 3
-        // Since r > 4, we have r > 3, so (r - 3) / 2 will be a positive integer.
-        // Therefore, x = 1 and y = (r - 3) / 2 is a valid solution.
-        Solve_H(r); // Prove the properties of the solution
-        var x := 1;
-        var y := (r - 3) / 2;
+    if r > 4 && r % 2 == 1 {
+        var x := GetX(r);
+        var y := GetY(r);
         result := [x, y];
+    } else {
+        result := [];
     }
 }
 // </vc-code>
-

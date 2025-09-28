@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int)
 {
     1 <= n <= 100 && 1 <= m <= 100
@@ -15,13 +16,10 @@ function Winner(n: int, m: int): string
     var moves := GameMoves(n, m);
     if moves % 2 == 1 then "Akshat" else "Malvika"
 }
+// </vc-preamble>
 
 // <vc-helpers>
-lemma GameMoves_is_min(n: int, m: int)
-  requires ValidInput(n, m)
-  ensures GameMoves(n, m) == (if n < m then n else m)
-{
-}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -32,12 +30,6 @@ method solve(n: int, m: int) returns (result: string)
 // </vc-spec>
 // <vc-code>
 {
-  var moves := GameMoves(n, m);
-  if moves % 2 == 1 {
-    result := "Akshat";
-  } else {
-    result := "Malvika";
-  }
+  result := Winner(n, m);
 }
 // </vc-code>
-

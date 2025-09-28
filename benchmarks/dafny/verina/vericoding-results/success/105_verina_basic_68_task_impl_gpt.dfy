@@ -13,18 +13,14 @@ method LinearSearch(a: array<int>, e: int) returns (result: nat)
 // </vc-spec>
 // <vc-code>
 {
-  var i := 0;
+  var i: nat := 0;
   while i < a.Length && a[i] != e
     invariant 0 <= i <= a.Length
-    invariant forall j :: 0 <= j < i ==> a[j] != e
+    invariant forall k :: 0 <= k < i ==> a[k] != e
     decreases a.Length - i
   {
     i := i + 1;
   }
-  if i < a.Length {
-    result := i;
-  } else {
-    result := a.Length;
-  }
+  result := i;
 }
 // </vc-code>

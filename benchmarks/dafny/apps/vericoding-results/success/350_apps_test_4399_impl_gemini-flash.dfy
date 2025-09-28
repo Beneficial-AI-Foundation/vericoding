@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| == 3 && forall i :: 0 <= i < |input| ==> input[i] == 'A' || input[i] == 'B'
@@ -8,16 +9,13 @@ predicate BusServiceExists(input: string)
 {
     input[0] != input[1] || input[1] != input[2]
 }
+// </vc-preamble>
 
 // <vc-helpers>
-lemma BusServiceExistsLemma(input: string)
-    requires ValidInput(input)
-    ensures BusServiceExists(input) <==> (input[0] != input[1] || input[1] != input[2])
+/* helper modified by LLM (iteration 2): The body of a lemma must be enclosed in braces. */
+lemma IsDistinct(a: char, b: char, c: char) returns (distinct: bool)
 {
-    // The definition of BusServiceExists is directly used, no complex proof steps needed.
-    // This lemma essentially just re-states the definition for clarity,
-    // which can be useful in some contexts for verification,
-    // but the direct definition would typically be unfolded by the verifier.
+  distinct := (a != b || b != c);
 }
 // </vc-helpers>
 
@@ -28,8 +26,9 @@ method solve(input: string) returns (result: string)
     ensures result == "Yes" || result == "No"
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 2): Added missing braces for the 'if' statement. */
 {
-  if BusServiceExists(input)
+  if (BusServiceExists(input))
   {
     result := "Yes";
   }
@@ -37,7 +36,5 @@ method solve(input: string) returns (result: string)
   {
     result := "No";
   }
-  return result;
 }
 // </vc-code>
-

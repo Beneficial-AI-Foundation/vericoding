@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidTemperature(temp: int)
 {
     -40 <= temp <= 40
@@ -12,14 +13,10 @@ predicate CorrectOutput(temp: int, output: string)
 {
     output == ExpectedOutput(temp)
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function GetExpectedOutput(temp: int): string
-  requires ValidTemperature(temp)
-  ensures GetExpectedOutput(temp) == ExpectedOutput(temp)
-{
-    if temp >= 30 then "Yes\n" else "No\n"
-}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -29,7 +26,6 @@ method solve(X: int) returns (result: string)
 // </vc-spec>
 // <vc-code>
 {
-    result := GetExpectedOutput(X);
+  result := ExpectedOutput(X);
 }
 // </vc-code>
-

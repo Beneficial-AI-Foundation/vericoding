@@ -19,9 +19,9 @@ spec fn total_biscuits(a: int, b: int, t: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int, t: int) -> (result: int)
-    requires valid_input(a, b, t)
-    ensures result == total_biscuits(a, b, t)
+fn solve(a: i8, b: i8, t: i8) -> (result: i8)
+    requires valid_input(a as int, b as int, t as int)
+    ensures result as int == total_biscuits(a as int, b as int, t as int)
 // </vc-spec>
 // <vc-code>
 {

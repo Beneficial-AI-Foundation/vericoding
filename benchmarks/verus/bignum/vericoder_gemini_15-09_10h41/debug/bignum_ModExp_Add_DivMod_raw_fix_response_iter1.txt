@@ -1,7 +1,0 @@
-=== Raw LLM Fix Response - Iteration 1 ===
-Length: 807 characters
---------------------------------------------------------------------------------
-```json
-[
-    "{\n    /* code modified by LLM (iteration 2): implemented via nat conversion */\n    let mut n1: nat = 0;\n    let mut i1: usize = 0;\n    while i1 < s1.len()\n        invariant\n            ValidBitString(s1@),\n            n1 == Str2Int(s1@.subrange(0, i1 as int)),\n    {\n        let bit = if s1[i1] == '1' { 1 } else { 0 };\n        n1 = n1 * 2 + bit;\n        i1 = i1 + 1;\n    }\n\n    let mut n2: nat = 0;\n    let mut i2: usize = 0;\n    while i2 < s2.len()\n        invariant\n            ValidBitString(s2@),\n            n2 == Str2Int(s2@.subrange(0, i2 as int)),\n    {\n        let bit = if s2[i2] == '1' { 1 } else { 0 };\n        n2 = n2 * 2 + bit;\n        i2 = i2 + 1;\n    }\n\n    let sum = n1 + n2;\n\n    if sum == 0 {\n        let mut v = Vec::new();\n        v.push('0
---------------------------------------------------------------------------------

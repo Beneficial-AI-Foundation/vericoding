@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(position: string)
 {
   |position| == 2 && 'a' <= position[0] <= 'h' && '1' <= position[1] <= '8'
@@ -28,6 +29,7 @@ function ValidMoves(position: string): int
   else if IsEdge(position) then 5
   else 8
 }
+// </vc-preamble>
 
 // <vc-helpers>
 
@@ -44,13 +46,12 @@ method solve(position: string) returns (moves: int)
 // </vc-spec>
 // <vc-code>
 {
-    if IsCorner(position) {
-        moves := 3;
-    } else if IsEdge(position) {
-        moves := 5;
-    } else {
-        moves := 8;
-    }
+  if IsCorner(position) {
+    moves := 3;
+  } else if IsEdge(position) {
+    moves := 5;
+  } else {
+    moves := 8;
+  }
 }
 // </vc-code>
-

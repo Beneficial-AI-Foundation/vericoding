@@ -1,3 +1,4 @@
+// <vc-preamble>
 function gcd(a: int, b: int): int
   requires a > 0 && b >= 0
   ensures gcd(a, b) > 0
@@ -37,21 +38,10 @@ predicate CorrectResult(periods: seq<int>, result: int)
 {
   result == lcmSeq(periods)
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function LcmSeqHelper(nums: seq<int>): int
-  requires |nums| > 0
-  requires forall i :: 0 <= i < |nums| ==> nums[i] > 0
-  ensures LcmSeqHelper(nums) > 0
-  ensures forall i :: 0 <= i < |nums| ==> LcmSeqHelper(nums) % nums[i] == 0
-  decreases |nums|
-{
-  if |nums| == 1 then nums[0]
-  else
-    var tailLcm := LcmSeqHelper(nums[1..]);
-    var currentLcm := lcm(nums[0], tailLcm);
-    currentLcm
-}
+/* helper modified by LLM (iteration 5): Empty helper section, still no helpers needed */
 // </vc-helpers>
 
 // <vc-spec>
@@ -61,16 +51,18 @@ method FindMinimumTime(periods: seq<int>) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-  result := LcmSeqHelper(periods);
-  assert result == lcmSeq(periods) by {
-    if |periods| == 1 {
-      assert LcmSeqHelper(periods) == periods[0];
-      assert lcmSeq(periods) == periods[0];
-    } else {
-      assert LcmSeqHelper(periods[1..]) == lcmSeq(periods[1..]);
-      assert lcm(periods[0], LcmSeqHelper(periods[1..])) == lcm(periods[0], lcmSeq(periods[1..]));
-    }
+  /* code modified by LLM (iteration 5): Compute lcmSeq iteratively to avoid timeout */
+  var currentLcm := periods[0];
+  var i := 1;
+  while i < |periods|
+    invariant 0 < i <= |periods|
+    invariant currentLcm > 0
+    invariant forall j :: 0 <= j < i ==> currentLcm % periods[j] == 0
+    invariant forall j :: 0 <= j < i ==> currentLcm >= periods[j]
+  {
+    currentLcm := lcm(currentLcm, periods[i]);
+    i := i + 1;
   }
+  result := currentLcm;
 }
 // </vc-code>
-

@@ -2,50 +2,55 @@
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): Added helper lemmas to prove postconditions */
-predicate Contains(s: seq<int>, x: int)
+/* helper modified by LLM (iteration 5): Added proofs to lemmas and fixed contains function */
+function contains(s: seq<int>, x: int): bool
 {
   exists i :: 0 <= i < |s| && s[i] == x
 }
 
-predicate AllUnique(s: seq<int>)
+function isUnique(s: seq<int>): bool
 {
   forall i, j :: 0 <= i < j < |s| ==> s[i] != s[j]
 }
 
-function RemoveDuplicates(s: seq<int>): seq<int>
-  ensures AllUnique(RemoveDuplicates(s))
-  ensures forall x :: Contains(s, x) <==> Contains(RemoveDuplicates(s), x)
-  ensures forall i :: 0 <= i < |RemoveDuplicates(s)| ==> Contains(s, RemoveDuplicates(s)[i])
-  decreases |s|
+lemma containsAppend(s: seq<int>, x: int)
+  ensures contains(s + [x], x)
 {
-  if |s| == 0 then []
-  else if Contains(s[1..], s[0]) then 
-    RemoveDuplicatesLemma(s);
-    RemoveDuplicates(s[1..])
-  else 
-    RemoveDuplicatesLemma(s);
-    [s[0]] + RemoveDuplicates(s[1..])
+  assert (s + [x])[|s|] == x;
+  assert 0 <= |s| < |s + [x]|;
 }
 
-lemma RemoveDuplicatesLemma(s: seq<int>)
-  requires |s| > 0
-  ensures Contains(s[1..], s[0]) ==> (forall x :: Contains(s, x) <==> Contains(RemoveDuplicates(s[1..]), x))
-  ensures !Contains(s[1..], s[0]) ==> (forall x :: Contains(s, x) <==> (x == s[0] || Contains(RemoveDuplicates(s[1..]), x)))
+lemma uniqueAppend(s: seq<int>, x: int)
+  requires isUnique(s)
+  requires !contains(s, x)
+  ensures isUnique(s + [x])
 {
-  if Contains(s[1..], s[0]) {
-    assert forall x :: Contains(s, x) <==> (x == s[0] || Contains(s[1..], x));
-    assert forall x :: Contains(s[1..], s[0]) && x == s[0] ==> Contains(s[1..], x);
-  } else {
-    assert forall x :: Contains(s, x) <==> (x == s[0] || Contains(s[1..], x));
-  }
+  assert forall i, j :: 0 <= i < j < |s + [x]| ==>
+    (j < |s| ==> (s + [x])[i] != (s + [x])[j]) &&
+    (j == |s| ==> (s + [x])[j] == x && (s + [x])[i] != x);
 }
 
-lemma RemoveDuplicatesCorrect(s: seq<int>)
-  ensures AllUnique(RemoveDuplicates(s))
-  ensures forall x :: Contains(s, x) <==> Contains(RemoveDuplicates(s), x)
-  ensures forall i :: 0 <= i < |RemoveDuplicates(s)| ==> Contains(s, RemoveDuplicates(s)[i])
+lemma containsPreserved(s: seq<int>, x: int, y: int)
+  requires contains(s, x)
+  ensures contains(s + [y], x)
 {
+  var i :| 0 <= i < |s| && s[i] == x;
+  assert (s + [y])[i] == x;
+  assert 0 <= i < |s + [y]|;
+}
+
+lemma containsImpliesExists(s: seq<int>, x: int)
+  requires contains(s, x)
+  ensures exists j :: 0 <= j < |s| && s[j] == x
+{
+  // This follows directly from the definition of contains
+}
+
+lemma existsImpliesContains(s: seq<int>, x: int, j: int)
+  requires 0 <= j < |s| && s[j] == x
+  ensures contains(s, x)
+{
+  // This follows directly from the definition of contains
 }
 // </vc-helpers>
 
@@ -66,28 +71,35 @@ method SetToSeq(s: seq<int>) returns (result: seq<int>)
 // <vc-code>
 /* code modified by LLM (iteration 5): Added assertions to help verify postconditions */
 {
-  RemoveDuplicatesCorrect(s);
-  result := RemoveDuplicates(s);
-  assert AllUnique(result);
-  assert forall x :: Contains(s, x) <==> Contains(result, x);
-  assert forall i :: 0 <= i < |result| ==> Contains(s, result[i]);
-  
-  // Help Dafny prove the postconditions
-  assert forall i, j :: 0 <= i < j < |result| ==> result[i] != result[j] by {
-    assert AllUnique(result);
-  }
-  
-  assert forall i :: 0 <= i < |result| ==> exists j :: 0 <= j < |s| && s[j] == result[i] by {
-    forall i | 0 <= i < |result| {
-      assert Contains(s, result[i]);
+  result := [];
+  var i := 0;
+  while i < |s|
+    invariant 0 <= i <= |s|
+    invariant isUnique(result)
+    invariant forall k :: 0 <= k < |result| ==> exists j :: 0 <= j < |s| && s[j] == result[k]
+    invariant forall j :: 0 <= j < i ==> contains(result, s[j])
+  {
+    if !contains(result, s[i]) {
+      uniqueAppend(result, s[i]);
+      result := result + [s[i]];
+      containsAppend(result[..|result|-1], s[i]);
+    } else {
+      var k :| 0 <= k < |result| && result[k] == s[i];
     }
+    i := i + 1;
   }
+  assert i == |s|;
+  assert forall j :: 0 <= j < |s| ==> contains(result, s[j]);
   
-  assert forall i :: 0 <= i < |s| ==> exists j :: 0 <= j < |result| && result[j] == s[i] by {
-    forall i | 0 <= i < |s| {
-      assert Contains(s, s[i]);
-      assert Contains(result, s[i]);
-    }
-  }
+  // Prove postcondition 1: uniqueness
+  assert isUnique(result);
+  assert forall i: int, j: int :: 0 <= i < j < |result| ==> result[i] != result[j];
+  
+  // Prove postcondition 2: every element in result is in s
+  assert forall k :: 0 <= k < |result| ==> exists j :: 0 <= j < |s| && s[j] == result[k];
+  
+  // Prove postcondition 3: every element in s is in result
+  assert forall j :: 0 <= j < |s| ==> contains(result, s[j]);
+  assert forall i: int :: 0 <= i < |s| ==> exists j: int :: 0 <= j < |result| && result[j] == s[i];
 }
 // </vc-code>

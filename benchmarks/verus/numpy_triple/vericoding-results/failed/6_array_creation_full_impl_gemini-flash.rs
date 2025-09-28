@@ -5,8 +5,18 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): add Clone bound to type T to enable .clone() */
-fn full<T: std::clone::Clone>(n: usize, fill_value: T) -> (result: Vec<T>)
+/* helper modified by LLM (iteration 5): add ExClone bound to T */
+fn full<T: vstd::std_specs::clone::ExClone>(n: usize, fill_value: T) -> (result: Vec<T>)
+    ensures 
+        result.len() == n,
+
+        forall|i: int| 0 <= i < n ==> result[i] == fill_value,
+
+        forall|i: int, j: int| 0 <= i < n && 0 <= j < n ==> result[i] == result[j],
+
+        n > 0 ==> result[0] == fill_value,
+        n > 0 ==> result[(n-1) as int] == fill_value,
+{}
 // </vc-helpers>
 
 // <vc-spec>
@@ -22,15 +32,16 @@ fn full<T>(n: usize, fill_value: T) -> (result: Vec<T>)
         n > 0 ==> result[(n-1) as int] == fill_value,
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): implemented the loop and added the missing 'Clone' bound to the type parameter */
+/* code modified by LLM (iteration 5): added the `ExClone` bound for the `T` type */
 {
-    let mut result = Vec::new();
-    let mut i = 0;
+    let mut result: Vec<T> = Vec::new();
+    let mut i: usize = 0;
     while i < n
         invariant
-            0 <= i && i <= n,
             result.len() == i,
-            forall|j: int| 0 <= j < i ==> result[j] == fill_value
+            // All elements inserted so far are equal to the initial fill_value
+            forall|j: int| 0 <= j < i as int ==> result[j] == fill_value.clone(),
+            i <= n,
     {
         result.push(fill_value.clone());
         i = i + 1;

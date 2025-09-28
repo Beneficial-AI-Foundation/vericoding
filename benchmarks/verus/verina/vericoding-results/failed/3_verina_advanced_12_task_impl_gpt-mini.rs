@@ -5,22 +5,26 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): runtime helper using Vec to avoid ghost nat types */
-fn find_prev_index_run(lst: &Seq<i32>, j: usize) -> Option<usize>
+/* helper modified by LLM (iteration 5): spec helper that finds first duplicate from index i */
+spec fn find_from(lst: &Seq<i32>, i: int) -> (result: i32)
+    requires 0 <= i && i <= lst.len()
+    ensures
+        (result == -1_i32 ==> forall|k: int, l: int| i <= k < l < lst.len() ==> lst[k] != lst[l]) &&
+        (result != -1_i32 ==>
+            exists|a: int, b: int| i <= a < b < lst.len() && lst[a] == lst[b] && lst[a] == result &&
+            forall|k: int, l: int| i <= k < l < lst.len() && lst[k] == lst[l] && l <= a ==> k >= a
+        ),
+    decreases lst.len() - i
 {
-    let v = lst.to_vec();
-    let mut k: usize = 0;
-    while k < j
-        invariant
-            k <= j,
-        decreases j - k
-    {
-        if v[k] == v[j] {
-            return Some(k);
+    if i >= lst.len() {
+        -1_i32
+    } else {
+        if exists|j: int| i < j < lst.len() && lst[i] == lst[j] {
+            lst[i]
+        } else {
+            find_from(lst, i + 1)
         }
-        k = k + 1;
     }
-    None
 }
 // </vc-helpers>
 
@@ -37,38 +41,9 @@ fn first_duplicate(lst: &Seq<i32>) -> (result: i32)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): scan sequence using Vec to find earliest duplicate pair and return its value or -1 */
-    let v = lst.to_vec();
-    let n: usize = v.len();
-    let mut best_j: Option<usize> = None;
-    let mut best_i: usize = 0;
-    let mut j: usize = 0;
-    while j < n
-        invariant
-            j <= n,
-        decreases n - j
-    {
-        let prev = find_prev_index_run(lst, j);
-        if let Some(p) = prev {
-            match best_j {
-                None => {
-                    best_j = Some(j);
-                    best_i = p;
-                }
-                Some(bj) => {
-                    if j < bj {
-                        best_j = Some(j);
-                        best_i = p;
-                    }
-                }
-            }
-        }
-        j = j + 1;
-    }
-    match best_j {
-        None => -1,
-        Some(_) => v[best_i],
-    }
+    /* code modified by LLM (iteration 5): call spec helper find_from starting from index 0 */
+    let result: i32 = find_from(lst, 0);
+    result
 }
 // </vc-code>
 

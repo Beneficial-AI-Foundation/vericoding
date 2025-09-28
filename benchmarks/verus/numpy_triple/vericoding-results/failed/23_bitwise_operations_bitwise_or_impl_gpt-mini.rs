@@ -5,15 +5,29 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): or_zero_i32 proves x | 0 == x */
-proof fn or_zero_i32(x: i32) ensures x | 0 == x {
-    assert(x | 0 == x);
+/* helper modified by LLM (iteration 5): relate bitwise_or_int spec to bitwise OR */
+proof fn bitwise_or_int_spec(x: i32, y: i32)
+    ensures
+        bitwise_or_int(x, y) == x | y,
+{
+    assert(bitwise_or_int(x, y) == x | y);
 }
 
-/* helper modified by LLM (iteration 5): or_all_ones_i32 proves x | -1 == -1 for i32 */
-proof fn or_all_ones_i32(x: i32) ensures x | -1i32 == -1i32 {
-    assert(x | -1i32 == -1i32);
+/* helper modified by LLM (iteration 5): unfold vector-level spec into elementwise OR spec */
+proof fn bitwise_or_vec_spec(x: Seq<i32>, y: Seq<i32>)
+    requires x.len() == y.len(),
+    ensures
+        bitwise_or_vec(x, y) == Seq::new(x.len(), |i: int| bitwise_or_int(x[i], y[i])),
+{
+    // Relate the elementwise spec to the sequence-level spec
+    // First show sequence of bitwise_or_int equals sequence of concrete ORs
+    assert(Seq::new(x.len(), |i: int| bitwise_or_int(x[i], y[i])) == Seq::new(x.len(), |i: int| x[i] | y[i]));
+    // Then relate the spec-level bitwise_or_vec to the concrete OR sequence
+    assert(bitwise_or_vec(x, y) == Seq::new(x.len(), |i: int| x[i] | y[i]));
+    // Conclude the desired equality
+    assert(bitwise_or_vec(x, y) == Seq::new(x.len(), |i: int| bitwise_or_int(x[i], y[i])));
 }
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -42,17 +56,34 @@ fn bitwise_or_fn(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
         result@ == bitwise_or_vec(x1@, x2@)
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): implement elementwise OR and prove relation to spec */
 {
-    /* code modified by LLM (iteration 5): element-wise bitwise OR implemented with loop */
+    let n: usize = x1.len();
     let mut result: Vec<i32> = Vec::new();
-    for idx in 0..x1.len() {
-        let a: i32 = x1[idx];
-        let b: i32 = x2[idx];
-        let r: i32 = a | b;
-        result.push(r);
+    let mut i: usize = 0;
+    while i < n
+        invariant
+            result.len() == i,
+            result@.len() == (i as int),
+            forall|j: int| 0 <= j < (i as int) ==> result@[j] == bitwise_or_int(x1@[j], x2@[j]),
+        decreases (n as int) - (i as int)
+    {
+        // establish safe indexing
+        assert(i < x1.len());
+        assert(i < x2.len());
+        let a: i32 = x1[i];
+        let b: i32 = x2[i];
+        let v: i32 = a | b;
+        result.push(v);
+        i += 1;
+    }
+    proof {
+        bitwise_or_vec_spec(x1@, x2@);
+        assert(result@ == bitwise_or_vec(x1@, x2@));
     }
     result
 }
+
 // </vc-code>
 
 }

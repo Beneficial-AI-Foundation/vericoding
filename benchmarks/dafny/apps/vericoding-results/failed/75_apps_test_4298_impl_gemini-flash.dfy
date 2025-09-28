@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(N: int, D: int)
 {
   N >= 1 && N <= 20 && D >= 1 && D <= 20
@@ -12,23 +13,21 @@ predicate TreesCovered(N: int, D: int, inspectors: int)
 {
   inspectors >= 1 && inspectors <= N && inspectors == ((N - 1) / (2 * D + 1)) + 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function CeilDiv(a: int, b: int): int
-  requires b > 0
-  ensures CeilDiv(a, b) * b >= a
-  ensures (CeilDiv(a, b) -1) * b < a
+/* helper modified by LLM (iteration 5): No changes needed. */
+function ComputeResult(N: int, D: int): int
 {
-  (a + b - 1) / b
+  (N - 1) / (2 * D + 1) + 1
 }
 // </vc-helpers>
 
 // <vc-spec>
-
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): Simplified the code to a single return statement after removing unnecessary `inspectors` variable declaration. */
 {
-  return CeilDiv(N, 2 * D + 1);
+  return (N - 1) / (2 * D + 1) + 1;
 }
 // </vc-code>
-

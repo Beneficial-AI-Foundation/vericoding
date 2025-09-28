@@ -1,9 +1,0 @@
-=== LLM Response - fix_verification - Iteration 9 ===
-File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod_Zeroes.rs
-Prompt Hash: 2f0111d5
-JSON Parsed Successfully: True
-Timestamp: 1757961380.858017
-Content Length: 1267 chars
---------------------------------------------------------------------------------
-["fn int_to_bin(n: usize) -> Vec<char>\n    requires n >= 0\n    decreases n\n{\n    /* helper modified by LLM (iteration 10): changed param from int to usize for exec compatibility */\n    if n == 0 {\n        vec!['0']\n    } else {\n        let rem = if n % 2 == 0 { '0' } else { '1' };\n        let mut rest = int_to_bin(n / 2);\n        rest.push(rem);\n        rest\n    }\n}", "{\n    /* code modified by LLM (iteration 10): replaced int with usize for exec types, fixed loop from len-1 downto 0, changed sy_seq to exec access */\n    let len_x = sx.len();\n    let mut x = 0usize;\n    for i in 0..len_x {\n        x = x * 2 + if sx[i] == '0' { 0 } else { 1 };\n    }\n    let len_z = sz.len();\n    let mut mod_val = 0usize;\n    for i in 0..len_z {\n        mod_val = mod_val * 2 + if sz[i] == '0' { 0 } else { 1 };\n    }\n    let mut base = x % mod_val;\n    let mut result = 1usize;\n    let sy_seq = sy;\n    let len = sy.len();\n    let mut i = len;\n    while i > 0\n        invariant\n            0 < i <= len\n        decreases i\n    {\n        i -= 1;\n        if sy_seq[i] == '1' {\n            result = (result * base) % mod_val;\n        }\n        base = (base * base) % mod_val;\n    }\n    let res_vec = int_to_bin(result);\n    res_vec\n}"]
---------------------------------------------------------------------------------

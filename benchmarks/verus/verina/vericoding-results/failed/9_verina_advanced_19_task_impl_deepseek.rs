@@ -43,15 +43,24 @@ spec fn normalize_string(s: &str) -> Seq<char> {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): Fixed type errors by removing problematic lemmas and adding proper sequence equality helper */
-proof fn lemma_seq_reverse_equals_self<S>(s: Seq<S>)
-    ensures s.reverse() == s
+/* helper modified by LLM (iteration 5): fix compilation errors in lemma by using proper Seq operations */
+proof fn lemma_normalize_string_reverse(s: &str)
+    ensures
+        normalize_string(s).reverse() == normalize_string(s),
 {
-}
-
-proof fn lemma_seq_equal<S>(s1: Seq<S>, s2: Seq<S>)
-    ensures s1 == s2 <==> s1.len() == s2.len() && forall|i: int| 0 <= i < s1.len() ==> s1[i] == s2[i]
-{
+    let normalized = normalize_string(s);
+    if normalized.len() <= 1 {
+        assert(normalized.reverse() == normalized);
+    } else {
+        let first = normalized[0];
+        let last = normalized[normalized.len() - 1];
+        let middle = normalized.subrange(1, normalized.len() - 1 as int);
+        let middle_str = middle@.mk_string();
+        lemma_normalize_string_reverse(&middle_str);
+        assert(normalized =~= Seq::new(normalized.len() as nat, first).add(middle).add(Seq::new(1, last)));
+        assert(normalized.reverse() =~= Seq::new(normalized.len() as nat, last).add(middle.reverse()).add(Seq::new(1, first)));
+        assert(normalized.reverse() == normalized);
+    }
 }
 // </vc-helpers>
 
@@ -61,26 +70,37 @@ fn is_clean_palindrome(s: &str) -> (result: bool)
         result == (normalize_string(s) == normalize_string(s).reverse()),
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Fixed type mismatches and proper sequence indexing */
 {
-    let normalized = normalize_string(s);
-    let reversed = normalized.reverse();
-    
-    let mut result = true;
-    let len = normalized.len() as usize;
-    
-    proof {
-        lemma_seq_equal(normalized, reversed);
+    /* code modified by LLM (iteration 5): fix compilation errors and add proper verification */
+    let mut normalized_chars = Vec::new();
+    let mut iter = s.chars();
+    let mut c_opt = iter.next();
+    while c_opt.is_some()
+        invariant
+            normalized_chars@ == normalize_string(s),
+    {
+        let c = c_opt.unwrap();
+        if c.is_alphabetic() {
+            normalized_chars.push(c.to_ascii_lowercase());
+        }
+        c_opt = iter.next();
     }
     
-    let mut i: usize = 0;
-    while i < len {
-        let idx = i as int;
-        if normalized.index(idx) != reversed.index(idx) {
+    let mut left: usize = 0;
+    let mut right: usize = normalized_chars.len();
+    let mut result = true;
+    
+    while left < right
+        invariant
+            left <= right <= normalized_chars.len(),
+            result == (normalized_chars@.subrange(left, right).reverse() == normalized_chars@.subrange(left, right)),
+    {
+        if normalized_chars[left] != normalized_chars[right - 1] {
             result = false;
             break;
         }
-        i += 1;
+        left += 1;
+        right -= 1;
     }
     
     result

@@ -1,6 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 916 characters
---------------------------------------------------------------------------------
-```json
-["exec fn Str2Int_exec(s: &[char]) -> (res: nat)\n    requires ValidBitString(s@)\n    ensures res == Str2Int(s@)\n    decreases s.len()\n{\n    let mut res: nat = 0;\n    let mut i: usize = 0;\n    while i < s.len()\n        invariant\n            ValidBitString(s@),\n            i <= s.len(),\n            res == Str2Int(s@.subrange(0, i as int)),\n        decreases s.len() - i\n    {\n        proof {\n            if i < s.len() {\n                let s_prefix = s@.subrange(0, i as int);\n                let s_next = s@.subrange(0, i as int + 1);\n                assert(s_next.drop_last() =~= s_prefix);\n            }\n        }\n        let prev_res = res;\n        res = res * 2;\n        if s[i] == '1' {\n            res = res + 1;\n        }\n        i = i + 1;\n    }\n    res\n}\n\nexec fn Nat2Str_exec(n: nat) -> (res: Vec<char>)\n    ensures\n        ValidBitString(res@),\n        if n == 
---------------------------------------------------------------------------------

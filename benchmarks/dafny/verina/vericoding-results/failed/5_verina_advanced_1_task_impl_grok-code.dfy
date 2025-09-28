@@ -15,7 +15,7 @@ function FilterEqual(nums: seq<int>, x: int): seq<int>
 // </vc-preamble>
 
 // <vc-helpers>
-
+/* helper modified by LLM (iteration 5): No helpers needed for XOR-based implementation */
 // </vc-helpers>
 
 // <vc-spec>
@@ -32,12 +32,13 @@ method FindSingleNumber(nums: array<int>) returns (result: int)
         forall x :: x in nums[..] ==> (x == result || CountOccurrences(nums[..], x) == 2)
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Fixed compilation error by using bitvector types for XOR operation */
 {
-  var resultBv: bv64 := 0;
-  for i := 0 to nums.Length {
-    resultBv := resultBv ^ (nums[i] as bv64);
+  /* code modified by LLM (iteration 5): Using bitwise XOR to find the single number that appears once */
+  var i := 0;
+  result := 0;
+  while i < nums.Length {
+    result := result ^ nums[i];
+    i := i + 1;
   }
-  result := resultBv as int;
 }
 // </vc-code>

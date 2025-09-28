@@ -34,22 +34,29 @@ function FilterNonZero(xs: seq<int>): seq<int>
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 4): Added lemma to prove IsSubsequence for sequences with a prefix */
-lemma LemmaSubseqPrepended(xs: seq<int>, prefix: seq<int>)
-  ensures IsSubsequence(xs, prefix + xs)
-  decreases |prefix|
+/* helper modified by LLM (iteration 4): added lemma to prove length of FilterNonZero */
+lemma LengthOfFilterNonZero(xs: seq<int>)
+  ensures |FilterNonZero(xs)| == |xs| - CountVal(0, xs)
+  decreases |xs|
 {
-  if |prefix| == 0 {
-    // Trivial case
+  if |xs| == 0 {
+  } else if xs[0] != 0 {
+    LengthOfFilterNonZero(xs[1..]);
+    calc {
+      |FilterNonZero(xs)|;
+      == | [xs[0]] + FilterNonZero(xs[1..]) |;
+      == 1 + |FilterNonZero(xs[1..])|;
+      == 1 + (|xs|-1 - CountVal(0, xs[1..]));
+    }
   } else {
-    LemmaSubseqPrepended(xs, prefix[1..]);
+    LengthOfFilterNonZero(xs[1..]);
+    calc {
+      |FilterNonZero(xs)|;
+      == |FilterNonZero(xs[1..])|;
+      == |xs|-1 - CountVal(0, xs[1..]);
+      == |xs| - (1 + CountVal(0, xs[1..]));
+    }
   }
-}
-
-/* helper modified by LLM (iteration 5): Added function to repeat a value in a sequence */
-function Repeat(val: int, n: nat): seq<int>
-{
-  if n == 0 then [] else [val] + Repeat(val, n-1)
 }
 // </vc-helpers>
 
@@ -67,21 +74,28 @@ method MoveZeroes(xs: array<int>) returns (result: array<int>)
         && CountVal(0, xs[0..xs.Length]) == CountVal(0, result[0..result.Length])
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Fixed order to place zeros first then non-zeros to satisfy the postcondition quantifier; added lemma call; fixed compilation error with sequence multiplication */
 {
-  var nonzeros := FilterNonZero(xs[..]);
-  var numZeros := xs.Length - |nonzeros|;
+  /* code modified by LLM (iteration 5): Changed algorithm to place zeros first then non-zeros to satisfy postcondition */
+  var k := CountVal(0, xs[0..xs.Length]);
+  var nonzeros := FilterNonZero(xs[0..xs.Length]);
+  LengthOfFilterNonZero(xs[0..xs.Length]);
+  var num_nonzero := xs.Length - k;
   result := new int[xs.Length];
   var i := 0;
-  while i < numZeros {
+  while i < k
+    invariant 0 <= i <= k
+    invariant forall m :: 0 <= m < i ==> result[m] == 0
+  {
     result[i] := 0;
     i := i + 1;
   }
-  i := 0;
-  while i < |nonzeros| {
-    result[numZeros + i] := nonzeros[i];
+  while i < xs.Length
+    invariant k <= i <= xs.Length
+    invariant forall m :: 0 <= m < k ==> result[m] == 0
+    invariant forall m :: k <= m < i ==> result[m] == nonzeros[m - k]
+  {
+    result[i] := nonzeros[i - k];
     i := i + 1;
   }
-  LemmaSubseqPrepended(nonzeros, Repeat(0, numZeros));
 }
 // </vc-code>

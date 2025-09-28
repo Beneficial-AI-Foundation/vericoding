@@ -13,18 +13,26 @@ spec fn chord_intersects(chord1: &Vec<usize>, chord2: &Vec<usize>) -> bool {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): simplified helper to return actual vectors for exec code */
-exec fn get_chord_exec(chords: &Vec<Vec<usize>>, i: usize) -> (result: Vec<usize>)
-    requires i < chords.len()
-    ensures result == chords@[i as int]
+/* helper modified by LLM (iteration 5): fixed type mismatches for int vs usize */
+proof fn lemma_chord_intersects_equiv(chord1: &Vec<usize>, chord2: &Vec<usize>, a1: usize, b1: usize, a2: usize, b2: usize)
+    requires
+        chord1.len() == 2,
+        chord2.len() == 2,
+        a1 == if chord1[0] < chord1[1] { chord1[0] } else { chord1[1] },
+        b1 == if chord1[0] > chord1[1] { chord1[0] } else { chord1[1] },
+        a2 == if chord2[0] < chord2[1] { chord2[0] } else { chord2[1] },
+        b2 == if chord2[0] > chord2[1] { chord2[0] } else { chord2[1] },
+    ensures
+        chord_intersects(chord1, chord2) == ((a1 < a2 && a2 < b1 && b1 < b2) || (a2 < a1 && a1 < b2 && b2 < b1))
 {
-    chords[i].clone()
 }
 
-spec fn get_chord(chords: &Vec<Vec<usize>>, i: int) -> Vec<usize>
-    requires 0 <= i < chords.len()
-{
-    chords@[i]
+fn min(a: usize, b: usize) -> usize {
+    if a < b { a } else { b }
+}
+
+fn max(a: usize, b: usize) -> usize {
+    if a > b { a } else { b }
 }
 // </vc-helpers>
 
@@ -50,25 +58,43 @@ fn has_chord_intersection(n: usize, chords: &Vec<Vec<usize>>) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): use exec helper for actual chord access */
+    /* code modified by LLM (iteration 5): fixed type mismatches by casting indices */
     let mut i = 0;
     while i < chords.len()
         invariant
             0 <= i <= chords.len(),
-            forall|k: int, l: int| 0 <= k < i && 0 <= l < chords.len() && k != l ==> !chord_intersects(&get_chord(chords, k), &get_chord(chords, l)),
+            forall|x: int, y: int| 0 <= x < i && 0 <= y < chords.len() && x != y ==> !chord_intersects(&chords[x], &chords[y]),
+        decreases chords.len() - i
     {
-        let mut j = i + 1;
+        let mut j = 0;
         while j < chords.len()
             invariant
-                i < chords.len(),
-                i + 1 <= j <= chords.len(),
-                forall|k: int, l: int| 0 <= k < i && 0 <= l < chords.len() && k != l ==> !chord_intersects(&get_chord(chords, k), &get_chord(chords, l)),
-                forall|l: int| i + 1 <= l < j ==> !chord_intersects(&get_chord(chords, i as int), &get_chord(chords, l)),
+                0 <= j <= chords.len(),
+                0 <= i < chords.len(),
+                forall|x: int, y: int| 0 <= x < i && 0 <= y < chords.len() && x != y ==> !chord_intersects(&chords[x], &chords[y]),
+                forall|y: int| 0 <= y < j && i != y ==> !chord_intersects(&chords[i as int], &chords[y]),
+            decreases chords.len() - j
         {
-            let chord_i = get_chord_exec(chords, i);
-            let chord_j = get_chord_exec(chords, j);
-            if chord_intersects(&chord_i, &chord_j) {
-                return true;
+            if i != j {
+                assert(chords[i as int].len() == 2) by {
+                    assert(0 <= i < chords.len());
+                }
+                assert(chords[j as int].len() == 2) by {
+                    assert(0 <= j < chords.len());
+                }
+                
+                let a1 = min(chords[i][0], chords[i][1]);
+                let b1 = max(chords[i][0], chords[i][1]);
+                let a2 = min(chords[j][0], chords[j][1]);
+                let b2 = max(chords[j][0], chords[j][1]);
+                
+                proof {
+                    lemma_chord_intersects_equiv(&chords[i as int], &chords[j as int], a1, b1, a2, b2);
+                }
+                
+                if (a1 < a2 && a2 < b1 && b1 < b2) || (a2 < a1 && a1 < b2 && b2 < b1) {
+                    return true;
+                }
             }
             j += 1;
         }

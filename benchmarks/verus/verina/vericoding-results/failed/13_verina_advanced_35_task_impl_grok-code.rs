@@ -21,38 +21,7 @@ spec fn count_occurrences(nums: Seq<i32>, x: i32) -> nat
 // </vc-preamble>
 
 // <vc-helpers>
-fn boyer_moore(nums: Seq<i32>) -> (candidate: i32)
-    requires nums.len() > 0
-    requires exists|x: i32| count_occurrences(nums, x) > nums.len() / 2
-    ensures
-       count_occurrences(nums, candidate) > nums.len() / 2,
-       forall|x: i32| x != candidate ==> count_occurrences(nums, x) <= nums.len() / 2
-{
-    let mut candidate: i32 = nums[0 as int];
-    let mut count: i32 = 1;
-    let mut i: usize = 1;
-    while i < nums.len()
-        invariant i <= nums.len(), count >= 0, i >= 1
-    {
-        if nums[i as int] == candidate {
-           count += 1;
-        } else {
-           count -= 1;
-           if count == 0 {
-               if i + 1 < nums.len() {
-                   candidate = nums[(i + 1) as int];
-                   i += 1;
-                   count = 1;
-               }
-           }
-        }
-        i += 1;
-    }
-    proof {
-        assert(count_occurrences(nums, candidate) > nums.len() / 2);
-    }
-    candidate
-}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -66,7 +35,29 @@ fn majority_element(nums: Seq<i32>) -> (result: i32)
 // </vc-spec>
 // <vc-code>
 {
-    boyer_moore(nums)
+    /* code modified by LLM (iteration 5): implement Boyer-Moore algorithm, cast len to int for proper typing in Verus */
+    let len = nums.len() as int;
+    let mut candidate = nums[0];
+    let mut count = 1i32;
+    let mut i = 1;
+    while i < len
+        invariant
+            0 < i <= len,
+            1 <= count <= i,
+        decreases len - i
+    {
+        if nums[i] == candidate {
+            count += 1;
+        } else {
+            count -= 1;
+            if count == 0 {
+                candidate = nums[i];
+                count = 1;
+            }
+        }
+        i += 1;
+    }
+    candidate
 }
 // </vc-code>
 

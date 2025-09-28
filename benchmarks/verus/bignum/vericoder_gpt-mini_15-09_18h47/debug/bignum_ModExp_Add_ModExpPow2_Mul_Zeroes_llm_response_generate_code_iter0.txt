@@ -1,9 +1,0 @@
-=== LLM Response - generate_code - Iteration 0 ===
-File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_ModExpPow2_Mul_Zeroes.rs
-Prompt Hash: c4e2754c
-JSON Parsed Successfully: True
-Timestamp: 1757981317.1400802
-Content Length: 124 chars
---------------------------------------------------------------------------------
-["spec fn VecValid(v: Vec<char>) -> bool { ValidBitString(v@) }","{\n    let res = Vec::<char>::new();\n    return res;\n}"]
---------------------------------------------------------------------------------

@@ -11,7 +11,7 @@ function CountMatches(xs: seq<nat>, x: nat): nat
 // </vc-preamble>
 
 // <vc-helpers>
-predicate IsMajority(xs: seq<nat>, x: nat) { CountMatches(xs, x) > |xs| / 2 }
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -25,7 +25,7 @@ method MajorityElement(xs: array<nat>) returns (result: nat)
 // </vc-spec>
 // <vc-code>
 {
-  var m: nat :| CountMatches(xs[..], m) > xs.Length / 2;
-  result := m;
+  var y: nat :| CountMatches(xs[..], y) > xs.Length / 2;
+  result := y;
 }
 // </vc-code>

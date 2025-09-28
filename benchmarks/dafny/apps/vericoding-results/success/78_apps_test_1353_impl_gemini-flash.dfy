@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int, a: int, b: int)
 {
     n >= 1 && n <= 1000 &&
@@ -10,18 +11,18 @@ function OptimalCost(n: int, m: int, a: int, b: int): int
     requires ValidInput(n, m, a, b)
 {
     min(
-        n * a,  // All single tickets
+        n * a,
         min(
-            ((n + m - 1) / m) * b,  // All multi-ride tickets (with potential waste)
-            (n / m) * b + (n % m) * a  // Mixed: multi-ride + single for remainder
+            ((n + m - 1) / m) * b,
+            (n / m) * b + (n % m) * a
         )
     )
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function min(x: int, y: int): int
-{
-  if x < y then x else y
+function min(x: int, y: int): int {
+    if x < y then x else y
 }
 // </vc-helpers>
 
@@ -33,11 +34,6 @@ method solve(n: int, m: int, a: int, b: int) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    var cost1 := n * a; // All single tickets
-    var cost2 := ((n + m - 1) / m) * b; // All multi-ride tickets
-    var cost3 := (n / m) * b + (n % m) * a; // Mixed: multi-ride + single for remainder
-
-    result := min(cost1, min(cost2, cost3));
+  result := min(n * a, min(((n + m - 1) / m) * b, (n / m) * b + (n % m) * a));
 }
 // </vc-code>
-

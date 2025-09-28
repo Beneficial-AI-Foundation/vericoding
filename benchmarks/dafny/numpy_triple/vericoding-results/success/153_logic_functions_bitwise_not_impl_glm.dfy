@@ -1,0 +1,37 @@
+// <vc-preamble>
+/*
+ * Dafny specification for numpy.bitwise_not operation.
+ * Computes bit-wise inversion, or bit-wise NOT, element-wise on integer arrays.
+ * In two's-complement representation, bitwise NOT of x equals -(x + 1).
+ */
+// </vc-preamble>
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+method BitwiseNot(x: seq<int>) returns (result: seq<int>)
+  // No special preconditions required for bitwise NOT operation
+  requires true
+  
+  // Result has same length as input
+  ensures |result| == |x|
+  
+  // Each element in result is the bitwise NOT of corresponding input element
+  // In two's-complement: ~x = -(x + 1)
+  ensures forall i :: 0 <= i < |x| ==> result[i] == -(x[i] + 1)
+// </vc-spec>
+// <vc-code>
+{
+  /* code modified by LLM (iteration 2): fixed type errors by using sequence operations instead of array syntax */
+  result := [];
+  for i := 0 to |x|
+    invariant 0 <= i <= |x|
+    invariant |result| == i
+    invariant forall j :: 0 <= j < i ==> result[j] == -(x[j] + 1)
+  {
+    result := result + [-(x[i] + 1)];
+  }
+}
+// </vc-code>

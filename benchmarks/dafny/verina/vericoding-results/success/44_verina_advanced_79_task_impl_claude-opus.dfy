@@ -22,16 +22,17 @@ method TwoSum(nums: array<int>, target: int) returns (result: Option<(nat, nat)>
 // <vc-code>
 {
     for i := 0 to nums.Length
-        invariant forall k1: int, k2: int :: 0 <= k1 < i && 0 <= k2 < nums.Length && k1 < k2 ==> nums[k1] + nums[k2] != target
+        invariant forall k1: int, k2: int :: 0 <= k1 < nums.Length && 0 <= k2 < nums.Length && k1 < k2 && k1 < i ==> nums[k1] + nums[k2] != target
     {
         for j := i + 1 to nums.Length
             invariant forall k2: int :: i + 1 <= k2 < j ==> nums[i] + nums[k2] != target
         {
             if nums[i] + nums[j] == target {
-                return Some((i, j));
+                result := Some((i, j));
+                return;
             }
         }
     }
-    return None;
+    result := None;
 }
 // </vc-code>

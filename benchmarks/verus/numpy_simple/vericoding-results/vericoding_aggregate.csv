@@ -1,0 +1,59 @@
+filename,success_status,total_llms,successful_llms
+NpAbs-spec,FAILED,0,
+NpAdd-spec,FAILED,0,
+NpArange-spec,FAILED,0,
+NpArgmax-spec,SUCCESS,4,"claude-opus, claude-sonnet, gemini, gemini-flash"
+NpArgsort-spec,FAILED,0,
+NpBitwiseAnd-spec,SUCCESS,3,"claude-opus, gemini, grok-code"
+NpBitwiseOr-spec,SUCCESS,4,"claude-sonnet, gemini, gemini-flash, gpt"
+NpBitwiseXor-spec,SUCCESS,4,"claude-opus, claude-sonnet, deepseek, gemini"
+NpBroadcast-spec,SUCCESS,1,gemini
+NpCenter-spec,FAILED,0,
+NpClip-spec,SUCCESS,5,"claude-opus, claude-sonnet, gemini, gemini-flash, gpt"
+NpColumnStack-spec,SUCCESS,1,gemini
+NpCopy-spec,SUCCESS,5,"claude-opus, claude-sonnet, gemini, gemini-flash, gpt"
+NpCountnonzero-spec,FAILED,0,
+NpCumProd-spec,FAILED,0,
+NpCumSum-spec,FAILED,0,
+NpDiagonal-spec,FAILED,0,
+NpEqual-spec,SUCCESS,6,"claude-opus, claude-sonnet, gemini, glm, gpt, grok-code"
+NpFlatten-spec,FAILED,0,
+NpFloorDivide-spec,FAILED,0,
+NpGcd-spec,FAILED,0,
+NpGreater-spec,SUCCESS,6,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt"
+NpGreaterEqual-spec,SUCCESS,2,"claude-sonnet, gemini"
+NpHistogram-spec,SUCCESS,4,"claude-sonnet, gemini, gpt, gpt-mini"
+NpIntersect-spec,FAILED,0,
+NpInvert-spec,FAILED,0,
+NpIsalpha-spec,FAILED,0,
+NpIsclose-spec,SUCCESS,2,"claude-opus, gemini"
+NpLcm-spec,SUCCESS,1,gpt
+NpLeftShift-spec,FAILED,0,
+NpLess-spec,SUCCESS,2,"gemini, gpt-mini"
+NpLessEqual-spec,SUCCESS,2,"gemini, gpt"
+NpMax-spec,SUCCESS,6,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, grok-code"
+NpMin-spec,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gemini, glm, grok-code"
+NpMod-spec,FAILED,0,
+NpMultiply-spec,FAILED,0,
+NpNotEqual-spec,SUCCESS,3,"gemini, gpt, grok-code"
+NpPiecewise-spec,FAILED,0,
+NpPoly-spec,FAILED,0,
+NpPolyder-spec,SUCCESS,1,gpt
+NpPower-spec,FAILED,0,
+NpProd-spec,FAILED,0,
+NpRavel-spec,FAILED,0,
+NpRemainder-spec,FAILED,0,
+NpReshape-spec,FAILED,0,
+NpRightShift-spec,FAILED,0,
+NpSelect-spec,FAILED,0,
+NpShape-spec,FAILED,0,
+NpSign-spec,SUCCESS,6,"claude-opus, claude-sonnet, gemini, glm, gpt, grok-code"
+NpSort-spec,FAILED,0,
+NpSquare-spec,FAILED,0,
+NpSubtract-spec,FAILED,0,
+NpSum-spec,FAILED,0,
+NpTranspose-spec,SUCCESS,1,gemini
+NpTril-spec,FAILED,0,
+NpUniqueall-spec,FAILED,0,
+NpWhere-spec,FAILED,0,
+NpZeros-spec,FAILED,0,

@@ -9,25 +9,31 @@ spec fn count_occurrences(x: i32, lst: Seq<i32>) -> nat {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): Fixed count_in_range_lemma parameter types */
-proof fn majority_exists_lemma(lst: Seq<i32>, candidate: i32, count: nat)
-    requires count_occurrences(candidate, lst) > lst.len() / 2
-    ensures count_occurrences(candidate, lst) > lst.len() / 2 && (forall|x: i32| count_occurrences(x, lst) <= lst.len() / 2 || x == candidate)
+proof fn candidate_and_count(seq: Seq<i32>) -> (i32, nat)
+    ensures
+        if result.0 == -1 {
+            result.1 == 0
+        } else {
+            result.1 > 0
+        },
+        if result.0 != -1 {
+            count_occurrences(result.0, seq) > 0
+        } else {
+            forall|x: i32| count_occurrences(x, seq) == 0
+        }
 {
-}
-
-proof fn count_in_range_lemma(lst: Seq<i32>, x: i32, start: int, end: int)
-    requires 0 <= start <= end <= lst.len()
-    ensures count_occurrences(x, lst) == count_occurrences(x, lst.subrange(start, end)) + count_occurrences(x, lst.subrange(0, start)) + count_occurrences(x, lst.subrange(end, lst.len() as int))
-{
-}
-
-spec fn is_candidate_valid(lst: Seq<i32>, candidate: i32, count: nat) -> bool {
-    count_occurrences(candidate, lst) > lst.len() / 2
-}
-
-spec fn no_majority_exists(lst: Seq<i32>) -> bool {
-    forall|x: i32| count_occurrences(x, lst) <= lst.len() / 2
+    if seq.len() == 0 {
+        (-1, 0)
+    } else {
+        let (candidate_rest, count_rest) = candidate_and_count(seq.subrange(1, seq.len() as int));
+        if count_rest == 0 {
+            (seq[0], 1)
+        } else if candidate_rest == seq[0] {
+            (candidate_rest, count_rest + 1)
+        } else {
+            (candidate_rest, count_rest - 1)
+        }
+    }
 }
 // </vc-helpers>
 
@@ -43,51 +49,34 @@ fn find_majority_element(lst: &Vec<i32>) -> (result: i32)
     })
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Fixed vector indexing and return value */
 {
-    let n = lst.len() as int;
+    /* code modified by LLM (iteration 5): Fixed result variable name conflict */
+    let n = lst.len();
     if n == 0 {
         return -1;
     }
     
-    let mut candidate = lst[0];
-    let mut count = 1;
+    let (candidate, _) = candidate_and_count(lst@);
     
-    let mut i = 1;
-    while i < n 
-        invariant 0 <= i && i <= n
+    let mut count: usize = 0;
+    let mut i: usize = 0;
+    while i < n
+        invariant
+            i <= n,
+            count == count_occurrences(candidate, lst@.subrange(0, i as int))
     {
-        if count == 0 {
-            candidate = lst[i as usize];
-            count = 1;
-        } else if lst[i as usize] == candidate {
+        if lst[i] == candidate {
             count += 1;
-        } else {
-            count -= 1;
         }
         i += 1;
     }
     
-    if count == 0 {
-        return -1;
-    }
-    
-    let mut verify_count = 0;
-    let mut j = 0;
-    while j < n 
-        invariant 0 <= j && j <= n
-    {
-        if lst[j as usize] == candidate {
-            verify_count += 1;
-        }
-        j += 1;
-    }
-    
-    if verify_count > n / 2 {
+    let final_result = if count > n / 2 {
         candidate
     } else {
         -1
-    }
+    };
+    final_result
 }
 // </vc-code>
 

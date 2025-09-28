@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(x1: int, y1: int, x2: int, y2: int)
 {
     -100 <= x1 <= 100 && -100 <= y1 <= 100 && -100 <= x2 <= 100 && -100 <= y2 <= 100
@@ -43,11 +44,11 @@ predicate ValidOutput(result: seq<int>)
     (|result| == 1 && result[0] == -1) ||
     (|result| == 4 && (forall i :: 0 <= i < 4 ==> -1000 <= result[i] <= 1000))
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function abs(a: int): int
-{
-  if a < 0 then -a else a
+function abs(a: int): int {
+    if a < 0 then -a else a
 }
 // </vc-helpers>
 
@@ -62,33 +63,16 @@ method solve(x1: int, y1: int, x2: int, y2: int) returns (result: seq<int>)
 // </vc-spec>
 // <vc-code>
 {
-    if IsInvalidCase(x1, y1, x2, y2)
-    {
-        result := [-1];
-    }
-    else if IsDiagonalCase(x1, y1, x2, y2)
-    {
-        result := ExpectedDiagonalResult(x1, y1, x2, y2);
-    }
-    else if IsVerticalEdgeCase(x1, y1, x2, y2)
-    {
-        result := ExpectedVerticalResult(x1, y1, x2, y2);
-    }
-    else if IsHorizontalEdgeCase(x1, y1, x2, y2)
-    {
-        result := ExpectedHorizontalResult(x1, y1, x2, y2);
-    }
-    else
-        // This case covers x1 == x2 && y1 == y2, where starting and ending points are the same.
-        // It's not explicitly covered by the ensures clauses to provide a specific result,
-        // but it must return a valid output according to ValidOutput.
-        // The problem statement implies these 4 cases cover all valid inputs that need specific calculation.
-        // When x1==x2 && y1==y2, any valid output like [-1] or [x1, y1, x1, y1] would satisfy ValidOutput
-        // and not contradict the specific ensures clauses (as their premises are false).
-        // Let's return [-1] for simplicity, as it's a valid output and signifies no geometric shape.
-    {
-        result := [-1];
-    }
+  if IsInvalidCase(x1, y1, x2, y2) {
+    result := [-1];
+  } else if IsDiagonalCase(x1, y1, x2, y2) {
+    result := ExpectedDiagonalResult(x1, y1, x2, y2);
+  } else if IsVerticalEdgeCase(x1, y1, x2, y2) {
+    result := ExpectedVerticalResult(x1, y1, x2, y2);
+  } else if IsHorizontalEdgeCase(x1, y1, x2, y2) {
+    result := ExpectedHorizontalResult(x1, y1, x2, y2);
+  } else {
+    result := [-1]; // This case should not be reachable given the problem statement implies all valid inputs fall into one of the other categories.
+  }
 }
 // </vc-code>
-

@@ -1,70 +1,93 @@
 === DAFNY PROCESSING SUMMARY (AGGREGATED) ===
+Selection method: latest runs
 Total files: 62
-Successful: 29 (46.8%)
-Failed: 33
+Successful: 30 (48.4%)
+Failed: 32
+
+Selected latest runs:
+  - claude-opus: vericoder_claude-opus_03-09_14h14 (success rate: 14.5%)
+  - claude-sonnet: vericoder_claude-sonnet_03-09_13h59 (success rate: 8.1%)
+  - deepseek: vericoder_deepseek_03-09_14h14 (success rate: 3.2%)
+  - gemini: vericoder_gemini_23-09_14h39 (success rate: 6.5%)
+  - gemini-flash: vericoder_gemini-flash_03-09_14h14 (success rate: 0.0%)
+  - glm: vericoder_glm_03-09_14h15 (success rate: 4.8%)
+  - gpt: vericoder_gpt_03-09_14h14 (success rate: 19.4%)
+  - gpt-mini: vericoder_gpt-mini_03-09_14h00 (success rate: 25.8%)
+  - grok-code: vericoder_grok-code_03-09_14h15 (success rate: 3.2%)
+
+Per-LLM success rates:
+  - claude-opus: 9/62 (14.5%)
+  - claude-sonnet: 5/62 (8.1%)
+  - deepseek: 2/62 (3.2%)
+  - gemini: 4/62 (6.5%)
+  - gemini-flash: 0/62 (0.0%)
+  - glm: 3/62 (4.8%)
+  - gpt: 12/62 (19.4%)
+  - gpt-mini: 16/62 (25.8%)
+  - grok-code: 2/62 (3.2%)
 
 Successful files:
-✓ bignum_Add.yaml — by: claude-opus, glm
-✓ bignum_Add[NormalizeBitString].yaml — by: claude-opus, deepseek
-✓ bignum_Compare.yaml — by: claude-opus, gpt
-✓ bignum_CompareUnequal.yaml — by: claude-opus, gpt-mini, grok-code
-✓ bignum_Compare[CompareUnequal].yaml — by: gpt, gpt-mini
-✓ bignum_Compare[NormalizeBitString].yaml — by: claude-opus
-✓ bignum_DivMod[Compare,Sub].yaml — by: gpt-mini
-✓ bignum_DivMod[Compare].yaml — by: gpt, gpt-mini
-✓ bignum_ModExp.yaml — by: gpt
-✓ bignum_ModExpPow2[DivMod].yaml — by: gpt
-✓ bignum_ModExpPow2_int.yaml — by: gpt
-✓ bignum_ModExp[Add,DivMod,Mul,Zeroes].yaml — by: gpt-mini
-✓ bignum_ModExp[Add,DivMod,Mul].yaml — by: gpt, gpt-mini
-✓ bignum_ModExp[Add,DivMod,Zeroes].yaml — by: gpt-mini
-✓ bignum_ModExp[Add,Mul,Zeroes].yaml — by: gpt-mini
-✓ bignum_ModExp[DivMod,ModExpPow2,Mul,Zeroes].yaml — by: gpt-mini
-✓ bignum_ModExp[DivMod,ModExpPow2,Mul].yaml — by: gpt
-✓ bignum_ModExp[DivMod,ModExpPow2,Zeroes].yaml — by: gpt-mini
-✓ bignum_ModExp[DivMod,Mul,Zeroes].yaml — by: gpt-mini
-✓ bignum_ModExp[ModExpPow2,Mul,Zeroes].yaml — by: gpt-mini
-✓ bignum_ModExp[ModExpPow2].yaml — by: gpt-mini
-✓ bignum_ModExp[Mul,Zeroes].yaml — by: gpt-mini
-✓ bignum_ModExp[Zeroes].yaml — by: gpt
-✓ bignum_ModExp_int.yaml — by: gpt
-✓ bignum_ModExp_int[ModExpPow2_int].yaml — by: gpt
-✓ bignum_Mul[Add,NormalizeBitString].yaml — by: claude-opus
-✓ bignum_NormalizeBitString.yaml — by: claude-opus, glm
-✓ bignums_Sub.yaml — by: claude-opus, gpt, gpt-mini
-✓ bignums_Zeros.yaml — by: claude-opus, deepseek, gemini, glm, gpt-mini, grok-code
+✓ bignum_Add.dfy — by: claude-opus, glm
+✓ bignum_Add_NormalizeBitString.dfy — by: claude-opus, deepseek, gemini
+✓ bignum_Compare.dfy — by: claude-opus, gpt
+✓ bignum_CompareUnequal.dfy — by: claude-opus, claude-sonnet, gemini, gpt-mini, grok-code
+✓ bignum_Compare_CompareUnequal.dfy — by: gpt, gpt-mini
+✓ bignum_Compare_NormalizeBitString.dfy — by: claude-opus
+✓ bignum_DivMod_Compare.dfy — by: gpt, gpt-mini
+✓ bignum_DivMod_Compare_Sub.dfy — by: gpt-mini
+✓ bignum_ModExp.dfy — by: gpt
+✓ bignum_ModExpPow2_DivMod.dfy — by: gpt
+✓ bignum_ModExpPow2_int.dfy — by: gpt
+✓ bignum_ModExp_Add_DivMod_Mul.dfy — by: gpt, gpt-mini
+✓ bignum_ModExp_Add_DivMod_Mul_Zeroes.dfy — by: gpt-mini
+✓ bignum_ModExp_Add_DivMod_Zeroes.dfy — by: gpt-mini
+✓ bignum_ModExp_Add_Mul_Zeroes.dfy — by: gpt-mini
+✓ bignum_ModExp_DivMod_ModExpPow2_Mul.dfy — by: gpt
+✓ bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes.dfy — by: gpt-mini
+✓ bignum_ModExp_DivMod_ModExpPow2_Zeroes.dfy — by: gpt-mini
+✓ bignum_ModExp_DivMod_Mul_Zeroes.dfy — by: gpt-mini
+✓ bignum_ModExp_ModExpPow2.dfy — by: gpt-mini
+✓ bignum_ModExp_ModExpPow2_Mul_Zeroes.dfy — by: gpt-mini
+✓ bignum_ModExp_Mul_Zeroes.dfy — by: gpt-mini
+✓ bignum_ModExp_Zeroes.dfy — by: gpt
+✓ bignum_ModExp_int.dfy — by: gpt
+✓ bignum_ModExp_int_ModExpPow2_int.dfy — by: gpt
+✓ bignum_Mul.dfy — by: claude-sonnet, gemini
+✓ bignum_Mul_Add_NormalizeBitString.dfy — by: claude-opus
+✓ bignum_NormalizeBitString.dfy — by: claude-opus, claude-sonnet, glm
+✓ bignum_Sub.dfy — by: claude-opus, claude-sonnet, gpt, gpt-mini
+✓ bignum_Zeros.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt-mini, grok-code
 
 Failed files:
-✗ bignum_Compare[CompareUnequal,NormalizeBitString].yaml
-✗ bignum_DivMod.yaml
-✗ bignum_DivMod[Sub].yaml
-✗ bignum_ModExpPow2.yaml
-✗ bignum_ModExpPow2[Add,DivMod,Mul].yaml
-✗ bignum_ModExpPow2[Add,DivMod].yaml
-✗ bignum_ModExpPow2[Add,Mul].yaml
-✗ bignum_ModExpPow2[Add].yaml
-✗ bignum_ModExpPow2[DivMod,Mul].yaml
-✗ bignum_ModExpPow2[Mul].yaml
-✗ bignum_ModExp[Add,DivMod,ModExpPow2,Mul].yaml
-✗ bignum_ModExp[Add,DivMod,ModExpPow2,Zeroes].yaml
-✗ bignum_ModExp[Add,DivMod,ModExpPow2].yaml
-✗ bignum_ModExp[Add,DivMod].yaml
-✗ bignum_ModExp[Add,ModExpPow2,Mul,Zeroes].yaml
-✗ bignum_ModExp[Add,ModExpPow2,Mul].yaml
-✗ bignum_ModExp[Add,ModExpPow2,Zeroes].yaml
-✗ bignum_ModExp[Add,ModExpPow2].yaml
-✗ bignum_ModExp[Add,Mul].yaml
-✗ bignum_ModExp[Add,Zeroes].yaml
-✗ bignum_ModExp[Add].yaml
-✗ bignum_ModExp[DivMod,ModExpPow2].yaml
-✗ bignum_ModExp[DivMod,Mul].yaml
-✗ bignum_ModExp[DivMod,Zeroes].yaml
-✗ bignum_ModExp[DivMod].yaml
-✗ bignum_ModExp[ModExpPow2,Add,Zeroes,DivMod,Mul].yaml
-✗ bignum_ModExp[ModExpPow2,Mul].yaml
-✗ bignum_ModExp[ModExpPow2,Zeroes].yaml
-✗ bignum_ModExp[Mul].yaml
-✗ bignum_Mul.yaml
-✗ bignum_Mul[Add].yaml
-✗ bignum_Mul[NormalizeBitString].yaml
-✗ bignums_Sub[NormalizeBitstring].yaml
+✗ bignum_Compare_CompareUnequal_NormalizeBitString.dfy
+✗ bignum_DivMod.dfy
+✗ bignum_DivMod_Sub.dfy
+✗ bignum_ModExpPow2.dfy
+✗ bignum_ModExpPow2_Add.dfy
+✗ bignum_ModExpPow2_Add_DivMod.dfy
+✗ bignum_ModExpPow2_Add_DivMod_Mul.dfy
+✗ bignum_ModExpPow2_Add_Mul.dfy
+✗ bignum_ModExpPow2_DivMod_Mul.dfy
+✗ bignum_ModExpPow2_Mul.dfy
+✗ bignum_ModExp_Add.dfy
+✗ bignum_ModExp_Add_DivMod.dfy
+✗ bignum_ModExp_Add_DivMod_ModExpPow2.dfy
+✗ bignum_ModExp_Add_DivMod_ModExpPow2_Mul.dfy
+✗ bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes.dfy
+✗ bignum_ModExp_Add_ModExpPow2.dfy
+✗ bignum_ModExp_Add_ModExpPow2_Mul.dfy
+✗ bignum_ModExp_Add_ModExpPow2_Mul_Zeroes.dfy
+✗ bignum_ModExp_Add_ModExpPow2_Zeroes.dfy
+✗ bignum_ModExp_Add_Mul.dfy
+✗ bignum_ModExp_Add_Zeroes.dfy
+✗ bignum_ModExp_DivMod.dfy
+✗ bignum_ModExp_DivMod_ModExpPow2.dfy
+✗ bignum_ModExp_DivMod_Mul.dfy
+✗ bignum_ModExp_DivMod_Zeroes.dfy
+✗ bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul.dfy
+✗ bignum_ModExp_ModExpPow2_Mul.dfy
+✗ bignum_ModExp_ModExpPow2_Zeroes.dfy
+✗ bignum_ModExp_Mul.dfy
+✗ bignum_Mul_Add.dfy
+✗ bignum_Mul_NormalizeBitString.dfy
+✗ bignum_Sub_NormalizeBitstring.dfy

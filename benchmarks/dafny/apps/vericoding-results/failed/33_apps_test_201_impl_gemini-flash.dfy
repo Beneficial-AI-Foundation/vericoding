@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(C: int, Hr: int, Hb: int, Wr: int, Wb: int)
 {
   C >= 0 && Hr > 0 && Hb > 0 && Wr > 0 && Wb > 0
@@ -12,10 +13,19 @@ function Joy(redCount: int, blueCount: int, Hr: int, Hb: int): int
 {
   redCount * Hr + blueCount * Hb
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function max(a: int, b: int): int {
-  if a > b then a else b
+/* helper modified by LLM (iteration 5): Corrected `MaxJoyInRow` to ensure the `exists b` postcondition is met by returning the maximum joy for a given capacity. The previous recursive call to MaxJoyInRow was removed as the function can be directly calculated.*/
+function MaxJoyInRow(C_remaining: int, current_red: int, Hb: int, Wb: int): int
+    requires Wb > 0
+    ensures forall b: int :: b >= 0 && b * Wb <= C_remaining ==> b * Hb <= MaxJoyInRow(C_remaining, current_red, Hb, Wb)
+    ensures (C_remaining < Wb && MaxJoyInRow(C_remaining, current_red, Hb, Wb) == 0) || (C_remaining >= Wb && exists b: int :: b >= 0 && b * Wb <= C_remaining && b * Hb == MaxJoyInRow(C_remaining, current_red, Hb, Wb))
+{
+    if C_remaining < Wb then
+        0
+    else
+        (C_remaining / Wb) * Hb
 }
 // </vc-helpers>
 
@@ -31,42 +41,26 @@ method solve(C: int, Hr: int, Hb: int, Wr: int, Wb: int) returns (result: int)
     Joy(redCount, blueCount, Hr, Hb) <= result
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): Adjusted the loop invariant for `maxJoy` to precisely track the maximum joy found so far for combinations of red and blue candies, up to the current `redCount`. This ensures that the postcondition `forall redCount, blueCount` can be proven more rigorously by leveraging the established invariants.*/
 {
-    var maxJoy := 0;
+  var maxJoy: int := 0;
 
-    var rLimit := C / Wr;
-
-    var redCount := 0;
-    while redCount * Wr <= C
-        invariant 0 <= redCount
-        invariant redCount <= rLimit + 1
-        invariant forall rc: int, bc: int ::
-                    (0 <= rc && rc < redCount &&
-                    ValidCandyCombination(rc, bc, C, Wr, Wb)) ==> Joy(rc, bc, Hr, Hb) <= maxJoy
-        invariant 0 <= maxJoy
-        decreases (rLimit + 1) - redCount
-    {
-        var remainingC := C - redCount * Wr;
-        var bLimit := remainingC / Wb;
-        var blueCount := 0;
-        while blueCount * Wb <= remainingC
-            invariant 0 <= blueCount
-            invariant blueCount <= bLimit + 1
-            invariant forall bc': int ::
-                        (0 <= bc' && bc' < blueCount &&
-                        ValidCandyCombination(redCount, bc', C, Wr, Wb)) ==> Joy(redCount, bc', Hr, Hb) <= maxJoy
-            invariant 0 <= maxJoy
-            decreases (bLimit + 1) - blueCount
-        {
-            if ValidCandyCombination(redCount, blueCount, C, Wr, Wb) {
-                var currentJoy := Joy(redCount, blueCount, Hr, Hb);
-                maxJoy := max(maxJoy, currentJoy);
-            }
-            blueCount := blueCount + 1;
-        }
-        redCount := redCount + 1;
+  var redCount: int := 0;
+  while redCount * Wr <= C
+    invariant redCount >= 0
+    invariant maxJoy >= 0
+    invariant forall r: int, b: int :: 0 <= r < redCount && 0 <= b && r * Wr + b * Wb <= C ==> Joy(r, b, Hr, Hb) <= maxJoy
+    invariant forall r: int :: 0 <= r < redCount && r * Wr <= C ==> Joy(r, MaxJoyInRow(C - r * Wr, r, Hb, Wb) / Hb, Hr, Hb) <= maxJoy
+  {
+    var C_remaining := C - redCount * Wr;
+    if C_remaining >= 0 {
+      var currentJoy := redCount * Hr + MaxJoyInRow(C_remaining, redCount, Hb, Wb);
+      if currentJoy > maxJoy {
+        maxJoy := currentJoy;
+      }
     }
-    result := maxJoy;
+    redCount := redCount + 1;
+  }
+  result := maxJoy;
 }
 // </vc-code>
-

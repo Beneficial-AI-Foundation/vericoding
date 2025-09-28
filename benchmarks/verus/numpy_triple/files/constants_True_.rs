@@ -11,7 +11,6 @@ verus! {
 fn true_() -> (result: bool)
     ensures 
         result == true,
-        true, // Boolean properties hold by definition
         !result == false
 // </vc-spec>
 // <vc-code>

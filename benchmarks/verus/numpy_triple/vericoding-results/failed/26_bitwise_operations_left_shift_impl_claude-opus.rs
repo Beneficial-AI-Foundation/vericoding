@@ -6,7 +6,42 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
+/* helper modified by LLM (iteration 3): Added lemmas for power of 2 properties */
+proof fn pow2_zero()
+    ensures pow(2, 0nat) == 1
+{
+}
 
+proof fn pow2_succ(n: nat)
+    ensures pow(2, n + 1) == 2 * pow(2, n)
+{
+}
+
+proof fn left_shift_positive(x: int, n: nat)
+    requires x > 0, n > 0,
+    ensures x * pow(2, n) > x
+{
+    assert(pow(2, n) >= 2) by {
+        if n == 1 {
+            assert(pow(2, 1nat) == 2);
+        } else {
+            assert(pow(2, n) >= pow(2, 1nat));
+        }
+    }
+}
+
+proof fn left_shift_negative(x: int, n: nat)
+    requires x < 0, n > 0,
+    ensures x * pow(2, n) < x
+{
+    assert(pow(2, n) >= 2) by {
+        if n == 1 {
+            assert(pow(2, 1nat) == 2);
+        } else {
+            assert(pow(2, n) >= pow(2, 1nat));
+        }
+    }
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -24,51 +59,71 @@ fn left_shift(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): fix type annotation and indexing errors */
-    let mut result: Vec<i32> = Vec::new();
-    let n = x1.len();
-    let mut i: usize = 0;
-    while i < n
+    /* code modified by LLM (iteration 3): Fixed invariants and added proof blocks */
+    let mut result = Vec::new();
+    let mut i = 0;
+    while i < x1.len()
         invariant
-            0 <= i <= n,
-            n == x1.len(),
-            n == x2.len(),
+            0 <= i <= x1.len(),
             result.len() == i,
-            forall|j: int| 0 <= j < i as int ==> result[j as int] == x1[j as int] * pow(2, x2[j as int] as nat),
-            forall|j: int| 0 <= j < i as int && x2[j as int] == 0 ==> result[j as int] == x1[j as int],
-            forall|j: int| 0 <= j < i as int && x1[j as int] == 0 ==> result[j as int] == 0,
-            forall|j: int| 0 <= j < i as int && x1[j as int] > 0 && x2[j as int] > 0 ==> result[j as int] > x1[j as int],
-            forall|j: int| 0 <= j < i as int && x1[j as int] < 0 && x2[j as int] > 0 ==> result[j as int] < x1[j as int],
-        decreases n - i
+            x1.len() == x2.len(),
+            forall|j: int| 0 <= j < i ==> result[j] == x1[j] * pow(2, x2[j] as nat),
+            forall|j: int| 0 <= j < x2.len() ==> x2[j] >= 0,
+        decreases x1.len() - i
     {
-        let shift_amount = x2[i as int];
-        let value = x1[i as int];
+        let val = x1[i] as int;
+        let shift = x2[i];
         
-        if shift_amount == 0 {
-            result.push(value);
-        } else {
-            let mut shifted_value: i32 = value;
-            let mut k: i32 = 0;
-            while k < shift_amount
-                invariant
-                    0 <= k <= shift_amount,
-                    shift_amount >= 0,
-                    shift_amount == x2[i as int],
-                    value == x1[i as int],
-                    shifted_value as int == value as int * pow(2, k as nat),
-                decreases shift_amount - k
-            {
-                proof {
-                    assert(shifted_value as int * 2 == value as int * pow(2, k as nat) * 2);
-                    assert(value as int * pow(2, k as nat) * 2 == value as int * pow(2, (k + 1) as nat));
-                }
-                shifted_value = shifted_value << 1;
-                k = k + 1;
-            }
-            assert(shifted_value as int == value as int * pow(2, shift_amount as nat));
-            assert(shifted_value as int == x1[i as int] as int * pow(2, x2[i as int] as nat));
-            result.push(shifted_value);
+        proof {
+            pow2_zero();
+            assert(pow(2, 0nat) == 1);
         }
+        
+        let mut shifted: int = val;
+        let mut j: i32 = 0;
+        
+        while j < shift
+            invariant
+                0 <= j <= shift,
+                shift >= 0,
+                shifted == val * pow(2, j as nat),
+            decreases shift - j
+        {
+            proof {
+                pow2_succ(j as nat);
+                assert(pow(2, (j + 1) as nat) == 2 * pow(2, j as nat));
+                assert(val * pow(2, (j + 1) as nat) == val * (2 * pow(2, j as nat)));
+                assert(val * (2 * pow(2, j as nat)) == 2 * (val * pow(2, j as nat)));
+            }
+            shifted = shifted * 2;
+            j = j + 1;
+        }
+        
+        assert(j == shift);
+        assert(shifted == val * pow(2, shift as nat));
+        assert(shifted == x1[i] * pow(2, x2[i] as nat));
+        
+        proof {
+            if x2[i] == 0 {
+                assert(pow(2, 0nat) == 1);
+                assert(shifted == x1[i] * 1);
+                assert(shifted == x1[i]);
+            }
+            if x1[i] == 0 {
+                assert(shifted == 0 * pow(2, x2[i] as nat));
+                assert(shifted == 0);
+            }
+            if x1[i] > 0 && x2[i] > 0 {
+                left_shift_positive(x1[i] as int, x2[i] as nat);
+                assert(shifted > x1[i]);
+            }
+            if x1[i] < 0 && x2[i] > 0 {
+                left_shift_negative(x1[i] as int, x2[i] as nat);
+                assert(shifted < x1[i]);
+            }
+        }
+        
+        result.push(shifted as i32);
         i = i + 1;
     }
     result

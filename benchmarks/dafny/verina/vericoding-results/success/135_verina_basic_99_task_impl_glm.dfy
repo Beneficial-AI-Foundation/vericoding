@@ -2,7 +2,7 @@
 // </vc-preamble>
 
 // <vc-helpers>
-function SafeMultiply(x: int, y: int): int { x * y }
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -12,6 +12,6 @@ method Triple(x: int) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-  result := x * 3;
+  result := 3 * x;
 }
 // </vc-code>

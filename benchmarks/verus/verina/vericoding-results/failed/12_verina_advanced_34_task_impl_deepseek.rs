@@ -5,52 +5,35 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): add parentheses to function calls in assertions */
-spec fn increasing_subsequence(seq: Seq<i32>, i: int, j: int) -> bool {
-    forall|k: int, l: int| (i <= k < l <= j) ==> (seq[k] <= seq[l])
-}
-
-spec fn subsequence_length(seq: Seq<i32>, i: int, j: int) -> int {
-    j - i + 1
-}
-
-proof fn lemma_increasing_subsequence_transitive(seq: Seq<i32>, a: int, b: int, c: int)
-    requires
-        0 <= a <= b <= c < seq.len(),
-        increasing_subsequence(seq, a, b),
-        increasing_subsequence(seq, b, c)
+/* helper modified by LLM (iteration 5): Fix index access syntax and improve verification */
+proof fn increasing_subsegment_bound(n: int) -> (bound: int)
     ensures
-        increasing_subsequence(seq, a, c)
+        bound >= 0,
+        bound <= n
 {
-    assert(forall|k: int, l: int| (a <= k < l <= c) implies (seq[k] <= seq[l]) by {
-        if l <= b {
-            assert(increasing_subsequence(seq, a, b));
-        } else if k >= b {
-            assert(increasing_subsequence(seq, b, c));
-        } else {
-            assert(increasing_subsequence(seq, a, b));
-            assert(increasing_subsequence(seq, b, c));
-            assert(seq[k] <= seq[b]);
-            assert(seq[b] <= seq[l]);
-        }
-    });
+    if n <= 0 {
+        0
+    } else {
+        n
+    }
 }
 
-proof fn lemma_single_element_increasing(seq: Seq<i32>, i: int)
+proof fn is_increasing_subsegment(nums: &Vec<i32>, start: int, end: int) -> (res: bool)
     requires
-        0 <= i < seq.len()
+        start >= 0,
+        end <= nums.len() as int,
+        start <= end
     ensures
-        increasing_subsequence(seq, i, i)
+        res ==> (
+            forall|i: int, j: int| start <= i < j < end ==> #[trigger] nums[i] <= #[trigger] nums[j]
+        )
 {
-    assert(forall|k: int, l: int| (i <= k < l <= i) implies (seq[k] <= seq[l]));
-}
-
-spec fn valid_index(vec: &Vec<i32>, i: int) -> bool {
-    0 <= i < vec.len()
-}
-
-spec fn dp_vector_invariant(dp: &Vec<i32>, i: int) -> bool {
-    0 <= i < dp.len() && dp[i] >= 1
+    if start >= end {
+        true
+    } else {
+        let all_increasing = forall|i: int, j: int| start <= i < j < end ==> nums[i] <= nums[j];
+        all_increasing
+    }
 }
 // </vc-helpers>
 
@@ -61,43 +44,33 @@ fn longest_increasing_subsequence(nums: &Vec<i32>) -> (result: i32)
         result <= nums.len() as i32,
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): fix syntax error by adding parentheses to assertion calls */
+/* code modified by LLM (iteration 5): Fix index access syntax and implement LIS algorithm */
 {
     let n = nums.len();
-    let mut dp = Vec::<i32>::new();
-    dp.resize(n, 0);
+    let mut result = 0;
     
-    let mut max_len = 0;
-    
-    let ghost seq = nums@;
-    
-    assert(forall|i: int| valid_index(nums, i) implies #[trigger] valid_index(&dp, i) by {
-        assert(0 <= i < n);
-    });
-    
-    for i in 0..n {
-        assert(valid_index(nums, i));
-        assert(valid_index(&dp, i));
-        dp[i] = 1;
+    if n > 0 {
+        let mut dp = Vec::new();
+        dp.push(1);
+        result = 1;
         
-        for j in 0..i {
-            assert(valid_index(nums, j));
-            assert(valid_index(&dp, j));
-            if nums[j] < nums[i] {
-                if dp[j] + 1 > dp[i] {
-                    dp[i] = dp[j] + 1;
+        for i in 1..n {
+            let mut max_val = 0;
+            for j in 0..i {
+                if nums[j] < nums[i] {
+                    if dp[j] > max_val {
+                        max_val = dp[j];
+                    }
                 }
             }
-        }
-        
-        if dp[i] > max_len {
-            max_len = dp[i];
+            dp.push(max_val + 1);
+            if dp[i] > result {
+                result = dp[i];
+            }
         }
     }
     
-    assert(max_len >= 0);
-    assert(max_len as int <= n);
-    max_len
+    result
 }
 // </vc-code>
 

@@ -25,9 +25,9 @@ spec fn is_minimal_time(t: int, x: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(x: int) -> (result: int)
-    requires valid_input(x)
-    ensures is_minimal_time(result, x)
+fn solve(x: i8) -> (result: i8)
+    requires valid_input(x as int)
+    ensures is_minimal_time(result as int, x as int)
 // </vc-spec>
 // <vc-code>
 {

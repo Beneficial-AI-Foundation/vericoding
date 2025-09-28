@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| >= 0
@@ -74,10 +75,14 @@ function min(a: int, b: int): int
 {
     if a <= b then a else b
 }
+// </vc-preamble>
 
 // <vc-helpers>
-// No additional helpers are needed, as the `min` function is already defined in the preamble.
-// The duplicate definition of `min` in the original vc-helpers block caused the error.
+function GetN(lines: seq<string>): int
+    requires |lines| > 0
+{
+    ParseInt_func(lines[0])
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -91,15 +96,12 @@ method solve(input: string) returns (result: string)
 // </vc-spec>
 // <vc-code>
 {
-    var lines := SplitLines_func(input);
-    if |lines| == 0 {
-        result := "";
-    } else {
-        var n := ParseInt_func(lines[0]);
-        // The `min` function is already defined in the preamble.
-        // It's used here correctly.
-        result := BuildOutput_func(lines, min(n, |lines| - 1));
-    }
+  var lines := SplitLines_func(input);
+  if |lines| == 0 {
+    result := "";
+  } else {
+    var n := GetN(lines);
+    result := BuildOutput_func(lines, min(n, |lines| - 1));
+  }
 }
 // </vc-code>
-

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: nat, m: nat, buttons: seq<seq<nat>>)
 {
     |buttons| == n &&
@@ -14,15 +15,13 @@ predicate CanTurnOnAllBulbs(m: nat, buttons: seq<seq<nat>>)
 {
     |unionOfAllBulbs(buttons)| == m
 }
+// </vc-preamble>
 
 // <vc-helpers>
-lemma CanTurnOnAllBulbsBody(m: nat, buttons: seq<seq<nat>>)
-  ensures CanTurnOnAllBulbs(m, buttons) <==> (|unionOfAllBulbs(buttons)| == m)
+/* helper modified by LLM (iteration 2): Removed 'method' keyword from function declaration to fix compilation error. */
+function ComputeResult(m: nat, buttons: seq<seq<nat>>): string
 {
-  // This lemma is a direct consequence of the definition of CanTurnOnAllBulbs,
-  // so no further proof steps are strictly necessary within the lemma body itself
-  // for Dafny to verify it. It mainly serves to make the body of the `solve` method
-  // cleaner if needed, but in this specific case, the definition is already simple enough.
+    if CanTurnOnAllBulbs(m, buttons) then "YES" else "NO"
 }
 // </vc-helpers>
 
@@ -33,16 +32,8 @@ method solve(n: nat, m: nat, buttons: seq<seq<nat>>) returns (result: string)
     ensures result == "YES" <==> CanTurnOnAllBulbs(m, buttons)
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 2): Calling the fixed helper function to compute the result. */
 {
-    if CanTurnOnAllBulbs(m, buttons)
-    {
-        result := "YES";
-    }
-    else
-    {
-        result := "NO";
-    }
-    return result;
+  result := ComputeResult(m, buttons);
 }
 // </vc-code>
-

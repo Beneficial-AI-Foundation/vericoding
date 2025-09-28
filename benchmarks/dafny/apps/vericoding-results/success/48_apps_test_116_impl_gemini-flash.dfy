@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(l1: int, r1: int, l2: int, r2: int, k: int) {
     l1 <= r1 && l2 <= r2
 }
@@ -29,56 +30,18 @@ function ExpectedResult(l1: int, r1: int, l2: int, r2: int, k: int): int {
     else
         intersection_size
 }
+// </vc-preamble>
 
 // <vc-helpers>
-lemma IntersectionLeftLemma(l1: int, l2: int)
-  ensures (l1 > l2 ==> IntersectionLeft(l1, l2) == l1)
-  ensures (l1 <= l2 ==> IntersectionLeft(l1, l2) == l2)
-{
-}
-
-lemma IntersectionRightLemma(r1: int, r2: int)
-  ensures (r1 < r2 ==> IntersectionRight(r1, r2) == r1)
-  ensures (r1 >= r2 ==> IntersectionRight(r1, r2) == r2)
-{
-}
-
-lemma IntersectionSizeLemma(l1: int, r1: int, l2: int, r2: int)
-  ensures IntersectionSize(l1, r1, l2, r2) == (
-    var left := IntersectionLeft(l1, l2);
-    var right := IntersectionRight(r1, r2);
-    if right - left + 1 > 0 then right - left + 1 else 0
-  )
+lemma KInIntersection_implies_positive_size(l1: int, r1: int, l2: int, r2: int, k: int)
+  requires KInIntersection(l1, r1, l2, r2, k)
+  ensures IntersectionSize(l1, r1, l2, r2) > 0
 {
   var left := IntersectionLeft(l1, l2);
   var right := IntersectionRight(r1, r2);
-  calc {
-    IntersectionSize(l1, r1, l2, r2);
-    {
-      IntersectionLeftLemma(l1, l2);
-      IntersectionRightLemma(r1, r2);
-    }
-    if right - left + 1 > 0 then right - left + 1 else 0;
-  }
-}
-
-lemma KInIntersectionLemma(l1: int, r1: int, l2: int, r2: int, k: int)
-  ensures KInIntersection(l1, r1, l2, r2, k) == (
-    var left := IntersectionLeft(l1, l2);
-    var right := IntersectionRight(r1, r2);
-    left <= k <= right
-  )
-{
-  var left := IntersectionLeft(l1, l2);
-  var right := IntersectionRight(r1, r2);
-  calc {
-    KInIntersection(l1, r1, l2, r2, k);
-    {
-      IntersectionLeftLemma(l1, l2);
-      IntersectionRightLemma(r1, r2);
-    }
-    left <= k <= right;
-  }
+  // If k is in the intersection, then left <= k <= right.
+  // This implies left <= right, and therefore right - left + 1 >= 1.
+  // Thus, IntersectionSize(l1, r1, l2, r2) must be positive.
 }
 // </vc-helpers>
 
@@ -90,36 +53,16 @@ method solve(l1: int, r1: int, l2: int, r2: int, k: int) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    var left_intersect := IntersectionLeft(l1, l2);
-    var right_intersect := IntersectionRight(r1, r2);
-
-    var current_intersection_size := 0;
-    if right_intersect - left_intersect + 1 > 0 {
-        current_intersection_size := right_intersect - left_intersect + 1;
-    }
-
-    var k_in_intersection := false;
-    if left_intersect <= k && k <= right_intersect {
-        k_in_intersection := true;
-    }
-
-    if k_in_intersection {
-        if current_intersection_size - 1 > 0 {
-            result := current_intersection_size - 1;
-        } else {
-            result := 0;
-        }
+  var intersection_size := IntersectionSize(l1, r1, l2, r2);
+  if KInIntersection(l1, r1, l2, r2, k) {
+    KInIntersection_implies_positive_size(l1, r1, l2, r2, k);
+    if intersection_size - 1 > 0 {
+      result := intersection_size - 1;
     } else {
-        result := current_intersection_size;
+      result := 0;
     }
-
-    // Proofs that intermediate variables match function definitions
-    IntersectionLeftLemma(l1, l2);
-    IntersectionRightLemma(r1, r2);
-    IntersectionSizeLemma(l1, r1, l2, r2);
-    assert current_intersection_size == IntersectionSize(l1, r1, l2, r2);
-    KInIntersectionLemma(l1, r1, l2, r2, k);
-    assert k_in_intersection == KInIntersection(l1, r1, l2, r2, k);
+  } else {
+    result := intersection_size;
+  }
 }
 // </vc-code>
-

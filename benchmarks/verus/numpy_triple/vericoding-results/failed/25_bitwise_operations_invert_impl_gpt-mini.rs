@@ -5,8 +5,13 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): element-wise invert */
-fn invert_elem(x: i32) -> i32 { -(x + 1) }
+/* helper modified by LLM (iteration 4): return inverted element */
+fn invert_elem(a: i32) -> (result: i32)
+    ensures
+        result == -(a + 1),
+{
+    -(a + 1)
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -20,19 +25,20 @@ fn invert(x: Vec<i32>) -> (result: Vec<i32>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): iterate using usize index and maintain invariant with int quantifier, push inverted elements */
-    let mut result: Vec<i32> = Vec::new();
+    /* code modified by LLM (iteration 4): implement loop and maintain spec invariant using explicit formula */
+    let mut res = Vec::<i32>::new();
     let mut i: usize = 0;
     while i < x.len()
-        invariant i <= x.len() && result.len() == i && forall|j: int| 0 <= j && j < i as int ==> result[j as usize] == -(x[j as usize] + 1),
+        invariant
+            res.len() == i,
+            forall|j: int| 0 <= j < i as int ==> res@[j] == -(x@[j] + 1),
         decreases x.len() - i
     {
-        let xi: i32 = x[i];
-        let yi: i32 = invert_elem(xi);
-        result.push(yi);
-        i = i + 1;
+        let xi = *x.get(i).unwrap();
+        res.push(invert_elem(xi));
+        i += 1;
     }
-    result
+    res
 }
 // </vc-code>
 

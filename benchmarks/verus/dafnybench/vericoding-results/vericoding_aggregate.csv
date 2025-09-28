@@ -1,0 +1,441 @@
+filename,success_status,total_llms,successful_llms
+630-dafny_tmp_tmpz2kokaiq_Solution_BinarySearch,SUCCESS,1,gpt
+AssertivePrograming_tmp_tmpwf43uz0e_DivMode_Unary_IterativeDivMod,SUCCESS,1,gpt
+AssertivePrograming_tmp_tmpwf43uz0e_Find_Substring_FindFirstOccurrence,FAILED,0,
+AssertivePrograming_tmp_tmpwf43uz0e_MergeSort_Merge,FAILED,0,
+AssertivePrograming_tmp_tmpwf43uz0e_MergeSort_MergeLoop,FAILED,0,
+AssertivePrograming_tmp_tmpwf43uz0e_MergeSort_MergeSort,FAILED,0,
+BPTree-verif_tmp_tmpq1z6xm1d_Utils_GetInsertIndex,SUCCESS,1,claude-opus
+BPTree-verif_tmp_tmpq1z6xm1d_Utils_InsertIntoSorted,FAILED,0,
+BelowZero_BelowZero,FAILED,0,
+BinaryAddition_ArrayToSequence,SUCCESS,5,"claude-opus, claude-sonnet, gemini, gpt, grok-code"
+BinaryAddition_BinaryAddition,FAILED,0,
+BinarySearchTree_tmp_tmp_bn2twp5_bst4copy_insert,SUCCESS,1,gpt
+BinarySearchTree_tmp_tmp_bn2twp5_bst4copy_insertRecursion,FAILED,0,
+CS494-final-project_tmp_tmp7nof55uq_bubblesort_BubbleSort,FAILED,0,
+CVS-Projto1_tmp_tmpb1o0bu8z_proj1_proj1_query,FAILED,0,
+CVS-Projto1_tmp_tmpb1o0bu8z_proj1_proj1_queryFast,SUCCESS,7,"claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini, grok-code"
+CVS-handout1_tmp_tmptm52no3k_1_query,SUCCESS,1,gpt
+CVS-handout1_tmp_tmptm52no3k_1_queryFast,FAILED,0,
+Clover_abs_Abs,SUCCESS,7,"claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini, grok-code"
+Clover_all_digits_allDigits,SUCCESS,1,claude-sonnet
+Clover_array_append_append,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, grok-code"
+Clover_array_concat_concat,SUCCESS,4,"claude-opus, claude-sonnet, glm, grok-code"
+Clover_array_product_arrayProduct,FAILED,0,
+Clover_array_sum_arraySum,FAILED,0,
+Clover_avg_ComputeAvg,FAILED,0,
+Clover_below_zero_below_zero,FAILED,0,
+Clover_binary_search_BinarySearch,SUCCESS,2,"gemini, gemini-flash"
+Clover_bubble_sort_BubbleSort,FAILED,0,
+Clover_cal_ans_CalDiv,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+Clover_cal_sum_Sum,FAILED,0,
+Clover_canyon_search_CanyonSearch,FAILED,0,
+Clover_convert_map_key_convert_map_key,FAILED,0,
+Clover_copy_part_copy,SUCCESS,1,claude-opus
+Clover_count_lessthan_CountLessThan,FAILED,0,
+Clover_double_array_elements_double_array_elements,FAILED,0,
+Clover_double_quadruple_DoubleQuadruple,FAILED,0,
+Clover_even_list_FindEvenNumbers,FAILED,0,
+Clover_find_Find,FAILED,0,
+Clover_has_close_elements_has_close_elements,FAILED,0,
+Clover_insert_insert,FAILED,0,
+Clover_integer_square_root_SquareRoot,FAILED,0,
+Clover_is_even_ComputeIsEven,FAILED,0,
+Clover_is_palindrome_IsPalindrome,FAILED,0,
+Clover_linear_search1_LinearSearch,SUCCESS,4,"claude-opus, claude-sonnet, gemini, gpt"
+Clover_linear_search2_LinearSearch,SUCCESS,1,gemini
+Clover_longest_prefix_LongestCommonPrefix,FAILED,0,
+Clover_match_Match,FAILED,0,
+Clover_max_array_maxArray,SUCCESS,3,"claude-opus, claude-sonnet, gemini"
+Clover_min_array_minArray,SUCCESS,4,"claude-opus, claude-sonnet, gemini, gpt-mini"
+Clover_min_of_two_Min,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+Clover_modify_2d_array_modify_array_element,FAILED,0,
+Clover_multi_return_MultipleReturns,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+Clover_online_max_onlineMax,SUCCESS,1,claude-opus
+Clover_quotient_Quotient,FAILED,0,
+Clover_replace_replace,SUCCESS,7,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, grok-code"
+Clover_return_seven_M,SUCCESS,7,"claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini, grok-code"
+Clover_reverse_reverse,SUCCESS,2,"claude-opus, claude-sonnet"
+Clover_rotate_rotate,SUCCESS,1,gemini
+Clover_selectionsort_SelectionSort,FAILED,0,
+Clover_slope_search_SlopeSearch,FAILED,0,
+Clover_swap_Swap,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+Clover_swap_arith_SwapArithmetic,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, glm, gpt, gpt-mini, grok-code"
+Clover_swap_bitvector_SwapBitvectors,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+Clover_swap_in_array_swap,SUCCESS,6,"claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code"
+Clover_swap_sim_SwapSimultaneous,SUCCESS,1,gemini
+Clover_test_array_TestArrayElements,SUCCESS,6,"claude-opus, claude-sonnet, gemini, glm, gpt, grok-code"
+Clover_triple2_Triple,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini-flash, glm, gpt, gpt-mini, grok-code"
+Clover_triple3_Triple,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini-flash, glm, gpt, gpt-mini, grok-code"
+Clover_triple4_Triple,SUCCESS,7,"claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini, grok-code"
+Clover_triple_Triple,SUCCESS,1,gpt
+Clover_two_sum_twoSum,FAILED,0,
+Clover_update_array_UpdateElements,FAILED,0,
+Correctness_tmp_tmpwqvg5q_4_Sorting_Tangent_BinarySearch,SUCCESS,1,claude-sonnet
+Correctness_tmp_tmpwqvg5q_4_Sorting_Tangent_Tangent,SUCCESS,1,gemini
+Dafny-Exercises_tmp_tmpjm75muf__Session10Exercises_ExerciseBarrier_barrier,SUCCESS,1,gemini
+Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseFibonacci_fibonacci1,FAILED,0,
+Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExercisePositive_mpositive,FAILED,0,
+Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseSquare_root_mroot1,FAILED,0,
+Dafny-Exercises_tmp_tmpjm75muf__Session3Exercises_ExerciseMaximum_mfirstMaximum,SUCCESS,3,"claude-opus, claude-sonnet, gemini"
+Dafny-Exercises_tmp_tmpjm75muf__Session3Exercises_ExerciseMaximum_mlastMaximum,SUCCESS,4,"claude-opus, claude-sonnet, gemini, glm"
+Dafny-Exercises_tmp_tmpjm75muf__Session3Exercises_ExerciseMaximum_mmaximum1,SUCCESS,6,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, grok-code"
+Dafny-Exercises_tmp_tmpjm75muf__Session4Exercises_ExerciseAllEqual_mallEqual1,SUCCESS,3,"claude-opus, claude-sonnet, gemini"
+Dafny-Exercises_tmp_tmpjm75muf__Session4Exercises_ExerciseContained_mcontained,FAILED,0,
+Dafny-Exercises_tmp_tmpjm75muf__Session4Exercises_ExerciseFirstNegative_mfirstNegative,FAILED,0,
+Dafny-Exercises_tmp_tmpjm75muf__Session4Exercises_ExercisefirstZero_mfirstCero,FAILED,0,
+Dafny-Exercises_tmp_tmpjm75muf__Session5Exercises_ExerciseSumElems_sumElems,FAILED,0,
+Dafny-Exercises_tmp_tmpjm75muf__Session5Exercises_ExerciseSumElems_sumElemsB,FAILED,0,
+Dafny-Exercises_tmp_tmpjm75muf__Session6Exercises_ExerciseCountEven_mcountEven,FAILED,0,
+Dafny-Exercises_tmp_tmpjm75muf__Session6Exercises_ExerciseCountMin_mCountMin,FAILED,0,
+Dafny-Exercises_tmp_tmpjm75muf__Session6Exercises_ExercisePeekSum_mPeekSum,FAILED,0,
+Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseBinarySearch_binarySearch,FAILED,0,
+Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseBinarySearch_binarySearchRec,FAILED,0,
+Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseBinarySearch_otherbSearch,SUCCESS,1,gemini
+Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseBinarySearch_search,SUCCESS,5,"claude-opus, claude-sonnet, deepseek, gemini, glm"
+Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseBubbleSort_bubbleSort,FAILED,0,
+Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseBubbleSort_bubbleSorta,FAILED,0,
+Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseReplace_replace,SUCCESS,7,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, grok-code"
+Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseSelSort_selSort,FAILED,0,
+Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseSeparate_separate,FAILED,0,
+Dafny-Exercises_tmp_tmpjm75muf__Session8Exercises_ExerciseInsertionSort_InsertionSort,FAILED,0,
+Dafny-Exercises_tmp_tmpjm75muf__Session9Exercises_ExerciseSeqMaxSum_segMaxSum,FAILED,0,
+Dafny-Exercises_tmp_tmpjm75muf__Session9Exercises_ExerciseSeqMaxSum_segSumaMaxima2,FAILED,0,
+Dafny-Grind75_tmp_tmpsxfz3i4r_problems_twoSum_twoSum,FAILED,0,
+Dafny-Practice_tmp_tmphnmt4ovh_BST_InsertBST,FAILED,0,
+Dafny-Practice_tmp_tmphnmt4ovh_Pattern_Matching_FindAllOccurrences,FAILED,0,
+Dafny-Projects_tmp_tmph399drhy_p2_arraySplit_ArraySplit,SUCCESS,6,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini"
+Dafny-demo_tmp_tmpkgr_dvdi_Dafny_BinarySearch_BinarySearch,FAILED,0,
+Dafny-experiences_tmp_tmp150sm9qy_dafny_started_tutorial_dafny_tutorial_array_FindMax,SUCCESS,5,"claude-opus, claude-sonnet, gemini, gemini-flash, glm"
+Dafny-programs_tmp_tmpnso9eu7u_Algorithms___sorting_bubble-sort_BubbleSort,FAILED,0,
+DafnyPrograms_tmp_tmp74_f9k_c_automaton_ExecuteAutomaton,FAILED,0,
+DafnyPrograms_tmp_tmp74_f9k_c_invertarray_InvertArray,SUCCESS,2,"claude-opus, claude-sonnet"
+DafnyPrograms_tmp_tmp74_f9k_c_prime-database_testPrimeness,FAILED,0,
+DafnyProjects_tmp_tmp2acw_s4s_CombNK_Comb,FAILED,0,
+DafnyProjects_tmp_tmp2acw_s4s_Power_powerDC,FAILED,0,
+DafnyProjects_tmp_tmp2acw_s4s_longestPrefix_longestPrefix,SUCCESS,1,claude-opus
+DafnyProjects_tmp_tmp2acw_s4s_partitionOddEven_partitionOddEven,FAILED,0,
+Dafny_Learning_Experience_tmp_tmpuxvcet_u_week1_7_A2_Q1_trimmed_copy_-_副本_ComputeCount,FAILED,0,
+Dafny_Learning_Experience_tmp_tmpuxvcet_u_week1_7_A2_Q1_trimmed_copy_-_副本_FooCount,FAILED,0,
+Dafny_Learning_Experience_tmp_tmpuxvcet_u_week1_7_A2_Q1_trimmed_copy_-_副本_PreCompute,FAILED,0,
+Dafny_Learning_Experience_tmp_tmpuxvcet_u_week1_7_week5_ComputePower_ComputePower,FAILED,0,
+Dafny_Learning_Experience_tmp_tmpuxvcet_u_week8_12_a3_search_findPositionOfIndex_FindPositionOfElement,SUCCESS,1,gpt
+Dafny_ProgrammingLanguages_tmp_tmp82_e0kji_ExtraCredit_optimizeCorrect,SUCCESS,1,claude-sonnet
+Dafny_Programs_tmp_tmp99966ew4_binary_search_BinarySearch,FAILED,0,
+Dafny_Programs_tmp_tmp99966ew4_lemma_FindZero,FAILED,0,
+Dafny_Verify_tmp_tmphq7j0row_Fine_Tune_Examples_normal_data_completion_MaxPerdV2_max,FAILED,0,
+Dafny_Verify_tmp_tmphq7j0row_Generated_Code_ComputePower_ComputePower,FAILED,0,
+Dafny_Verify_tmp_tmphq7j0row_Generated_Code_Count_count,FAILED,0,
+Dafny_Verify_tmp_tmphq7j0row_dataset_bql_exampls_SmallNum_add_small_numbers,FAILED,0,
+Dafny_Verify_tmp_tmphq7j0row_dataset_detailed_examples_SelectionSort_SelectionSort,FAILED,0,
+Dafny_tmp_tmp0wu8wmfr_Heimaverkefni_1_LinearSearch_SearchLoop,FAILED,0,
+Dafny_tmp_tmp0wu8wmfr_Heimaverkefni_1_LinearSearch_SearchRecursive,FAILED,0,
+Dafny_tmp_tmp0wu8wmfr_Heimaverkefni_2_BinarySearchDec_SearchRecursive,FAILED,0,
+Dafny_tmp_tmp0wu8wmfr_Heimaverkefni_3_InsertionSortMultiset_Search,FAILED,0,
+Dafny_tmp_tmp0wu8wmfr_Heimaverkefni_3_InsertionSortMultiset_Sort,FAILED,0,
+Dafny_tmp_tmp0wu8wmfr_Heimaverkefni_3_SelectionSortMultiset_Sort,FAILED,0,
+Dafny_tmp_tmp0wu8wmfr_Heimaverkefni_8_H8_Partition,FAILED,0,
+Dafny_tmp_tmp0wu8wmfr_tests_F1a_Mid,FAILED,0,
+Dafny_tmp_tmp0wu8wmfr_tests_InsertionSortSeq_InsertionSort,FAILED,0,
+Dafny_tmp_tmp0wu8wmfr_tests_Search1000_Search1000,SUCCESS,2,"gemini, gpt-mini"
+Dafny_tmp_tmp0wu8wmfr_tests_Search1000_Search2PowLoop,FAILED,0,
+Dafny_tmp_tmp0wu8wmfr_tests_Search1000_Search2PowRecursive,FAILED,0,
+Dafny_tmp_tmp0wu8wmfr_tests_SumIntsLoop_SumIntsLoop,FAILED,0,
+Dafny_tmp_tmpj88zq5zt_2-Kontrakte_max_max,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+Dafny_tmp_tmpj88zq5zt_2-Kontrakte_reverse3_swap3,SUCCESS,6,"claude-opus, claude-sonnet, gemini, glm, gpt-mini, grok-code"
+Dafny_tmp_tmpmvs2dmry_examples2_Product,FAILED,0,
+Dafny_tmp_tmpmvs2dmry_examples2_exp_by_sqr,FAILED,0,
+Dafny_tmp_tmpmvs2dmry_examples2_gcdCalc,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gemini, glm, grok-code"
+Dafny_tmp_tmpmvs2dmry_pancakesort_findmax_findMax,SUCCESS,4,"claude-opus, claude-sonnet, gemini, glm"
+Dafny_tmp_tmpmvs2dmry_pancakesort_flip_flip,SUCCESS,1,claude-sonnet
+Dafny_tmp_tmpv_d3qi10_2_min_minArray,FAILED,0,
+Dafny_tmp_tmpv_d3qi10_3_cumsum_cumsum,FAILED,0,
+Final-Project-Dafny_tmp_tmpmcywuqox_Attempts_Exercise3_Increment_Array_incrementArray,FAILED,0,
+Final-Project-Dafny_tmp_tmpmcywuqox_Attempts_Insertion_Sort_Normal_insertionSort,SUCCESS,1,gpt
+Final-Project-Dafny_tmp_tmpmcywuqox_Attempts_Insertion_Sort_Normal_lookForMin,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gemini, glm, grok-code"
+Final-Project-Dafny_tmp_tmpmcywuqox_Attempts_Insertion_Sorted_Standard_sorting,FAILED,0,
+Final-Project-Dafny_tmp_tmpmcywuqox_Attempts_Quick_Sort_quickSort,SUCCESS,2,"gpt, gpt-mini"
+Final-Project-Dafny_tmp_tmpmcywuqox_Attempts_Quick_Sort_threshold,FAILED,0,
+Final-Project-Dafny_tmp_tmpmcywuqox_Attempts_Selection_Sort_Standard_selectionSorted,SUCCESS,2,"gpt, gpt-mini"
+FlexWeek_tmp_tmpc_tfdj_3_ex4_join,FAILED,0,
+FlexWeek_tmp_tmpc_tfdj_3_reverse_Reverse,SUCCESS,3,"claude-opus, claude-sonnet, grok-code"
+Formal-Verification-Project_tmp_tmp9gmwsmyp_strings3_haveCommonKSubstring,FAILED,0,
+Formal-Verification-Project_tmp_tmp9gmwsmyp_strings3_isSubstring,FAILED,0,
+Formal-Verification-Project_tmp_tmp9gmwsmyp_strings3_maxCommonSubstringLength,FAILED,0,
+Formal-Verification_tmp_tmpuyt21wjt_Dafny_strings1_haveCommonKSubstring,FAILED,0,
+Formal-Verification_tmp_tmpuyt21wjt_Dafny_strings1_maxCommonSubstringLength,FAILED,0,
+Formal-Verification_tmp_tmpuyt21wjt_Dafny_strings3_haveCommonKSubstring,SUCCESS,1,gpt
+Formal-Verification_tmp_tmpuyt21wjt_Dafny_strings3_maxCommonSubstringLength,FAILED,0,
+Formal-methods-of-software-development_tmp_tmppryvbyty_Bloque_2_Lab6_vector_Sum,FAILED,0,
+MFES_2021_tmp_tmpuljn8zd9_Exams_Special_Exam_03_2020_4_CatalanNumbers_calcC,FAILED,0,
+MFES_2021_tmp_tmpuljn8zd9_TheoreticalClasses_Power_powerIter,FAILED,0,
+MFS_tmp_tmpmmnu354t_Praticas_TP9_Power_powerIter,FAILED,0,
+MIEIC_mfes_tmp_tmpq3ho7nve_TP3_binary_search_binarySearch,FAILED,0,
+MIEIC_mfes_tmp_tmpq3ho7nve_exams_mt2_19_p4_calcR,FAILED,0,
+MIEIC_mfes_tmp_tmpq3ho7nve_exams_mt2_19_p5_partition,FAILED,0,
+Prog-Fun-Solutions_tmp_tmp7_gmnz5f_extra_mod2_mod2,FAILED,0,
+Prog-Fun-Solutions_tmp_tmp7_gmnz5f_extra_mod_mod,FAILED,0,
+Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced_examples_InsertionSort_InsertionSort,FAILED,0,
+Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced_examples_MatrixMultiplication_multiply,FAILED,0,
+Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced_examples_Percentile_Percentile,FAILED,0,
+Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced_examples_Percentile_PercentileNonUniqueAnswer,FAILED,0,
+Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced_examples_ReverseString_yarra,SUCCESS,1,gemini
+Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced_examples_demo_Partition,FAILED,0,
+Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_ProgramProofs_ch15_Partition,FAILED,0,
+Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_ProgramProofs_ch15_QuickSort,FAILED,0,
+Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_ProgramProofs_ch15_QuickSortAux,FAILED,0,
+Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_ProgramProofs_ch15_SelectionSort,FAILED,0,
+Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_examples_bubblesort_BubbleSort,FAILED,0,
+Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_examples_relativeOrder_FindEvenNumbers,FAILED,0,
+Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_leetcode_FindPivotIndex_FindPivotIndex,FAILED,0,
+Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_leetcode_lc-remove-element_removeElement,SUCCESS,1,gemini
+Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_leetcode_validAnagram_isAnagram,FAILED,0,
+Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_basic_examples_BubbleSort_bubbleSort,FAILED,0,
+Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_basic_examples_BubbleSort_sol_bubbleSort,FAILED,0,
+Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_from_dafny_main_repo_dafny2_COST-verif-comp-2011-3-TwoDuplicates_Search,FAILED,0,
+Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_from_dafny_main_repo_dafny2_Classics_FIND,FAILED,0,
+Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_mathematical_objects_verification_examples_fast_exp_FastExp,FAILED,0,
+Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_verified_algorithms_lol_sort_lol_sort,FAILED,0,
+Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_verified_algorithms_lol_sort_swap,FAILED,0,
+Programmverifikation-und-synthese_tmp_tmppurk6ime_PVS_Assignment_ex_04_Hoangkim_ex_04_Hoangkim_intDiv,SUCCESS,1,gpt
+Programmverifikation-und-synthese_tmp_tmppurk6ime_PVS_Assignment_ex_05_Hoangkim_ex_05_Hoangkim_gcdI,SUCCESS,1,gemini
+Programmverifikation-und-synthese_tmp_tmppurk6ime_PVS_Assignment_ex_06_Hoangkim_ex_06_hoangkim_gcdI,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code"
+Programmverifikation-und-synthese_tmp_tmppurk6ime_PVS_Assignment_ex_07_Hoangkim_ex07_Hoangkim_FindMin,SUCCESS,3,"claude-opus, claude-sonnet, gemini"
+Programmverifikation-und-synthese_tmp_tmppurk6ime_PVS_Assignment_ex_07_Hoangkim_ex07_Hoangkim_selectionSort,SUCCESS,1,gpt
+Programmverifikation-und-synthese_tmp_tmppurk6ime_PVS_Assignment_ex_10_Hoangkim_ex10_hoangkim_q,FAILED,0,
+Programmverifikation-und-synthese_tmp_tmppurk6ime_PVS_Assignment_ex_10_Hoangkim_ex10_hoangkim_strange,SUCCESS,2,"glm, gpt"
+SENG2011_tmp_tmpgk5jq85q_ass2_ex1_StringSwap,FAILED,0,
+SENG2011_tmp_tmpgk5jq85q_ass2_ex2_String3Sort,FAILED,0,
+SENG2011_tmp_tmpgk5jq85q_ass2_ex3_BadSort,FAILED,0,
+SENG2011_tmp_tmpgk5jq85q_exam_ex2_Getmini,SUCCESS,4,"claude-opus, claude-sonnet, gemini, gpt"
+SENG2011_tmp_tmpgk5jq85q_exam_ex3_Symmetric,FAILED,0,
+SENG2011_tmp_tmpgk5jq85q_flex_ex1_sum,FAILED,0,
+Simulink-To_dafny_tmp_tmpbcuesj2t_Tank_checkRegulation,FAILED,0,
+Software-Verification_tmp_tmpv4ueky2d_Best_Time_to_Buy_and_Sell_Stock_best_time_to_buy_and_sell_stock_best_time_to_buy_and_sell_stock,FAILED,0,
+Software-Verification_tmp_tmpv4ueky2d_Contains_Duplicate_contains_duplicate_contains_duplicate,FAILED,0,
+Software-Verification_tmp_tmpv4ueky2d_Counting_Bits_counting_bits_counting_bits,FAILED,0,
+Software-Verification_tmp_tmpv4ueky2d_Longest_Increasing_Subsequence_longest_increasing_subsequence_longest_increasing_subsequence,FAILED,0,
+Software-Verification_tmp_tmpv4ueky2d_Non-overlapping_Intervals_non_overlapping_intervals_bubble_sort,FAILED,0,
+Software-Verification_tmp_tmpv4ueky2d_Non-overlapping_Intervals_non_overlapping_intervals_non_overlapping_intervals,FAILED,0,
+Software-Verification_tmp_tmpv4ueky2d_Remove_Duplicates_from_Sorted_Array_remove_duplicates_from_sorted_array_remove_duplicates_from_sorted_array,FAILED,0,
+Software-Verification_tmp_tmpv4ueky2d_Remove_Element_remove_element_remove_element,FAILED,0,
+Software-Verification_tmp_tmpv4ueky2d_Valid_Palindrome_valid_panlindrome_isPalindrome,FAILED,0,
+Software-building-and-verification-Projects_tmp_tmp5tm1srrn_CVS-projeto_aula3_maxArrayReverse,SUCCESS,1,gemini
+Software-building-and-verification-Projects_tmp_tmp5tm1srrn_CVS-projeto_aula3_sumBackwards,FAILED,0,
+Software-building-and-verification-Projects_tmp_tmp5tm1srrn_CVS-projeto_handout1_queryFast,SUCCESS,6,"claude-opus, claude-sonnet, gemini-flash, gpt, gpt-mini, grok-code"
+VerifiedMergeSortDafny_tmp_tmpva7qms1b_MergeSort_merge,SUCCESS,2,"glm, gpt"
+VerifiedMergeSortDafny_tmp_tmpva7qms1b_MergeSort_mergeSimple,SUCCESS,1,gemini
+Workshop_tmp_tmp0cu11bdq_Lecture_Answers_max_array_max,SUCCESS,1,gemini
+assertive-programming-assignment-1_tmp_tmp3h_cj44u_FindRange_BinarySearch,FAILED,0,
+assertive-programming-assignment-1_tmp_tmp3h_cj44u_FindRange_FindRange,FAILED,0,
+assertive-programming-assignment-1_tmp_tmp3h_cj44u_ProdAndCount_ProdAndCount,FAILED,0,
+assertive-programming-assignment-1_tmp_tmp3h_cj44u_SearchAddends_FindAddends,FAILED,0,
+bbfny_tmp_tmpw4m0jvl0_enjoying_Find,FAILED,0,
+bbfny_tmp_tmpw4m0jvl0_enjoying_FindMax,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt"
+cmsc433_tmp_tmpe3ob3a0o_dafny_project1_p1-assignment-2_ArraySum,FAILED,0,
+cmsc433_tmp_tmpe3ob3a0o_dafny_project1_p1-assignment-2_Euclid,FAILED,0,
+cmsc433_tmp_tmpe3ob3a0o_dafny_project1_p1-assignment-2_IntDiv,FAILED,0,
+cmsc433_tmp_tmpe3ob3a0o_dafny_project1_p1-assignment-2_IsPrime,FAILED,0,
+cmsc433_tmp_tmpe3ob3a0o_dafny_project1_p1-assignment-2_Reverse,SUCCESS,3,"claude-opus, claude-sonnet, gemini"
+cs245-verification_tmp_tmp0h_nxhqp_A8_Q1_A8Q1,FAILED,0,
+cs245-verification_tmp_tmp0h_nxhqp_SortingIssues_FirstAttempt_sort,SUCCESS,4,"claude-opus, claude-sonnet, glm, gpt"
+cs245-verification_tmp_tmp0h_nxhqp_power_compute_power,FAILED,0,
+cs245-verification_tmp_tmp0h_nxhqp_quicksort-partition_QuicksortPartition,FAILED,0,
+dafl_tmp_tmp_r3_8w3y_dafny_examples_uiowa_binary-search_binSearch,SUCCESS,2,"claude-sonnet, gemini"
+dafl_tmp_tmp_r3_8w3y_dafny_examples_uiowa_fibonacci_ComputeFib,FAILED,0,
+dafl_tmp_tmp_r3_8w3y_dafny_examples_uiowa_find_Find,FAILED,0,
+dafleet_tmp_tmpa2e4kb9v_0001-0050_0001-two-sum_twoSum,FAILED,0,
+dafleet_tmp_tmpa2e4kb9v_0001-0050_0003-longest-substring-without-repeating-characters_lengthOfLongestSubstring,FAILED,0,
+dafleet_tmp_tmpa2e4kb9v_0001-0050_0005-longest-palindromic-substring_expand_from_center,FAILED,0,
+dafleet_tmp_tmpa2e4kb9v_0001-0050_0005-longest-palindromic-substring_longestPalindrome,FAILED,0,
+dafny-duck_tmp_tmplawbgxjo_ex3_BadSort,SUCCESS,2,"gpt, gpt-mini"
+dafny-duck_tmp_tmplawbgxjo_p1_SumArray,FAILED,0,
+dafny-duck_tmp_tmplawbgxjo_p4_single,SUCCESS,4,"claude-sonnet, gemini, glm, grok-code"
+dafny-duck_tmp_tmplawbgxjo_p6_FilterVowelsArray,SUCCESS,1,claude-opus
+dafny-exercise_tmp_tmpouftptir_absIt_AbsIt,FAILED,0,
+dafny-exercise_tmp_tmpouftptir_appendArray_appendArray,SUCCESS,4,"claude-opus, claude-sonnet, gemini, gpt"
+dafny-exercise_tmp_tmpouftptir_countNeg_CountNeg,FAILED,0,
+dafny-exercise_tmp_tmpouftptir_filter_Filter,FAILED,0,
+dafny-exercise_tmp_tmpouftptir_firstE_firstE,FAILED,0,
+dafny-exercise_tmp_tmpouftptir_prac3_ex2_GetEven,FAILED,0,
+dafny-exercise_tmp_tmpouftptir_prac4_ex2_GetTriple,SUCCESS,2,"claude-opus, claude-sonnet"
+dafny-exercise_tmp_tmpouftptir_reverse_Reverse,SUCCESS,2,"claude-sonnet, gemini"
+dafny-exercise_tmp_tmpouftptir_zapNegatives_ZapNegatives,SUCCESS,5,"claude-opus, claude-sonnet, gemini, gemini-flash, gpt"
+dafny-exercises_tmp_tmp5mvrowrx_leetcode_26-remove-duplicates-from-sorted-array_RemoveDuplicates,FAILED,0,
+dafny-language-server_tmp_tmpkir0kenl_Test_VSComp2010_Problem1-SumMax_M,FAILED,0,
+dafny-language-server_tmp_tmpkir0kenl_Test_comp_Arrays_LinearSearch,SUCCESS,5,"claude-sonnet, gemini, gemini-flash, gpt, grok-code"
+dafny-language-server_tmp_tmpkir0kenl_Test_dafny2_SegmentSum_MaxSegSum,FAILED,0,
+dafny-language-server_tmp_tmpkir0kenl_Test_dafny2_TuringFactorial_ComputeFactorial,FAILED,0,
+dafny-language-server_tmp_tmpkir0kenl_Test_dafny4_Bug165_Select,FAILED,0,
+dafny-language-server_tmp_tmpkir0kenl_Test_tutorial_maximum_Maximum,FAILED,0,
+dafny-language-server_tmp_tmpkir0kenl_Test_vstte2012_Two-Way-Sort_two_way_sort,FAILED,0,
+dafny-programs_tmp_tmpcwodh6qh_src_expt_expt,SUCCESS,1,gpt
+dafny-programs_tmp_tmpcwodh6qh_src_factorial_factorial,FAILED,0,
+dafny-synthesis_task_id_105_CountTrue,SUCCESS,2,"claude-sonnet, gemini"
+dafny-synthesis_task_id_106_AppendArrayToSeq,FAILED,0,
+dafny-synthesis_task_id_113_IsInteger,FAILED,0,
+dafny-synthesis_task_id_126_SumOfCommonDivisors,SUCCESS,2,"gpt, gpt-mini"
+dafny-synthesis_task_id_127_Multiply,SUCCESS,7,"claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini, grok-code"
+dafny-synthesis_task_id_133_SumOfNegatives,FAILED,0,
+dafny-synthesis_task_id_142_CountIdenticalPositions,FAILED,0,
+dafny-synthesis_task_id_143_CountArrays,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+dafny-synthesis_task_id_145_MaxDifference,FAILED,0,
+dafny-synthesis_task_id_14_TriangularPrismVolume,FAILED,0,
+dafny-synthesis_task_id_161_RemoveElements,SUCCESS,1,gemini
+dafny-synthesis_task_id_170_SumInRange,FAILED,0,
+dafny-synthesis_task_id_171_PentagonPerimeter,FAILED,0,
+dafny-synthesis_task_id_18_RemoveChars,FAILED,0,
+dafny-synthesis_task_id_227_MinOfThree,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+dafny-synthesis_task_id_230_ReplaceBlanksWithChar,FAILED,0,
+dafny-synthesis_task_id_233_CylinderLateralSurfaceArea,FAILED,0,
+dafny-synthesis_task_id_234_CubeVolume,FAILED,0,
+dafny-synthesis_task_id_238_CountNonEmptySubstrings,FAILED,0,
+dafny-synthesis_task_id_240_ReplaceLastElement,SUCCESS,1,gemini-flash
+dafny-synthesis_task_id_242_CountCharacters,FAILED,0,
+dafny-synthesis_task_id_249_Intersection,SUCCESS,2,"gpt, gpt-mini"
+dafny-synthesis_task_id_251_InsertBeforeEach,FAILED,0,
+dafny-synthesis_task_id_261_ElementWiseDivision,FAILED,0,
+dafny-synthesis_task_id_262_SplitArray,FAILED,0,
+dafny-synthesis_task_id_273_SubtractSequences,FAILED,0,
+dafny-synthesis_task_id_284_AllElementsEqual,SUCCESS,4,"claude-opus, claude-sonnet, gemini, gpt"
+dafny-synthesis_task_id_290_MaxLengthList,FAILED,0,
+dafny-synthesis_task_id_2_SharedElements,SUCCESS,3,"gpt, gpt-mini, grok-code"
+dafny-synthesis_task_id_304_ElementAtIndexAfterRotation,SUCCESS,4,"claude-opus, glm, gpt, gpt-mini"
+dafny-synthesis_task_id_399_BitwiseXOR,FAILED,0,
+dafny-synthesis_task_id_3_IsNonPrime,FAILED,0,
+dafny-synthesis_task_id_401_IndexWiseAddition,FAILED,0,
+dafny-synthesis_task_id_412_RemoveOddNumbers,SUCCESS,1,claude-opus
+dafny-synthesis_task_id_414_AnyValueExists,FAILED,0,
+dafny-synthesis_task_id_424_ExtractRearChars,SUCCESS,1,gemini
+dafny-synthesis_task_id_426_FilterOddNumbers,FAILED,0,
+dafny-synthesis_task_id_430_ParabolaDirectrix,SUCCESS,5,"claude-opus, glm, gpt, gpt-mini, grok-code"
+dafny-synthesis_task_id_431_HasCommonElement,SUCCESS,3,"claude-opus, gemini, gemini-flash"
+dafny-synthesis_task_id_432_MedianLength,FAILED,0,
+dafny-synthesis_task_id_433_IsGreater,SUCCESS,4,"claude-opus, claude-sonnet, gemini, glm"
+dafny-synthesis_task_id_435_LastDigit,SUCCESS,1,gemini
+dafny-synthesis_task_id_436_FindNegativeNumbers,FAILED,0,
+dafny-synthesis_task_id_441_CubeSurfaceArea,FAILED,0,
+dafny-synthesis_task_id_452_CalculateLoss,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+dafny-synthesis_task_id_455_MonthHas31Days,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+dafny-synthesis_task_id_457_MinLengthSublist,FAILED,0,
+dafny-synthesis_task_id_460_GetFirstElements,SUCCESS,1,gemini
+dafny-synthesis_task_id_461_CountUppercase,FAILED,0,
+dafny-synthesis_task_id_470_PairwiseAddition,FAILED,0,
+dafny-synthesis_task_id_472_ContainsConsecutiveNumbers,SUCCESS,1,gemini
+dafny-synthesis_task_id_474_ReplaceChars,FAILED,0,
+dafny-synthesis_task_id_476_SumMinMax,FAILED,0,
+dafny-synthesis_task_id_477_ToLowercase,SUCCESS,1,gpt
+dafny-synthesis_task_id_554_FindOddNumbers,FAILED,0,
+dafny-synthesis_task_id_555_DifferenceSumCubesAndSumNumbers,FAILED,0,
+dafny-synthesis_task_id_557_ToggleCase,SUCCESS,2,"claude-opus, claude-sonnet"
+dafny-synthesis_task_id_565_SplitStringIntoChars,SUCCESS,7,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini"
+dafny-synthesis_task_id_566_SumOfDigits,FAILED,0,
+dafny-synthesis_task_id_567_IsSorted,SUCCESS,1,gemini
+dafny-synthesis_task_id_572_RemoveDuplicates,FAILED,0,
+dafny-synthesis_task_id_573_UniqueProduct,SUCCESS,1,gpt
+dafny-synthesis_task_id_574_CylinderSurfaceArea,SUCCESS,1,gpt
+dafny-synthesis_task_id_576_IsSublist,FAILED,0,
+dafny-synthesis_task_id_577_FactorialOfLastDigit,SUCCESS,3,"claude-opus, claude-sonnet, gpt"
+dafny-synthesis_task_id_578_Interleave,FAILED,0,
+dafny-synthesis_task_id_579_DissimilarElements,SUCCESS,1,gpt
+dafny-synthesis_task_id_581_SquarePyramidSurfaceArea,FAILED,0,
+dafny-synthesis_task_id_586_SplitAndAppend,FAILED,0,
+dafny-synthesis_task_id_587_ArrayToSeq,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt"
+dafny-synthesis_task_id_588_DifferenceMinMax,FAILED,0,
+dafny-synthesis_task_id_591_SwapFirstAndLast,SUCCESS,7,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
+dafny-synthesis_task_id_594_FirstEvenOddDifference,FAILED,0,
+dafny-synthesis_task_id_598_IsArmstrong,FAILED,0,
+dafny-synthesis_task_id_599_SumAndAverage,SUCCESS,1,gpt
+dafny-synthesis_task_id_600_IsEven,FAILED,0,
+dafny-synthesis_task_id_602_FindFirstRepeatedChar,FAILED,0,
+dafny-synthesis_task_id_603_LucidNumbers,SUCCESS,1,gpt
+dafny-synthesis_task_id_605_IsPrime,FAILED,0,
+dafny-synthesis_task_id_606_DegreesToRadians,FAILED,0,
+dafny-synthesis_task_id_610_RemoveElement,SUCCESS,4,"claude-opus, claude-sonnet, gemini, gpt"
+dafny-synthesis_task_id_616_ElementWiseModulo,FAILED,0,
+dafny-synthesis_task_id_618_ElementWiseDivide,FAILED,0,
+dafny-synthesis_task_id_622_FindMedian,SUCCESS,1,gemini
+dafny-synthesis_task_id_623_PowerOfListElements,FAILED,0,
+dafny-synthesis_task_id_624_ToUppercase,FAILED,0,
+dafny-synthesis_task_id_625_SwapFirstAndLast,SUCCESS,7,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
+dafny-synthesis_task_id_626_AreaOfLargestTriangleInSemicircle,SUCCESS,2,"gemini-flash, gpt"
+dafny-synthesis_task_id_627_SmallestMissingNumber,SUCCESS,3,"claude-sonnet, gpt, gpt-mini"
+dafny-synthesis_task_id_629_FindEvenNumbers,FAILED,0,
+dafny-synthesis_task_id_632_MoveZeroesToEnd,FAILED,0,
+dafny-synthesis_task_id_632_swap,SUCCESS,1,gemini-flash
+dafny-synthesis_task_id_637_IsBreakEven,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+dafny-synthesis_task_id_641_NthNonagonalNumber,FAILED,0,
+dafny-synthesis_task_id_644_Reverse,SUCCESS,2,"claude-opus, claude-sonnet"
+dafny-synthesis_task_id_644_ReverseUptoK,SUCCESS,1,gemini
+dafny-synthesis_task_id_69_ContainsSequence,FAILED,0,
+dafny-synthesis_task_id_70_AllSequencesEqualLength,FAILED,0,
+dafny-synthesis_task_id_728_AddLists,FAILED,0,
+dafny-synthesis_task_id_732_ReplaceWithColon,FAILED,0,
+dafny-synthesis_task_id_733_FindFirstOccurrence,FAILED,0,
+dafny-synthesis_task_id_741_AllCharactersSame,FAILED,0,
+dafny-synthesis_task_id_743_RotateRight,FAILED,0,
+dafny-synthesis_task_id_750_AddTupleToList,SUCCESS,6,"claude-opus, claude-sonnet, gemini-flash, glm, gpt, grok-code"
+dafny-synthesis_task_id_751_IsMinHeap,SUCCESS,3,"claude-opus, gemini, grok-code"
+dafny-synthesis_task_id_755_SecondSmallest,FAILED,0,
+dafny-synthesis_task_id_759_IsDecimalWithTwoPrecision,FAILED,0,
+dafny-synthesis_task_id_760_HasOnlyOneDistinctElement,SUCCESS,3,"claude-opus, claude-sonnet, gemini"
+dafny-synthesis_task_id_762_IsMonthWith30Days,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+dafny-synthesis_task_id_769_Difference,FAILED,0,
+dafny-synthesis_task_id_770_SumOfFourthPowerOfOddNumbers,FAILED,0,
+dafny-synthesis_task_id_775_IsOddAtIndexOdd,FAILED,0,
+dafny-synthesis_task_id_776_CountVowelNeighbors,SUCCESS,1,gpt
+dafny-synthesis_task_id_784_FirstEvenOddIndices,SUCCESS,2,"gemini, grok-code"
+dafny-synthesis_task_id_784_ProductEvenOdd,FAILED,0,
+dafny-synthesis_task_id_790_IsEvenAtIndexEven,SUCCESS,2,"claude-opus, gemini"
+dafny-synthesis_task_id_792_CountLists,SUCCESS,1,gemini
+dafny-synthesis_task_id_793_LastPosition,SUCCESS,1,gpt
+dafny-synthesis_task_id_798_ArraySum,FAILED,0,
+dafny-synthesis_task_id_799_RotateLeftBits,FAILED,0,
+dafny-synthesis_task_id_801_CountEqualNumbers,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+dafny-synthesis_task_id_803_IsPerfectSquare,SUCCESS,1,gpt
+dafny-synthesis_task_id_804_IsProductEven,FAILED,0,
+dafny-synthesis_task_id_807_FindFirstOdd,SUCCESS,5,"claude-opus, gemini, glm, gpt, gpt-mini"
+dafny-synthesis_task_id_809_IsSmaller,FAILED,0,
+dafny-synthesis_task_id_94_MinSecondValueFirst,SUCCESS,1,gemini
+dafny-synthesis_task_id_95_SmallestListLength,FAILED,0,
+dafny_examples_tmp_tmp8qotd4ez_leetcode_0001-two-sum_TwoSum,FAILED,0,
+dafny_examples_tmp_tmp8qotd4ez_leetcode_0027-remove-element_RemoveElement,FAILED,0,
+dafny_examples_tmp_tmp8qotd4ez_leetcode_0069-sqrt_mySqrt,FAILED,0,
+dafny_examples_tmp_tmp8qotd4ez_leetcode_0070-climbing-stairs_ClimbStairs,FAILED,0,
+dafny_examples_tmp_tmp8qotd4ez_test_shuffle_getRandomDataEntry,FAILED,0,
+dafny_examples_tmp_tmp8qotd4ez_test_shuffle_swap,FAILED,0,
+dafny_misc_tmp_tmpg4vzlnm1_rosetta_code_factorial_IterativeFactorial,FAILED,0,
+dafny_misc_tmp_tmpg4vzlnm1_rosetta_code_fibonacci_sequence_FibonacciIterative,FAILED,0,
+dafny_projects_tmp_tmpjutqwjv4_tutorial_tutorial_Find,FAILED,0,
+dafny_projects_tmp_tmpjutqwjv4_tutorial_tutorial_FindZero,FAILED,0,
+dafny_tmp_tmp49a6ihvk_m4_DutchFlag,FAILED,0,
+dafny_tmp_tmp59p638nn_examples_SelectionSort_SelectionSort,FAILED,0,
+dafny_tmp_tmp59p638nn_examples_SelectionSort_SelectionnSort,FAILED,0,
+dafny_tmp_tmp59p638nn_examples_realExponent_pow,SUCCESS,1,gpt
+feup-mfes_tmp_tmp6_a1y5a5_examples_SelectionSort_findMin,SUCCESS,3,"claude-opus, claude-sonnet, gemini"
+feup-mfes_tmp_tmp6_a1y5a5_examples_SelectionSort_selectionSort,FAILED,0,
+formal-methods-in-software-engineering_tmp_tmpe7fjnek6_Labs4_gr2_DivMod1,FAILED,0,
+formal-methods-in-software-engineering_tmp_tmpe7fjnek6_Labs4_gr2_SqrSum1,FAILED,0,
+formal-verification_tmp_tmpoepcssay_strings3_haveCommonKSubstring,FAILED,0,
+formal-verification_tmp_tmpoepcssay_strings3_isPrefix,FAILED,0,
+formal-verification_tmp_tmpoepcssay_strings3_isSubstring,FAILED,0,
+formal-verification_tmp_tmpoepcssay_strings3_maxCommonSubstringLength,FAILED,0,
+formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex1_PalVerify,FAILED,0,
+formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex2_Allow42,FAILED,0,
+formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex6_BullsCows,FAILED,0,
+formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex7_Exchanger,FAILED,0,
+formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex7_Sorter,FAILED,0,
+llm-verified-eval_tmp_tmpd2deqn_i_dafny_0_has_close_elements,FAILED,0,
+llm-verified-eval_tmp_tmpd2deqn_i_dafny_161_solve,SUCCESS,3,"claude-opus, claude-sonnet, gemini"
+llm-verified-eval_tmp_tmpd2deqn_i_dafny_3_below_zero,FAILED,0,
+llm-verified-eval_tmp_tmpd2deqn_i_dafny_5_intersperse,SUCCESS,2,"claude-opus, glm"
+llm-verified-eval_tmp_tmpd2deqn_i_dafny_9_rolling_max,FAILED,0,
+se2011_tmp_tmp71eb82zt_ass2_ex2_SecondLargest,SUCCESS,4,"claude-sonnet, gpt, gpt-mini, grok-code"
+software_analysis_tmp_tmpmt6bo9sf_ss_find_min_index,SUCCESS,3,"claude-opus, claude-sonnet, gemini"
+software_analysis_tmp_tmpmt6bo9sf_ss_selection_sort,FAILED,0,
+t1_MF_tmp_tmpi_sqie4j_exemplos_colecoes_sequences_ex3_Delete,SUCCESS,1,gemini
+veri-sparse_tmp_tmp15fywna6_dafny_dspmspv_DSpMSpV,FAILED,0,
+veri-sparse_tmp_tmp15fywna6_dafny_spmv_SpMV,FAILED,0,
+verified-using-dafny_tmp_tmp7jatpjyn_longestZero_longestZero,FAILED,0,
+vfag_tmp_tmpc29dxm1j_Verificacion_torneo_torneo,SUCCESS,5,"claude-opus, claude-sonnet, gemini, gpt, grok-code"
+vfag_tmp_tmpc29dxm1j_sumar_componentes_suma_componentes,FAILED,0,

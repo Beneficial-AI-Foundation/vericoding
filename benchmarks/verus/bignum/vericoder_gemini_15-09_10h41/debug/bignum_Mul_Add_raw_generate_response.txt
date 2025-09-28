@@ -1,6 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 801 characters
---------------------------------------------------------------------------------
-```json
-["proof fn lemma_str2int_push_auto(s: Seq<char>, c: char)\n    requires\n        ValidBitString(s),\n        c == '0' || c == '1',\n    ensures\n        Str2Int(s.push(c)) == 2 * Str2Int(s) + if c == '1' { 1 } else { 0 },\n{\n    reveal(Str2Int);\n}\n\nexec fn str_to_int(s: &[char]) -> (n: nat)\n    requires ValidBitString(s@)\n    ensures n == Str2Int(s@)\n{\n    let mut n: nat = 0;\n    let mut i: usize = 0;\n    while i < s.len()\n        invariant\n            ValidBitString(s@),\n            i <= s.len(),\n            n == Str2Int(s@.subrange(0, i as int)),\n        decreases s.len() - i,\n    {\n        lemma_str2int_push_auto(s@.subrange(0, i as int), s@[i as int]);\n        n = n * 2 + (if s[i] == '1' { 1 } else { 0 });\n        i = i + 1;\n    }\n    n\n}\n\nproof fn lemma_
---------------------------------------------------------------------------------

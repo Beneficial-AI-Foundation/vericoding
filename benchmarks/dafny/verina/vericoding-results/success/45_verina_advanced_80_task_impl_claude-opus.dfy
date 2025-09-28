@@ -23,7 +23,6 @@ method TwoSum(nums: array<int>, target: int) returns (result: array<int>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 2): Fixed index ordering to ensure result[0] < result[1] */
     result := new int[2];
     var i := 0;
     var found := false;
@@ -31,13 +30,13 @@ method TwoSum(nums: array<int>, target: int) returns (result: array<int>)
     while i < nums.Length && !found
         invariant 0 <= i <= nums.Length
         invariant !found ==> forall i': int, j': int :: 0 <= j' < i' < i ==> nums[i'] + nums[j'] != target
-        invariant found ==> result.Length == 2 && 0 <= result[0] < result[1] < nums.Length && nums[result[0]] + nums[result[1]] == target
+        invariant found ==> result.Length == 2 && 0 <= result[0] < nums.Length && 0 <= result[1] < nums.Length && result[0] < result[1] && nums[result[0]] + nums[result[1]] == target
     {
         var j := 0;
         while j < i && !found
-            invariant 0 <= j <= i < nums.Length
+            invariant 0 <= j <= i
             invariant !found ==> forall j': int :: 0 <= j' < j ==> nums[i] + nums[j'] != target
-            invariant found ==> result.Length == 2 && 0 <= result[0] < result[1] < nums.Length && nums[result[0]] + nums[result[1]] == target
+            invariant found ==> result.Length == 2 && 0 <= result[0] < nums.Length && 0 <= result[1] < nums.Length && result[0] < result[1] && nums[result[0]] + nums[result[1]] == target
         {
             if nums[i] + nums[j] == target {
                 result[0] := j;

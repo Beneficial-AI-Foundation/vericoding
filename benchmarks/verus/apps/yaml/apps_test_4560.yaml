@@ -21,12 +21,12 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(n: int, a: int) -> (result: String)
+  fn solve(n: i8, a: i8) -> (result: String)
       requires 
-          valid_input(n, a)
+          valid_input(n as int, a as int)
       ensures 
           valid_output(result) &&
-          ((result@ == "Yes"@) <==> can_pay_exactly(n, a))
+          ((result@ == "Yes"@) <==> can_pay_exactly(n as int, a as int))
 
 vc-code: |-
   {

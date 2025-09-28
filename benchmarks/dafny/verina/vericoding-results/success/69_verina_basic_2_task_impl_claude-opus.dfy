@@ -21,19 +21,19 @@ method FindSmallest(s: array<nat>) returns (result: Option<nat>)
   if s.Length == 0 {
     result := None;
   } else {
-    var smallest := s[0];
+    var min := s[0];
     var i := 1;
     while i < s.Length
       invariant 1 <= i <= s.Length
-      invariant exists j :: 0 <= j < i && s[j] == smallest
-      invariant forall j :: 0 <= j < i ==> smallest <= s[j]
+      invariant exists j :: 0 <= j < i && s[j] == min
+      invariant forall j :: 0 <= j < i ==> min <= s[j]
     {
-      if s[i] < smallest {
-        smallest := s[i];
+      if s[i] < min {
+        min := s[i];
       }
       i := i + 1;
     }
-    result := Some(smallest);
+    result := Some(min);
   }
 }
 // </vc-code>

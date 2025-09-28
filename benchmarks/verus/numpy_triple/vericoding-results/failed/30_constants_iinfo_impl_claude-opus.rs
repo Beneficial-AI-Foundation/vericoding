@@ -49,16 +49,16 @@ fn iinfo(int_type: IntegerType) -> (result: IntegerInfo)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): Use i64::MAX for UInt64 since it's the maximum value representable in i64 */
+    /* code modified by LLM (iteration 5): Use i64::MAX for UInt64 max value to avoid overflow */
     match int_type {
-        IntegerType::Int8 => IntegerInfo { bits: 8, min: -128, max: 127 },
-        IntegerType::Int16 => IntegerInfo { bits: 16, min: -32768, max: 32767 },
-        IntegerType::Int32 => IntegerInfo { bits: 32, min: -2147483648, max: 2147483647 },
-        IntegerType::Int64 => IntegerInfo { bits: 64, min: -9223372036854775808, max: 9223372036854775807 },
-        IntegerType::UInt8 => IntegerInfo { bits: 8, min: 0, max: 255 },
-        IntegerType::UInt16 => IntegerInfo { bits: 16, min: 0, max: 65535 },
-        IntegerType::UInt32 => IntegerInfo { bits: 32, min: 0, max: 4294967295 },
-        IntegerType::UInt64 => IntegerInfo { bits: 64, min: 0, max: 9223372036854775807 },
+        IntegerType::Int8 => IntegerInfo { bits: 8, min: -128i64, max: 127i64 },
+        IntegerType::Int16 => IntegerInfo { bits: 16, min: -32768i64, max: 32767i64 },
+        IntegerType::Int32 => IntegerInfo { bits: 32, min: -2147483648i64, max: 2147483647i64 },
+        IntegerType::Int64 => IntegerInfo { bits: 64, min: i64::MIN, max: i64::MAX },
+        IntegerType::UInt8 => IntegerInfo { bits: 8, min: 0i64, max: 255i64 },
+        IntegerType::UInt16 => IntegerInfo { bits: 16, min: 0i64, max: 65535i64 },
+        IntegerType::UInt32 => IntegerInfo { bits: 32, min: 0i64, max: 4294967295i64 },
+        IntegerType::UInt64 => IntegerInfo { bits: 64, min: 0i64, max: i64::MAX },
     }
 }
 // </vc-code>

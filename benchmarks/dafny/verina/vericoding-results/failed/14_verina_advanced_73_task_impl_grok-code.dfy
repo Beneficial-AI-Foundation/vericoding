@@ -2,13 +2,11 @@
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 4): fixed syntax error by removing invalid word 'anatomy' */
-function SmallestMissingAux(l: seq<nat>, start: nat): nat
-decreases |l|
+function SmallestMissingHelper(l: seq<nat>, i: nat): nat
+  decreases |l| - i
 {
-  if |l| == 0 then start
-  else if l[0] > start then start
-  else SmallestMissingAux(l[1..], l[0] + 1)
+  /* helper modified by LLM (iteration 4): corrected formatting to single line for if expression */
+  if i == |l| then i else if l[i] == i then SmallestMissingHelper(l, i + 1) else i
 }
 // </vc-helpers>
 
@@ -22,7 +20,7 @@ lemma SmallestMissingSpecSatisfied(l: seq<nat>)
 // </vc-spec>
 // <vc-code>
 {
-/* code modified by LLM (iteration 5): added semicolon and result assignment to fix compilation error */
-  result := SmallestMissingAux(l, 0);
+  /* code modified by LLM (iteration 5): added missing semicolon after function call */
+  SmallestMissingHelper(l, 0);
 }
 // </vc-code>

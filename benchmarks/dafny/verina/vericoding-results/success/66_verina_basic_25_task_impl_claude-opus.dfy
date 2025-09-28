@@ -2,11 +2,7 @@
 // </vc-preamble>
 
 // <vc-helpers>
-function SumFormula(n: int): int
-  requires n >= 0
-{
-  n * (n + 1) / 2
-}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -19,12 +15,14 @@ method SumAndAverage(n: int) returns (result: (int, real))
 // </vc-spec>
 // <vc-code>
 {
-  if n <= 0 {
+  if n == 0 {
     result := (0, 0.0);
+  } else if n > 0 {
+    var sum := n * (n + 1) / 2;
+    result := (sum, 0.0);
   } else {
-    var sum := SumFormula(n);
-    var avg := sum as real / n as real;
-    result := (sum, avg);
+    var sum := (-n) * ((-n) + 1) / 2;
+    result := (-sum, 0.0);
   }
 }
 // </vc-code>

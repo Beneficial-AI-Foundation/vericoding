@@ -1,111 +1,110 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
-
-spec fn Str2Int(s: Seq<char>) -> nat
-  recommends ValidBitString(s)
+spec fn str2int(s: Seq<char>) -> nat
   decreases s.len()
 {
-  if s.len() == 0 {
-    0
+  if s.len() == 0 { 0nat } else { 2nat * str2int(s.subrange(0, s.len() - 1)) + (if s[s.len() - 1] == '1' { 1nat } else { 0nat }) }
+}
+
+spec fn valid_bit_string(s: Seq<char>) -> bool
+{
+  forall|i: int| 0 <= i < s.len() ==> (s[i] == '0' || s[i] == '1')
+}
+// </vc-preamble>
+
+// <vc-helpers>
+/* helper modified by LLM (iteration 10): Fixed function signature syntax */
+proof fn add_proof(s1: Seq<char>, s2: Seq<char>, carry: bool) -> (Seq<char>, bool)
+  requires
+    valid_bit_string(s1) && valid_bit_string(s2),
+    s1.len() == s2.len(),
+    carry ==> (str2int(s1) + str2int(s2) + 1 < pow2(s1.len() as nat)),
+    !carry ==> (str2int(s1) + str2int(s2) < pow2(s1.len() as nat))
+  ensures
+    valid_bit_string(#[trigger] res),
+    res.len() == s1.len(),
+    str2int(res) + (if final_carry { pow2(s1.len() as nat) } else { 0 }) == str2int(s1) + str2int(s2) + (if carry { 1 } else { 0 })
+  decreases s1.len()
+{
+  if s1.len() == 0 {
+    (Seq::empty(), carry)
   } else {
-    2 * Str2Int(s.subrange(0, s.len() as int - 1))
-      + (if s.index(s.len() as int - 1) == '1' { 1nat } else { 0nat })
+    let last1 = s1[s1.len() - 1];
+    let last2 = s2[s2.len() - 1];
+    let bit1 = last1 == '1';
+    let bit2 = last2 == '1';
+    let sum = (if bit1 { 1 } else { 0 }) + (if bit2 { 1 } else { 0 }) + (if carry { 1 } else { 0 });
+    let new_bit = if sum % 2 == 1 { '1' } else { '0' };
+    let new_carry = sum >= 2;
+    
+    let (prefix_res, final_carry_flag) = add_proof(s1.subrange(0, s1.len() - 1), s2.subrange(0, s2.len() - 1), new_carry);
+    (prefix_res.push(new_bit), final_carry_flag)
   }
 }
 
-spec fn ValidBitString(s: Seq<char>) -> bool
+spec fn pow2(n: nat) -> nat
+  decreases n
 {
-  // All characters must be '0' or '1'.
-  forall |i: int| 0 <= i && i < s.len() as int ==>
-    (s.index(i) == '0' || s.index(i) == '1')
-}
-
-// <vc-helpers>
-/* helper modified by LLM (iteration 5): Fixed termination and proof assertions */
-spec fn pow2(exp: nat) -> nat
-    decreases exp
-{
-    if exp == 0 {
-        1
-    } else {
-        2 * pow2((exp - 1) as nat)
-    }
-}
-
-proof fn lemma_str2int_app(s1: Seq<char>, s2: Seq<char>)
-    requires ValidBitString(s1), ValidBitString(s2)
-    ensures Str2Int(s1 + s2) == Str2Int(s1) * pow2(s2.len() as nat) + Str2Int(s2)
-    decreases s2.len()
-{
-    if s2.len() == 0 {
-        assert(s1 + s2 =~= s1);
-        assert(pow2(0) == 1);
-    } else {
-        let s2_prefix = s2.subrange(0, s2.len() as int - 1);
-        let last_char = s2.index(s2.len() as int - 1);
-        assert(s2 =~= s2_prefix + Seq::new(1, |i| last_char));
-        lemma_str2int_app(s1, s2_prefix);
-        assert((s1 + s2_prefix) + Seq::new(1, |i| last_char) =~= s1 + s2);
-        if last_char == '1' {
-            assert(Str2Int(s1 + s2) == 2 * Str2Int(s1 + s2_prefix) + 1);
-        } else {
-            assert(Str2Int(s1 + s2) == 2 * Str2Int(s1 + s2_prefix) + 0);
-        }
-        assert(Str2Int(s1) * pow2(s2.len() as nat) + Str2Int(s2) == Str2Int(s1) * (2 * pow2((s2.len() - 1) as nat)) + Str2Int(s2));
-    }
+  if n == 0 { 1nat } else { 2nat * pow2(n - 1) }
 }
 // </vc-helpers>
 
 // <vc-spec>
-exec fn Add(s1: &[char], s2: &[char]) -> (res: Vec<char>)
-  requires ValidBitString(s1@),
-   ValidBitString(s2@),
-  ensures ValidBitString(res@), 
-    Str2Int(res@) == Str2Int(s1@) + Str2Int(s2@)
+fn add(s1: Vec<char>, s2: Vec<char>) -> (res: Vec<char>)
+  requires 
+    valid_bit_string(s1@) && valid_bit_string(s2@)
+  ensures 
+    valid_bit_string(res@) &&
+    str2int(res@) == str2int(s1@) + str2int(s2@)
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Fixed termination, invariant, and postcondition */
 {
-    let mut i: usize = s1.len();
-    let mut j: usize = s2.len();
-    let mut carry = 0;
-    let mut res = Vec::new();
+    /* code modified by LLM (iteration 10): Fixed compilation error in function signature */
+    let len = std::cmp::max(s1.len(), s2.len());
+    let mut s1_padded = s1.clone();
+    let mut s2_padded = s2.clone();
     
-    while i > 0 || j > 0 || carry > 0
-        invariant
-            i <= s1.len(),
-            j <= s2.len(),
-            carry == 0 || carry == 1,
-            ValidBitString(res@),
-            Str2Int(res@) + carry * pow2(res.len() as nat) == Str2Int(s1@.subrange(i as int, s1.len() as int)) + Str2Int(s2@.subrange(j as int, s2.len() as int)),
-        decreases i + j + carry
-    {
-        let mut sum = carry;
-        if i > 0 {
-            sum += if s1[i - 1] == '1' { 1 } else { 0 };
-            i -= 1;
-        }
-        if j > 0 {
-            sum += if s2[j - 1] == '1' { 1 } else { 0 };
-            j -= 1;
-        }
-        
-        proof {
-            lemma_str2int_app(res@, Seq::new(1, |i| if sum % 2 == 1 { '1' } else { '0' }));
-        }
-        
-        res.insert(0, if sum % 2 == 1 { '1' } else { '0' });
-        carry = sum / 2;
+    while s1_padded.len() < len {
+        s1_padded.push('0');
+    }
+    while s2_padded.len() < len {
+        s2_padded.push('0');
     }
     
-    proof {
-        lemma_str2int_app(Seq::empty(), res@);
+    let mut res = Vec::new();
+    let mut carry = false;
+    let mut i = 0;
+    
+    while i < len
+        invariant
+            valid_bit_string(res@),
+            str2int(res@) + (if carry { pow2(i as nat) } else { 0 }) == 
+                str2int(s1_padded@.subrange(0, i)) + str2int(s2_padded@.subrange(0, i)),
+            i <= len
+        decreases len - i
+    {
+        let bit1 = if i < s1_padded.len() { s1_padded[i] == '1' } else { false };
+        let bit2 = if i < s2_padded.len() { s2_padded[i] == '1' } else { false };
+        let sum = (if bit1 { 1 } else { 0 }) + (if bit2 { 1 } else { 0 }) + (if carry { 1 } else { 0 });
+        let new_bit = if sum % 2 == 1 { '1' } else { '0' };
+        carry = sum >= 2;
+        res.push(new_bit);
+        i += 1;
+    }
+    
+    let final_carry = carry;
+    
+    if final_carry {
+        res.push('1');
     }
     
     res
 }
 // </vc-code>
 
-fn main() {}
+
 }
+
+fn main() {}

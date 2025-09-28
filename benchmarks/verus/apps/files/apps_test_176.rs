@@ -20,12 +20,12 @@ spec fn count_divisibles_in_range(k: int, a: int, b: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(k: int, a: int, b: int) -> (result: int)
+fn solve(k: i8, a: i8, b: i8) -> (result: i8)
   requires
-    valid_input(k, a, b),
+    valid_input(k as int, a as int, b as int),
   ensures
     result >= 0,
-    result == count_divisibles_in_range(k, a, b),
+    result as int == count_divisibles_in_range(k as int, a as int, b as int),
 // </vc-spec>
 // <vc-code>
 {

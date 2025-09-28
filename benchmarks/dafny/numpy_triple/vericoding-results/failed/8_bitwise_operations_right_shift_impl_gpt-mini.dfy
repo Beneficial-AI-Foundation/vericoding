@@ -1,0 +1,69 @@
+// <vc-preamble>
+// Helper function to compute powers of 2
+function Power2(exp: nat): int
+  ensures Power2(exp) > 0
+{
+  if exp == 0 then 1 else 2 * Power2(exp - 1)
+}
+
+// Helper function for arithmetic right shift of negative numbers
+function ArithmeticRightShift(value: int, shift: nat): int
+  requires value < 0
+{
+  // For negative numbers, we use floor division to maintain sign extension
+  value / Power2(shift)
+}
+// </vc-preamble>
+
+// <vc-helpers>
+/* helper modified by LLM (iteration 5): absolute value helper */
+function Abs(x: int): int {
+  if x >= 0 then x else -x
+}
+
+/* helper modified by LLM (iteration 5): arithmetic right shift equals division for negatives */
+lemma ArithmeticRightShiftEqualsDiv(x: int, s: nat)
+  requires x < 0
+  ensures ArithmeticRightShift(x, s) == x / Power2(s)
+{
+  // Follows directly from the definition of ArithmeticRightShift in the preamble
+  assert ArithmeticRightShift(x, s) == x / Power2(s);
+}
+
+// </vc-helpers>
+
+// <vc-spec>
+method RightShift(x1: seq<int>, x2: seq<int>) returns (result: seq<int>)
+  // Input sequences must have the same length
+  requires |x1| == |x2|
+  // All shift amounts must be non-negative
+  requires forall i :: 0 <= i < |x2| ==> x2[i] >= 0
+  // Result has same length as inputs
+  ensures |result| == |x1|
+  // For non-negative values, right shift equals division by 2^shift
+  ensures forall i :: 0 <= i < |result| && x1[i] >= 0 ==>
+    result[i] == x1[i] / Power2(x2[i])
+  // For negative values, use arithmetic right shift (sign extension)
+  ensures forall i :: 0 <= i < |result| && x1[i] < 0 ==>
+    result[i] == ArithmeticRightShift(x1[i], x2[i])
+  // Identity property: shifting by 0 returns original value
+  ensures forall i :: 0 <= i < |result| && x2[i] == 0 ==>
+    result[i] == x1[i]
+  // Sign preservation properties
+  ensures forall i :: 0 <= i < |result| ==>
+    (x1[i] > 0 ==> result[i] >= 0) &&
+    (x1[i] < 0 ==> result[i] <= 0) &&
+    (x1[i] == 0 ==> result[i] == 0)
+  // Bounded result: absolute value decreases or stays same
+  ensures forall i :: 0 <= i < |result| ==>
+    if result[i] >= 0 then result[i] <= if x1[i] >= 0 then x1[i] else -x1[i]
+    else -result[i] <= if x1[i] >= 0 then x1[i] else -x1[i]
+// </vc-spec>
+// <vc-code>
+/* code modified by LLM (iteration 5): build result by sequence comprehension performing element-wise arithmetic right shift */
+{
+  result := seq i | 0 <= i < |x1| ::
+    if x1[i] >= 0 then x1[i] / Power2(x2[i]) else ArithmeticRightShift(x1[i], x2[i]);
+}
+
+// </vc-code>

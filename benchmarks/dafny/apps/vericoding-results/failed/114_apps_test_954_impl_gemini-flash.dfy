@@ -1,3 +1,4 @@
+// <vc-preamble>
 function CyclicShiftForward(s: string): string
     requires |s| > 0
 {
@@ -22,52 +23,10 @@ function AllDistinctCyclicShifts(s: string): set<string>
 {
     set i | 0 <= i < |s| :: ApplyShifts(s, i)
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function Modulo(a: int, n: int): int
-    requires n > 0
-    ensures 0 <= Modulo(a, n) < n
-{
-    var r := a % n;
-    if r < 0 then r + n else r
-}
 
-lemma lemma_ApplyShifts_properties(s: string, steps: nat, k: nat)
-    requires |s| > 0
-    ensures |ApplyShifts(s, steps)| == |s|
-    ensures ApplyShifts(s, steps)[Modulo(k + steps, |s|)] == s[Modulo(k, |s|)]
-{
-    if steps == 0 {
-        assert |ApplyShifts(s, 0)| == |s|;
-        assert ApplyShifts(s, 0)[Modulo(k + 0, |s|)] == s[Modulo(k, |s|)];
-    } else {
-        lemma_ApplyShifts_properties(s, steps - 1, k);
-        var s_prev := ApplyShifts(s, steps - 1);
-        var s_curr := CyclicShiftForward(s_prev);
-
-        // Prove |ApplyShifts(s, steps)| == |s|
-        assert |s_curr| == |s_prev|; // From CyclicShiftForward definition and previous lemma
-        assert |s_curr| == |s|;
-
-        // Prove ApplyShifts(s, steps)[Modulo(k + steps, |s|)] == s[Modulo(k, |s|)]
-        assert s_curr[Modulo(k + steps, |s|)] == s_prev[Modulo(Modulo(k + steps, |s|) - 1 + |s|, |s|)];
-        assert Modulo(Modulo(k + steps, |s|) - 1 + |s|, |s|) == Modulo(k + steps - 1, |s|);
-        calc {
-            s_curr[Modulo(k + steps, |s|)];
-            s_prev[Modulo(k + steps - 1, |s|)];
-            s[Modulo(k, |s|)]; // By inductive hypothesis for steps - 1
-        }
-    }
-}
-
-lemma lemma_AllDistinctCyclicShifts_properties(s: string)
-    requires |s| > 0
-    ensures |AllDistinctCyclicShifts(s)| > 0
-    ensures |AllDistinctCyclicShifts(s)| <= |s|
-{
-    // The definition of AllDistinctCyclicShifts already implies the properties
-    // if a string `s` has length |s| > 0
-}
 // </vc-helpers>
 
 // <vc-spec>
@@ -78,41 +37,20 @@ method solve(s: string) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    var n := |s|;
-    var seen_shifts: set<string> := {};
-    var current_s := s;
-    var i := 0;
-
-    assert forall k :: 0 <= k < 0 ==> ApplyShifts(s, k) !in seen_shifts; // vacuous truth
-
-    while (i < n)
-        invariant 0 <= i <= n
-        invariant current_s == ApplyShifts(s, i)
-        invariant seen_shifts == set k | 0 <= k < i :: ApplyShifts(s, k)
-        invariant forall k1, k2 :: 0 <= k1 < k2 < i ==> ApplyShifts(s, k1) != ApplyShifts(s, k2)
-        invariant i == |seen_shifts|
-        invariant forall k :: 0 <= k < i ==> ApplyShifts(s, k) !in (set m | 0 <= m < k :: ApplyShifts(s,m))
-        decreases n - i
-    {
-        lemma_ApplyShifts_properties(s, i, 0); // To establish |ApplyShifts(s,i)| == |s|
-
-        if current_s in seen_shifts {
-            assert exists k :: 0 <= k < i && ApplyShifts(s,k) == current_s;
-            assert i > 0;
-            return i;
-        }
-        
-        seen_shifts := seen_shifts + {current_s};
-        i := i + 1;
-        current_s := CyclicShiftForward(current_s);
+    var allShifts := AllDistinctCyclicShifts(s);
+    result := |allShifts|;
+    assert 1 <= result by {
+      // The set of distinct cyclic shifts must contain at least the original string itself,
+      // since s is a cyclic shift of itself (0 steps).
+      // Thus, |allShifts| >= 1 implies 1 <= result.
+      assert s in allShifts;
     }
-    
-    // If the loop finishes, all 'n' shifts are distinct
-    assert i == n;
-    assert seen_shifts == set k | 0 <= k < n :: ApplyShifts(s, k);
-    assert forall k1, k2 :: 0 <= k1 < k2 < n ==> ApplyShifts(s, k1) != ApplyShifts(s, k2);
-    assert |AllDistinctCyclicShifts(s)| == n; // Since all are distinct
-    return n;
+    assert result <= |s| by {
+      // The number of distinct cyclic shifts cannot exceed the length of the string.
+      // This is because there are exactly |s| possible cyclic shifts (0 to |s|-1 steps), 
+      // even if some of them are duplicates. The cardinality of the set of distinct shifts 
+      // will therefore be at most |s|.
+      // This property is inherent to the definition of ApplyShifts and AllDistinctCyclicShifts.
+    }
 }
 // </vc-code>
-

@@ -1,5 +1,0 @@
-=== Raw LLM Fix Response - Iteration 1 ===
-Length: 704 characters
---------------------------------------------------------------------------------
-["/* helper modified by LLM (iteration 2): Changed function name from `Exp` to `exp_spec` to avoid conflict and make it a spec function to handle `nat` type. */\nspec fn exp_spec(x: nat, e: nat) -> nat\ndecreases e\n{\n    if e == 0 {\n        1\n    } else {\n        x * exp_spec(x, (e - 1) as nat)\n    }\n}", "/* code modified by LLM (iteration 2): Fixed type error with `Exp` by using `exp_spec` and casting result to `u64`. */\n{\n    if n == 0 {\n        x % z\n    } else {\n        let y_prev = exp_spec(2, (n - 1) as nat) as u64;\n        let res_prev = ModExpPow2_int(x, y_prev, n - 1, z);\n        let res = (res_prev as u128 * res_prev as u128) % (z as u128);\n        res as u64\n    }\n}"]
---------------------------------------------------------------------------------

@@ -2,10 +2,7 @@
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): fixed exists quantifier syntax */
-function Contains(seq: seq<nat>, elem: nat): bool {
-    (exists i :: 0 <= i < |seq| && seq[i] == elem)
-}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -21,21 +18,18 @@ method RemoveElement(lst: seq<nat>, target: nat) returns (result: seq<nat>)
             result[k1] == lst[i] && result[k2] == lst[j])
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): fixed implementation to properly remove target elements */
 {
-    var newSeq := [];
-    var i := 0;
-    while i < |lst|
-        invariant 0 <= i <= |lst|
-        invariant forall j :: 0 <= j < |newSeq| ==> newSeq[j] != target
-        invariant forall j :: 0 <= j < |newSeq| ==> exists k :: 0 <= k < |lst| && lst[k] == newSeq[j] && lst[k] != target
-        invariant forall p, q :: 0 <= p < q < |newSeq| ==> (exists p_idx, q_idx :: 0 <= p_idx < q_idx < |lst| && lst[p_idx] == newSeq[p] && lst[q_idx] == newSeq[q])
-    {
-        if lst[i] != target {
-            newSeq := newSeq + [lst[i]];
-        }
-        i := i + 1;
+  /* code modified by LLM (iteration 5): fixed indentation and invariant issues */
+  var newSeq := [];
+  for i := 0 to |lst|
+      invariant forall k :: 0 <= k < |newSeq| ==> newSeq[k] != target
+      invariant forall k :: 0 <= k < |newSeq| ==> exists j :: 0 <= j < i && lst[j] == newSeq[k] && lst[j] != target
+      invariant forall a, b :: 0 <= a < b < i && lst[a] != target && lst[b] != target ==> (exists k1, k2 :: 0 <= k1 < k2 < |newSeq| && newSeq[k1] == lst[a] && newSeq[k2] == lst[b])
+  {
+    if lst[i] != target {
+      newSeq := newSeq + [lst[i]];
     }
-    result := newSeq;
+  }
+  result := newSeq;
 }
 // </vc-code>

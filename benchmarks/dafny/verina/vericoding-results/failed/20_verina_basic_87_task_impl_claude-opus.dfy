@@ -32,25 +32,7 @@ method Swap(a: array<int>, i: int, j: int)
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): Added helper to find minimum index in range */
-method FindMinIndexHelper(arr: array<int>, start: int, finish: int) returns (minIdx: int)
-  requires 0 <= start < finish <= arr.Length
-  ensures start <= minIdx < finish
-  ensures forall k :: start <= k < finish ==> arr[minIdx] <= arr[k]
-{
-  minIdx := start;
-  var i := start + 1;
-  while i < finish
-    invariant start < i <= finish
-    invariant start <= minIdx < i
-    invariant forall k :: start <= k < i ==> arr[minIdx] <= arr[k]
-  {
-    if arr[i] < arr[minIdx] {
-      minIdx := i;
-    }
-    i := i + 1;
-  }
-}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -61,35 +43,39 @@ method SelectionSort(a: array<int>) returns (result: array<int>)
         multiset(result[..]) == multiset(a[..])
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Fixed initial multiset invariant */
 {
   result := new int[a.Length];
   var i := 0;
   while i < a.Length
-    invariant 0 <= i <= a.Length
-    invariant result.Length == a.Length
-    invariant forall k :: 0 <= k < i ==> result[k] == a[k]
   {
     result[i] := a[i];
     i := i + 1;
   }
   
-  if result.Length == 0 {
-    return;
-  }
-  
   i := 0;
   while i < result.Length - 1
-    invariant 0 <= i < result.Length
-    invariant forall j, k :: 0 <= j <= k < i ==> result[j] <= result[k]
-    invariant forall j :: 0 <= j < i ==> forall k :: i <= k < result.Length ==> result[j] <= result[k]
+    invariant 0 <= i <= result.Length
+    invariant forall k, l :: 0 <= k <= l < i ==> result[k] <= result[l]
+    invariant forall k, l :: 0 <= k < i <= l < result.Length ==> result[k] <= result[l]
     invariant multiset(result[..]) == multiset(a[..])
   {
-    var minIdx := FindMinIndexHelper(result, i, result.Length);
-    if minIdx != i {
+    var minIndex := i;
+    var j := i + 1;
+    while j < result.Length
+      invariant i < j <= result.Length
+      invariant i <= minIndex < j
+      invariant forall k :: i <= k < j ==> result[minIndex] <= result[k]
+    {
+      if result[j] < result[minIndex] {
+        minIndex := j;
+      }
+      j := j + 1;
+    }
+    
+    if minIndex != i {
       var temp := result[i];
-      result[i] := result[minIdx];
-      result[minIdx] := temp;
+      result[i] := result[minIndex];
+      result[minIndex] := temp;
     }
     i := i + 1;
   }

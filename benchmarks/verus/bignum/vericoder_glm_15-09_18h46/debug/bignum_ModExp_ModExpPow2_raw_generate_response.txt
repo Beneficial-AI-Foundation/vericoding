@@ -1,6 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 886 characters
---------------------------------------------------------------------------------
-
-["exec fn binary_str_to_u128(s: &[char]) -> (res: u128)\n{\n    let mut res = 0u128;\n    for i in 0..s.len() {\n        res = res * 2;\n        if s[i] == '1' {\n            res = res + 1;\n        }\n    }\n    res\n}\n\nexec fn u128_to_binary_str(n: u128) -> (res: Vec<char>)\n{\n    if n == 0 {\n        return vec!['0'];\n    }\n    let mut v = Vec::new();\n    let mut num = n;\n    while num > 0 {\n        let bit = if num % 2 == 1 { '1' } else { '0' };\n        v.push(bit);\n        num = num / 2;\n    }\n    v.reverse();\n    v\n}", "{\n    let x = binary_str_to_u128(sx);\n    let m = binary_str_to_u128(sz);\n    let base_reduced = x % m;\n    let mut result: u128 = 1;\n    for i in 0..sy.len() {\n        result = (result * result) % m;\n        if sy[i] == '1' {\n            result = (result * base_reduced) % m;\n        }\n    }\n    u128_to_binary_str(result)\n}"]
---------------------------------------------------------------------------------

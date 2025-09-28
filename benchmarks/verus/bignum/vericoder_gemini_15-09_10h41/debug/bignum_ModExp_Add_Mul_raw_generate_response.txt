@@ -1,7 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 710 characters
---------------------------------------------------------------------------------
-```json
-[
-    "{\n    let mut i = s1.len();\n    let mut j = s2.len();\n    let mut carry: u8 = 0;\n    let mut res_rev = Vec::new();\n    let one = vec!['1'];\n\n    if s1.len() == 0 {\n        return s2.to_vec();\n    }\n    if s2.len() == 0 {\n        return s1.to_vec();\n    }\n\n    let s1_prefix = s1.subslice(0, s1.len() - 1);\n    let c1 = s1[s1.len() - 1];\n    let b1 = if c1 == '1' { 1 } else { 0 };\n    \n    // Case where s2 is empty is handled, so s2.len() > 0\n    let s2_prefix = s2.subslice(0, s2.len() - 1);\n    let c2 = s2[s2.len() - 1];\n    let b2 = if c2 == '1' { 1 } else { 0 };\n\n    let mut prefix_sum;\n    if s1.len() > s2.len() {\n        prefix_sum = Add(s1_prefix, s2);\n    }
---------------------------------------------------------------------------------

@@ -1,8 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 1343 characters
---------------------------------------------------------------------------------
-[
-"spec fn Int2Bits(n: nat) -> Seq<char>\n    decreases n\n{\n    if n == 0 { Seq::<char>::empty() } else { Int2Bits(n / 2).push(if n % 2 == 1 { '1' } else { '0' }) }\n}\n\nproof fn lemma_valid_push(s: Seq<char>, c: char)\n    requires\n        ValidBitString(s),\n        c == '0' || c == '1',\n    ensures\n        ValidBitString(s.push(c)),\n{\n}\n\nproof fn lemma_Int2Bits_valid(n: nat)\n    ensures\n        ValidBitString(Int2Bits(n)),\n    decreases n\n{\n    if n == 0 {\n    } else {\n        lemma_Int2Bits_valid(n / 2);\n        lemma_valid_push(Int2Bits(n / 2), if n % 2 == 1 { '1' } else { '0' });\n    }\n}\n\nproof fn lemma_mod2_props(n: nat)\n    ensures\n        n == 2 * (n / 2) + (n % 2),\n        n % 2 == 0 || n % 2 == 1,\n{\n}\n\nproof fn lemma_Str2Int_Int2Bits(n: nat)\n    ensures\n        Str2Int(Int2Bits(n)) == n,\n    decreases n\n{\n    if n == 0 {\n    } else {\n        lemma_Int2Bits_valid(n / 2);\n        lemma_Str2Int_Int2Bits(n / 2);\n        lemma_mod2_props(n);\n    }\n}",
-"{\n    let bs = Int2Bits(Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@));\n    proof {\n        lemma_Int2Bits_valid(Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@));\n        lemma_Str2Int_Int2Bits(Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@));\n    }\n    let res_vec = Vec::<char>::from_seq(bs);\n    res_vec\n}"
-]
---------------------------------------------------------------------------------

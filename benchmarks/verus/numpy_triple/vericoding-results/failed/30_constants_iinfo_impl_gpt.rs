@@ -5,12 +5,12 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): simple constructor with ensures for all fields */
-fn mk_info(bits: u32, min: i64, max: i64) -> (result: IntegerInfo)
+/* helper modified by LLM (iteration 5): added postcondition capturing field equality to aid verification */
+fn mk_info(bits: u32, min: i64, max: i64) -> IntegerInfo
     ensures
         result.bits == bits,
         result.min == min,
-        result.max == max
+        result.max == max,
 {
     IntegerInfo { bits, min, max }
 }
@@ -57,34 +57,16 @@ fn iinfo(int_type: IntegerType) -> (result: IntegerInfo)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): implemented all IntegerType cases using mk_info with precise constants */
+    /* code modified by LLM (iteration 5): set exact constants for all integer types, including UInt64 max */
     match int_type {
-        IntegerType::Int8 => {
-            mk_info(8u32, -128i64, 127i64)
-        }
-        IntegerType::Int16 => {
-            mk_info(16u32, -32768i64, 32767i64)
-        }
-        IntegerType::Int32 => {
-            let min32: i64 = -2147483647i64 - 1i64;
-            mk_info(32u32, min32, 2147483647i64)
-        }
-        IntegerType::Int64 => {
-            let min64: i64 = -9223372036854775807i64 - 1i64;
-            mk_info(64u32, min64, 9223372036854775807i64)
-        }
-        IntegerType::UInt8 => {
-            mk_info(8u32, 0i64, 255i64)
-        }
-        IntegerType::UInt16 => {
-            mk_info(16u32, 0i64, 65535i64)
-        }
-        IntegerType::UInt32 => {
-            mk_info(32u32, 0i64, 4294967295i64)
-        }
-        IntegerType::UInt64 => {
-            mk_info(64u32, 0i64, 18446744073709551615)
-        }
+        IntegerType::Int8 => mk_info(8, -128, 127),
+        IntegerType::Int16 => mk_info(16, -32768, 32767),
+        IntegerType::Int32 => mk_info(32, -2147483647 - 1, 2147483647),
+        IntegerType::Int64 => mk_info(64, -9223372036854775807 - 1, 9223372036854775807),
+        IntegerType::UInt8 => mk_info(8, 0, 255),
+        IntegerType::UInt16 => mk_info(16, 0, 65535),
+        IntegerType::UInt32 => mk_info(32, 0, 4294967295),
+        IntegerType::UInt64 => mk_info(64, 0, 18446744073709551615),
     }
 }
 // </vc-code>

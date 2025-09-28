@@ -20,6 +20,7 @@ method IsGreater(n: int, a: array<int>) returns (result: bool)
   {
     if n <= a[i] {
       result := false;
+      break;
     }
     i := i + 1;
   }

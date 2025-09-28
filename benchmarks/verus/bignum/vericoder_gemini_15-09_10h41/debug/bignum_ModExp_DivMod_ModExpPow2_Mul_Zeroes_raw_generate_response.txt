@@ -1,6 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 740 characters
---------------------------------------------------------------------------------
-```json
-["proof fn lemma_mod_exp(x: nat, y: nat, z: nat)\n    requires z > 1\n    ensures (Exp_int(x, y) % z) == (Exp_int(x % z, y) % z)\n    decreases y\n{\n    if y > 0 {\n        lemma_mod_exp(x, (y-1) as nat, z);\n    }\n}\n\nproof fn lemma_mod_mul(a: nat, b: nat, m: nat)\n    requires m > 0\n    ensures (a * b) % m == ((a % m) * (b % m)) % m\n{\n    vstd::arithmetic::internals::mul_mod_noop(a, b, m);\n    assert((a * b) % m == (a % m * b % m) % m);\n    vstd::arithmetic::internals::mul_mod_noop(b, a%m, m);\n    assert((b * (a % m)) % m == ((b % m) * (a % m)) % m) by {\n        assert((a % m * b) % m == ((a % m) * (b % m)) % m) by {\n            vstd::arithmetic::internals::swap_mul_mod_noop(a%m, b, m);\n        };\n    };\n}\
---------------------------------------------------------------------------------

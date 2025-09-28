@@ -1,0 +1,162 @@
+filename,success_status,total_llms,successful_llms
+humaneval_000,FAILED,0,
+humaneval_001_separate-paren-groups,FAILED,0,
+humaneval_002,SUCCESS,4,"gemini, glm, gpt, gpt-mini"
+humaneval_003,FAILED,0,
+humaneval_005,SUCCESS,1,gemini
+humaneval_006,SUCCESS,1,gpt
+humaneval_007,FAILED,0,
+humaneval_008,FAILED,0,
+humaneval_009,FAILED,0,
+humaneval_010_is_palindrome__make_palindrome,FAILED,0,
+humaneval_011,SUCCESS,2,"gemini, gpt"
+humaneval_012,SUCCESS,1,gpt
+humaneval_013,FAILED,0,
+humaneval_014,SUCCESS,3,"claude-opus, claude-sonnet, gpt"
+humaneval_016,FAILED,0,
+humaneval_018_how_many_times,FAILED,0,
+humaneval_020,FAILED,0,
+humaneval_021_rescale_to_unit,FAILED,0,
+humaneval_022,FAILED,0,
+humaneval_023,FAILED,0,
+humaneval_024_largest-divisor,SUCCESS,3,"claude-opus, gemini, glm"
+humaneval_025,FAILED,0,
+humaneval_026_remove_duplicates__count,FAILED,0,
+humaneval_026_remove_duplicates__remove_duplicates,FAILED,0,
+humaneval_027,SUCCESS,7,"claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini"
+humaneval_028,FAILED,0,
+humaneval_029_filter_by_prefix,SUCCESS,2,"gpt, gpt-mini"
+humaneval_030,FAILED,0,
+humaneval_031,SUCCESS,3,"claude-opus, gemini, grok-code"
+humaneval_033_sort_third__SortSeqPred,FAILED,0,
+humaneval_033_sort_third__sort_third,FAILED,0,
+humaneval_034_unique__SortSeq,FAILED,0,
+humaneval_034_unique__unique,FAILED,0,
+humaneval_034_unique__uniqueSorted,FAILED,0,
+humaneval_035,FAILED,0,
+humaneval_036_fizz_buzz__count7,SUCCESS,2,"gemini, gpt-mini"
+humaneval_036_fizz_buzz__fizz_buzz,FAILED,0,
+humaneval_037_sort_even__SortSeqPred,FAILED,0,
+humaneval_037_sort_even__sorted_even,FAILED,0,
+humaneval_038_encode_cyclic__decode_cyclic,SUCCESS,1,gemini
+humaneval_038_encode_cyclic__encode_cyclic,SUCCESS,1,gemini
+humaneval_040,FAILED,0,
+humaneval_041,FAILED,0,
+humaneval_042,FAILED,0,
+humaneval_043,FAILED,0,
+humaneval_044,FAILED,0,
+humaneval_045,FAILED,0,
+humaneval_046,FAILED,0,
+humaneval_047,FAILED,0,
+humaneval_048,SUCCESS,1,gemini
+humaneval_049,FAILED,0,
+humaneval_050_encode_shift__decode_shift,SUCCESS,1,claude-opus
+humaneval_050_encode_shift__encode_shift,SUCCESS,1,claude-opus
+humaneval_051,FAILED,0,
+humaneval_052,SUCCESS,1,claude-sonnet
+humaneval_053,FAILED,0,
+humaneval_054,SUCCESS,1,claude-opus
+humaneval_055,FAILED,0,
+humaneval_056,FAILED,0,
+humaneval_057,FAILED,0,
+humaneval_058_common,FAILED,0,
+humaneval_059,FAILED,0,
+humaneval_060,FAILED,0,
+humaneval_062,FAILED,0,
+humaneval_063,FAILED,0,
+humaneval_064_vowels_count,FAILED,0,
+humaneval_065,FAILED,0,
+humaneval_066,FAILED,0,
+humaneval_067,FAILED,0,
+humaneval_068,FAILED,0,
+humaneval_069,FAILED,0,
+humaneval_070_strange_sort_list__strange_sort_list_helper,SUCCESS,1,gpt
+humaneval_072,FAILED,0,
+humaneval_073,SUCCESS,1,gemini
+humaneval_074,FAILED,0,
+humaneval_075,FAILED,0,
+humaneval_076_is_simple_power,FAILED,0,
+humaneval_077_iscube__cube_root,SUCCESS,1,gpt
+humaneval_077_iscube__is_cube,FAILED,0,
+humaneval_078,FAILED,0,
+humaneval_079_decimal_to_binary,FAILED,0,
+humaneval_080,SUCCESS,2,"claude-sonnet, grok-code"
+humaneval_081,FAILED,0,
+humaneval_082,FAILED,0,
+humaneval_083,FAILED,0,
+humaneval_084_solve,SUCCESS,1,claude-opus
+humaneval_085_add,FAILED,0,
+humaneval_087_get_row__SortSeq,FAILED,0,
+humaneval_087_get_row__get_row,FAILED,0,
+humaneval_088,FAILED,0,
+humaneval_089,SUCCESS,1,claude-opus
+humaneval_090_next_smallest,SUCCESS,5,"claude-sonnet, deepseek, gemini-flash, glm, gpt"
+humaneval_092,SUCCESS,6,"claude-opus, gemini, glm, gpt, gpt-mini, grok-code"
+humaneval_093,SUCCESS,3,"claude-opus, glm, gpt"
+humaneval_095_check_dict_case,FAILED,0,
+humaneval_096,FAILED,0,
+humaneval_097,FAILED,0,
+humaneval_098_count_upper,FAILED,0,
+humaneval_100,FAILED,0,
+humaneval_102,SUCCESS,2,"gpt, gpt-mini"
+humaneval_103,FAILED,0,
+humaneval_104_unique_digits,FAILED,0,
+humaneval_105_by_length__SortReverseAndName,SUCCESS,3,"gemini, gpt, gpt-mini"
+humaneval_105_by_length__SortSeq,FAILED,0,
+humaneval_105_by_length__reverse,SUCCESS,3,"claude-opus, claude-sonnet, gpt"
+humaneval_106,FAILED,0,
+humaneval_107,FAILED,0,
+humaneval_108,SUCCESS,2,"gpt, gpt-mini"
+humaneval_109,FAILED,0,
+humaneval_110,FAILED,0,
+humaneval_111_histogram,FAILED,0,
+humaneval_112,FAILED,0,
+humaneval_113,FAILED,0,
+humaneval_114_minSubArraySum,FAILED,0,
+humaneval_115,FAILED,0,
+humaneval_116_sort_array,FAILED,0,
+humaneval_118_get_closest_vowel,SUCCESS,2,"gpt, gpt-mini"
+humaneval_119,FAILED,0,
+humaneval_120_maximum__SortSeq,FAILED,0,
+humaneval_120_maximum__maximum,SUCCESS,1,gpt
+humaneval_121,FAILED,0,
+humaneval_122,FAILED,0,
+humaneval_123_get_odd_collatz__get_odd_collatz,SUCCESS,1,gpt
+humaneval_123_get_odd_collatz__get_odd_collatz_unsorted,SUCCESS,1,gpt
+humaneval_123_get_odd_collatz__next_odd_collatz_iter,FAILED,0,
+humaneval_124,FAILED,0,
+humaneval_125,FAILED,0,
+humaneval_126,FAILED,0,
+humaneval_127_intersection,FAILED,0,
+humaneval_128,FAILED,0,
+humaneval_130_tri,FAILED,0,
+humaneval_132_is_nested,SUCCESS,1,claude-opus
+humaneval_133_sum_squares,FAILED,0,
+humaneval_134,SUCCESS,1,claude-opus
+humaneval_135,FAILED,0,
+humaneval_136_largest_smallest_integers,SUCCESS,5,"claude-opus, claude-sonnet, gemini, glm, gpt"
+humaneval_137,FAILED,0,
+humaneval_138,SUCCESS,5,"claude-opus, claude-sonnet, glm, gpt, grok-code"
+humaneval_139,FAILED,0,
+humaneval_140,FAILED,0,
+humaneval_142,FAILED,0,
+humaneval_144,FAILED,0,
+humaneval_145_order_by_points,FAILED,0,
+humaneval_146,FAILED,0,
+humaneval_147,FAILED,0,
+humaneval_148_bf,FAILED,0,
+humaneval_149_sorted_list_sum__sort_lengths,FAILED,0,
+humaneval_149_sorted_list_sum__sort_strings,SUCCESS,1,gpt
+humaneval_149_sorted_list_sum__sorted_list_sum,FAILED,0,
+humaneval_150_x_or_y,FAILED,0,
+humaneval_151,FAILED,0,
+humaneval_152,FAILED,0,
+humaneval_153,FAILED,0,
+humaneval_154_cycpattern_check,SUCCESS,1,gpt
+humaneval_155,FAILED,0,
+humaneval_157,FAILED,0,
+humaneval_158_find_max,FAILED,0,
+humaneval_159,FAILED,0,
+humaneval_161,FAILED,0,
+humaneval_162,FAILED,0,
+humaneval_163_generate_integers__generate_integers,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"

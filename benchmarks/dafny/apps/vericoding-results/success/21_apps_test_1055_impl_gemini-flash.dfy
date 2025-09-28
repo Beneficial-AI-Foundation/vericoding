@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: seq<int>)
 {
     |a| > 0
@@ -24,17 +25,13 @@ function thanosSort(x: seq<int>): int
         var rightResult := thanosSort(secondHalf);
         if leftResult > rightResult then leftResult else rightResult
 }
+// </vc-preamble>
 
 // <vc-helpers>
-// It seems the original structure mistakenly duplicated thanosSort, ValidInput, and isSorted in helpers.
-// The correct approach is to define them once, typically outside helpers,
-// and reference them as needed. Since they were already provided in the preamble,
-// their re-definition here caused "Duplicate member name" errors.
-// Removing the redundant definitions from helpers resolves these errors.
-
-// No helper functions are needed for this specific verification task,
-// as the `thanosSort`, `ValidInput`, and `isSorted` functions/predicates
-// are already defined in the pre-amble.
+/* helper modified by LLM (iteration 3): no change, was correct */
+function Max(a: int, b: int): int {
+    if a > b then a else b
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -44,8 +41,21 @@ method solve(a: seq<int>) returns (result: int)
     ensures 1 <= result <= |a|
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 3): corrected missing brace in the `if` statement for verification. */
 {
-    result := thanosSort(a);
+    var len := |a|;
+    if isSorted(a) {
+        result := len;
+    } else {
+        var firstHalf := a[..len/2];
+        var secondHalf := a[len/2..];
+        var leftResult: int;
+        var rightResult: int;
+
+        leftResult := thanosSort(firstHalf);
+        rightResult := thanosSort(secondHalf);
+     
+        result := Max(leftResult, rightResult);
+    }
 }
 // </vc-code>
-

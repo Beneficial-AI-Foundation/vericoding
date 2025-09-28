@@ -22,18 +22,32 @@ fn full<T>(n: usize, fill_value: T) -> (result: Vec<T>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): Removed Copy trait import, use clone() for copying values */
-    let mut result = Vec::new();
+    /* code modified by LLM (iteration 3): Using Vec::new() with manual capacity and push pattern that works in Verus */
+    let mut result: Vec<T> = Vec::new();
     let mut i: usize = 0;
+    
+    if n == 0 {
+        return result;
+    }
+    
+    // Push first element
+    result.push(fill_value);
+    i = i + 1;
+    
+    // For remaining elements, we need to work around the move issue
+    // In Verus, we can use the fact that the ensures clause guarantees all elements are equal
     while i < n
         invariant
-            i <= n,
             result.len() == i,
-            forall|j: int| 0 <= j < i ==> result[j] == fill_value,
+            i >= 1,
+            forall|j: int| 0 <= j < i ==> result[j] == result[0],
     {
-        result.push(fill_value);
+        // In Verus, this pattern should work as we're referring to an existing element
+        let val = result[0];
+        result.push(val);
         i = i + 1;
     }
+    
     result
 }
 // </vc-code>

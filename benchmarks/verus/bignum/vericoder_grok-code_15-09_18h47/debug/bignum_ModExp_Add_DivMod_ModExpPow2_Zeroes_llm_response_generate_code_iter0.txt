@@ -1,9 +1,0 @@
-=== LLM Response - generate_code - Iteration 0 ===
-File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes.rs
-Prompt Hash: 86c7c537
-JSON Parsed Successfully: True
-Timestamp: 1757957204.9646661
-Content Length: 1120 chars
---------------------------------------------------------------------------------
-["spec fn power2(exp: nat) -> nat\ndecreases exp\n{\n  if exp == 0 { 1 } else { 2 * power2(sub(exp, 1)) }\n}\n\nexec fn str_to_nat(s: &[char]) -> nat\n  requires ValidBitString(s@)\n  ensures str_to_nat(s) == Str2Int(s@)\n{\n  let mut res = 0;\n  let mut pow = 1;\n  let mut i = s.len();\n  while i > 0\n      invariant 0 <= i <= s.len(),\n      invariant pow == power2(s.len() - i),\n      invariant res == Str2Int(s@.subrange(i as int, s.len() as int)),\n      decreases i\n  {\n    i = i - 1;\n    if s[i] == '1' {\n      res = res + pow;\n    }\n    pow = pow * 2;\n  }\n  return res;\n}\n\nexec fn nat_to_binary(n: nat) -> Vec<char>\n  ensures ValidBitString(nat_to_binary(n)@),\n  ensures Str2Int(nat_to_binary(n)@) == n\n{\n  if n == 0 {\n    let mut res = Vec::<char>::new();\n    res.push('0');\n    return res;\n  } else {\n    let mut res = nat_to_binary(n / 2);\n    if n % 2 == 0 {\n      res.push('0');\n    } else {\n      res.push('1');\n    }\n    return res;\n  }\n}", "{\n    let a_nat = str_to_nat(a);\n    let b_nat = str_to_nat(b);\n    let sum = a_nat + b_nat;\n    return nat_to_binary(sum);\n}"]
---------------------------------------------------------------------------------

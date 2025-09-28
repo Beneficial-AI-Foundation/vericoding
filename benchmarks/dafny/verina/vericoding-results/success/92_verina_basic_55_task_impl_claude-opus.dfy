@@ -12,6 +12,8 @@ method compare(a: int, b: int) returns (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-    result := (a == b);
+    // impl-start
+    result := a == b;
+    // impl-end
 }
 // </vc-code>

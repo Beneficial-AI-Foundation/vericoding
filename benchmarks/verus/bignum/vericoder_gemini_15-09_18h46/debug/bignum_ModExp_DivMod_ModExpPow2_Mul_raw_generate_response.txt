@@ -1,8 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 1446 characters
---------------------------------------------------------------------------------
-```json
-[
-    "proof fn Str2Int_decompose(s: Seq<char>)\n    requires s.len() > 0, ValidBitString(s)\n    ensures Str2Int(s) == 2 * Str2Int(s.subrange(0, s.len() - 1)) + (if s[s.len() - 1] == '1' { 1 } else { 0 })\n{\n    reveal(Str2Int);\n}\n\nproof fn lemma_mod_exp_even(x: nat, y_half: nat, z: nat)\n    requires z > 1\n    ensures Exp_int(x, 2 * y_half) % z == (Exp_int(x, y_half) % z * Exp_int(x, y_half) % z) % z\n{\n    vstd::arithmetic::power::lemma_exp_by_squaring(x, y_half);\n    let r = Exp_int(x, y_half);\n    assert(Exp_int(x, 2 * y_half) == r * r);\n    assert((r * r) % z == ((r % z) * (r % z)) % z) by {\n        vstd::arithmetic::mod_ops::lemma_mod_mul_interm_cong(r, r, z);\n    }\n}\n\nproof fn lemma_mod_exp_odd(x: nat, y_half: nat, z: nat)\n    requires z > 1\n    ensures Exp_int(x, 2 * y_half + 1) % z == (Exp_int(x, y_half) % z * Exp_int(x, y_half) % z * (x % z)) % z\n{\n    vstd::arithmetic::power::lemma_exp_by_squaring_add1(x, y_half);\n    let r = Exp_int(x, y_half);\n    assert(Exp_int(x, 2 * y_half + 1) == r * r * x);\n    vstd::arithmetic::mod_ops::lemma_mod_mul_interm_cong(r, r, z);\n    vstd::arithmetic::mod_ops::lemma_mod_mul_interm_cong(r * r, x, z);\n    vstd::arithmetic::mod_ops::lemma_mod_mul_assoc(r % z, r % z, x % z, z);\n}",
-    "{\n    let x = Str2Int(sx@);\n    let y = Str2Int(sy@);\n    let z = Str2Int(sz@);\n\n    if sy.len() == 1 {\n        let last_bit_char = sy[0];\n        if last_bit_
---------------------------------------------------------------------------------

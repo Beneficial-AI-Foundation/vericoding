@@ -36,15 +36,21 @@ fn find_exponents(n: nat, primes: Vec<nat>) -> (result: Vec<(nat, nat)>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 2): fixed syntax error by removing incorrect invariant placement */
+    /* code modified by LLM (iteration 5): Fixed type error - use u32 tuple instead of nat */
     let mut result = Vec::new();
     let mut remaining = n;
     
     for i in 0..primes.len() {
         let p = primes[i];
-        let mut e = 0nat;
+        let mut e: u32 = 0;
         
-        while remaining > 0 && remaining % p == 0 {
+        while remaining > 0 && remaining % p == 0
+            invariant
+                remaining > 0,
+                is_prime(p),
+                primes@.contains(p),
+            decreases remaining
+        {
             remaining = remaining / p;
             e = e + 1;
         }

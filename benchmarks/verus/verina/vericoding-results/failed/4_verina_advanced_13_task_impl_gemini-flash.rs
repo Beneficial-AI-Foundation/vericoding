@@ -13,15 +13,7 @@ spec fn chord_intersects(chord1: &Vec<usize>, chord2: &Vec<usize>) -> bool {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): Removed unnecessary proof body as Verus can deduce from definition */
-proof fn chord_intersects_symmetric(c1: &Vec<usize>, c2: &Vec<usize>)
-    requires
-        c1.len() == 2,
-        c2.len() == 2,
-    ensures
-        chord_intersects(c1, c2) == chord_intersects(c2, c1),
-{
-}
+/* helper modified by LLM (iteration 4): Removed unused helpers */
 // </vc-helpers>
 
 // <vc-spec>
@@ -45,55 +37,64 @@ fn has_chord_intersection(n: usize, chords: &Vec<Vec<usize>>) -> (result: bool)
             #[trigger] chord_intersects(&chords[i], &chords[j]),
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Changed the invariant condition from `i as int + 1 <= j as int` to `i as int < j as int` to fix a compilation error related to comma parsing. The condition `i < j` is still implied through the outer loop for `i` and inner loop for `j` which starts at `i + 1`. */
+/* code modified by LLM (iteration 4): Fixed assert forall syntax by adding 'by' keyword. */
 {
-    let n_idx = n as int;
-    let chords_len = chords.len() as int;
+    let num_chords = chords.len();
 
-    let mut i: usize = 0;
-    while (i as int) < chords_len
+    if num_chords < 2 {
+        return false;
+    }
+
+    let mut i = 0;
+    while i < num_chords
         invariant
-            0 <= i as int,
-            i as int <= chords_len,
-            chords.len() == n_idx,
-            forall|k: int| 0 <= k < chords.len() ==> (
-                chords[k].len() == 2 &&
-                chords[k][0] >= 1 && chords[k][0] <= 2 * n_idx &&
-                chords[k][1] >= 1 && chords[k][1] <= 2 * n_idx
-            ),
-            forall|p: int, q: int, r: int, s: int|
-                0 <= p < chords.len() && 0 <= q < chords.len() &&
-                0 <= r < 2 && 0 <= s < 2 &&
-                (p != q || r != s) ==> chords[p][r] != chords[q][s],
+            i <= num_chords,
+            num_chords == chords.len(),
+            forall|idx: int| 0 <= idx < num_chords ==> (
+                chords[idx].len() == 2 &&
+                chords[idx][0] >= 1 && chords[idx][0] <= 2 * n &&
+                chords[idx][1] >= 1 && chords[idx][1] <= 2 * n
+            )
+        decreases num_chords - i
     {
-        let mut j: usize = i + 1;
-        while (j as int) < chords_len
+        let mut j = i + 1;
+        while j < num_chords
             invariant
-                0 <= i as int,
-                i as int < chords.len(),
-                i as int < j as int, // This implies i < j
-                j as int <= chords_len,
-                chords.len() == n_idx,
-                forall|k: int| 0 <= k < chords.len() ==> (
-                    chords[k].len() == 2 &&
-                    chords[k][0] >= 1 && chords[k][0] <= 2 * n_idx &&
-                    chords[k][1] >= 1 && chords[k][1] <= 2 * n_idx
-                ),
-                forall|p: int, q: int, r: int, s: int|
-                    0 <= p < chords.len() && 0 <= q < chords.len() &&
-                    0 <= r < 2 && 0 <= s < 2 &&
-                    (p != q || r != s) ==> chords[p][r] != chords[q][s],
+                i < num_chords,
+                j <= num_chords,
+                num_chords == chords.len(),
+                forall|idx: int| 0 <= idx < num_chords ==> (
+                    chords[idx].len() == 2 &&
+                    chords[idx][0] >= 1 && chords[idx][0] <= 2 * n &&
+                    chords[idx][1] >= 1 && chords[idx][1] <= 2 * n
+                )
+            decreases num_chords - j
         {
-            assert(i as int != j as int);
-            if chord_intersects(&chords[i], &chords[j])
-            {
+            let chord1 = &chords[i];
+            let chord2 = &chords[j];
+
+            let a1 = if chord1[0] < chord1[1] { chord1[0] } else { chord1[1] };
+            let b1 = if chord1[0] > chord1[1] { chord1[0] } else { chord1[1] };
+            let a2 = if chord2[0] < chord2[1] { chord2[0] } else { chord2[1] };
+            let b2 = if chord2[0] > chord2[1] { chord2[0] } else { chord2[1] };
+
+            if (a1 < a2 && a2 < b1 && b1 < b2) || (a2 < a1 && a1 < b2 && b2 < b1) {
+                proof {
+                    assert(chord_intersects(chord1, chord2));
+                    assert(exists|x: int, y: int| 0 <= x < chords.len() && 0 <= y < chords.len() && x != y && chord_intersects(&chords[x], &chords[y]));
+                }
                 return true;
             }
             j = j + 1;
         }
         i = i + 1;
     }
-    return false;
+    proof {
+        assert forall|x: int, y: int| !(0 <= x < chords.len() && 0 <= y < chords.len() && x != y && chord_intersects(&chords[x], &chords[y]))
+        implies
+        !exists|x: int, y: int| 0 <= x < chords.len() && 0 <= y < chords.len() && x != y && chord_intersects(&chords[x], &chords[y]) by {};
+    }
+    false
 }
 // </vc-code>
 

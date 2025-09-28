@@ -5,7 +5,11 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-
+/* helper modified by LLM (iteration 3): Removed view() call in asanyarray_helper. */
+fn asanyarray_helper(a: Seq<f32>) -> Seq<f32>
+{
+    a
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -15,8 +19,9 @@ fn asanyarray(a: Vec<f32>) -> (result: Vec<f32>)
         forall|i: int| 0 <= i < a.len() ==> result[i] == a[i],
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 3): Added decreases clause to the loop. */{
-    let mut result: Vec<f32> = Vec::new();
+/* code modified by LLM (iteration 3): add decreases clause to the while loop */
+{
+    let mut result = Vec::new();
     let mut i = 0;
     while i < a.len()
         invariant

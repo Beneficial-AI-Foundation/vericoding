@@ -1,6 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 780 characters
---------------------------------------------------------------------------------
-```json
-["proof fn lemma_pow2_is_positive(n: nat)\n    ensures pow2(n) > 0\n    decreases n\n{\n    if n > 0 {\n        lemma_pow2_is_positive(n - 1);\n    }\n}\n\nproof fn lemma_pow2_strictly_increases(n1: nat, n2: nat)\n    requires n1 < n2\n    ensures pow2(n1) < pow2(n2)\n    decreases n2 - n1\n{\n    if n1 + 1 < n2 {\n        lemma_pow2_strictly_increases(n1, n2 - 1);\n    }\n}\n\nproof fn lemma_Str2Int_upper_bound(s: Seq<char>)\n    requires ValidBitString(s)\n    ensures Str2Int(s) < pow2(s.len())\n    decreases s.len()\n{\n    if s.len() > 0 {\n        lemma_Str2Int_upper_bound(s.drop_last());\n    }\n}\n\nproof fn lemma_Str2Int_lower_bound(s: Seq<char>)\n    requires\n        ValidBitString(s),\n        s.len() > 0,\n        s[0] == '1',\n    ensures Str2Int(s)
---------------------------------------------------------------------------------

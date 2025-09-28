@@ -1,0 +1,74 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+
+spec fn is_prime(n: int) -> bool {
+    n > 1 && forall|k: int| 2 <= k < n ==> #[trigger] (n % k) != 0
+}
+
+spec fn power_of_2_factor(n: int, current: int) -> int
+    recommends n > 0 && current > 0
+    decreases current
+    when current > 0
+{
+    if current % 2 != 0 { 1 }
+    else { 2 * power_of_2_factor(n, current / 2) }
+}
+// </vc-preamble>
+
+// <vc-helpers>
+/* helper modified by LLM (iteration 5): find largest prime factor by descending search */
+proof fn largest_prime_factor_ghost(n: int) -> (result: int)
+    requires
+        n > 1,
+    ensures
+        2 <= result && result <= n && n % result == 0 && is_prime(result) && forall|k: int| k > result && n % k == 0 ==> !is_prime(k),
+    decreases
+        n
+{
+    proof {
+        let mut i: int = n;
+        while i >= 2
+            invariant
+                2 <= i && i <= n,
+                forall|k: int| k > i && k <= n && n % k == 0 ==> !is_prime(k),
+            decreases
+                i
+        {
+            if n % i == 0 && is_prime(i) {
+                return i;
+            }
+            i = i - 1;
+        }
+        return 2;
+    }
+}
+
+// </vc-helpers>
+
+// <vc-spec>
+fn largest_prime_factor(n: i8) -> (result: i8)
+    requires 
+        n as int > 1,
+        !is_prime(n as int),
+    ensures 
+        result as int > 1,
+        (n as int) % (result as int) == 0,
+        forall|k: int| k > result as int && (n as int) % k == 0 ==> !is_prime(k),
+        is_prime(result as int),
+// </vc-spec>
+// <vc-code>
+{
+    /* code modified by LLM (iteration 5): compute largest prime factor via ghost helper */
+    let ghost nn: int = n as int;
+    let ghost p: int = largest_prime_factor_ghost(nn);
+    return p as i8;
+}
+
+// </vc-code>
+
+
+}
+
+fn main() {}

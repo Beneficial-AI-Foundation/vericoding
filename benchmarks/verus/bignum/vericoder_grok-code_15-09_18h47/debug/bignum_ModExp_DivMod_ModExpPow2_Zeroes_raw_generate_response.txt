@@ -1,5 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 687 characters
---------------------------------------------------------------------------------
-["exec fn mod_exp(b: &[char], e: &[char], m: &[char]) -> Vec<char>\n    requires\n        ValidBitString(b@),\n        ValidBitString(e@),\n        ValidBitString(m@),\n        m@.len() > 0,\n        Str2Int(m@) > 1,\n    ensures\n        ValidBitString(result@),\n        Str2Int(result@) == Exp_int(Str2Int(b@), Str2Int(e@)) % Str2Int(m@),\n    decreases e@.len()\n{\n    if e.len() == 0 {\n        vec!['1']\n    } else if e[e.len() - 1] == '0' {\n        let half_pow = mod_exp(b, &e[..e.len() - 1], m);\n        half_pow\n    } else {\n        let half_pow = mod_exp(b, &e[..e.len() - 1], m);\n        vec!['1']\n    }\n}", "{\n    let result = mod_exp(sx, sy, sz);\n    result\n}"]
---------------------------------------------------------------------------------

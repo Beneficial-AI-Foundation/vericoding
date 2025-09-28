@@ -1,0 +1,36 @@
+// <vc-preamble>
+// </vc-preamble>
+
+// <vc-helpers>
+/* helper modified by LLM (iteration 5): Keep modulo helper function */
+function ModuloResult(x: int, y: int): (r: int)
+  requires y != 0
+  ensures r == x % y
+{
+  x % y
+}
+// </vc-helpers>
+
+// <vc-spec>
+method ElementWiseModulo(a: seq<int>, b: seq<int>) returns (result: seq<int>)
+    requires |a| == |b|
+    requires |a| > 0
+    requires forall i :: 0 <= i < |b| ==> b[i] != 0
+    ensures |result| == |a|
+    ensures forall i :: 0 <= i < |result| ==> result[i] == a[i] % b[i]
+// </vc-spec>
+// <vc-code>
+{
+  /* code modified by LLM (iteration 5): Use seq construction instead of array */
+  var i: int := 0;
+  result := [];
+  while i < |a|
+    invariant 0 <= i <= |a|
+    invariant |result| == i
+    invariant forall j :: 0 <= j < i ==> result[j] == ModuloResult(a[j], b[j])
+  {
+    result := result + [ModuloResult(a[i], b[i])];
+    i := i + 1;
+  }
+}
+// </vc-code>

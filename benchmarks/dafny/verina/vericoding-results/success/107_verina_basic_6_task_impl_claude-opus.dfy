@@ -2,7 +2,10 @@
 // </vc-preamble>
 
 // <vc-helpers>
-function min(x: int, y: int): int { if x <= y then x else y }
+function min(x: int, y: int): int
+{
+  if x <= y then x else y
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -12,12 +15,7 @@ method MinOfThree(a: int, b: int, c: int) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    if a <= b && a <= c {
-        result := a;
-    } else if b <= a && b <= c {
-        result := b;
-    } else {
-        result := c;
-    }
+  var temp := min(a, b);
+  result := min(temp, c);
 }
 // </vc-code>

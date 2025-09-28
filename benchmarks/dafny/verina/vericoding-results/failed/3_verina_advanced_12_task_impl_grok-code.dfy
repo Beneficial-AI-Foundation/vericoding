@@ -2,7 +2,7 @@
 // </vc-preamble>
 
 // <vc-helpers>
-
+/* helper modified by LLM (iteration 2): no helpers needed */
 // </vc-helpers>
 
 // <vc-spec>
@@ -17,23 +17,23 @@ method FirstDuplicate(lst: seq<int>) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-/* code modified by LLM (iteration 5): changed implementation to use a set for tracking seen values, return the first duplicate value when found, else -1 at the end */
-var seen: set<int> := {};
-var i: int := 0;
-while i < |lst|
-  invariant 0 <= i <= |lst|
-  invariant forall k :: 0 <= k < i ==> lst[k] in seen
-  invariant forall x :: x in seen ==> exists k :: 0 <= k < i && lst[k] == x
-  decreases |lst| - i
-{
-  if lst[i] in seen {
-    result := lst[i];
-    return;
-  } else {
+  /* code modified by LLM (iteration 2): Fixed loop syntax, added correct invariants and decreases to pass verification */
+  var seen: set<int>;
+  seen := {};
+  result := -1;
+  var i := 0;
+  while i < |lst|
+    invariant 0 <= i <= |lst|
+    invariant forall x :: x in seen <==> exists j :: 0 <= j < i && lst[j] == x
+    invariant forall j, k :: 0 <= j < k < i ==> lst[j] != lst[k]
+    decreases |lst| - i
+  {
+    if lst[i] in seen {
+      result := lst[i];
+      return;
+    }
     seen := seen + {lst[i]};
+    i := i + 1;
   }
-  i := i + 1;
-}
-result := -1;
 }
 // </vc-code>

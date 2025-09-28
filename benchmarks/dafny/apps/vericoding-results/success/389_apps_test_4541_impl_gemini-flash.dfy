@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     |input| == 1 && 'a' <= input[0] <= 'z'
@@ -13,9 +14,16 @@ function ExpectedOutput(input: string): string
 {
     if IsVowel(input[0]) then "vowel" else "consonant"
 }
+// </vc-preamble>
 
 // <vc-helpers>
-
+/* helper modified by LLM (iteration 2): Added pre-condition to the function signature */
+function ComputeExpectedOutput(input: string): string
+  requires ValidInput(input)
+  ensures ComputeExpectedOutput(input) == ExpectedOutput(input)
+{
+  if IsVowel(input[0]) then "vowel" else "consonant"
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -25,13 +33,8 @@ method solve(input: string) returns (result: string)
     ensures result == "vowel" || result == "consonant"
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 2): Call the helper function and assign its result to the output */
 {
-    var c := input[0];
-    if IsVowel(c) {
-        result := "vowel";
-    } else {
-        result := "consonant";
-    }
+  result := ComputeExpectedOutput(input);
 }
 // </vc-code>
-

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int)
 {
     n >= 1 && k >= 0 && k <= n
@@ -26,11 +27,10 @@ function MaxGoodApartments(n: int, k: int): int
     else if n - k < k * 2 then n - k
     else k * 2
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function min(a: int, b: int): int {
-    if a < b then a else b
-}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -42,17 +42,21 @@ method solve(n: int, k: int) returns (result: seq<int>)
 // </vc-spec>
 // <vc-code>
 {
-    var minGood: int;
-    var maxGood: int;
+  var min_good: int;
+  var max_good: int;
 
-    if k == 0 || k == n {
-        minGood := 0;
-        maxGood := 0;
+  if k == 0 || k == n {
+    min_good := 0;
+    max_good := 0;
+  } else {
+    min_good := 1;
+    if n - k < k * 2 {
+      max_good := n - k;
     } else {
-        minGood := 1;
-        maxGood := min(n - k, 2 * k);
+      max_good := k * 2;
     }
-    result := [minGood, maxGood];
+  }
+
+  result := [min_good, max_good];
 }
 // </vc-code>
-

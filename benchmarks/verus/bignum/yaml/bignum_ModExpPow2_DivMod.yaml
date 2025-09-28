@@ -1,48 +1,73 @@
+vc-description: |-
+  Bignum task: bignum_ModExpPow2[DivMod].
+  Implement the method according to the Verus specification.
+
+  /* All characters must be '0' or '1'. */
+
+  /* sy is power of 2 or zero */
+
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-  spec fn Exp_int(x: nat, y: nat) -> nat
-    decreases y
+  spec fn exp_int(x: nat, y: nat) -> nat
+      decreases y
   {
-    if y == 0 { 1 } else { x * Exp_int(x, (y - 1) as nat) }
+      if y == 0 { 1nat } else { x * exp_int(x, (y - 1) as nat) }
   }
 
-  spec fn Str2Int(s: Seq<char>) -> nat
-    recommends ValidBitString(s)
-    decreases s.len()
-  {
-    if s.len() == 0 { 0 } else { 2 * Str2Int(s.subrange(0, s.len() as int - 1)) + (if s.index(s.len() as int - 1) == '1' { 1nat } else { 0nat }) }
+  spec fn valid_bit_string(s: Seq<char>) -> bool {
+      forall|i: int| 0 <= i < s.len() ==> (s[i] == '0' || s[i] == '1')
   }
 
-  spec fn ValidBitString(s: Seq<char>) -> bool
+  spec fn str2int(s: Seq<char>) -> nat
+      decreases s.len()
   {
-    forall |i: int| 0 <= i && i < s.len() as int ==> (s.index(i) == '0' || s.index(i) == '1')
+      if s.len() == 0 {
+          0nat
+      } else {
+          if valid_bit_string(s) {
+              2nat * str2int(s.subrange(0, s.len() - 1)) + (if s[s.len() - 1] == '1' { 1nat } else { 0nat })
+          } else {
+              0nat
+          }
+      }
   }
 
-vc-helpers: |-
+  fn div_mod(dividend: Seq<char>, divisor: Seq<char>) -> (result: (Seq<char>, Seq<char>))
+      requires 
+          valid_bit_string(dividend) && valid_bit_string(divisor) && str2int(divisor) > 0
+      ensures 
+          valid_bit_string(result.0) && valid_bit_string(result.1),
+          str2int(result.0) == str2int(dividend) / str2int(divisor),
+          str2int(result.1) == str2int(dividend) % str2int(divisor)
+  {
+      assume(false);
+      unreached()
+  }
 
-
-vc-description: |-
-  Bignum task: bignum_ModExpPow2_DivMod.
-  Implement the method according to the Verus specification.
+vc-helpers: |
 
 vc-spec: |-
-  exec fn DivMod(dividend: &[char], divisor: &[char]) -> (res: (Vec<char>, Vec<char>))
-    requires ValidBitString(dividend@), ValidBitString(divisor@), Str2Int(divisor@) > 0
-    ensures ValidBitString(res.0@) && ValidBitString(res.1@),
-      Str2Int(res.0@) == Str2Int(dividend@) / Str2Int(divisor@),
-      Str2Int(res.1@) == Str2Int(dividend@) % Str2Int(divisor@)
+  fn mod_exp_pow2(sx: Vec<char>, sy: Vec<char>, n: u8, sz: Vec<char>) -> (res: Vec<char>)
+      requires 
+          valid_bit_string(sx@) && valid_bit_string(sy@) && valid_bit_string(sz@),
+          str2int(sy@) == exp_int(2nat, n as nat) || str2int(sy@) == 0,
+          sy.len() == n as int + 1,
+          str2int(sz@) > 1
+      ensures 
+          valid_bit_string(res@),
+          str2int(res@) == exp_int(str2int(sx@), str2int(sy@)) % str2int(sz@)
+      decreases n
 
 vc-code: |-
-{
-  assume(false);
-  return (Vec::<char>::new(), Vec::<char>::new());
-}
-
-vc-postamble: |-
-
-  fn main() {}
+  {
+      assume(false);
+      unreached()
   }
 
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

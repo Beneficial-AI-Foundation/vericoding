@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int)
 {
     1 <= a <= 12 && 1 <= b <= 31
@@ -8,9 +9,10 @@ function TakahashiCount(a: int, b: int): int
 {
     if a > b then a - 1 else a
 }
+// </vc-preamble>
 
 // <vc-helpers>
-
+// No helpers needed for this problem.
 // </vc-helpers>
 
 // <vc-spec>
@@ -22,11 +24,10 @@ method solve(a: int, b: int) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    if a > b {
-        result := a - 1;
-    } else {
-        result := a;
-    }
+  if a > b {
+    result := a - 1;
+  } else {
+    result := a;
+  }
 }
 // </vc-code>
-

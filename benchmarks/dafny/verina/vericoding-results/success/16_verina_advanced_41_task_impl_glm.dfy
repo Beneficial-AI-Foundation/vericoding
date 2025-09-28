@@ -2,7 +2,13 @@
 // </vc-preamble>
 
 // <vc-helpers>
-function maxOfTwo(x: int, y: int): int { if x >= y then x else y }
+/* helper modified by LLM (iteration 2): changed function method to function */
+function max(x: int, y: int): int
+  ensures max(x,y) >= x && max(x,y) >= y
+  ensures max(x,y) == x || max(x,y) == y
+{
+  if x >= y then x else y
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -12,6 +18,7 @@ method MaxOfThree(a: int, b: int, c: int) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    result := maxOfTwo(maxOfTwo(a, b), c);
+  /* code modified by LLM (iteration 2): using helper function to compute max */
+  result := max(max(a, b), c);
 }
 // </vc-code>

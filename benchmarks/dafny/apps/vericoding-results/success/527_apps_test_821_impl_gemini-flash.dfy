@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: int, v1: int, v2: int, t1: int, t2: int)
 {
     1 <= s <= 1000 && 1 <= v1 <= 1000 && 1 <= v2 <= 1000 && 1 <= t1 <= 1000 && 1 <= t2 <= 1000
@@ -21,22 +22,16 @@ predicate ValidResult(result: string)
 {
     result == "First" || result == "Second" || result == "Friendship"
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function methodSpec_ParticipantTime(s: int, v: int, t: int): int
-  requires 1 <= s <= 1000 && 1 <= v <= 1000 && 1 <= t <= 1000
+function ComputeResult(s: int, v1: int, v2: int, t1: int, t2: int): string
 {
-  2 * t + s * v
-}
-
-function methodSpec_CorrectResult(s: int, v1: int, v2: int, t1: int, t2: int): string
-  requires 1 <= s <= 1000 && 1 <= v1 <= 1000 && 1 <= v2 <= 1000 && 1 <= t1 <= 1000 && 1 <= t2 <= 1000
-{
-  var time1 := methodSpec_ParticipantTime(s, v1, t1);
-  var time2 := methodSpec_ParticipantTime(s, v2, t2);
-  if time1 < time2 then "First"
-  else if time1 > time2 then "Second"
-  else "Friendship"
+    var time1 := ParticipantTime(s, v1, t1);
+    var time2 := ParticipantTime(s, v2, t2);
+    if time1 < time2 then "First"
+    else if time1 > time2 then "Second"
+    else "Friendship"
 }
 // </vc-helpers>
 
@@ -48,16 +43,6 @@ method solve(s: int, v1: int, v2: int, t1: int, t2: int) returns (result: string
 // </vc-spec>
 // <vc-code>
 {
-  var time1 := 2 * t1 + s * v1;
-  var time2 := 2 * t2 + s * v2;
-
-  if time1 < time2 {
-    result := "First";
-  } else if time1 > time2 {
-    result := "Second";
-  } else {
-    result := "Friendship";
-  }
+  result := ComputeResult(s, v1, v2, t1, t2);
 }
 // </vc-code>
-

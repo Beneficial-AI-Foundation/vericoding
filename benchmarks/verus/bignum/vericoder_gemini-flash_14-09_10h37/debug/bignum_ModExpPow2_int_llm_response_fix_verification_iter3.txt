@@ -1,9 +1,0 @@
-=== LLM Response - fix_verification - Iteration 3 ===
-File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_int.rs
-Prompt Hash: 05de4c8d
-JSON Parsed Successfully: True
-Timestamp: 1757839418.285556
-Content Length: 492 chars
---------------------------------------------------------------------------------
-["", "{\n    if n == 0 {\n        proof {\n            assert((y as nat) == Exp_int(2, 0 as nat)) by (nonlinear_arith);\n            assert((x as nat) % (z as nat) == Exp_int(x as nat, 1 as nat) % (z as nat)) by (nonlinear_arith);\n        }\n        x % z\n    } else {\n        let y_prev = Exp_int(2, (n - 1) as nat);\n        let res_prev = ModExpPow2_int(x, y_prev as u64, n - 1, z);\n        let res = (res_prev as u128 * res_prev as u128) % (z as u128);\n        res as u64\n    }\n}"]
---------------------------------------------------------------------------------

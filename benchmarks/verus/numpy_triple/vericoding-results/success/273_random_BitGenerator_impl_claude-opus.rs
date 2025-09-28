@@ -1,0 +1,46 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+
+pub struct BitGeneratorState {
+
+    pub seed: Option<u64>,
+
+    pub internal_state: u64,
+}
+// </vc-preamble>
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+fn numpy_random_bit_generator(seed: Option<u64>) -> (result: BitGeneratorState)
+    ensures 
+        result.seed == seed,
+        seed.is_Some() ==> result.internal_state != 0,
+        seed.is_None() ==> result.internal_state == 0,
+// </vc-spec>
+// <vc-code>
+{
+    let internal_state = match seed {
+        Some(s) => {
+            if s == 0 {
+                1u64
+            } else {
+                s
+            }
+        },
+        None => 0u64,
+    };
+    
+    BitGeneratorState {
+        seed: seed,
+        internal_state: internal_state,
+    }
+}
+// </vc-code>
+
+}
+fn main() {}

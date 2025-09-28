@@ -6,35 +6,38 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): Fixed parameter types to match i32 inputs */
-proof fn left_shift_properties(x: i32, shift: nat) -> (result: i32)
+proof fn lemma_pow_positive(base: int, exponent: nat)
+    decreases exponent
     ensures
-        result == x * pow(2, shift),
-        shift == 0 ==> result == x,
-        x == 0 ==> result == 0,
-        x > 0 && shift > 0 ==> result > x,
-        x < 0 && shift > 0 ==> result < x
+        base > 0 ==> pow(base, exponent) > 0,
+        base < 0 ==> (exponent % 2 == 0) ==> pow(base, exponent) > 0,
+        base < 0 ==> (exponent % 2 == 1) ==> pow(base, exponent) < 0,
 {
-    if shift == 0 {
-        proof { assert(pow(2, 0) == 1) };
-        x
+    if exponent == 0 {
+        assert(pow(base, 0) == 1) by (compute);
     } else {
-        let prev = left_shift_properties(x, (shift - 1) as nat);
-        proof { assert(prev == x * pow(2, (shift - 1) as nat)) };
-        let current = prev * 2;
-        proof { assert(current == x * pow(2, shift)) };
-        proof { 
-            if x > 0 && shift > 0 {
-                assert(pow(2, shift) > 1);
-                assert(x * pow(2, shift) > x * 1);
+        let prev_exponent: nat = (exponent - 1) as nat;
+        lemma_pow_positive(base, prev_exponent);
+        if base > 0 {
+            assert(pow(base, exponent) == base * pow(base, prev_exponent)) by (compute);
+            assert(pow(base, exponent) > 0);
+        } else if base < 0 {
+            assert(pow(base, exponent) == base * pow(base, prev_exponent)) by (compute);
+            if exponent % 2 == 0 {
+                assert(pow(base, prev_exponent) < 0);
+                assert(pow(base, exponent) > 0);
+            } else {
+                assert(pow(base, prev_exponent) > 0);
+                assert(pow(base, exponent) < 0);
             }
-            if x < 0 && shift > 0 {
-                assert(pow(2, shift) > 1);
-                assert(x * pow(2, shift) < x);
-            }
-        };
-        current
+        }
     }
+}
+
+spec fn cast_i32_to_nat(x: i32) -> nat
+    recommends x >= 0
+{
+    x as nat
 }
 // </vc-helpers>
 
@@ -52,28 +55,36 @@ fn left_shift(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
         forall|i: int| 0 <= i < result.len() && x1[i] < 0 && x2[i] > 0 ==> result[i] < x1[i],
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Fixed type casting for vector indexing */
 {
+    /* code modified by LLM (iteration 5): Fixed compilation error by ensuring 1i32 is cast to i64 before bit shifting */
     let mut result: Vec<i32> = Vec::new();
     let mut i: usize = 0;
+    
     while i < x1.len()
         invariant
-            0 <= i <= x1.len(),
             result.len() == i,
-            forall|j: int| 0 <= j < i ==> result[j] == x1[j] * pow(2, x2[j] as nat),
-            forall|j: int| 0 <= j < i && x2[j] == 0 ==> result[j] == x1[j],
-            forall|j: int| 0 <= j < i && x1[j] == 0 ==> result[j] == 0,
-            forall|j: int| 0 <= j < i && x1[j] > 0 && x2[j] > 0 ==> result[j] > x1[j],
-            forall|j: int| 0 <= j < i && x1[j] < 0 && x2[j] > 0 ==> result[j] < x1[j]
+            forall|j: int| 0 <= j < i ==> result@[j] == x1@[j] * pow(2, cast_i32_to_nat(x2@[j])),
+            forall|j: int| 0 <= j < i && x2@[j] == 0 ==> result@[j] == x1@[j],
+            forall|j: int| 0 <= j < i && x1@[j] == 0 ==> result@[j] == 0,
+            forall|j: int| 0 <= j < i && x1@[j] > 0 && x2@[j] > 0 ==> result@[j] > x1@[j],
+            forall|j: int| 0 <= j < i && x1@[j] < 0 && x2@[j] > 0 ==> result@[j] < x1@[j],
+        decreases x1.len() - i,
     {
+        let x1_val = x1[i];
+        let x2_val = x2[i];
+        
         proof {
-            let ghost_shifted = left_shift_properties(x1.index(i) as i32, x2.index(i) as nat);
-            assert(ghost_shifted == x1.index(i) as i32 * pow(2, x2.index(i) as nat));
+            let exponent: nat = cast_i32_to_nat(x2_val);
+            lemma_pow_positive(2, exponent);
         }
-        let shifted_value = x1[i] * (1 << x2[i]);
-        result.push(shifted_value);
-        i += 1;
+        
+        let shift_amount = ((1i64) << x2_val) as i32;
+        let value = x1_val * shift_amount;
+        
+        result.push(value);
+        i = i + 1;
     }
+    
     result
 }
 // </vc-code>

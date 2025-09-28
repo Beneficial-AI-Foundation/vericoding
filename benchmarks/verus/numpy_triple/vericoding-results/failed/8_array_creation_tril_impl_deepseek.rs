@@ -5,15 +5,39 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): Convert index comparisons to use natural numbers */
-fn compare_indices(i: nat, j: nat, k: i32) -> bool 
-    ensures result == (i >= j - (k as int))
+/* helper modified by LLM (iteration 5): Fixed to use usize instead of int for executable code */
+fn zero_matrix(rows: usize, cols: usize) -> (result: Vec<Vec<f64>>)
+    ensures
+        result.len() == rows,
+        forall|i: int| 0 <= i < rows ==> #[trigger] result[i].len() == cols,
+        forall|i: int, j: int| 0 <= i < rows && 0 <= j < cols ==> #[trigger] result[i][j] == 0.0,
 {
-    if k >= 0 {
-        i >= j - (k as nat)
-    } else {
-        i + (-k) as nat >= j
+    let mut result: Vec<Vec<f64>> = Vec::new();
+    let mut i: usize = 0;
+    while i < rows
+        invariant
+            i <= rows,
+            result.len() == i,
+            forall|k: int| 0 <= k < i ==> #[trigger] result[k].len() == cols,
+            forall|k: int, l: int| 0 <= k < i && 0 <= l < cols ==> #[trigger] result[k][l] == 0.0,
+        decreases rows - i,
+    {
+        let mut row: Vec<f64> = Vec::new();
+        let mut j: usize = 0;
+        while j < cols
+            invariant
+                j <= cols,
+                row.len() == j,
+                forall|l: int| 0 <= l < j ==> #[trigger] row[l] == 0.0,
+            decreases cols - j,
+        {
+            row.push(0.0);
+            j = j + 1;
+        }
+        result.push(row);
+        i = i + 1;
     }
+    result
 }
 // </vc-helpers>
 
@@ -30,39 +54,41 @@ fn tril(m: Vec<Vec<f64>>, k: i32) -> (result: Vec<Vec<f64>>)
             #[trigger] result[i][j] == if i >= j - k { m[i][j] } else { 0.0 },
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Use helper function and proper integer/nat conversion */
+/* code modified by LLM (iteration 5): Fixed to use usize instead of int, fixed condition expression */
 {
-    let n = m.len();
-    let cols = m[0].len();
-    let mut result = Vec::<Vec<f64>>::new();
+    let nrows: usize = m.len();
+    let ncols: usize = m[0].len();
+    let mut result = zero_matrix(nrows, ncols);
     let mut i: usize = 0;
-    while i < n 
-        invariant 
-            i <= n,
-            result.len() == i,
-            forall|idx: int| 0 <= idx < i ==> #[trigger] result[idx].len() == cols,
-            forall|idx: int, jdx: int| 
-                0 <= idx < i && 0 <= jdx < cols ==> 
-                #[trigger] result[idx][jdx] == if compare_indices(idx as nat, jdx as nat, k) { m[idx][jdx as usize] } else { 0.0 }
+    while i < nrows
+        invariant
+            i <= nrows,
+            result.len() == nrows,
+            forall|k: int| 0 <= k < nrows ==> #[trigger] result[k].len() == ncols,
+            forall|k: int, l: int| 
+                0 <= k < i && 0 <= l < ncols ==> 
+                #[trigger] result[k][l] == if k >= (l as i32) - k { m[k][l] } else { 0.0 },
+            forall|k: int, l: int| 
+                i <= k < nrows && 0 <= l < ncols ==> 
+                #[trigger] result[k][l] == 0.0,
+        decreases nrows - i,
     {
-        let mut row = Vec::<f64>::new();
         let mut j: usize = 0;
-        while j < cols 
-            invariant 
-                j <= cols,
-                row.len() == j,
-                forall|jdx: int| 0 <= jdx < j ==> 
-                    #[trigger] row[jdx] == if compare_indices(i as nat, jdx as nat, k) { m[i][jdx as usize] } else { 0.0 }
+        while j < ncols
+            invariant
+                j <= ncols,
+                result[i].len() == ncols,
+                forall|l: int| 0 <= l < j ==> 
+                    #[trigger] result[i][l] == if (i as i32) >= (l as i32) - k { m[i][l] } else { 0.0 },
+                forall|l: int| j <= l < ncols ==> #[trigger] result[i][l] == 0.0,
+            decreases ncols - j,
         {
-            if compare_indices(i as nat, j as nat, k) {
-                row.push(m[i][j]);
-            } else {
-                row.push(0.0);
+            if (i as i32) >= (j as i32) - k {
+                result[i][j] = m[i][j];
             }
-            j += 1;
+            j = j + 1;
         }
-        result.push(row);
-        i += 1;
+        i = i + 1;
     }
     result
 }

@@ -21,15 +21,8 @@ spec fn spec_fold(pairs: Seq<(nat, nat)>, acc: int) -> int
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): trivial lemma that pow(p, 0) == 1 */
-proof fn pow_zero(p: int)
-    ensures
-        pow(p, 0) == 1,
-{
-    proof {
-        assert(pow(p, 0) == 1);
-    }
-}
+/* helper modified by LLM (iteration 5): dummy helper to satisfy verifier */
+proof fn helpers_dummy() { }
 
 // </vc-helpers>
 
@@ -45,35 +38,34 @@ fn find_exponents(n: nat, primes: Vec<nat>) -> (result: Vec<(nat, nat)>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): compute exponents using tracked ghost vars for rem and e to allow spec arithmetic */
-    let mut res: Vec<(nat, nat)> = Vec::new();
-    let mut rem: tracked nat = n;
-    let mut i: int = 0;
-
-    while i < primes.len()
+    /* code modified by LLM (iteration 5): use vstd::vec::Vec::new_tracked and compute exponents for each prime */
+    let tracked mut res: vstd::vec::Vec<(nat, nat)> = vstd::vec::Vec::new_tracked();
+    let ghost mut rem: nat = n;
+    let mut j: usize = 0usize;
+    while j < primes.len()
         invariant
-            res.len() == i,
-            spec_fold(res@, rem as int) == n as int,
+            j <= primes.len(),
+            spec_fold(res@, 1int) * (rem as int) == n as int,
         decreases
-            (primes.len() - i)
+            primes.len() - j
     {
-        let p: nat = primes[i];
-        let mut e: tracked nat = 0;
-
-        while rem % p == 0
-            invariant
-                spec_fold(res@, rem as int * pow(p as int, e)) == n as int,
-            decreases
-                rem as int
-        {
-            rem = rem / p;
-            e = e + 1;
+        let p: nat = primes[j];
+        let ghost mut e: nat = 0;
+        proof {
+            while rem != (0 as nat) && p > (1 as nat) && rem % p == (0 as nat)
+                invariant
+                    spec_fold(res@, 1int) * (pow(p as int, e as nat) * (rem as int)) == n as int,
+                    0 <= (e as int),
+                decreases
+                    rem
+            {
+                rem = rem / p;
+                e = e + (1 as nat);
+            }
         }
-
         res.push((p, e));
-        i = i + 1;
+        j = j + 1usize;
     }
-
     res
 }
 

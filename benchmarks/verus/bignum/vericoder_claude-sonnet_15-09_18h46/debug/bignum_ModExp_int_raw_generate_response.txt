@@ -1,9 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 1610 characters
---------------------------------------------------------------------------------
-[
-"spec fn bit_string_to_vec(s: Seq<char>) -> Vec<char>\n    requires ValidBitString(s)\n    ensures ValidBitString(result@),\n            result@.len() == s.len(),\n            forall |i: int| 0 <= i < s.len() ==> result@[i] == s[i]\n{\n    Vec::from_seq(s)\n}\n\nspec fn nat_to_bit_string(n: nat) -> Seq<char>\n    ensures ValidBitString(nat_to_bit_string(n))\n{\n    if n == 0 {\n        seq!['0']\n    } else if n == 1 {\n        seq!['1']\n    } else {\n        nat_to_bit_string(n / 2).add(seq![if n % 2 == 0 { '0' } else { '1' }])\n    }\n}\n\nlemma lemma_exp_mod_base_case(x: nat, z: nat)\n    requires z > 1\n    ensures Exp_int(x, 0) % z == 1 % z\n{\n}\n\nlemma lemma_exp_mod_recursive(x: nat, y: nat, z: nat)\n    requires y > 0, z > 1\n    ensures Exp_int(x, y) % z == (x * Exp_int(x, y - 1)) % z\n{\n}",
-
-"{\n    if sy.len() == 0 {\n        return vec!['1'];\n    }\n    \n    let sx_int = Str2Int(sx@);\n    let sy_int = Str2Int(sy@);\n    let sz_int = Str2Int(sz@);\n    \n    if sy_int == 0 {\n        return vec!['1'];\n    }\n    \n    let base_mod = sx_int % sz_int;\n    let mut result = 1nat;\n    let mut base = base_mod;\n    let mut exp = sy_int;\n    \n    while exp > 0\n        invariant\n            result * Exp_int(base, exp) % sz_int == Exp_int(sx_int, sy_int) % sz_int,\n            sz_int > 1\n        decreases exp\n    {\n        if exp % 2 == 1 {\n            result = (result * base) % sz_int;\n        }\n        base = (base * base) % sz_int;\n        exp = exp / 2;\n    }\n    \n    let result_string = nat_to_bit_string(result);\n    Vec::from_seq(result_string)\n}"
-]
---------------------------------------------------------------------------------

@@ -9,7 +9,17 @@ spec fn count_occurrences(x: i32, lst: Seq<i32>) -> nat {
 // </vc-preamble>
 
 // <vc-helpers>
-
+/* helper modified by LLM (iteration 5): spec fn for diff calculation in Boyer-Moore algorithm */
+spec fn diff(s: Seq<i32>, cand: i32, idx: int) -> int {
+    if idx == 0 {
+        0
+    } else {
+        let prefix = s.take(idx);
+        let cs = count_occurrences(cand, prefix);
+        let cc = idx as nat - cs;
+        cs as int - cc as int
+    }
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -24,50 +34,43 @@ fn find_majority_element(lst: &Vec<i32>) -> (result: i32)
     })
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): Fixed lst@ compilation issue by inlining lst@ in invariants */
 {
-    /* code modified by LLM (iteration 4): Fixed typo 'chicken' to 'for' in loop declaration to resolve compilation error, and ensured invariant clause uses proper Verus syntax */
     if lst.len() == 0 {
         return -1;
     }
-
-    let mut count: int = 0;
-    let mut candidate: i32 = 0;
-
-    for i in 0..lst.len()
+    let mut candidate = lst[0];
+    let mut count = 1i32;
+    let mut i = 1usize;
+    while i < lst.len()
         invariant
-            count >= 0 &&
-            count <= (i + 1) as int &&
-            i >= 0 &&
-            i <= lst.len() as int
+            i as int <= lst@.len() as int,
+            diff(lst@, candidate, i as int) == count as int
+        decreases lst@.len() as int - i as int
     {
         if count == 0 {
-            candidate = lst@[i as int];
+            candidate = lst[i];
             count = 1;
-        } else if lst@[i as int] == candidate {
+        } else if lst[i] == candidate {
             count += 1;
         } else {
             count -= 1;
         }
+        i += 1;
     }
-
-    if count == 0 {
-        return -1;
-    }
-
-    // Second pass to verify
-    let mut actual_count: int = 0;
-    for i in 0..lst.len()
+    let mut actual_count = 0usize;
+    let mut j = 0usize;
+    while j < lst.len()
         invariant
-            actual_count >= 0 &&
-            actual_count <= (i + 1) as int &&
-            i >= 0 &&
-            i <= lst.len() as int
+            j as int <= lst@.len() as int,
+            actual_count as int == count_occurrences(candidate, lst@.take(j as int))
+        decreases lst@.len() as int - j as int
     {
-        if lst@[i as int] == candidate {
+        if lst[j] == candidate {
             actual_count += 1;
         }
+        j += 1;
     }
-
     if actual_count > lst.len() / 2 {
         candidate
     } else {

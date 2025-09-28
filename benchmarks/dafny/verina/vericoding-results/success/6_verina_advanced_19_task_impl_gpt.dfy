@@ -47,7 +47,7 @@ function NormalizeString(s: string): seq<char>
 // </vc-preamble>
 
 // <vc-helpers>
-lemma FullPrefixIsSelf<T>(xs: seq<T>) ensures xs[..|xs|] == xs { }
+
 // </vc-helpers>
 
 // <vc-spec>

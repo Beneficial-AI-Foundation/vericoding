@@ -1,5 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 509 characters
---------------------------------------------------------------------------------
-["", "{\n    let mut result = Vec::<char>::new();\n    let mut found_one = false;\n    \n    for i in 0..s.len()\n        invariant\n            ValidBitString(result@),\n            forall |j: int| 0 <= j && j < result.len() ==> result@[j] == '0' || result@[j] == '1',\n    {\n        if s[i] == '1' {\n            found_one = true;\n        }\n        if found_one {\n            result.push(s[i]);\n        }\n    }\n    \n    if result.len() == 0 {\n        result.push('0');\n    }\n    \n    result\n}"]
---------------------------------------------------------------------------------

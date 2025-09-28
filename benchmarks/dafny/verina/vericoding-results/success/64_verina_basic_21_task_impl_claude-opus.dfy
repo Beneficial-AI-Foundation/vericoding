@@ -16,7 +16,7 @@ method IsSublist(sub: seq<int>, main: seq<int>) returns (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-  /* code modified by LLM (iteration 3): fix postcondition for empty subsequence case */
+  /* code modified by LLM (iteration 3): added assertion to help verifier understand empty subsequence case */
   if |sub| == 0 {
     assert IsSubseqAt(sub, main, 0);
     return true;
@@ -47,12 +47,9 @@ method IsSublist(sub: seq<int>, main: seq<int>) returns (result: bool)
       assert IsSubseqAt(sub, main, i);
       return true;
     }
-    
     i := i + 1;
   }
   
-  assert forall k :: 0 <= k <= |main| - |sub| ==> !IsSubseqAt(sub, main, k);
-  assert forall k :: k > |main| - |sub| && k < |main| ==> k + |sub| > |main| ==> !IsSubseqAt(sub, main, k);
   return false;
 }
 // </vc-code>

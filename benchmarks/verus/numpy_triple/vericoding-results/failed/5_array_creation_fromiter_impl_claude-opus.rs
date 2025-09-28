@@ -16,17 +16,17 @@ fn fromiter<T: Copy>(n: usize, iter: spec_fn(usize) -> T) -> (result: Vec<T>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): Building vector iteratively with loop */
+    /* code modified by LLM (iteration 5): Build vector iteratively with loop */
     let mut result = Vec::new();
     let mut i: usize = 0;
     while i < n
         invariant
-            i <= n,
             result.len() == i,
-            forall|j: int| 0 <= j < i ==> result[j] == iter(j as usize)
+            forall|j: int| 0 <= j < i ==> result@[j] == iter(j as usize),
+            i <= n,
+        decreases n - i
     {
-        let value = iter(i);
-        result.push(value);
+        result.push(iter(i));
         i = i + 1;
     }
     result

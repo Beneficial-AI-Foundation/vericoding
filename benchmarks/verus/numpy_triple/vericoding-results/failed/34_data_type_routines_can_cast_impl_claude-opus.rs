@@ -79,60 +79,72 @@ fn can_cast(from_dtype: DType, to_dtype: DType, casting: CastingRule) -> (result
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): Fix moved value error by using references in match */
-    match (&from_dtype, &to_dtype) {
-        (DType::Int8, DType::Int8) | (DType::Int16, DType::Int16) | (DType::Int32, DType::Int32) | 
-        (DType::Int64, DType::Int64) | (DType::Float32, DType::Float32) | (DType::Float64, DType::Float64) |
-        (DType::Complex64, DType::Complex64) | (DType::Complex128, DType::Complex128) | (DType::Bool, DType::Bool) => {
-            return true;
-        },
-        _ => {}
-    }
-    
+    /* code modified by LLM (iteration 2): Use pattern matching instead of == for enum comparison */
     match casting {
         CastingRule::No => {
-            false
+            match (&from_dtype, &to_dtype) {
+                (DType::Int8, DType::Int8) | (DType::Int16, DType::Int16) | (DType::Int32, DType::Int32) |
+                (DType::Int64, DType::Int64) | (DType::Float32, DType::Float32) | (DType::Float64, DType::Float64) |
+                (DType::Complex64, DType::Complex64) | (DType::Complex128, DType::Complex128) | (DType::Bool, DType::Bool) => true,
+                _ => false,
+            }
         },
         CastingRule::Equiv => {
-            false
+            match (&from_dtype, &to_dtype) {
+                (DType::Int8, DType::Int8) | (DType::Int16, DType::Int16) | (DType::Int32, DType::Int32) |
+                (DType::Int64, DType::Int64) | (DType::Float32, DType::Float32) | (DType::Float64, DType::Float64) |
+                (DType::Complex64, DType::Complex64) | (DType::Complex128, DType::Complex128) | (DType::Bool, DType::Bool) => true,
+                _ => false,
+            }
         },
+        CastingRule::Unrestricted => true,
         CastingRule::Safe => {
-            match (from_dtype, to_dtype) {
-                (DType::Int8, DType::Int16) | (DType::Int8, DType::Int32) | (DType::Int8, DType::Int64) => true,
-                (DType::Int16, DType::Int32) | (DType::Int16, DType::Int64) => true,
-                (DType::Int32, DType::Int64) => true,
-                (DType::Float32, DType::Float64) => true,
+            match (&from_dtype, &to_dtype) {
+                (DType::Int8, DType::Int8) | (DType::Int16, DType::Int16) | (DType::Int32, DType::Int32) |
+                (DType::Int64, DType::Int64) | (DType::Float32, DType::Float32) | (DType::Float64, DType::Float64) |
+                (DType::Complex64, DType::Complex64) | (DType::Complex128, DType::Complex128) | (DType::Bool, DType::Bool) => true,
+                
+                (DType::Int8, DType::Int16) | (DType::Int8, DType::Int32) | (DType::Int8, DType::Int64) |
                 (DType::Int8, DType::Float32) | (DType::Int8, DType::Float64) => true,
+                
+                (DType::Int16, DType::Int32) | (DType::Int16, DType::Int64) |
                 (DType::Int16, DType::Float32) | (DType::Int16, DType::Float64) => true,
-                (DType::Int32, DType::Float64) => true,
-                (DType::Complex64, DType::Complex128) => true,
-                (DType::Float32, DType::Complex64) | (DType::Float32, DType::Complex128) => true,
+                
+                (DType::Int32, DType::Int64) | (DType::Int32, DType::Float64) => true,
+                
+                (DType::Float32, DType::Float64) | (DType::Float32, DType::Complex64) | (DType::Float32, DType::Complex128) => true,
+                
                 (DType::Float64, DType::Complex64) | (DType::Float64, DType::Complex128) => true,
-                _ => false
+                
+                (DType::Complex64, DType::Complex128) => true,
+                
+                _ => false,
             }
         },
         CastingRule::SameKind => {
-            match (from_dtype, to_dtype) {
-                (DType::Int8, DType::Int8) | (DType::Int8, DType::Int16) | (DType::Int8, DType::Int32) | (DType::Int8, DType::Int64) => true,
-                (DType::Int16, DType::Int8) | (DType::Int16, DType::Int16) | (DType::Int16, DType::Int32) | (DType::Int16, DType::Int64) => true,
-                (DType::Int32, DType::Int8) | (DType::Int32, DType::Int16) | (DType::Int32, DType::Int32) | (DType::Int32, DType::Int64) => true,
+            match (&from_dtype, &to_dtype) {
+                (DType::Int8, DType::Int8) | (DType::Int8, DType::Int16) | (DType::Int8, DType::Int32) | (DType::Int8, DType::Int64) |
+                (DType::Int16, DType::Int8) | (DType::Int16, DType::Int16) | (DType::Int16, DType::Int32) | (DType::Int16, DType::Int64) |
+                (DType::Int32, DType::Int8) | (DType::Int32, DType::Int16) | (DType::Int32, DType::Int32) | (DType::Int32, DType::Int64) |
                 (DType::Int64, DType::Int8) | (DType::Int64, DType::Int16) | (DType::Int64, DType::Int32) | (DType::Int64, DType::Int64) => true,
-                (DType::Float32, DType::Float32) | (DType::Float32, DType::Float64) => true,
+                
+                (DType::Float32, DType::Float32) | (DType::Float32, DType::Float64) |
                 (DType::Float64, DType::Float32) | (DType::Float64, DType::Float64) => true,
-                (DType::Complex64, DType::Complex64) | (DType::Complex64, DType::Complex128) => true,
+                
+                (DType::Complex64, DType::Complex64) | (DType::Complex64, DType::Complex128) |
                 (DType::Complex128, DType::Complex64) | (DType::Complex128, DType::Complex128) => true,
-                (DType::Int8, DType::Float32) | (DType::Int8, DType::Float64) | (DType::Int8, DType::Complex64) | (DType::Int8, DType::Complex128) => true,
-                (DType::Int16, DType::Float32) | (DType::Int16, DType::Float64) | (DType::Int16, DType::Complex64) | (DType::Int16, DType::Complex128) => true,
-                (DType::Int32, DType::Float32) | (DType::Int32, DType::Float64) | (DType::Int32, DType::Complex64) | (DType::Int32, DType::Complex128) => true,
+                
+                (DType::Int8, DType::Float32) | (DType::Int8, DType::Float64) | (DType::Int8, DType::Complex64) | (DType::Int8, DType::Complex128) |
+                (DType::Int16, DType::Float32) | (DType::Int16, DType::Float64) | (DType::Int16, DType::Complex64) | (DType::Int16, DType::Complex128) |
+                (DType::Int32, DType::Float32) | (DType::Int32, DType::Float64) | (DType::Int32, DType::Complex64) | (DType::Int32, DType::Complex128) |
                 (DType::Int64, DType::Float32) | (DType::Int64, DType::Float64) | (DType::Int64, DType::Complex64) | (DType::Int64, DType::Complex128) => true,
-                (DType::Float32, DType::Complex64) | (DType::Float32, DType::Complex128) => true,
+                
+                (DType::Float32, DType::Complex64) | (DType::Float32, DType::Complex128) |
                 (DType::Float64, DType::Complex64) | (DType::Float64, DType::Complex128) => true,
-                _ => false
+                
+                _ => false,
             }
         },
-        CastingRule::Unrestricted => {
-            true
-        }
     }
 }
 // </vc-code>

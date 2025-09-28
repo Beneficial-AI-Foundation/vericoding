@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     (|input| == 3 && input[1] == ' ') || 
@@ -24,13 +25,14 @@ predicate CorrectComparison(x: char, y: char, result: string)
     ((x as int > y as int) <==> (result == ">\n")) &&
     ((x as int == y as int) <==> (result == "=\n"))
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function HexCharToInt(c: char): int
-    requires ValidHexDigit(c)
-    ensures 10 <= HexCharToInt(c) <= 15
+function CompareHexDigits(x: char, y: char): string
 {
-    (c as int) - ('A' as int) + 10
+    if x as int < y as int then "<\n"
+    else if x as int > y as int then ">\n"
+    else "=\n"
 }
 // </vc-helpers>
 
@@ -41,16 +43,8 @@ method solve(stdin_input: string) returns (result: string)
 // </vc-spec>
 // <vc-code>
 {
-    var x := stdin_input[0];
-    var y := stdin_input[2];
-
-    if (HexCharToInt(x) < HexCharToInt(y)) {
-        result := "<\n";
-    } else if (HexCharToInt(x) > HexCharToInt(y)) {
-        result := ">\n";
-    } else {
-        result := "=\n";
-    }
+  var x := stdin_input[0];
+  var y := stdin_input[2];
+  result := CompareHexDigits(x, y);
 }
 // </vc-code>
-

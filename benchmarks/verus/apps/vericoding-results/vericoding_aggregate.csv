@@ -1,0 +1,537 @@
+filename,success_status,total_llms,successful_llms
+apps_test_1,FAILED,0,
+apps_test_10,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, glm, gpt-mini, grok-code"
+apps_test_1000,FAILED,0,
+apps_test_1002,FAILED,0,
+apps_test_1003,FAILED,0,
+apps_test_1007,FAILED,0,
+apps_test_1009,SUCCESS,1,gpt
+apps_test_1014,SUCCESS,2,"claude-opus, gemini"
+apps_test_1017,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gemini-flash, glm, grok-code"
+apps_test_102,FAILED,0,
+apps_test_1020,FAILED,0,
+apps_test_1028,FAILED,0,
+apps_test_1036,SUCCESS,4,"claude-opus, gemini, gpt, gpt-mini"
+apps_test_1038,FAILED,0,
+apps_test_1045,FAILED,0,
+apps_test_1048,FAILED,0,
+apps_test_1052,FAILED,0,
+apps_test_1055,FAILED,0,
+apps_test_106,SUCCESS,1,gpt
+apps_test_1065,FAILED,0,
+apps_test_1069,FAILED,0,
+apps_test_1071,FAILED,0,
+apps_test_1074,SUCCESS,1,gemini
+apps_test_1081,SUCCESS,4,"claude-opus, claude-sonnet, gemini-flash, grok-code"
+apps_test_1085,FAILED,0,
+apps_test_1096,SUCCESS,5,"claude-opus, claude-sonnet, gemini-flash, gpt, grok-code"
+apps_test_11,SUCCESS,2,"gpt, gpt-mini"
+apps_test_1100,FAILED,0,
+apps_test_1101,SUCCESS,2,"gpt, gpt-mini"
+apps_test_1102,FAILED,0,
+apps_test_1106,SUCCESS,2,"gpt, gpt-mini"
+apps_test_1109,FAILED,0,
+apps_test_1110,FAILED,0,
+apps_test_1116,FAILED,0,
+apps_test_1117,FAILED,0,
+apps_test_1124,FAILED,0,
+apps_test_113,FAILED,0,
+apps_test_1134,SUCCESS,1,gpt
+apps_test_1135,SUCCESS,5,"gemini, glm, gpt, gpt-mini, grok-code"
+apps_test_1138,FAILED,0,
+apps_test_1142,FAILED,0,
+apps_test_1146,FAILED,0,
+apps_test_1149,FAILED,0,
+apps_test_1150,SUCCESS,1,gpt
+apps_test_116,FAILED,0,
+apps_test_1165,FAILED,0,
+apps_test_1176,FAILED,0,
+apps_test_1177,SUCCESS,1,claude-sonnet
+apps_test_1179,FAILED,0,
+apps_test_1195,FAILED,0,
+apps_test_1211,FAILED,0,
+apps_test_1212,FAILED,0,
+apps_test_1218,FAILED,0,
+apps_test_1225,FAILED,0,
+apps_test_1227,FAILED,0,
+apps_test_1228,SUCCESS,5,"claude-opus, claude-sonnet, gpt, gpt-mini, grok-code"
+apps_test_1231,FAILED,0,
+apps_test_1232,SUCCESS,6,"claude-opus, claude-sonnet, gemini, glm, gpt, grok-code"
+apps_test_1240,SUCCESS,2,"gpt, gpt-mini"
+apps_test_125,FAILED,0,
+apps_test_1255,SUCCESS,2,"gpt, gpt-mini"
+apps_test_126,SUCCESS,2,"gpt, gpt-mini"
+apps_test_1267,FAILED,0,
+apps_test_128,SUCCESS,3,"claude-sonnet, gpt, gpt-mini"
+apps_test_1282,FAILED,0,
+apps_test_1289,FAILED,0,
+apps_test_1290,FAILED,0,
+apps_test_1291,FAILED,0,
+apps_test_1298,FAILED,0,
+apps_test_1301,FAILED,0,
+apps_test_1310,FAILED,0,
+apps_test_1312,FAILED,0,
+apps_test_1317,SUCCESS,4,"gemini, glm, gpt, gpt-mini"
+apps_test_1332,SUCCESS,5,"claude-opus, claude-sonnet, gemini, glm, grok-code"
+apps_test_135,FAILED,0,
+apps_test_1353,FAILED,0,
+apps_test_1356,FAILED,0,
+apps_test_1357,SUCCESS,1,gpt
+apps_test_1361,SUCCESS,3,"glm, gpt, grok-code"
+apps_test_1381,FAILED,0,
+apps_test_1394,FAILED,0,
+apps_test_1395,SUCCESS,2,"gpt, gpt-mini"
+apps_test_1409,SUCCESS,1,gpt
+apps_test_1419,FAILED,0,
+apps_test_1430,SUCCESS,3,"claude-opus, gpt, gpt-mini"
+apps_test_145,FAILED,0,
+apps_test_1451,FAILED,0,
+apps_test_1461,SUCCESS,1,gpt
+apps_test_148,SUCCESS,1,gpt-mini
+apps_test_1486,FAILED,0,
+apps_test_1526,SUCCESS,3,"claude-opus, gpt-mini, grok-code"
+apps_test_1529,SUCCESS,2,"claude-opus, gpt"
+apps_test_1533,FAILED,0,
+apps_test_1541,SUCCESS,1,gpt
+apps_test_1550,FAILED,0,
+apps_test_1568,FAILED,0,
+apps_test_157,FAILED,0,
+apps_test_1576,SUCCESS,3,"claude-opus, claude-sonnet, grok-code"
+apps_test_1577,SUCCESS,1,gpt
+apps_test_1578,FAILED,0,
+apps_test_1594,FAILED,0,
+apps_test_1598,SUCCESS,4,"claude-sonnet, glm, gpt, gpt-mini"
+apps_test_1605,FAILED,0,
+apps_test_1618,FAILED,0,
+apps_test_1620,SUCCESS,1,glm
+apps_test_1621,FAILED,0,
+apps_test_1623,FAILED,0,
+apps_test_1627,FAILED,0,
+apps_test_1628,FAILED,0,
+apps_test_1635,SUCCESS,1,gemini
+apps_test_164,FAILED,0,
+apps_test_1643,SUCCESS,4,"claude-opus, claude-sonnet, glm, gpt"
+apps_test_1646,FAILED,0,
+apps_test_165,FAILED,0,
+apps_test_1655,FAILED,0,
+apps_test_1656,FAILED,0,
+apps_test_1672,FAILED,0,
+apps_test_1675,FAILED,0,
+apps_test_1689,FAILED,0,
+apps_test_171,SUCCESS,1,claude-sonnet
+apps_test_1711,SUCCESS,3,"deepseek, gpt, gpt-mini"
+apps_test_1712,FAILED,0,
+apps_test_1723,FAILED,0,
+apps_test_1725,FAILED,0,
+apps_test_173,SUCCESS,4,"claude-opus, gemini, glm, grok-code"
+apps_test_1735,SUCCESS,1,gemini
+apps_test_1746,FAILED,0,
+apps_test_1754,SUCCESS,2,"gpt, gpt-mini"
+apps_test_1757,FAILED,0,
+apps_test_176,FAILED,0,
+apps_test_1761,SUCCESS,2,"glm, gpt"
+apps_test_1766,FAILED,0,
+apps_test_1788,SUCCESS,5,"deepseek, gemini, glm, gpt-mini, grok-code"
+apps_test_1795,FAILED,0,
+apps_test_1797,SUCCESS,2,"gpt, gpt-mini"
+apps_test_1805,SUCCESS,1,claude-opus
+apps_test_1809,SUCCESS,5,"claude-opus, claude-sonnet, gpt, gpt-mini, grok-code"
+apps_test_181,SUCCESS,1,claude-opus
+apps_test_1826,SUCCESS,2,"gpt, gpt-mini"
+apps_test_1837,SUCCESS,3,"gemini, gpt, gpt-mini"
+apps_test_1840,FAILED,0,
+apps_test_1841,FAILED,0,
+apps_test_1849,FAILED,0,
+apps_test_185,FAILED,0,
+apps_test_1850,FAILED,0,
+apps_test_1877,SUCCESS,1,gemini
+apps_test_1878,FAILED,0,
+apps_test_1886,SUCCESS,6,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt"
+apps_test_1887,FAILED,0,
+apps_test_1889,FAILED,0,
+apps_test_189,FAILED,0,
+apps_test_1909,SUCCESS,1,gpt
+apps_test_1922,FAILED,0,
+apps_test_1925,FAILED,0,
+apps_test_1926,FAILED,0,
+apps_test_194,FAILED,0,
+apps_test_1940,FAILED,0,
+apps_test_1958,FAILED,0,
+apps_test_1965,FAILED,0,
+apps_test_198,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini-flash, glm, gpt, gpt-mini, grok-code"
+apps_test_1985,FAILED,0,
+apps_test_1988,FAILED,0,
+apps_test_199,FAILED,0,
+apps_test_201,FAILED,0,
+apps_test_2015,SUCCESS,5,"claude-sonnet, deepseek, glm, gpt-mini, grok-code"
+apps_test_2025,FAILED,0,
+apps_test_203,FAILED,0,
+apps_test_2039,FAILED,0,
+apps_test_204,FAILED,0,
+apps_test_2044,FAILED,0,
+apps_test_2049,FAILED,0,
+apps_test_207,FAILED,0,
+apps_test_2074,FAILED,0,
+apps_test_208,FAILED,0,
+apps_test_2080,FAILED,0,
+apps_test_2104,FAILED,0,
+apps_test_2123,FAILED,0,
+apps_test_216,FAILED,0,
+apps_test_2167,FAILED,0,
+apps_test_217,SUCCESS,1,glm
+apps_test_2180,SUCCESS,2,"gpt, gpt-mini"
+apps_test_2183,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+apps_test_2187,FAILED,0,
+apps_test_22,FAILED,0,
+apps_test_2202,SUCCESS,3,"gemini, glm, gpt"
+apps_test_2209,SUCCESS,2,"gpt, gpt-mini"
+apps_test_222,FAILED,0,
+apps_test_2220,SUCCESS,1,gpt
+apps_test_2238,FAILED,0,
+apps_test_2256,SUCCESS,6,"claude-opus, gemini, glm, gpt, gpt-mini, grok-code"
+apps_test_228,SUCCESS,3,"gpt, gpt-mini, grok-code"
+apps_test_2282,SUCCESS,5,"gemini, glm, gpt, gpt-mini, grok-code"
+apps_test_2293,SUCCESS,7,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
+apps_test_2297,SUCCESS,1,grok-code
+apps_test_2308,FAILED,0,
+apps_test_231,SUCCESS,1,glm
+apps_test_2320,FAILED,0,
+apps_test_2330,SUCCESS,1,gpt
+apps_test_2340,SUCCESS,2,"gpt, gpt-mini"
+apps_test_235,FAILED,0,
+apps_test_2350,SUCCESS,4,"deepseek, glm, gpt, gpt-mini"
+apps_test_2353,FAILED,0,
+apps_test_2354,FAILED,0,
+apps_test_2375,SUCCESS,6,"claude-opus, claude-sonnet, gemini, glm, gpt-mini, grok-code"
+apps_test_2377,SUCCESS,2,"gpt, gpt-mini"
+apps_test_2386,FAILED,0,
+apps_test_2396,SUCCESS,3,"claude-opus, claude-sonnet, glm"
+apps_test_2406,FAILED,0,
+apps_test_2422,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt-mini, grok-code"
+apps_test_2425,FAILED,0,
+apps_test_2434,FAILED,0,
+apps_test_2435,FAILED,0,
+apps_test_244,SUCCESS,3,"claude-opus, deepseek, gpt"
+apps_test_2443,FAILED,0,
+apps_test_2451,FAILED,0,
+apps_test_2456,FAILED,0,
+apps_test_246,SUCCESS,2,"gpt, gpt-mini"
+apps_test_2465,FAILED,0,
+apps_test_2467,FAILED,0,
+apps_test_2486,FAILED,0,
+apps_test_2516,SUCCESS,2,"gpt, gpt-mini"
+apps_test_253,SUCCESS,4,"claude-opus, glm, gpt, grok-code"
+apps_test_2548,FAILED,0,
+apps_test_2550,FAILED,0,
+apps_test_2560,SUCCESS,4,"gemini-flash, glm, gpt, gpt-mini"
+apps_test_2568,FAILED,0,
+apps_test_2583,SUCCESS,1,gemini
+apps_test_2602,SUCCESS,3,"gemini, glm, gpt-mini"
+apps_test_2612,SUCCESS,3,"claude-sonnet, gpt, gpt-mini"
+apps_test_2622,SUCCESS,3,"gemini, gpt, gpt-mini"
+apps_test_2627,SUCCESS,1,gpt
+apps_test_2629,FAILED,0,
+apps_test_2630,FAILED,0,
+apps_test_2632,SUCCESS,1,gpt
+apps_test_2633,SUCCESS,1,gpt
+apps_test_2659,FAILED,0,
+apps_test_27,FAILED,0,
+apps_test_271,FAILED,0,
+apps_test_287,SUCCESS,3,"gemini, glm, grok-code"
+apps_test_291,FAILED,0,
+apps_test_298,FAILED,0,
+apps_test_299,FAILED,0,
+apps_test_302,SUCCESS,3,"claude-opus, gpt, gpt-mini"
+apps_test_307,FAILED,0,
+apps_test_315,FAILED,0,
+apps_test_3805,SUCCESS,4,"claude-sonnet, glm, gpt, gpt-mini"
+apps_test_4088,FAILED,0,
+apps_test_409,FAILED,0,
+apps_test_4111,FAILED,0,
+apps_test_4115,FAILED,0,
+apps_test_4142,FAILED,0,
+apps_test_4143,FAILED,0,
+apps_test_4159,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+apps_test_4160,SUCCESS,2,"gemini, gpt"
+apps_test_4167,FAILED,0,
+apps_test_4173,FAILED,0,
+apps_test_4176,SUCCESS,1,gpt-mini
+apps_test_4177,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+apps_test_4178,FAILED,0,
+apps_test_4180,FAILED,0,
+apps_test_4182,FAILED,0,
+apps_test_4183,FAILED,0,
+apps_test_4188,SUCCESS,5,"claude-opus, gemini, glm, gpt, grok-code"
+apps_test_4192,FAILED,0,
+apps_test_4194,FAILED,0,
+apps_test_4206,SUCCESS,2,"gpt, gpt-mini"
+apps_test_4211,FAILED,0,
+apps_test_4215,SUCCESS,4,"claude-opus, gemini, glm, grok-code"
+apps_test_4216,FAILED,0,
+apps_test_4220,FAILED,0,
+apps_test_4221,SUCCESS,2,"claude-opus, glm"
+apps_test_4224,FAILED,0,
+apps_test_4225,SUCCESS,1,gpt
+apps_test_4231,FAILED,0,
+apps_test_4234,SUCCESS,4,"claude-opus, gpt, gpt-mini, grok-code"
+apps_test_4237,SUCCESS,1,gpt
+apps_test_4242,FAILED,0,
+apps_test_4245,FAILED,0,
+apps_test_4246,SUCCESS,3,"gemini, gpt, gpt-mini"
+apps_test_4247,FAILED,0,
+apps_test_4252,FAILED,0,
+apps_test_4253,FAILED,0,
+apps_test_4254,SUCCESS,1,gpt-mini
+apps_test_4255,FAILED,0,
+apps_test_4256,FAILED,0,
+apps_test_4258,FAILED,0,
+apps_test_4261,SUCCESS,4,"claude-sonnet, gemini, gpt-mini, grok-code"
+apps_test_4267,SUCCESS,4,"claude-opus, claude-sonnet, gemini, gpt"
+apps_test_4269,SUCCESS,7,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, grok-code"
+apps_test_4275,FAILED,0,
+apps_test_4277,SUCCESS,2,"gpt, gpt-mini"
+apps_test_4284,FAILED,0,
+apps_test_4294,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+apps_test_4295,SUCCESS,6,"claude-opus, claude-sonnet, gemini-flash, glm, gpt-mini, grok-code"
+apps_test_4297,FAILED,0,
+apps_test_4298,SUCCESS,5,"claude-opus, claude-sonnet, gemini-flash, glm, grok-code"
+apps_test_4299,SUCCESS,5,"claude-opus, claude-sonnet, gemini, glm, gpt-mini"
+apps_test_4301,SUCCESS,3,"gemini, glm, gpt"
+apps_test_4304,FAILED,0,
+apps_test_4305,FAILED,0,
+apps_test_4306,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt-mini"
+apps_test_4308,SUCCESS,7,"claude-opus, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+apps_test_4310,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+apps_test_4312,SUCCESS,4,"claude-opus, deepseek, gemini, grok-code"
+apps_test_4313,FAILED,0,
+apps_test_4317,SUCCESS,2,"gemini, gpt"
+apps_test_4318,FAILED,0,
+apps_test_4326,SUCCESS,5,"claude-opus, claude-sonnet, gemini-flash, glm, grok-code"
+apps_test_4327,FAILED,0,
+apps_test_433,FAILED,0,
+apps_test_4331,FAILED,0,
+apps_test_4332,SUCCESS,1,gpt
+apps_test_4333,FAILED,0,
+apps_test_4340,FAILED,0,
+apps_test_4343,FAILED,0,
+apps_test_4347,FAILED,0,
+apps_test_4351,SUCCESS,1,gpt
+apps_test_4353,SUCCESS,5,"claude-opus, claude-sonnet, gemini, gemini-flash, grok-code"
+apps_test_4362,SUCCESS,3,"gemini, gpt, grok-code"
+apps_test_4363,FAILED,0,
+apps_test_4365,FAILED,0,
+apps_test_4366,FAILED,0,
+apps_test_4370,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, grok-code"
+apps_test_4371,FAILED,0,
+apps_test_4380,FAILED,0,
+apps_test_4381,FAILED,0,
+apps_test_4384,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+apps_test_4386,SUCCESS,2,"gpt, gpt-mini"
+apps_test_4387,SUCCESS,4,"gemini, glm, gpt, grok-code"
+apps_test_4388,SUCCESS,5,"claude-opus, claude-sonnet, gemini, gpt-mini, grok-code"
+apps_test_4390,FAILED,0,
+apps_test_4392,FAILED,0,
+apps_test_4399,SUCCESS,6,"claude-opus, claude-sonnet, gemini, glm, gpt, grok-code"
+apps_test_440,SUCCESS,5,"claude-opus, claude-sonnet, gemini, glm, gpt"
+apps_test_4400,SUCCESS,4,"claude-opus, claude-sonnet, gemini, glm"
+apps_test_4403,FAILED,0,
+apps_test_4404,FAILED,0,
+apps_test_4413,FAILED,0,
+apps_test_442,SUCCESS,4,"claude-opus, glm, gpt, grok-code"
+apps_test_4426,SUCCESS,2,"deepseek, grok-code"
+apps_test_4427,FAILED,0,
+apps_test_443,FAILED,0,
+apps_test_4430,FAILED,0,
+apps_test_4431,SUCCESS,2,"gpt, gpt-mini"
+apps_test_4441,FAILED,0,
+apps_test_4443,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+apps_test_4444,FAILED,0,
+apps_test_4446,SUCCESS,1,gpt
+apps_test_4464,FAILED,0,
+apps_test_4465,FAILED,0,
+apps_test_4466,SUCCESS,1,claude-opus
+apps_test_4469,FAILED,0,
+apps_test_4470,FAILED,0,
+apps_test_4476,SUCCESS,1,gemini
+apps_test_4477,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, grok-code"
+apps_test_448,SUCCESS,1,gpt
+apps_test_4482,FAILED,0,
+apps_test_4486,FAILED,0,
+apps_test_4487,FAILED,0,
+apps_test_4488,FAILED,0,
+apps_test_4489,FAILED,0,
+apps_test_449,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, grok-code"
+apps_test_4490,FAILED,0,
+apps_test_4491,FAILED,0,
+apps_test_4494,FAILED,0,
+apps_test_4495,FAILED,0,
+apps_test_4496,FAILED,0,
+apps_test_4498,FAILED,0,
+apps_test_45,FAILED,0,
+apps_test_4502,FAILED,0,
+apps_test_4504,FAILED,0,
+apps_test_4505,SUCCESS,4,"claude-opus, deepseek, gemini, glm"
+apps_test_4508,SUCCESS,3,"claude-sonnet, gpt, gpt-mini"
+apps_test_4528,FAILED,0,
+apps_test_4534,FAILED,0,
+apps_test_4538,FAILED,0,
+apps_test_4539,SUCCESS,1,gpt
+apps_test_4541,SUCCESS,5,"claude-opus, claude-sonnet, gemini, gpt, grok-code"
+apps_test_4542,FAILED,0,
+apps_test_4543,SUCCESS,3,"glm, gpt, gpt-mini"
+apps_test_4545,FAILED,0,
+apps_test_4547,FAILED,0,
+apps_test_4551,FAILED,0,
+apps_test_4553,SUCCESS,1,claude-opus
+apps_test_4554,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+apps_test_4556,SUCCESS,5,"gemini, glm, gpt, gpt-mini, grok-code"
+apps_test_4557,FAILED,0,
+apps_test_4560,FAILED,0,
+apps_test_4561,SUCCESS,4,"gemini, glm, gpt-mini, grok-code"
+apps_test_4567,FAILED,0,
+apps_test_4569,FAILED,0,
+apps_test_4570,FAILED,0,
+apps_test_4571,FAILED,0,
+apps_test_4575,FAILED,0,
+apps_test_4579,FAILED,0,
+apps_test_4581,FAILED,0,
+apps_test_4582,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini, grok-code"
+apps_test_4583,SUCCESS,1,claude-opus
+apps_test_4584,FAILED,0,
+apps_test_4585,FAILED,0,
+apps_test_4586,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini"
+apps_test_4588,SUCCESS,6,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini"
+apps_test_4594,FAILED,0,
+apps_test_4603,FAILED,0,
+apps_test_4605,FAILED,0,
+apps_test_4606,SUCCESS,1,gpt
+apps_test_4607,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+apps_test_461,FAILED,0,
+apps_test_4614,SUCCESS,2,"gpt, gpt-mini"
+apps_test_4615,FAILED,0,
+apps_test_4616,FAILED,0,
+apps_test_4617,SUCCESS,1,gpt
+apps_test_462,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+apps_test_4635,SUCCESS,2,"claude-opus, gpt"
+apps_test_4659,FAILED,0,
+apps_test_4676,SUCCESS,1,gpt
+apps_test_4677,SUCCESS,1,claude-opus
+apps_test_4679,SUCCESS,5,"claude-opus, claude-sonnet, glm, gpt, gpt-mini"
+apps_test_4680,SUCCESS,7,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
+apps_test_4681,FAILED,0,
+apps_test_4688,FAILED,0,
+apps_test_4690,FAILED,0,
+apps_test_4692,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+apps_test_4697,SUCCESS,6,"claude-opus, claude-sonnet, gemini, glm, gpt, grok-code"
+apps_test_470,FAILED,0,
+apps_test_4701,SUCCESS,6,"claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini"
+apps_test_4702,FAILED,0,
+apps_test_4705,FAILED,0,
+apps_test_4706,SUCCESS,4,"claude-sonnet, deepseek, gemini, glm"
+apps_test_4710,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini"
+apps_test_4711,FAILED,0,
+apps_test_4713,SUCCESS,1,claude-opus
+apps_test_4715,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini"
+apps_test_4717,FAILED,0,
+apps_test_4718,SUCCESS,3,"claude-opus, deepseek, grok-code"
+apps_test_472,FAILED,0,
+apps_test_4721,FAILED,0,
+apps_test_4722,FAILED,0,
+apps_test_4724,FAILED,0,
+apps_test_473,FAILED,0,
+apps_test_475,SUCCESS,1,gpt
+apps_test_48,FAILED,0,
+apps_test_483,FAILED,0,
+apps_test_484,FAILED,0,
+apps_test_486,FAILED,0,
+apps_test_491,FAILED,0,
+apps_test_492,FAILED,0,
+apps_test_498,FAILED,0,
+apps_test_50,SUCCESS,2,"gpt, gpt-mini"
+apps_test_506,FAILED,0,
+apps_test_511,SUCCESS,2,"gpt, gpt-mini"
+apps_test_520,FAILED,0,
+apps_test_529,FAILED,0,
+apps_test_530,SUCCESS,1,gpt
+apps_test_533,FAILED,0,
+apps_test_537,FAILED,0,
+apps_test_548,FAILED,0,
+apps_test_553,SUCCESS,5,"claude-opus, claude-sonnet, gemini, glm, gpt"
+apps_test_56,FAILED,0,
+apps_test_566,SUCCESS,3,"claude-opus, deepseek, gpt"
+apps_test_569,FAILED,0,
+apps_test_584,FAILED,0,
+apps_test_59,FAILED,0,
+apps_test_600,FAILED,0,
+apps_test_602,SUCCESS,5,"claude-opus, claude-sonnet, gemini, glm, grok-code"
+apps_test_604,FAILED,0,
+apps_test_605,SUCCESS,2,"gpt-mini, grok-code"
+apps_test_610,SUCCESS,4,"gemini, glm, gpt, gpt-mini"
+apps_test_613,FAILED,0,
+apps_test_62,SUCCESS,5,"claude-opus, claude-sonnet, gemini, glm, gpt"
+apps_test_623,FAILED,0,
+apps_test_625,SUCCESS,3,"claude-opus, deepseek, gpt"
+apps_test_641,FAILED,0,
+apps_test_644,SUCCESS,2,"gpt, gpt-mini"
+apps_test_645,SUCCESS,4,"claude-opus, glm, gpt, gpt-mini"
+apps_test_648,FAILED,0,
+apps_test_65,FAILED,0,
+apps_test_650,SUCCESS,3,"claude-opus, claude-sonnet, gemini"
+apps_test_657,FAILED,0,
+apps_test_66,SUCCESS,2,"gpt, gpt-mini"
+apps_test_666,SUCCESS,2,"gpt, gpt-mini"
+apps_test_673,FAILED,0,
+apps_test_679,FAILED,0,
+apps_test_682,SUCCESS,5,"claude-opus, claude-sonnet, gemini, gpt-mini, grok-code"
+apps_test_696,FAILED,0,
+apps_test_703,FAILED,0,
+apps_test_709,FAILED,0,
+apps_test_719,FAILED,0,
+apps_test_73,FAILED,0,
+apps_test_736,FAILED,0,
+apps_test_744,SUCCESS,1,claude-opus
+apps_test_748,SUCCESS,2,"gpt, gpt-mini"
+apps_test_750,FAILED,0,
+apps_test_754,SUCCESS,2,"claude-opus, gemini"
+apps_test_755,SUCCESS,2,"glm, gpt"
+apps_test_76,FAILED,0,
+apps_test_760,SUCCESS,3,"glm, gpt, gpt-mini"
+apps_test_777,FAILED,0,
+apps_test_781,SUCCESS,4,"gemini, gpt, gpt-mini, grok-code"
+apps_test_785,FAILED,0,
+apps_test_788,FAILED,0,
+apps_test_789,FAILED,0,
+apps_test_792,SUCCESS,3,"claude-opus, gpt, gpt-mini"
+apps_test_795,FAILED,0,
+apps_test_804,FAILED,0,
+apps_test_811,FAILED,0,
+apps_test_821,FAILED,0,
+apps_test_823,FAILED,0,
+apps_test_826,FAILED,0,
+apps_test_838,SUCCESS,2,"gpt, gpt-mini"
+apps_test_842,FAILED,0,
+apps_test_847,FAILED,0,
+apps_test_858,SUCCESS,4,"gemini, glm, gpt-mini, grok-code"
+apps_test_862,FAILED,0,
+apps_test_869,SUCCESS,7,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, grok-code"
+apps_test_87,SUCCESS,6,"claude-opus, claude-sonnet, gemini-flash, glm, gpt, grok-code"
+apps_test_883,FAILED,0,
+apps_test_894,FAILED,0,
+apps_test_895,FAILED,0,
+apps_test_909,FAILED,0,
+apps_test_913,FAILED,0,
+apps_test_925,SUCCESS,2,"claude-opus, glm"
+apps_test_935,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, grok-code"
+apps_test_940,SUCCESS,4,"claude-opus, gemini, glm, grok-code"
+apps_test_948,FAILED,0,
+apps_test_949,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+apps_test_954,SUCCESS,6,"claude-opus, gemini, glm, gpt, gpt-mini, grok-code"
+apps_test_960,FAILED,0,
+apps_test_963,FAILED,0,
+apps_test_965,FAILED,0,
+apps_test_967,FAILED,0,
+apps_test_968,SUCCESS,4,"claude-opus, claude-sonnet, gpt, gpt-mini"
+apps_test_983,FAILED,0,
+apps_test_985,FAILED,0,
+apps_test_986,SUCCESS,2,"gpt, gpt-mini"
+apps_test_989,FAILED,0,

@@ -12,11 +12,11 @@ method SquareRoot(n: nat) returns (result: nat)
 // </vc-spec>
 // <vc-code>
 {
-  result := 0;
-  while (result + 1) * (result + 1) <= n
-    invariant result * result <= n
-  {
-    result := result + 1;
-  }
+    result := 0;
+    while (result + 1) * (result + 1) <= n
+        invariant result * result <= n
+    {
+        result := result + 1;
+    }
 }
 // </vc-code>

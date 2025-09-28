@@ -27,39 +27,60 @@ spec fn sum_powers(n: nat, k: nat) -> nat
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): Changed return types from nat to u32, adjusted ensures to cast u32 to nat, and modified body to avoid casting base to nat in executable code */
-fn exec_count_digits(n: u32) -> (result: u32)
-    ensures result as nat == count_digits(n as nat)
-    decreases n
+/* helper modified by LLM (iteration 2): added executable functions for digit count, power, and sum of powers with verification ensures */
+proof fn count_exec_inv(m: u32, orig: u32, count: u32)
+    ensures
+        count as nat + count_digits(m as nat) == count_digits(orig as nat)
+    decreases m
 {
-    if n == 0 {
-        1
-    } else if n < 10 {
-        1
+    if m == 0 {
+
     } else {
-        1 + exec_count_digits(n / 10)
+        count_exec_inv(m / 10, orig, count + 1)
     }
 }
 
-fn exec_pow(base: u32, exp: u32) -> (result: u32)
-    ensures result as nat == pow_nat(base as nat, exp as nat)
+fn count_digits_exec(n: u32) -> (count: u32)
+    ensures
+        count as nat == count_digits(n as nat)
+{
+    if n == 0 {
+        return 1;
+    }
+    let mut m = n;
+    let mut c = 0;
+    while m > 0
+        invariant
+            c as nat + count_digits(m as nat) == count_digits(n as nat)
+        decreases m
+    {
+        c += 1;
+        m /= 10;
+    }
+    c
+}
+
+fn pow_exec(base: u32, exp: u32) -> u64
     decreases exp
+    ensures
+        pow_exec(base, exp) == pow_nat(base as nat, exp as nat)
 {
     if exp == 0 {
         1
     } else {
-        base * exec_pow(base, exp - 1)
+        (base as u64) * pow_exec(base, exp - 1)
     }
 }
 
-fn exec_sum_powers(n: u32, k: u32) -> (result: u32)
-    ensures result as nat == sum_powers(n as nat, k as nat)
+fn sum_powers_exec(n: u32, k: u32) -> u64
     decreases n
+    ensures
+        sum_powers_exec(n, k) == sum_powers(n as nat, k as nat)
 {
     if n == 0 {
         0
     } else {
-        exec_pow(n % 10, k) + exec_sum_powers(n / 10, k)
+        pow_exec(n % 10, k) + sum_powers_exec(n / 10, k)
     }
 }
 // </vc-helpers>
@@ -70,11 +91,11 @@ fn is_armstrong(n: u32) -> (result: bool)
         result == (n as nat == sum_powers(n as nat, count_digits(n as nat))),
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Removed casting n to nat in executable code, now directly compare u32 values */
 {
-    let k = exec_count_digits(n);
-    let sum = exec_sum_powers(n, k);
-    sum == n
+/* code modified by LLM (iteration 2): calculate digit count and sum of digits raised to the power of digit count, then check equality for Armstrong number */
+    let digit_count = count_digits_exec(n);
+    let sum = sum_powers_exec(n, digit_count);
+    n as u64 == sum
 }
 // </vc-code>
 

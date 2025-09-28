@@ -5,7 +5,7 @@ verus! {
 spec fn valid_input(n: int, k: int, l: Seq<int>) -> bool {
     n >= 1 && k >= 1 && n <= 2*k &&
     l.len() == n &&
-    (forall|i: int| 0 <= i < l.len()-1 ==> #[trigger] l[i] <= #[trigger] l[i+1]) &&
+    forall|i: int, j: int| 0 <= i < l.len()-1 && j == i+1 ==> #[trigger] l[i] <= #[trigger] l[j] &&
     (forall|i: int| 0 <= i < l.len() ==> #[trigger] l[i] >= 0)
 }
 
@@ -15,27 +15,23 @@ spec fn valid_box_configuration(boxes: Seq<int>, box_size: int) -> bool {
     (forall|i: int| 0 <= i < boxes.len() ==> #[trigger] boxes[i] >= 0)
 }
 
-spec fn sum(s: Seq<int>) -> int
+spec fn sum_seq(s: Seq<int>) -> int
+    decreases s.len()
+{
+    if s.len() == 0 { 0 } else { s[0] + sum_seq(s.subrange(1, s.len() as int)) }
+}
+
+spec fn max_seq(s: Seq<int>) -> int
     decreases s.len()
 {
     if s.len() == 0 { 
         0 
-    } else { 
-        s[0] + sum(s.subrange(1, s.len() as int)) 
-    }
-}
-
-spec fn max(s: Seq<int>) -> int
-    decreases s.len()
-{
-    if s.len() == 0 {
-        0
     } else if s.len() == 1 { 
-        s[0]
-    } else if s[0] >= max(s.subrange(1, s.len() as int)) { 
-        s[0]
+        s[0] 
+    } else if s[0] >= max_seq(s.subrange(1, s.len() as int)) { 
+        s[0] 
     } else { 
-        max(s.subrange(1, s.len() as int))
+        max_seq(s.subrange(1, s.len() as int)) 
     }
 }
 // </vc-preamble>
@@ -44,8 +40,8 @@ spec fn max(s: Seq<int>) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int, l: Seq<int>) -> (result: int)
-    requires valid_input(n, k, l)
+fn solve(n: i8, k: i8, l: Vec<i8>) -> (result: i8)
+    requires valid_input(n as int, k as int, l@.map_values(|v: i8| v as int))
     ensures result >= 0
 // </vc-spec>
 // <vc-code>

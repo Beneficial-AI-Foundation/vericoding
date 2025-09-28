@@ -1,0 +1,64 @@
+// <vc-preamble>
+function encode_char(c: char): char
+
+  requires 'a' <= c <= 'z'
+
+  ensures 'a' <= encode_char(c) <= 'z'
+
+{
+
+  ((c as int - 'a' as int + 5) % 26 + 'a' as int) as char
+
+}
+function decode_char(c: char): char
+
+  requires 'a' <= c <= 'z'
+
+  ensures 'a' <= decode_char(c) <= 'z'
+  ensures encode_char(decode_char(c)) == c
+
+{
+
+  ((c as int - 'a' as int - 5) % 26 + 'a' as int) as char
+
+}
+// </vc-preamble>
+
+// <vc-helpers>
+/* helper modified by LLM (iteration 5): prove encode_char maps lowercase to lowercase */
+lemma EncodeCharRange(c: char)
+  requires 'a' <= c <= 'z'
+  ensures 'a' <= encode_char(c) <= 'z'
+{
+  reveal encode_char;
+  var x := (c as int - 'a' as int + 5) % 26 + 'a' as int;
+  assert 'a' as int <= x <= 'z' as int;
+}
+
+// </vc-helpers>
+
+// <vc-spec>
+method encode_shift(s: string) returns (t: string)
+
+  requires forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z'
+
+  ensures |s| == |t|
+  ensures forall i :: 0 <= i < |s| ==> t[i] == encode_char(s[i])
+// </vc-spec>
+// <vc-code>
+{
+  /* code modified by LLM (iteration 5): implement encode_shift using sequence concatenation */
+  var n := |s|;
+  t := "";
+  var i := 0;
+  while i < n
+    invariant 0 <= i <= n
+    invariant |t| == i
+    invariant forall j :: 0 <= j < i ==> t[j] == encode_char(s[j])
+  {
+    t := t + [encode_char(s[i])];
+    i := i + 1;
+  }
+}
+
+// </vc-code>

@@ -1,9 +1,0 @@
-=== LLM Response - generate_code - Iteration 0 ===
-File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_ModExpPow2_Zeroes.rs
-Prompt Hash: b15707cd
-JSON Parsed Successfully: True
-Timestamp: 1757962274.2282481
-Content Length: 1206 chars
---------------------------------------------------------------------------------
-["spec fn Int2Str(n: nat) -> Seq<char>\n  decreases n\n  {\n    if n == 0 { Seq::<char>::empty() } else { Int2Str(n / 2) + Seq::<char>::singleton(if n % 2 == 0 { '0' } else { '1' }) }\n  }\n\nproof fn lemma_int2str2int(n: nat)\n  ensures\n    Str2Int(Int2Str(n)) == n,\n    ValidBitString(Int2Str(n))\n  decreases n\n{\n  if n != 0 {\n    lemma_int2str2int(n / 2);\n  }\n}", "{\n  let m = Str2Int(sz@);\n  let mut result: nat = 1;\n  let mut base: nat = Str2Int(sx@);\n  let mut exponent_bits = sy@;\n  \n  while exponent_bits.len() > 0\n    invariant\n      Str2Int(exponent_bits) <= Str2Int(sy@),\n    decreases exponent_bits.len()\n  {\n    let last_index = exponent_bits.len() as nat - 1;\n    let last_bit = exponent_bits.index(last_index);\n    exponent_bits = exponent_bits.subrange(0, last_index as int);\n    if last_bit == '1'\n    {\n      result = (result * base) % m;\n    }\n    base = (base * base) % m;\n  }\n  \n  let result_seq = Int2Str(result);\n  let mut res = Vec::<char>::new();\n  let mut i: nat = 0;\n  while i < result_seq.len()\n    invariant\n      true,\n    decreases result_seq.len() as int - i as int\n  {\n    res.push(result_seq.index(i));\n    i = i + 1;\n  }\n  res\n}"]
---------------------------------------------------------------------------------

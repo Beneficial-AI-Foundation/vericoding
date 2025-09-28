@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     var parts := SplitStringFunc(input);
@@ -79,6 +80,7 @@ function MinParkingCost(n: int, a: int, b: int): int
     var plan2Cost := b;
     if plan1Cost <= plan2Cost then plan1Cost else plan2Cost
 }
+// </vc-preamble>
 
 // <vc-helpers>
 
@@ -97,12 +99,11 @@ ensures exists n, a, b ::
 // </vc-spec>
 // <vc-code>
 {
-    var parts := SplitStringFunc(input);
-    var n := StringToIntFunc(parts[0]);
-    var a := StringToIntFunc(parts[1]);
-    var b := StringToIntFunc(parts[2]);
-    var minCost := MinParkingCost(n, a, b);
-    result := IntToStringFunc(minCost) + "\n";
+  var parts := SplitStringFunc(input);
+  var n := StringToIntFunc(parts[0]);
+  var a := StringToIntFunc(parts[1]);
+  var b := StringToIntFunc(parts[2]);
+  var minCost := MinParkingCost(n, a, b);
+  result := IntToStringFunc(minCost) + "\n";
 }
 // </vc-code>
-

@@ -1,0 +1,193 @@
+=== DAFNY PROCESSING SUMMARY (AGGREGATED) ===
+Selection method: best runs
+Total files: 162
+Successful: 151 (93.2%)
+Failed: 11
+
+Selected best runs:
+  - claude-opus: vericoder_claude-opus_18-09_14h04 (success rate: 71.6%)
+  - claude-sonnet: vericoder_claude-sonnet_18-09_14h04 (success rate: 72.8%)
+  - deepseek: vericoder_deepseek_18-09_14h04 (success rate: 45.1%)
+  - gemini: vericoder_gemini_18-09_14h04 (success rate: 69.1%)
+  - gemini-flash: vericoder_gemini-flash_18-09_14h04 (success rate: 42.6%)
+  - glm: vericoder_glm_18-09_14h04 (success rate: 50.0%)
+  - gpt: vericoder_gpt_18-09_14h05 (success rate: 72.2%)
+  - gpt-mini: vericoder_gpt-mini_18-09_14h05 (success rate: 71.6%)
+  - grok-code: vericoder_grok-code_18-09_14h05 (success rate: 57.4%)
+
+Per-LLM success rates:
+  - claude-opus: 116/162 (71.6%)
+  - claude-sonnet: 118/162 (72.8%)
+  - deepseek: 73/162 (45.1%)
+  - gemini: 112/162 (69.1%)
+  - gemini-flash: 69/162 (42.6%)
+  - glm: 81/162 (50.0%)
+  - gpt: 117/162 (72.2%)
+  - gpt-mini: 116/162 (71.6%)
+  - grok-code: 93/162 (57.4%)
+
+Successful files:
+✓ humaneval_000.dfy — by: claude-sonnet, gemini, gpt-mini
+✓ humaneval_001_separate-paren-groups.dfy — by: gemini
+✓ humaneval_002.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_003.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ humaneval_004.dfy — by: claude-opus, claude-sonnet, deepseek, gemini-flash, glm, gpt-mini, grok-code
+✓ humaneval_005.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ humaneval_006.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ humaneval_007.dfy — by: gpt
+✓ humaneval_008.dfy — by: claude-opus, claude-sonnet, glm, gpt, gpt-mini, grok-code
+✓ humaneval_009.dfy — by: claude-opus, claude-sonnet, deepseek, gemini
+✓ humaneval_010_is_palindrome__make_palindrome.dfy — by: gemini, gpt-mini
+✓ humaneval_011.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, grok-code
+✓ humaneval_012.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ humaneval_014.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, grok-code
+✓ humaneval_016.dfy — by: claude-opus, gemini, glm, gpt, grok-code
+✓ humaneval_018_how_many_times.dfy — by: gpt
+✓ humaneval_020.dfy — by: claude-opus, claude-sonnet, gemini, gpt
+✓ humaneval_021_rescale_to_unit.dfy — by: claude-sonnet, gemini, gpt
+✓ humaneval_022.dfy — by: claude-sonnet
+✓ humaneval_023.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_024_largest-divisor.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ humaneval_026_remove_duplicates__count.dfy — by: gpt
+✓ humaneval_026_remove_duplicates__remove_duplicates.dfy — by: claude-sonnet, gemini, gpt, gpt-mini
+✓ humaneval_027.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini
+✓ humaneval_028.dfy — by: gemini, glm, gpt, gpt-mini, grok-code
+✓ humaneval_029_filter_by_prefix.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
+✓ humaneval_031.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ humaneval_033_sort_third__SortSeqPred.dfy — by: claude-sonnet, gemini
+✓ humaneval_033_sort_third__sort_third.dfy — by: gpt
+✓ humaneval_034_unique__SortSeq.dfy — by: claude-sonnet, gemini-flash
+✓ humaneval_034_unique__unique.dfy — by: claude-opus
+✓ humaneval_034_unique__uniqueSorted.dfy — by: claude-opus, gemini, glm, gpt
+✓ humaneval_035.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ humaneval_036_fizz_buzz__count7.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_036_fizz_buzz__fizz_buzz.dfy — by: claude-opus, claude-sonnet, gpt-mini
+✓ humaneval_037_sort_even__SortSeqPred.dfy — by: claude-sonnet
+✓ humaneval_038_encode_cyclic__decode_cyclic.dfy — by: claude-opus, claude-sonnet, deepseek, gemini
+✓ humaneval_038_encode_cyclic__encode_cyclic.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini
+✓ humaneval_040.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ humaneval_041.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_042.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, grok-code
+✓ humaneval_043.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini
+✓ humaneval_045.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_046.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_047.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ humaneval_048.dfy — by: claude-opus, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ humaneval_049.dfy — by: gpt-mini
+✓ humaneval_050_encode_shift__decode_shift.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ humaneval_050_encode_shift__encode_shift.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ humaneval_051.dfy — by: grok-code
+✓ humaneval_052.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_053.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_054.dfy — by: claude-opus, claude-sonnet, deepseek, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_055.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ humaneval_056.dfy — by: claude-opus, gpt, gpt-mini
+✓ humaneval_057.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_058_common.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini
+✓ humaneval_059.dfy — by: gemini
+✓ humaneval_060.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_062.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, grok-code
+✓ humaneval_063.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_064_vowels_count.dfy — by: claude-sonnet, gemini, gpt, gpt-mini
+✓ humaneval_065.dfy — by: claude-opus, claude-sonnet, deepseek, gemini-flash, glm, gpt-mini, grok-code
+✓ humaneval_066.dfy — by: claude-opus, claude-sonnet, glm, gpt, gpt-mini, grok-code
+✓ humaneval_067.dfy — by: claude-opus, claude-sonnet, deepseek, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_068.dfy — by: claude-opus, gpt-mini
+✓ humaneval_069.dfy — by: gpt, gpt-mini
+✓ humaneval_070_strange_sort_list__strange_sort_list_helper.dfy — by: gpt-mini
+✓ humaneval_072.dfy — by: claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ humaneval_073.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ humaneval_074.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_075.dfy — by: claude-sonnet, gemini
+✓ humaneval_077_iscube__cube_root.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_077_iscube__is_cube.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini
+✓ humaneval_078.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ humaneval_079_decimal_to_binary.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_080.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_081.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ humaneval_082.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ humaneval_083.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_084_solve.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ humaneval_085_add.dfy — by: deepseek, gemini-flash, gpt, gpt-mini
+✓ humaneval_087_get_row__get_row.dfy — by: claude-opus, gpt-mini
+✓ humaneval_088.dfy — by: claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_089.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, grok-code
+✓ humaneval_090_next_smallest.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ humaneval_092.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_093.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ humaneval_094.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ humaneval_095_check_dict_case.dfy — by: claude-opus, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ humaneval_096.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ humaneval_097.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_098_count_upper.dfy — by: claude-opus, claude-sonnet, grok-code
+✓ humaneval_100.dfy — by: claude-opus, claude-sonnet, gemini, gpt-mini
+✓ humaneval_102.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt
+✓ humaneval_103.dfy — by: claude-opus, claude-sonnet, deepseek, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_104_unique_digits.dfy — by: claude-sonnet
+✓ humaneval_105_by_length__SortReverseAndName.dfy — by: gpt
+✓ humaneval_105_by_length__reverse.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ humaneval_106.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt-mini, grok-code
+✓ humaneval_107.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ humaneval_108.dfy — by: claude-opus, gemini, gpt, gpt-mini
+✓ humaneval_109.dfy — by: claude-opus, gemini-flash, gpt-mini
+✓ humaneval_110.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_111_histogram.dfy — by: claude-sonnet, gpt
+✓ humaneval_112.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt-mini, grok-code
+✓ humaneval_113.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ humaneval_115.dfy — by: claude-opus, claude-sonnet, gemini, gpt-mini, grok-code
+✓ humaneval_118_get_closest_vowel.dfy — by: gemini, gpt-mini
+✓ humaneval_119.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_120_maximum__maximum.dfy — by: gpt, gpt-mini
+✓ humaneval_121.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_122.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_123_get_odd_collatz__get_odd_collatz.dfy — by: gpt, gpt-mini
+✓ humaneval_123_get_odd_collatz__get_odd_collatz_unsorted.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini
+✓ humaneval_123_get_odd_collatz__next_odd_collatz_iter.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_124.dfy — by: claude-opus, claude-sonnet, deepseek, glm, gpt, gpt-mini, grok-code
+✓ humaneval_125.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_126.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_127_intersection.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_128.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ humaneval_130_tri.dfy — by: claude-opus, claude-sonnet, gemini-flash, gpt, gpt-mini, grok-code
+✓ humaneval_132_is_nested.dfy — by: claude-opus, deepseek, glm, gpt, gpt-mini
+✓ humaneval_133_sum_squares.dfy — by: claude-sonnet, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_134.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_135.dfy — by: claude-sonnet, deepseek, gemini, glm
+✓ humaneval_136_largest_smallest_integers.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini
+✓ humaneval_137.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_138.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_139.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_142.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_144.dfy — by: claude-opus, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_145_order_by_points.dfy — by: claude-opus, gemini-flash
+✓ humaneval_146.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ humaneval_147.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_148_bf.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ humaneval_149_sorted_list_sum__sort_lengths.dfy — by: claude-opus
+✓ humaneval_149_sorted_list_sum__sort_strings.dfy — by: claude-opus, claude-sonnet, gpt, gpt-mini
+✓ humaneval_149_sorted_list_sum__sorted_list_sum.dfy — by: gpt, gpt-mini
+✓ humaneval_150_x_or_y.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_151.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ humaneval_152.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ humaneval_153.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini
+✓ humaneval_154_cycpattern_check.dfy — by: claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ humaneval_155.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ humaneval_157.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_158_find_max.dfy — by: claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini
+✓ humaneval_159.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ humaneval_161.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, grok-code
+✓ humaneval_162.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, grok-code
+✓ humaneval_163_generate_integers__generate_integers.dfy — by: claude-opus, gemini, gemini-flash, gpt, gpt-mini, grok-code
+
+Failed files:
+✗ humaneval_013.dfy
+✗ humaneval_025.dfy
+✗ humaneval_030.dfy
+✗ humaneval_037_sort_even__sorted_even.dfy
+✗ humaneval_044.dfy
+✗ humaneval_076_is_simple_power.dfy
+✗ humaneval_087_get_row__SortSeq.dfy
+✗ humaneval_105_by_length__SortSeq.dfy
+✗ humaneval_114_minSubArraySum.dfy
+✗ humaneval_116_sort_array.dfy
+✗ humaneval_120_maximum__SortSeq.dfy

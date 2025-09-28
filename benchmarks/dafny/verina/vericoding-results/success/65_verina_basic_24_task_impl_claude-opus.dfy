@@ -30,25 +30,28 @@ method FirstEvenOddDifference(a: array<int>) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    var firstEvenIndex := 0;
-    var firstOddIndex := 0;
+    var firstEven := -1;
+    var firstOdd := -1;
+    var i := 0;
     
-    // Find first even number
-    while firstEvenIndex < a.Length && !IsEven(a[firstEvenIndex])
-        invariant 0 <= firstEvenIndex <= a.Length
-        invariant forall k :: 0 <= k < firstEvenIndex ==> IsOdd(a[k])
+    while i < a.Length && (firstEven == -1 || firstOdd == -1)
+        invariant 0 <= i <= a.Length
+        invariant firstEven == -1 || (0 <= firstEven < i && IsEven(a[firstEven]))
+        invariant firstOdd == -1 || (0 <= firstOdd < i && IsOdd(a[firstOdd]))
+        invariant firstEven == -1 ==> forall k :: 0 <= k < i ==> IsOdd(a[k])
+        invariant firstOdd == -1 ==> forall k :: 0 <= k < i ==> IsEven(a[k])
+        invariant firstEven != -1 ==> forall k :: 0 <= k < firstEven ==> IsOdd(a[k])
+        invariant firstOdd != -1 ==> forall k :: 0 <= k < firstOdd ==> IsEven(a[k])
     {
-        firstEvenIndex := firstEvenIndex + 1;
+        if firstEven == -1 && IsEven(a[i]) {
+            firstEven := i;
+        }
+        if firstOdd == -1 && IsOdd(a[i]) {
+            firstOdd := i;
+        }
+        i := i + 1;
     }
     
-    // Find first odd number
-    while firstOddIndex < a.Length && !IsOdd(a[firstOddIndex])
-        invariant 0 <= firstOddIndex <= a.Length
-        invariant forall k :: 0 <= k < firstOddIndex ==> IsEven(a[k])
-    {
-        firstOddIndex := firstOddIndex + 1;
-    }
-    
-    result := a[firstEvenIndex] - a[firstOddIndex];
+    result := a[firstEven] - a[firstOdd];
 }
 // </vc-code>

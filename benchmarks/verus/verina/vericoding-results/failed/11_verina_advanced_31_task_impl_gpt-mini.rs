@@ -18,50 +18,10 @@ spec fn is_strictly_increasing(seq: Seq<i32>) -> bool {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): chain length from parent pointers */
-spec fn chain_len(parent: Seq<int>, i: int) -> int
-    requires
-        0 <= i < parent.len(),
-        forall|k: int| 0 <= k < parent.len() ==> parent[k] >= -1 && parent[k] < k,
-    decreases
-        i,
-    ensures
-        result >= 1,
-{
-    if parent[i] == -1 {
-        1
-    } else {
-        proof {
-            assert(parent[i] >= 0);
-            assert(parent[i] < parent.len());
-        }
-        1 + chain_len(parent, parent[i])
-    }
+/* helper modified by LLM (iteration 5): placeholder conversion from Seq<usize> to Seq<int> (unused) */
+spec fn seq_usize_to_seq_int(_s: Seq<usize>) -> Seq<int> {
+    Seq::<int>::empty()
 }
-
-/* helper modified by LLM (iteration 5): reconstruct increasing subsequence ending at i */
-spec fn reconstruct_seq(xs: Seq<i32>, parent: Seq<int>, i: int) -> Seq<i32>
-    requires
-        0 <= i < xs.len(),
-        parent.len() == xs.len(),
-        forall|k: int| 0 <= k < parent.len() ==> parent[k] >= -1 && parent[k] < k,
-    decreases
-        i,
-    ensures
-        is_subsequence_of(result, xs) && is_strictly_increasing(result) && result.len() == chain_len(parent, i) && result@[result.len() - 1] == xs@[i],
-{
-    if parent[i] == -1 {
-        seq![xs@[i]]
-    } else {
-        proof {
-            assert(parent[i] >= 0);
-            assert(parent[i] < parent.len());
-        }
-        let prev = reconstruct_seq(xs, parent, parent[i]);
-        prev + seq![xs@[i]]
-    }
-}
-
 // </vc-helpers>
 
 // <vc-spec>
@@ -79,68 +39,118 @@ fn longest_increasing_subseq_length(xs: &Vec<i32>) -> (result: usize)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): dynamic programming to compute LIS length and track parent pointers */
-    let n_usize = xs.len();
-    let n = n_usize as int;
-    if n_usize == 0 {
-        proof {
-            let subseq = seq![];
-            assert(is_subsequence_of(subseq, xs@));
-            assert(is_strictly_increasing(subseq));
-            assert(subseq.len() == 0);
-        }
-        return 0;
-    }
-    let mut parent: Vec<int> = Vec::from_elem(n_usize, -1);
-    let mut len_vec: Vec<usize> = Vec::from_elem(n_usize, 1usize);
-    let mut i: int = 0;
-    let mut max_len: usize = 1usize;
-    let mut max_idx: usize = 0usize;
-    while i < n
-        invariant
-            0 <= i && i <= n,
-            forall|t: int| 0 <= t < i ==> len_vec[t as usize] as int == chain_len(parent@, t) && len_vec[t as usize] >= 1 && parent[t as usize] >= -1 && parent[t as usize] < t,
-        decreases
-            n - i
-    {
-        let mut j: int = 0;
-        while j < i
+    /* code modified by LLM (iteration 5): fixed swap borrow by storing index local variables */
+    let n = xs.len();
+    if n == 0 {
+        0
+    } else {
+        // dp[i] = length of LIS ending at i
+        let mut dp: Vec<usize> = Vec::new();
+        dp.resize(n, 1);
+        let mut prev: Vec<Option<usize>> = Vec::new();
+        prev.resize(n, None);
+
+        let mut best_len: usize = 1;
+        let mut best_end: usize = 0;
+
+        let mut i: usize = 0;
+        while i < n
             invariant
-                0 <= j && j <= i,
-                forall|t: int| 0 <= t < j ==> len_vec[t as usize] as int == chain_len(parent@, t) && len_vec[t as usize] >= 1 && parent[t as usize] >= -1 && parent[t as usize] < t,
-            decreases
-                i - j
+                0 <= i && i <= n,
+            decreases n - i
         {
-            if xs@[j] < xs@[i] {
-                let cand = len_vec[j as usize] + 1;
-                if cand > len_vec[i as usize] {
-                    len_vec[i as usize] = cand;
-                    parent[i as usize] = j;
+            let mut j: usize = 0;
+            while j < i
+                invariant
+                    0 <= j && j <= i,
+                decreases i - j
+            {
+                if xs[j] < xs[i] {
+                    if dp[j] + 1 > dp[i] {
+                        dp[i] = dp[j] + 1;
+                        prev[i] = Some(j);
+                    }
                 }
+                j += 1;
             }
-            j = j + 1;
+
+            if dp[i] > best_len {
+                best_len = dp[i];
+                best_end = i;
+            }
+
+            i += 1;
         }
-        if len_vec[i as usize] > max_len {
-            max_len = len_vec[i as usize];
-            max_idx = i as usize;
+
+        // Reconstruct best indices (in reverse) using usize for runtime
+        let mut best_indices: Vec<usize> = Vec::new();
+        let mut cur: Option<usize> = Some(best_end);
+        while cur.is_some()
+            invariant
+                cur.is_some() ==> cur.unwrap() < n,
+            decreases match cur { Some(k) => k + 1, None => 0 }
+        {
+            let idx = cur.unwrap();
+            best_indices.push(idx);
+            cur = prev[idx];
         }
-        i = i + 1;
+
+        // Reverse to get increasing order of indices
+        let mut k: usize = 0;
+        while k < best_indices.len() / 2
+            invariant
+                0 <= k && k <= best_indices.len(),
+            decreases (best_indices.len() / 2) - k
+        {
+            let len_minus_1 = best_indices.len() - 1;
+            let idx1 = k;
+            let idx2 = len_minus_1 - k;
+            let a = best_indices[idx1];
+            let b = best_indices[idx2];
+            best_indices[idx1] = b;
+            best_indices[idx2] = a;
+            k += 1;
+        }
+
+        // Build the values of the subsequence
+        let mut best_vals: Vec<i32> = Vec::new();
+        let mut t: usize = 0;
+        while t < best_indices.len()
+            invariant
+                0 <= t && t <= best_indices.len(),
+            decreases best_indices.len() - t
+        {
+            let idx = best_indices[t];
+            best_vals.push(xs[idx]);
+            t += 1;
+        }
+
+        // Proof: use the constructed best_indices / best_vals to show the ensures clauses
+        proof {
+            // Convert runtime Vecs to spec Seq via `@`
+            let indices_seq_usize: Seq<usize> = best_indices@;
+            let subseq_spec: Seq<i32> = best_vals@;
+
+            // subseq_spec length equals best_len
+            assert(subseq_spec.len() == (best_len as int));
+
+            // indices_seq_usize properties: increasing and within bounds
+            assert(indices_seq_usize.len() == subseq_spec.len());
+            assert(forall|u: int| 0 <= u < indices_seq_usize.len() - 1 ==> ((indices_seq_usize[u] as int) < (indices_seq_usize[u + 1] as int)));
+            assert(forall|u: int| 0 <= u < subseq_spec.len() ==> subseq_spec[u] == xs@[(indices_seq_usize[u] as int)]);
+
+            // subseq_spec is strictly increasing (because constructed from dp/backtracking)
+            assert(is_strictly_increasing(subseq_spec));
+
+            // Show existence required by ensures: there exists a subsequence (witnessed by subseq_spec)
+            assert(exists|s: Seq<i32>| is_subsequence_of(s, xs@) && is_strictly_increasing(s) && s.len() == (best_len as int));
+
+            // Maximality: any increasing subsequence has length <= best_len
+            assert(forall|s: Seq<i32>| (is_subsequence_of(s, xs@) && is_strictly_increasing(s)) ==> s.len() <= (best_len as int));
+        }
+
+        best_len
     }
-    proof {
-        assert(0 <= max_idx as int && max_idx as int < n);
-        assert(len_vec[max_idx] as int == chain_len(parent@, max_idx as int));
-        assert(max_len as int == len_vec[max_idx] as int);
-    }
-    let subseq = reconstruct_seq(xs@, parent@, max_idx as int);
-    proof {
-        assert(subseq.len() == chain_len(parent@, max_idx as int));
-        assert(is_subsequence_of(subseq, xs@));
-        assert(is_strictly_increasing(subseq));
-        assert(len_vec[max_idx] as int == chain_len(parent@, max_idx as int));
-        assert(max_len as int == len_vec[max_idx] as int);
-        assert(subseq.len() == max_len as int);
-    }
-    max_len
 }
 
 // </vc-code>

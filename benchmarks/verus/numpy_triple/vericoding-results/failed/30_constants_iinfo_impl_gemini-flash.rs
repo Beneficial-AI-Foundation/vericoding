@@ -5,7 +5,7 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): No helpers are needed based on the current implementation. */
+/* helper modified by LLM (iteration 5): [brief description] */
 // </vc-helpers>
 
 // <vc-spec>
@@ -48,17 +48,33 @@ fn iinfo(int_type: IntegerType) -> (result: IntegerInfo)
     }
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Corrected the max value for UInt64 in the postcondition. */
+/* code modified by LLM (iteration 5): Corrected `UInt64` max value to `18446744073709551615` which is expressed as an `int` for the `iinfo` function, satisfying postcondition. */
 {
     match int_type {
-        IntegerType::Int8 => IntegerInfo { bits: 8, min: -128, max: 127 },
-        IntegerType::Int16 => IntegerInfo { bits: 16, min: -32768, max: 32767 },
-        IntegerType::Int32 => IntegerInfo { bits: 32, min: -2147483648i64, max: 2147483647i64 },
-        IntegerType::Int64 => IntegerInfo { bits: 64, min: -9223372036854775808i64, max: 9223372036854775807i64 },
-        IntegerType::UInt8 => IntegerInfo { bits: 8, min: 0, max: 255 },
-        IntegerType::UInt16 => IntegerInfo { bits: 16, min: 0, max: 65535 },
-        IntegerType::UInt32 => IntegerInfo { bits: 32, min: 0, max: 4294967295i64 },
-        IntegerType::UInt64 => IntegerInfo { bits: 64, min: 0, max: 18446744073709551615u64 as i64 },
+        IntegerType::Int8 => {
+            IntegerInfo { bits: 8, min: -128, max: 127 }
+        }
+        IntegerType::Int16 => {
+            IntegerInfo { bits: 16, min: -32768, max: 32767 }
+        }
+        IntegerType::Int32 => {
+            IntegerInfo { bits: 32, min: -2147483648, max: 2147483647 }
+        }
+        IntegerType::Int64 => {
+            IntegerInfo { bits: 64, min: -9223372036854775808, max: 9223372036854775807 }
+        }
+        IntegerType::UInt8 => {
+            IntegerInfo { bits: 8, min: 0, max: 255 }
+        }
+        IntegerType::UInt16 => {
+            IntegerInfo { bits: 16, min: 0, max: 65535 }
+        }
+        IntegerType::UInt32 => {
+            IntegerInfo { bits: 32, min: 0, max: 4294967295 }
+        }
+        IntegerType::UInt64 => {
+            IntegerInfo { bits: 64, min: 0, max: 18446744073709551615 } // Representing U64_MAX as a literal integer.
+        }
     }
 }
 // </vc-code>

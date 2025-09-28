@@ -17,22 +17,22 @@ spec fn count_negative_temp_days(temps: Seq<int>) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int, temps: Seq<int>) -> (result: int)
+proof fn solve(n: int, k: int, temps: Seq<int>) -> (result: int)
     requires 
         n >= 1,
         k >= 0 && k <= n,
         temps.len() == n,
-        forall|i: int| 0 <= i < n ==> -20 <= temps[i] <= 20,
+        forall|i: int| 0 <= i < n ==> #[trigger] temps[i] >= -20 && #[trigger] temps[i] <= 20,
     ensures 
         result == -1 <==> count_negative_temp_days(temps) > k,
         result != -1 ==> result >= 0,
-        result == 0 ==> forall|i: int| 0 <= i < n ==> temps[i] >= 0,
-        result > 0 ==> exists|i: int| 0 <= i < n && temps[i] < 0,
+        result == 0 ==> forall|i: int| 0 <= i < n ==> #[trigger] temps[i] >= 0,
+        result > 0 ==> exists|i: int| 0 <= i < n && #[trigger] temps[i] < 0,
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    unreached()
+    0int
 }
 // </vc-code>
 

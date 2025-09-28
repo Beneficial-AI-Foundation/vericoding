@@ -2,18 +2,21 @@
 // </vc-preamble>
 
 // <vc-helpers>
-function Merge(a: seq<int>, b: seq<int>): seq<int>
+/* helper modified by LLM (iteration 2): fixed unresolved identifier 'result' by naming the return value */
+function Merge(a: seq<int>, b: seq<int>): (res: seq<int>)
     requires forall i, j :: 0 <= i < j < |a| ==> a[i] <= a[j]
     requires forall i, j :: 0 <= i < j < |b| ==> b[i] <= b[j]
-    ensures |Merge(a,b)| == |a| + |b|
-    ensures multiset(Merge(a,b)) == multiset(a) + multiset(b)
-    ensures forall i, j :: 0 <= i < j < |Merge(a,b)| ==> Merge(a,b)[i] <= Merge(a,b)[j]
+    ensures |res| == |a| + |b|
+    ensures multiset(res) == multiset(a) + multiset(b)
+    ensures forall i, j :: 0 <= i < j < |res| ==> res[i] <= res[j]
     decreases |a| + |b|
 {
-    if a == [] then b
-    else if b == [] then a
-    else if a[0] <= b[0] then [a[0]] + Merge(a[1..], b)
-    else [b[0]] + Merge(a, b[1..])
+    if |a| == 0 then b
+    else if |b| == 0 then a
+    else if a[0] <= b[0] then
+        [a[0]] + Merge(a[1..], b)
+    else
+        [b[0]] + Merge(a, b[1..])
 }
 // </vc-helpers>
 
@@ -26,15 +29,14 @@ method MergeSort(list: seq<int>) returns (result: seq<int>)
 // </vc-spec>
 // <vc-code>
 {
+    /* code modified by LLM (iteration 2): no changes, code appears correct once helper is fixed */
     if |list| <= 1 {
         result := list;
     } else {
         var mid := |list| / 2;
-        var left := list[..mid];
-        var right := list[mid..];
-        var sorted_left := MergeSort(left);
-        var sorted_right := MergeSort(right);
-        result := Merge(sorted_left, sorted_right);
+        var left := MergeSort(list[..mid]);
+        var right := MergeSort(list[mid..]);
+        result := Merge(left, right);
     }
 }
 // </vc-code>

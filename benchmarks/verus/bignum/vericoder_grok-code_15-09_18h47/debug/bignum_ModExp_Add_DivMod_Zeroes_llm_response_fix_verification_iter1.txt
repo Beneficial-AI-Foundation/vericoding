@@ -1,9 +1,0 @@
-=== LLM Response - fix_verification - Iteration 1 ===
-File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_Zeroes.rs
-Prompt Hash: 8f830753
-JSON Parsed Successfully: True
-Timestamp: 1757955523.895744
-Content Length: 1450 chars
---------------------------------------------------------------------------------
-["exec fn bin_to_nat(s: &[char]) -> nat\n  requires ValidBitString(s@)\n  ensures bin_to_nat(s) == Str2Int(s@)\n  decreases s@.len()\n{\n    if s.len() == 0 { 0 } else {\n        let high = &s[0..s.len()-1];\n        let sub = bin_to_nat(high);\n        let low = s[s.len()-1];\n        2 * sub + if low == '1' { 1 } else { 0 }\n    }\n}\n\n/* helper modified by LLM (iteration 2): renamed parameter 'mod' to 'm' and updated references to 'm' */\nexec fn modpow(base: nat, exp: nat, m: nat) -> nat\n  requires m > 1, exp >= 0\n  ensures modpow(base, exp, m) == Exp_int(base, exp) % m\n  decreases exp\n{\n  if exp == 0 { 1 } else {\n    let b2 = base * base % m;\n    let p = modpow(b2, exp / 2, m);\n    if exp % 2 == 0 {\n      p % m\n    } else {\n      p * base % m\n    }\n  }\n}\n\nexec fn nat_to_bin(n: nat) -> Vec<char>\n  ensures ValidBitString(res@), Str2Int(res@) == n\n{\n  if n == 0 { vec!['0'] } else {\n    let mut bin = Vec::<char>::new();\n    let mut num = n;\n    while num > 0\n        invariant\n            ValidBitString(bin@),\n            Str2Int(bin@) == n - Str2Int(bin@).reverse_subrange(0, bin@.len())\n    {\n      bin.push(if num % 2 == 0 { '0' } else { '1' });\n      num = num / 2;\n    }\n    bin.reverse();\n    bin\n  }\n}\n", "{\n  let x_int = bin_to_nat(sx);\n  let y_int = bin_to_nat(sy);\n  let z_int = bin_to_nat(sz);\n  let res_int = modpow(x_int, y_int, z_int);\n  let res = nat_to_bin(res_int);\n  res\n}"]
---------------------------------------------------------------------------------

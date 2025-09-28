@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(k: int, n: int, s: int, p: int)
 {
   k >= 1 && n >= 1 && s >= 1 && p >= 1 &&
@@ -29,14 +30,10 @@ predicate CorrectResult(result: int, k: int, n: int, s: int, p: int)
   result * p >= TotalSheetsNeeded(k, n, s) &&
   (result - 1) * p < TotalSheetsNeeded(k, n, s)
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function DivideCeiling(numerator: int, denominator: int): int
-  requires denominator > 0
-  ensures DivideCeiling(numerator, denominator) == (numerator + denominator - 1) / denominator
-{
-  (numerator + denominator - 1) / denominator
-}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -47,9 +44,6 @@ method solve(k: int, n: int, s: int, p: int) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    var sheetsPerPerson := DivideCeiling(n, s);
-    var totalSheetsNeeded := k * sheetsPerPerson;
-    result := DivideCeiling(totalSheetsNeeded, p);
+  result := MinPacksNeeded(k, n, s, p);
 }
 // </vc-code>
-

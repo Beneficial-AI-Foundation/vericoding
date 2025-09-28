@@ -1,9 +1,0 @@
-=== LLM Response - fix_verification - Iteration 9 ===
-File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes.rs
-Prompt Hash: 6e20e9b9
-JSON Parsed Successfully: True
-Timestamp: 1757955332.5865831
-Content Length: 1232 chars
---------------------------------------------------------------------------------
-["/* helper modified by LLM (iteration 10): Fixed `encloses` clause by wrapping in curly braces for the spec function. */\nspec fn int_to_bit_string(n: nat)\n    ensures ValidBitString(int_to_bit_string(n)),\n            Str2Int(int_to_bit_string(n)) == n\nencloses (Str2Int, ValidBitString)\n{\n    if n == 0 { seq!['0'] }\n    else {\n        let current_bit = if n % 2 == 1 { '1' } else { '0' };\n        if n / 2 == 0 { \n            seq![current_bit]\n        } else {\n            int_to_bit_string(n / 2) + seq![current_bit]\n        }\n    }\n}\n\nspec fn ModExp(x: nat, y: nat, z: nat) -> nat\ndecreases y\n{\n    if y == 0 {\n        1nat % z\n    } else if y % 2 == 0 {\n        let half_y = (y / 2) as nat;\n        let res = ModExp(x, half_y, z);\n        (res * res) % z\n    } else {\n        let res = ModExp(x, (y - 1) as nat, z);\n        (x * res) % z\n    }\n}", "/* code modified by LLM (iteration 10): No change needed. Error was in helper. */\n{\n    let x_int = Str2Int(sx@);\n    let y_int = Str2Int(sy@);\n    let z_int = Str2Int(sz@);\n\n    let result_int = ModExp(x_int, y_int, z_int);\n\n    let res_seq = int_to_bit_string(result_int);\n    // Convert Seq<char> to Vec<char>\n    res_seq.to_vec()\n}"]
---------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(A1: int, A2: int, A3: int)
 {
     1 <= A1 <= 100 && 1 <= A2 <= 100 && 1 <= A3 <= 100
@@ -17,6 +18,7 @@ function MinimumCost(A1: int, A2: int, A3: int): int
 {
     MaxOfThree(A1, A2, A3) - MinOfThree(A1, A2, A3)
 }
+// </vc-preamble>
 
 // <vc-helpers>
 
@@ -30,7 +32,7 @@ method solve(A1: int, A2: int, A3: int) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    result := MaxOfThree(A1, A2, A3) - MinOfThree(A1, A2, A3);
+  /* code modified by LLM (iteration 2): Calling correct functions for Max and Min */
+  result := MaxOfThree(A1, A2, A3) - MinOfThree(A1, A2, A3);
 }
 // </vc-code>
-

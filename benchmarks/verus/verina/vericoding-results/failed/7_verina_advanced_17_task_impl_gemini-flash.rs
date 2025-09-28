@@ -5,32 +5,15 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): Corrected the `is_sorted` helper to use `s.len() - 1` as the upper bound for `i` in the loop condition, preventing out-of-bounds access. Refined invariants to ensure correctness of the sorted property up to `i`. */
-proof fn is_sorted(s: Seq<i32>) -> (result: bool)
-    ensures result <==> (forall|i: int, j: int| 0 <= i < j < s.len() ==> s[i] <= s[j])
-{
-    if s.len() <= 1 {
-        return true;
-    }
-    let mut i: int = 0;
-    while i < (s.len() as int) - 1
-        invariant
-            0 <= i && i < s.len(),
-            forall|idx1: int, idx2: int| 0 <= idx1 <= idx2 <= i ==> s[idx1] <= s[idx2]
-        decreases (s.len() as int) - 1 - i
-    {
-        if s[i] > s[i + 1] {
-            return false;
-        }
-        i = i + 1;
-    }
-    true
+/* helper modified by LLM (iteration 5): The earlier attempt to fix `seq_add_one_elem` was not quite right for adding a single element. Refactored `seq_add_one_elem` to use `Seq::singleton` which is the correct way to create a Seq with one element. */
+spec fn is_sorted(l: Seq<i32>) -> bool {
+    forall|i: int, j: int| 0 <= i < j < l.len() ==> l[i] <= l[j]
 }
-
-proof fn is_permutation(s1: Seq<i32>, s2: Seq<i32>) -> (result: bool)
-    ensures result <==> s1.to_multiset() == s2.to_multiset()
-{
+spec fn is_permutation<A>(s1: Seq<A>, s2: Seq<A>) -> bool {
     s1.to_multiset() == s2.to_multiset()
+}
+spec fn seq_add_one_elem<A>(elem: A) -> Seq<A> {
+    Seq::singleton(elem)
 }
 // </vc-helpers>
 
@@ -43,34 +26,33 @@ fn insertion_sort(l: Vec<i32>) -> (result: Vec<i32>)
         result@.to_multiset() == l@.to_multiset(),
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Corrected type mismatches by ensuring that `usize` conversions are applied to `int` values only when accessing `Vec` elements or `Vec` length. Modified `while` loop conditions and array accesses to use appropriate types. Refined `while` loop invariants to reflect the state of the `result` vector correctly at each iteration.*/
+/* code modified by LLM (iteration 5): Corrected `seq_add_one_elem` to use `Seq::singleton` which means the call site now needs to be `seq_add_one_elem(val)` instead of `seq_add_one_elem(Seq::empty(), val)`. Also, added missing part to `is_sorted` invariant in the outer loop, and adjusted the inner loop's `is_permutation` invariant to include `result@.subrange(0, j as int) + seq_add_one_elem(val)` in both cases. */
 {
-    let mut result = l;
-    let mut i: int = 1;
+    let mut result: Vec<i32> = Vec::new();
+    let mut i = 0;
 
-    while i < result.len() as int
+    while i < l.len()
         invariant
-            0 <= i && i <= result.len() as int,
-            result@.to_multiset() == l@.to_multiset(),
-            forall|k: int, m: int| 0 <= k < m && m < i ==> result@[k] <= result@[m]
-        decreases (result.len() as int) - i
+            is_permutation(result@ + l@.subrange(i as int, l.len() as int), l@),
+            is_sorted(result@),
+            0 <= i <= l.len()
+        decreases l.len() - i
     {
-        let key = result.index(i as usize);
-        let mut j: int = i - 1;
-
-        while j >= 0 && result.index(j as usize) > key
+        let val = l[i];
+        let mut j = 0;
+        while j < result.len() && result[j] < val
             invariant
-                -1 <= j && j < i,
-                result@.to_multiset() == l@.to_multiset(),
-                forall|k: int, m: int| 0 <= k < m && m < (j + 1) ==> result@[k] <= result@[m],
-                forall|k: int| j < k && k < i ==> result@[k] > key,
-                // Elements from j+1 to i-1 have been shifted right. Original elements are still present. Elements from 0 to j are sorted
-            decreases j
+                is_permutation(result@.subrange(0, j as int) + seq_add_one_elem(val) + result@.subrange(j as int, result.len() as int) + l@.subrange(i as int, l.len() as int), l@),
+                is_sorted(result@.subrange(0, j as int) + seq_add_one_elem(val) + result@.subrange(j as int, result.len() as int)),
+                0 <= j <= result.len(),
+                forall|k: int| 0 <= k < j ==> result[k] < val,
+                i <= l.len()
+            decreases result.len() - j
         {
-            result.set((j + 1) as usize, result.index(j as usize));
-            j = j - 1;
+            j = j + 1;
         }
-        result.set((j + 1) as usize, key);
+
+        result.insert(j, val);
         i = i + 1;
     }
     result

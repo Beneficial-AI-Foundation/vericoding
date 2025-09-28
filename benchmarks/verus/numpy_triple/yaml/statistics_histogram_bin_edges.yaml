@@ -1,0 +1,38 @@
+vc-description: |-
+  Function to calculate only the edges of the bins used by the histogram function.
+  Calculate the bin edges for histogram computation with equal-width bins.
+  Takes non-empty data and number of bins, returns bin edges.
+  Specification: histogram_bin_edges computes equal-width bin edges from data range.
+  This comprehensive specification captures:
+  1. The number of returned edges equals num_bins + 1
+  2. The edges are monotonically increasing (strictly ordered)
+  3. The first edge is at or below the minimum data value
+  4. The last edge is at or above the maximum data value
+  5. The edges are evenly spaced (equal width bins)
+  6. All data values fall within the range [first_edge, last_edge]
+  7. The bin width is consistent across all bins
+  8. The function handles non-empty data correctly
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn histogram_bin_edges(data: Vec<i8>, num_bins: usize) -> (edges: Vec<i8>)
+      requires 
+          data.len() > 0,
+          num_bins > 0,
+      ensures
+          edges.len() == num_bins + 1,
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

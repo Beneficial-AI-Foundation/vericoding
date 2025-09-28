@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidFarmDimensions(a: int, b: int)
 {
     a >= 2 && b >= 2 && a <= 100 && b <= 100
@@ -8,6 +9,7 @@ function RemainingFarmArea(a: int, b: int): int
 {
     a * b - a - b + 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
 
@@ -21,7 +23,6 @@ method solve(a: int, b: int) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    result := (a - 1) * (b - 1);
+  result := a * b - a - b + 1;
 }
 // </vc-code>
-

@@ -1,9 +1,0 @@
-=== LLM Response - generate_code - Iteration 0 ===
-File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2.rs
-Prompt Hash: c0e76fcd
-JSON Parsed Successfully: True
-Timestamp: 1757955688.327084
-Content Length: 866 chars
---------------------------------------------------------------------------------
-["exec fn Int2Str(x: nat) -> Vec<char>\n{\n    let mut res = Vec::new();\n    let mut v = x;\n    while v > 0\n    {\n        res.push(if v % 2 == 1 { '1' } else { '0' });\n        v = v / 2;\n    }\n    res.reverse();\n    if res.len() == 0 {\n        res.push('0');\n    }\n    res\n}\n\nexec fn pow_mod(base: int, exp: Seq<char>, modulus: int) -> int\n    decreases exp.len()\n{\n    if exp.len() == 0 {\n        1\n    } else {\n        let half = pow_mod(base % modulus, exp.subrange(0, exp.len() - 1), modulus);\n        let sq = (half * half) % modulus;\n        if exp.index(exp.len() - 1) == '1' {\n            (sq * (base % modulus)) % modulus\n        } else {\n            sq\n        }\n    }\n}", "{\n    let base_int = Str2Int(sx@);\n    let modulus = Str2Int(sz@);\n    let res_int = pow_mod(base_int, sy@, modulus);\n    Int2Str(res_int as nat)\n}"]
---------------------------------------------------------------------------------

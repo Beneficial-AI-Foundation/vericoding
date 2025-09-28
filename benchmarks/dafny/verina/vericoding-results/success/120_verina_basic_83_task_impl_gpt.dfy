@@ -2,7 +2,7 @@
 // </vc-preamble>
 
 // <vc-helpers>
-function Append(a: seq<int>, b: seq<int>): seq<int> { a + b }
+
 // </vc-helpers>
 
 // <vc-spec>

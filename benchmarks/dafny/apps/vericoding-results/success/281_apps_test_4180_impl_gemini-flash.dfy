@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int)
 {
     1 <= n <= 10000
@@ -13,6 +14,7 @@ function CorrectChange(n: int): int
 {
     (1000 - n % 1000) % 1000
 }
+// </vc-preamble>
 
 // <vc-helpers>
 
@@ -26,7 +28,6 @@ method solve(n: int) returns (change: int)
 // </vc-spec>
 // <vc-code>
 {
-    change := (1000 - n % 1000) % 1000;
+  change := (1000 - n % 1000) % 1000;
 }
 // </vc-code>
-

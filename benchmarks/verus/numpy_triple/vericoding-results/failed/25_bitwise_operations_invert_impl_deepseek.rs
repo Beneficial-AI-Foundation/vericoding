@@ -5,26 +5,17 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): Fixed proof lemma and added complete specification for compute_element */
-proof fn helper_lemma(x: Seq<i32>, i: int)
+fn invert_helper(x: i32) -> (result: i32)
     requires
-        0 <= i < x.len(),
+        true,
     ensures
-        -(x[i] + 1) == if x[i] == 0 { -1 } else if x[i] == -1 { 0 } else { -(x[i] + 1) },
+        result == !x,
+        x == 0 ==> result == -1,
+        x == -1 ==> result == 0,
+        x != -1 ==> (x > 0 <==> result < 0),
 {
-}
-
-spec fn compute_element(x: i32) -> i32 {
-    -(x as int + 1) as i32
-}
-
-proof fn preserves_properties_lemma(x: i32)
-    ensures
-        compute_element(x) == -(x + 1),
-        x == 0 ==> compute_element(x) == -1,
-        x == -1 ==> compute_element(x) == 0,
-        x != -1 ==> (x > 0 <==> compute_element(x) < 0),
-{
+    /* helper modified by LLM (iteration 5): removed i32::MIN requirement */
+    !x
 }
 // </vc-helpers>
 
@@ -38,24 +29,22 @@ fn invert(x: Vec<i32>) -> (result: Vec<i32>)
         forall|i: int| 0 <= i < x.len() && x[i] != -1 ==> (x[i] > 0 <==> result[i] < 0),
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Added decreases clause and refined loop invariant */
 {
-    let mut result = Vec::new();
-    let n = x.len();
-    let mut index: usize = 0;
-
-    while index < n
+    /* code modified by LLM (iteration 5): fixed to use invert_helper and handle vector invariants */
+    let mut result: Vec<i32> = Vec::new();
+    let mut i: usize = 0;
+    while i < x.len()
         invariant
-            result.len() == index,
-            forall|j: int| 0 <= j < index ==> result@[j] == compute_element(x@[j]),
-            index <= n,
-        decreases n - index,
+            0 <= i <= x.len(),
+            result.len() == i,
+            forall|j: int| 0 <= j < i ==> result@[j] == !x@[j],
+        decreases x.len() - i,
     {
-        proof { helper_lemma(x@, index as int); }
-        result.push(compute_element(x[index]));
-        index = index + 1;
+        let elem = x[i];
+        let inverted = invert_helper(elem);
+        result.push(inverted);
+        i = i + 1;
     }
-
     result
 }
 // </vc-code>

@@ -35,13 +35,13 @@ spec fn max_good_apartments(n: int, k: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int) -> (result: Vec<int>)
-    requires valid_input(n, k)
+fn solve(n: i8, k: i8) -> (result: Vec<i8>)
+    requires valid_input(n as int, k as int)
     ensures 
         result.len() == 2 &&
-        valid_output(result@, n, k) &&
-        result[0] == min_good_apartments(n, k) &&
-        result[1] == max_good_apartments(n, k)
+        valid_output(result@.map(|i: int, x: i8| x as int), n as int, k as int) &&
+        result[0] as int == min_good_apartments(n as int, k as int) &&
+        result[1] as int == max_good_apartments(n as int, k as int)
 // </vc-spec>
 // <vc-code>
 {

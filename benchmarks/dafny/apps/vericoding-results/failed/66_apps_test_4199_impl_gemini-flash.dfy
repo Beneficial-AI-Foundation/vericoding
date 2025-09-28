@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int, heights: seq<int>)
 {
     n >= 1 && k >= 1 && |heights| == n && 
@@ -8,10 +9,10 @@ function CountEligible(heights: seq<int>, k: int): int
 {
     |set i | 0 <= i < |heights| && heights[i] >= k :: i|
 }
+// </vc-preamble>
 
 // <vc-helpers>
-// No changes needed, as the duplicate function definition has been removed.
-// The original function "CountEligible" is already defined at the top of the file.
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -22,17 +23,17 @@ method solve(n: int, k: int, heights: seq<int>) returns (count: int)
 // </vc-spec>
 // <vc-code>
 {
-    var num_eligible := 0;
-    for i := 0 to n - 1
-        invariant 0 <= i <= n
-        invariant 0 <= num_eligible <= i
-        invariant num_eligible == CountEligible(heights[..i], k)
-    {
-        if heights[i] >= k {
-            num_eligible := num_eligible + 1;
-        }
+  var eligibleCount := 0;
+  var i := 0;
+  while i < n
+    invariant 0 <= i <= n
+    invariant eligibleCount == CountEligible(heights[..i], k)
+  {
+    if heights[i] >= k {
+      eligibleCount := eligibleCount + 1;
     }
-    return num_eligible;
+    i := i + 1;
+  }
+  return eligibleCount;
 }
 // </vc-code>
-

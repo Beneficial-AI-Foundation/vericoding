@@ -1,9 +1,0 @@
-=== LLM Response - generate_code - Iteration 0 ===
-File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_NormalizeBitString.rs
-Prompt Hash: 99a33f06
-JSON Parsed Successfully: True
-Timestamp: 1757839082.782657
-Content Length: 817 chars
---------------------------------------------------------------------------------
-["proof fn lemma_validate_not_empty(s: Seq<char>) ensures Str2Int(s) > 0 ==> s.len() > 0 {}", "{\n  let mut i = 0;\n  let mut leading_zeros = 0;\n\n  // Find the first '1' or the end of the string\n  while i < s.len() {\n    invariant_ensures ValidBitString(s@);\n    invariant 0 <= i <= s.len();\n\n    if s.index(i as int) == '1' {\n      break;\n    }\n    leading_zeros = leading_zeros + 1;\n    i = i + 1;\n  }\n\n  let mut t_vec: Vec<char> = Vec::new();\n\n  // If all zeros or empty, return \"0\"\n  if i == s.len() {\n    t_vec.push('0');\n  } else {\n    // Otherwise, copy from the first '1' onwards\n    let mut j = i;\n    while j < s.len() {\n      invariant_ensures ValidBitString(s@);\n      invariant i <= j <= s.len();\n      t_vec.push(s.index(j as int));\n      j = j + 1;\n    }\n  }\n  t_vec\n}"]
---------------------------------------------------------------------------------

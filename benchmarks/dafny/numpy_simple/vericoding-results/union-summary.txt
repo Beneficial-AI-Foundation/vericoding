@@ -1,0 +1,89 @@
+=== DAFNY PROCESSING SUMMARY (AGGREGATED) ===
+Selection method: best runs
+Total files: 58
+Successful: 44 (75.9%)
+Failed: 14
+
+Selected best runs:
+  - claude-opus: vericoder_claude-opus_19-09_08h50 (success rate: 60.3%)
+  - claude-sonnet: vericoder_claude-sonnet_19-09_08h51 (success rate: 65.5%)
+  - deepseek: vericoder_deepseek_19-09_08h51 (success rate: 39.7%)
+  - gemini: vericoder_gemini_19-09_08h51 (success rate: 63.8%)
+  - gemini-flash: vericoder_gemini-flash_19-09_08h51 (success rate: 48.3%)
+  - glm: vericoder_glm_19-09_08h51 (success rate: 50.0%)
+  - gpt: vericoder_gpt_19-09_08h52 (success rate: 65.5%)
+  - gpt-mini: vericoder_gpt-mini_19-09_08h52 (success rate: 67.2%)
+  - grok-code: vericoder_grok-code_19-09_08h52 (success rate: 48.3%)
+
+Per-LLM success rates:
+  - claude-opus: 35/58 (60.3%)
+  - claude-sonnet: 38/58 (65.5%)
+  - deepseek: 23/58 (39.7%)
+  - gemini: 37/58 (63.8%)
+  - gemini-flash: 28/58 (48.3%)
+  - glm: 29/58 (50.0%)
+  - gpt: 38/58 (65.5%)
+  - gpt-mini: 39/58 (67.2%)
+  - grok-code: 28/58 (48.3%)
+
+Successful files:
+✓ NpAbs-spec.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ NpAdd-spec.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ NpArgmax-spec.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini
+✓ NpArgsort-spec.dfy — by: gpt, gpt-mini
+✓ NpBitwiseAnd-spec.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt-mini, grok-code
+✓ NpBitwiseOr-spec.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ NpBitwiseXor-spec.dfy — by: glm, gpt, grok-code
+✓ NpBroadcast-spec.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, grok-code
+✓ NpCenter-spec.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini
+✓ NpClip-spec.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ NpColumnStack-spec.dfy — by: gpt-mini
+✓ NpCopy-spec.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ NpCumProd-spec.dfy — by: claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ NpCumSum-spec.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ NpEqual-spec.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ NpFlatten-spec.dfy — by: claude-opus
+✓ NpFloorDivide-spec.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ NpGreater-spec.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ NpGreaterEqual-spec.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ NpHistogram-spec.dfy — by: claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini
+✓ NpInvert-spec.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ NpIsalpha-spec.dfy — by: claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ NpIsclose-spec.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ NpLcm-spec.dfy — by: gpt
+✓ NpLeftShift-spec.dfy — by: claude-opus, claude-sonnet, deepseek, gemini-flash, gpt, gpt-mini
+✓ NpLess-spec.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ NpLessEqual-spec.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ NpMax-spec.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ NpMin-spec.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ NpMod-spec.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ NpMultiply-spec.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ NpNotEqual-spec.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ NpPolyder-spec.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ NpPower-spec.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ NpRemainder-spec.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ NpReshape-spec.dfy — by: claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ NpRightShift-spec.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ NpShape-spec.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini
+✓ NpSign-spec.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ NpSquare-spec.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ NpSubtract-spec.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ NpSum-spec.dfy — by: gemini, gpt, gpt-mini
+✓ NpTranspose-spec.dfy — by: claude-sonnet, gemini, glm
+✓ NpTril-spec.dfy — by: claude-opus, claude-sonnet, gemini, gpt-mini
+
+Failed files:
+✗ NpArange-spec.dfy
+✗ NpCountnonzero-spec.dfy
+✗ NpDiagonal-spec.dfy
+✗ NpGcd-spec.dfy
+✗ NpIntersect-spec.dfy
+✗ NpPiecewise-spec.dfy
+✗ NpPoly-spec.dfy
+✗ NpProd-spec.dfy
+✗ NpRavel-spec.dfy
+✗ NpSelect-spec.dfy
+✗ NpSort-spec.dfy
+✗ NpUniqueall-spec.dfy
+✗ NpWhere-spec.dfy
+✗ NpZeros-spec.dfy

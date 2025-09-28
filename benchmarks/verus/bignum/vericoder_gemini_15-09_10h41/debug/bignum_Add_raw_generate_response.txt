@@ -1,6 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 798 characters
---------------------------------------------------------------------------------
-```json
-["proof fn lemma_Str2Int_subrange_equal(s: Seq<char>, i: int, j: int)\n    requires\n        0 <= i <= j <= s.len(),\n    ensures\n        s.subrange(i, j).len() == j - i,\n{\n}\n\nproof fn lemma_Str2Int_subrange_append(s: Seq<char>)\n    requires\n        s.len() > 0,\n    ensures\n        s.subrange(0, s.len() as int - 1) + s.subrange(s.len() as int - 1, s.len() as int) == s,\n{\n}\n\nproof fn lemma_Str2Int_append_char(s: Seq<char>, c: char)\n    requires\n        ValidBitString(s),\n        c == '0' || c == '1',\n    ensures\n        ValidBitString(s + Seq::new().push(c)),\n        Str2Int(s + Seq::new().push(c)) == 2 * Str2Int(s) + if c == '1' { 1 } else { 0 },\n{\n    let new_s = s + Seq::new().push(c);\n    assert forall|i: int| 0 <= i && i < new_s.len() as int implies new_
---------------------------------------------------------------------------------

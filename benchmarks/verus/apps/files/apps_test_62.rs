@@ -23,9 +23,9 @@ spec fn game_result(stdin_input: Seq<char>) -> Seq<char>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(stdin_input: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(stdin_input)
-    ensures valid_result(result)
+fn solve(stdin_input: Vec<char>) -> (result: Vec<char>)
+    requires valid_input(stdin_input@)
+    ensures valid_result(result@)
 // </vc-spec>
 // <vc-code>
 {

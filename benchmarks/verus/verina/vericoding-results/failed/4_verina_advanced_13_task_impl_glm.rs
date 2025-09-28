@@ -13,9 +13,7 @@ spec fn chord_intersects(chord1: &Vec<usize>, chord2: &Vec<usize>) -> bool {
 // </vc-preamble>
 
 // <vc-helpers>
-fn chord_intersects_exec(chord1: &Vec<usize>, chord2: &Vec<usize>) -> bool
-    requires chord1.len() == 2 && chord2.len() == 2
-{
+fn chord_intersects_exec(chord1: &Vec<usize>, chord2: &Vec<usize>) -> bool {
     let a1 = if chord1[0] < chord1[1] { chord1[0] } else { chord1[1] };
     let b1 = if chord1[0] > chord1[1] { chord1[0] } else { chord1[1] };
     let a2 = if chord2[0] < chord2[1] { chord2[0] } else { chord2[1] };
@@ -47,7 +45,7 @@ fn has_chord_intersection(n: usize, chords: &Vec<Vec<usize>>) -> (result: bool)
 // <vc-code>
 {
     for i in 0..chords.len() {
-        for j in (i+1)..chords.len() {
+        for j in i+1..chords.len() {
             if chord_intersects_exec(&chords[i], &chords[j]) {
                 return true;
             }

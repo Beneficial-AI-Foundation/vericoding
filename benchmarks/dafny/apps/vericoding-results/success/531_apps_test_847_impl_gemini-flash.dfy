@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum(cards: seq<int>): int
 {
     if |cards| == 0 then 0
@@ -13,9 +14,10 @@ predicate ValidInput(cards: seq<int>, x: int)
 {
     x > 0 && |cards| >= 1 && forall i :: 0 <= i < |cards| ==> -x <= cards[i] <= x
 }
+// </vc-preamble>
 
 // <vc-helpers>
-
+// No helper functions needed for this problem
 // </vc-helpers>
 
 // <vc-spec>
@@ -26,12 +28,11 @@ method solve(cards: seq<int>, x: int) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    var s := sum(cards);
-    if s == 0 {
-        return 0;
-    } else {
-        return (abs(s) + x - 1) / x;
-    }
+  var s := sum(cards);
+  if s == 0 {
+    result := 0;
+  } else {
+    result := (abs(s) + x - 1) / x;
+  }
 }
 // </vc-code>
-

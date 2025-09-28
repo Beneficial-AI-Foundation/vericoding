@@ -6,7 +6,6 @@ verus! {
 
 // <vc-helpers>
 
-
 // </vc-helpers>
 
 // <vc-spec>
@@ -17,26 +16,29 @@ fn longest_increasing_streak(nums: &Vec<i32>) -> (result: usize)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 3): fixed invariants and overflow issues */
+    /* code modified by LLM (iteration 3): fixed arithmetic overflow and loop invariant maintenance */
     if nums.len() == 0 {
         return 0;
     }
     
-    let mut max_streak: usize = 1;
-    let mut current_streak: usize = 1;
-    let mut i: usize = 1;
+    let mut max_streak = 1;
+    let mut current_streak = 1;
+    let mut i = 1;
     
     while i < nums.len()
         invariant
             1 <= i <= nums.len(),
             current_streak >= 1,
             max_streak >= 1,
-            max_streak <= i,
+            max_streak <= nums.len(),
             current_streak <= i,
         decreases nums.len() - i
     {
         if nums[i] > nums[i - 1] {
-            current_streak = current_streak + 1;
+            proof {
+                assert(current_streak < nums.len());
+            }
+            current_streak += 1;
         } else {
             current_streak = 1;
         }
@@ -45,7 +47,7 @@ fn longest_increasing_streak(nums: &Vec<i32>) -> (result: usize)
             max_streak = current_streak;
         }
         
-        i = i + 1;
+        i += 1;
     }
     
     max_streak

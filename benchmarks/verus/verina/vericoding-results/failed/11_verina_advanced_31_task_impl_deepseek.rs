@@ -18,30 +18,32 @@ spec fn is_strictly_increasing(seq: Seq<i32>) -> bool {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 4): Fixed invariant syntax and added proper helper functions */
-proof fn helper_lemma_subseq_length(seq: Seq<i32>, subseq: Seq<i32>, indices: Seq<int>) 
-    requires
-        indices.len() == subseq.len() && 
-        subseq.len() >= 0 && 
-        (forall|i: int| 0 <= i < indices.len() ==> indices[i] >= 0 && indices[i] < seq.len()) && 
-        (forall|i: int| 0 <= i < indices.len() - 1 ==> indices[i] < indices[i + 1]) && 
-        (forall|i: int| 0 <= i < subseq.len() ==> subseq[i] == seq[indices[i]])
+/* helper modified by LLM (iteration 5): Fix type mismatch issues in spec and provide proper int/usize conversion helpers */
+proof fn max(a: int, b: int) -> (result: int)
     ensures
-        is_subsequence_of(subseq, seq)
-{}
-
-proof fn helper_lemma_max_length(seq: Seq<i32>, max_len: usize) 
-    requires
-        exists|subseq: Seq<i32>| is_subsequence_of(subseq, seq) && is_strictly_increasing(subseq) && subseq.len() == max_len,
-        forall|subseq: Seq<i32>| (is_subsequence_of(subseq, seq) && is_strictly_increasing(subseq)) ==> subseq.len() <= max_len
-{}
-
-spec fn is_subsequence_starting_at(seq: Seq<i32>, start: int) -> Seq<i32> { 
-    if start >= seq.len() { 
-        Seq::empty() 
-    } else { 
-        Seq::new((seq.len() - start) as nat, |i| seq[i + start]) 
+        result >= a,
+        result >= b,
+        result == a || result == b
+{
+    if a >= b {
+        a
+    } else {
+        b
     }
+}
+
+spec fn dp_spec(xs: Seq<i32>, dp: Seq<int>, i: int) -> bool {
+    forall|k: int| 0 <= k < i ==> 
+        dp[k] >= 1 &&
+        (forall|j: int| 0 <= j < k ==> xs[j] < xs[k] ==> dp[k] >= dp[j] + 1)
+}
+
+spec fn int_to_usize(n: int) -> usize {
+    n as usize
+}
+
+spec fn usize_to_int(n: usize) -> int {
+    n as int
 }
 // </vc-helpers>
 
@@ -59,45 +61,43 @@ fn longest_increasing_subseq_length(xs: &Vec<i32>) -> (result: usize)
             ==> subseq.len() <= result,
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 4): Fixed invariant syntax and added proper verification */
+/* code modified by LLM (iteration 5): Fix type conversions and ensure proper int/usize handling in while-loop invariants */
 {
-    let mut dp = Vec::new();
-    dp.push(1);
-    let mut max_len = 1;
+    let mut result = 0;
+    let mut dp = vec![0; xs.len()];
     
-    let mut i = 1;
+    let mut i: usize = 0;
     while i < xs.len()
-        invariant 0 < i <= xs.len()
-        invariant dp.len() == i
-        invariant forall|j: int| 0 <= j < i ==> dp[j] >= 1
-        invariant max_len >= 1 && max_len <= i
+        invariant
+            0 <= i <= xs.len(),
+            result >= 0,
+            dp.len() == xs.len(),
+            forall|k: int| 0 <= k < usize_to_int(i) ==> dp[usize_to_int(k)] >= 1
+        decreases xs.len() - i
     {
-        dp.push(1);
-        
-        let mut j = 0;
+        dp[i] = 1;
+        let mut j: usize = 0;
         while j < i
-            invariant 0 <= j <= i
-            invariant forall|k: int| 0 <= k < j ==> (xs@[k] < xs@[i] ==> dp[k] + 1 > dp[i]) || (xs@[k] >= xs@[i] ==> true)
+            invariant
+                0 <= j <= i,
+                dp[i] >= 1,
+                forall|k: int| 0 <= k < usize_to_int(j) ==> xs[usize_to_int(k)] < xs[i] ==> dp[i] >= dp[usize_to_int(k)] + 1
+            decreases i - j
         {
             if xs[j] < xs[i] {
-                if dp[j] + 1 > dp[i] {
-                    dp.set(i, dp[j] + 1);
+                let candidate = dp[j] + 1;
+                if candidate > dp[i] {
+                    dp[i] = candidate;
                 }
             }
             j += 1;
         }
-        
-        if dp[i] > max_len {
-            max_len = dp[i];
+        if dp[i] > result {
+            result = dp[i];
         }
-        
         i += 1;
-        
-        proof {}
     }
-    
-    proof {}
-    max_len
+    result
 }
 // </vc-code>
 

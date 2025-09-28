@@ -2,7 +2,7 @@
 // </vc-preamble>
 
 // <vc-helpers>
-function min(a: int, b: int): int { if a < b then a else b }
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -16,13 +16,14 @@ method solution(nums: array<int>) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-  /* code modified by LLM (iteration 2): added loop invariant to ensure minimum remains >=1 for postcondition */
-  var current := nums[0];
+  result := nums[0];
   for i := 1 to nums.Length
-    invariant current >= 1
+    invariant 0 <= i <= nums.Length
+    invariant result >= 1
   {
-    current := min(current, nums[i]);
+    if nums[i] < result {
+      result := nums[i];
+    }
   }
-  result := current;
 }
 // </vc-code>

@@ -6,58 +6,33 @@ predicate IsEven(n: int)
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): Added bounds checking for EvenIndex and proper lemmas */
-function CountEvens(arr: array<int>, n: int): nat
-  requires 0 <= n <= arr.Length
+function CountEvens(arr: array<int>): nat
   reads arr
 {
-  if n == 0 then 0
-  else if IsEven(arr[n-1]) then 1 + CountEvens(arr, n-1)
-  else CountEvens(arr, n-1)
+  CountEvensInRange(arr, 0, arr.Length)
 }
 
-function EvenIndex(arr: array<int>, i: int): nat
-  requires 0 <= i < arr.Length
-  requires IsEven(arr[i])
+function CountEvensInRange(arr: array<int>, start: nat, end: nat): nat
+  requires start <= end <= arr.Length
   reads arr
-  ensures EvenIndex(arr, i) < CountEvens(arr, arr.Length)
+  decreases end - start
 {
-  var idx := CountEvens(arr, i+1) - 1;
-  CountEvensMonotonic(arr, i+1, arr.Length);
-  idx
+  if start >= end then 0
+  else if IsEven(arr[start]) then 1 + CountEvensInRange(arr, start + 1, end)
+  else CountEvensInRange(arr, start + 1, end)
 }
 
-lemma CountEvensIncrease(arr: array<int>, n: int)
-  requires 0 < n <= arr.Length
-  requires IsEven(arr[n-1])
-  ensures CountEvens(arr, n) == CountEvens(arr, n-1) + 1
+lemma CountEvensInRangeProperties(arr: array<int>, start: nat, mid: nat, end: nat)
+  requires start <= mid <= end <= arr.Length
+  ensures CountEvensInRange(arr, start, end) == CountEvensInRange(arr, start, mid) + CountEvensInRange(arr, mid, end)
+  decreases end - start
 {
-}
-
-lemma CountEvensMonotonic(arr: array<int>, i: int, j: int)
-  requires 0 <= i <= j <= arr.Length
-  ensures CountEvens(arr, i) <= CountEvens(arr, j)
-  decreases j - i
-{
-  if i < j {
-    CountEvensMonotonic(arr, i, j-1);
+  if start >= mid {
+  } else if IsEven(arr[start]) {
+    CountEvensInRangeProperties(arr, start + 1, mid, end);
+  } else {
+    CountEvensInRangeProperties(arr, start + 1, mid, end);
   }
-}
-
-lemma EvenIndexBounds(arr: array<int>, i: int)
-  requires 0 <= i < arr.Length
-  requires IsEven(arr[i])
-  ensures 0 <= EvenIndex(arr, i) < CountEvens(arr, arr.Length)
-{
-  CountEvensMonotonic(arr, i+1, arr.Length);
-}
-
-lemma EvenIndexPreserved(arr: array<int>, i: int, j: int)
-  requires 0 <= i < j < arr.Length
-  requires IsEven(arr[i]) && IsEven(arr[j])
-  ensures EvenIndex(arr, i) < EvenIndex(arr, j)
-{
-  CountEvensMonotonic(arr, i+1, j);
 }
 // </vc-helpers>
 
@@ -71,9 +46,8 @@ method FindEvenNumbers(arr: array<int>) returns (result: array<int>)
             && ri <= rj && result[ri] == arr[i] && result[rj] == arr[j]
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Fixed bounds checking and invariant maintenance */
 {
-  var count := CountEvens(arr, arr.Length);
+  var count := CountEvens(arr);
   result := new int[count];
   
   if count == 0 {
@@ -86,27 +60,17 @@ method FindEvenNumbers(arr: array<int>) returns (result: array<int>)
   while i < arr.Length
     invariant 0 <= i <= arr.Length
     invariant 0 <= idx <= count
-    invariant idx == CountEvens(arr, i)
-    invariant forall j :: 0 <= j < idx ==> IsEven(result[j])
-    invariant forall j :: 0 <= j < i && IsEven(arr[j]) ==> 
-      0 <= EvenIndex(arr, j) < idx && result[EvenIndex(arr, j)] == arr[j]
-    invariant forall j :: 0 <= j < idx ==> exists k :: 0 <= k < i && IsEven(arr[k]) && result[j] == arr[k]
-    invariant forall p, q :: 0 <= p < q < i && IsEven(arr[p]) && IsEven(arr[q]) ==> 
-      0 <= EvenIndex(arr, p) < EvenIndex(arr, q) < idx && 
-      result[EvenIndex(arr, p)] == arr[p] && result[EvenIndex(arr, q)] == arr[q]
+    invariant idx == CountEvensInRange(arr, 0, i)
+    invariant forall j :: 0 <= j < idx ==> result[j] in arr[..i] && IsEven(result[j])
+    invariant forall x :: x in arr[..i] && IsEven(x) ==> x in result[..idx]
+    invariant forall j, k :: 0 <= j < i && 0 <= k < i && j <= k && IsEven(arr[j]) && IsEven(arr[k]) ==>
+      exists rj, rk :: 0 <= rj < idx && 0 <= rk < idx && rj <= rk && result[rj] == arr[j] && result[rk] == arr[k]
   {
     if IsEven(arr[i]) {
-      EvenIndexBounds(arr, i);
-      CountEvensMonotonic(arr, i+1, arr.Length);
-      assert idx == EvenIndex(arr, i);
-      assert 0 <= idx < count;
       result[idx] := arr[i];
       idx := idx + 1;
     }
     i := i + 1;
   }
-  
-  assert i == arr.Length;
-  assert idx == count;
 }
 // </vc-code>

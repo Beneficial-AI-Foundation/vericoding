@@ -1,0 +1,63 @@
+vc-description: |-
+  numpy.polynomial.hermite.hermadd: Add one Hermite series to another.
+
+  Returns the sum of two Hermite series c1 + c2. The arguments are
+  sequences of coefficients ordered from lowest order term to highest,
+  i.e., [1,2,3] represents the series P_0 + 2*P_1 + 3*P_2.
+
+  Unlike multiplication, division, etc., the sum of two Hermite series
+  is a Hermite series (without having to "reproject" the result onto
+  the basis set) so addition, just like that of "standard" polynomials,
+  is simply "component-wise."
+
+  This version handles adding two Hermite coefficient vectors where the
+  result length is the maximum of the input lengths. Shorter vectors are
+  implicitly padded with zeros.
+
+  Specification: hermadd performs component-wise addition of Hermite series coefficients.
+
+  Precondition: True (no special preconditions for basic addition)
+  Postcondition: 
+  - If i < min(n,m), result[i] = c1[i] + c2[i]
+  - If min(n,m) ≤ i < n, result[i] = c1[i] (c2 is treated as 0)
+  - If min(n,m) ≤ i < m, result[i] = c2[i] (c1 is treated as 0)
+
+  The mathematical property: The i-th coefficient of the sum is the sum of
+  the i-th coefficients of the input series, treating missing coefficients as 0.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn hermadd(c1: Vec<i8>, c2: Vec<i8>) -> (result: Vec<i8>)
+      ensures
+          result@.len() == if c1@.len() >= c2@.len() { c1@.len() } else { c2@.len() },
+          forall|i: int| 0 <= i < result@.len() ==>
+              result@[i] as int == (
+                  if i < c1@.len() && i < c2@.len() {
+                      c1@[i] as int + c2@[i] as int
+                  } else if i < c1@.len() {
+                      c1@[i] as int
+                  } else if i < c2@.len() {
+                      c2@[i] as int
+                  } else {
+                      0
+                  }
+              ),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

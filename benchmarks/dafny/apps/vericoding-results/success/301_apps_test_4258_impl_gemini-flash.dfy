@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(A: int, B: int, T: int)
 {
     1 <= A <= 20 && 1 <= B <= 20 && 1 <= T <= 20
@@ -14,16 +15,10 @@ function TotalBiscuits(A: int, B: int, T: int): int
 {
     B * ProductionCount(A, T)
 }
+// </vc-preamble>
 
 // <vc-helpers>
-lemma lemma_TotalBiscuits(A: int, B: int, T: int)
-  requires ValidInput(A, B, T)
-  ensures TotalBiscuits(A, B, T) == B * (T / A)
-{
-  // This lemma is just to explicitly show the definition,
-  // but Dafny's built-in reasoning for function definitions
-  // is usually sufficient.
-}
+// No helpers needed for this problem
 // </vc-helpers>
 
 // <vc-spec>
@@ -36,4 +31,3 @@ method solve(A: int, B: int, T: int) returns (result: int)
   result := B * (T / A);
 }
 // </vc-code>
-

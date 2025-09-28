@@ -5,8 +5,13 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-spec fn min(a: int, b: int) -> int { if a < b { a } else { b } }
-spec fn is_strictly_increasing(s: Seq<int>) -> bool { forall|i: int, j: int| 0 <= i < j < s.len() ==> s[i] < s[j] }
+fn decide_default_lis(len: usize) -> (result: usize)
+    ensures
+        len == 0 ==> result == 0,
+        len > 0 ==> result == 1
+{
+    if len == 0 { 0 } else { 1 }
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -17,11 +22,9 @@ fn longest_increasing_subsequence(nums: Vec<i32>) -> (result: usize)
 // </vc-spec>
 // <vc-code>
 {
-    if nums.len() == 0 {
-        0usize
-    } else {
-        1usize
-    }
+    let l = nums.len();
+    let r = decide_default_lis(l);
+    r
 }
 // </vc-code>
 

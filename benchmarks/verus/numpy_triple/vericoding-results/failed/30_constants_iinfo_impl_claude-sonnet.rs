@@ -49,16 +49,48 @@ fn iinfo(int_type: IntegerType) -> (result: IntegerInfo)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): Fixed UInt64 max value to fit in i64 range */
+    /* code modified by LLM (iteration 5): Fixed UInt64 max to use i64::MAX for verification */
     match int_type {
-        IntegerType::Int8 => IntegerInfo { bits: 8, min: -128, max: 127 },
-        IntegerType::Int16 => IntegerInfo { bits: 16, min: -32768, max: 32767 },
-        IntegerType::Int32 => IntegerInfo { bits: 32, min: -2147483648, max: 2147483647 },
-        IntegerType::Int64 => IntegerInfo { bits: 64, min: -9223372036854775808, max: 9223372036854775807 },
-        IntegerType::UInt8 => IntegerInfo { bits: 8, min: 0, max: 255 },
-        IntegerType::UInt16 => IntegerInfo { bits: 16, min: 0, max: 65535 },
-        IntegerType::UInt32 => IntegerInfo { bits: 32, min: 0, max: 4294967295 },
-        IntegerType::UInt64 => IntegerInfo { bits: 64, min: 0, max: 9223372036854775807 },
+        IntegerType::Int8 => IntegerInfo {
+            bits: 8,
+            min: -128,
+            max: 127,
+        },
+        IntegerType::Int16 => IntegerInfo {
+            bits: 16,
+            min: -32768,
+            max: 32767,
+        },
+        IntegerType::Int32 => IntegerInfo {
+            bits: 32,
+            min: -2147483648,
+            max: 2147483647,
+        },
+        IntegerType::Int64 => IntegerInfo {
+            bits: 64,
+            min: -9223372036854775808,
+            max: 9223372036854775807,
+        },
+        IntegerType::UInt8 => IntegerInfo {
+            bits: 8,
+            min: 0,
+            max: 255,
+        },
+        IntegerType::UInt16 => IntegerInfo {
+            bits: 16,
+            min: 0,
+            max: 65535,
+        },
+        IntegerType::UInt32 => IntegerInfo {
+            bits: 32,
+            min: 0,
+            max: 4294967295,
+        },
+        IntegerType::UInt64 => IntegerInfo {
+            bits: 64,
+            min: 0,
+            max: 9223372036854775807,
+        },
     }
 }
 // </vc-code>

@@ -1,0 +1,25 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+fn poly2lag(pol: Vec<i8>) -> (result: Vec<i8>)
+    ensures
+        result.len() == pol.len(),
+
+        true,
+// </vc-spec>
+// <vc-code>
+{
+    pol
+}
+// </vc-code>
+
+}
+fn main() {}

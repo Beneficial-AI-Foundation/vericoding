@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(k2: int, k3: int, k5: int, k6: int)
 {
     k2 >= 0 && k3 >= 0 && k5 >= 0 && k6 >= 0 &&
@@ -12,12 +13,11 @@ function OptimalSum(k2: int, k3: int, k5: int, k6: int): int
     var count32 := min(k3, remaining_k2);
     256 * count256 + 32 * count32
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function min(a: int, b: int): int
-  ensures (a <= b ==> min(a,b) == a) && (b <= a ==> min(a,b) == b)
-{
-  if a <= b then a else b
+function min(a: int, b: int): int {
+    if a < b then a else b
 }
 // </vc-helpers>
 
@@ -35,4 +35,3 @@ method solve(k2: int, k3: int, k5: int, k6: int) returns (result: int)
     result := 256 * count256 + 32 * count32;
 }
 // </vc-code>
-

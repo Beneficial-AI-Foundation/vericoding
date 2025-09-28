@@ -1,0 +1,39 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+fn numpy_logical_and(x1: Vec<bool>, x2: Vec<bool>) -> (result: Vec<bool>)
+    requires x1.len() == x2.len(),
+    ensures 
+        result.len() == x1.len(),
+        forall|i: int| 0 <= i < result.len() ==> result[i] == (x1[i] && x2[i])
+// </vc-spec>
+// <vc-code>
+{
+    let mut result = Vec::new();
+    let mut i: usize = 0;
+    while i < x1.len()
+        invariant
+            x1.len() == x2.len(),
+            0 <= i <= x1.len(),
+            result.len() == i,
+            forall|j: int| 0 <= j < i ==> result@[j] == (x1@[j] && x2@[j]),
+        decreases x1.len() - i,
+    {
+        let val = x1[i] && x2[i];
+        result.push(val);
+        i = i + 1;
+    }
+    result
+}
+// </vc-code>
+
+}
+fn main() {}

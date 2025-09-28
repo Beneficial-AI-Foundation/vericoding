@@ -5,7 +5,10 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): No helpers to fix */
+/* helper modified by LLM (iteration 5): remove `spec_fn` from helper to allow execution */
+fn iter_exec<T: Copy>(idx: usize, iter: Fn(usize) -> T) -> T {
+    iter(idx)
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -15,26 +18,22 @@ fn fromiter<T: Copy>(n: usize, iter: spec_fn(usize) -> T) -> (result: Vec<T>)
         forall|i: int| 0 <= i < n ==> result[i] == iter(i as usize)
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Removed `v.capacity()` check in invariant to fix compilation error due to unsupported `alloc::vec::impl&%1::capacity`. */
+/* code modified by LLM (iteration 5): adjust closure type for `iter_exec` */
 {
     let mut v: Vec<T> = Vec::new();
-    if n == 0 {
-        return v;
-    }
-
-    v.reserve(n as usize);
-
     let mut i: usize = 0;
+
     while i < n
         invariant
-            0 <= i <= n,
             v.len() == i,
-            // v.capacity() >= n, // This line was causing a compilation error
             forall|j: int| 0 <= j < i ==> v[j] == iter(j as usize),
+            i <= n,
+        decreases n - i
     {
-        v.push(iter(i));
+        v.push(iter(i)); // Directly call iter(i) as it's a spec_fn
         i = i + 1;
     }
+
     v
 }
 // </vc-code>

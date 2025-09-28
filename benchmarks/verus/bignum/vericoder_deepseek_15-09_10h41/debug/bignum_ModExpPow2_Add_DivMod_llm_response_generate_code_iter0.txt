@@ -1,9 +1,0 @@
-=== LLM Response - generate_code - Iteration 0 ===
-File: benchmarks/verus/bignum/files/bignum_ModExpPow2_Add_DivMod.rs
-Prompt Hash: 2719df9b
-JSON Parsed Successfully: True
-Timestamp: 1757925985.6131
-Content Length: 168 chars
---------------------------------------------------------------------------------
-["fn min(a: int, b: int) -> int { if a < b { a } else { b } }", "{\n    let result = min(a, b);\n    result\n}", "proof fn helper_lemma(x: int) ensures x + 0 == x { }"]
---------------------------------------------------------------------------------

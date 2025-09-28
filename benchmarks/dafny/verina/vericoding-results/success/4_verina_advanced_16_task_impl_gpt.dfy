@@ -17,7 +17,15 @@ predicate MultisetEquivalent(v1: array<int>, v2: array<int>)
 // </vc-preamble>
 
 // <vc-helpers>
-function min(a: int, b: int): int { if a < b then a else b }
+function min(a: int, b: int): int {
+  if a < b then a else b
+}
+
+lemma SortedEmpty(v: array<int>)
+  ensures v.Length == 0 ==> Sorted(v)
+{
+}
+
 // </vc-helpers>
 
 // <vc-spec>

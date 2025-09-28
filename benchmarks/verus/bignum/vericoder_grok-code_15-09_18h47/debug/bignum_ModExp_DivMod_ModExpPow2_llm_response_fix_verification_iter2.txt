@@ -1,9 +1,0 @@
-=== LLM Response - fix_verification - Iteration 2 ===
-File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2.rs
-Prompt Hash: 04f8f2c8
-JSON Parsed Successfully: True
-Timestamp: 1757955773.172134
-Content Length: 1365 chars
---------------------------------------------------------------------------------
-["/* helper modified by LLM (iteration 3): fixed compilation type errors by adding proper suffixes to integer literals (int/nat) and adjusted index calculations */\nexec fn Int2Str(x: int) -> Vec<char>\n{\n    let mut res = Vec::new();\n    let mut v = x;\n    while v > 0int\n    {\n        res.push(if v % 2int == 1int { '1' } else { '0' });\n        v = v / 2int;\n    }\n    res.reverse();\n    if res.len() == 0nat {\n        res.push('0');\n    }\n    res\n}\n\nexec fn bin_to_int(s: &[char]) -> int {\n    let mut result: int = 0int;\n    for i in 0..s.len() {\n        result = result * 2int + if s[i] == '1' { 1int } else { 0int };\n    }\n    result\n}\n\nexec fn pow_mod(base: int, exp: Seq<char>, modulus: int) -> int\n    decreases exp.len()\n{\n    if exp.len() == 0nat {\n        1int\n    } else {\n        let half = pow_mod(base % modulus, exp.subrange(0, (exp.len() as int) - 1int), modulus);\n        let sq = (half * half) % modulus;\n        if exp.index((exp.len() as int) - 1int) == '1' {\n            (sq * (base % modulus)) % modulus\n        } else {\n            sq\n        }\n    }\n}", "/* code modified by LLM (iteration 3): implemented the function body using verified helpers */\n{\n    let base_int = bin_to_int(sx);\n    let modulus = bin_to_int(sz);\n    let res_int = pow_mod(base_int, sy@, modulus);\n    Int2Str(res_int)\n}"]
---------------------------------------------------------------------------------

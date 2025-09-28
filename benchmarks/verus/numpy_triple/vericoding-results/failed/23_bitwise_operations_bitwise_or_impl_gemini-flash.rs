@@ -5,7 +5,7 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): Removed duplicate definition of `bitwise_or_int`. */
+/* helper modified by LLM (iteration 5): Removed duplicate definition of `bitwise_or_int` to fix compilation error. */
 // </vc-helpers>
 
 // <vc-spec>
@@ -34,29 +34,29 @@ fn bitwise_or_fn(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
         result@ == bitwise_or_vec(x1@, x2@)
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): No changes to fix compilation errors. */
 {
-    let mut result = Vec::new();
-    let mut i = 0;
+    let mut result: Vec<i32> = Vec::new();
+    let mut i: usize = 0;
+
     while i < x1.len()
         invariant
-            0 <= i <= x1.len(),
             result.len() == i,
-            x1.len() == x2.len(),
-            result@.subsequence(0, i) == bitwise_or_vec(x1@.subsequence(0, i), x2@.subsequence(0, i)),
-            forall|j: int| 0 <= j < i ==> result.view()[j] == bitwise_or_int(x1.view()[j], x2.view()[j]),
-
+            result.len() <= x1.len(),
+            forall|j: int| 0 <= j < i as int ==> result.view()[j] == (x1.view()[j] | x2.view()[j])
         decreases x1.len() - i
     {
-        let val1 = x1[i];
-        let val2 = x2[i];
-        let res_val = val1 | val2;
-        result.push(res_val);
+        let val: i32 = x1[i] | x2[i];
+        result.push(val);
         i = i + 1;
     }
-
-    assert(result@ == bitwise_or_vec(x1@, x2@));
-
+    proof {
+        assert(result@ == Seq::new(x1.len() as int, |k: int| bitwise_or_int(x1@[k], x2@[k])));
+        assert(result@ == bitwise_or_vec(x1@, x2@));
+        // The following asserts are needed to satisfy the additional postconditions
+        assert(forall|k: int| 0 <= k < result.len() && x2@[k] == 0 ==> result@[k] == (x1@[k] | x2@[k]));
+        assert(forall|k: int| 0 <= k < result.len() && x1@[k] == 0 ==> result@[k] == (x1@[k] | x2@[k]));
+        assert(forall|k: int| 0 <= k < result.len() && (x1@[k] == -1i32 || x2@[k] == -1i32) ==> result@[k] == (x1@[k] | x2@[k]));
+    }
     result
 }
 // </vc-code>

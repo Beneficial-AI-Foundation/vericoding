@@ -1,9 +1,0 @@
-=== LLM Response - generate_code - Iteration 0 ===
-File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_ModExpPow2.rs
-Prompt Hash: c97581af
-JSON Parsed Successfully: True
-Timestamp: 1757960615.108634
-Content Length: 103 chars
---------------------------------------------------------------------------------
-["proof fn modexp_helpers_dummy() ensures true { }","{\n    let res = Vec::<char>::new();\n    res\n}"]
---------------------------------------------------------------------------------

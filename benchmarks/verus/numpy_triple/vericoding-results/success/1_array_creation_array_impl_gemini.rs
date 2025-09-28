@@ -20,12 +20,13 @@ fn array(data: Vec<f64>) -> (result: Vec<f64>)
     let mut i: usize = 0;
     while i < data.len()
         invariant
-            i <= data.len(),
+            0 <= i <= data.len(),
             result.len() == i,
-            forall|j: int| 0 <= j < i as int ==> result@[j] == data@[j],
-        decreases data.len() - i,
+            forall|j: int| 0 <= j < i ==> result[j] == data[j],
+        decreases data.len() - i
     {
-        result.push(data[i]);
+        let item = data[i];
+        result.push(item);
         i = i + 1;
     }
     result

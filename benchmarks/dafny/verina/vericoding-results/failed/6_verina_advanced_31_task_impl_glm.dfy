@@ -1,0 +1,71 @@
+// <vc-preamble>
+/* Helper functions for generating subsequences and checking increasing property */
+ghost predicate IsSubsequenceOf(subseq: seq<int>, s: seq<int>)
+{
+    exists indices: seq<int> ::
+        |indices| == |subseq| &&
+        |indices| >= 0 &&
+        (forall i :: 0 <= i < |indices| ==> indices[i] >= 0 && indices[i] < |s|) &&
+        (forall i :: 0 <= i < |indices| - 1 ==> indices[i] < indices[i + 1]) &&
+        (forall i :: 0 <= i < |subseq| ==> subseq[i] == s[indices[i]])
+}
+
+ghost predicate IsStrictlyIncreasing(s: seq<int>)
+{
+    forall i :: 0 <= i < |s| - 1 ==> s[i] < s[i + 1]
+}
+// </vc-preamble>
+
+// <vc-helpers>
+/* helper modified by LLM (iteration 4): fixed to work with int arrays and handle empty arrays */
+method Max(a: array<int>) returns (m: int)
+{
+    if a.Length == 0 {
+        return 0;
+    }
+    m := a[0];
+    for i := 1 to a.Length
+    {
+        if a[i] > m {
+            m := a[i];
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method LongestIncreasingSubseqLength(xs: array<int>) returns (result: nat)
+    ensures
+        /* The result is the length of some strictly increasing subsequence */
+        exists subseq: seq<int> ::
+            IsSubsequenceOf(subseq, xs[..]) && 
+            IsStrictlyIncreasing(subseq) && 
+            |subseq| == result
+    ensures
+        /* No strictly increasing subsequence is longer than result */
+        forall subseq: seq<int> ::
+            (IsSubsequenceOf(subseq, xs[..]) && IsStrictlyIncreasing(subseq)) 
+            ==> |subseq| <= result
+// </vc-spec>
+// <vc-code>
+{
+  /* code modified by LLM (iteration 4): corrected loop bounds and comparison logic */
+  var dp := new int[xs.Length];
+  if xs.Length == 0 {
+    return 0;
+  }
+  for i := 0 to xs.Length
+  {
+    dp[i] := 1;
+    for j := 0 to i
+    {
+      if j < i && xs[j] < xs[i] {
+        if dp[j] + 1 > dp[i] {
+          dp[i] := dp[j] + 1;
+        }
+      }
+    }
+  }
+  result := Max(dp);
+}
+// </vc-code>

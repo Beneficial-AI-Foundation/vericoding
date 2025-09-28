@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int, a: int, b: int)
 {
     n >= 1 && m >= 1 && a >= 1 && b >= 1
@@ -9,14 +10,10 @@ function MinCostToDivisible(n: int, m: int, a: int, b: int): int
     var k := n % m;
     if k * b < (m - k) * a then k * b else (m - k) * a
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function Min(x: int, y: int): int
-  ensures Min(x, y) == x || Min(x, y) == y
-  ensures Min(x, y) <= x && Min(x, y) <= y
-{
-  if x < y then x else y
-}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -27,14 +24,11 @@ method solve(n: int, m: int, a: int, b: int) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-   var k := n % m;
-   if k == 0 {
-      result := 0;
-   } else {
-      var cost1 := k * b;
-      var cost2 := (m - k) * a;
-      result := Min(cost1, cost2);
-   }
+  var k := n % m;
+  if k * b < (m - k) * a {
+    result := k * b;
+  } else {
+    result := (m - k) * a;
+  }
 }
 // </vc-code>
-

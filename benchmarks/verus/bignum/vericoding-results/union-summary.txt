@@ -1,50 +1,48 @@
 === VERUS PROCESSING SUMMARY (AGGREGATED) ===
 Selection method: best runs
 Total files: 62
-Successful: 8 (12.9%)
-Failed: 54
+Successful: 4 (6.5%)
+Failed: 58
 
 Selected best runs:
-  - claude-opus: vericoder_claude-opus_04-09_13h36 (success rate: 9.7%)
-  - claude-sonnet: vericoder_claude-sonnet_04-09_13h36 (success rate: 6.5%)
-  - deepseek: vericoder_deepseek_15-09_10h41 (success rate: 1.6%)
-  - gemini: vericoder_gemini_15-09_10h41 (success rate: 1.6%)
-  - gemini-flash: vericoder_gemini-flash_15-09_18h46 (success rate: 0.0%)
-  - glm: vericoder_glm_15-09_18h46 (success rate: 0.0%)
-  - gpt: vericoder_gpt_04-09_13h36 (success rate: 17.7%)
-  - gpt-mini: vericoder_gpt-mini_04-09_13h36 (success rate: 8.1%)
-  - grok-code: vericoder_grok-code_15-09_10h42 (success rate: 0.0%)
+  - claude-opus: vericoder_claude-opus_21-09_00h21 (success rate: 1.6%)
+  - claude-sonnet: vericoder_claude-sonnet_20-09_19h33 (success rate: 1.6%)
+  - deepseek: vericoder_deepseek_21-09_00h21 (success rate: 0.0%)
+  - gemini: vericoder_gemini_21-09_00h21 (success rate: 1.6%)
+  - gemini-flash: vericoder_gemini-flash_21-09_00h22 (success rate: 0.0%)
+  - glm: vericoder_glm_21-09_00h22 (success rate: 0.0%)
+  - gpt: vericoder_gpt_20-09_20h12 (success rate: 3.2%)
+  - gpt-mini: vericoder_gpt-mini_21-09_00h22 (success rate: 0.0%)
+  - grok-code: vericoder_grok-code_20-09_17h09 (success rate: 3.2%)
 
 Per-LLM success rates:
-  - claude-opus: 6/62 (9.7%)
-  - claude-sonnet: 4/62 (6.5%)
-  - deepseek: 1/62 (1.6%)
+  - claude-opus: 1/62 (1.6%)
+  - claude-sonnet: 1/62 (1.6%)
+  - deepseek: 0/62 (0.0%)
   - gemini: 1/62 (1.6%)
   - gemini-flash: 0/62 (0.0%)
   - glm: 0/62 (0.0%)
-  - gpt: 0/62 (0.0%)
+  - gpt: 2/62 (3.2%)
   - gpt-mini: 0/62 (0.0%)
-  - grok-code: 0/62 (0.0%)
+  - grok-code: 2/62 (3.2%)
 
 Successful files:
-✓ bignum_Add_NormalizeBitString.rs — by: claude-sonnet
-✓ bignum_CompareUnequal.rs — by: claude-opus
-✓ bignum_Compare_CompareUnequal.rs — by: claude-opus
-✓ bignum_Compare_CompareUnequal_NormalizeBitString.rs — by: claude-opus
-✓ bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes.rs — by: claude-sonnet
-✓ bignum_ModExp_Add_DivMod_Mul_Zeroes.rs — by: claude-opus, deepseek, gemini
-✓ bignum_ModExp_Add_ModExpPow2_Mul.rs — by: claude-opus, claude-sonnet
-✓ bignums_Sub_NormalizeBitstring.rs — by: claude-opus, claude-sonnet
+✓ bignum_Compare.rs — by: grok-code
+✓ bignum_ModExp.rs — by: gpt
+✓ bignum_ModExp_DivMod_Mul.rs — by: gpt
+✓ bignum_Zeros.rs — by: claude-opus, claude-sonnet, gemini, grok-code
 
 Failed files:
 ✗ bignum_Add.rs
-✗ bignum_Compare.rs
+✗ bignum_Add_NormalizeBitString.rs
+✗ bignum_CompareUnequal.rs
+✗ bignum_Compare_CompareUnequal.rs
+✗ bignum_Compare_CompareUnequal_NormalizeBitString.rs
 ✗ bignum_Compare_NormalizeBitString.rs
 ✗ bignum_DivMod.rs
 ✗ bignum_DivMod_Compare.rs
 ✗ bignum_DivMod_Compare_Sub.rs
 ✗ bignum_DivMod_Sub.rs
-✗ bignum_ModExp.rs
 ✗ bignum_ModExpPow2.rs
 ✗ bignum_ModExpPow2_Add.rs
 ✗ bignum_ModExpPow2_Add_DivMod.rs
@@ -58,9 +56,12 @@ Failed files:
 ✗ bignum_ModExp_Add_DivMod.rs
 ✗ bignum_ModExp_Add_DivMod_ModExpPow2.rs
 ✗ bignum_ModExp_Add_DivMod_ModExpPow2_Mul.rs
+✗ bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes.rs
 ✗ bignum_ModExp_Add_DivMod_Mul.rs
+✗ bignum_ModExp_Add_DivMod_Mul_Zeroes.rs
 ✗ bignum_ModExp_Add_DivMod_Zeroes.rs
 ✗ bignum_ModExp_Add_ModExpPow2.rs
+✗ bignum_ModExp_Add_ModExpPow2_Mul.rs
 ✗ bignum_ModExp_Add_ModExpPow2_Mul_Zeroes.rs
 ✗ bignum_ModExp_Add_ModExpPow2_Zeroes.rs
 ✗ bignum_ModExp_Add_Mul.rs
@@ -71,7 +72,6 @@ Failed files:
 ✗ bignum_ModExp_DivMod_ModExpPow2_Mul.rs
 ✗ bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes.rs
 ✗ bignum_ModExp_DivMod_ModExpPow2_Zeroes.rs
-✗ bignum_ModExp_DivMod_Mul.rs
 ✗ bignum_ModExp_DivMod_Mul_Zeroes.rs
 ✗ bignum_ModExp_DivMod_Zeroes.rs
 ✗ bignum_ModExp_ModExpPow2.rs
@@ -89,5 +89,5 @@ Failed files:
 ✗ bignum_Mul_Add_NormalizeBitString.rs
 ✗ bignum_Mul_NormalizeBitString.rs
 ✗ bignum_NormalizeBitString.rs
-✗ bignums_Sub.rs
-✗ bignums_Zeros.rs
+✗ bignum_Sub.rs
+✗ bignum_Sub_NormalizeBitstring.rs

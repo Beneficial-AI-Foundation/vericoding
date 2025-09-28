@@ -48,7 +48,7 @@ fn iinfo(int_type: IntegerType) -> (result: IntegerInfo)
     }
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): replaced out-of-range literal with i64::MAX to fix compilation error */
+/* code modified by LLM (iteration 2): fixed UInt64 max value to correct constant */
 {
     match int_type {
         IntegerType::Int8 => IntegerInfo { bits: 8, min: -128, max: 127 },
@@ -58,7 +58,7 @@ fn iinfo(int_type: IntegerType) -> (result: IntegerInfo)
         IntegerType::UInt8 => IntegerInfo { bits: 8, min: 0, max: 255 },
         IntegerType::UInt16 => IntegerInfo { bits: 16, min: 0, max: 65535 },
         IntegerType::UInt32 => IntegerInfo { bits: 32, min: 0, max: 4294967295 },
-        IntegerType::UInt64 => IntegerInfo { bits: 64, min: 0, max: i64::MAX },
+        IntegerType::UInt64 => IntegerInfo { bits: 64, min: 0, max: 18446744073709551615 },
     }
 }
 // </vc-code>

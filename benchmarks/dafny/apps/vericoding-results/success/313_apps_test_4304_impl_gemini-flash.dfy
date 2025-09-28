@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int)
 {
   a >= 1 && b > a && b < 499500
@@ -16,14 +17,10 @@ function SnowDepthFormula(a: int, b: int): int
 {
   ((b - a) * (b - a) - (a + b)) / 2
 }
+// </vc-preamble>
 
 // <vc-helpers>
-/**
- * Since SnowDepthFormula is a function, its purity is guaranteed by Dafny.
- * The 'requires' clauses of SnowDepthFormula already involve ValidInput and ValidSnowDepth.
- * Therefore, no explicit helper predicates or lemmas are strictly necessary beyond what's provided for the helpers.
- * The core logic simply involves directly computing the formula.
- */
+// No helper functions needed for this problem.
 // </vc-helpers>
 
 // <vc-spec>
@@ -35,8 +32,6 @@ method solve(a: int, b: int) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-  var depth := ((b - a) * (b - a) - (a + b)) / 2;
-  return depth;
+  result := SnowDepthFormula(a, b);
 }
 // </vc-code>
-

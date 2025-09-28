@@ -2,18 +2,18 @@
 // </vc-preamble>
 
 // <vc-helpers>
+/* helper modified by LLM (iteration 5): Fixed multiset preservation and merge invariants */
 predicate InArray(arr: array<int>, x: int, n: int)
-  reads arr
   requires 0 <= n <= arr.Length
+  reads arr
 {
   exists i :: 0 <= i < n && arr[i] == x
 }
 
-/* helper modified by LLM (iteration 5): Fixed postconditions and implementation */
 method MergeSort(arr: array<int>) returns (sorted: array<int>)
   ensures sorted.Length == arr.Length
+  ensures multiset(sorted[..]) == multiset(arr[..])
   ensures forall i :: 0 <= i < sorted.Length - 1 ==> sorted[i] <= sorted[i + 1]
-  ensures multiset(arr[..]) == multiset(sorted[..])
   decreases arr.Length
 {
   if arr.Length <= 1 {
@@ -34,6 +34,7 @@ method MergeSort(arr: array<int>) returns (sorted: array<int>)
       left[i] := arr[i];
       i := i + 1;
     }
+    assert left[..] == arr[..mid];
     
     i := 0;
     while i < arr.Length - mid
@@ -43,26 +44,24 @@ method MergeSort(arr: array<int>) returns (sorted: array<int>)
       right[i] := arr[mid + i];
       i := i + 1;
     }
-    
+    assert right[..] == arr[mid..];
     assert multiset(left[..]) + multiset(right[..]) == multiset(arr[..]);
     
     var sortedLeft := MergeSort(left);
     var sortedRight := MergeSort(right);
     sorted := Merge(sortedLeft, sortedRight);
-    
     assert multiset(sorted[..]) == multiset(sortedLeft[..]) + multiset(sortedRight[..]);
-    assert multiset(sortedLeft[..]) == multiset(left[..]);
-    assert multiset(sortedRight[..]) == multiset(right[..]);
+    assert multiset(sorted[..]) == multiset(left[..]) + multiset(right[..]);
+    assert multiset(sorted[..]) == multiset(arr[..]);
   }
 }
 
-/* helper modified by LLM (iteration 5): Fixed merge logic and invariants */
 method Merge(left: array<int>, right: array<int>) returns (merged: array<int>)
   requires forall i :: 0 <= i < left.Length - 1 ==> left[i] <= left[i + 1]
   requires forall i :: 0 <= i < right.Length - 1 ==> right[i] <= right[i + 1]
   ensures merged.Length == left.Length + right.Length
+  ensures multiset(merged[..]) == multiset(left[..]) + multiset(right[..])
   ensures forall i :: 0 <= i < merged.Length - 1 ==> merged[i] <= merged[i + 1]
-  ensures multiset(left[..]) + multiset(right[..]) == multiset(merged[..])
 {
   merged := new int[left.Length + right.Length];
   var i, j, k := 0, 0, 0;
@@ -71,14 +70,18 @@ method Merge(left: array<int>, right: array<int>) returns (merged: array<int>)
     invariant 0 <= i <= left.Length
     invariant 0 <= j <= right.Length
     invariant k == i + j
-    invariant forall p :: 0 <= p < k - 1 ==> merged[p] <= merged[p + 1]
-    invariant i < left.Length && j < right.Length && k > 0 ==> 
-              merged[k-1] <= left[i] && merged[k-1] <= right[j]
-    invariant i == left.Length && j < right.Length && k > 0 ==> merged[k-1] <= right[j]
-    invariant j == right.Length && i < left.Length && k > 0 ==> merged[k-1] <= left[i]
     invariant multiset(merged[..k]) == multiset(left[..i]) + multiset(right[..j])
+    invariant forall p :: 0 <= p < k - 1 ==> merged[p] <= merged[p + 1]
+    invariant k > 0 && i < left.Length ==> merged[k - 1] <= left[i]
+    invariant k > 0 && j < right.Length ==> merged[k - 1] <= right[j]
   {
-    if i < left.Length && (j >= right.Length || left[i] <= right[j]) {
+    if i == left.Length {
+      merged[k] := right[j];
+      j := j + 1;
+    } else if j == right.Length {
+      merged[k] := left[i];
+      i := i + 1;
+    } else if left[i] <= right[j] {
       merged[k] := left[i];
       i := i + 1;
     } else {
@@ -87,6 +90,9 @@ method Merge(left: array<int>, right: array<int>) returns (merged: array<int>)
     }
     k := k + 1;
   }
+  assert i == left.Length && j == right.Length;
+  assert k == merged.Length;
+  assert multiset(merged[..]) == multiset(left[..]) + multiset(right[..]);
 }
 // </vc-helpers>
 
@@ -98,49 +104,53 @@ method UniqueSorted(arr: array<int>) returns (result: array<int>)
 // </vc-spec>
 // <vc-code>
 {
-  /* code modified by LLM (iteration 5): Fixed syntax error - proper if-then braces */
+  /* code modified by LLM (iteration 5): Simplified unique extraction with clearer invariants */
   var sorted := MergeSort(arr);
   
   if sorted.Length == 0 {
     result := new int[0];
-    return;
-  }
-  
-  var count := 1;
-  var i := 1;
-  while i < sorted.Length
-    invariant 1 <= i <= sorted.Length
-    invariant 1 <= count <= i
-    invariant count == 1 + (set k | 0 < k < i && sorted[k] != sorted[k-1] :: k) | |
-  {
-    if sorted[i] != sorted[i - 1] {
-      count := count + 1;
+  } else {
+    // Count unique elements
+    var count := 1;
+    var i := 1;
+    while i < sorted.Length
+      invariant 1 <= i <= sorted.Length
+      invariant 1 <= count <= i
+    {
+      if sorted[i] != sorted[i - 1] {
+        count := count + 1;
+      }
+      i := i + 1;
     }
-    i := i + 1;
-  }
-  
-  result := new int[count];
-  result[0] := sorted[0];
-  var j := 1;
-  i := 1;
-  while i < sorted.Length && j < count
-    invariant 1 <= i <= sorted.Length
-    invariant 1 <= j <= count
-    invariant j <= i
-    invariant forall k :: 0 <= k < j - 1 ==> result[k] < result[k + 1]
-    invariant j > 0 ==> result[j-1] == sorted[i-1]
-    invariant forall k :: 0 <= k < j ==> result[k] in sorted[..i]
-    invariant forall x :: x in result[..j] ==> x in sorted[..]
-  {
-    if sorted[i] != sorted[i - 1] {
-      result[j] := sorted[i];
-      j := j + 1;
+    
+    // Create result with unique elements
+    result := new int[count];
+    result[0] := sorted[0];
+    var pos := 1;
+    i := 1;
+    
+    while i < sorted.Length
+      invariant 1 <= i <= sorted.Length
+      invariant 1 <= pos <= count
+      invariant pos <= i
+      invariant forall j :: 0 <= j < pos - 1 ==> result[j] < result[j + 1]
+      invariant pos > 0 ==> result[pos - 1] <= sorted[i - 1]
+    {
+      if sorted[i] != sorted[i - 1] {
+        if pos < count {
+          result[pos] := sorted[i];
+          pos := pos + 1;
+        }
+      }
+      i := i + 1;
     }
-    i := i + 1;
+    
+    // Verify postconditions
+    assert forall x :: x in sorted[..] ==> x in result[..];
+    assert forall x :: x in result[..] ==> x in sorted[..];
+    assert multiset(sorted[..]) == multiset(arr[..]);
+    assert forall x :: x in arr[..] ==> x in sorted[..];
+    assert forall x :: x in sorted[..] ==> x in arr[..];
   }
-  
-  assert multiset(sorted[..]) == multiset(arr[..]);
-  assert forall x :: x in result[..] ==> x in sorted[..];
-  assert forall x :: x in sorted[..] ==> x in result[..];
 }
 // </vc-code>

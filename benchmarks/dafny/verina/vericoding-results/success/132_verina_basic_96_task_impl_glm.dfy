@@ -14,6 +14,6 @@ method SwapSimultaneous(x: int, y: int) returns (result: (int, int))
 // </vc-spec>
 // <vc-code>
 {
-    result := (y, x);
+  result := (y, x);
 }
 // </vc-code>

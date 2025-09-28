@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, s: int, v: seq<int>)
 {
     n > 0 && |v| == n && s >= 0 && forall i :: 0 <= i < |v| ==> v[i] >= 0
@@ -22,11 +23,10 @@ function min(a: int, b: int): int
 {
     if a <= b then a else b
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function minInt(a: int, b: int): int {
-    if a <= b then a else b
-}
+/* helper modified by LLM (iteration 2): Removed redundant min function as it is already defined in preamble. */
 // </vc-helpers>
 
 // <vc-spec>
@@ -37,13 +37,15 @@ method solve(n: int, s: int, v: seq<int>) returns (result: int)
     ensures result == -1 || result >= 0
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 2): Implemented the logic to calculate the result based on sum(v) compared to s. */
 {
-    var total_sum := sum(v);
-    if total_sum < s {
+    var totalSum := sum(v);
+    if totalSum < s {
         result := -1;
     } else {
-        result := minInt((total_sum - s) / n, minSeq(v));
+        var minPossibleValue := (totalSum - s) / n;
+        var actualMinValue := minSeq(v);
+        result := min(minPossibleValue, actualMinValue);
     }
 }
 // </vc-code>
-

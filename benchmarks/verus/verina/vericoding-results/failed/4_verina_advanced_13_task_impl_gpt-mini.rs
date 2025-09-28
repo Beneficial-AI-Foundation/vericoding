@@ -13,21 +13,29 @@ spec fn chord_intersects(chord1: &Vec<usize>, chord2: &Vec<usize>) -> bool {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): prove runtime computation implies spec predicate */
-proof fn chord_intersects_from_vals(ch1: &Vec<usize>, ch2: &Vec<usize>, a1: usize, b1: usize, a2: usize, b2: usize, inter: bool)
-    requires
-        ch1.len() == 2,
-        ch2.len() == 2,
-        a1 == if ch1[0] < ch1[1] { ch1[0] } else { ch1[1] },
-        b1 == if ch1[0] > ch1[1] { ch1[0] } else { ch1[1] },
-        a2 == if ch2[0] < ch2[1] { ch2[0] } else { ch2[1] },
-        b2 == if ch2[0] > ch2[1] { ch2[0] } else { ch2[1] },
-        inter == ((a1 < a2 && a2 < b1 && b1 < b2) || (a2 < a1 && a1 < b2 && b2 < b1)),
-    ensures
-        chord_intersects(ch1, ch2) == inter,
+/* helper modified by LLM (iteration 5): executable and proof helpers for intersection */
+fn intersects_exec(c1: &Vec<usize>, c2: &Vec<usize>) -> bool {
+    let a1 = if c1[0] < c1[1] { c1[0] } else { c1[1] };
+    let b1 = if c1[0] > c1[1] { c1[0] } else { c1[1] };
+    let a2 = if c2[0] < c2[1] { c2[0] } else { c2[1] };
+    let b2 = if c2[0] > c2[1] { c2[0] } else { c2[1] };
+    (a1 < a2 && a2 < b1 && b1 < b2) || (a2 < a1 && a1 < b2 && b2 < b1)
+}
+
+/* helper modified by LLM (iteration 5): proof connecting spec-level chord_intersects to executable intersects_exec */
+proof fn lemma_intersection_equiv(chords: &Vec<Vec<usize>>, i: int, j: int)
+    ensures chord_intersects(&chords[i as usize], &chords[j as usize]) == intersects_exec(&chords[i as usize], &chords[j as usize])
 {
     proof {
-        assert(chord_intersects(ch1, ch2) == ((a1 < a2 && a2 < b1 && b1 < b2) || (a2 < a1 && a1 < b2 && b2 < b1)));
+        let c1 = &chords[i as usize];
+        let c2 = &chords[j as usize];
+        let a1 = if c1[0] < c1[1] { c1[0] } else { c1[1] };
+        let b1 = if c1[0] > c1[1] { c1[0] } else { c1[1] };
+        let a2 = if c2[0] < c2[1] { c2[0] } else { c2[1] };
+        let b2 = if c2[0] > c2[1] { c2[0] } else { c2[1] };
+        assert(chord_intersects(c1, c2) == ((a1 < a2 && a2 < b1 && b1 < b2) || (a2 < a1 && a1 < b2 && b2 < b1)));
+        assert(intersects_exec(c1, c2) == ((a1 < a2 && a2 < b1 && b1 < b2) || (a2 < a1 && a1 < b2 && b2 < b1)));
+        assert(chord_intersects(c1, c2) == intersects_exec(c1, c2));
     }
 }
 
@@ -55,52 +63,44 @@ fn has_chord_intersection(n: usize, chords: &Vec<Vec<usize>>) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): replaced int counters with usize and added proof linking runtime inter to spec */
+    /* code modified by LLM (iteration 5): iterate pairs and detect any intersecting chord */
+    let mut result: bool = false;
     let mut i: usize = 0;
-    let mut res: bool = false;
-    while i < chords.len()
+    while i < n
         invariant
-            0 <= (i as int),
-            (i as int) <= (chords.len() as int),
-            res == exists|p: int, q: int|
-                0 <= p < (i as int) && 0 <= q < (chords.len() as int) && p != q &&
-                #[trigger] chord_intersects(&chords[p as usize], &chords[q as usize]),
-        decreases chords.len() - i
+            i <= n,
+            result == exists|a: int, b: int|
+                0 <= a && a < b && b < n as int &&
+                (a < i as int) &&
+                #[trigger] chord_intersects(&chords[a as usize], &chords[b as usize]),
+        decreases n - i
     {
-        let mut j: usize = 0;
-        while j < chords.len()
+        let mut j: usize = i + 1;
+        while j < n
             invariant
-                0 <= (j as int),
-                (j as int) <= (chords.len() as int),
-                res == (exists|p: int, q: int|
-                            0 <= p < (i as int) && 0 <= q < (chords.len() as int) && p != q &&
-                            #[trigger] chord_intersects(&chords[p as usize], &chords[q as usize])
-                        ) || (exists|q2: int|
-                            0 <= q2 < (j as int) && q2 != (i as int) &&
-                            #[trigger] chord_intersects(&chords[i], &chords[q2])
-                        ),
-            decreases chords.len() - j
+                i < n,
+                j <= n,
+                result == exists|a: int, b: int|
+                    0 <= a && a < b && b < n as int &&
+                    ((a < i as int) || (a == i as int && b <= j as int)) &&
+                    #[trigger] chord_intersects(&chords[a as usize], &chords[b as usize]),
+            decreases n - j
         {
-            if i != j {
-                let a1 = if chords[i][0] < chords[i][1] { chords[i][0] } else { chords[i][1] };
-                let b1 = if chords[i][0] > chords[i][1] { chords[i][0] } else { chords[i][1] };
-                let a2 = if chords[j][0] < chords[j][1] { chords[j][0] } else { chords[j][1] };
-                let b2 = if chords[j][0] > chords[j][1] { chords[j][0] } else { chords[j][1] };
-                let inter = (a1 < a2 && a2 < b1 && b1 < b2) || (a2 < a1 && a1 < b2 && b2 < b1);
-                if inter {
+            if !result {
+                if intersects_exec(&chords[i], &chords[j]) {
+                    result = true;
                     proof {
-                        chord_intersects_from_vals(&chords[i], &chords[j], a1, b1, a2, b2, inter);
-                        assert(chord_intersects(&chords[i], &chords[j]));
-                        assert(exists|q2: int| 0 <= q2 < ((j as int) + 1) && q2 != (i as int) && chord_intersects(&chords[i], &chords[q2]));
+                        lemma_intersection_equiv(chords, i as int, j as int);
+                        assert(chord_intersects(&chords[i as usize], &chords[j as usize]));
+                        assert(exists|a: int, b: int| a == i as int && b == j as int && 0 <= a && a < b && b < n as int && chord_intersects(&chords[a as usize], &chords[b as usize]));
                     }
-                    res = true;
                 }
             }
-            j = j + 1;
+            j += 1;
         }
-        i = i + 1;
+        i += 1;
     }
-    res
+    result
 }
 
 // </vc-code>

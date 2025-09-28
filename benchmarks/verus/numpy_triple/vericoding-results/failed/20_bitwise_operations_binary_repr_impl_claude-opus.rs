@@ -28,96 +28,7 @@ spec fn is_valid_signed_binary(s: Seq<char>) -> bool {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): Fixed binary initialization and invariant for two's complement */
-fn nat_to_binary_vec(n: u32) -> (result: Vec<char>)
-    ensures
-        result@ == nat_to_binary_string(n as nat),
-        is_valid_binary(result@)
-    decreases n
-{
-    if n == 0 {
-        vec!['0']
-    } else {
-        let mut v = nat_to_binary_vec(n / 2);
-        let digit = if n % 2 == 0 { '0' } else { '1' };
-        v.push(digit);
-        v
-    }
-}
 
-fn two_complement_binary(num: i32, width: usize) -> (result: Vec<char>)
-    requires
-        width >= 1,
-        width <= 31,
-        num < 0,
-        num >= -(1i32 << (width - 1)),
-    ensures
-        result.len() == width,
-        is_valid_binary(result@)
-{
-    let shift_val = 1u32 << width;
-    let num_u32 = if num == i32::MIN { 2147483648u32 } else { (-(num as i64)) as u32 };
-    let two_comp = shift_val - num_u32;
-    
-    let mut binary = vec!['0'];
-    let mut temp = two_comp;
-    let mut digits = Vec::new();
-    
-    if temp == 0 {
-        binary = vec!['0'];
-    } else {
-        while temp > 0
-            invariant
-                temp >= 0
-            decreases temp
-        {
-            let digit = if temp % 2 == 0 { '0' } else { '1' };
-            digits.push(digit);
-            temp = temp / 2;
-        }
-        binary = Vec::new();
-        let mut i = digits.len();
-        while i > 0
-            invariant
-                0 <= i <= digits.len(),
-                binary.len() == digits.len() - i,
-                forall|j: int| 0 <= j < binary.len() ==> (binary[j] == '0' || binary[j] == '1')
-            decreases i
-        {
-            i = i - 1;
-            binary.push(digits[i]);
-        }
-    }
-    
-    while binary.len() < width
-        invariant
-            binary.len() <= width,
-            binary.len() > 0,
-            forall|j: int| 0 <= j < binary.len() ==> (binary[j] == '0' || binary[j] == '1')
-        decreases width - binary.len()
-    {
-        binary.insert(0, '0');
-    }
-    
-    if binary.len() > width {
-        let mut result = Vec::new();
-        let start = binary.len() - width;
-        let mut i = start;
-        while i < binary.len()
-            invariant
-                start <= i <= binary.len(),
-                result.len() == i - start,
-                forall|j: int| 0 <= j < result.len() ==> result[j] == binary[start + j]
-            decreases binary.len() - i
-        {
-            result.push(binary[i]);
-            i = i + 1;
-        }
-        result
-    } else {
-        binary
-    }
-}
 // </vc-helpers>
 
 // <vc-spec>
@@ -144,125 +55,129 @@ fn binary_repr(num: i32, width: Option<usize>) -> (result: Vec<char>)
         }
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Fixed negative number handling and added proper invariants */
 {
-    match width {
-        None => {
-            if num >= 0 {
-                nat_to_binary_vec(num as u32)
+    /* code modified by LLM (iteration 4): Fixed overflow issue and postcondition verification */
+    if width.is_none() {
+        if num >= 0 {
+            let mut n = num as u32;
+            let mut result = Vec::new();
+            if n == 0 {
+                result.push('0');
             } else {
-                let mut result = vec!['-'];
-                let pos_num = if num == i32::MIN { 2147483648u32 } else { (-(num as i64)) as u32 };
-                let mut pos_binary = vec!['0'];
-                let mut temp = pos_num;
-                let mut digits = Vec::new();
-                
-                if temp == 0 {
-                    pos_binary = vec!['0'];
-                } else {
-                    while temp > 0
-                        invariant
-                            temp >= 0
-                        decreases temp
-                    {
-                        let digit = if temp % 2 == 0 { '0' } else { '1' };
-                        digits.push(digit);
-                        temp = temp / 2;
-                    }
-                    pos_binary = Vec::new();
-                    let mut j = digits.len();
-                    while j > 0
-                        invariant
-                            0 <= j <= digits.len(),
-                            pos_binary.len() == digits.len() - j,
-                            forall|k: int| 0 <= k < pos_binary.len() ==> (pos_binary[k] == '0' || pos_binary[k] == '1')
-                        decreases j
-                    {
-                        j = j - 1;
-                        pos_binary.push(digits[j]);
-                    }
-                }
-                
-                let mut i = 0;
-                while i < pos_binary.len()
+                let mut chars = Vec::new();
+                while n > 0
                     invariant
-                        0 <= i <= pos_binary.len(),
-                        result.len() == i + 1,
-                        result[0] == '-',
-                        pos_binary.len() > 0,
-                        forall|k: int| 0 <= k < pos_binary.len() ==> (pos_binary[k] == '0' || pos_binary[k] == '1'),
-                        forall|j: int| 1 <= j < result.len() ==> result[j] == pos_binary[j - 1]
-                    decreases pos_binary.len() - i
+                        n >= 0,
+                        forall|j: int| 0 <= j < chars.len() ==> (chars[j] == '0' || chars[j] == '1')
+                    decreases n
                 {
-                    result.push(pos_binary[i]);
-                    i = i + 1;
+                    if n % 2 == 0 {
+                        chars.push('0');
+                    } else {
+                        chars.push('1');
+                    }
+                    n = n / 2;
                 }
-                result
+                let mut i = chars.len();
+                while i > 0
+                    invariant
+                        i <= chars.len(),
+                        result.len() == chars.len() - i,
+                        forall|j: int| 0 <= j < result.len() ==> (result[j] == '0' || result[j] == '1')
+                    decreases i
+                {
+                    i = i - 1;
+                    result.push(chars[i]);
+                }
             }
-        },
-        Some(w) => {
-            if w > 31 {
+            assert(is_valid_binary(result@));
+            assert(is_valid_signed_binary(result@));
+            result
+        } else {
+            // Handle overflow case for i32::MIN
+            let mut n = if num == i32::MIN {
+                (i32::MAX as u32) + 1
+            } else {
+                (-(num as i64)) as u32
+            };
+            let mut result = Vec::new();
+            result.push('-');
+            if n == 0 {
+                result.push('0');
+            } else {
+                let mut chars = Vec::new();
+                while n > 0
+                    invariant
+                        n >= 0,
+                        forall|j: int| 0 <= j < chars.len() ==> (chars[j] == '0' || chars[j] == '1')
+                    decreases n
+                {
+                    if n % 2 == 0 {
+                        chars.push('0');
+                    } else {
+                        chars.push('1');
+                    }
+                    n = n / 2;
+                }
+                let mut i = chars.len();
+                while i > 0
+                    invariant
+                        i <= chars.len(),
+                        result.len() == chars.len() - i + 1,
+                        result[0] == '-',
+                        forall|j: int| 1 <= j < result.len() ==> (result[j] == '0' || result[j] == '1')
+                    decreases i
+                {
+                    i = i - 1;
+                    result.push(chars[i]);
+                }
+            }
+            assert(result@[0] == '-');
+            assert(is_valid_binary(result@.skip(1)));
+            assert(is_valid_signed_binary(result@));
+            result
+        }
+    } else {
+        match width {
+            Some(w) => {
+                let mut val = if num >= 0 {
+                    num as u32
+                } else {
+                    #[verifier::truncate]
+                    ((#[verifier::truncate] (1u32 << w) as i32) + num) as u32
+                };
                 let mut result = Vec::new();
-                let mut i = 0;
+                let mut i: usize = 0;
                 while i < w
                     invariant
-                        0 <= i <= w,
+                        i <= w,
                         result.len() == i,
-                        forall|j: int| 0 <= j < result.len() ==> result[j] == '0'
+                        forall|j: int| 0 <= j < i ==> result[j] == '0'
                     decreases w - i
                 {
                     result.push('0');
                     i = i + 1;
                 }
-                result
-            } else if num >= 0 {
-                let mut binary = nat_to_binary_vec(num as u32);
-                while binary.len() < w
+                let mut pos = w;
+                while pos > 0
                     invariant
-                        is_valid_binary(binary@),
-                        binary.len() <= w
-                    decreases w - binary.len()
+                        pos <= w,
+                        result.len() == w,
+                        forall|j: int| 0 <= j < result.len() ==> (result[j] == '0' || result[j] == '1')
+                    decreases pos
                 {
-                    binary.insert(0, '0');
-                }
-                if binary.len() > w {
-                    let mut result = Vec::new();
-                    let start = binary.len() - w;
-                    let mut i = start;
-                    while i < binary.len()
-                        invariant
-                            start <= i <= binary.len(),
-                            result.len() == i - start,
-                            is_valid_binary(binary@),
-                            forall|j: int| 0 <= j < result.len() ==> result[j] == binary[start + j]
-                        decreases binary.len() - i
-                    {
-                        result.push(binary[i]);
-                        i = i + 1;
+                    pos = pos - 1;
+                    if val % 2 == 0 {
+                        result.set(pos, '0');
+                    } else {
+                        result.set(pos, '1');
                     }
-                    result
-                } else {
-                    binary
+                    val = val / 2;
                 }
-            } else {
-                if num >= -(1i32 << (w - 1)) {
-                    two_complement_binary(num, w)
-                } else {
-                    let mut result = Vec::new();
-                    let mut i = 0;
-                    while i < w
-                        invariant
-                            0 <= i <= w,
-                            result.len() == i,
-                            forall|j: int| 0 <= j < result.len() ==> result[j] == '1'
-                        decreases w - i
-                    {
-                        result.push('1');
-                        i = i + 1;
-                    }
-                    result
-                }
-            }
+                assert(is_valid_binary(result@));
+                result
+            },
+            None => unreached()
         }
     }
 }

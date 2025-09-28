@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate IsBoringApartment(x: int)
 {
     (x >= 1 && x <= 9) ||
@@ -35,21 +36,23 @@ function TotalDigitsPressed(x: int): int
                  else x / 1111;
     var length := DigitCount(x);
 
-    // Sum digits for all previous complete digit groups (1-9, 11-99, etc.)
     var prevDigits := if digit == 1 then 0 else (digit - 1) * (1 + 2 + 3 + 4);
 
-    // Sum digits for current digit group up to and including x
     var currentDigits := (length * (length + 1)) / 2;
 
     prevDigits + currentDigits
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function SumUpToN(n: int): int
-  requires n >= 0
-  ensures SumUpToN(n) == (n * (n + 1)) / 2
+function ComputeDigit(x: int): int
+    requires IsBoringApartment(x)
+    requires 1 <= x <= 9999
 {
-  (n * (n + 1)) / 2
+    if x <= 9 then x 
+    else if x <= 99 then x / 11
+    else if x <= 999 then x / 111
+    else x / 1111
 }
 // </vc-helpers>
 
@@ -66,47 +69,13 @@ method solve(x: int) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    var digit: int;
-    var length: int;
+  var digit := ComputeDigit(x);
+  var length := DigitCount(x);
 
-    if x <= 9 {
-        digit := x;
-        length := 1;
-    } else if x <= 99 {
-        digit := x / 11;
-        length := 2;
-        // Proof for TotalDigitsPressed
-        assert x % 11 == 0; // From IsBoringApartment
-    } else if x <= 999 {
-        digit := x / 111;
-        length := 3;
-        // Proof for TotalDigitsPressed
-        assert x % 111 == 0; // From IsBoringApartment
-    } else { // x <= 9999
-        digit := x / 1111;
-        length := 4;
-        // Proof for TotalDigitsPressed
-        assert x % 1111 == 0; // From IsBoringApartment
-    }
+  var prevDigits := if digit == 1 then 0 else (digit - 1) * (1 + 2 + 3 + 4);
 
-    // This matches the DigitCount function
-    assert length == DigitCount(x);
+  var currentDigits := (length * (length + 1)) / 2;
 
-    // Sum digits for all previous complete digit groups (1-9, 11-99, etc.)
-    // prevDigits corresponds to (digit - 1) * (1 + 2 + 3 + 4);
-    // (1 + 2 + 3 + 4) == SumUpToN(4)
-    var prevDigits: int;
-    if digit == 1 {
-        prevDigits := 0;
-    } else {
-        prevDigits := (digit - 1) * SumUpToN(4);
-    }
-    
-    // Sum digits for current digit group up to and including x
-    // currentDigits corresponds to (length * (length + 1)) / 2;
-    var currentDigits: int := SumUpToN(length);
-
-    result := prevDigits + currentDigits;
+  result := prevDigits + currentDigits;
 }
 // </vc-code>
-

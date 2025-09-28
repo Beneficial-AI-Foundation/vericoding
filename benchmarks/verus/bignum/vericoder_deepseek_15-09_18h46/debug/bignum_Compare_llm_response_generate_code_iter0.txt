@@ -1,9 +1,0 @@
-=== LLM Response - generate_code - Iteration 0 ===
-File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Compare.rs
-Prompt Hash: c2be85f5
-JSON Parsed Successfully: True
-Timestamp: 1757957310.4172149
-Content Length: 1534 chars
---------------------------------------------------------------------------------
-["\nproof fn compare_lemma(s1: Seq<char>, s2: Seq<char>)\n    requires ValidBitString(s1), ValidBitString(s2),\n    ensures Str2Int(s1) < Str2Int(s2) ==> Str2Int(s1) + 1 <= Str2Int(s2),\n        Str2Int(s1) > Str2Int(s2) ==> Str2Int(s2) + 1 <= Str2Int(s1)\n{\n    if s1.len() > 0 && s2.len() > 0 {\n        let s1_prefix = s1.subrange(0, s1.len() as int - 1);\n        let s2_prefix = s2.subrange(0, s2.len() as int - 1);\n        compare_lemma(s1_prefix, s2_prefix);\n    }\n}\n","{\n    let mut i = 0;\n    let mut j = 0;\n    \n    while i < s1.len() && j < s2.len()\n        invariant\n            0 <= i <= s1.len(),\n            0 <= j <= s2.len(),\n            Str2Int(s1.subrange(0, i as int)) <= Str2Int(s2.subrange(0, j as int)) + 1,\n            Str2Int(s2.subrange(0, j as int)) <= Str2Int(s1.subrange(0, i as int)) + 1\n        decreases (s1.len() - i) + (s2.len() - j)\n    {\n        let s1_rest = s1.subrange(i as int, s1.len() as int);\n        let s2_rest = s2.subrange(j as int, s2.len() as int);\n        \n        if s1_rest.len() == 0 || s2_rest.len() == 0 {\n            break;\n        }\n        \n        if s1_rest.index(0) == s2_rest.index(0) {\n            i += 1;\n            j += 1;\n        } else if s1_rest.index(0) == '1' {\n            return 1;\n        } else {\n            return -1;\n        }\n    }\n    \n    match (s1.len() - i).cmp(&(s2.len() - j)) {\n        std::cmp::Ordering::Less => -1,\n        std::cmp::Ordering::Equal => 0,\n        std::cmp::Ordering::Greater => 1,\n    }\n}"]
---------------------------------------------------------------------------------

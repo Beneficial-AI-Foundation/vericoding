@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidWeather(weather: string)
 {
     weather == "Sunny" || weather == "Cloudy" || weather == "Rainy"
@@ -15,16 +16,10 @@ function NextWeather(weather: string): string
     else if weather == "Cloudy" then "Rainy"
     else "Sunny"
 }
+// </vc-preamble>
 
 // <vc-helpers>
-predicate {:private} MethodHelper(input: string, output: string)
-{
-    var trimmed := TrimNewline(input);
-    if ValidWeather(trimmed) then
-        output == NextWeather(trimmed) + "\n"
-    else
-        output == ""
-}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -37,12 +32,11 @@ method solve(input: string) returns (result: string)
 // </vc-spec>
 // <vc-code>
 {
-    var trimmed_input := TrimNewline(input);
-    if ValidWeather(trimmed_input) {
-        result := NextWeather(trimmed_input) + "\n";
-    } else {
-        result := "";
-    }
+  var trimmed_input := TrimNewline(input);
+  if ValidWeather(trimmed_input) {
+    result := NextWeather(trimmed_input) + "\n";
+  } else {
+    result := "";
+  }
 }
 // </vc-code>
-

@@ -6,8 +6,11 @@ predicate NthUglyNumberPrecond(n: nat)
 // </vc-preamble>
 
 // <vc-helpers>
-function Min(a: int, b: int): int
-      { if a < b then a else b }
+/* helper modified by LLM (iteration 3): Added min function for integer comparison */
+function min(a: int, b: int): int
+{
+  if a < b then a else b
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -16,26 +19,27 @@ method NthUglyNumber(n: int) returns (result: int)
     ensures result > 0
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 3): Implemented nth ugly number using DP with three pointers, added bounds invariants */
 {
-  var ugly: seq<int> := [1];
-  var p2 := 0;
-  var p3 := 0;
-  var p5 := 0;
-  while |ugly| < n 
+  var ugly := [1];
+  var i2 := 0;
+  var i3 := 0;
+  var i5 := 0;
+  while |ugly| < n
     invariant |ugly| >= 1
-    invariant 0 <= p2 <= |ugly| - 1
-    invariant 0 <= p3 <= |ugly| - 1
-    invariant 0 <= p5 <= |ugly| - 1
-    invariant forall i :: 0 <= i < |ugly| ==> ugly[i] >= 1
+    invariant 0 <= i2 < |ugly|
+    invariant 0 <= i3 < |ugly|
+    invariant 0 <= i5 < |ugly|
+    invariant forall k :: 0 <= k < |ugly| ==> ugly[k] > 0
   {
-    var n2 := ugly[p2] * 2;
-    var n3 := ugly[p3] * 3;
-    var n5 := ugly[p5] * 5;
-    var next := Min(n2, Min(n3, n5));
+    var next2 := ugly[i2] * 2;
+    var next3 := ugly[i3] * 3;
+    var next5 := ugly[i5] * 5;
+    var next := min(next2, min(next3, next5));
     ugly := ugly + [next];
-    if next == n2 { p2 := p2 + 1; }
-    if next == n3 { p3 := p3 + 1; }
-    if next == n5 { p5 := p5 + 1; }
+    if next == next2 { i2 := i2 + 1; }
+    if next == next3 { i3 := i3 + 1; }
+    if next5 == next { i5 := i5 + 1; }
   }
   result := ugly[n-1];
 }

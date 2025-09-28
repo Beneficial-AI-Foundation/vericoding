@@ -1,9 +1,0 @@
-=== LLM Response - generate_code - Iteration 0 ===
-File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_int.rs
-Prompt Hash: e725b218
-JSON Parsed Successfully: True
-Timestamp: 1757956960.302099
-Content Length: 1547 chars
---------------------------------------------------------------------------------
-["exec fn get_int(s: &[char]) -> (res: nat)\n    requires\n        ValidBitString(s@),\n    ensures\n        get_int(s) == Str2Int(s@),\n    decreases s.len()\n{\n    if s.len() == 0 {\n        0nat\n    } else {\n        2nat * get_int(&s[0..s.len() - 1]) + if s[s.len() - 1] == '1' { 1nat } else { 0nat }\n    }\n}\n\nfn mul_mod(a: nat, b: nat, m: nat) -> (res: nat)\n    requires\n        m > 1,\n    ensures\n        mul_mod(a, b, m) == (a * b) % m,\n{\n    let a_mod = a % m;\n    let b_mod = b % m;\n    (a_mod * b_mod) % m\n}\n\nfn pow_mod(base: nat, exp: nat, m: nat) -> (res: nat)\n    requires\n        m > 1,\n    ensures\n        pow_mod(base, exp, m) == Exp_int(base, exp) % m,\n    decreases exp\n{\n    if exp == 0 {\n        1nat\n    } else {\n        let half = pow_mod(base, exp / 2nat, m);\n        let sq = mul_mod(half, half, m);\n        if exp % 2nat == 0 {\n            sq\n        } else {\n            mul_mod(sq, base, m)\n        }\n    }\n}\n\nexec fn int_to_bit(n: nat) -> (res: Seq<char>)\n    ensures\n        ValidBitString(res),\n        Str2Int(res) == n,\n{\n    if n == 0nat {\n        Seq::empty()\n    } else {\n        let quot = n / 2nat;\n        let rem = n % 2nat;\n        let higher = int_to_bit(quot);\n        let bit = if rem == 1 { '1' } else { '0' };\n        higher.concat(Seq::singleton(bit))\n    }\n}", "{\n    let base = get_int(sx);\n    let exp = get_int(sy);\n    let m = get_int(sz);\n    let res_num = pow_mod(base, exp, m);\n    let s = int_to_bit(res_num);\n    Vec::from_seq(s)\n}"]
---------------------------------------------------------------------------------

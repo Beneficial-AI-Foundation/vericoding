@@ -21,23 +21,31 @@ function SpecFold(pairs: seq<(nat, nat)>, acc: int): int
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 2): Fixed syntax errors - replaced | operator with divisibility check */
-lemma FactoringLemma(n: int, p: int) 
-  requires n > 0 && p > 1 
-  requires n % p == 0
-  ensures exists e: nat, k: int :: n == pow(p, e) * k && (k % p != 0) 
+
+function ComputeExponent(n: nat, p: nat): nat
+    requires IsPrime(p)
+    requires n > 0
+    ensures n as int % pow(p as int, result) == 0
+    decreases n
 {
+    if n % p != 0 then
+        0
+    else
+        1 + ComputeExponent(n / p, p)
 }
 
-function ComputeExponent(n: int, p: int): nat 
-  requires n > 0 && p > 1 && n % p == 0
-  ensures var e := ComputeExponent(n, p); exists k: int :: n == pow(p, e) * k && (k % p != 0) 
-{ 
-  if n % p != 0 then 
-    0 
-  else 
-    1 + ComputeExponent(n / p, p) 
+lemma ExponentLemma(n: nat, p: nat)
+    requires IsPrime(p)
+    requires n > 0
+    ensures n as int % pow(p as int, ComputeExponent(n, p)) == 0
+    decreases n
+{
+    if n % p != 0 {
+    } else {
+        ExponentLemma(n / p, p);
+    }
 }
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -49,33 +57,34 @@ method FindExponents(n: nat, primes: seq<nat>) returns (result: seq<(nat, nat)>)
         exists j :: 0 <= j < |result| && result[j].0 == p
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 2): Fixed compilation errors by adding proper preconditions */
 {
+    /* code modified by LLM (iteration 5): Fixed verification errors by simplifying approach */
     result := [];
-    var remainder := n as int;
-    var idx := 0;
+    var remaining := n as int;
     
-    while remainder > 1
-        invariant 1 <= remainder <= n as int
-        invariant forall i :: 0 <= i < idx ==> result[i].0 in primes
-        invariant var currentProduct := SpecFold(result[0..idx], 1); n as int == remainder * currentProduct
+    var i := 0;
+    while i < |primes|
+        invariant 0 <= i <= |primes|
+        invariant remaining == SpecFold(result, 1)
+        invariant forall j :: 0 <= j < |result| ==> result[j].0 in primes[0..i]
+        invariant forall p :: p in primes[0..i] ==> 
+            exists j :: 0 <= j < |result| && result[j].0 == p
     {
-        var prime := primes[idx];
-        if remainder % prime == 0 {
-            assume n as int % prime == 0; // Precondition satisfaction
-            var exp := ComputeExponent(remainder, prime);
-            result := result + [(prime, exp)];
-            remainder := remainder / pow(prime, exp);
-        } else {
-            result := result + [(prime, 0)];
+        var p := primes[i];
+        if remaining % p as int == 0 && p > 0 {
+            var exp: nat := 0;
+            var temp := remaining;
+            while temp % p as int == 0 && temp > 0
+                invariant temp > 0
+                decreases temp
+            {
+                exp := exp + 1;
+                temp := temp / (p as int);
+            }
+            result := result + [(p, exp)];
+            remaining := remaining / pow(p as int, exp);
         }
-        idx := idx + 1;
-    }
-    
-    // Add remaining primes with exponent 0
-    while idx < |primes| {
-        result := result + [(primes[idx], 0)];
-        idx := idx + 1;
+        i := i + 1;
     }
 }
 // </vc-code>

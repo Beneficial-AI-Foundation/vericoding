@@ -1,3 +1,4 @@
+// <vc-preamble>
 function comb2(n: int): int
   requires n >= 0
 {
@@ -22,35 +23,10 @@ function MaxFriendshipPairs(n: int, m: int): int
 {
   comb2(n - m + 1)
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function comb2(n: int): int
-  requires n >= 0
-  ensures comb2(n) >= 0
-{
-  n * (n - 1) / 2
-}
 
-predicate ValidInput(n: int, m: int)
-{
-  1 <= m <= n
-}
-
-function MinFriendshipPairs(n: int, m: int): int
-  requires ValidInput(n, m)
-  ensures MinFriendshipPairs(n, m) >= 0
-{
-  var k := n / m;
-  var p := n % m;
-  p * comb2(k + 1) + (m - p) * comb2(k)
-}
-
-function MaxFriendshipPairs(n: int, m: int): int
-  requires ValidInput(n, m)
-  ensures MaxFriendshipPairs(n, m) >= 0
-{
-  comb2(n - m + 1)
-}
 // </vc-helpers>
 
 // <vc-spec>
@@ -63,9 +39,9 @@ method solve(n: int, m: int) returns (min_pairs: int, max_pairs: int)
   ensures max_pairs == MaxFriendshipPairs(n, m)
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): compute min and max friendship pairs */
 {
   min_pairs := MinFriendshipPairs(n, m);
   max_pairs := MaxFriendshipPairs(n, m);
 }
 // </vc-code>
-

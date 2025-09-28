@@ -1,9 +1,0 @@
-=== LLM Response - generate_code - Iteration 0 ===
-File: benchmarks/verus/bignum/files/bignum_Mul_Add_NormalizeBitString.rs
-Prompt Hash: 47a06fa3
-JSON Parsed Successfully: True
-Timestamp: 1757927325.732995
-Content Length: 1209 chars
---------------------------------------------------------------------------------
-["proof fn helper_lemma_1(s: Seq<char>) \n    requires ValidBitString(s)\n    ensures Str2Int(s) >= 0\n{\n    if s.len() > 0 {\n        helper_lemma_1(s.subrange(0, s.len() as int - 1));\n    }\n}\n\nproof fn helper_lemma_2(s1: Seq<char>, s2: Seq<char>) \n    requires ValidBitString(s1), ValidBitString(s2)\n    ensures Str2Int(s1) * Str2Int(s2) >= 0\n{\n    helper_lemma_1(s1);\n    helper_lemma_1(s2);\n}\n\nspec fn concat_bitstrings(s1: Seq<char>, s2: Seq<char>) -> Seq<char>\n    requires ValidBitString(s1), ValidBitString(s2)\n    ensures ValidBitString(result), \n        Str2Int(result) == Str2Int(s1) * (pow2(s2.len() as nat)) + Str2Int(s2)\n{\n    s1 + s2\n}\n\nspec fn pow2(n: nat) -> nat \n    decreases n \n{\n    if n == 0 {\n        1\n    } else {\n        2 * pow2(n - 1)\n    }\n}", "{\n    let mut result = Vec::new();\n    let len1 = s1.len();\n    let len2 = s2.len();\n    \n    let n = Str2Int(s1@);\n    let m = Str2Int(s2@);\n    \n    proof {\n        helper_lemma_2(s1@, s2@);\n    }\n    \n    result = binary_multiplication(s1, s2, len1, len2);\n    \n    proof {\n        assert(ValidBitString(result@));\n        assert(Str2Int(result@) == n * m);\n    }\n    \n    result\n}"]
---------------------------------------------------------------------------------

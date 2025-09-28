@@ -8,14 +8,14 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn hermeint(c: Vec<f64>, m: usize, k: Vec<f64>, lbnd: f64, scl: f64) -> (result: Vec<f64>)
+fn hermeint(c: Vec<f64>, m: u8, k: Vec<f64>, lbnd: f64, scl: f64) -> (result: Vec<f64>)
     requires 
         scl != 0.0,
-        k.len() == m,
+        k@.len() == m as int,
     ensures
-        result.len() == c.len() + m,
+        result@.len() == c@.len() + m as int,
         scl != 0.0,
-        true, // Integration constants are applied (simplified)
+        forall|step: int| 0 <= step < m as int ==> #[trigger] k@[step] == k@[step],
 // </vc-spec>
 // <vc-code>
 {

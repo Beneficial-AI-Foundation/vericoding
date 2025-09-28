@@ -28,50 +28,28 @@ spec fn is_valid_signed_binary(s: Seq<char>) -> bool {
 // </vc-preamble>
 
 // <vc-helpers>
-fn nat_to_binary_vec(n: u32) -> (result: Vec<char>)
-    ensures
-        result@ == nat_to_binary_string(n as nat),
-        is_valid_binary(result@),
+fn nat_to_binary_vec(n: u32) -> (res: Vec<char>)
+    ensures res@ == nat_to_binary_string(n as nat),
     decreases n
 {
     if n == 0 {
         vec!['0']
     } else {
-        let mut higher_bits = nat_to_binary_vec(n / 2);
+        let mut res = nat_to_binary_vec(n / 2);
         let digit = if n % 2 == 0 { '0' } else { '1' };
-        higher_bits.push(digit);
-        higher_bits
+        res.push(digit);
+        res
     }
 }
 
-/* helper modified by LLM (iteration 3): Removed precondition w<=32 by handling sign extension for w>32. */
-fn int_to_binary_vec_fixed_width(num: i32, w: usize) -> (result: Vec<char>)
-    requires
-        1 <= w,
-    ensures
-        result.len() == w,
-        is_valid_binary(result@),
+/* helper modified by LLM (iteration 2): fixed compilation error by changing `lemma fn` to `proof fn` */
+proof fn lemma_nat_to_binary_string_is_valid(n: nat)
+    ensures is_valid_binary(nat_to_binary_string(n)),
+    decreases n
 {
-    let mut result = Vec::with_capacity(w);
-    let mut i: usize = 0;
-    while i < w
-        invariant
-            0 <= i <= w,
-            result.len() == i,
-            (forall|j: int| 0 <= j < i ==> result@[j] == '0' || result@[j] == '1'),
-        decreases w - i
-    {
-        let bit_idx = w - 1 - i;
-        let bit_char = if bit_idx >= 32 {
-            if num < 0 { '1' } else { '0' }
-        } else {
-            let bit = (num >> (bit_idx as u32)) & 1;
-            if bit == 1 { '1' } else { '0' }
-        };
-        result.push(bit_char);
-        i = i + 1;
+    if n > 0 {
+        lemma_nat_to_binary_string_is_valid(n / 2);
     }
-    result
 }
 // </vc-helpers>
 
@@ -100,23 +78,52 @@ fn binary_repr(num: i32, width: Option<usize>) -> (result: Vec<char>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 3): Replaced unsupported num.abs() with spec-compatible logic. */
-    if let Some(w) = width {
-        int_to_binary_vec_fixed_width(num, w)
-    } else {
-        if num >= 0 {
-            nat_to_binary_vec(num as u32)
-        } else {
-            let abs_val_u32 = if num == i32::MIN {
-                (1u32 << 31)
+    /* code modified by LLM (iteration 2): no changes; fixed compilation error in helper function */
+    match width {
+        None => {
+            if num >= 0 {
+                let n = num as u32;
+                proof {
+                    lemma_nat_to_binary_string_is_valid(n as nat);
+                }
+                nat_to_binary_vec(n)
             } else {
-                (-num) as u32
-            };
-            let mut binary_val = nat_to_binary_vec(abs_val_u32);
-            
-            let mut result = Vec::new();
-            result.push('-');
-            result.append(&mut binary_val);
+                let mut result = Vec::new();
+                result.push('-');
+                let n = if num == i32::MIN { 0x8000_0000u32 } else { (-num) as u32 };
+                let mut binary_part = nat_to_binary_vec(n);
+                proof {
+                    lemma_nat_to_binary_string_is_valid(n as nat);
+                }
+                result.append(&mut binary_part);
+                result
+            }
+        }
+        Some(w) => {
+            let val = num as u32;
+            let mut result = Vec::with_capacity(w);
+            let mut i: usize = 0;
+            while i < w
+                invariant
+                    i <= w,
+                    result.len() == i,
+                    forall|j: int| 0 <= j < i ==> result@[j] == '0' || result@[j] == '1',
+                decreases w - i
+            {
+                let bit_pos = w - 1 - i;
+                let bit = if bit_pos >= 32 {
+                    if num < 0 { 1u32 } else { 0u32 }
+                } else {
+                    (val >> (bit_pos as u32)) & 1
+                };
+
+                if bit == 1 {
+                    result.push('1');
+                } else {
+                    result.push('0');
+                }
+                i = i + 1;
+            }
             result
         }
     }

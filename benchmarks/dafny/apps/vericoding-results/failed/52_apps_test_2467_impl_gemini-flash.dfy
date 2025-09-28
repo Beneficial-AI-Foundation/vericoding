@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum(s: seq<int>): int
 {
     if |s| == 0 then 0
@@ -34,93 +35,40 @@ predicate isValidExtension(temp: seq<int>, combo: seq<int>, k: int, n: int, star
     (forall i :: 0 <= i < |temp| ==> temp[i] == combo[i]) &&
     (forall i :: |temp| <= i < |combo| ==> combo[i] >= start)
 }
+// </vc-preamble>
 
 // <vc-helpers>
-method FindCombinations(
-    k: int,
-    n: int,
-    start: int,
-    temp: seq<int>,
-    ghost result: set<seq<int>>
-) returns (newResult: set<seq<int>>)
-    requires k > 0 && n > 0 && k <= 9
-    requires 1 <= start <= 9
-    requires forall j :: 0 <= j < |temp| ==> 1 <= temp[j] <= 9
-    requires forall j :: 0 <= j < |temp| - 1 ==> temp[j] < temp[j+1]
-    requires (forall j :: 0 <= j < |temp| ==> temp[j] < start) || |temp| == 0
-    requires sum(temp) <= n
-    requires |temp| <= k
+/* helper modified by LLM (iteration 5): Corrected `for` loop syntax to iterate directly over sequence elements, removing unnecessary brackets and `in` keyword usage and ensuring proper sequence concatenation for `subCombinations`. Also ensured that the helper function `GetCombinations` is defined as a method not a function */
+method GetCombinations(k: int, n: int, start: int) returns (result: seq<seq<int>>)
+    ensures forall combo :: combo in result ==> isValidCombination(combo, k, n)
+    ensures forall combo :: combo in result ==> (forall i :: 0 <= i < |combo| ==> combo[i] >= start)
+    ensures forall i, j :: 0 <= i < j < |result| ==> result[i] != result[j]
+  {
+    if k == 0 then
+      if n == 0 then result := [[]]
+      else result := [];
+    else if k < 0 || n < 0 then
+      result := [];
+    else if start > 9 then
+      result := [];
+    else {
+      var combinations: seq<seq<int>> := [];
 
-    ensures forall combo :: isValidCombination(combo, k, n) && isValidExtension(temp, combo, k, n, start) ==> combo in newResult
-    ensures forall combo :: combo in newResult ==> isValidCombination(combo, k, n) && isValidExtension(temp, combo, k, n, start)
-    ensures forall c :: c in result ==> c in newResult
-
-    decreases k - |temp|, n - sum(temp), 10 - start
-{
-    newResult := result; // Initialize newResult with the ghost variable result
-
-    if k == |temp| {
-        if n == sum(temp) {
-            if isValidCombination(temp, k, n) {
-                newResult := newResult + {temp}; // Add valid combination
-            }
+      // Option 1: Include 'start' in the combination
+      if n >= start {
+        var subCombinations := GetCombinations(k - 1, n - start, start + 1);
+        for subCombo' in subCombinations {
+          combinations := combinations + [[start] + subCombo'];
         }
-        return newResult;
+      }
+
+      // Option 2: Exclude 'start' from the combination, try with 'start + 1'
+      var otherCombinations := GetCombinations(k, n, start + 1);
+      combinations := combinations + otherCombinations;
+
+      result := combinations;
     }
-
-    if start > 9 || n < sum(temp) {
-        return newResult;
-    }
-
-    if k - |temp| > (9 - start + 1) { // Optimization: not enough remaining numbers
-        return newResult;
-    }
-    // Optimization to check if sum is possible
-    // Smallest possible sum for remaining k-|temp| numbers starting from 'start'
-    var minRemainingSum: int := 0;
-    var i: int := 0;
-    while i < k - |temp|
-        invariant 0 <= i <= k - |temp|
-        invariant minRemainingSum == sum_arithmetic_progression(start, start + i - 1, i)
-        decreases k - |temp| - i
-    {
-        minRemainingSum := minRemainingSum + start + i;
-        i := i + 1;
-    }
-    // Largest possible sum for remaining k-|temp| numbers ending at 9
-    var maxRemainingSum: int := 0;
-    var j: int := 0;
-    while j < k - |temp|
-        invariant 0 <= j <= k - |temp|
-        invariant maxRemainingSum == sum_arithmetic_progression(9 - j + 1, 9, j)
-        decreases k - |temp| - j
-    {
-        maxRemainingSum := maxRemainingSum + (9 - j);
-        j := j + 1;
-    }
-    
-    if n - sum(temp) < minRemainingSum || n - sum(temp) > maxRemainingSum {
-        return newResult;
-    }
-
-    // Case 1: Include 'start'
-    var resultWithStart: set<seq<int>> := FindCombinations(k, n, start + 1, temp + [start], newResult);
-    newResult := resultWithStart;
-
-    // Case 2: Exclude 'start'
-    var resultWithoutStart: set<seq<int>> := FindCombinations(k, n, start + 1, temp, newResult);
-
-    // Merge results, avoiding duplicates
-    newResult := newResult + resultWithoutStart;
-
-    return newResult;
-}
-
-function sum_arithmetic_progression(a: int, l: int, n: int): int
-    requires n >= 0
-{
-    if n == 0 then 0 else (n * (a + l)) / 2
-}
+  }
 // </vc-helpers>
 
 // <vc-spec>
@@ -136,17 +84,8 @@ method combinationSum3(k: int, n: int) returns (result: seq<seq<int>>)
     ensures forall combo :: combo in result ==> isValidCombination(combo, k, n)
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): Call the helper method GetCombinations to retrieve all valid combinations, and assign its result to the `result` variable. */
 {
-    var temp: seq<int> := [];
-    var result_set := FindCombinations(k, n, 1, temp, {});
-    var finalResult: seq<seq<int>> := [];
-
-    // Convert set to sequence to match the return type
-    for combo' in result_set {
-        finalResult := finalResult + [combo'];
-    }
-    result := finalResult;
-    return result;
+  result := GetCombinations(k, n, 1);
 }
 // </vc-code>
-

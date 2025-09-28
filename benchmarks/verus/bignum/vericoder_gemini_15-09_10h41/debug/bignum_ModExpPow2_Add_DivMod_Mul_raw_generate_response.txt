@@ -1,6 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 848 characters
---------------------------------------------------------------------------------
-```json
-["proof fn lemma_Str2Int_append(s: Seq<char>, c: char)\n    requires\n        ValidBitString(s),\n        c == '0' || c == '1',\n    ensures\n        Str2Int(s.push(c)) == Str2Int(s) * 2 + if c == '1' { 1 } else { 0 },\n    decreases s.len()\n{\n    if s.len() > 0 {\n        let prefix = s.subrange(0, s.len() as int - 1);\n        let last_char = s.index(s.len() as int - 1);\n        assert(s =~= prefix.push(last_char));\n        lemma_Str2Int_append(prefix, last_char);\n    }\n}\n\nfn Str2Int_exec(s: &[char]) -> (res: nat)\n    requires ValidBitString(s@)\n    ensures res == Str2Int(s@)\n{\n    let mut i: usize = 0;\n    let mut res: nat = 0;\n    while i < s.len()\n        invariant\n            i <= s.len(),\n            ValidBitString(s@),\n            res == Str2Int(s@.subrange(0, i as int)),\n        decreases s.len() - i\
---------------------------------------------------------------------------------

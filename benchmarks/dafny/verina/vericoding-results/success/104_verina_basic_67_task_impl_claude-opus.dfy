@@ -17,11 +17,11 @@ method IsPalindrome(x: seq<char>) returns (result: bool)
   var i := 0;
   while i < n / 2
     invariant 0 <= i <= n / 2
-    invariant result == (forall j :: 0 <= j < i ==> x[j] == x[n - 1 - j])
+    invariant result <==> (forall j :: 0 <= j < i ==> x[j] == x[n - 1 - j])
   {
     if x[i] != x[n - 1 - i] {
       result := false;
-      return;
+      break;
     }
     i := i + 1;
   }

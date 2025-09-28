@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, m: int, horizontal: seq<char>, vertical: seq<char>)
 {
     n >= 2 && n <= 20 && m >= 2 && m <= 20 &&
@@ -20,20 +21,10 @@ function {:extern} is_integer(s: seq<char>): bool
 
 function {:extern} parse_int(s: seq<char>): int
     requires is_integer(s)
+// </vc-preamble>
 
 // <vc-helpers>
-lemma IsDisconnectedLemma(n: int, m: int, horizontal: seq<char>, vertical: seq<char>)
-  requires ValidInput(n, m, horizontal, vertical)
-  ensures (IsDisconnected(horizontal, vertical) <==>
-             ((horizontal[0] == '>' && vertical[0] == 'v') ||
-              (horizontal[0] == '<' && vertical[m-1] == 'v') ||
-              (horizontal[n-1] == '>' && vertical[0] == '^') ||
-              (horizontal[n-1] == '<' && vertical[m-1] == '^')))
-{
-  // Property of ValidInput ensures |horizontal| == n and |vertical| == m
-  // And n >= 2, m >= 2 implies |horizontal| > 0 and |vertical| > 0
-  // So the length predicates in IsDisconnected are satisfied by ValidInput
-}
+/* helper modified by LLM (iteration 3): Removed unnecessary helper function, as IsDisconnected is already a predicate. */
 // </vc-helpers>
 
 // <vc-spec>
@@ -43,15 +34,12 @@ method solve(n: int, m: int, horizontal: seq<char>, vertical: seq<char>) returns
     ensures (result == "NO\n" <==> IsDisconnected(horizontal, vertical))
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 3): Use existing `IsDisconnected` predicate and fixed logic. */
 {
-    // Use the lemma to simplify the IsDisconnected condition
-    IsDisconnectedLemma(n, m, horizontal, vertical);
-
-    if (IsDisconnected(horizontal, vertical)) {
-        result := "NO\n";
-    } else {
-        result := "YES\n";
-    }
+  if (IsDisconnected(horizontal, vertical)) {
+    result := "NO\n";
+  } else {
+    result := "YES\n";
+  }
 }
 // </vc-code>
-

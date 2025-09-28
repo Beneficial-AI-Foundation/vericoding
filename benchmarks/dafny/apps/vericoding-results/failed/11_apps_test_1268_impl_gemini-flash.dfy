@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: seq<int>, b: seq<int>)
 {
   |a| == |b| && |a| >= 2 && forall i :: 0 <= i < |a| ==> 0 <= a[i] <= b[i]
@@ -50,36 +51,10 @@ function findMaxExcluding(s: seq<int>, exclude: int): int
     else if rightMax == -1 then leftMax
     else if s[leftMax] >= s[rightMax] then leftMax else rightMax
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function findMax(s: seq<int>): int
-  requires |s| >= 1
-  ensures 0 <= findMax(s) < |s|
-  ensures forall i :: 0 <= i < |s| ==> s[i] <= s[findMax(s)]
-{
-  if |s| == 1 then 0
-  else
-    var restMaxIdx := findMax(s[1..]);
-    if s[0] >= s[restMaxIdx + 1] then 0 else restMaxIdx + 1
-}
 
-function findMaxExcluding(s: seq<int>, exclude: int): int
-  requires |s| >= 2
-  requires 0 <= exclude < |s|
-  ensures 0 <= findMaxExcluding(s, exclude) < |s|
-  ensures findMaxExcluding(s, exclude) != exclude
-  ensures forall i :: 0 <= i < |s| && i != exclude ==> s[i] <= s[findMaxExcluding(s, exclude)]
-{
-  if exclude == 0 then
-    1 + findMax(s[1..])
-  else if exclude == |s| - 1 then
-    findMax(s[..|s|-1])
-  else
-    var leftMaxIdx := findMax(s[..exclude]);
-    var rightMaxIdx := exclude + 1 + findMax(s[exclude+1..]);
-    
-    if s[leftMaxIdx] >= s[rightMaxIdx] then leftMaxIdx else rightMaxIdx
-}
 // </vc-helpers>
 
 // <vc-spec>
@@ -89,15 +64,14 @@ method solve(a: seq<int>, b: seq<int>) returns (result: string)
   ensures result == "YES" <==> findTwoLargestSum(b) >= sumSeq(a)
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): removed the problematic recursive calls for `findMaxExcluding` by simplifying to two explicit `if-else` branches. Now `findTwoLargestSum` is used as-is. */
 {
-   var sum_a := sumSeq(a);
-   var two_largest_sum_b := findTwoLargestSum(b);
-
-   if two_largest_sum_b >= sum_a {
-     result := "YES";
-   } else {
-     result := "NO";
-   }
+  var sumA := sumSeq(a);
+  var sumTwoLargestB := findTwoLargestSum(b);
+  if sumTwoLargestB >= sumA {
+    result := "YES";
+  } else {
+    result := "NO";
+  }
 }
 // </vc-code>
-

@@ -43,7 +43,20 @@ spec fn normalize_string(s: &str) -> Seq<char> {
 // </vc-preamble>
 
 // <vc-helpers>
+/* helper modified by LLM (iteration 4): Fixed char::from_u32 by replacing with direct (c as u32 + 32) as char cast, assuming the conversion is valid for ASCII uppercase letters */
+fn is_upper_exec(c: char) -> bool { 'A' <= c && c <= 'Z' }
 
+fn is_lower_exec(c: char) -> bool { 'a' <= c && c <= 'z' }
+
+fn is_alpha_exec(c: char) -> bool { is_upper_exec(c) || is_lower_exec(c) }
+
+fn to_lower_exec(c: char) -> char {
+    if is_upper_exec(c) {
+        ((c as u32) + 32) as char
+    } else {
+        c
+    }
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -53,22 +66,21 @@ fn is_clean_palindrome(s: &str) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): Changed to manual palindrome check to avoid unsupported reverse */
-    let mut norm = Vec::<char>::new();
+/* code modified by LLM (iteration 5): Fixed compilation error by adding opening and closing braces */
+    let mut norm_vec = Vec::new();
     for c in s.chars() {
-        if ('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z') {
-            norm.push(c);
+        if is_alpha_exec(c) {
+            let c_norm = to_lower_exec(c);
+            norm_vec.push(c_norm);
         }
     }
-    let mut result = true;
-    let len = norm.len();
-    for i in 0..(len/2) {
-        if norm[i] != norm[len - 1 - i] {
-            result = false;
-            break;
+    let len = norm_vec.len();
+    for i in 0..(len / 2) {
+        if norm_vec[i] != norm_vec[len - 1 - i] {
+            return false;
         }
     }
-    result
+    true
 }
 // </vc-code>
 

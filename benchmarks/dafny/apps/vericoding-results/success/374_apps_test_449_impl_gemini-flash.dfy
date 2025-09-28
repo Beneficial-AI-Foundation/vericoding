@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int) {
     n >= 1
 }
@@ -7,21 +8,21 @@ function MinBills(n: int): int
 {
     n / 100 + (n % 100) / 20 + ((n % 100) % 20) / 10 + (((n % 100) % 20) % 10) / 5 + ((((n % 100) % 20) % 10) % 5)
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function Digits(n: int): seq<int>
+function GetBillCount(n: int, billValue: int): int
     requires n >= 0
+    requires billValue > 0
 {
-    if n == 0 then
-        []
-    else
-        Digits(n / 10) + [n % 10]
+    n / billValue
 }
 
-lemma MinBillsLemma(n: int)
-    requires n >= 1
-    ensures MinBills(n) == n / 100 + (n % 100) / 20 + ((n % 100) % 20) / 10 + (((n % 100) % 20) % 10) / 5 + ((((n % 100) % 20) % 10) % 5)
+function GetRemainingAmount(n: int, billValue: int): int
+    requires n >= 0
+    requires billValue > 0
 {
+    n % billValue
 }
 // </vc-helpers>
 
@@ -33,20 +34,20 @@ method solve(n: int) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    var num_100 := n / 100;
-    var remainder_100 := n % 100;
-    var num_20 := remainder_100 / 20;
-    var remainder_20 := remainder_100 % 20;
-    var num_10 := remainder_20 / 10;
-    var remainder_10 := remainder_20 % 10;
-    var num_5 := remainder_10 / 5;
-    var remainder_5 := remainder_10 % 5;
-    var num_1 := remainder_5;
+  var n100 := GetBillCount(n, 100);  
+  var rem100 := GetRemainingAmount(n, 100);
 
-    result := num_100 + num_20 + num_10 + num_5 + num_1;
+  var n20 := GetBillCount(rem100, 20);
+  var rem20 := GetRemainingAmount(rem100, 20);
 
-    MinBillsLemma(n);
-    assert result == MinBills(n);
+  var n10 := GetBillCount(rem20, 10);
+  var rem10 := GetRemainingAmount(rem20, 10);
+
+  var n5 := GetBillCount(rem10, 5);
+  var rem5 := GetRemainingAmount(rem10, 5);
+
+  var n1 := rem5;
+
+  result := n100 + n20 + n10 + n5 + n1;
 }
 // </vc-code>
-

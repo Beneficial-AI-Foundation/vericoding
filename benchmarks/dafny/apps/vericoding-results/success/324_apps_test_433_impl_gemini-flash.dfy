@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: int, b: int) {
     n >= 1 && 1 <= a <= n && -100 <= b <= 100
 }
@@ -11,14 +12,10 @@ function FinalEntrance(n: int, a: int, b: int): int
 predicate ValidOutput(result: int, n: int) {
     1 <= result <= n
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function Modulo(x: int, n: int): int
-  requires n > 0
-  ensures 0 <= Modulo(x, n) < n
-{
-  (x % n + n) % n
-}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -29,7 +26,6 @@ method solve(n: int, a: int, b: int) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-  result := ((a - 1 + b) % n + n) % n + 1;
+    result := ((a - 1 + b) % n + n) % n + 1;
 }
 // </vc-code>
-

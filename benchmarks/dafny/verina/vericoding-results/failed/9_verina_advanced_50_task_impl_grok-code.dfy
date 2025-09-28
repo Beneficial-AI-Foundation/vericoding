@@ -18,21 +18,20 @@ method MergeSorted(a1: array<nat>, a2: array<nat>) returns (result: array<nat>)
 // </vc-spec>
 // <vc-code>
 {
-  result := new nat[a1.Length + a2.Length];
+  /* code modified by LLM (iteration 5): Added invariant to relate previous element to current pointers ensuring sorted order maintenance */
+  var n1 := a1.Length;
+  var n2 := a2.Length;
+  result := new nat[n1 + n2];
   var i := 0;
   var j := 0;
   var k := 0;
-  while i < a1.Length || j < a2.Length
-    invariant 0 <= i <= a1.Length
-    invariant 0 <= j <= a2.Length
-    invariant k == i + j
-    invariant IsSorted(result[..k])
-    invariant multiset(result[..k]) == multiset(a1[..i]) + multiset(a2[..j])
-    invariant forall x :: 0 <= x < k && i < a1.Length ==> result[x] <= a1[i]
-    invariant forall x :: 0 <= x < k && j < a2.Length ==> result[x] <= a2[j]
-    decreases a1.Length + a2.Length - k
+  while k < n1 + n2
+    invariant 0 <= i <= n1 && 0 <= j <= n2 && k == i + j
+    invariant if k > 0 then result[k-1] <= a1[i] && result[k-1] <= a2[j]
+    invariant IsSorted(result[0..k])
+    invariant multiset(result[0..k]) == multiset(a1[0..i]) + multiset(a2[0..j])
   {
-    if i < a1.Length && (j >= a2.Length || a1[i] <= a2[j]) {
+    if i < n1 && (j >= n2 || a1[i] <= a2[j]) {
       result[k] := a1[i];
       i := i + 1;
     } else {

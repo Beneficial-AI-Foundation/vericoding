@@ -28,11 +28,11 @@ method LinearSearch(a: array<int>, e: int) returns (result: nat)
 // </vc-spec>
 // <vc-code>
 {
+  /* code modified by LLM (iteration 2): implement linear search to find first occurrence */
   result := 0;
   while result < a.Length && a[result] != e
     invariant 0 <= result <= a.Length
     invariant forall k :: 0 <= k < result ==> a[k] != e
-    invariant exists i :: result <= i < a.Length && a[i] == e
   {
     result := result + 1;
   }

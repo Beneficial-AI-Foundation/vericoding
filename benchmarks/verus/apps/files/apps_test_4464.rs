@@ -7,7 +7,7 @@ spec fn valid_input(a: int, b: int, c: int) -> bool {
 }
 
 spec fn is_solvable(a: int, b: int, c: int) -> bool {
-    exists|i: int| 1 <= i < b && (i * (a % b)) % b == c
+    exists|i: int| 1 <= i < b && #[trigger] ((i * (a % b)) % b) == c
 }
 // </vc-preamble>
 
@@ -15,12 +15,12 @@ spec fn is_solvable(a: int, b: int, c: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int, c: int) -> (result: String)
+fn solve(a: i8, b: i8, c: i8) -> (result: String)
     requires 
-        valid_input(a, b, c),
+        valid_input(a as int, b as int, c as int)
     ensures 
-        result@ == seq!['Y', 'E', 'S'] <==> is_solvable(a, b, c),
-        result@ == seq!['N', 'O'] || result@ == seq!['Y', 'E', 'S'],
+        (result@ == "YES"@) <==> is_solvable(a as int, b as int, c as int),
+        (result@ == "NO"@) || (result@ == "YES"@)
 // </vc-spec>
 // <vc-code>
 {

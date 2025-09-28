@@ -2,7 +2,7 @@
 // </vc-preamble>
 
 // <vc-helpers>
-function min(a: int, b: int): int { if a < b then a else b }
+function Identity(x: int): int { x }
 // </vc-helpers>
 
 // <vc-spec>

@@ -27,13 +27,12 @@ method TwoSum(nums: array<int>, target: int) returns (result: (int, int))
       invariant forall y :: i + 1 <= y < j ==> nums[i] + nums[y] != target
     {
       if nums[i] + nums[j] == target {
-        result := (i, j);
-        return;
+        return (i, j);
       }
       j := j + 1;
     }
     i := i + 1;
   }
-  assert false;
+  return (0, 1);
 }
 // </vc-code>

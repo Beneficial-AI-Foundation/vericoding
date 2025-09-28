@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int) {
     n >= 0 && k >= 1
 }
@@ -17,30 +18,10 @@ predicate IsCorrectResult(n: int, k: int, result: int)
     result >= 0 &&
     result < k
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function MinValueHelper(n: int, k: int): int
-    requires n >= 0 && k >= 1
-    ensures 0 <= MinValueHelper(n, k) < k
-    ensures MinValueHelper(n,k) == n % k || MinValueHelper(n,k) == k - (n % k)
-    ensures n % k == MinValueHelper(n,k) || k - (n % k) == MinValueHelper(n,k)
-{
-    var remainder := n % k;
-    var complement := k - remainder;
-    if remainder <= complement then remainder else complement
-}
-
-predicate ValidInputHelper(n: int, k: int) {
-    n >= 0 && k >= 1
-}
-
-predicate IsCorrectResultHelper(n: int, k: int, result: int) 
-    requires ValidInputHelper(n, k)
-{
-    result == MinValueHelper(n, k) &&
-    result >= 0 &&
-    result < k
-}
+// No helpers needed for this problem
 // </vc-helpers>
 
 // <vc-spec>
@@ -49,14 +30,16 @@ method solve(n: int, k: int) returns (result: int)
     ensures IsCorrectResult(n, k, result)
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 2): Fixed Dafny syntax error for `if` statement blocks. */
 {
-    var remainder := n % k;
-    var complement := k - remainder;
-    if remainder <= complement {
-        result := remainder;
-    } else {
-        result := complement;
-    }
+  var remainder := n % k;
+  var complement := k - remainder;
+  if remainder <= complement {
+    result := remainder;
+  } else if remainder == 0 {
+    result := 0;
+  } else {
+    result := complement;
+  }
 }
 // </vc-code>
-

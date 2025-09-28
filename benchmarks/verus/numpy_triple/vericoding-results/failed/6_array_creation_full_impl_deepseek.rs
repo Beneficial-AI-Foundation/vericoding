@@ -5,15 +5,29 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): Fixed lemma signature with proper syntax */
-proof fn full_lemma(n: int)
-    requires n >= 0,
-    ensures 
-        forall|i: int, j: int| 0 <= i < n && 0 <= j < n ==> i == i,  // Meaningful ensures clause
+/* helper modified by LLM (iteration 5): add Clone trait bound and fix properties */
+proof fn lemma_vec_full_properties<T: Clone>(v: Vec<T>, n: nat, fill_value: T)
+    ensures
+        v.len() == n ==> (
+            forall|i: int| 0 <= i < n ==> v[i] == fill_value
+            && forall|i: int, j: int| 0 <= i < n && 0 <= j < n ==> v[i] == v[j]
+            && (n > 0 ==> v[0] == fill_value)
+            && (n > 0 ==> v[(n-1) as int] == fill_value)
+        ),
 {
-    assert forall|i: int, j: int| 0 <= i < n && 0 <= j < n implies i == i by {
-        // Trivial equality proof
-    };
+    if v.len() == n {
+        assert forall|i: int| 0 <= i < n implies v[i] == fill_value by {
+            assert(v[i] == fill_value);
+        };
+        assert forall|i: int, j: int| 0 <= i < n && 0 <= j < n implies v[i] == v[j] by {
+            assert(v[i] == fill_value);
+            assert(v[j] == fill_value);
+        };
+        if n > 0 {
+            assert(v[0] == fill_value);
+            assert(v[(n-1) as int] == fill_value);
+        }
+    }
 }
 // </vc-helpers>
 
@@ -30,22 +44,21 @@ fn full<T>(n: usize, fill_value: T) -> (result: Vec<T>)
         n > 0 ==> result[(n-1) as int] == fill_value,
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Fixed type conversion syntax */
+/* code modified by LLM (iteration 5): fix clone method not found error */
 {
     let mut result = Vec::new();
+    
     let mut i: usize = 0;
     while i < n
         invariant
-            i <= n,
             result.len() == i,
-            forall|k: int| 0 <= k < i ==> result[k] == fill_value,
+            forall|j: int| 0 <= j < i ==> result[j] == fill_value,
+            decreases n - i,
     {
         result.push(fill_value);
         i = i + 1;
     }
-    ghost {
-        full_lemma(n as int);
-    }
+    
     result
 }
 // </vc-code>

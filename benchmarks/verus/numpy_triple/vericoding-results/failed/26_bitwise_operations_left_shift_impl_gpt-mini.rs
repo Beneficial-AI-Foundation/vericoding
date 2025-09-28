@@ -6,8 +6,7 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): returns 2^e */
-spec fn shift_factor(e: nat) -> nat { pow(2, e) }
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -25,23 +24,20 @@ fn left_shift(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): implement left_shift using nat indices and maintained invariants */
-    let mut res: Vec<i32> = Vec::new();
-    let n: nat = x1.len() as nat;
-    let mut i: nat = 0;
-    while i < n
-        invariant i <= n
-        invariant res.len() == i
-        invariant forall|j: nat| j < i ==> res@[j] == x1@[j] * (shift_factor(x2@[j] as nat) as i32)
-        decreases n - i
+    let mut i: int = 0;
+    let mut result_vec: Vec<i32> = Vec::new();
+    while i < x1.len()
+        invariant
+            0 <= i <= x1.len(),
+            result_vec.len() == i,
+            forall|j: int| 0 <= j < i ==> result_vec[j] == x1[j] * pow(2, x2[j] as nat),
+        decreases x1.len() - i
     {
-        let factor_nat: nat = shift_factor(x2@[i] as nat);
-        let factor: i32 = factor_nat as i32;
-        let val: i32 = x1@[i] * factor;
-        res.push(val);
-        i = i + 1;
+        let v = x1[i] * pow(2, x2[i] as nat);
+        result_vec.push(v);
+        i += 1;
     }
-    res
+    result_vec
 }
 // </vc-code>
 

@@ -13,18 +13,18 @@ method HasOnlyOneDistinctElement(a: array<int>) returns (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-    result := true;
-    var firstElement := a[0];
-    var i := 0;
-    while i < a.Length
-        invariant 0 <= i <= a.Length
-        invariant result == (forall j :: 0 <= j < i ==> a[j] == firstElement)
-    {
-        if a[i] != firstElement {
-            result := false;
-            break;
-        }
-        i := i + 1;
+  result := true;
+  var firstElement := a[0];
+  var i := 0;
+  while i < a.Length
+    invariant 0 <= i <= a.Length
+    invariant result == (forall j :: 0 <= j < i ==> a[j] == firstElement)
+  {
+    if a[i] != firstElement {
+      result := false;
+      break;
     }
+    i := i + 1;
+  }
 }
 // </vc-code>

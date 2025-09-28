@@ -1,0 +1,39 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+spec fn all_elements_less_than(n: i32, a: &Vec<i32>) -> bool
+{
+    forall|i: int| 0 <= i < a.len() ==> n > a[i]
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn is_greater(n: i32, a: &Vec<i32>) -> (result: bool)
+    requires a.len() > 0,
+    ensures result == (forall|i: int| 0 <= i < a.len() ==> n > a[i]),
+// </vc-spec>
+// <vc-code>
+{
+    /* code modified by LLM (iteration 2): added decreases clause to while loop */
+    let mut index = 0;
+    while index < a.len()
+        invariant
+            0 <= index <= a.len(),
+            forall|i: int| 0 <= i < index ==> n > a[i],
+        decreases a.len() - index
+    {
+        if n <= a[index] {
+            return false;
+        }
+        index += 1;
+    }
+    true
+}
+// </vc-code>
+
+}
+fn main() {}

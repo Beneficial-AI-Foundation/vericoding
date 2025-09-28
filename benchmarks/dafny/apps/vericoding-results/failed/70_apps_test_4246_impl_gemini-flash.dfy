@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate is_valid_input(input: string)
     requires |input| > 0
 {
@@ -41,59 +42,33 @@ function compute_result(input: string): string
     else if |lines[0]| != 3 || |lines[1]| != 3 then "0\n"
     else int_to_string(count_matches(lines[0], lines[1])) + "\n"
 }
+// </vc-preamble>
 
 // <vc-helpers>
+/* helper modified by LLM (iteration 5): Fixed `parse_lines` to correctly parse lines and handle the last line not ending with a newline. */
 function parse_lines(input: string): seq<string>
-    ensures forall i :: 0 <= i < |parse_lines(input)| ==> |parse_lines(input)[i]| >= 0
+    reads input
 {
     var lines: seq<string> := [];
-    var current_line: string := "";
-    if |input| == 0 then
-        return [""];
-
-    for i := 0 to |input| - 1
-        invariant 0 <= i <= |input|
-        invariant forall k :: 0 <= k < |lines| ==> |lines[k]| >= 0
-        invariant current_line == input[ (if |lines| > 0 then (var idx := 0; var len_sum := 0; while idx < |lines| { len_sum := len_sum + |lines[idx]| + 1; idx := idx + 1; } ; len_sum) else 0) .. i ]
+    var start := 0;
+    while start < |input|
+        invariant 0 <= start <= |input|
     {
-        if input[i] == '\n'
+        var end := start;
+        while end < |input| && input[end] != '\n'
+            invariant start <= end <= |input|
+            invariant forall i :: start <= i < end ==> input[i] != '\n'
         {
-            lines := lines + [current_line];
-            current_line := "";
-        } else
-        {
-            current_line := current_line + input[i];
+            end := end + 1;
+        }
+        lines := lines + [input[start..end]];
+        if end < |input| && input[end] == '\n' {
+            start := end + 1;
+        } else {
+            start := end;
         }
     }
-    if |current_line| > 0 || (|lines| == 0 && |input| == 0) // Adjusted condition for handling empty input leading to an empty string in lines.
-    {
-        lines := lines + [current_line];
-    }
-    else if |lines| == 0 && |current_line| == 0 && |input| > 0
-    {
-        lines := lines + [current_line]; // If input was not empty but had no newlines, add the current_line.
-    }
-    lines
-}
-
-function int_to_string(i: int): string
-    requires 0 <= i <= 9
-    ensures |int_to_string(i)| == 1
-    ensures (i == 0) ==> (int_to_string(i) == "0")
-    ensures (i == 1) ==> (int_to_string(i) == "1")
-    ensures (i == 2) ==> (int_to_string(i) == "2")
-    ensures (i == 3) ==> (int_to_string(i) == "3")
-{
-    if i == 0 then "0"
-    else if i == 1 then "1"
-    else if i == 2 then "2"
-    else if i == 3 then "3"
-    else if i == 4 then "4"
-    else if i == 5 then "5"
-    else if i == 6 then "6"
-    else if i == 7 then "7"
-    else if i == 8 then "8"
-    else "9"
+    return lines;
 }
 // </vc-helpers>
 
@@ -105,8 +80,8 @@ method solve(input: string) returns (result: string)
     ensures result[0] in
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): Calls compute_result to satisfy the postcondition. */
 {
-    result := compute_result(input);
+  result := compute_result(input);
 }
 // </vc-code>
-

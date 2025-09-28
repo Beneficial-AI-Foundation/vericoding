@@ -1,3 +1,4 @@
+// <vc-preamble>
 datatype TestCase = TestCase(n: nat, x: nat, y: nat, z: nat, castles: seq<nat>)
 
 predicate ValidInput(input: string)
@@ -62,146 +63,31 @@ function get_test_case(s: string, i: nat): TestCase
 function count_winning_first_moves(tc: TestCase): nat
     ensures count_winning_first_moves(tc) <= 3 * tc.n
 {
-    0 // Implementation uses Grundy number theory
+    0
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function count_lines(s: string): nat
-  ensures count_lines(s) == count(s, '\n')
-{
-  count(s, '\n')
-}
-
-function get_line(s: string, i: nat): string
-  requires i < count_lines(s)
-  ensures var line := get_line(s, i); line.IndexOf('\n') == -1
-{
-  var lines := split_by_newline(s);
-  lines[i]
-}
-
-function count(s: string, c: char): nat
-{
-  if s == "" then 0 else (if s[0] == c then 1 else 0) + count(s[1..], c)
-}
-
-function split_by_newline(s: string): seq<string>
-  ensures forall i :: 0 <= i < |split_by_newline(s)| ==> split_by_newline(s)[i].IndexOf('\n') == -1
-{
-  if s == "" then 
-    []
-  else var newline_index := s.IndexOf('\n');
-  if newline_index == -1 then
-    [s]
-  else
-    var head := s[..newline_index];
-    var tail := s[newline_index+1..];
-    [head] + split_by_newline(tail)
-}
-
-function is_non_negative_integer_string(s: string): bool
-{
-  s != "" && forall c :: c in s ==> '0' <= c <= '9'
-}
-
+/* helper modified by LLM (iteration 5): Corrected parse error where `i < |s|` was on a new line. */
 function parse_integer(s: string): nat
-  requires is_non_negative_integer_string(s)
-  ensures parse_integer(s) >= 0
 {
-  if s == "" then 0
-  else if |s| == 1 then
-    s[0] as nat - '0' as nat
-  else
-    (s[0] as nat - '0' as nat) * (10 * энергия(10, (|s|-1))) + parse_integer(s[1..])
+  var res := 0;
+  var i := 0;
+  while i < |s|
+    invariant 0 <= i <= |s|
+    invariant res == (if i == 0 then 0 else parse_integer_prefix(s, i))
+  {
+    res := res * 10 + (s[i] as int - '0' as int);
+    i := i + 1;
+  }
+  return res;
 }
 
-function get_n_from_params(s: string): nat
-  requires is_valid_test_case_params(s)
+function parse_integer_prefix(s: string, k: nat): nat
+  requires 0 <= k <= |s|
+  decreases k
 {
-  var parts := split_by_space(s);
-  parse_integer(parts[0])
-}
-
-function get_x_from_params(s: string): nat
-  requires is_valid_test_case_params(s)
-{
-  var parts := split_by_space(s);
-  parse_integer(parts[1])
-}
-
-function get_y_from_params(s: string): nat
-  requires is_valid_test_case_params(s)
-{
-  var parts := split_by_space(s);
-  parse_integer(parts[2])
-}
-
-function get_z_from_params(s: string): nat
-  requires is_valid_test_case_params(s)
-{
-  var parts := split_by_space(s);
-  parse_integer(parts[3])
-}
-
-function parse_castle_array(s: string): seq<nat>
-  requires s == "" || is_valid_integer_list_string(s)
-  ensures (forall i :: 0 <= i < |parse_castle_array(s)| ==> parse_castle_array(s)[i] >= 1)
-{
-  if s == "" then []
-  else
-    var parts := split_by_space(s);
-    var arr: seq<nat> := [];
-    for i := 0 to |parts|-1 {
-      if is_non_negative_integer_string(parts[i]) then
-        arr := arr + [parse_integer(parts[i])];
-    }
-    arr
-}
-
-predicate is_valid_test_case_params(s: string)
-{
-  var parts := split_by_space(s);
-  |parts| == 4 && 
-  is_non_negative_integer_string(parts[0]) &&
-  is_non_negative_integer_string(parts[1]) &&
-  is_non_negative_integer_string(parts[2]) &&
-  is_non_negative_integer_string(parts[3])
-}
-
-predicate is_valid_castles_line(s: string, n: nat)
-{
-  var parts := split_by_space(s);
-  |parts| == n &&
-  (forall i :: 0 <= i < |parts| ==> is_non_negative_integer_string(parts[i]) && parse_integer(parts[i]) >= 1)
-}
-
-predicate is_valid_integer_list_string(s: string)
-{
-  s != "" && (forall i :: 0 <= i < |s| ==> s[i] == ' ' || ('0' <= s[i] <= '9'))
-  && (s.IndexOf(' ') == -1 || (forall i :: 0 <= i < |split_by_space(s)| ==> is_non_negative_integer_string(split_by_space(s)[i])))
-}
-
-function split_by_space(s: string): seq<string>
-  ensures forall i :: 0 <= i < |split_by_space(s)| ==> split_by_space(s)[i].IndexOf(' ') == -1
-{
-  if s == "" then 
-    []
-  else var space_index := s.IndexOf(' ');
-  if space_index == -1 then
-    [s]
-  else
-    var head := s[..space_index];
-    var tail := s[space_index+1..];
-    [head] + split_by_space(tail)
-}
-
-// Helper to compute powers of 10
-function энергия(base: nat, exp: nat): nat
-  requires base > 0 || exp == 0
-  ensures (base > 0 || exp == 0) ==> энергия(base,exp) >= 1
-{
-  if exp == 0 then 1
-  else base * энергия(base, exp - 1)
+  if k == 0 then 0 else parse_integer_prefix(s, k - 1) * 10 + (s[k - 1] as int - '0' as int)
 }
 // </vc-helpers>
 
@@ -215,48 +101,27 @@ method solve(stdin_input: string) returns (result: string)
         output_val == count_winning_first_moves(test_case)
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): No changes; previous fix for compilation error caused a regression. */
 {
-    var lines := split_by_newline(stdin_input);
-    var t := parse_integer(lines[0]);
-    var results: seq<string> := [];
-
-    for i := 0 to t - 1
-        invariant 0 <= i <= t
-        invariant |results| == i
-        invariant forall k :: 0 <= k < i ==> 
-            var test_case_k := get_test_case(stdin_input, k);
-            parse_integer(results[k]) == count_winning_first_moves(test_case_k)
-    {
-        var test_case := get_test_case(stdin_input, i);
-        var winning_moves := count_winning_first_moves(test_case);
-        results := results + [winning_moves as string];
-    }
-
-    result := "";
-    for i := 0 to |results| - 1
-        invariant 0 <= i <= |results|
-        invariant result == (
-            if i == 0 then 
-                "" 
-            else (
-                var temp_res := ""; 
-                for k := 0 to i-1 
-                    invariant 0 <= k <= i-1
-                    invariant temp_res == (
-                        var current_temp_res := ""; 
-                        for kk := 0 to k 
-                            { current_temp_res := current_temp_res + results[kk] + "\n"; } 
-                        current_temp_res
-                    )
-                { 
-                    temp_res := temp_res + results[k] + "\n"; 
-                } 
-                temp_res
-            )
-        )
-    {
-        result := result + results[i] + "\n";
-    }
+  var num_test_cases := get_test_count(stdin_input);
+  var results: seq<string> := [];
+  var i := 0;
+  while i < num_test_cases
+    invariant 0 <= i <= num_test_cases
+    invariant |results| == i
+  {
+    var tc := get_test_case(stdin_input, i);
+    var winning_moves := count_winning_first_moves(tc);
+    results := results + [winning_moves as string];
+    i := i + 1;
+  }
+  result := "";
+  i := 0;
+  while i < |results|
+    invariant 0 <= i <= |results|
+  {
+    result := result + results[i] + "\n";
+    i := i + 1;
+  }
 }
 // </vc-code>
-

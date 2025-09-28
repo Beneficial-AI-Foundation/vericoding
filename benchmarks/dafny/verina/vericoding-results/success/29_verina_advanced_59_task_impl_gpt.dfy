@@ -21,9 +21,9 @@ function FilterAlphanumeric(s: seq<char>): seq<char>
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 2): Added index guard in seq to prevent out-of-range access */
-function ReverseChars(s: seq<char>): seq<char> {
-  seq(|s|, i requires 0 <= i < |s| => s[|s| - 1 - i])
+function Reverse<T>(s: seq<T>): seq<T>
+{
+    seq(|s|, i requires 0 <= i < |s| => s[|s| - 1 - i])
 }
 // </vc-helpers>
 
@@ -38,9 +38,8 @@ method PalindromeIgnoreNonAlnum(s: string) returns (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-  /* code modified by LLM (iteration 2): Compute cleaned sequence and its reverse, then compare */
   var cleaned := FilterAlphanumeric(s[..]);
-  var backward := seq(|cleaned|, i requires 0 <= i < |cleaned| => cleaned[|cleaned| - 1 - i]);
+  var backward := Reverse(cleaned);
   result := cleaned == backward;
 }
 // </vc-code>

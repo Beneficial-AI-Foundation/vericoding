@@ -1,3 +1,4 @@
+// <vc-preamble>
 function stringValue(s: string, w: seq<int>): int
   requires |w| == 26
   requires forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z'
@@ -35,23 +36,10 @@ predicate ValidInput(s: string, k: int, w: seq<int>)
   (forall i :: 0 <= i < |w| ==> 0 <= w[i] <= 1000) &&
   (forall i :: 0 <= i < |s| ==> 'a' <= s[i] <= 'z')
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function sumSeq(s: seq<int>): int
-  // `w` was an unbound identifier, and there's no obvious reason for sumSeq to read it.
-  // The sumSeq function itself doesn't depend on any external mutable state `w`.
-  // If `w` was intended to be a parameter, it wasn't declared.
-  // Given sumSeq's simple recursive definition over a sequence,
-  // `reads this` or no `reads` clause at all would be more appropriate if it were
-  // part of a class and accessing class fields.
-  // For a standalone function, no `reads` clause is needed for pure functions
-  // that don't access ghost state or modify anything.
-  // Removed `reads w`0` as it's not relevant here.
-  decreases |s|
-{
-  if |s| == 0 then 0
-  else s[0] + sumSeq(s[1..])
-}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -61,10 +49,6 @@ method solve(s: string, k: int, w: seq<int>) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    var stringVal: int := stringValue(s, w);
-    var maxVal: int := maxValue(w);
-    var appendVal: int := appendValue(|s|, k, maxVal);
-    result := stringVal + appendVal;
+  result := stringValue(s, w) + appendValue(|s|, k, maxValue(w));
 }
 // </vc-code>
-

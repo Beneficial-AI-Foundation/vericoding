@@ -14,21 +14,13 @@ method SearchInsert(xs: array<int>, target: int) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-  /* code modified by LLM (iteration 2): Fixed syntax error by removing extra quote at start of method body and ensured proper binary search implementation for insert position in sorted array */
-  var low := 0;
-  var high := xs.Length;
-  while low < high
-    invariant 0 <= low <= high <= xs.Length
-    invariant forall i :: 0 <= i < low ==> xs[i] < target
-    invariant forall i :: high <= i < xs.Length ==> target <= xs[i]
+  var i := 0;
+  while i < xs.Length && xs[i] < target
+    invariant 0 <= i <= xs.Length
+    invariant forall k :: 0 <= k < i ==> xs[k] < target
   {
-    var mid := (low + high) / 2;
-    if xs[mid] < target {
-      low := mid + 1;
-    } else {
-      high := mid;
-    }
+    i := i + 1;
   }
-  result := low;
+  result := i;
 }
 // </vc-code>

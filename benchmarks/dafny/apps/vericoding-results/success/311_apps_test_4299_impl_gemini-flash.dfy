@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(N: int) {
     1 <= N <= 999
 }
@@ -22,6 +23,7 @@ function CorrectPronunciation(N: int): string
     else if IsPonDigit(ones_digit) then "pon\n"
     else "bon\n"
 }
+// </vc-preamble>
 
 // <vc-helpers>
 
@@ -34,14 +36,6 @@ method solve(N: int) returns (result: string)
 // </vc-spec>
 // <vc-code>
 {
-    var ones_digit := N % 10;
-    if IsHonDigit(ones_digit) {
-        result := "hon\n";
-    } else if IsPonDigit(ones_digit) {
-        result := "pon\n";
-    } else {
-        result := "bon\n";
-    }
+  result := CorrectPronunciation(N);
 }
 // </vc-code>
-

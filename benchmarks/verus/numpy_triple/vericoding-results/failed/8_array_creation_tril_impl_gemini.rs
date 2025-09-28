@@ -21,60 +21,56 @@ fn tril(m: Vec<Vec<f64>>, k: i32) -> (result: Vec<Vec<f64>>)
             #[trigger] result[i][j] == if i >= j - k { m[i][j] } else { 0.0 },
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): fixed arithmetic overflow, added invariants and an assertion to prove array bounds */
 {
+    /* code modified by LLM (iteration 5): fixed invariants and used safe arithmetic for condition */
     let mut result: Vec<Vec<f64>> = Vec::new();
     let rows = m.len();
     let cols = m[0].len();
-
     let mut i: usize = 0;
+
     while i < rows
         invariant
-            m.len() > 0,
+            0 <= i <= rows,
             rows == m.len(),
             cols == m[0].len(),
-            forall|any_i: int| 0 <= any_i < m.len() ==> #[trigger] m[any_i].len() == cols as int,
-            0 <= i <= rows,
+            forall|row_idx: int| 0 <= row_idx < rows ==> #[trigger] m[row_idx].len() == cols,
             result.len() == i,
-            forall|r: int| 0 <= r < i as int ==> #[trigger] result[r].len() == cols as int,
+            forall|row_idx: int| 0 <= row_idx < i ==> #[trigger] result[row_idx].len() == cols,
             forall|r: int, c: int|
-                0 <= r < i as int && 0 <= c < cols as int ==> 
+                0 <= r < i && 0 <= c < cols ==> 
                 #[trigger] result[r][c] == if r >= c - (k as int) { m[r][c] } else { 0.0 },
         decreases rows - i
     {
-        let mut new_row = Vec::new();
+        let mut new_row: Vec<f64> = Vec::new();
         let mut j: usize = 0;
-
-        assert(m[i].len() == cols);
-
+        
         while j < cols
             invariant
-                i < rows,
-                m.len() > 0,
-                cols == m[0].len(),
-                m[i].len() == cols,
-                forall|any_i: int| 0 <= any_i < m.len() ==> #[trigger] m[any_i].len() == cols as int,
                 0 <= j <= cols,
+                i < rows,
                 new_row.len() == j,
-                forall|c: int|
-                    0 <= c < j as int ==> 
-                    #[trigger] new_row[c] == if i as int >= c - (k as int) { m[i as int][c] } else { 0.0 },
+                forall|c: int| 0 <= c < j ==> 
+                    #[trigger] new_row[c] == if (i as int) >= c - (k as int) { m[i as int][c] } else { 0.0 },
             decreases cols - j
         {
-            let cond = i as int >= j as int - k as int;
-
-            if cond {
+            // The condition is i >= j - k. This is equivalent to i - j >= -k.
+            // This form avoids overflow. Vec length is <= isize::MAX, so i and j fit into i64.
+            // The difference (i - j) will also fit in i64.
+            if (i as i64) - (j as i64) >= -(k as i64) {
                 new_row.push(m[i][j]);
             } else {
                 new_row.push(0.0);
             }
-            j = j + 1;
+            j += 1;
         }
+        
         result.push(new_row);
-        i = i + 1;
+        i += 1;
     }
+    
     result
 }
+
 // </vc-code>
 
 }

@@ -16,25 +16,24 @@ method LongestIncreasingStreak(nums: array<int>) returns (result: nat)
     if nums.Length == 0 {
         result := 0;
     } else {
-        var max_streak: nat := 1;
-        var current_streak: nat := 1;
-        var i: nat := 1;
+        var longestStreak: nat := 1;
+        var currentStreak: nat := 1;
+        var i := 1;
         while i < nums.Length
+            invariant nums.Length > 0
             invariant 1 <= i <= nums.Length
-            invariant 1 <= current_streak
-            invariant 1 <= max_streak
-            invariant max_streak <= i
-            invariant current_streak <= i
+            invariant 1 <= currentStreak <= i
+            invariant 1 <= longestStreak <= i
         {
             if nums[i] > nums[i-1] {
-                current_streak := current_streak + 1;
+                currentStreak := currentStreak + 1;
             } else {
-                current_streak := 1;
+                longestStreak := max(longestStreak, currentStreak);
+                currentStreak := 1;
             }
-            max_streak := max(max_streak, current_streak);
             i := i + 1;
         }
-        result := max_streak;
+        result := max(longestStreak, currentStreak);
     }
 }
 // </vc-code>

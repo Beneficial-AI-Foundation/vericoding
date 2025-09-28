@@ -27,119 +27,76 @@ pub enum DType {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 4): Changed helper function parameters to &DType to avoid move errors */
-fn is_int8(d: &DType) -> bool {
-    match d {
-        DType::Int8 => true,
-        _ => false,
+/* helper modified by LLM (iteration 5): added spec for Safe casting */ 
+fn dt_eq(a: &DType, b: &DType) -> (result: bool)
+    ensures
+        result == (a == b),
+{
+    match a {
+        DType::Int8 => matches!(b, DType::Int8),
+        DType::Int16 => matches!(b, DType::Int16),
+        DType::Int32 => matches!(b, DType::Int32),
+        DType::Int64 => matches!(b, DType::Int64),
+        DType::Float32 => matches!(b, DType::Float32),
+        DType::Float64 => matches!(b, DType::Float64),
+        DType::Complex64 => matches!(b, DType::Complex64),
+        DType::Complex128 => matches!(b, DType::Complex128),
+        DType::Bool => matches!(b, DType::Bool),
     }
 }
 
-fn is_int16(d: &DType) -> bool {
-    match d {
-        DType::Int16 => true,
-        _ => false,
-    }
+/* helper modified by LLM (iteration 5): added spec for Safe casting */ 
+fn is_safe_cast(from: &DType, to: &DType) -> (result: bool)
+    ensures
+        result == (
+            (dt_eq(from, &DType::Int8) && (dt_eq(to, &DType::Int16) || dt_eq(to, &DType::Int32) || dt_eq(to, &DType::Int64))) ||
+            (dt_eq(from, &DType::Int16) && (dt_eq(to, &DType::Int32) || dt_eq(to, &DType::Int64))) ||
+            (dt_eq(from, &DType::Int32) && dt_eq(to, &DType::Int64)) ||
+            (dt_eq(from, &DType::Float32) && dt_eq(to, &DType::Float64)) ||
+            ((dt_eq(from, &DType::Int8) || dt_eq(from, &DType::Int16)) && (dt_eq(to, &DType::Float32) || dt_eq(to, &DType::Float64))) ||
+            (dt_eq(from, &DType::Int32) && dt_eq(to, &DType::Float64)) ||
+            (dt_eq(from, &DType::Complex64) && dt_eq(to, &DType::Complex128)) ||
+            ((dt_eq(from, &DType::Float32) || dt_eq(from, &DType::Float64)) && (dt_eq(to, &DType::Complex64) || dt_eq(to, &DType::Complex128))) ||
+            dt_eq(from, to)
+        ),
+{
+    (dt_eq(from, &DType::Int8) && (dt_eq(to, &DType::Int16) || dt_eq(to, &DType::Int32) || dt_eq(to, &DType::Int64))) ||
+     (dt_eq(from, &DType::Int16) && (dt_eq(to, &DType::Int32) || dt_eq(to, &DType::Int64))) ||
+     (dt_eq(from, &DType::Int32) && dt_eq(to, &DType::Int64)) ||
+     (dt_eq(from, &DType::Float32) && dt_eq(to, &DType::Float64)) ||
+     ((dt_eq(from, &DType::Int8) || dt_eq(from, &DType::Int16)) && (dt_eq(to, &DType::Float32) || dt_eq(to, &DType::Float64))) ||
+     (dt_eq(from, &DType::Int32) && dt_eq(to, &DType::Float64)) ||
+     (dt_eq(from, &DType::Complex64) && dt_eq(to, &DType::Complex128)) ||
+     ((dt_eq(from, &DType::Float32) || dt_eq(from, &DType::Float64)) && (dt_eq(to, &DType::Complex64) || dt_eq(to, &DType::Complex128))) ||
+     dt_eq(from, to)
 }
 
-fn is_int32(d: &DType) -> bool {
-    match d {
-        DType::Int32 => true,
-        _ => false,
-    }
-}
-
-fn is_int64(d: &DType) -> bool {
-    match d {
-        DType::Int64 => true,
-        _ => false,
-    }
-}
-
-fn is_float32(d: &DType) -> bool {
-    match d {
-        DType::Float32 => true,
-        _ => false,
-    }
-}
-
-fn is_float64(d: &DType) -> bool {
-    match d {
-        DType::Float64 => true,
-        _ => false,
-    }
-}
-
-fn is_complex64(d: &DType) -> bool {
-    match d {
-        DType::Complex64 => true,
-        _ => false,
-    }
-}
-
-fn is_complex128(d: &DType) -> bool {
-    match d {
-        DType::Complex128 => true,
-        _ => false,
-    }
-}
-
-fn is_bool(d: &DType) -> bool {
-    match d {
-        DType::Bool => true,
-        _ => false,
-    }
-}
-
-fn eq_dtype(a: &DType, b: &DType) -> bool {
-    match (a, b) {
-        (DType::Int8, DType::Int8) => true,
-        (DType::Int16, DType::Int16) => true,
-        (DType::Int32, DType::Int32) => true,
-        (DType::Int64, DType::Int64) => true,
-        (DType::Float32, DType::Float32) => true,
-        (DType::Float64, DType::Float64) => true,
-        (DType::Complex64, DType::Complex64) => true,
-        (DType::Complex128, DType::Complex128) => true,
-        (DType::Bool, DType::Bool) => true,
-        _ => false,
-    }
-}
-
-fn is_safe(from: &DType, to: &DType) -> bool {
-    if is_int8(&from) && (is_int16(&to) || is_int32(&to) || is_int64(&to)) {
-        true
-    } else if is_int16(&from) && (is_int32(&to) || is_int64(&to)) {
-        true
-    } else if is_int32(&from) && is_int64(&to) {
-        true
-    } else if is_float32(&from) && is_float64(&to) {
-        true
-    } else if (is_int8(&from) || is_int16(&from)) && (is_float32(&to) || is_float64(&to)) {
-        true
-    } else if is_int32(&from) && is_float64(&to) {
-        true
-    } else if is_complex64(&from) && is_complex128(&to) {
-        true
-    } else if (is_float32(&from) || is_float64(&from)) && (is_complex64(&to) || is_complex128(&to)) {
-        true
-    } else if eq_dtype(&from, &to) {
-        true
-    } else {
-        false
-    }
-}
-
-fn is_samekind(from: &DType, to: &DType) -> bool {
-    let from_int = is_int8(&from) || is_int16(&from) || is_int32(&from) || is_int64(&from);
-    let to_int = is_int8(&to) || is_int16(&to) || is_int32(&to) || is_int64(&to);
-    let from_float = is_float32(&from) || is_float64(&from);
-    let to_float = is_float32(&to) || is_float64(&to);
-    let from_complex = is_complex64(&from) || is_complex128(&from);
-    let to_complex = is_complex64(&to) || is_complex128(&to);
-    (from_int && to_int) || (from_float && to_float) || (from_complex && to_complex) ||
-    (from_int && (to_float || to_complex)) ||
-    (from_float && to_complex)
+/* helper modified by LLM (iteration 5): added spec for SameKind casting */ 
+fn is_same_kind_cast(from: &DType, to: &DType) -> (result: bool)
+    ensures
+        result == (
+            ((dt_eq(from, &DType::Int8) || dt_eq(from, &DType::Int16) || dt_eq(from, &DType::Int32) || dt_eq(from, &DType::Int64)) &&
+             (dt_eq(to, &DType::Int8) || dt_eq(to, &DType::Int16) || dt_eq(to, &DType::Int32) || dt_eq(to, &DType::Int64))) ||
+            ((dt_eq(from, &DType::Float32) || dt_eq(from, &DType::Float64)) &&
+             (dt_eq(to, &DType::Float32) || dt_eq(to, &DType::Float64))) ||
+            ((dt_eq(from, &DType::Complex64) || dt_eq(from, &DType::Complex128)) &&
+             (dt_eq(to, &DType::Complex64) || dt_eq(to, &DType::Complex128))) ||
+            ((dt_eq(from, &DType::Int8) || dt_eq(from, &DType::Int16) || dt_eq(from, &DType::Int32) || dt_eq(from, &DType::Int64)) &&
+             (dt_eq(to, &DType::Float32) || dt_eq(to, &DType::Float64) || dt_eq(to, &DType::Complex64) || dt_eq(to, &DType::Complex128))) ||
+            ((dt_eq(from, &DType::Float32) || dt_eq(from, &DType::Float64)) &&
+             (dt_eq(to, &DType::Complex64) || dt_eq(to, &DType::Complex128)))
+        ),
+{
+    (((dt_eq(from, &DType::Int8) || dt_eq(from, &DType::Int16) || dt_eq(from, &DType::Int32) || dt_eq(from, &DType::Int64)) && 
+      (dt_eq(to, &DType::Int8) || dt_eq(to, &DType::Int16) || dt_eq(to, &DType::Int32) || dt_eq(to, &DType::Int64))) ||
+     ((dt_eq(from, &DType::Float32) || dt_eq(from, &DType::Float64)) && 
+      (dt_eq(to, &DType::Float32) || dt_eq(to, &DType::Float64))) ||
+     ((dt_eq(from, &DType::Complex64) || dt_eq(from, &DType::Complex128)) && 
+      (dt_eq(to, &DType::Complex64) || dt_eq(to, &DType::Complex128))) ||
+     ((dt_eq(from, &DType::Int8) || dt_eq(from, &DType::Int16) || dt_eq(from, &DType::Int32) || dt_eq(from, &DType::Int64)) && 
+      (dt_eq(to, &DType::Float32) || dt_eq(to, &DType::Float64) || dt_eq(to, &DType::Complex64) || dt_eq(to, &DType::Complex128))) ||
+     ((dt_eq(from, &DType::Float32) || dt_eq(from, &DType::Float64)) && 
+      (dt_eq(to, &DType::Complex64) || dt_eq(to, &DType::Complex128))))
 }
 // </vc-helpers>
 
@@ -191,16 +148,19 @@ fn can_cast(from_dtype: DType, to_dtype: DType, casting: CastingRule) -> (result
         (casting == CastingRule::Equiv ==> (result == true <==> from_dtype == to_dtype))
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 4): Updated helper function calls to pass references */
+/* code modified by LLM (iteration 5): implemented the main logic using helper functions */
 {
-    let result = match casting {
-        CastingRule::No => eq_dtype(&from_dtype, &to_dtype),
-        CastingRule::Equiv => eq_dtype(&from_dtype, &to_dtype),
-        CastingRule::Unrestricted => true,
-        CastingRule::Safe => is_safe(&from_dtype, &to_dtype),
-        CastingRule::SameKind => is_samekind(&from_dtype, &to_dtype),
-    };
-    result
+    if dt_eq(&from_dtype, &to_dtype) {
+        true
+    } else {
+        match casting {
+            CastingRule::Unrestricted => true,
+            CastingRule::Equiv => false,
+            CastingRule::No => false,
+            CastingRule::Safe => is_safe_cast(&from_dtype, &to_dtype),
+            CastingRule::SameKind => is_same_kind_cast(&from_dtype, &to_dtype),
+        }
+    }
 }
 // </vc-code>
 

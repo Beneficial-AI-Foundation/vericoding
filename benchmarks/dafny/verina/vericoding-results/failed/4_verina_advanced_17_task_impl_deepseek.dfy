@@ -2,47 +2,24 @@
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): Fixed Sorted predicate and lemma preconditions */
-function Insert(a: seq<int>, key: int, i: int): seq<int>
-  requires 0 <= i <= |a|
+function array_copy(src: array<int>): (dest: array<int>)
+  requires src != null
+  ensures dest != null
+  ensures dest.Length == src.Length
+  ensures multiset(dest[..]) == multiset(src[..])
 {
-  a[0..i] + [key] + a[i..]
-}
-
-predicate Sorted(a: seq<int>)
-{
-  if |a| <= 1 then true
-  else forall j :: 0 <= j < |a| - 1 ==> a[j] <= a[j+1]
-}
-
-lemma MultisetPreservedInsert(a: seq<int>, key: int, i: int)
-  requires 0 <= i <= |a|
-  ensures multiset(a[0..i] + [key] + a[i..]) == multiset(a) + multiset{key}
-{
-  // Multiset lemma implementation
-  var left := a[0..i];
-  var right := a[i..];
-  calc {
-    multiset(left + [key] + right);
-    == multiset(left) + multiset([key]) + multiset(right);
-    == multiset(left) + multiset{key} + multiset(right);
-    == multiset(a) + multiset{key};
+  /* helper modified by LLM (iteration 5): Fixed new array construction syntax */
+  var copy := new int[](src.Length);
+  var idx: int := 0;
+  while idx < src.Length
+    invariant 0 <= idx <= src.Length
+    invariant forall k :: 0 <= k < idx ==> copy[k] == src[k]
+    invariant multiset(copy[0..idx]) == multiset(src[0..idx])
+  {
+    copy[idx] := src[idx];
+    idx := idx + 1;
   }
-}
-
-lemma SortedInsertion(a: seq<int>, key: int, i: int)
-  requires Sorted(a[0..i]) && Sorted(a[i..])
-  requires i == 0 || key >= a[i-1]
-  requires i == |a| || key <= a[i]
-  ensures Sorted(a[0..i] + [key] + a[i..])
-{
-  // Proof that inserting maintains sortedness
-  if |a[0..i]| > 0 {
-    assert a[i-1] <= key;
-  }
-  if i < |a| {
-    assert key <= a[i];
-  }
+  copy
 }
 // </vc-helpers>
 
@@ -56,55 +33,45 @@ method insertion_sort(l: array<int>) returns (result: array<int>)
         result.Length == l.Length && multiset(result[..]) == multiset(l[..])
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Fixed sequence slicing and insertion logic */
 {
-    result := new int[l.Length];
-    
-    if l.Length == 0 {
-        return;
-    }
-    
-    // Copy first element
-    result[0] := l[0];
-    
-    var k := 1;
-    while k < l.Length
-        invariant 1 <= k <= l.Length
-        invariant Sorted(result[0..k])
-        invariant multiset(result[0..k]) == multiset(l[0..k])
+  /* code modified by LLM (iteration 5): Fixed insertion sort implementation with proper invariants */
+  result := new int[l.Length];
+  
+  // Copy the array first
+  var k: int := 0;
+  while k < l.Length
+    invariant 0 <= k <= l.Length
+    invariant forall x :: 0 <= x < k ==> result[x] == l[x]
+    invariant multiset(result[0..k]) == multiset(l[0..k])
+  {
+    result[k] := l[k];
+    k := k + 1;
+  }
+  
+  if result.Length > 0 {
+    var i: int := 1;
+    while i < result.Length
+      invariant 1 <= i <= result.Length
+      invariant forall x, y :: 0 <= x < y < i ==> result[x] <= result[y]
+      invariant multiset(result[..]) == multiset(l[..])
     {
-        var key := l[k];
-        var i := 0;
-        
-        // Find insertion position
-        while i < k && key > result[i]
-            invariant 0 <= i <= k
-            invariant forall j :: 0 <= j < i ==> key > result[j]
-        {
-            i := i + 1;
-        }
-        
-        // Shift elements to make space
-        var j := k;
-        while j > i
-            invariant i <= j <= k
-            invariant forall m :: i <= m < j ==> result[m] == old(result)[m]
-        {
-            result[j] := result[j-1];
-            j := j - 1;
-        }
-        
-        // Insert the key
-        result[i] := key;
-        
-        // Apply lemmas to prove invariants
-        var currentSeq := result[0..k];
-        MultisetPreservedInsert(result[0..k-1], key, i);
-        if k >= 1 {
-            SortedInsertion(result[0..i], key, i);
-        }
-        
-        k := k + 1;
+      var key: int := result[i];
+      var j: int := i - 1;
+      
+      while j >= 0 && result[j] > key
+        invariant -1 <= j < i
+        invariant forall x, y :: 0 <= x < y < i && x != j+1 && y != j+1 ==> result[x] <= result[y]
+        invariant forall x :: j+1 < x <= i ==> result[x] > key
+        invariant multiset(result[..]) == multiset(l[..])
+        decreases j + 1
+      {
+        result[j+1] := result[j];
+        j := j - 1;
+      }
+      
+      result[j+1] := key;
+      i := i + 1;
     }
+  }
 }
 // </vc-code>

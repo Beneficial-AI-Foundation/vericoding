@@ -1,0 +1,98 @@
+use vstd::prelude::*;
+
+verus! {
+
+// predicate for primeness
+spec fn prime(n: nat) -> bool {
+    n > 1 && (forall|nr: nat| 1 < nr < n ==> #[trigger] (n % nr) != 0)
+}
+
+#[derive(PartialEq, Eq)]
+enum Answer {
+    Yes,
+    No,
+    Unknown,
+}
+
+// the class containing a prime database, if a number is prime it returns Yes, if it is not No and if the number
+// is not in the database it returns Unknown
+struct PrimeMap {
+    database: Ghost<Map<nat, bool>>,
+}
+
+impl PrimeMap {
+    // the valid invariant of the class
+    spec fn valid(&self) -> bool {
+        forall|i: nat| self.database@.dom().contains(i) ==> (self.database@[i] == prime(i))
+    }
+
+    // the constructor
+    fn new() -> (result: PrimeMap)
+        ensures 
+            result.database@ === Map::empty(),
+            result.valid(),
+    {
+        PrimeMap {
+            database: Ghost(Map::empty())
+        }
+    }
+
+    // lookup n in the database and reply with Yes or No if it's in the database and it is or it is not prime,
+    // or with Unknown when it's not in the databse
+    fn is_prime(&self, n: nat) -> (answer: Answer)
+        requires self.valid(),
+        ensures 
+            self.database@.dom().contains(n) && prime(n) <==> answer == Answer::Yes,
+            self.database@.dom().contains(n) && !prime(n) <==> answer == Answer::No,
+            !self.database@.dom().contains(n) <==> answer == Answer::Unknown,
+    {
+        assume(false);
+        Answer::Unknown
+    }
+
+    // method to test whether a number is prime, returns bool
+
+}
+
+// <vc-helpers>
+// No helpers needed for this implementation
+// </vc-helpers>
+
+// <vc-spec>
+fn test_primeness(n: nat) -> (result: bool) 
+      requires n >= 0,
+      ensures result <==> prime(n),
+// </vc-spec>
+// <vc-code>
+{
+    if n <= (1 as nat) {
+        return false;
+    }
+    let n_val: nat = n;
+    let mut i_val: nat = 2;
+    while i_val < n_val
+        invariant
+            n > 1,
+            2 <= i_val <= n_val,
+            n_val == n,
+            forall|k: nat| 2 <= k < i_val ==> #[trigger] (n % k != 0),
+    {
+        if n_val % i_val == 0 {
+            proof {
+                assert(n % i_val == 0);
+            }
+            return false;
+        }
+        i_val = i_val + 1;
+    }
+    proof {
+        assert(n > 1);
+        assert(forall|nr: nat| 1 < nr < n ==> #[trigger] (n % nr != 0));
+    }
+    true
+}
+// </vc-code>
+
+fn main() {}
+
+}

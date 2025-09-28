@@ -1,0 +1,192 @@
+=== VERUS PROCESSING SUMMARY (AGGREGATED) ===
+Selection method: best runs
+Total files: 161
+Successful: 42 (26.1%)
+Failed: 119
+
+Selected best runs:
+  - claude-opus: vericoder_claude-opus_19-09_23h33 (success rate: 9.9%)
+  - claude-sonnet: vericoder_claude-sonnet_19-09_23h34 (success rate: 5.6%)
+  - deepseek: vericoder_deepseek_19-09_23h34 (success rate: 1.9%)
+  - gemini: vericoder_gemini_19-09_23h34 (success rate: 9.3%)
+  - gemini-flash: vericoder_gemini-flash_19-09_23h35 (success rate: 1.2%)
+  - glm: vericoder_glm_19-09_23h35 (success rate: 5.6%)
+  - gpt: vericoder_gpt_19-09_23h35 (success rate: 15.5%)
+  - gpt-mini: vericoder_gpt-mini_19-09_23h35 (success rate: 6.2%)
+  - grok-code: vericoder_grok-code_19-09_23h35 (success rate: 3.1%)
+
+Per-LLM success rates:
+  - claude-opus: 16/161 (9.9%)
+  - claude-sonnet: 9/161 (5.6%)
+  - deepseek: 3/161 (1.9%)
+  - gemini: 15/161 (9.3%)
+  - gemini-flash: 2/161 (1.2%)
+  - glm: 9/161 (5.6%)
+  - gpt: 25/161 (15.5%)
+  - gpt-mini: 10/161 (6.2%)
+  - grok-code: 5/161 (3.1%)
+
+Successful files:
+✓ humaneval_002.rs — by: gemini, glm, gpt, gpt-mini
+✓ humaneval_005.rs — by: gemini
+✓ humaneval_006.rs — by: gpt
+✓ humaneval_011.rs — by: gemini, gpt
+✓ humaneval_012.rs — by: gpt
+✓ humaneval_014.rs — by: claude-opus, claude-sonnet, gpt
+✓ humaneval_024_largest-divisor.rs — by: claude-opus, gemini, glm
+✓ humaneval_027.rs — by: claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ humaneval_029_filter_by_prefix.rs — by: gpt, gpt-mini
+✓ humaneval_031.rs — by: claude-opus, gemini, grok-code
+✓ humaneval_036_fizz_buzz__count7.rs — by: gemini, gpt-mini
+✓ humaneval_038_encode_cyclic__decode_cyclic.rs — by: gemini
+✓ humaneval_038_encode_cyclic__encode_cyclic.rs — by: gemini
+✓ humaneval_048.rs — by: gemini
+✓ humaneval_050_encode_shift__decode_shift.rs — by: claude-opus
+✓ humaneval_050_encode_shift__encode_shift.rs — by: claude-opus
+✓ humaneval_052.rs — by: claude-sonnet
+✓ humaneval_054.rs — by: claude-opus
+✓ humaneval_070_strange_sort_list__strange_sort_list_helper.rs — by: gpt
+✓ humaneval_073.rs — by: gemini
+✓ humaneval_077_iscube__cube_root.rs — by: gpt
+✓ humaneval_080.rs — by: claude-sonnet, grok-code
+✓ humaneval_084_solve.rs — by: claude-opus
+✓ humaneval_089.rs — by: claude-opus
+✓ humaneval_090_next_smallest.rs — by: claude-sonnet, deepseek, gemini-flash, glm, gpt
+✓ humaneval_092.rs — by: claude-opus, gemini, glm, gpt, gpt-mini, grok-code
+✓ humaneval_093.rs — by: claude-opus, glm, gpt
+✓ humaneval_102.rs — by: gpt, gpt-mini
+✓ humaneval_105_by_length__SortReverseAndName.rs — by: gemini, gpt, gpt-mini
+✓ humaneval_105_by_length__reverse.rs — by: claude-opus, claude-sonnet, gpt
+✓ humaneval_108.rs — by: gpt, gpt-mini
+✓ humaneval_118_get_closest_vowel.rs — by: gpt, gpt-mini
+✓ humaneval_120_maximum__maximum.rs — by: gpt
+✓ humaneval_123_get_odd_collatz__get_odd_collatz.rs — by: gpt
+✓ humaneval_123_get_odd_collatz__get_odd_collatz_unsorted.rs — by: gpt
+✓ humaneval_132_is_nested.rs — by: claude-opus
+✓ humaneval_134.rs — by: claude-opus
+✓ humaneval_136_largest_smallest_integers.rs — by: claude-opus, claude-sonnet, gemini, glm, gpt
+✓ humaneval_138.rs — by: claude-opus, claude-sonnet, glm, gpt, grok-code
+✓ humaneval_149_sorted_list_sum__sort_strings.rs — by: gpt
+✓ humaneval_154_cycpattern_check.rs — by: gpt
+✓ humaneval_163_generate_integers__generate_integers.rs — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+
+Failed files:
+✗ humaneval_000.rs
+✗ humaneval_001_separate-paren-groups.rs
+✗ humaneval_003.rs
+✗ humaneval_007.rs
+✗ humaneval_008.rs
+✗ humaneval_009.rs
+✗ humaneval_010_is_palindrome__make_palindrome.rs
+✗ humaneval_013.rs
+✗ humaneval_016.rs
+✗ humaneval_018_how_many_times.rs
+✗ humaneval_020.rs
+✗ humaneval_021_rescale_to_unit.rs
+✗ humaneval_022.rs
+✗ humaneval_023.rs
+✗ humaneval_025.rs
+✗ humaneval_026_remove_duplicates__count.rs
+✗ humaneval_026_remove_duplicates__remove_duplicates.rs
+✗ humaneval_028.rs
+✗ humaneval_030.rs
+✗ humaneval_033_sort_third__SortSeqPred.rs
+✗ humaneval_033_sort_third__sort_third.rs
+✗ humaneval_034_unique__SortSeq.rs
+✗ humaneval_034_unique__unique.rs
+✗ humaneval_034_unique__uniqueSorted.rs
+✗ humaneval_035.rs
+✗ humaneval_036_fizz_buzz__fizz_buzz.rs
+✗ humaneval_037_sort_even__SortSeqPred.rs
+✗ humaneval_037_sort_even__sorted_even.rs
+✗ humaneval_040.rs
+✗ humaneval_041.rs
+✗ humaneval_042.rs
+✗ humaneval_043.rs
+✗ humaneval_044.rs
+✗ humaneval_045.rs
+✗ humaneval_046.rs
+✗ humaneval_047.rs
+✗ humaneval_049.rs
+✗ humaneval_051.rs
+✗ humaneval_053.rs
+✗ humaneval_055.rs
+✗ humaneval_056.rs
+✗ humaneval_057.rs
+✗ humaneval_058_common.rs
+✗ humaneval_059.rs
+✗ humaneval_060.rs
+✗ humaneval_062.rs
+✗ humaneval_063.rs
+✗ humaneval_064_vowels_count.rs
+✗ humaneval_065.rs
+✗ humaneval_066.rs
+✗ humaneval_067.rs
+✗ humaneval_068.rs
+✗ humaneval_069.rs
+✗ humaneval_072.rs
+✗ humaneval_074.rs
+✗ humaneval_075.rs
+✗ humaneval_076_is_simple_power.rs
+✗ humaneval_077_iscube__is_cube.rs
+✗ humaneval_078.rs
+✗ humaneval_079_decimal_to_binary.rs
+✗ humaneval_081.rs
+✗ humaneval_082.rs
+✗ humaneval_083.rs
+✗ humaneval_085_add.rs
+✗ humaneval_087_get_row__SortSeq.rs
+✗ humaneval_087_get_row__get_row.rs
+✗ humaneval_088.rs
+✗ humaneval_095_check_dict_case.rs
+✗ humaneval_096.rs
+✗ humaneval_097.rs
+✗ humaneval_098_count_upper.rs
+✗ humaneval_100.rs
+✗ humaneval_103.rs
+✗ humaneval_104_unique_digits.rs
+✗ humaneval_105_by_length__SortSeq.rs
+✗ humaneval_106.rs
+✗ humaneval_107.rs
+✗ humaneval_109.rs
+✗ humaneval_110.rs
+✗ humaneval_111_histogram.rs
+✗ humaneval_112.rs
+✗ humaneval_113.rs
+✗ humaneval_114_minSubArraySum.rs
+✗ humaneval_115.rs
+✗ humaneval_116_sort_array.rs
+✗ humaneval_119.rs
+✗ humaneval_120_maximum__SortSeq.rs
+✗ humaneval_121.rs
+✗ humaneval_122.rs
+✗ humaneval_123_get_odd_collatz__next_odd_collatz_iter.rs
+✗ humaneval_124.rs
+✗ humaneval_125.rs
+✗ humaneval_126.rs
+✗ humaneval_127_intersection.rs
+✗ humaneval_128.rs
+✗ humaneval_130_tri.rs
+✗ humaneval_133_sum_squares.rs
+✗ humaneval_135.rs
+✗ humaneval_137.rs
+✗ humaneval_139.rs
+✗ humaneval_140.rs
+✗ humaneval_142.rs
+✗ humaneval_144.rs
+✗ humaneval_145_order_by_points.rs
+✗ humaneval_146.rs
+✗ humaneval_147.rs
+✗ humaneval_148_bf.rs
+✗ humaneval_149_sorted_list_sum__sort_lengths.rs
+✗ humaneval_149_sorted_list_sum__sorted_list_sum.rs
+✗ humaneval_150_x_or_y.rs
+✗ humaneval_151.rs
+✗ humaneval_152.rs
+✗ humaneval_153.rs
+✗ humaneval_155.rs
+✗ humaneval_157.rs
+✗ humaneval_158_find_max.rs
+✗ humaneval_159.rs
+✗ humaneval_161.rs
+✗ humaneval_162.rs

@@ -1,5 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 189 characters
---------------------------------------------------------------------------------
-["proof fn lemma_valid_empty()\n    ensures\n        ValidBitString(Seq::<char>::empty()),\n{\n}", "{\n    proof { lemma_valid_empty(); }\n    let res: Vec<char> = Vec::new();\n    res\n}"]
---------------------------------------------------------------------------------

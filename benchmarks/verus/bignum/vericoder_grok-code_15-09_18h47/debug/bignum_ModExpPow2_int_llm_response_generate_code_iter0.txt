@@ -1,9 +1,0 @@
-=== LLM Response - generate_code - Iteration 0 ===
-File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_int.rs
-Prompt Hash: c060a569
-JSON Parsed Successfully: True
-Timestamp: 1757962019.416544
-Content Length: 444 chars
---------------------------------------------------------------------------------
-["exec fn mod_exp_pow2(x: u64, n: u64, m: u64) -> u64\n    requires\n        m > 0,\n    ensures\n        (result as nat) == Exp_int(x as nat, Exp_int(2, n as nat)) % (m as nat),\n    decreases n,\n{\n    if n == 0 {\n        (x % m)\n    } else {\n        let h = mod_exp_pow2(x, (n - 1), m);\n        let sq = (h as u128 * h as u128) % (m as u128);\n        (sq as u64)\n    }\n}", "{\n    let result = mod_exp_pow2(x, n, z);\n    result\n}"]
---------------------------------------------------------------------------------

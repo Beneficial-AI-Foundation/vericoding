@@ -16,9 +16,9 @@ spec fn correct_output(x: int, result: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(x: i32) -> (result: Seq<char>)
+fn solve(x: i32) -> (result: Vec<char>)
     requires valid_input(x as int)
-    ensures correct_output(x as int, result)
+    ensures correct_output(x as int, result@)
 // </vc-spec>
 // <vc-code>
 {

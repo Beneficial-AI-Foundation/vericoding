@@ -1,0 +1,68 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+spec fn valid_input(a: int, b: int, k: int) -> bool {
+    a >= 0 && b >= 0 && k >= 0
+}
+
+spec fn expected_takahashi_cookies(a: int, b: int, k: int) -> int
+    recommends valid_input(a, b, k)
+{
+    if a >= k { a - k }
+    else { 0 }
+}
+
+spec fn expected_aoki_cookies(a: int, b: int, k: int) -> int
+    recommends valid_input(a, b, k)
+{
+    if a >= k { b }
+    else if k - a < b { b - (k - a) }
+    else { 0 }
+}
+
+spec fn correct_result(a: int, b: int, k: int, takahashi: int, aoki: int) -> bool
+    recommends valid_input(a, b, k)
+{
+    takahashi == expected_takahashi_cookies(a, b, k) &&
+    aoki == expected_aoki_cookies(a, b, k) &&
+    takahashi >= 0 && aoki >= 0
+}
+// </vc-preamble>
+
+// <vc-helpers>
+/* helper modified by LLM (iteration 3): Removed helper function since it's not strictly necessary and the logic can be directly inlined. */
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(a: i8, b: i8, k: i8) -> (result: (i8, i8))
+    requires valid_input(a as int, b as int, k as int)
+    ensures correct_result(a as int, b as int, k as int, result.0 as int, result.1 as int)
+// </vc-spec>
+// <vc-code>
+/* code modified by LLM (iteration 3): Corrected type casting issues and simplified the logic for determining cookies. */
+{
+    let takahashi_cookies: i8;
+    let aoki_cookies: i8;
+
+    if a >= k {
+        takahashi_cookies = a - k;
+        aoki_cookies = b;
+    } else {
+        takahashi_cookies = 0;
+        let remaining_k = k - a;
+        if remaining_k >= b {
+            aoki_cookies = 0;
+        } else {
+            aoki_cookies = b - remaining_k;
+        }
+    }
+
+    (takahashi_cookies, aoki_cookies)
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

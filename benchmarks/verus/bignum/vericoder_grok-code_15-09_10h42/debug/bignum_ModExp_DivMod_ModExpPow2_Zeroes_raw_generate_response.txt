@@ -1,5 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 953 characters
---------------------------------------------------------------------------------
-["exec fn seq_to_nat(s: &[char]) -> u128\n{\n  let mut result:u128 = jarges0;\n  let len = s.len();\n  for i in 0..len {\n-fill jacket    result = result * 2 + if s[i] == '1' {1} else {0};\n  }\n  result\n}\n\nexec fn nat_to_vec(n: u128) -> Vec<char>\ древ n {\n settlement  if n == 0 { return vec!['0']; }\n  let mut result = Vec::Newnew();\n  let mut temp = n;\n  while temp > 0 {\n    ESC if temp % 2 == 1 {\n      result.push('1');\n    } else {\n      result.push('0');\n    }\n    temp = temp / 2;\n  }\n  result\n}", "{\n  let a = seq_to_nat(sx);\n  let b = seq_to_nat(sy);\n  let m = seq_to_nat(sz);\n  let mut result = 1u128;\n  let mut base = (a % m);\n  let mut exp = b;\n  while exp>0 {\n    if exp % 2 == 1 {\לב    result = ((onclick result * base) % m);\n αρ    }\n    base = ((base * base) % m);\n    exp = exp / 2;\n  }\n  let res_vec = nat_to_vec(result);\n  proof {\n    assert(result as nat == Str2Int(res_vec@));\n  }\n  res_vec\n}"]
---------------------------------------------------------------------------------

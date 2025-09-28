@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, times: seq<int>, T: int)
 {
     n >= 1 && |times| == n && T >= 1 && 
@@ -46,11 +47,22 @@ function countStudentsInWindowHelper(times: seq<int>, start: int, T: int, index:
         var countRest := countStudentsInWindowHelper(times, start, T, index + 1);
         if start <= times[index] <= start + T - 1 then countRest + 1 else countRest
 }
+// </vc-preamble>
 
 // <vc-helpers>
-// No helpers needed as the functions are already defined globally and correctly.
-// The parse error was due to a duplicate definition of `countStudentsInWindow`
-// inside the vc-helpers block. Removing that duplicate definition resolves the parsing issue.
+function maxStudentsInWindowUpToOptimal(times: seq<int>, T: int, maxStart: int): int
+    requires T >= 1
+    requires forall i :: 0 <= i < |times| ==> 1 <= times[i] <= 1000
+    requires maxStart >= 0
+    ensures 0 <= maxStudentsInWindowUpToOptimal(times, T, maxStart) <= |times|
+    decreases maxStart
+{
+    if maxStart < 1 then 0
+    else
+        var count := countStudentsInWindow(times, maxStart, T);
+        var restMax := maxStudentsInWindowUpToOptimal(times, T, maxStart - 1);
+        if count > restMax then count else restMax
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -62,7 +74,6 @@ method solve(n: int, times: seq<int>, T: int) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    return maxStudentsInWindow(times, T);
+  result := maxStudentsInWindow(times, T);
 }
 // </vc-code>
-

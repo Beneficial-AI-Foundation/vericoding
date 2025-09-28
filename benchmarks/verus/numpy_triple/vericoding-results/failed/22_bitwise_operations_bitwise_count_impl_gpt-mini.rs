@@ -19,31 +19,17 @@ spec fn popcount(n: nat) -> nat
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): executable popcount for nat with invariant relating to spec popcount */
-fn popcount_nat_exec(n0: nat) -> nat
-    ensures result == popcount(n0)
+/* helper modified by LLM (iteration 5): recursive spec helper returning popcount(n) */
+spec fn compute_popcount(n: nat) -> (result: nat)
+    ensures
+        result == popcount(n),
+    decreases n
 {
-    let mut n = n0;
-    let mut cnt: nat = 0;
-    while n > 0
-        invariant n >= 0
-        invariant cnt + popcount(n) == popcount(n0)
-        decreases n
-    {
-        if n % 2 == 1 {
-            cnt = cnt + 1;
-        }
-        n = n / 2;
+    if n == 0 {
+        0
+    } else {
+        (n % 2) + compute_popcount(n / 2)
     }
-    cnt
-}
-
-/* helper modified by LLM (iteration 5): executable popcount for i32 via abs_spec */
-fn popcount_i32_exec(x: i32) -> nat
-    ensures result == popcount(abs_spec(x))
-{
-    let n: nat = if x >= 0 { x as nat } else { (-x) as nat };
-    popcount_nat_exec(n)
 }
 // </vc-helpers>
 
@@ -57,19 +43,29 @@ fn bitwise_count(x: Vec<i32>) -> (result: Vec<nat>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): compute popcount for each element and return vector */
-    let mut res: Vec<nat> = Vec::<nat>::new();
+    /* code modified by LLM (iteration 5): compute popcount for each element using spec helper */
+    let tracked mut result: Vec<nat> = Vec::new();
+    let n: int = x.len();
     let mut i: int = 0;
-    while i < x.len() {
-        invariant 0 <= i && i <= x.len();
-        invariant res.len() == i;
-        invariant forall|j: int| 0 <= j < res.len() ==> res[j] == popcount(abs_spec(x[j]));
-        decreases x.len() - i;
-        let v = popcount_i32_exec(x[i]);
-        res.push(v);
-        i += 1;
+    while i < n
+        invariant
+            0 <= i <= n,
+            result.len() == i,
+            forall|j: int| 0 <= j < result.len() ==> result[j] == popcount(abs_spec(x[j])),
+        decreases n - i
+    {
+        let xi: i32 = x[i];
+        let ghost a: nat = abs_spec(xi);
+        let ghost pc: nat = compute_popcount(a);
+        proof {
+            assert(popcount(abs_spec(xi)) == popcount(a));
+            assert(pc == popcount(a));
+            assert(pc == popcount(abs_spec(xi)));
+        }
+        result.push(pc);
+        i = i + 1;
     }
-    res
+    result
 }
 // </vc-code>
 

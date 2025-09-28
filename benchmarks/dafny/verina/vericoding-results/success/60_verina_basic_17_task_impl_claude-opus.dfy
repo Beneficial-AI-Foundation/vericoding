@@ -30,11 +30,9 @@ method ToLowercase(s: seq<char>) returns (result: seq<char>)
 // <vc-code>
 {
   result := [];
-  var i := 0;
-  while i < |s|
-    invariant 0 <= i <= |s|
+  for i := 0 to |s|
     invariant |result| == i
-    invariant forall j :: 0 <= j < i ==> 
+    invariant forall j :: 0 <= j < i ==>
       if IsUppercase(s[j]) then
         result[j] == Shift32(s[j])
       else
@@ -45,7 +43,6 @@ method ToLowercase(s: seq<char>) returns (result: seq<char>)
     } else {
       result := result + [s[i]];
     }
-    i := i + 1;
   }
 }
 // </vc-code>

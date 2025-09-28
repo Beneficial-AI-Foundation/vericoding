@@ -1,0 +1,29 @@
+// <vc-preamble>
+// </vc-preamble>
+
+// <vc-helpers>
+/* helper modified by LLM (iteration 5): The helper function was unnecessary and thus removed for a cleaner implementation. */
+
+// </vc-helpers>
+
+// <vc-spec>
+method Append(a: array<int>, b: int) returns (result: array<int>)
+    ensures result.Length == a.Length + 1
+    ensures forall i :: 0 <= i < a.Length ==> result[i] == a[i]
+    ensures result[a.Length] == b
+// </vc-spec>
+// <vc-code>
+/* code modified by LLM (iteration 5): Fixed loop bounds to iterate up to but not including a.Length to prevent out-of-bounds access. */
+{
+    result := new int[a.Length + 1];
+    var i := 0;
+    while i < a.Length
+        invariant 0 <= i <= a.Length
+        invariant forall k :: 0 <= k < i ==> result[k] == a[k]
+    {
+        result[i] := a[i];
+        i := i + 1;
+    }
+    result[a.Length] := b;
+}
+// </vc-code>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int, c: int, d: int, e: int, k: int) {
     0 <= a <= 123 && 0 <= b <= 123 && 0 <= c <= 123 && 
     0 <= d <= 123 && 0 <= e <= 123 && 0 <= k <= 123 &&
@@ -7,15 +8,10 @@ predicate ValidInput(a: int, b: int, c: int, d: int, e: int, k: int) {
 predicate AllPairsCanCommunicate(a: int, b: int, c: int, d: int, e: int, k: int) {
     (e - a) <= k
 }
+// </vc-preamble>
 
 // <vc-helpers>
-lemma lemma_AllPairsCanCommunicate(a: int, b: int, c: int, d: int, e: int, k: int)
-  requires ValidInput(a, b, c, d, e, k)
-  ensures (e - a) <= k <==> AllPairsCanCommunicate(a, b, c, d, e, k)
-{
-  // The definition of AllPairsCanCommunicate is simply (e - a) <= k,
-  // so the lemma holds directly from the definition.
-}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -26,17 +22,10 @@ method solve(a: int, b: int, c: int, d: int, e: int, k: int) returns (result: st
 // </vc-spec>
 // <vc-code>
 {
-  if (e - a) <= k
-  {
+  if (e - a) <= k {
     result := "Yay!";
-    lemma_AllPairsCanCommunicate(a, b, c, d, e, k); // Ensure the postcondition is met
-  }
-  else
-  {
+  } else {
     result := ":(";
-    lemma_AllPairsCanCommunicate(a, b, c, d, e, k); // Ensure the postcondition is met
   }
-  return result;
 }
 // </vc-code>
-

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate is_binary_string(s: string)
 {
     forall i :: 0 <= i < |s| ==> s[i] == '0' || s[i] == '1'
@@ -53,43 +54,25 @@ function string_to_int(s: string): int
     else if |s| == 1 then (s[0] as int) - ('0' as int)
     else string_to_int(s[0..|s|-1]) * 10 + ((s[|s|-1] as int) - ('0' as int))
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function find_first_newline(s: string): int
-    requires exists i :: 0 <= i < |s| && s[i] == '\n'
-    ensures 0 <= find_first_newline(s) < |s|
-    ensures s[find_first_newline(s)] == '\n'
-    ensures forall i :: 0 <= i < find_first_newline(s) ==> s[i] != '\n'
+/* helper modified by LLM (iteration 5): Corrected a syntax error in the first branch of the if-else statement to avoid an rbrace expected error. */
+function FindNthNewline(s: string, n: int): int
+    requires n >= 0
+    ensures (exists i :: 0 <= i < |s| && s[i] == '\n') ==> (0 <= FindNthNewline(s, n) < |s| && s[FindNthNewline(s,n)] == '\n') || FindNthNewline(s, n) == -1
+    ensures (forall i :: 0 <= i < |s| && s[i] == '\n') || FindNthNewline(s, n) == -1 ==> (FindNthNewline(s,n) == -1 || s[FindNthNewline(s,n)] == '\n')
 {
-    var i := 0;
-    while i < |s|
-        invariant 0 <= i <= |s|
-        invariant forall j :: 0 <= j < i ==> s[j] != '\n'
-    {
-        if s[i] == '\n' then
-            return i;
-        i := i + 1;
+    if n == 0 then exhaust_string_for_newline(s)
+    else {
+        var first_newline_pos := exhaust_string_for_newline(s);
+        if first_newline_pos == -1 then -1
+        else {
+           var next_newline_pos := FindNthNewline(s[first_newline_pos + 1 ..], n - 1);
+           if next_newline_pos == -1 then -1
+           else first_newline_pos + 1 + next_newline_pos;
+        }
     }
-    // This should not be reached due to the requires clause
-    -1 // Should be unreachable code
-}
-
-function find_second_newline_or_end(s: string, start_index: int): int
-    requires start_index <= |s|
-    ensures start_index <= find_second_newline_or_end(s, start_index) <= |s|
-    ensures find_second_newline_or_end(s, start_index) == |s| || s[find_second_newline_or_end(s, start_index)] == '\n'
-    ensures forall i :: start_index <= i < find_second_newline_or_end(s, start_index) ==> s[i] != '\n'
-{
-    var i := start_index;
-    while i < |s|
-        invariant start_index <= i <= |s|
-        invariant forall j :: start_index <= j < i ==> s[j] != '\n'
-    {
-        if s[i] == '\n' then
-            return i;
-        i := i + 1;
-    }
-    |s|
 }
 // </vc-helpers>
 
@@ -113,22 +96,21 @@ method solve(stdin_input: string) returns (result: string)
             result == int_to_string(abs_diff_count(stdin_input[newline_pos + 1..binary_end])) + "\n"
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): No functional changes. The previous version correctly handles the logic. */
 {
-    var newline_pos := find_first_newline(stdin_input);
-    var start_binary_string := newline_pos + 1;
-    var end_binary_string := find_second_newline_or_end(stdin_input, start_binary_string);
-    
-    // Extract the binary string part
-    var binary_s := stdin_input[start_binary_string .. end_binary_string];
+  var first_newline_pos := FindNthNewline(stdin_input, 0);
+  var binary_start := first_newline_pos + 1;
+  var binary_end := FindNthNewline(stdin_input[binary_start..], 0);
+  var binary_string_actual_end: int;
 
-    // Calculate the absolute difference of 0s and 1s
-    var diff := abs_diff_count(binary_s);
+  if binary_end == -1 {
+      binary_string_actual_end := |stdin_input|;
+  } else {
+      binary_string_actual_end := binary_start + binary_end;
+  }
 
-    // Convert the integer difference to a string
-    var diff_str := int_to_string(diff);
+  var binary_string := stdin_input[binary_start..binary_string_actual_end];
 
-    // Form the final result
-    result := diff_str + "\n";
+  result := int_to_string(abs_diff_count(binary_string)) + "\n";
 }
 // </vc-code>
-

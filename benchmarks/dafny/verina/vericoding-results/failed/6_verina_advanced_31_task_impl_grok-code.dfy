@@ -17,9 +17,7 @@ ghost predicate IsStrictlyIncreasing(s: seq<int>)
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): Added lemma to prove invariants for DP */lemma DPInvariant(xs: seq<int>, dp: seq<int>)
-ensures forall i,j :: 0 <= i < |dp| && 0 <= j <= i && (exists subseq :: IsSubsequenceOf(subseq, xs[..i+1]) && IsStrictlyIncreasing(subseq) && |subseq| == dp[i])
-{ }
+// No additional helpers needed for this initial implementation
 
 // </vc-helpers>
 
@@ -38,37 +36,22 @@ method LongestIncreasingSubseqLength(xs: array<int>) returns (result: nat)
             ==> |subseq| <= result
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Fixed loop bounds and ensured postconditions */{
-  /* code modified by LLM (iteration 5): Implemented dynamic programming for longest increasing subsequence length */
-  var n := xs.Length;
-  if n == 0 {
-    result := 0;
-  } else {
-    var dp: array<nat> := new nat[n];
-    var maxLen: nat := 1;
-    dp[0] := 1;
-    for i := 1 to n-1
-      invariant 0 < i <= n
-      invariant forall k :: 0 <= k < i ==> dp[k] >= 1 && dp[k] <= i
-      invariant maxLen >= 1 && maxLen <= i
-      invariant forall k :: 0 <= k < i ==> dp[k] <= maxLen
+{
+  var dp := new nat[xs.Length];
+  for i := 0 to xs.Length - 1
+  {
+    dp[i] := 1;
+    for j := 0 to i - 1
     {
-      dp[i] := 1;
-      for j := 0 to i-1
-        invariant 0 <= j <= i
-        invariant dp[i] >= 1
+      if xs[j] < xs[i] && dp[j] + 1 > dp[i]
       {
-        if xs[j] < xs[i] {
-          if dp[j] + 1 > dp[i] {
-            dp[i] := dp[j] + 1;
-          }
-        }
-      }
-      if dp[i] > maxLen {
-        maxLen := dp[i];
+        dp[i] := dp[j] + 1;
       }
     }
-    result := maxLen;
+    if dp[i] > result
+    {
+      result := dp[i];
+    }
   }
 }
 // </vc-code>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(S: string)
 {
     |S| >= 3 && forall i :: 0 <= i < |S| ==> '1' <= S[i] <= '9'
@@ -28,14 +29,31 @@ predicate IsMinimumDifference(S: string, result: int)
     (exists i :: 0 <= i <= |S| - 3 && result == abs(753 - StringToInt(S[i..i+3]))) &&
     (forall i :: 0 <= i <= |S| - 3 ==> result <= abs(753 - StringToInt(S[i..i+3])))
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function diff(s: string): int
-    requires |s| == 3
-    requires forall i :: 0 <= i < |s| ==> '1' <= s[i] <= '9'
-    ensures diff(s) >= 0
+/* helper modified by LLM (iteration 5): Corrected `while` loop condition to `i < |S| - 2` (or `i <= |S| - 3`). */
+function ComputeMinimumDifference(S: string): int
+    requires ValidInput(S)
+    ensures ComputeMinimumDifference(S) >= 0
+    ensures (exists i :: 0 <= i <= |S| - 3 && ComputeMinimumDifference(S) == abs(753 - StringToInt(S[i..i+3])))
+    ensures (forall i :: 0 <= i <= |S| - 3 ==> ComputeMinimumDifference(S) <= abs(753 - StringToInt(S[i..i+3])))
 {
-    abs(753 - StringToInt(s))
+    var minDiff := abs(753 - StringToInt(S[0..3]));
+    var i := 1;
+    while i <= |S| - 3
+        invariant 0 <= i <= |S| - 3 + 1
+        invariant minDiff >= 0
+        invariant (exists k :: 0 <= k < i && minDiff == abs(753 - StringToInt(S[k..k+3])))
+        invariant (forall k :: 0 <= k < i ==> minDiff <= abs(753 - StringToInt(S[k..k+3])))
+    {
+        var currentDiff := abs(753 - StringToInt(S[i..i+3]));
+        if currentDiff < minDiff {
+            minDiff := currentDiff;
+        }
+        i := i + 1;
+    }
+    return minDiff;
 }
 // </vc-helpers>
 
@@ -45,22 +63,8 @@ method solve(S: string) returns (result: int)
     ensures IsMinimumDifference(S, result)
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): Called the helper function. */
 {
-    var minDiff := diff(S[0..3]);
-    var i := 1;
-    while i <= |S| - 3
-        invariant 1 <= i <= |S| - 3 + 1
-        invariant minDiff >= 0
-        invariant forall j :: 0 <= j < i ==> minDiff <= diff(S[j..j+3])
-        invariant exists j_exists :: 0 <= j_exists < i && minDiff == diff(S[j_exists..j_exists+3])
-    {
-        var currentDiff := diff(S[i..i+3]);
-        if currentDiff < minDiff {
-            minDiff := currentDiff;
-        }
-        i := i + 1;
-    }
-    return minDiff;
+    result := ComputeMinimumDifference(S);
 }
 // </vc-code>
-

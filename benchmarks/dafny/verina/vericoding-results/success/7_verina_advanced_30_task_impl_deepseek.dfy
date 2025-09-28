@@ -2,7 +2,28 @@
 // </vc-preamble>
 
 // <vc-helpers>
-function max(a: int, b: int): int { if a > b then a else b }
+/* helper modified by LLM (iteration 3): fix predicate with reads clause and improve lemma */
+predicate IsIncreasingStreak(nums: array<int>, start: nat, len: nat)
+    requires start + len <= nums.Length
+    reads nums
+{
+    if len <= 1 then
+        true
+    else
+        forall i :: start <= i < start + len - 1 ==> nums[i] < nums[i + 1]
+}
+
+function max(a: nat, b: nat): nat {
+    if a > b then a else b
+}
+
+lemma StreakBoundaryLemma(nums: array<int>, currentStreak: nat, currentPos: nat, bestSoFar: nat)
+    requires 0 <= currentPos <= nums.Length
+    requires currentStreak <= nums.Length
+    requires bestSoFar <= nums.Length
+    decreases nums.Length - currentPos
+{
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -12,27 +33,32 @@ method LongestIncreasingStreak(nums: array<int>) returns (result: nat)
         result <= nums.Length
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 3): fix implementation with proper loop invariants and streak tracking */
 {
-  var current_streak_length := if nums.Length > 0 then 1 else 0;
-  result := if nums.Length > 0 then 1 else 0;
-  
-  if nums.Length > 1 {
-    var i := 1;
-    while i < nums.Length
-      invariant 1 <= i <= nums.Length
-      invariant current_streak_length >= 1 && result >= 1
-      invariant result <= i
-      invariant result >= current_streak_length
-      decreases nums.Length - i
-    {
-      if nums[i] > nums[i-1] {
-        current_streak_length := current_streak_length + 1;
-        result := max(result, current_streak_length);
-      } else {
-        current_streak_length := 1;
-      }
-      i := i + 1;
+    if nums.Length == 0 {
+        result := 0;
+        return;
     }
-  }
+    
+    var currentStreak: nat := 1;
+    result := 1;
+    var i: nat := 1;
+    
+    while i < nums.Length
+        invariant i <= nums.Length
+        invariant currentStreak <= nums.Length
+        invariant result <= nums.Length
+        invariant 1 <= currentStreak <= i
+        invariant result >= currentStreak
+        invariant i - currentStreak <= nums.Length
+    {
+        if nums[i - 1] < nums[i] {
+            currentStreak := currentStreak + 1;
+        } else {
+            currentStreak := 1;
+        }
+        result := max(result, currentStreak);
+        i := i + 1;
+    }
 }
 // </vc-code>

@@ -21,39 +21,40 @@ fn tril(m: Vec<Vec<f64>>, k: i32) -> (result: Vec<Vec<f64>>)
             #[trigger] result[i][j] == if i >= j - k { m[i][j] } else { 0.0 },
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): fixed invariant syntax by using parentheses instead of braces */
+/* code modified by LLM (iteration 5): replaced int with isize in condition to fix compilation error */
 {
+    let mut result: Vec<Vec<f64>> = Vec::new();
     let n = m.len();
-    let ncols = m[0].len();
-    let mut result = Vec::with_capacity(n);
-    let mut i = 0;
+    let p = m[0].len();
+
+    let mut i: usize = 0;
     while i < n
-        invariant (
-            0 <= i <= n,
+        invariant
+            0 <= i as int <= n as int,
             result.len() == i,
-            forall|k: int| 0 <= k < i ==> #[trigger] result[k].len() == ncols,
-        )
+            forall|row: int| 0 <= row < i as int ==> #[trigger] result@[row].len() == p,
+            forall|row: int, col: int| 
+                0 <= row < i as int && 0 <= col < p as int ==> 
+                #[trigger] result@[row]@[col] == if row >= col - (k as int) { m@[row]@[col] } else { 0.0 },
+        decreases n - i
     {
-        let mut row = Vec::with_capacity(ncols);
-        for j in 0..ncols
-            invariant (
-                0 <= j <= ncols,
+        let mut row: Vec<f64> = Vec::new();
+        let mut j: usize = 0;
+        while j < p
+            invariant
+                0 <= j as int <= p as int,
                 row.len() == j,
-            )
+                forall|col: int| 0 <= col < j as int ==> 
+                    #[trigger] row@[col] == if (i as int) >= col - (k as int) { m@[(i as int)]@[col] } else { 0.0 },
+            decreases p - j
         {
-            let i_int = i as int;
-            let j_int = j as int;
-            if i_int >= j_int - (k as int) {
-                row.push(m[i][j]);
-            } else {
-                row.push(0.0);
-            }
+            let val = if (i as isize) >= (j as isize) - (k as isize) { m[i][j] } else { 0.0 };
+            row.push(val);
+            j += 1;
         }
-        assert(row.len() == ncols);
         result.push(row);
         i += 1;
     }
-    assert(result.len() == n);
     result
 }
 // </vc-code>

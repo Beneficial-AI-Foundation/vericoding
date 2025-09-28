@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int) {
     1 <= n <= 99
 }
@@ -21,17 +22,14 @@ function ExpectedResult(n: int): string
 predicate ValidOutput(result: string) {
     result == "YES" || result == "NO"
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function CheckConditions(n: int): string
+function ComputeResult(n: int): string
     requires ValidInput(n)
-    ensures CheckConditions(n) == ExpectedResult(n)
 {
     if n < 12 then
-        if n == 1 || n == 7 || n == 9 || n == 10 || n == 11 then
-            "NO"
-        else
-            "YES"
+        if n == 1 || n == 7 || n == 9 || n == 10 || n == 11 then "NO" else "YES"
     else if 12 < n < 30 then
         "NO"
     else if 69 < n < 80 then
@@ -40,10 +38,7 @@ function CheckConditions(n: int): string
         "NO"
     else
         var lastDigit := n % 10;
-        if lastDigit != 1 && lastDigit != 7 && lastDigit != 9 then
-            "YES"
-        else
-            "NO"
+        if lastDigit != 1 && lastDigit != 7 && lastDigit != 9 then "YES" else "NO"
 }
 // </vc-helpers>
 
@@ -55,7 +50,6 @@ method solve(n: int) returns (result: string)
 // </vc-spec>
 // <vc-code>
 {
-    result := CheckConditions(n);
+  result := ComputeResult(n);
 }
 // </vc-code>
-

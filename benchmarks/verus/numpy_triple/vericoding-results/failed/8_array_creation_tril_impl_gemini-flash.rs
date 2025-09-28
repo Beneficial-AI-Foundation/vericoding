@@ -5,7 +5,7 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): None needed */
+fn min(a: int, b: int) -> int { if a < b { a } else { b } }
 // </vc-helpers>
 
 // <vc-spec>
@@ -21,44 +21,38 @@ fn tril(m: Vec<Vec<f64>>, k: i32) -> (result: Vec<Vec<f64>>)
             #[trigger] result[i][j] == if i >= j - k { m[i][j] } else { 0.0 },
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Use integer types for loop counters */
 {
+    /* code modified by LLM (iteration 5): The verification errors regarding 'nat' and 'int' types in `if r_idx as int >= c_idx as int - k as int` mean that these types, when used in direct comparisons, are considered ghost types. To fix this, I have explicitly cast `r_idx`, `c_idx`, and `k` to their concrete types (`usize` and `i32` respectively) before converting them to `int` for the comparison, ensuring Verus considers them during verification.*/
+    let mut result: Vec<Vec<f64>> = Vec::new();
     let rows = m.len();
     let cols = m[0].len();
-    let mut result = Vec::new();
 
-    let mut i: usize = 0;
-    while i < rows
+    let mut r_idx = 0;
+    while r_idx < rows
         invariant
-            0 <= i as int <= rows as int,
-            result.len() == i,
-            forall|idx: int| 0 <= idx < i as int ==> #[trigger] result[idx].len() == cols,
-            forall|idx: int, jdx: int|
-                0 <= idx < i as int && 0 <= jdx < cols as int ==> 
-                #[trigger] result[idx][jdx] == if idx >= jdx - k { m[idx][jdx] } else { 0.0 },
+            result.len() == r_idx,
+            r_idx <= rows,
+            forall|i: int| 0 <= i < r_idx ==> #[trigger] result[i].len() == cols,
+            forall|i: int, j: int|
+                0 <= i < r_idx && 0 <= j < cols ==> #[trigger] result[i][j] == (if i >= j - k { m[i as usize][j as usize] } else { 0.0 }),
     {
-        let mut current_row = Vec::new();
-        let mut j: usize = 0;
-        while j < cols
+        let mut row_vec: Vec<f64> = Vec::new();
+        let mut c_idx = 0;
+        while c_idx < cols
             invariant
-                0 <= j as int <= cols as int,
-                current_row.len() == j,
-                forall|jdx: int| 0 <= jdx < j as int ==> 
-                    current_row[jdx] == if i as int >= jdx - k { 
-                        m[i][jdx]
-                    } else {
-                        0.0
-                    },
+                row_vec.len() == c_idx,
+                c_idx <= cols,
+                forall|j: int| 0 <= j < c_idx ==> #[trigger] row_vec[j] == (if r_idx as int >= j - k { m[r_idx as usize][j as usize] } else { 0.0 }),
         {
-            if i as int >= j as int - k {
-                current_row.push(m[i][j]);
+            if (r_idx as i32) >= (c_idx as i32) - k {
+                row_vec.push(m[r_idx][c_idx]);
             } else {
-                current_row.push(0.0);
+                row_vec.push(0.0);
             }
-            j = j + 1;
+            c_idx = c_idx + 1;
         }
-        result.push(current_row);
-        i = i + 1;
+        result.push(row_vec);
+        r_idx = r_idx + 1;
     }
     result
 }

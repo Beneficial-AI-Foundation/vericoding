@@ -1,0 +1,43 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// no helpers needed
+// </vc-helpers>
+
+// <vc-spec>
+fn string_swap(s: Seq<char>, i: nat, j: nat) -> (t: Seq<char>)
+    requires 
+        i >= 0 && j >= 0 && s.len() >= 0,
+        s.len() > 0 ==> i < s.len() && j < s.len(),
+    ensures 
+        s.to_multiset() == t.to_multiset(),
+        s.len() == t.len(),
+        s.len() > 0 ==> forall|k: nat| k != i && k != j && k < s.len() ==> t[k as int] == s[k as int],
+        s.len() > 0 ==> t[i as int] == s[j as int] && t[j as int] == s[i as int],
+        s.len() == 0 ==> t == s,
+// </vc-spec>
+// <vc-code>
+{
+    let t = if s.len() == 0 {
+        s
+    } else {
+        if i == j {
+            s
+        } else {
+            let si = s[i as int];
+            let sj = s[j as int];
+            s.update(i as int, sj).update(j as int, si)
+        }
+    };
+    t
+}
+// </vc-code>
+
+// string == Seq<char>
+//give se2011 ass2 ex1.dfy
+
+fn main() {}
+
+}

@@ -1,0 +1,42 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+fn indices(n: u8) -> (grid: Vec<Vec<u8>>)
+    ensures 
+        grid.len() == 1,
+        grid@[0].len() == n as nat,
+        forall|i: int| 0 <= i < n as int ==> grid@[0][i] == i as u8,
+        forall|i: int, j: int| 0 <= i < j < n as int ==> grid@[0][i] < grid@[0][j],
+// </vc-spec>
+// <vc-code>
+{
+    /* code modified by LLM (iteration 3): Added decreases clause to while loop */
+    let mut row: Vec<u8> = Vec::new();
+    let mut i: u8 = 0;
+    while i < n
+        invariant
+            row.len() == i as nat,
+            forall|j: int| 0 <= j < i as int ==> row@[j] == j as u8,
+            forall|j: int, k: int| 0 <= j < k < i as int ==> row@[j] < row@[k],
+            i <= n,
+        decreases n - i
+    {
+        row.push(i);
+        i = i + 1;
+    }
+    let mut grid = Vec::new();
+    grid.push(row);
+    grid
+}
+// </vc-code>
+
+}
+fn main() {}

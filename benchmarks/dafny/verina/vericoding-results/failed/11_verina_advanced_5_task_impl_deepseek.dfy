@@ -10,16 +10,16 @@ function ListToNat(l: seq<nat>): nat
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): Remove problematic NatToList and keep only necessary helpers for array operations */
-function Max(a: int, b: int): int { if a > b then a else b }
-
-lemma ListToNatDistributive(l1: seq<nat>, l2: seq<nat>)
-    ensures ListToNat(l1 + l2) == ListToNat(l1) + ListToNat(l2) * (if |l1| == 0 then 1 else 10)
-    decreases |l1|
+function AddDigitsWithCarry(d1: nat, d2: nat, carry: nat): (sum: nat, newCarry: nat)
+    requires d1 < 10 && d2 < 10 && carry < 2
+    ensures sum < 10 && newCarry < 2
+    ensures d1 + d2 + carry == sum + 10 * newCarry
 {
-    if |l1| > 0 {
-        ListToNatDistributive(l1[1..], l2);
-    }
+    var total := d1 + d2 + carry;
+    if total < 10 then
+        (total, 0)
+    else
+        (total - 10, 1)
 }
 // </vc-helpers>
 
@@ -39,38 +39,32 @@ method AddTwoNumbers(l1: array<nat>, l2: array<nat>) returns (result: array<nat>
         (result[result.Length - 1] != 0 || (l1.Length == 1 && l1[0] == 0 && l2.Length == 1 && l2[0] == 0 && result.Length == 1 && result[0] == 0))
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Fix array assignment by converting sequence to array properly */
 {
-    var maxLength := Max(l1.Length, l2.Length);
-    var tempResult := new nat[maxLength + 1];
+    /* code modified by LLM (iteration 5): Fixed syntax errors in invariants and array slicing */
+    var maxLen := if l1.Length > l2.Length then l1.Length else l2.Length;
+    var resultArr := new nat[maxLen + 1];
     var carry := 0;
     var i := 0;
     
-    while i < maxLength
-        invariant 0 <= i <= maxLength
-        invariant carry >= 0 && carry < 10
-        invariant forall j :: 0 <= j < i ==> tempResult[j] < 10
-        decreases maxLength - i
+    while i < maxLen
+        invariant 0 <= i <= maxLen
+        invariant carry < 2
+        invariant forall j :: 0 <= j < i ==> resultArr[j] < 10
+        invariant ListToNat(resultArr[0..i]) + carry * (ListToNat([10]) * i) == ListToNat(l1[0..(if i < l1.Length then i else l1.Length)]) + ListToNat(l2[0..(if i < l2.Length then i else l2.Length)])
     {
-        var digit1 := if i < l1.Length then l1[i] else 0;
-        var digit2 := if i < l2.Length then l2[i] else 0;
-        var sum := digit1 + digit2 + carry;
-        tempResult[i] := sum % 10;
-        carry := sum / 10;
+        var d1 := if i < l1.Length then l1[i] else 0;
+        var d2 := if i < l2.Length then l2[i] else 0;
+        var res := AddDigitsWithCarry(d1, d2, carry);
+        resultArr[i] := res.sum;
+        carry := res.newCarry;
         i := i + 1;
     }
     
-    var resultLength := if carry > 0 then maxLength + 1 else maxLength;
-    result := new nat[resultLength];
-    
-    var j := 0;
-    while j < resultLength
-        invariant 0 <= j <= resultLength
-        invariant forall k :: 0 <= k < j ==> result[k] == tempResult[k]
-        decreases resultLength - j
-    {
-        result[j] := tempResult[j];
-        j := j + 1;
+    if carry > 0 {
+        resultArr[maxLen] := carry;
+        result := resultArr[0..maxLen + 1];
+    } else {
+        result := resultArr[0..maxLen];
     }
 }
 // </vc-code>

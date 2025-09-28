@@ -11,8 +11,7 @@ predicate ChordIntersects(chord1: seq<nat>, chord2: seq<nat>)
 // </vc-preamble>
 
 // <vc-helpers>
-function MinInt(a: int, b: int): int { if a < b then a else b }
-predicate IsValidChord(ch: seq<nat>) { |ch| == 2 }
+
 // </vc-helpers>
 
 // <vc-spec>

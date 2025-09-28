@@ -1,6 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 951 characters
---------------------------------------------------------------------------------
-["spec fn GetBit(s: Seq<char>, i: int) -> nat\n{\n    if 0 <= i && i < s.len() && s[i] == '1' { 1nat } else { 0nat }\n}", "{\n    let x = Str2Int(sx@);\n    let y = Str2Int(sy@);\n    let z = Str2Int(sz@);\n\n    if sy@.len() == 1 && GetBit(sy@, 0) == 0 { // y == 0\n        return int_to_char_vec(1int);\n    } else if sy@.len() == 1 && GetBit(sy@, 0) == 1 { // y == 1\n        return int_to_char_vec(x as int % z as int);\n    } else {\n        let (half_y_vec, carry) = div_by_2(sy@);\n        let half_y = Str2Int(half_y_vec@);\n\n        let exp_half_y = ModExp_DivMod_ModExpPow2_Mul(sx, half_y_vec.as_slice(), sz);\n        let exp_half_y_int = Str2Int(exp_half_y@);\n\n        if carry == 0 { // y is even\n            return int_to_char_vec((exp_half_y_int * exp_half_y_int) as int % z as int);\n        } else { // y is odd\n            return int_to_char_vec((x * exp_half_y_int * exp_half_y_int) as int % z as int);\n        }\n    }\n}"]
-]
---------------------------------------------------------------------------------

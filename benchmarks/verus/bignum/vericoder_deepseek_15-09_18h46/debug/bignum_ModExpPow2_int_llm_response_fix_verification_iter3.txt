@@ -1,9 +1,0 @@
-=== LLM Response - fix_verification - Iteration 3 ===
-File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_int.rs
-Prompt Hash: 15b3185c
-JSON Parsed Successfully: True
-Timestamp: 1757960118.3511932
-Content Length: 1509 chars
---------------------------------------------------------------------------------
-["/* helper modified by LLM (iteration 4): Fixed lemma_pow2_exp parameter type to use n: nat */\nproof fn lemma_pow2_exp(n: nat)\n    ensures Exp_int(2, n) == (1u64 << n) as nat\n    decreases n\n{\n    if n > 0 {\n        let sub_n: nat = (n - 1) as nat;\n        lemma_pow2_exp(sub_n);\n        assert((1u64 << n) == 2 * (1u64 << (n - 1))) by {\n            assert((1u64 << n) == (1u64 << (n - 1)) << 1);\n        };\n    }\n}\n\nproof fn lemma_mod_mul_property(a: nat, b: nat, m: nat) {\n    assert((a * b) % m == (a % m) * (b % m) % m);\n}\n\nproof fn lemma_exp_int_base2_zero()\n    ensures Exp_int(2, 0) == 1\n{\n}\n\nproof fn lemma_exp_int_base2_recursive(n: nat)\n    requires n > 0\n    ensures Exp_int(2, n) == 2 * Exp_int(2, (n - 1) as nat)\n{\n}", "{\n    /* code modified by LLM (iteration 4): Fixed type casting issues and verification */\n    if n == 0 {\n        proof { lemma_exp_int_base2_zero(); }\n        assert(y == 1);\n        return x % z;\n    }\n    \n    let half_n = (n - 1) as u64;\n    let half_y = y / 2;\n    \n    proof {\n        let n_nat: nat = n as nat;\n        lemma_pow2_exp(n_nat);\n        lemma_pow2_exp((half_n as nat));\n        lemma_exp_int_base2_recursive(n_nat);\n        assert(y == 2 * half_y);\n    }\n    \n    let half_result = ModExpPow2_int(x, half_y, half_n, z);\n    \n    proof {\n        lemma_mod_mul_property(half_result as nat, half_result as nat, z as nat);\n    }\n    \n    let result = (half_result * half_result) % z;\n    \n    result\n}"]
---------------------------------------------------------------------------------

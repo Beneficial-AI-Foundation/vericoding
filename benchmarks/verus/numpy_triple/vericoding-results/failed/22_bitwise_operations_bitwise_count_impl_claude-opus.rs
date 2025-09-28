@@ -32,31 +32,35 @@ fn bitwise_count(x: Vec<i32>) -> (result: Vec<nat>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): use ghost variable for nat conversion */
-    let mut result: Vec<nat> = Vec::new();
-    let mut i = 0;
+    /* code modified by LLM (iteration 5): Use u32 for result vector in executable code */
+    let mut result: Vec<u32> = Vec::new();
+    let mut i: usize = 0;
     while i < x.len()
         invariant
             0 <= i <= x.len(),
             result.len() == i,
-            forall|j: int| 0 <= j < i ==> result[j] == popcount(abs_spec(x[j])),
-            forall|j: int| 0 <= j < i ==> x[j] == 0 ==> result[j] == 0,
-            forall|j: int| 0 <= j < i ==> result[j] >= 0,
+            forall|j: int| 0 <= j < i ==> result@[j] as nat == popcount(abs_spec(x@[j])),
+            forall|j: int| 0 <= j < i ==> x@[j] == 0 ==> result@[j] == 0,
+            forall|j: int| 0 <= j < i ==> result@[j] >= 0,
     {
         let abs_val: u32 = if x[i] >= 0 { x[i] as u32 } else { (-x[i]) as u32 };
         let mut count: u32 = 0;
-        let mut n = abs_val;
+        let mut n: u32 = abs_val;
         while n > 0
             invariant
                 count as nat == popcount(abs_val as nat) - popcount(n as nat),
                 count >= 0,
+                count <= abs_val,
             decreases n
         {
             count = count + (n % 2);
             n = n / 2;
         }
-        let ghost count_nat: nat = count as nat;
-        result.push(count_nat);
+        assert(n == 0);
+        assert(popcount(0) == 0);
+        assert(count as nat == popcount(abs_val as nat));
+        assert(abs_val as nat == abs_spec(x@[i as int]));
+        result.push(count);
         i = i + 1;
     }
     result

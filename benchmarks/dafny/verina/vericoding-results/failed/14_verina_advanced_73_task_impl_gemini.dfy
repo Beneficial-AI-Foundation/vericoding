@@ -2,7 +2,7 @@
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 3): defined function using a body block to fix syntax */
+/* helper modified by LLM (iteration 5): defining SmallestMissing using a 'least' expression */
 function SmallestMissing(l: seq<nat>): nat
 {
   least k: nat | k !in l
@@ -18,7 +18,7 @@ lemma SmallestMissingSpecSatisfied(l: seq<nat>)
     ensures forall candidate: nat :: candidate < SmallestMissing(l) ==> candidate in l
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): empty body, proof follows from the function definition */
 {
-  /* code modified by LLM (iteration 3): replaced invalid method implementation with an empty lemma body, as the proof follows from the function's definition */
 }
 // </vc-code>

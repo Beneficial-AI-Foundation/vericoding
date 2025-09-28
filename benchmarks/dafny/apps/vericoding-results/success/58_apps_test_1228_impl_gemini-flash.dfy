@@ -1,3 +1,4 @@
+// <vc-preamble>
 function GetCategory(hp: int): char
 {
     var remainder := hp % 4;
@@ -25,9 +26,16 @@ predicate OptimalChoice(n: int, a: int, b: char)
     ((n % 4 == 3) ==> (a == 2 && b == 'A')) &&
     ((n % 4 == 0) ==> (a == 1 && b == 'A'))
 }
+// </vc-preamble>
 
 // <vc-helpers>
-
+function GetOptimalA(n: int): int
+{
+    if n % 4 == 1 then 0
+    else if n % 4 == 2 then 1
+    else if n % 4 == 3 then 2
+    else 1
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -39,20 +47,7 @@ method solve(n: int) returns (a: int, b: char)
 // </vc-spec>
 // <vc-code>
 {
-    var remainder_n := n % 4;
-    if remainder_n == 1 {
-        a := 0;
-        b := 'A';
-    } else if remainder_n == 2 {
-        a := 1;
-        b := 'B';
-    } else if remainder_n == 3 {
-        a := 2;
-        b := 'A';
-    } else { // remainder_n == 0
-        a := 1;
-        b := 'A';
-    }
+    a := GetOptimalA(n);
+    b := GetCategory(n + a);
 }
 // </vc-code>
-

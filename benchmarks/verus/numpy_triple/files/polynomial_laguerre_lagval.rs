@@ -10,11 +10,10 @@ verus! {
 // <vc-spec>
 fn lagval(x: Vec<f64>, c: Vec<f64>) -> (result: Vec<f64>)
     requires 
-        c.len() > 0,
-        x.len() > 0,
+        c@.len() > 0,
+        x@.len() > 0,
     ensures
-        result.len() == x.len(),
-        true, // Polynomial evaluation results exist (trivially true)
+        result@.len() == x@.len(),
 // </vc-spec>
 // <vc-code>
 {

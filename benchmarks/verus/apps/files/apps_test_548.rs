@@ -15,10 +15,10 @@ spec fn has_odd(a: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: Seq<int>) -> (result: &'static str)
+fn solve(a: Vec<i8>) -> (result: &'static str)
     ensures 
-        (result == "Second") <==> all_even(a),
-        (result == "First") <==> has_odd(a),
+        (result == "Second") <==> all_even(a@.map(|i: int, x: i8| x as int)),
+        (result == "First") <==> has_odd(a@.map(|i: int, x: i8| x as int)),
         result == "First" || result == "Second",
 // </vc-spec>
 // <vc-code>

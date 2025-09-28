@@ -16,37 +16,34 @@ fn longest_increasing_streak(nums: &Vec<i32>) -> (result: usize)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 4): added missing invariant clause for max_streak <= nums.len() to ensure postcondition */
+/* code modified by LLM (iteration 5): Fixed types to usize for executable variables */
     if nums.len() == 0 {
-        return 0;
-    }
-    let mut max_streak: usize = 1;
-    let mut curr_streak: usize = 1;
-    let mut prev: i32 = nums[0];
-    let mut i: usize = 1;
-    while i < nums.len()
-        invariant
-            0 < i <= nums.len(),
-            1 <= curr_streak,
-            curr_streak <= i,
-            max_streak >= curr_streak,
-            max_streak >= 1,
-            max_streak <= nums.len(),
-        decreases nums.len() - i
-    {
-        if nums[i] > prev {
-            curr_streak = curr_streak + 1;
-            if curr_streak > max_streak {
-                max_streak = curr_streak;
+        0
+    } else {
+        let mut current_streak: usize = 1;
+        let mut max_streak: usize = 1;
+        let mut i = 1;
+        while i < nums.len()
+            invariant
+                1 <= i <= nums.len(),
+                current_streak >= 1,
+                max_streak >= 1,
+                max_streak <= nums.len(),
+                current_streak <= i,
+            decreases nums.len() - i
+        {
+            if nums[i] > nums[i-1] {
+                current_streak += 1;
+                if current_streak > max_streak {
+                    max_streak = current_streak;
+                }
+            } else {
+                current_streak = 1;
             }
-        } else {
-            curr_streak = 1;
+            i += 1;
         }
-        prev = nums[i];
-        i = i + 1;
+        max_streak
     }
-    assert(max_streak <= nums.len());
-    max_streak
 }
 // </vc-code>
 

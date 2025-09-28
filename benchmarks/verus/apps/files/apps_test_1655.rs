@@ -28,9 +28,9 @@ spec fn count_survivors_from(n: int, a: Seq<int>, start: int, left: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, a: Seq<int>) -> (result: int)
-    requires valid_input(n, a)
-    ensures result >= 0 && result <= n && result == count_survivors(n, a)
+fn solve(n: i8, a: Vec<i8>) -> (result: i8)
+    requires valid_input(n as int, a@.map_values(|x: i8| x as int))
+    ensures result >= 0 && result <= n && result as int == count_survivors(n as int, a@.map_values(|x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

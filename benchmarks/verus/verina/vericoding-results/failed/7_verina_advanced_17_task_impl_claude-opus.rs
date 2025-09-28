@@ -5,46 +5,41 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-spec fn sorted(v: &Vec<i32>) -> bool {
-    forall|i: int, j: int| 0 <= i < j < v.len() ==> v[i] <= v[j]
+/* helper modified by LLM (iteration 5): fixed insert_sorted invariants and logic */
+spec fn sorted(s: Seq<i32>) -> bool {
+    forall|i: int, j: int| 0 <= i < j < s.len() ==> s[i] <= s[j]
 }
 
-/* helper modified by LLM (iteration 5): fixed postconditions and invariants for insert_sorted */
-fn insert_sorted(sorted_vec: &mut Vec<i32>, elem: i32)
+fn insert_sorted(v: &mut Vec<i32>, pos: usize)
     requires
-        old(sorted_vec).len() < usize::MAX,
-        sorted(old(sorted_vec)),
+        0 < pos <= old(v).len(),
+        sorted(old(v)@.subrange(0, pos as int)),
     ensures
-        sorted(sorted_vec),
-        sorted_vec@.to_multiset() == old(sorted_vec)@.to_multiset().insert(elem),
-        sorted_vec@.len() == old(sorted_vec)@.len() + 1,
+        sorted(v@.subrange(0, (pos + 1) as int)),
+        v@.to_multiset() == old(v)@.to_multiset(),
+        v.len() == old(v).len(),
 {
-    let mut i: usize = 0;
-    while i < sorted_vec.len()
+    let mut i = pos;
+    while i > 0 && v[i - 1] > v[i]
         invariant
-            i <= sorted_vec.len(),
-            sorted_vec@.len() == old(sorted_vec)@.len(),
-            forall|j: int| 0 <= j < i ==> sorted_vec[j] <= elem,
-            forall|j: int| i <= j < sorted_vec.len() ==> sorted_vec[j] == old(sorted_vec)[j],
-            forall|j: int, k: int| 0 <= j < k < i ==> sorted_vec[j] <= sorted_vec[k],
-            forall|j: int, k: int| i <= j < k < sorted_vec.len() ==> sorted_vec[j] <= sorted_vec[k],
-            sorted_vec@.to_multiset() == old(sorted_vec)@.to_multiset(),
-        decreases sorted_vec.len() - i
+            0 <= i <= pos,
+            pos <= v.len(),
+            v.len() == old(v).len(),
+            v@.to_multiset() == old(v)@.to_multiset(),
+            sorted(v@.subrange(0, i as int)),
+            sorted(v@.subrange(i as int, (pos + 1) as int)),
+            forall|j: int, k: int| 0 <= j < i && i < k <= pos ==> v@[j] <= v@[k],
+        decreases i
     {
-        if sorted_vec[i] > elem {
-            break;
+        proof {
+            assert(v@.to_multiset() =~= v@.to_multiset());
         }
-        i = i + 1;
-    }
-    sorted_vec.insert(i, elem);
-    proof {
-        assert(sorted_vec@.len() == old(sorted_vec)@.len() + 1);
-        assert(sorted_vec[i as int] == elem);
-        assert forall|j: int| 0 <= j < i ==> sorted_vec[j] <= elem by {
-            assert(sorted_vec[j] == old(sorted_vec)[j]);
-        }
-        assert forall|j: int| i < j < sorted_vec.len() ==> elem <= sorted_vec[j] by {
-            assert(sorted_vec[j] == old(sorted_vec)[j - 1]);
+        let temp = v[i];
+        v.set(i, v[i - 1]);
+        v.set(i - 1, temp);
+        i = i - 1;
+        proof {
+            assert(v@.to_multiset() == old(v)@.to_multiset());
         }
     }
 }
@@ -59,42 +54,34 @@ fn insertion_sort(l: Vec<i32>) -> (result: Vec<i32>)
         result@.to_multiset() == l@.to_multiset(),
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): fixed loop initialization and invariants */
 {
-    /* code modified by LLM (iteration 5): removed multiset! macro usage */
-    let mut result = Vec::new();
-    let mut idx: usize = 0;
+    let mut result = l;
     
-    proof {
-        assert(result@.to_multiset() == Multiset::<i32>::empty());
-        assert(l@.subrange(0, 0).to_multiset() == Multiset::<i32>::empty());
+    if result.len() == 0 {
+        return result;
     }
     
-    while idx < l.len()
-        invariant
-            idx <= l.len(),
-            sorted(&result),
-            result@.len() == idx,
-            result@.len() <= usize::MAX,
-            forall|i: int| 0 <= i < idx ==> exists|j: int| 0 <= j < result.len() && result[j] == l[i],
-            result@.to_multiset() == l@.subrange(0, idx as int).to_multiset(),
-        decreases l.len() - idx
-    {
-        let elem = l[idx];
-        insert_sorted(&mut result, elem);
-        idx = idx + 1;
-        
-        proof {
-            assert(result@.to_multiset() == old(result)@.to_multiset().insert(elem));
-            assert(l@.subrange(0, idx as int).to_multiset() == l@.subrange(0, (idx - 1) as int).to_multiset().insert(l[(idx - 1) as int]));
+    let mut i: usize = 1;
+    
+    proof {
+        assert(sorted(result@.subrange(0, 1))) by {
+            assert forall|j: int, k: int| 0 <= j < k < 1 implies result@[j] <= result@[k] by {
+                assert(false);
+            }
         }
     }
     
-    proof {
-        assert(idx == l.len());
-        assert(l@.subrange(0, l.len() as int) =~= l@);
-        assert(result@.to_multiset() == l@.to_multiset());
+    while i < result.len()
+        invariant
+            1 <= i <= result.len(),
+            sorted(result@.subrange(0, i as int)),
+            result@.to_multiset() == l@.to_multiset(),
+        decreases result.len() - i
+    {
+        insert_sorted(&mut result, i);
+        i = i + 1;
     }
-    
     result
 }
 // </vc-code>

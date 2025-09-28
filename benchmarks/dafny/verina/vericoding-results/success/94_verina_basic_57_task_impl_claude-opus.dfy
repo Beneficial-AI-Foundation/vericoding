@@ -16,17 +16,17 @@ function CountLessThanSpec(numbers: seq<int>, threshold: int): nat
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 2): Added lemma to prove loop invariant maintenance */
-lemma CountLessThanSpecAppend(s: seq<int>, threshold: int, x: int)
-  ensures CountLessThanSpec(s + [x], threshold) == CountLessThanSpec(s, threshold) + (if x < threshold then 1 else 0)
+lemma CountLessThanSpecAppend(s1: seq<int>, s2: seq<int>, threshold: int)
+    ensures CountLessThanSpec(s1 + s2, threshold) == CountLessThanSpec(s1, threshold) + CountLessThanSpec(s2, threshold)
 {
-  if |s| == 0 {
-    assert s + [x] == [x];
-  } else {
-    assert (s + [x])[0] == s[0];
-    assert (s + [x])[1..] == s[1..] + [x];
-    CountLessThanSpecAppend(s[1..], threshold, x);
-  }
+    if |s1| == 0 {
+        assert s1 + s2 == s2;
+    } else {
+        var first := s1[0];
+        var rest := s1[1..];
+        assert s1 + s2 == [first] + (rest + s2);
+        CountLessThanSpecAppend(rest, s2, threshold);
+    }
 }
 // </vc-helpers>
 
@@ -35,21 +35,24 @@ method CountLessThan(numbers: array<int>, threshold: int) returns (result: nat)
     ensures result == CountLessThanSpec(numbers[..], threshold)
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 2): Fixed loop invariant by using lemma to prove maintenance */
 {
-  result := 0;
-  var i := 0;
-  while i < numbers.Length
-    invariant 0 <= i <= numbers.Length
-    invariant result == CountLessThanSpec(numbers[..i], threshold)
-  {
-    assert numbers[..i+1] == numbers[..i] + [numbers[i]];
-    CountLessThanSpecAppend(numbers[..i], threshold, numbers[i]);
-    if numbers[i] < threshold {
-      result := result + 1;
+    result := 0;
+    var i := 0;
+    
+    while i < numbers.Length
+        invariant 0 <= i <= numbers.Length
+        invariant result == CountLessThanSpec(numbers[..i], threshold)
+    {
+        if numbers[i] < threshold {
+            result := result + 1;
+        }
+        
+        assert numbers[..i+1] == numbers[..i] + [numbers[i]];
+        CountLessThanSpecAppend(numbers[..i], [numbers[i]], threshold);
+        
+        i := i + 1;
     }
-    i := i + 1;
-  }
-  assert numbers[..i] == numbers[..numbers.Length] == numbers[..];
+    
+    assert numbers[..] == numbers[..numbers.Length];
 }
 // </vc-code>

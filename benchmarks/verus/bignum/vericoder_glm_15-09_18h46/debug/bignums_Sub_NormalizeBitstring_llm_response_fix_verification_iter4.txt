@@ -1,9 +1,0 @@
-=== LLM Response - fix_verification - Iteration 4 ===
-File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignums_Sub_NormalizeBitstring.rs
-Prompt Hash: d33e98a6
-JSON Parsed Successfully: False
-Timestamp: 1757955609.989911
-Content Length: 1267 chars
---------------------------------------------------------------------------------
-["/* helper modified by LLM (iteration 5): fixed bounds checking and indexing */\nexec fn normalize_bitstring_helper(s: &[char]) -> (res: Vec<char>)\n    requires\n        ValidBitString(s@),\n    ensures\n        ValidBitString(res@),\n{\n    let mut index = 0;\n    let len = s.len();\n    while index < len\n        invariant\n            0 <= index <= len,\n            forall |i: int| 0 <= i < index ==> 0 <= i < s@.len() && s@[i] == '0',\n        decreases\n            len - index\n    {\n        assert(index < s.len());\n        if s[index] == '1' {\n            break;\n        }\n        index += 1;\n    }\n\n    if index < len {\n        let mut result = Vec::new();\n        let mut i = index;\n        while i < len\n            invariant\n                index <= i <= len,\                forall |j: int| 0 <= j < result@.len() as int ==> \                    index + j < s@.len() && result@[j] == s@[index + j],\n            decreases\n                len - i\n        {\n            assert(i < s.len());\n            result.push(s[i]);\n            i += 1;\n        }\n        result\n    } else {\n        vec!['0']\n    }\n}", "{\n    /* code modified by LLM (iteration 5): calling fixed helper function */\n    normalize_bitstring_helper(s)\n}"]
---------------------------------------------------------------------------------

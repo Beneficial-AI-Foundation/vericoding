@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
   |input| > 0 &&
@@ -60,50 +61,66 @@ function ModPow(base: int, exp: int, mod: int): int
   else
     (base * ModPow(base, exp - 1, mod)) % mod
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function GCD(a: int, b: int): int
-  requires a >= 0 && b >= 0
-  ensures GCD(a, b) >= 0
-  ensures (a == 0 && b == 0) ==> GCD(a,b) == 0
-  ensures (a > 0 || b > 0) ==> GCD(a,b) > 0
-  decreases b, a // b first, then a to match standard Euclidean algorithm
+function IsPrime(n: int): bool
+  requires n >= 0
 {
-  if b == 0 then a
-  else GCD(b, a % b)
-}
-
-function LCM(a: int, b: int): int
-  requires a >= 0 && b >= 0
-  ensures LCM(a,b) >= 0
-  ensures (a == 0 || b == 0) ==> LCM(a,b) == 0
-  ensures (a > 0 && b > 0) ==> LCM(a,b) == (a / GCD(a,b)) * b
-{
-  if a == 0 || b == 0 then 0
-  else (a / GCD(a, b)) * b
+  /* helper modified by LLM (iteration 5): Corrected `return false` to be outside the loop body.*/
+  if n < 2 then false
+  else if n == 2 then true
+  else if n % 2 == 0 then false
+  else
+  {
+    var i := 3;
+    while i * i <= n
+      invariant 3 <= i <= n + 1
+      invariant i % 2 == 1
+      invariant forall k :: 3 <= k < i && k % 2 == 1 ==> n % k != 0
+    {
+      if n % i == 0 then return false;
+      i := i + 2;
+    }
+    return true;
+  }
 }
 // </vc-helpers>
 
 // <vc-spec>
-
 // </vc-spec>
 // <vc-code>
 {
-  var (w, h) := ParseTwoInts(input);
+  /* code modified by LLM (iteration 5): Fixed the parsing error by removing 'invariant forall k :: 1 <= k < i && n % k == 0 ==> (k * k == n ==> countDivisors % 2 == 1) && (k * k != n ==> countDivisors % 2 == 0)'.*/
+  var w, h := ParseTwoInts(dimensions);
   if !ValidDimensions(w, h) then
-    return new string[](["invalid dimension"]);
-  var area := w * h;
-  var gcd_wh := GCD(w, h);
-  var lcm_wh := LCM(w, h);
-  var modpow_wh_7 := ModPow(w, h, 7);
-  var results: array<string> := new string[5]; // Corrected array allocation syntax
-  results[0] := IntToString(area);
-  results[1] := IntToString(gcd_wh);
-  results[2] := IntToString(lcm_wh);
-  results[3] := IntToString(modpow_wh_7);
-  results[4] := input; // Echo the input as per problem description
+    return "Invalid dimensions";
 
-  return results;
+  var n := w * h;
+  if n == 0 then
+    return "0";
+  
+  if IsPrime(n) then
+    return "1";
+
+  var countDivisors := 0;
+  var i := 1;
+  while i * i <= n
+    invariant 0 <= countDivisors
+    invariant 1 <= i <= n + 1
+  {
+    if n % i == 0 then
+      if i * i == n then
+        countDivisors := countDivisors + 1;
+      else
+        countDivisors := countDivisors + 2;
+    }
+    i := i + 1;
+  }
+
+  if countDivisors % 2 == 1 then
+    return "1";
+  else
+    return "0";
 }
 // </vc-code>
-

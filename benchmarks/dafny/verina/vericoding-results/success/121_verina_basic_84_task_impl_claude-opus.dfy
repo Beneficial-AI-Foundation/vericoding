@@ -4,7 +4,7 @@ function ReplaceLoopSpec(oldArr: seq<int>, k: int, i: nat, acc: seq<int>): seq<i
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 2): Fixed duplicate function definition */
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -15,8 +15,8 @@ method Replace(arr: seq<int>, k: int) returns (result: seq<int>)
         (forall i :: 0 <= i < |arr| ==> (arr[i] <= k ==> result[i] == arr[i]))
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 2): Simplified implementation without helper function */
 {
+  /* code modified by LLM (iteration 2): implementing loop-based replacement */
   var i := 0;
   result := [];
   while i < |arr|

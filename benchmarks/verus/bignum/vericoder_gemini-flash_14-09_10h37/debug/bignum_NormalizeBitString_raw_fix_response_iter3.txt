@@ -1,5 +1,0 @@
-=== Raw LLM Fix Response - Iteration 3 ===
-Length: 752 characters
---------------------------------------------------------------------------------
-["/* helper modified by LLM (iteration 4): Removed incorrect syntax in ensures clause. */\nproof fn lemma_validate_not_empty(s: Seq<char>) ensures (Str2Int(s) > 0) == (s.len() > 0) {}", "{\n    let mut i: usize = 0;\n    while i < s.len()\n        invariant 0 <= i && i <= s.len()\n        decreases s.len() - i\n    {\n        if s[i] == '1' {\n            break;\n        }\n        i = i + 1;\n    }\n\n    let mut t_vec: Vec<char> = Vec::new();\n\n    if i == s.len() {\n        t_vec.push('0');\n    } else {\n        let mut j: usize = i;\n        while j < s.len()\n            invariant i <= j && j <= s.len()\n            decreases s.len() - j\n        {\n            t_vec.push(s[j]);\n            j = j + 1;\n        }\n    }\n    t_vec\n}"]
---------------------------------------------------------------------------------

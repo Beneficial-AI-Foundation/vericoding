@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(K: int) {
     2 <= K <= 100
 }
@@ -25,9 +26,14 @@ predicate CorrectResult(K: int, result: int)
 {
     result == ExpectedResult(K)
 }
+// </vc-preamble>
 
 // <vc-helpers>
-
+function ComputeResult(K: int): int
+    requires ValidInput(K)
+{
+    CountOddNumbers(K) * CountEvenNumbers(K)
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -38,7 +44,6 @@ method CountEvenOddPairs(K: int) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    result := (K / 2) * ((K + 1) / 2);
+  result := ComputeResult(K);
 }
 // </vc-code>
-

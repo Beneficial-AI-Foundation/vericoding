@@ -1,5 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 583 characters
---------------------------------------------------------------------------------
-["fn bit_char(b: bool) -> char { if b { '1' } else { '0' } }\n\nspec fn is_bit(c: char) -> bool { c == '0' || c == '1' }\n\nproof fn add_zero_identity(x: int)\n    ensures\n        x + 0 == x,\n{\n}\n","{\n    let mut q: Vec<char> = Vec::new();\n    let mut r: Vec<char> = Vec::new();\n    let mut i: usize = 0;\n    while i < dividend.len()\n        invariant\n            i <= dividend.len(),\n            ValidBitString(dividend@),\n            ValidBitString(r@),\n        decreases dividend.len() - i\n    {\n        r.push(dividend[i]);\n        i += 1;\n    }\n    (q, r)\n}"]
---------------------------------------------------------------------------------

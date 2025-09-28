@@ -1,9 +1,0 @@
-=== LLM Response - generate_code - Iteration 0 ===
-File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_Mul_Zeroes.rs
-Prompt Hash: 49726c69
-JSON Parsed Successfully: True
-Timestamp: 1757957334.968061
-Content Length: 1464 chars
---------------------------------------------------------------------------------
-["spec fn carry_value(a: char, b: char, carry: u8) -> (u8, char) {\n    let sum = (if a == '1' { 1u8 } else { 0u8 }) + (if b == '1' { 1u8 } else { 0u8 }) + carry;\n    (sum / 2, if sum % 2 == 1 { '1' } else { '0' })\n}\n\nfn add_binary_strings(a: &[char], b: &[char]) -> Vec<char>\n    requires\n        ValidBitString(a@),\n        ValidBitString(b@),\n    ensures\n        ValidBitString(result@),\n{\n    let mut result = Vec::<char>::new();\n    let mut carry = 0u8;\n    let mut i = 0;\n    let max_len = if a.len() > b.len() { a.len() } else { b.len() };\n    \n    while i < max_len\n        invariant\n            carry <= 1,\n            i <= max_len,\n            ValidBitString(result@),\n    {\n        let a_bit = if i < a.len() { a[a.len() - 1 - i] } else { '0' };\n        let b_bit = if i < b.len() { b[b.len() - 1 - i] } else { '0' };\n        \n        let (new_carry, sum_bit) = carry_value(a_bit, b_bit, carry);\n        result.push(sum_bit);\n        carry = new_carry;\n        i = i + 1;\n    }\n    \n    if carry == 1 {\n        result.push('1');\n    }\n    \n    // Reverse the result\n    let mut reversed = Vec::<char>::new();\n    let mut j = result.len();\n    while j > 0\n        invariant\n            j <= result.len(),\n            ValidBitString(reversed@),\n            ValidBitString(result@),\n    {\n        j = j - 1;\n        reversed.push(result[j]);\n    }\n    \n    reversed\n}", "{\n    add_binary_strings(a, b)\n}"]
---------------------------------------------------------------------------------

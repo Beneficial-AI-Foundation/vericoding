@@ -1,0 +1,46 @@
+predicate ValidInput(A: int, B: int)
+{
+    1 <= A <= 100 && 1 <= B <= 100
+}
+
+predicate DistributionPossible(A: int, B: int)
+{
+    A % 3 == 0 || B % 3 == 0 || (A + B) % 3 == 0
+}
+
+// <vc-helpers>
+lemma Mod3Lemma(a: int, b: int)
+  requires 1 <= a <= 100 && 1 <= b <= 100
+  ensures (a % 3 == 0 || b % 3 == 0 || (a + b) % 3 == 0) == 
+          ((a % 3 == 0) || (b % 3 == 0) || ((a % 3 + b % 3) % 3 == 0))
+{
+  // The equality holds because (a + b) % 3 == (a % 3 + b % 3) % 3
+}
+
+lemma Mod3Cases(a: int, b: int)
+  requires 1 <= a <= 100 && 1 <= b <= 100
+  ensures (a % 3 == 0 || b % 3 == 0 || (a + b) % 3 == 0) == 
+          ((a % 3 == 0) || (b % 3 == 0) || ((a % 3 + b % 3) % 3 == 0))
+{
+  Mod3Lemma(a, b);
+}
+// </vc-helpers>
+
+// <vc-spec>
+method solve(A: int, B: int) returns (result: string)
+    requires ValidInput(A, B)
+    ensures result == "Possible" <==> DistributionPossible(A, B)
+    ensures result == "Possible" || result == "Impossible"
+// </vc-spec>
+// <vc-code>
+{
+  if A % 3 == 0 || B % 3 == 0 || (A + B) % 3 == 0 {
+    result := "Possible";
+  } else {
+    result := "Impossible";
+  }
+  Mod3Cases(A, B);
+  assert result == "Possible" <==> (A % 3 == 0 || B % 3 == 0 || (A + B) % 3 == 0);
+}
+// </vc-code>
+

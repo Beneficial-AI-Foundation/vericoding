@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(x: int, y: int)
 {
     x != 0 && y != 0
@@ -12,6 +13,7 @@ predicate ValidOutput(result: seq<int>, x: int, y: int)
     (x * y <= 0 && x < 0 ==> result == [x - y, 0, 0, y - x]) &&
     (x * y <= 0 && x >= 0 ==> result == [0, y - x, x - y, 0])
 }
+// </vc-preamble>
 
 // <vc-helpers>
 
@@ -24,19 +26,15 @@ method solve(x: int, y: int) returns (result: seq<int>)
 // </vc-spec>
 // <vc-code>
 {
-    if x * y > 0 {
-        if x < 0 {
-            result := [x + y, 0, 0, x + y];
-        } else {
-            result := [0, x + y, x + y, 0];
-        }
-    } else {
-        if x < 0 {
-            result := [x - y, 0, 0, y - x];
-        } else {
-            result := [0, y - x, x - y, 0];
-        }
-    }
+  if x * y > 0 && x < 0 {
+    result := [x + y, 0, 0, x + y];
+  } else if x * y > 0 && x >= 0 {
+    result := [0, x + y, x + y, 0];
+  } else if x * y <= 0 && x < 0 {
+    result := [x - y, 0, 0, y - x];
+  } else {
+    assert x * y <= 0 && x >= 0;
+    result := [0, y - x, x - y, 0];
+  }
 }
 // </vc-code>
-

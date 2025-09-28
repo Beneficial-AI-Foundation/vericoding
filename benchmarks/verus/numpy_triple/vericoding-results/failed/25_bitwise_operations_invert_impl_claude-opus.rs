@@ -19,28 +19,43 @@ fn invert(x: Vec<i32>) -> (result: Vec<i32>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): Added bounds checks to prevent overflow */
+    /* code modified by LLM (iteration 5): Fixed logic error in proof for negative values */
     let mut result: Vec<i32> = Vec::new();
-    let mut i: usize = 0;
+    let mut i = 0;
     while i < x.len()
         invariant
             0 <= i <= x.len(),
             result.len() == i,
             forall|j: int| 0 <= j < i ==> result[j] == -(x[j] + 1),
-            forall|j: int| 0 <= j < i && x[j] == 0 ==> result[j] == -1,
-            forall|j: int| 0 <= j < i && x[j] == -1 ==> result[j] == 0,
             forall|j: int| 0 <= j < i && x[j] != -1 ==> (x[j] > 0 <==> result[j] < 0),
         decreases x.len() - i
     {
-        let curr_val = x[i];
-        let val = if curr_val == i32::MAX {
+        let val = x[i];
+        let inverted = if val == i32::MAX {
             i32::MIN
-        } else if curr_val == i32::MIN {
-            i32::MAX
         } else {
-            -(curr_val + 1)
+            -(val + 1)
         };
-        result.push(val);
+        
+        proof {
+            assert(inverted == -(val + 1));
+            if val != -1 {
+                if val > 0 {
+                    assert(val >= 1);
+                    assert(val + 1 >= 2);
+                    assert(-(val + 1) <= -2);
+                    assert(inverted < 0);
+                } else {
+                    assert(val < 0);
+                    assert(val < -1);
+                    assert(val + 1 <= -1);
+                    assert(-(val + 1) >= 1);
+                    assert(inverted > 0);
+                }
+            }
+        }
+        
+        result.push(inverted);
         i += 1;
     }
     result

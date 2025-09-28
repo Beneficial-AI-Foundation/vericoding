@@ -2,14 +2,7 @@
 // </vc-preamble>
 
 // <vc-helpers>
-function Filtered(lst: seq<nat>, limit: int, target: nat): seq<nat>
-requires 0 <= limit <= |lst|
-decreases limit
-{
-  if limit == 0 then []
-  else if lst[limit-1] != target then Filtered(lst, limit-1, target) + [lst[limit-1]]
-  else Filtered(lst, limit-1, target)
-}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -26,7 +19,16 @@ method RemoveElement(lst: seq<nat>, target: nat) returns (result: seq<nat>)
 // </vc-spec>
 // <vc-code>
 {
-  /* code modified by LLM (iteration 5): used helper function for recursive filtering to fix syntax and ensure order preservation */
-  result := Filtered(lst, |lst|, target);
+  /* code modified by LLM (iteration 5): recursive implementation to remove target elements while preserving relative order */
+  if |lst| == 0 {
+    result := [];
+  } else {
+    var rest := RemoveElement(lst[1..], target);
+    if lst[0] == target {
+      result := rest;
+    } else {
+      result := [lst[0]] + rest;
+    }
+  }
 }
 // </vc-code>

@@ -30,7 +30,7 @@ method AllVowels(s: string) returns (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-    var normalized := NormalizeStr(s);
-    result := 'a' in normalized && 'e' in normalized && 'i' in normalized && 'o' in normalized && 'u' in normalized;
+  var normalized := NormalizeStr(s);
+  result := 'a' in normalized && 'e' in normalized && 'i' in normalized && 'o' in normalized && 'u' in normalized;
 }
 // </vc-code>

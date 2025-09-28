@@ -1,5 +1,0 @@
-=== Raw LLM Fix Response - Iteration 3 ===
-Length: 898 characters
---------------------------------------------------------------------------------
-["/* helper modified by LLM (iteration 4): Removed the now unused `ModExp_DivMod_power_base` helper. */", "/* code modified by LLM (iteration 4): Changed `temp = (temp / 2) as nat;` to `temp = temp / 2;` to avoid `as nat` cast issues. The `temp` variable is already typed as `nat`, so the cast is redundant and causes errors when `temp / 2` is implicitly `int`. */\n{\n    let x_int = Str2Int(sx@);\n    let y_int = Str2Int(sy@);\n    let z_int = Str2Int(sz@);\n\n    let result_int = Exp_int(x_int, y_int) % z_int;\n\n    let mut result_vec = Vec::new();\n    let mut temp: nat = result_int;\n\n    if temp == 0 {\n        result_vec.push('0');\n        return result_vec;\n    }\n\n    while temp > 0 {\n        if temp % 2 == 1nat {\n            result_vec.insert(0, '1');\n        } else {\n            result_vec.insert(0, '0');\n        }\n        temp = temp / 2;\n    }\n    result_vec\n}"]
---------------------------------------------------------------------------------

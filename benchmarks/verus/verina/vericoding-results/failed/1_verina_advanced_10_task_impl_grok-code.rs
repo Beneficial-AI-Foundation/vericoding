@@ -21,19 +21,7 @@ spec fn spec_fold(pairs: Seq<(nat, nat)>, acc: int) -> int
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 3): added recursive spec fn to compute exponent for verification */
-spec fn compute_exponent(p: nat, n: nat) -> nat
-    requires
-        p > 1,
-        n >= 1,
-    decreases n
-{
-    if n % p != 0 {
-        0
-    } else {
-        1 + compute_exponent(p, n / p)
-    }
-}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -47,22 +35,31 @@ fn find_exponents(n: nat, primes: Vec<nat>) -> (result: Vec<(nat, nat)>)
             exists|j: int| 0 <= j < result.len() && result[j].0 == p,
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): fixed compilation error by using executable loop variable and correcting Vec indexing */
 {
+    /* code modified by LLM (iteration 5): Fixed type mismatch by declaring remaining as int and adjusting the invariant for spec_fold call */
     let tracked mut result: Vec<(nat, nat)> = Vec::new();
-    let mut i: usize = 0;
+    let tracked mut remaining: int = n as int;
+    let tracked mut i: int = 0;
     while i < primes.len()
         invariant
-            i as int >= 0,
-            i as int <= primes.len(),
-            result@.len() == i as int,
-            // Additional invariants for verification will be added in future iterations
+            0 <= i <= primes.len(),
+            n as int == spec_fold(result@, remaining),
         decreases primes.len() - i
     {
-        let p = *primes[i];
-        let e = compute_exponent(p, n);
+        let tracked p: nat = primes[i];
+        let tracked mut e: nat = 0;
+        let tracked old_remaining = remaining;
+        while remaining % (p as int) == 0 && remaining > 0
+            invariant
+                0 <= e,
+                old_remaining == remaining * pow(p as int, e as nat),
+            decreases remaining
+        {
+            e = e + 1nat;
+            remaining = remaining / (p as int);
+        }
         result.push((p, e));
-        i += 1;
+        i = i + 1;
     }
     result
 }

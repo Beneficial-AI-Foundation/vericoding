@@ -5,21 +5,23 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): prove pairwise equality from uniform equality up to n */
-proof fn lemma_all_equal_implies_pairwise<T>(s: Seq<T>, n: int, x: T)
+proof fn lemma_all_equal_pairwise<T>(n: int, s: Seq<T>, val: T)
     requires
         0 <= n <= s.len(),
-        forall|i: int| 0 <= i < n ==> s[i] == x,
+        forall|i: int| 0 <= i < n ==> s[i] == val,
     ensures
-        forall|i: int, j: int| 0 <= i < n && 0 <= j < n ==> s[i] == s[j]
+        forall|i: int, j: int| 0 <= i < n && 0 <= j < n ==> s[i] == s[j],
 {
-    assert forall|i: int, j: int| 0 <= i < n && 0 <= j < n implies s[i] == s[j] by {
-        if 0 <= i < n && 0 <= j < n {
-            assert(s[i] == x);
-            assert(s[j] == x);
+    assert forall|i: int, j: int|
+        0 <= i < n && 0 <= j < n ==> s[i] == s[j] by
+    {
+        if 0 <= i && i < n && 0 <= j && j < n {
+            assert(s[i] == val);
+            assert(s[j] == val);
         }
     }
 }
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -36,25 +38,19 @@ fn full<T>(n: usize, fill_value: T) -> (result: Vec<T>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): fill vector of length n by cloning fill_value and prove uniform and pairwise equality */
     let mut v: Vec<T> = Vec::new();
     let mut i: usize = 0;
     while i < n
         invariant
             v.len() == i,
-            i <= n,
-            forall|k: int| 0 <= k < i ==> v[k] == fill_value,
-        decreases (n as int) - (i as int)
+            forall|j: int| 0 <= j < i ==> v[j] == fill_value,
+        decreases n - i
     {
-        v.push(fill_value.clone());
-        i = i + 1;
+        v.push(fill_value);
+        i += 1;
     }
     proof {
-        lemma_all_equal_implies_pairwise::<T>(v@, n as int, fill_value);
-    }
-    if n > 0usize {
-        assert(v[0] == fill_value);
-        assert(v[(n - 1) as int] == fill_value);
+        lemma_all_equal_pairwise(n as int, v@, fill_value);
     }
     v
 }

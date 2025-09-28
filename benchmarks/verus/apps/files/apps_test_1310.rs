@@ -22,9 +22,9 @@ spec fn is_max_xor_subarray(arr: Seq<u32>, result: u32) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(arr: Seq<u32>) -> (result: u32)
-    requires valid_input(arr)
-    ensures is_max_xor_subarray(arr, result)
+fn solve(arr: Vec<u32>) -> (result: u32)
+    requires valid_input(arr@)
+    ensures is_max_xor_subarray(arr@, result)
 // </vc-spec>
 // <vc-code>
 {

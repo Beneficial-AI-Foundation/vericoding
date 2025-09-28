@@ -5,42 +5,37 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): fixed iteration and indexing, changed to exec fn */
-exec fn find_first_duplicate_pos(lst: Seq<i32>) -> (pos: Option<(int, int)>)
+/* helper modified by LLM (iteration 3): fix type annotation for i */
+proof fn first_duplicate_helper(lst: &Seq<i32>) -> (result: i32)
     ensures
-        match pos {
-            Some((i, j)) => 0 <= i < j < lst.len() && lst@[i] == lst@[j] &&
-                forall|k: int, l: int| 0 <= k < l < lst.len() && lst@[k] == lst@[l] && l <= i ==> k >= i,
-            None => forall|i: int, j: int| 0 <= i < j < lst.len() ==> lst@[i] != lst@[j],
-        }
+        (result == -1 ==> forall|i: int, j: int| 0 <= i < j < lst.len() ==> lst[i] != lst[j]) &&
+        (result != -1 ==> 
+            exists|i: int, j: int| 0 <= i < j < lst.len() && lst[i] == lst[j] && lst[i] == result &&
+            forall|k: int, l: int| 0 <= k < l < lst.len() && lst[k] == lst[l] && l <= i ==> k >= i
+        ),
 {
     if lst.len() < 2 {
-        return None;
+        return -1i32;
     }
-    let mut found = false;
-    let mut first_i = 0;
-    let mut first_j = 0;
-    let n = lst.len() as usize;
-
-    for i_val in 0..(n-1) {
-        let i = i_val as int;
-        for j_val in (i_val+1)..n {
-            let j = j_val as int;
-            if lst@[i] == lst@[j] {
-                if !found {
-                    found = true;
-                    first_i = i;
-                    first_j = j;
-                }
-            }
+    
+    let mut seen: Set<int> = Set::empty();
+    let mut i: int = 0;
+    
+    while i < lst.len()
+        invariant
+            0 <= i <= lst.len(),
+            forall|j: int, k: int| 0 <= j < k < i ==> lst[j] != lst[k],
+            seen == Set::<int>::new(|x: int| exists|j: int| 0 <= j < i && lst[j] == x),
+            decreases lst.len() - i,
+    {
+        if seen.contains(lst.index(i) as int) {
+            return lst.index(i);
         }
+        seen = seen.insert(lst.index(i) as int);
+        i += 1;
     }
-
-    if found {
-        Some((first_i, first_j))
-    } else {
-        None
-    }
+    
+    -1i32
 }
 // </vc-helpers>
 
@@ -57,12 +52,8 @@ fn first_duplicate(lst: &Seq<i32>) -> (result: i32)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): fixed indexing */
-    let pos = find_first_duplicate_pos(*lst);
-    match pos {
-        Some((i, j)) => lst@[i],
-        None => -1,
-    }
+    /* code modified by LLM (iteration 3): call helper function */
+    first_duplicate_helper(lst)
 }
 // </vc-code>
 

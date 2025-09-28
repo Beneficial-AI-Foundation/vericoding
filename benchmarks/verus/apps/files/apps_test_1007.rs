@@ -2,7 +2,9 @@
 use vstd::prelude::*;
 
 verus! {
-spec fn int_to_string(n: int) -> Seq<char> {
+spec fn int_to_string(n: int) -> Seq<char>
+    decreases n
+{
     if n == 0 {
         seq!['0']
     } else if n < 10 {
@@ -12,7 +14,9 @@ spec fn int_to_string(n: int) -> Seq<char> {
     }
 }
 
-spec fn reverse_string(s: Seq<char>) -> Seq<char> {
+spec fn reverse_string(s: Seq<char>) -> Seq<char>
+    decreases s.len()
+{
     if s.len() == 0 {
         seq![]
     } else {
@@ -20,18 +24,22 @@ spec fn reverse_string(s: Seq<char>) -> Seq<char> {
     }
 }
 
-spec fn string_to_int(s: Seq<char>) -> int {
+spec fn string_to_int(s: Seq<char>) -> int
+    decreases s.len()
+{
     if s.len() == 0 {
         0
     } else if s.len() == 1 {
         (s[0] as int) - ('0' as int)
     } else {
-        string_to_int(s.subrange(0, s.len() as int - 1)) * 10 + ((s[s.len() as int - 1] as int) - ('0' as int))
+        string_to_int(s.subrange(0, s.len() - 1)) * 10 + ((s[s.len() - 1] as int) - ('0' as int))
     }
 }
 
-spec fn sum_of_palindromes(k: int) -> int {
-    if k == 0 {
+spec fn sum_of_palindromes(k: int) -> int
+    decreases k
+{
+    if k <= 0 {
         0
     } else if k == 1 {
         let s = int_to_string(1);
@@ -55,12 +63,12 @@ spec fn valid_input(k: int, p: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(k: int, p: int) -> (result: int)
-    requires 
-        valid_input(k, p)
-    ensures 
+fn solve(k: i8, p: i8) -> (result: i8)
+    requires
+        valid_input(k as int, p as int),
+    ensures
         0 <= result < p,
-        result == (sum_of_palindromes(k) % p)
+        result as int == (sum_of_palindromes(k as int) % (p as int)),
 // </vc-spec>
 // <vc-code>
 {
@@ -73,5 +81,4 @@ fn solve(k: int, p: int) -> (result: int)
 
 
 }
-
 fn main() {}

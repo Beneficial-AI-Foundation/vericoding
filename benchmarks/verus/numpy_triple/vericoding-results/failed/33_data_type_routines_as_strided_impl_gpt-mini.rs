@@ -5,60 +5,75 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): ensure j*stride is within x length using int arithmetic */
-proof fn index_mul_lt_len(stride: usize, m: usize, x_len: usize, j: int)
+/* helper modified by LLM (iteration 5): prove that i*stride is within x bounds */
+proof fn index_within_bounds(i: int, stride: usize, m: usize, x: &Vec<f32>)
     requires
+        0 <= i,
+        i < m as int,
         stride > 0,
-        m * stride <= x_len,
-        0 <= j,
-        j < (m as int),
+        m * stride <= x@.len(),
     ensures
-        j * (stride as int) < (x_len as int)
+        0 <= i * (stride as int),
+        i * (stride as int) < x@.len() as int,
 {
-    proof {
-        assert(j < m as int);
-        assert(j >= 0);
-        assert(j <= (m as int) - 1);
-        assert(j * (stride as int) <= (((m as int) - 1) * (stride as int)));
-        assert((((m as int) - 1) * (stride as int)) < ((m * stride) as int));
-        assert((m * stride) as int <= x_len as int);
-        assert(j * (stride as int) < x_len as int);
-    }
+    assert(0 <= i);
+    assert((stride as int) > 0);
+
+    // (m - i) > 0 because i < m
+    assert((m as int) - i > 0);
+    // multiply positive quantities to get positive difference
+    assert(((m as int) - i) * (stride as int) > 0);
+    // expand to get m*stride - i*stride > 0
+    assert((m as int) * (stride as int) - i * (stride as int) > 0);
+    // conclude i*stride < m*stride
+    assert(i * (stride as int) < (m as int) * (stride as int));
+
+    // relate to m*stride as int and x length
+    assert((m as int) * (stride as int) == (m * stride) as int);
+    assert((m * stride) as int <= x@.len() as int);
+
+    assert(i * (stride as int) < x@.len() as int);
+    assert(0 <= i * (stride as int));
 }
+
 // </vc-helpers>
 
 // <vc-spec>
 fn numpy_as_strided(x: &Vec<f32>, stride: usize, m: usize) -> (result: Vec<f32>)
     requires 
         stride > 0,
-        m * stride <= x.len(),
+        m * stride <= x@.len(),
     ensures
-        result.len() == m,
-        forall|i: int| 0 <= i < m ==> result[i] == x[i * stride],
+        result@.len() == m,
+        forall|i: int| 0 <= i < m ==> result@[i] == x@[i * stride as int],
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): build the result vector by taking every stride-th element from x, using spec-indexing for proofs */
+    /* code modified by LLM (iteration 5): implement as_strided without using spec ints in executable code */
     let mut result: Vec<f32> = Vec::new();
     let mut i: usize = 0;
+
     while i < m
-        invariant i <= m,
-                  result.len() == i,
-                  forall|j: int| 0 <= j && j < (i as int) ==> result[j as usize] == x@[(j * (stride as int))],
-        decreases m - i
+        invariant
+            result@.len() == i as nat,
+            forall|j: int| 0 <= j < (i as int) ==> result@[j] == x@[j * (stride as int)],
+        decreases
+            m - i
     {
         proof {
-            assert(result.len() == i);
-            index_mul_lt_len(stride, m, x.len(), i as int);
-            assert((i as int) * (stride as int) < x.len() as int);
-            assert((i * stride) < x.len());
+            // prove index is within bounds using the helper (spec-level reasoning)
+            index_within_bounds(i as int, stride, m, x);
+            assert((i as int) * (stride as int) < x@.len() as int);
         }
-        let val: f32 = x[i * stride];
-        result.push(val);
+        let idx: usize = i * stride;
+        let v: f32 = x[idx];
+        result.push(v);
         i = i + 1;
     }
+
     result
 }
+
 // </vc-code>
 
 }

@@ -16,9 +16,8 @@ fn array(data: Vec<f64>) -> (result: Vec<f64>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 2): added decreases clause to loop */
-    let mut result = Vec::new();
-    let mut i = 0;
+    let mut result: Vec<f64> = Vec::new();
+    let mut i: usize = 0;
     while i < data.len()
         invariant
             i <= data.len(),
@@ -27,7 +26,7 @@ fn array(data: Vec<f64>) -> (result: Vec<f64>)
         decreases data.len() - i
     {
         result.push(data[i]);
-        i += 1;
+        i = i + 1;
     }
     result
 }

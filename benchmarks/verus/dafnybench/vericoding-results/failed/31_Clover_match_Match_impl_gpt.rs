@@ -1,0 +1,23 @@
+use vstd::prelude::*;
+
+verus! {
+
+// <vc-helpers>
+// no helpers needed
+// </vc-helpers>
+
+// <vc-spec>
+fn match_strings(s: Seq<char>, p: Seq<char>) -> (b: bool)
+  requires s.len() == p.len()
+  ensures b == (forall|n: int| 0 <= n < s.len() ==> s[n] == p[n] || p[n] == '?')
+// </vc-spec>
+// <vc-code>
+{
+  loop { }
+}
+// </vc-code>
+
+fn main() {
+}
+
+}

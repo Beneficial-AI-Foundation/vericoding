@@ -1,9 +1,0 @@
-=== LLM Response - generate_code - Iteration 0 ===
-File: benchmarks/verus/bignum/files/bignum_Add.rs
-Prompt Hash: d4f9cd4f
-JSON Parsed Successfully: True
-Timestamp: 1757927799.4899352
-Content Length: 1007 chars
---------------------------------------------------------------------------------
-["fn add_bits(a: char, b: char, carry: nat) -> (char, nat) {\n    let a_val = if a == '0' {0} else {1};\n    let b_val = if b == '0' {0} else {1};\n    let sum = a_val + b_val + carry;\n    let bit = if sum % 2 == 0 {'0'} else {'1'};\n    let new_carry = sum / 2;\n    (bit, new_carry)\n}", "{\n    let len1 = s1.len();\n    let len2 = s2.len();\n    let mut carry = 0nat;\n    let mut result: Vec<char> = Vec::<char>::new();\n    let max_len = if len1 > len2 { len1 } else { len2 };\n    let mut i = 0;\n    while i < max_len\n        invariant\n            carry <= 1,\n            ValidBitString(result@),\n        decreases max_len - i\n    {\n        let b1 = if i < len1 { s1[len1 - 1 - i] } else { '0' };\n        let b2 = if i < len2 { s2[len2 - 1 - i] } else { '0' };\n        let (bit, new_carry) = add_bits(b1, b2, carry);\n        result.push(bit);\n        carry = new_carry;\n        i += 1;\n    }\n    if carry == 1 {\n        result.push('1');\n    }\n    result.reverse();\n    result\n}"]
---------------------------------------------------------------------------------

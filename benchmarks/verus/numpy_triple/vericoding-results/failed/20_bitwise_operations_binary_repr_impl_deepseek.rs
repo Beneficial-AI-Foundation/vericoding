@@ -28,31 +28,75 @@ spec fn is_valid_signed_binary(s: Seq<char>) -> bool {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): Replace deprecated get_Some_0 with pattern matching and add proper lemmas */
-proof fn nat_to_binary_string_properties(n: nat) 
-    ensures 
-        nat_to_binary_string(n).len() > 0 && 
-        (forall|i: int| 0 <= i < nat_to_binary_string(n).len() ==> nat_to_binary_string(n)[i] == '0' || nat_to_binary_string(n)[i] == '1') 
-    decreases n 
+
+
+proof fn lemma_div_mod(a: nat, b: nat)
+    requires
+        b > 0,
+    ensures
+        a / b * b + a % b == a,
+        a % b < b,
+{
+}
+
+proof fn lemma_pow2_positive(w: nat)
+    ensures
+        (1u32 << w) > 0,
+{
+}
+
+fn abs(num: i32) -> (result: u32)
+    ensures
+        if num >= 0 { result == num as u32 } else { result == (-num) as u32 },
+{
+    if num >= 0 {
+        num as u32
+    } else {
+        (-num) as u32
+    }
+}
+
+fn build_binary_string(n: u32) -> (result: Vec<char>)
+    ensures
+        result@ == nat_to_binary_string(n as nat),
+        is_valid_binary(result@),
 {
     if n == 0 {
+        vec!['0']
     } else {
-        nat_to_binary_string_properties(n / 2);
+        let mut digits = Vec::new();
+        let mut remaining = n;
+        
+        while remaining > 0
+            invariant
+                remaining >= 0,
+                is_valid_binary(digits@),
+                digits@ == nat_to_binary_string(remaining as nat).drop_last(),
+        {
+            let digit = if remaining % 2 == 0 { '0' } else { '1' };
+            digits.push(digit);
+            remaining = remaining / 2;
+        }
+        
+        let mut reversed = Vec::new();
+        let mut i = digits.len();
+        
+        while i > 0
+            invariant
+                i <= digits.len(),
+                is_valid_binary(reversed@),
+                reversed@ == digits@.subrange(0, i).reverse(),
+        {
+            i = i - 1;
+            reversed.push(digits[i]);
+        }
+        
+        reversed
     }
 }
 
-proof fn binary_repr_correctness_lemma(num: i32, w: usize)
-    requires w >= 1
-    ensures binary_repr(num, Some(w)).len() == w
-{
-}
+/* helper modified by LLM (iteration 5): Replaced reverse() call with manual reversal to avoid mutable reference error */
 
-spec fn option_unwrap<T>(opt: Option<T>) -> T {
-    match opt {
-        Some(x) => x,
-        None => arbitrary(),
-    }
-}
 // </vc-helpers>
 
 // <vc-spec>
@@ -79,88 +123,52 @@ fn binary_repr(num: i32, width: Option<usize>) -> (result: Vec<char>)
         }
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Fix compilation error by removing recursive call and implementing proper logic */
 {
-    match width {
-        Some(w) => {
-            assert(w >= 1);
+    /* code modified by LLM (iteration 5): Fixed deprecated get_Some_0() calls with destructuring */
+    if let Some(w) = width {
+        proof { lemma_pow2_positive(w as nat); }
+        
+        let modulus = 1u32 << w;
+        let abs_num = abs(num);
+        
+        if num >= 0 {
+            let mut binary_chars = build_binary_string(abs_num);
             
-            if num >= 0 {
-                let mut result = Vec::new();
-                let mut n = num as u32;
-                
-                for i in 0..w {
-                    let bit_pos = w - 1 - i;
-                    let bit = (n >> bit_pos) & 1;
-                    result.push(if bit == 0 { '0' } else { '1' });
-                }
-                
-                result
-            } else {
-                let twos_comp = (1u32 << w) as i32 + num;
-                assert(twos_comp >= 0);
-                assert(twos_comp < (1i32 << w));
-                
-                let mut result = Vec::new();
-                let mut n = twos_comp as u32;
-                
-                for i in 0..w {
-                    let bit_pos = w - 1 - i;
-                    let bit = (n >> bit_pos) & 1;
-                    result.push(if bit == 0 { '0' } else { '1' });
-                }
-                
-                result
+            while binary_chars.len() < w
+                invariant
+                    binary_chars.len() <= w,
+                    is_valid_binary(binary_chars@),
+                    binary_chars@ == nat_to_binary_string(abs_num as nat),
+            {
+                binary_chars.insert(0, '0');
             }
-        },
-        None => {
+            
+            binary_chars
+        } else {
+            let complement = (modulus as i32 + num) as u32;
+            let mut binary_chars = build_binary_string(complement);
+            
+            while binary_chars.len() < w
+                invariant
+                    binary_chars.len() <= w,
+                    is_valid_binary(binary_chars@),
+                    binary_chars@ == nat_to_binary_string(complement as nat),
+            {
+                binary_chars.insert(0, '0');
+            }
+            
+            binary_chars
+        }
+    } else {
+        if num >= 0 {
+            build_binary_string(num as u32)
+        } else {
             let mut result = Vec::new();
-            
-            if num >= 0 {
-                let mut n = num as u32;
-                
-                if n == 0 {
-                    result.push('0');
-                } else {
-                    while n > 0 {
-                        let digit = if n % 2 == 0 { '0' } else { '1' };
-                        result.push(digit);
-                        n = n / 2;
-                    }
-                    let mut temp_vec = Vec::new();
-                    let len = result.len();
-                    for i in 0..len {
-                        temp_vec.push(result[len - 1 - i]);
-                    }
-                    result = temp_vec;
-                }
-            } else {
-                result.push('-');
-                let positive_num = (-num) as u32;
-                let mut temp_result = Vec::new();
-                
-                if positive_num == 0 {
-                    temp_result.push('0');
-                } else {
-                    let mut n = positive_num;
-                    while n > 0 {
-                        let digit = if n % 2 == 0 { '0' } else { '1' };
-                        temp_result.push(digit);
-                        n = n / 2;
-                    }
-                    let mut reversed = Vec::new();
-                    let len = temp_result.len();
-                    for i in 0..len {
-                        reversed.push(temp_result[len - 1 - i]);
-                    }
-                    temp_result = reversed;
-                }
-                
-                for c in temp_result {
-                    result.push(c);
-                }
+            result.push('-');
+            let abs_digits = build_binary_string((-num) as u32);
+            for c in abs_digits {
+                result.push(c);
             }
-            
             result
         }
     }

@@ -1,3 +1,4 @@
+// <vc-preamble>
 function StringToNat(s: string): nat
   requires |s| > 0
   requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
@@ -17,18 +18,16 @@ predicate ValidOutput(result: string)
 {
   result == "4\n" || result == "0\n"
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function StringToNatModulo4(s: string): nat
-  requires |s| > 0
-  requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9'
-  ensures StringToNatModulo4(s) == (StringToNat(s) % 4)
+/* helper modified by LLM (iteration 3): updated logic to handle single digit numbers correctly */
+function GetLastTwoDigits(n: string): nat
+  requires ValidInput(n)
 {
-  if |s| == 1 then ((s[0] as int - '0' as int) % 4) as nat
-  else
-    var lastDigit: nat := (s[|s|-1] as int - '0' as int);
-    var restModulo4: nat := StringToNatModulo4(s[..|s|-1]);
-    ((restModulo4 * 10 + lastDigit) % 4) as nat
+  if |n| == 1 then StringToNat(n) as nat
+  else if |n| == 2 then StringToNat(n) as nat
+  else StringToNat(n[|n|-2 ..]) 
 }
 // </vc-helpers>
 
@@ -40,13 +39,13 @@ method solve(n: string) returns (result: string)
   ensures (StringToNat(n) % 4 != 0) <==> (result == "0\n")
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 3): Minor adjustments to ensure postconditions are met.*/
 {
-  var n_val := StringToNat(n);
-  if n_val % 4 == 0 {
+  var num_n := StringToNat(n);
+  if num_n % 4 == 0 {
     result := "4\n";
   } else {
     result := "0\n";
   }
 }
 // </vc-code>
-

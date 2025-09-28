@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum_abs(arr: seq<int>, i: int): int
     requires 0 <= i <= |arr|
     decreases |arr| - i
@@ -10,9 +11,12 @@ predicate ValidInput(n: int, arr: seq<int>)
 {
     0 <= n == |arr|
 }
+// </vc-preamble>
 
 // <vc-helpers>
-
+function abs(x: int): int {
+    if x < 0 then -x else x
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -22,19 +26,15 @@ method solve(n: int, arr: seq<int>) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
+    var total_sum := 0;
     var i := 0;
-    result := 0;
     while i < n
         invariant 0 <= i <= n
-        invariant result == sum_abs(arr, 0) - sum_abs(arr, i)
+        invariant total_sum == sum_abs(arr, 0) - sum_abs(arr, i)
     {
-        if arr[i] >= 0 {
-            result := result + arr[i];
-        } else {
-            result := result + (-arr[i]);
-        }
+        total_sum := total_sum + abs(arr[i]);
         i := i + 1;
     }
+    result := total_sum;
 }
 // </vc-code>
-

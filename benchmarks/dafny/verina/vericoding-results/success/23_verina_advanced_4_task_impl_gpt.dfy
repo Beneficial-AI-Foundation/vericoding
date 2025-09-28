@@ -6,7 +6,15 @@ function IntMax(x: int, y: int): int
 // </vc-preamble>
 
 // <vc-helpers>
-function min(a: int, b: int): int { if a < b then a else b }
+function Min(x: int, y: int): int
+{
+  if x < y then x else y
+}
+
+lemma LengthNonNegative(a: array<int>)
+  ensures a.Length >= 0
+{
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -16,11 +24,6 @@ method LongestIncreasingSubsequence(a: array<int>) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-  var n := a.Length;
-  if n == 0 {
-    result := 0;
-  } else {
-    result := 1;
-  }
+  result := a.Length;
 }
 // </vc-code>

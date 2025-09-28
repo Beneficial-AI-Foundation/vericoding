@@ -2,7 +2,6 @@
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 2): Simplified proof to avoid timeout */
 function SumOfSquaresUpTo(k: nat): nat
 {
   if k == 0 then 0
@@ -13,29 +12,26 @@ lemma SumOfSquaresFormula(n: nat)
   ensures SumOfSquaresUpTo(n) as int == (n as int * (2 * n as int - 1) * (2 * n as int + 1)) / 3
 {
   if n == 0 {
+    assert SumOfSquaresUpTo(0) == 0;
+    assert (0 * (-1) * 1) / 3 == 0;
   } else {
     SumOfSquaresFormula(n - 1);
-    calc {
-      SumOfSquaresUpTo(n) as int;
-    == 
-      (2 * n - 1) * (2 * n - 1) + SumOfSquaresUpTo(n - 1) as int;
-    ==
-      (2 * n as int - 1) * (2 * n as int - 1) + ((n - 1) as int * (2 * (n - 1) as int - 1) * (2 * (n - 1) as int + 1)) / 3;
-    ==
-      (2 * n as int - 1) * (2 * n as int - 1) + ((n - 1) as int * (2 * n as int - 3) * (2 * n as int - 1)) / 3;
-    ==
-      ((2 * n as int - 1) * (2 * n as int - 1) * 3 + (n - 1) as int * (2 * n as int - 3) * (2 * n as int - 1)) / 3;
-    ==
-      ((2 * n as int - 1) * (3 * (2 * n as int - 1) + (n - 1) as int * (2 * n as int - 3))) / 3;
-    ==
-      ((2 * n as int - 1) * (6 * n as int - 3 + 2 * n as int * n as int - 3 * n as int - 2 * n as int + 3)) / 3;
-    ==
-      ((2 * n as int - 1) * (2 * n as int * n as int + n as int)) / 3;
-    ==
-      ((2 * n as int - 1) * n as int * (2 * n as int + 1)) / 3;
-    ==
-      (n as int * (2 * n as int - 1) * (2 * n as int + 1)) / 3;
-    }
+    var prev := SumOfSquaresUpTo(n - 1) as int;
+    var curr := (2 * n as int - 1) * (2 * n as int - 1);
+    assert SumOfSquaresUpTo(n) as int == prev + curr;
+    assert prev == ((n - 1) as int * (2 * (n - 1) as int - 1) * (2 * (n - 1) as int + 1)) / 3;
+    assert prev == ((n - 1) as int * (2 * n as int - 3) * (2 * n as int - 1)) / 3;
+    var target := (n as int * (2 * n as int - 1) * (2 * n as int + 1)) / 3;
+    assert target - prev == (n as int * (2 * n as int - 1) * (2 * n as int + 1) - (n - 1) as int * (2 * n as int - 3) * (2 * n as int - 1)) / 3;
+    assert target - prev == ((2 * n as int - 1) * (n as int * (2 * n as int + 1) - (n - 1) as int * (2 * n as int - 3))) / 3;
+    assert n as int * (2 * n as int + 1) - (n - 1) as int * (2 * n as int - 3) == 2 * n as int * n as int + n as int - (2 * n as int * n as int - 3 * n as int - 2 * n as int + 3);
+    assert n as int * (2 * n as int + 1) - (n - 1) as int * (2 * n as int - 3) == 2 * n as int * n as int + n as int - 2 * n as int * n as int + 3 * n as int + 2 * n as int - 3;
+    assert n as int * (2 * n as int + 1) - (n - 1) as int * (2 * n as int - 3) == 6 * n as int - 3;
+    assert target - prev == ((2 * n as int - 1) * (6 * n as int - 3)) / 3;
+    assert (6 * n as int - 3) == 3 * (2 * n as int - 1);
+    assert target - prev == ((2 * n as int - 1) * 3 * (2 * n as int - 1)) / 3;
+    assert target - prev == (2 * n as int - 1) * (2 * n as int - 1);
+    assert target - prev == curr;
   }
 }
 // </vc-helpers>
@@ -46,7 +42,6 @@ method SumOfSquaresOfFirstNOddNumbers(n: nat) returns (result: nat)
     ensures result as int == (n as int * (2 * n as int - 1) * (2 * n as int + 1)) / 3
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 2): Call helper function and lemma */
 {
   result := SumOfSquaresUpTo(n);
   SumOfSquaresFormula(n);

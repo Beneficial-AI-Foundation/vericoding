@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate IsValidDateString(s: string, y: int, m: int, d: int)
 {
     |s| >= 10 && 
@@ -32,30 +33,14 @@ predicate CorrectOutput(s: string, result: string)
     ((m < 4 || (m == 4 && d <= 30)) ==> result == "Heisei") && 
     ((m > 4 || (m == 4 && d > 30)) ==> result == "TBD")
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function GetYear(s: string): int
-requires |s| >= 4
-requires (forall i :: 0 <= i < 4 ==> IsDigit(s[i]))
+/* helper modified by LLM (iteration 5): Corrected function signature syntax and changed return statement to use a method body. */
+function GetMonthAndDay(s: string): (month: int, day: int)
 {
-    StringToInt(s[0..4])
+    StringToInt(s[5..7]), StringToInt(s[8..10])
 }
-
-function GetMonth(s: string): int
-requires |s| >= 7
-requires (forall i :: 5 <= i < 7 ==> IsDigit(s[i]))
-{
-    StringToInt(s[5..7])
-}
-
-function GetDay(s: string): int
-requires |s| >= 10
-requires (forall i :: 8 <= i < 10 ==> IsDigit(s[i]))
-{
-    StringToInt(s[8..10])
-}
-
-predicate IsDigit(c: char) { '0' <= c <= '9' }
 // </vc-helpers>
 
 // <vc-spec>
@@ -65,16 +50,13 @@ requires ValidInput(stdin_input)
 ensures CorrectOutput(stdin_input, result)
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): no change as parsing error was due to `GetMonthAndDay` helper */
 {
-    var y := GetYear(stdin_input);
-    var m := GetMonth(stdin_input);
-    var d := GetDay(stdin_input);
-
-    if m < 4 || (m == 4 && d <= 30) {
-        result := "Heisei";
-    } else {
-        result := "TBD";
-    }
+  var m, d := GetMonthAndDay(stdin_input);
+  if m < 4 || (m == 4 && d <= 30) {
+    result := "Heisei";
+  } else {
+    result := "TBD";
+  }
 }
 // </vc-code>
-

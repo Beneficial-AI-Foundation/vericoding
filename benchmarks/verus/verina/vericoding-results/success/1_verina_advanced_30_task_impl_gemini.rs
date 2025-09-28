@@ -5,11 +5,7 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-fn max(a: usize, b: usize) -> (c: usize)
-    ensures c == a || c == b, c >= a, c >= b
-{
-    if a > b {a} else {b}
-}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -30,12 +26,13 @@ fn longest_increasing_streak(nums: &Vec<i32>) -> (result: usize)
 
     while i < nums.len()
         invariant
-            1 <= i <= nums.len(),
+            1 <= i,
+            i <= nums.len(),
             1 <= current_streak,
             current_streak <= i,
             1 <= max_streak,
-            max_streak <= nums.len(),
-        decreases nums.len() - i
+            max_streak <= i,
+        decreases nums.len() - i,
     {
         if nums[i] > nums[i - 1] {
             current_streak = current_streak + 1;
@@ -43,7 +40,9 @@ fn longest_increasing_streak(nums: &Vec<i32>) -> (result: usize)
             current_streak = 1;
         }
 
-        max_streak = max(max_streak, current_streak);
+        if current_streak > max_streak {
+            max_streak = current_streak;
+        }
         
         i = i + 1;
     }

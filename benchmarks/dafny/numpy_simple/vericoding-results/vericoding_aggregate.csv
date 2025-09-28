@@ -1,0 +1,59 @@
+filename,success_status,total_llms,successful_llms
+NpAbs-spec,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+NpAdd-spec,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+NpArange-spec,FAILED,0,
+NpArgmax-spec,SUCCESS,5,"claude-opus, claude-sonnet, gemini, gpt, gpt-mini"
+NpArgsort-spec,SUCCESS,2,"gpt, gpt-mini"
+NpBitwiseAnd-spec,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt-mini, grok-code"
+NpBitwiseOr-spec,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini"
+NpBitwiseXor-spec,SUCCESS,3,"glm, gpt, grok-code"
+NpBroadcast-spec,SUCCESS,6,"claude-opus, claude-sonnet, gemini, gemini-flash, gpt, grok-code"
+NpCenter-spec,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini"
+NpClip-spec,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code"
+NpColumnStack-spec,SUCCESS,1,gpt-mini
+NpCopy-spec,SUCCESS,7,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
+NpCountnonzero-spec,FAILED,0,
+NpCumProd-spec,SUCCESS,8,"claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+NpCumSum-spec,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+NpDiagonal-spec,FAILED,0,
+NpEqual-spec,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+NpFlatten-spec,SUCCESS,1,claude-opus
+NpFloorDivide-spec,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+NpGcd-spec,FAILED,0,
+NpGreater-spec,SUCCESS,7,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini"
+NpGreaterEqual-spec,SUCCESS,7,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini"
+NpHistogram-spec,SUCCESS,6,"claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini"
+NpIntersect-spec,FAILED,0,
+NpInvert-spec,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code"
+NpIsalpha-spec,SUCCESS,7,"claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+NpIsclose-spec,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+NpLcm-spec,SUCCESS,1,gpt
+NpLeftShift-spec,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gemini-flash, gpt, gpt-mini"
+NpLess-spec,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini"
+NpLessEqual-spec,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+NpMax-spec,SUCCESS,7,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini, grok-code"
+NpMin-spec,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code"
+NpMod-spec,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+NpMultiply-spec,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+NpNotEqual-spec,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+NpPiecewise-spec,FAILED,0,
+NpPoly-spec,FAILED,0,
+NpPolyder-spec,SUCCESS,6,"claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code"
+NpPower-spec,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+NpProd-spec,FAILED,0,
+NpRavel-spec,FAILED,0,
+NpRemainder-spec,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+NpReshape-spec,SUCCESS,6,"claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
+NpRightShift-spec,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+NpSelect-spec,FAILED,0,
+NpShape-spec,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini"
+NpSign-spec,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+NpSort-spec,FAILED,0,
+NpSquare-spec,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code"
+NpSubtract-spec,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+NpSum-spec,SUCCESS,3,"gemini, gpt, gpt-mini"
+NpTranspose-spec,SUCCESS,3,"claude-sonnet, gemini, glm"
+NpTril-spec,SUCCESS,4,"claude-opus, claude-sonnet, gemini, gpt-mini"
+NpUniqueall-spec,FAILED,0,
+NpWhere-spec,FAILED,0,
+NpZeros-spec,FAILED,0,

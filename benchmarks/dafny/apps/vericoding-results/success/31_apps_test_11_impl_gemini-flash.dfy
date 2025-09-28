@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, a: int, b: int, p: int, q: int) {
   n > 0 && a > 0 && b > 0 && p > 0 && q > 0
 }
@@ -9,23 +10,15 @@ function gcd(a: int, b: int): int
 {
   if b == 0 then a else gcd(b, a % b)
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function MultiplyMod(x: int, y: int, m: int): int
-    requires m > 0
-    ensures 0 <= MultiplyMod(x, y, m) < m
+/* helper modified by LLM (iteration 4): Add ensures clauses to FindMax for determinism and positive return values */
+function FindMax(a: int, b: int, p: int, q: int): int
+  requires a > 0 && b > 0 && p > 0 && q > 0
+  ensures FindMax(a, b, p, q) >= 0
 {
-    (x % m * y % m) % m
-}
-
-function PowerMod(base: int, exp: int, mod: int): int
-    requires mod > 0 && exp >= 0
-    ensures 0 <= PowerMod(base, exp, mod) < mod
-    decreases exp
-{
-    if exp == 0 then 1 % mod
-    else if exp % 2 == 0 then PowerMod(MultiplyMod(base, base, mod), exp / 2, mod)
-    else MultiplyMod(base, PowerMod(base, exp - 1, mod), mod)
+  if (a / p + b / q) > (a / q + b / p) then (a / p + b / q) else (a / q + b / p)
 }
 // </vc-helpers>
 
@@ -35,29 +28,20 @@ method solve(n: int, a: int, b: int, p: int, q: int) returns (result: int)
   ensures result >= 0
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 4): Removed direct multiplication with max_k and corrected the logic to find the maximum possible value for x + y */
 {
-  var M := p * q;
-  var phi_M := (p - 1) * (q - 1);
-
-  if phi_M == 0 { // Handle case where phi_M is 0 (p=1 or q=1)
-      result := (PowerMod(a, n, M) + PowerMod(b, n, M)) % M;
-      return;
+  var max_val := 0;
+  if p * q != 0 { // Avoid division by zero, though inputs ensure this.
+    var val1 := (a / p) + (b / q);
+    var val2 := (a / q) + (b / p);
+    max_val := if val1 > val2 then val1 else val2;
   }
   
-  var exp_val := n % phi_M;
-
-  if n != 0 && exp_val == 0 {
-    exp_val := phi_M;
-  }
+  result := 0;
+  var k := n / gcd(p,q);
   
-  // Calculate a^n mod M
-  var an_mod_M := PowerMod(a, exp_val, M);
-
-  // Calculate b^n mod M
-  var bn_mod_M := PowerMod(b, exp_val, M);
-
-  // Calculate (a^n + b^n) mod M
-  result := (an_mod_M + bn_mod_M) % M;
+  if (k > 0) {
+    result := k * max_val;
+  }
 }
 // </vc-code>
-

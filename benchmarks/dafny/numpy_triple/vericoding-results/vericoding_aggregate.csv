@@ -1,0 +1,431 @@
+filename,success_status,total_llms,successful_llms
+array_creation_arange,FAILED,0,
+array_creation_array,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+array_creation_asanyarray,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+array_creation_asarray,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+array_creation_ascontiguousarray,FAILED,0,
+array_creation_asmatrix,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+array_creation_bmat,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+array_creation_copy,SUCCESS,6,"claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code"
+array_creation_diag,SUCCESS,3,"claude-opus, claude-sonnet, gpt-mini"
+array_creation_empty,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+array_creation_empty_like,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+array_creation_from_dlpack,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+array_creation_frombuffer,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code"
+array_creation_fromfile,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code"
+array_creation_fromfunction,SUCCESS,6,"claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code"
+array_creation_fromiter,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+array_creation_fromstring,FAILED,0,
+array_creation_full,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code"
+array_creation_full_like,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+array_creation_identity,SUCCESS,6,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini"
+array_creation_linspace,SUCCESS,3,"claude-opus, claude-sonnet, gemini-flash"
+array_creation_logspace,SUCCESS,6,"claude-opus, claude-sonnet, gemini, glm, gpt-mini, grok-code"
+array_creation_meshgrid,SUCCESS,5,"claude-opus, claude-sonnet, gpt, gpt-mini, grok-code"
+array_creation_mgrid,SUCCESS,7,"claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code"
+array_creation_ogrid,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code"
+array_creation_ones,SUCCESS,7,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
+array_creation_ones_like,SUCCESS,7,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, grok-code"
+array_creation_tri,SUCCESS,5,"claude-opus, claude-sonnet, deepseek, gpt, gpt-mini"
+array_creation_tril,SUCCESS,3,"claude-opus, claude-sonnet, gpt-mini"
+array_creation_triu,SUCCESS,3,"claude-sonnet, gpt, grok-code"
+array_creation_vander,SUCCESS,3,"claude-opus, claude-sonnet, gemini"
+array_creation_zeros,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini, grok-code"
+array_manipulation_append,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code"
+array_manipulation_atleast_1d,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+array_manipulation_atleast_2d,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+array_manipulation_atleast_3d,SUCCESS,3,"claude-opus, claude-sonnet, gemini"
+array_manipulation_block,SUCCESS,4,"claude-sonnet, deepseek, gemini, glm"
+array_manipulation_broadcast_arrays,SUCCESS,7,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
+array_manipulation_broadcast_to,FAILED,0,
+array_manipulation_concatenate,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+array_manipulation_copyto,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gemini, gpt-mini, grok-code"
+array_manipulation_delete,FAILED,0,
+array_manipulation_dstack,SUCCESS,4,"claude-sonnet, deepseek, glm, gpt-mini"
+array_manipulation_expand_dims,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+array_manipulation_flip,SUCCESS,5,"claude-opus, claude-sonnet, deepseek, gpt-mini, grok-code"
+array_manipulation_fliplr,SUCCESS,2,"claude-opus, claude-sonnet"
+array_manipulation_flipud,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini"
+array_manipulation_hstack,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+array_manipulation_insert,SUCCESS,7,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini, grok-code"
+array_manipulation_moveaxis,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+array_manipulation_ndim,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+array_manipulation_ravel,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+array_manipulation_reshape,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+array_manipulation_resize,SUCCESS,2,"deepseek, gpt"
+array_manipulation_roll,SUCCESS,7,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini, grok-code"
+array_manipulation_rollaxis,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+array_manipulation_rot90,SUCCESS,3,"claude-sonnet, gemini, gpt-mini"
+array_manipulation_row_stack,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code"
+array_manipulation_shape,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+array_manipulation_size,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+array_manipulation_squeeze,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini, grok-code"
+array_manipulation_stack,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+array_manipulation_swapaxes,SUCCESS,2,"claude-sonnet, deepseek"
+array_manipulation_tile,SUCCESS,2,"claude-opus, deepseek"
+array_manipulation_transpose,SUCCESS,3,"claude-opus, claude-sonnet, grok-code"
+array_manipulation_unique,SUCCESS,2,"claude-opus, gpt-mini"
+array_manipulation_vstack,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+bitwise_operations_bitwise_and,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code"
+bitwise_operations_bitwise_count,FAILED,0,
+bitwise_operations_bitwise_or,SUCCESS,4,"claude-opus, claude-sonnet, gemini, gpt-mini"
+bitwise_operations_invert,FAILED,0,
+bitwise_operations_left_shift,SUCCESS,4,"claude-opus, claude-sonnet, glm, gpt-mini"
+bitwise_operations_right_shift,FAILED,0,
+constants_NINF,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+constants_NPY_1_PI,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, grok-code"
+constants_NPY_2_PI,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code"
+constants_NPY_LOG10E,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+constants_NPY_LOG2E,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+constants_NPY_LOGE10,FAILED,0,
+constants_NPY_LOGE2,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+constants_NPY_PI_2,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+constants_NPY_PI_4,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+constants_NPY_SQRT1_2,FAILED,0,
+constants_NZERO,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+constants_euler_gamma,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+constants_finfo,SUCCESS,2,"gemini, gpt"
+constants_iinfo,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+constants_inf,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+constants_nan,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+constants_newaxis,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+constants_pi,SUCCESS,7,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
+data_type_routines_as_strided,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt-mini, grok-code"
+data_type_routines_can_cast,FAILED,0,
+data_type_routines_dtype,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+data_type_routines_find_common_type,SUCCESS,5,"claude-opus, claude-sonnet, deepseek, gpt, grok-code"
+data_type_routines_finfo,SUCCESS,5,"claude-opus, claude-sonnet, gemini, gpt, gpt-mini"
+data_type_routines_iinfo,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+data_type_routines_isdtype,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+data_type_routines_issctype,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+data_type_routines_issubclass_,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+data_type_routines_maximum_sctype,FAILED,0,
+data_type_routines_may_share_memory,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+data_type_routines_obj2sctype,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+data_type_routines_result_type,SUCCESS,5,"claude-opus, gemini, glm, gpt, gpt-mini"
+data_type_routines_sctype2char,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+data_type_routines_typecodes,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+data_type_routines_typename,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+datetime_support_datetime64,FAILED,0,
+datetime_support_datetime_as_string,SUCCESS,4,"claude-opus, claude-sonnet, gemini, gpt-mini"
+datetime_support_datetime_data,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+datetime_support_timedelta64,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+fft_fftfreq,SUCCESS,5,"claude-opus, claude-sonnet, deepseek, gpt-mini, grok-code"
+fft_fftshift,FAILED,0,
+fft_hfft,SUCCESS,4,"claude-sonnet, gemini-flash, gpt-mini, grok-code"
+fft_ifftn,SUCCESS,4,"claude-sonnet, gemini, gpt, grok-code"
+fft_ifftshift,SUCCESS,5,"claude-opus, claude-sonnet, deepseek, gemini, gpt"
+fft_irfft,FAILED,0,
+fft_irfft2,SUCCESS,2,"claude-sonnet, glm"
+fft_rfftfreq,SUCCESS,4,"claude-sonnet, deepseek, gemini, gpt"
+indexing_slicing_argmax,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini"
+indexing_slicing_argmin,SUCCESS,6,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini"
+indexing_slicing_argwhere,SUCCESS,5,"claude-opus, claude-sonnet, gemini, gpt, gpt-mini"
+indexing_slicing_c_,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code"
+indexing_slicing_choose,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gpt, gpt-mini, grok-code"
+indexing_slicing_compress,SUCCESS,1,claude-sonnet
+indexing_slicing_diagflat,SUCCESS,5,"claude-opus, claude-sonnet, gemini, gpt-mini, grok-code"
+indexing_slicing_diagonal,SUCCESS,4,"claude-sonnet, gpt, gpt-mini, grok-code"
+indexing_slicing_extract,SUCCESS,1,claude-sonnet
+indexing_slicing_fill_diagonal,SUCCESS,5,"claude-opus, claude-sonnet, gemini, gpt-mini, grok-code"
+indexing_slicing_flatiter,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+indexing_slicing_indices,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code"
+indexing_slicing_ix_,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini"
+indexing_slicing_mgrid,FAILED,0,
+indexing_slicing_nanargmax,SUCCESS,4,"claude-opus, claude-sonnet, gemini, glm"
+indexing_slicing_nanargmin,SUCCESS,5,"claude-opus, claude-sonnet, gemini, gpt, gpt-mini"
+indexing_slicing_ndenumerate,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+indexing_slicing_ndindex,FAILED,0,
+indexing_slicing_nditer,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+indexing_slicing_putmask,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code"
+indexing_slicing_r_,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code"
+indexing_slicing_ravel_multi_index,SUCCESS,5,"claude-opus, claude-sonnet, deepseek, gpt, gpt-mini"
+indexing_slicing_select,SUCCESS,2,"claude-opus, claude-sonnet"
+indexing_slicing_take,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code"
+indexing_slicing_triu,SUCCESS,4,"claude-opus, gpt, gpt-mini, grok-code"
+indexing_slicing_unravel_index,SUCCESS,4,"claude-opus, claude-sonnet, gemini, glm"
+indexing_slicing_where,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+io_operations_array2string,SUCCESS,6,"claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code"
+io_operations_array_repr,FAILED,0,
+io_operations_array_str,SUCCESS,5,"claude-opus, claude-sonnet, gemini, glm, gpt"
+io_operations_fromfile,SUCCESS,4,"claude-opus, gemini, gpt, grok-code"
+io_operations_fromstring,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini-flash, glm, gpt-mini, grok-code"
+io_operations_genfromtxt,SUCCESS,4,"claude-opus, claude-sonnet, gemini-flash, gpt-mini"
+io_operations_get_printoptions,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+io_operations_load,FAILED,0,
+io_operations_loadtxt,SUCCESS,7,"claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code"
+io_operations_memmap,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code"
+io_operations_printoptions,SUCCESS,7,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
+io_operations_set_printoptions,SUCCESS,6,"claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini"
+linalg_LinAlgError,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini, grok-code"
+linalg_cond,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+linalg_cross,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code"
+linalg_eigh,FAILED,0,
+linalg_eigvals,SUCCESS,4,"claude-opus, claude-sonnet, gemini, gpt-mini"
+linalg_eigvalsh,FAILED,0,
+linalg_lstsq,FAILED,0,
+linalg_matmul,SUCCESS,5,"claude-sonnet, deepseek, gemini-flash, gpt, grok-code"
+linalg_matrix_norm,FAILED,0,
+linalg_matrix_rank,FAILED,0,
+linalg_outer,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, grok-code"
+linalg_pinv,SUCCESS,4,"gemini, glm, gpt-mini, grok-code"
+linalg_solve,FAILED,0,
+linalg_svdvals,FAILED,0,
+linalg_tensordot,SUCCESS,6,"claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
+linalg_tensorsolve,FAILED,0,
+linalg_trace,FAILED,0,
+logic_functions_all,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+logic_functions_allclose,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code"
+logic_functions_array_equal,SUCCESS,7,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini, grok-code"
+logic_functions_array_equiv,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+logic_functions_bitwise_and,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+logic_functions_bitwise_not,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini"
+logic_functions_bitwise_or,SUCCESS,4,"claude-opus, claude-sonnet, gemini, gpt-mini"
+logic_functions_equal,SUCCESS,7,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini, grok-code"
+logic_functions_greater,SUCCESS,7,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini, grok-code"
+logic_functions_isclose,FAILED,0,
+logic_functions_iscomplex,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+logic_functions_iscomplexobj,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code"
+logic_functions_isfinite,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, glm, gpt, gpt-mini, grok-code"
+logic_functions_isinf,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini"
+logic_functions_isnan,FAILED,0,
+logic_functions_isneginf,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini"
+logic_functions_isposinf,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+logic_functions_isreal,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+logic_functions_less_equal,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gemini, glm, grok-code"
+logic_functions_logical_and,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code"
+logic_functions_logical_not,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+logic_functions_logical_or,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini-flash, glm, gpt, gpt-mini, grok-code"
+logic_functions_logical_xor,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gemini-flash, glm, grok-code"
+logic_functions_not_equal,SUCCESS,7,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
+mathematical_functions_absolute,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt-mini, grok-code"
+mathematical_functions_add,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code"
+mathematical_functions_arccosh,FAILED,0,
+mathematical_functions_arcsin,SUCCESS,4,"claude-opus, claude-sonnet, gpt, gpt-mini"
+mathematical_functions_arctan,FAILED,0,
+mathematical_functions_arctanh,SUCCESS,1,gemini-flash
+mathematical_functions_cbrt,FAILED,0,
+mathematical_functions_clip,SUCCESS,6,"claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt"
+mathematical_functions_conj,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gemini, gpt-mini, grok-code"
+mathematical_functions_convolve,SUCCESS,5,"claude-sonnet, deepseek, gpt, gpt-mini, grok-code"
+mathematical_functions_copysign,FAILED,0,
+mathematical_functions_cosh,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+mathematical_functions_cross,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+mathematical_functions_deg2rad,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt-mini, grok-code"
+mathematical_functions_diff,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+mathematical_functions_divide,FAILED,0,
+mathematical_functions_ediff1d,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini"
+mathematical_functions_exp2,SUCCESS,6,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini"
+mathematical_functions_expm1,FAILED,0,
+mathematical_functions_fabs,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code"
+mathematical_functions_floor,SUCCESS,6,"claude-opus, claude-sonnet, gemini, glm, gpt, grok-code"
+mathematical_functions_fmax,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code"
+mathematical_functions_fmin,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+mathematical_functions_gradient,SUCCESS,5,"claude-sonnet, deepseek, gemini, gpt, grok-code"
+mathematical_functions_heaviside,SUCCESS,5,"claude-opus, claude-sonnet, gemini, glm, gpt-mini"
+mathematical_functions_i0,SUCCESS,2,"claude-sonnet, gpt"
+mathematical_functions_imag,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini, grok-code"
+mathematical_functions_log,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+mathematical_functions_log10,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini"
+mathematical_functions_log1p,SUCCESS,6,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt"
+mathematical_functions_log2,SUCCESS,3,"claude-sonnet, gemini, gpt-mini"
+mathematical_functions_logaddexp,SUCCESS,3,"claude-sonnet, gpt, gpt-mini"
+mathematical_functions_logaddexp2,FAILED,0,
+mathematical_functions_maximum,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code"
+mathematical_functions_mod,FAILED,0,
+mathematical_functions_multiply,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+mathematical_functions_nancumprod,SUCCESS,3,"claude-sonnet, deepseek, gemini"
+mathematical_functions_nancumsum,SUCCESS,7,"claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code"
+mathematical_functions_nansum,SUCCESS,1,claude-opus
+mathematical_functions_negative,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+mathematical_functions_nextafter,FAILED,0,
+mathematical_functions_positive,SUCCESS,7,"claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+mathematical_functions_power,FAILED,0,
+mathematical_functions_prod,SUCCESS,1,gpt-mini
+mathematical_functions_radians,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gpt, gpt-mini, grok-code"
+mathematical_functions_real_if_close,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gpt, gpt-mini, grok-code"
+mathematical_functions_reciprocal,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, grok-code"
+mathematical_functions_rint,FAILED,0,
+mathematical_functions_sign,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+mathematical_functions_sinc,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, grok-code"
+mathematical_functions_sinh,FAILED,0,
+mathematical_functions_sqrt,FAILED,0,
+mathematical_functions_square,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini"
+mathematical_functions_subtract,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, glm, gpt, gpt-mini, grok-code"
+mathematical_functions_sum,SUCCESS,2,"claude-opus, gemini"
+mathematical_functions_tan,SUCCESS,7,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
+mathematical_functions_tanh,FAILED,0,
+mathematical_functions_trapezoid,SUCCESS,4,"claude-sonnet, gemini, gpt, gpt-mini"
+mathematical_functions_true_divide,SUCCESS,6,"claude-opus, claude-sonnet, gemini, glm, gpt-mini, grok-code"
+mathematical_functions_unwrap,FAILED,0,
+ndarray_flat,SUCCESS,7,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
+ndarray_tofile,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini"
+polynomial_chebyshev_Chebyshev,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+polynomial_chebyshev_chebadd,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt-mini"
+polynomial_chebyshev_chebcompanion,FAILED,0,
+polynomial_chebyshev_chebgauss,FAILED,0,
+polynomial_chebyshev_chebinterpolate,FAILED,0,
+polynomial_chebyshev_chebline,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code"
+polynomial_chebyshev_chebmul,SUCCESS,1,gpt
+polynomial_chebyshev_chebpts1,SUCCESS,2,"claude-sonnet, grok-code"
+polynomial_chebyshev_chebsub,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini"
+polynomial_chebyshev_chebvander,FAILED,0,
+polynomial_chebyshev_chebweight,FAILED,0,
+polynomial_chebyshev_poly2cheb,SUCCESS,1,gpt
+polynomial_hermite_e_HermiteE,FAILED,0,
+polynomial_hermite_e_hermeadd,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code"
+polynomial_hermite_e_hermediv,FAILED,0,
+polynomial_hermite_e_hermefit,FAILED,0,
+polynomial_hermite_e_hermefromroots,FAILED,0,
+polynomial_hermite_e_hermeline,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+polynomial_hermite_e_hermemul,SUCCESS,3,"claude-opus, claude-sonnet, gemini"
+polynomial_hermite_e_hermemulx,SUCCESS,6,"claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code"
+polynomial_hermite_e_hermepow,SUCCESS,4,"claude-opus, claude-sonnet, gemini, gpt-mini"
+polynomial_hermite_e_hermesub,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+polynomial_hermite_e_hermevander,SUCCESS,2,"claude-sonnet, gpt"
+polynomial_hermite_e_hermeweight,FAILED,0,
+polynomial_hermite_hermadd,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code"
+polynomial_hermite_hermcompanion,SUCCESS,2,"claude-opus, gpt"
+polynomial_hermite_hermfit,FAILED,0,
+polynomial_hermite_hermfromroots,SUCCESS,3,"claude-sonnet, gemini-flash, gpt"
+polynomial_hermite_hermgauss,FAILED,0,
+polynomial_hermite_hermline,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+polynomial_hermite_hermmul,SUCCESS,3,"claude-opus, claude-sonnet, gpt-mini"
+polynomial_hermite_hermmulx,SUCCESS,3,"claude-opus, deepseek, gemini"
+polynomial_hermite_hermsub,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini"
+polynomial_hermite_hermvander2d,FAILED,0,
+polynomial_laguerre_lag2poly,FAILED,0,
+polynomial_laguerre_lagadd,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code"
+polynomial_laguerre_lagcompanion,SUCCESS,5,"claude-opus, claude-sonnet, gemini, glm, grok-code"
+polynomial_laguerre_lagder,FAILED,0,
+polynomial_laguerre_laggrid2d,FAILED,0,
+polynomial_laguerre_laggrid3d,FAILED,0,
+polynomial_laguerre_lagint,SUCCESS,5,"claude-opus, claude-sonnet, gpt, gpt-mini, grok-code"
+polynomial_laguerre_lagline,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+polynomial_laguerre_lagmul,SUCCESS,2,"gemini, gpt"
+polynomial_laguerre_lagmulx,SUCCESS,4,"claude-opus, claude-sonnet, deepseek, gemini"
+polynomial_laguerre_lagpow,SUCCESS,5,"claude-opus, gemini-flash, gpt, gpt-mini, grok-code"
+polynomial_laguerre_lagroots,FAILED,0,
+polynomial_laguerre_lagsub,SUCCESS,6,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini"
+polynomial_laguerre_lagval,SUCCESS,2,"claude-opus, gemini"
+polynomial_laguerre_lagweight,SUCCESS,7,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
+polynomial_laguerre_poly2lag,FAILED,0,
+polynomial_legendre_leg2poly,FAILED,0,
+polynomial_legendre_legadd,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini"
+polynomial_legendre_legcompanion,SUCCESS,3,"claude-sonnet, gpt, grok-code"
+polynomial_legendre_legdiv,SUCCESS,3,"claude-sonnet, gpt, gpt-mini"
+polynomial_legendre_leggrid2d,SUCCESS,2,"claude-sonnet, gemini"
+polynomial_legendre_legint,SUCCESS,1,claude-opus
+polynomial_legendre_legline,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+polynomial_legendre_legmul,FAILED,0,
+polynomial_legendre_legmulx,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code"
+polynomial_legendre_legvander,SUCCESS,5,"claude-sonnet, gemini-flash, gpt, gpt-mini, grok-code"
+polynomial_legendre_legvander2d,SUCCESS,1,gpt
+polynomial_legendre_legvander3d,FAILED,0,
+polynomial_legendre_legweight,SUCCESS,8,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+polynomial_polynomial_Polynomial,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+polynomial_polynomial_polycompanion,SUCCESS,3,"claude-opus, claude-sonnet, gpt-mini"
+polynomial_polynomial_polyder,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini"
+polynomial_polynomial_polygrid2d,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code"
+polynomial_polynomial_polygrid3d,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini"
+polynomial_polynomial_polyline,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+polynomial_polynomial_polymulx,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+polynomial_polynomial_polypow,SUCCESS,2,"claude-sonnet, gpt"
+polynomial_polynomial_polyroots,FAILED,0,
+polynomial_polynomial_polysub,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini"
+polynomial_polynomial_polyval3d,SUCCESS,4,"claude-opus, gemini, gpt, gpt-mini"
+polynomial_polynomial_polyvalfromroots,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gemini, gpt-mini, grok-code"
+polynomial_polynomial_polyvander,SUCCESS,5,"claude-opus, claude-sonnet, deepseek, gemini, gpt"
+polynomial_polynomial_polyvander2d,SUCCESS,2,"claude-opus, claude-sonnet"
+polynomial_polynomial_polyvander3d,FAILED,0,
+polynomial_polyutils_format_float,SUCCESS,3,"claude-opus, claude-sonnet, gemini"
+polynomial_polyutils_getdomain,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gpt, gpt-mini, grok-code"
+polynomial_polyutils_mapdomain,SUCCESS,7,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
+polynomial_polyutils_mapparms,SUCCESS,7,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini, grok-code"
+polynomial_polyutils_trimseq,SUCCESS,3,"claude-sonnet, gemini, gpt"
+random_BitGenerator,SUCCESS,7,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
+random_MT19937,SUCCESS,1,gemini
+random_PCG64DXSM,SUCCESS,2,"gpt, gpt-mini"
+random_RandomState,FAILED,0,
+random_SFC64,SUCCESS,7,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
+random_SeedSequence,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini"
+random_default_rng,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+set_operations_in1d,SUCCESS,4,"claude-opus, claude-sonnet, gemini, gpt"
+set_operations_intersect1d,SUCCESS,1,grok-code
+set_operations_isin,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gpt, gpt-mini, grok-code"
+set_operations_setdiff1d,FAILED,0,
+set_operations_setxor1d,SUCCESS,1,gpt-mini
+set_operations_union1d,FAILED,0,
+set_operations_unique,SUCCESS,1,claude-opus
+sorting_searching_argmax,SUCCESS,7,"claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code"
+sorting_searching_argmin,SUCCESS,6,"claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini"
+sorting_searching_argwhere,SUCCESS,6,"claude-opus, gemini, glm, gpt, gpt-mini, grok-code"
+sorting_searching_bincount,SUCCESS,3,"claude-opus, claude-sonnet, gpt-mini"
+sorting_searching_count_nonzero,SUCCESS,2,"deepseek, gpt-mini"
+sorting_searching_extract,FAILED,0,
+sorting_searching_flatnonzero,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+sorting_searching_lexsort,FAILED,0,
+sorting_searching_msort,FAILED,0,
+sorting_searching_nanargmax,SUCCESS,5,"claude-opus, claude-sonnet, gemini, gpt, grok-code"
+sorting_searching_nanargmin,SUCCESS,3,"claude-opus, claude-sonnet, deepseek"
+sorting_searching_nonzero,SUCCESS,4,"gemini, gemini-flash, gpt, grok-code"
+sorting_searching_partition,FAILED,0,
+sorting_searching_unique,SUCCESS,2,"claude-sonnet, gpt"
+sorting_searching_where,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+statistics_amax,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gemini, gpt, grok-code"
+statistics_amin,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini"
+statistics_corrcoef,FAILED,0,
+statistics_cov,SUCCESS,1,claude-sonnet
+statistics_histogram,FAILED,0,
+statistics_histogram2d,FAILED,0,
+statistics_histogram_bin_edges,SUCCESS,3,"claude-sonnet, gemini, gpt"
+statistics_mean,SUCCESS,3,"claude-sonnet, gpt-mini, grok-code"
+statistics_median,FAILED,0,
+statistics_min,SUCCESS,6,"claude-opus, claude-sonnet, gemini, gemini-flash, gpt-mini, grok-code"
+statistics_nanmin,SUCCESS,5,"claude-opus, claude-sonnet, gemini, gpt, gpt-mini"
+statistics_nanquantile,FAILED,0,
+statistics_nanstd,SUCCESS,3,"glm, gpt, gpt-mini"
+statistics_percentile,FAILED,0,
+statistics_quantile,SUCCESS,4,"claude-opus, claude-sonnet, gemini, gpt"
+statistics_std,FAILED,0,
+strings_count,FAILED,0,
+strings_decode,FAILED,0,
+strings_encode,SUCCESS,4,"claude-opus, gemini, glm, gpt"
+strings_endswith,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt-mini"
+strings_equal,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code"
+strings_expandtabs,FAILED,0,
+strings_find,FAILED,0,
+strings_greater,SUCCESS,5,"claude-sonnet, deepseek, gemini, glm, gpt"
+strings_greater_equal,FAILED,0,
+strings_index,SUCCESS,2,"claude-opus, gpt-mini"
+strings_isalnum,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini"
+strings_isalpha,SUCCESS,7,"claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code"
+strings_isdigit,SUCCESS,6,"claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt"
+strings_islower,SUCCESS,9,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code"
+strings_istitle,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt-mini, grok-code"
+strings_isupper,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code"
+strings_join,SUCCESS,1,gpt
+strings_lower,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm"
+strings_mod,SUCCESS,1,gemini
+strings_multiply,SUCCESS,5,"claude-opus, claude-sonnet, gemini, glm, gpt"
+strings_not_equal,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code"
+strings_partition,FAILED,0,
+strings_rfind,FAILED,0,
+strings_rindex,FAILED,0,
+strings_rjust,SUCCESS,4,"claude-opus, claude-sonnet, gemini, glm"
+strings_rstrip,SUCCESS,1,claude-opus
+strings_split,FAILED,0,
+strings_splitlines,FAILED,0,
+strings_swapcase,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini"
+strings_upper,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini"
+ufunc___call__,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt"
+ufunc_accumulate,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini"
+ufunc_outer,FAILED,0,
+ufunc_reduce,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini"
+ufunc_reduceat,FAILED,0,
+ufuncs_frompyfunc,SUCCESS,6,"claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini"
+ufuncs_nargs,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini"
+ufuncs_nout,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini"
+ufuncs_ntypes,SUCCESS,8,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini"
+ufuncs_signature,SUCCESS,2,"gpt, gpt-mini"
+ufuncs_types,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini"

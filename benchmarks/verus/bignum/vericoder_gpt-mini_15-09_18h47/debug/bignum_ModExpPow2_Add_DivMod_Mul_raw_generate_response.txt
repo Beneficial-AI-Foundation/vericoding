@@ -1,8 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 252 characters
---------------------------------------------------------------------------------
-[
-  "spec fn is_bit(c: char) -> bool { c == '0' || c == '1' }\n\nspec fn seq_is_valid_bits(s: Seq<char>) -> bool { forall |i: int| 0 <= i && i < s.len() as int ==> is_bit(s.index(i)) }",
-  "{\n    let res: Vec<char> = Vec::<char>::new();\n    res\n}"
-]
---------------------------------------------------------------------------------

@@ -1,5 +1,0 @@
-=== Raw LLM Fix Response - Iteration 2 ===
-Length: 892 characters
---------------------------------------------------------------------------------
-["/* helper modified by LLM (iteration 3): Removed unused helper to simplify. */", "/* code modified by LLM (iteration 3): Fixed type error with `nat` in `exp_spec` by casting the entire expression to `u64` instead of just the exponent and using `proof` block for `n==0` case. Added `via ModExpPow2_int_spec_helper` for recursion. */\n{\n    if n == 0 {\n        proof {\n            assert((x as nat) == Exp_int(x as nat, 1 as nat));\n            assert((y as nat) == Exp_int(2, 0 as nat));\n            assert(Exp_int(x as nat, 1 as nat) % (z as nat) == (x as nat) % (z as nat));\n           \n        }\n        x % z\n    } else {\n        let y_prev = Exp_int(2, (n - 1) as nat);\n        let res_prev = ModExpPow2_int(x, y_prev as u64, n - 1, z) by (via ModExpPow2_int_spec_helper);\n        let res = (res_prev as u128 * res_prev as u128) % (z as u128);\n        res as u64\n    }\n}"]
---------------------------------------------------------------------------------

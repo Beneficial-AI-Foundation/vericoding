@@ -19,19 +19,13 @@ method IsPrime(n: nat) returns (result: bool)
     while i < n
         invariant 2 <= i <= n
         invariant result ==> forall k: nat :: 2 <= k < i ==> n % k != 0
-        invariant !result ==> exists k: nat :: 2 <= k < n && n % k == 0
+        invariant !result ==> exists k: nat :: 2 <= k < i && n % k == 0
     {
         if n % i == 0 {
             result := false;
-            assert n % i == 0;
-            assert 2 <= i < n;
             return;
         }
         i := i + 1;
     }
-    
-    assert i == n;
-    assert result;
-    assert forall k: nat :: 2 <= k < n ==> n % k != 0;
 }
 // </vc-code>

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     var lines := SplitLinesFunc(input);
@@ -87,14 +88,28 @@ function ParseIntHelper(s: string, i: nat, acc: nat): nat
     if i >= |s| then acc
     else ParseIntHelper(s, i+1, acc * 10 + (s[i] as int - '0' as int))
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function Multiply(a: int, b: int): int {
-    a * b
-}
+function ComputeResult(input: string): string
+    requires ValidInput(input)
+{
+    var lines := SplitLinesFunc(input);
+    var boardParts := SplitSpacesFunc(lines[0]);
+    var paint1Parts := SplitSpacesFunc(lines[1]);
+    var paint2Parts := SplitSpacesFunc(lines[2]);
 
-function Add(a: int, b: int): int {
-    a + b
+    var a := ParseIntFunc(boardParts[0]);
+    var b := ParseIntFunc(boardParts[1]);
+    var c := ParseIntFunc(paint1Parts[0]);
+    var d := ParseIntFunc(paint1Parts[1]);
+    var e := ParseIntFunc(paint2Parts[0]);
+    var f := ParseIntFunc(paint2Parts[1]);
+
+    if CanPlaceBothPaintings(a, b, c, d, e, f) then
+        "YES\n"
+    else
+        "NO\n"
 }
 // </vc-helpers>
 
@@ -121,31 +136,10 @@ method solve(input: string) returns (result: string)
 // </vc-spec>
 // <vc-code>
 {
-    if !ValidInput(input)
-    {
-        return "";
-    }
-
-    var lines := SplitLinesFunc(input);
-    var boardParts := SplitSpacesFunc(lines[0]);
-    var paint1Parts := SplitSpacesFunc(lines[1]);
-    var paint2Parts := SplitSpacesFunc(lines[2]);
-
-    var a := ParseIntFunc(boardParts[0]);
-    var b := ParseIntFunc(boardParts[1]);
-    var c := ParseIntFunc(paint1Parts[0]);
-    var d := ParseIntFunc(paint1Parts[1]);
-    var e := ParseIntFunc(paint2Parts[0]);
-    var f := ParseIntFunc(paint2Parts[1]);
-
-    if CanPlaceBothPaintings(a, b, c, d, e, f)
-    {
-        return "YES\n";
-    }
-    else
-    {
-        return "NO\n";
-    }
+  if ValidInput(input) {
+    result := ComputeResult(input);
+  } else {
+    result := "";
+  }
 }
 // </vc-code>
-

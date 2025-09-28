@@ -11,7 +11,6 @@ verus! {
 fn poly2leg(pol: Vec<f32>) -> (result: Vec<f32>)
     ensures 
         result.len() == pol.len(),
-        true // Polynomial results exist (simplified)
 // </vc-spec>
 // <vc-code>
 {

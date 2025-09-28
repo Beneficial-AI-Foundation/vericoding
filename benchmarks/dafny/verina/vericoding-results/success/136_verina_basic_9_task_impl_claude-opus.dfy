@@ -15,19 +15,18 @@ method HasCommonElement(a: array<int>, b: array<int>) returns (result: bool)
 // </vc-spec>
 // <vc-code>
 {
+  /* code modified by LLM (iteration 2): Initialize result and fix loop invariants */
   result := false;
   var i := 0;
   while i < a.Length
     invariant 0 <= i <= a.Length
-    invariant !result ==> forall k, j :: 0 <= k < i && 0 <= j < b.Length ==> a[k] != b[j]
-    invariant result ==> exists k, j :: 0 <= k < a.Length && 0 <= j < b.Length && a[k] == b[j]
+    invariant !result
+    invariant forall i', j :: 0 <= i' < i && 0 <= j < b.Length ==> a[i'] != b[j]
   {
     var j := 0;
     while j < b.Length
       invariant 0 <= j <= b.Length
-      invariant !result ==> forall k :: 0 <= k < j ==> a[i] != b[k]
-      invariant !result ==> forall k, m :: 0 <= k < i && 0 <= m < b.Length ==> a[k] != b[m]
-      invariant result ==> exists k, m :: 0 <= k < a.Length && 0 <= m < b.Length && a[k] == b[m]
+      invariant forall j' :: 0 <= j' < j ==> a[i] != b[j']
     {
       if a[i] == b[j] {
         result := true;
@@ -37,5 +36,6 @@ method HasCommonElement(a: array<int>, b: array<int>) returns (result: bool)
     }
     i := i + 1;
   }
+  result := false;
 }
 // </vc-code>

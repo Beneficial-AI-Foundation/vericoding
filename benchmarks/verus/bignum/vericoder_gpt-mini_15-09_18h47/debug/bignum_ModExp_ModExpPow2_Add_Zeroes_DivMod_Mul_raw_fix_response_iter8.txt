@@ -1,8 +1,0 @@
-=== Raw LLM Fix Response - Iteration 8 ===
-Length: 1365 characters
---------------------------------------------------------------------------------
-[
-"/* helper modified by LLM (iteration 9): predicate for bit characters */\nspec fn IsBitChar(c: char) -> bool\n{\n    c == '0' || c == '1'\n}",
-"{\n  /* code modified by LLM (iteration 9): modular exponentiation using nat literals and bit conversion */\n  let m: nat = Str2Int(sz@);\n  let mut acc: nat = 1nat % m;\n  let mut b: nat = Str2Int(sx@) % m;\n  let mut e: nat = Str2Int(sy@);\n\n  while e > 0nat\n      invariant\n          m > 1nat,\n          acc < m,\n          b < m,\n      decreases e\n  {\n      if e % 2nat == 1nat {\n          acc = (acc * b) % m;\n      }\n      b = (b * b) % m;\n      e = e / 2nat;\n  }\n\n  let mut tmp = Vec::<char>::new();\n  if acc == 0nat {\n      // represent zero as empty sequence per Str2Int\n  } else {\n      let mut x: nat = acc;\n      while x > 0nat\n          invariant\n              0nat <= x,\n          decreases x\n      {\n          if x % 2nat == 1nat {\n              tmp.push('1');\n          } else {\n              tmp.push('0');\n          }\n          x = x / 2nat;\n      }\n  }\n\n  let mut res = Vec::<char>::new();\n  let len_tmp: usize = tmp.len();\n  let mut j: usize = 0usize;\n  while j < len_tmp\n      invariant\n          j <= len_tmp,\n      decreases len_tmp - j\n  {\n      let idx: usize = len_tmp - 1usize - j;\n      res.push(tmp[idx]);\n      j += 1usize;\n  }\n\n  res\n}\n"
-]
---------------------------------------------------------------------------------

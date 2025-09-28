@@ -6,27 +6,18 @@ function CountOccurrences(x: int, lst: seq<int>): nat
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): Fixed Boyer-Moore lemma with proper verification */
-function HasMajorityElement(lst_seq: seq<int>): bool
+/* helper modified by LLM (iteration 5): Fix Count function bounds checking */
+function Count(index: int, candidate: int, lst: seq<int>): nat
+  requires 0 <= index <= |lst|
+  decreases |lst| - index
 {
-  exists x :: x in lst_seq && CountOccurrences(x, lst_seq) > |lst_seq| / 2
+  if index >= |lst| then 0
+  else (if index < |lst| && lst[index] == candidate then 1 else 0) + Count(index + 1, candidate, lst)
 }
 
-lemma BoyerMooreMajorityLemma(lst_seq: seq<int>, candidate: int, count: nat)
-  requires |lst_seq| > 0
-  ensures count > 0 ==> CountOccurrences(candidate, lst_seq) > |lst_seq| / 2 || !HasMajorityElement(lst_seq)
+lemma CountOccurrencesEquivalence(x: int, lst: seq<int>)
+  ensures CountOccurrences(x, lst) == Count(0, x, lst)
 {
-  if count > 0 {
-    var n := |lst_seq|;
-    var total_occurrences := CountOccurrences(candidate, lst_seq);
-    if total_occurrences > n / 2 {
-      // Candidate is majority element
-    } else {
-      // No majority element exists
-      assert forall x :: CountOccurrences(x, lst_seq) <= n / 2;
-      assert !HasMajorityElement(lst_seq);
-    }
-  }
 }
 // </vc-helpers>
 
@@ -40,27 +31,25 @@ method FindMajorityElement(lst: array<int>) returns (result: int)
             (result != -1 ==> majority)
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Removed invalid decreases clauses from for loops */
 {
-  result := -1;
+  /* code modified by LLM (iteration 5): Fix loop invariant and implement Boyer-Moore voting algorithm */
   var n := lst.Length;
   var lst_seq := lst[..];
   
   if n == 0 {
+    result := -1;
     return;
   }
   
   var candidate := lst[0];
   var count := 1;
+  var i := 1;
   
-  if n == 1 {
-    result := candidate;
-    return;
-  }
-  
-  for i := 1 to n - 1
-    invariant 0 <= count <= i + 1
-    invariant count > 0 ==> CountOccurrences(candidate, lst_seq[0..i]) > i / 2
+  while i < n
+    invariant 0 <= i <= n
+    invariant count >= 1 ==> (exists j :: 0 <= j < i && lst[j] == candidate)
+    invariant count >= 0
+    invariant forall k :: 0 <= k < i ==> count >= 0
   {
     if count == 0 {
       candidate := lst[i];
@@ -70,22 +59,15 @@ method FindMajorityElement(lst: array<int>) returns (result: int)
     } else {
       count := count - 1;
     }
+    i := i + 1;
   }
   
-  if count > 0 {
-    BoyerMooreMajorityLemma(lst_seq, candidate, count);
-    var occurrences := 0;
-    for i := 0 to n - 1
-      invariant 0 <= i <= n
-      invariant occurrences == CountOccurrences(candidate, lst_seq[0..i])
-    {
-      if lst[i] == candidate {
-        occurrences := occurrences + 1;
-      }
-    }
-    if occurrences > n / 2 {
-      result := candidate;
-    }
+  // Verify if candidate is actually majority
+  var candidate_count := Count(0, candidate, lst_seq);
+  if candidate_count > n / 2 {
+    result := candidate;
+  } else {
+    result := -1;
   }
 }
 // </vc-code>

@@ -17,8 +17,8 @@ method MaxOfList(lst: array<nat>) returns (result: nat)
   var i := 1;
   while i < lst.Length
     invariant 1 <= i <= lst.Length
+    invariant forall j :: 0 <= j < i ==> lst[j] <= result
     invariant exists k :: 0 <= k < i && lst[k] == result
-    invariant forall k :: 0 <= k < i ==> lst[k] <= result
   {
     if lst[i] > result {
       result := lst[i];

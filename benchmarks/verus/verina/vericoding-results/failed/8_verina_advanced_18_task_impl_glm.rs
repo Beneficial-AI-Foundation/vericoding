@@ -27,38 +27,71 @@ spec fn sum_powers(n: nat, k: nat) -> nat
 // </vc-preamble>
 
 // <vc-helpers>
-fn count_digits_exec(n: nat) -> (result: nat)
-    decreases n
-    ensures result == count_digits(n)
+/* helper modified by LLM (iteration 2): added decreases clause to loop */
+fn count_digits_exec(n: u32) -> (k: u32)
+    ensures k == count_digits(n as nat)
 {
     if n == 0 {
         1
-    } else if n < 10 {
-        1
     } else {
-        1 + count_digits_exec(n / 10)
+        let mut count = 0;
+        let mut temp = n;
+        while temp != 0
+            invariant
+                temp <= n,
+                count <= 10,
+                count + count_digits(temp as nat) == count_digits(n as nat),
+            decreases temp
+        {
+            count += 1;
+            temp /= 10;
+        }
+        count
     }
 }
 
-fn pow_nat_exec(base: nat, exp: nat) -> (result: nat)
-    decreases exp
-    ensures result == pow_nat(base, exp)
+/* helper modified by LLM (iteration 2): added decreases clause to loop */
+fn pow_exec(base: u32, exp: u32) -> (result: u32)
+    ensures result == pow_nat(base as nat, exp as nat)
 {
     if exp == 0 {
         1
     } else {
-        base * pow_nat_exec(base, (exp - 1) as nat)
+        let mut result = 1;
+        let mut i = 0;
+        while i < exp
+            invariant
+                i <= exp,
+                result == pow_nat(base as nat, i as nat),
+            decreases exp - i
+        {
+            result *= base;
+            i += 1;
+        }
+        result
     }
 }
 
-fn sum_powers_exec(n: nat, k: nat) -> (result: nat)
-    decreases n
-    ensures result == sum_powers(n, k)
+/* helper modified by LLM (iteration 2): added decreases clause to loop */
+fn sum_powers_exec(n: u32, k: u32) -> (sum: u64)
+    ensures sum == sum_powers(n as nat, k as nat)
 {
     if n == 0 {
         0
     } else {
-        pow_nat_exec(n % 10, k) + sum_powers_exec(n / 10, k)
+        let mut sum = 0;
+        let mut temp = n;
+        while temp != 0
+            invariant
+                temp <= n,
+                sum + sum_powers(temp as nat, k as nat) == sum_powers(n as nat, k as nat),
+            decreases temp
+        {
+            let digit = temp % 10;
+            sum += pow_exec(digit, k) as u64;
+            temp /= 10;
+        }
+        sum
     }
 }
 // </vc-helpers>
@@ -70,10 +103,13 @@ fn is_armstrong(n: u32) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-    let n_nat = n as nat;
-    let k = count_digits_exec(n_nat);
-    let s = sum_powers_exec(n_nat, k);
-    n_nat == s
+    if n == 0 {
+        true
+    } else {
+        let k = count_digits_exec(n);
+        let sum = sum_powers_exec(n, k);
+        sum == n as u64
+    }
 }
 // </vc-code>
 

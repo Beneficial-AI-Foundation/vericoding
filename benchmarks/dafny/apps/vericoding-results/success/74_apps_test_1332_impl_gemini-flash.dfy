@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(coins: seq<int>)
 {
   |coins| == 5 && forall i :: 0 <= i < |coins| ==> 0 <= coins[i] <= 100
@@ -22,9 +23,10 @@ function ComputeResult(coins: seq<int>): int
   var total := TotalCoins(coins);
   if total > 0 && total % 5 == 0 then total / 5 else -1
 }
+// </vc-preamble>
 
 // <vc-helpers>
-
+/* helper modified by LLM (iteration 4): removed line with compilation error */
 // </vc-helpers>
 
 // <vc-spec>
@@ -35,6 +37,7 @@ method solve(coins: seq<int>) returns (result: int)
   ensures !HasValidSolution(coins) ==> result == -1
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 4): Fixed nested if statement by moving the 'then' after the condition*/
 {
   var total := TotalCoins(coins);
   if total > 0 && total % 5 == 0 {
@@ -44,4 +47,3 @@ method solve(coins: seq<int>) returns (result: int)
   }
 }
 // </vc-code>
-

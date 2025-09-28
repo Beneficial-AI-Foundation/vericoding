@@ -55,7 +55,11 @@ spec fn valid_solution(s: Seq<char>, t: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: Seq<char>)
+fn solve(s: Vec<char>) -> (result: Vec<char>)
+    requires
+        valid_binary_string(s@),
+    ensures
+        valid_solution(s@, result@),
 // </vc-spec>
 // <vc-code>
 {

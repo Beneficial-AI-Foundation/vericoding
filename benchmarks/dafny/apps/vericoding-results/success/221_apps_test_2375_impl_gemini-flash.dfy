@@ -1,3 +1,4 @@
+// <vc-preamble>
 function Abs(x: int): int
 {
   if x >= 0 then x else -x
@@ -17,9 +18,10 @@ predicate ValidInput(X: int, Y: int)
 {
   X >= 0 && Y >= 0
 }
+// </vc-preamble>
 
 // <vc-helpers>
-// No changes needed in helpers, remove duplicate predicate definitions by moving them to the preamble
+// No helpers needed for this problem
 // </vc-helpers>
 
 // <vc-spec>
@@ -33,13 +35,8 @@ method DetermineWinner(X: int, Y: int) returns (winner: string)
 {
   if Abs(X - Y) > 1 {
     winner := "Alice";
-    assert AliceWins(X, Y);
-    assert !BrownWins(X, Y);
   } else {
     winner := "Brown";
-    assert BrownWins(X, Y);
-    assert !AliceWins(X, Y);
   }
 }
 // </vc-code>
-

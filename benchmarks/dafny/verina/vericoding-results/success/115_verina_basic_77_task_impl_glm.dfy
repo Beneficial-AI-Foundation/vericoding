@@ -25,9 +25,7 @@ method ModifyArrayElement(arr: seq<seq<nat>>, index1: int, index2: int, val: nat
 // </vc-spec>
 // <vc-code>
 {
-    // impl-start
-    var updatedInner := UpdateInner(arr[index1], index2, val);
-    result := arr[index1 := updatedInner];
-    // impl-end
+  var updatedInner := UpdateInner(arr[index1], index2, val);
+  result := arr[index1 := updatedInner];
 }
 // </vc-code>

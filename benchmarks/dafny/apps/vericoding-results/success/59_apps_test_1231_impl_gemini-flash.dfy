@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int)
 {
     0 <= a <= 100 && 0 <= b <= 100
@@ -17,9 +18,11 @@ function abs(x: int): int
 {
     if x >= 0 then x else -x
 }
+// </vc-preamble>
 
 // <vc-helpers>
-// No helpers needed
+/* helper modified by LLM (iteration 2): fixed helper replacement, original was empty */
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -29,12 +32,12 @@ method solve(a: int, b: int) returns (result: string)
     ensures result == "YES" <==> IntervalExists(a, b)
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 2): fixed compilation errors by enclosing if-else in curly braces */
 {
-    if abs(a - b) <= 1 && a + b > 0 {
-        result := "YES";
-    } else {
-        result := "NO";
-    }
+  if (abs(a - b) <= 1 && a + b > 0) {
+    result := "YES";
+  } else {
+    result := "NO";
+  }
 }
 // </vc-code>
-

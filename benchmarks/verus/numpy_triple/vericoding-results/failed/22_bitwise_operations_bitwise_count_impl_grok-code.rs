@@ -19,7 +19,18 @@ spec fn popcount(n: nat) -> nat
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): empty helpers as no need */
+exec fn abs_helper(x: i32) -> u32 {
+    if x >= 0 { x as u32 } else { (-x) as u32 }
+}
+exec fn popcount_helper(n: u32) -> u32
+    decreases n as int
+{
+    if n == 0 {
+        0
+    } else {
+        ((n % 2) as u32) + popcount_helper(n / 2)
+    }
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -32,31 +43,19 @@ fn bitwise_count(x: Vec<i32>) -> (result: Vec<nat>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): used tracked variables for ghost computations to avoid 'nat' type in exec code */
+    /* code modified by LLM (iteration 5): fixed cast syntax in tracked block */
     let mut result: Vec<nat> = Vec::new();
     for i in 0..x.len() {
-        let val = x[i];
-        tracked let abs_input: nat = abs_spec(val);
-        let mut n_exec: u32 = if val >= 0 { val as u32 } else { (-(val as i64)) as u32 };
-        tracked let mut n_ghost: nat = abs_input;
-        tracked let mut count: nat = 0;
-        while n_exec > 0
-            invariant
-                0 <= count,
-                count + popcount(n_ghost) == popcount(abs_input),
-            decreases n_ghost
-        {
-            tracked {
-                let bit = n_exec % 2;
-                count += bit as nat;
-                n_exec /= 2;
-                n_ghost /= 2;
-            }
+        let abs_val_u = abs_helper(x[i]);
+        let count_u = popcount_helper(abs_val_u);
+        tracked {
+            let val_nat: nat = count_u as int;
+            result.push(val_nat);
         }
         proof {
-            assert(count == popcount(abs_input));
+            assert(abs_val_u as int == abs_spec(x[i]) as int);
+            assert(count_u as int == popcount(abs_spec(x[i])) as int);
         }
-        result.push(count);
     }
     result
 }

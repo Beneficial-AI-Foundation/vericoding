@@ -91,10 +91,10 @@ proof fn max_net_earnings_helper_non_negative(unique_blue: Seq<&str>, blue_cards
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(blue_cards: Seq<&str>, red_cards: Seq<&str>) -> (result: int)
+fn solve(blue_cards: Vec<&str>, red_cards: Vec<&str>) -> (result: i8)
     ensures 
         result >= 0,
-        result == max_net_earnings(blue_cards, red_cards)
+        result as int == max_net_earnings(blue_cards@, red_cards@)
 // </vc-spec>
 // <vc-code>
 {

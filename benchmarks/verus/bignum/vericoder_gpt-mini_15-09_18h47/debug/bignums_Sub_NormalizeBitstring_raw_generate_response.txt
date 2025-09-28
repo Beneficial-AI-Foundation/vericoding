@@ -1,5 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 327 characters
---------------------------------------------------------------------------------
-["proof fn slice_to_vec_valid(s: &[char])\n    requires ValidBitString(s@)\n    ensures ValidBitString(Vec::<char>::from_slice(s)@)\n{\n    proof {\n        assert(Vec::<char>::from_slice(s)@ == s@);\n    }\n}", "{\n    let mut res = Vec::<char>::from_slice(s);\n    proof {\n        slice_to_vec_valid(s);\n    }\n    res\n}"]
---------------------------------------------------------------------------------

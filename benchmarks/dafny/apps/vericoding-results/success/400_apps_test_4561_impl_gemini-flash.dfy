@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidOutcome(outcome: string)
 {
     outcome in {"delicious", "safe", "dangerous"}
@@ -15,20 +16,10 @@ function ExpectedOutcome(X: int, A: int, B: int): string
     else if daysPast <= X then "safe"  
     else "dangerous"
 }
+// </vc-preamble>
 
 // <vc-helpers>
-lemma ExpectedOutcomeValid(X: int, A: int, B: int)
-    ensures ValidOutcome(ExpectedOutcome(X, A, B))
-{
-    var daysPast := DaysPastBestBy(A, B);
-    if daysPast <= 0 {
-        // outcome is "delicious"
-    } else if daysPast <= X {
-        // outcome is "safe"
-    } else {
-        // outcome is "dangerous"
-    }
-}
+// No helpers needed for this problem.
 // </vc-helpers>
 
 // <vc-spec>
@@ -39,15 +30,13 @@ method DetermineFoodSafety(X: int, A: int, B: int) returns (outcome: string)
 // </vc-spec>
 // <vc-code>
 {
-    var daysPast := B - A;
-    if daysPast <= 0 {
-        outcome := "delicious";
-    } else if daysPast <= X {
-        outcome := "safe";
-    } else {
-        outcome := "dangerous";
-    }
-    ExpectedOutcomeValid(X, A, B); // to satisfy ValidOutcome(outcome) postcondition
+  var daysPast := DaysPastBestBy(A, B);
+  if daysPast <= 0 {
+    outcome := "delicious";
+  } else if daysPast <= X {
+    outcome := "safe";
+  } else {
+    outcome := "dangerous";
+  }
 }
 // </vc-code>
-

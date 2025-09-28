@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(a: int, b: int)
 {
     1 <= a <= 16 && 1 <= b <= 16 && a + b <= 16
@@ -12,11 +13,13 @@ predicate BothCanTake(a: int, b: int)
 {
     CanTakeNonAdjacent(a, 16) && CanTakeNonAdjacent(b, 16)
 }
+// </vc-preamble>
 
 // <vc-helpers>
-// No helpers needed within the vc-helpers block that are not already defined globally.
-// The duplicate predicate definitions were causing the errors.
-// Removed the redundant definitions from here.
+predicate CanTakeAdjacent(pieces: int, total: int)
+{
+    pieces > total / 2
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -28,11 +31,10 @@ method SolveCakeProblem(a: int, b: int) returns (result: string)
 // </vc-spec>
 // <vc-code>
 {
-    if BothCanTake(a, b) {
-        result := "Yay!";
-    } else {
-        result := ":(";
-    }
+  if BothCanTake(a, b) {
+    result := "Yay!";
+  } else {
+    result := ":(";
+  }
 }
 // </vc-code>
-

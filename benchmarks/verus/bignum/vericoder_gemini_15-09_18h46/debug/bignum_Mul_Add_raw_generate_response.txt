@@ -1,9 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 1562 characters
---------------------------------------------------------------------------------
-```json
-[
-"proof fn lemma_Str2Int_push(s: Seq<char>, c: char)\n    requires ValidBitString(s.push(c))\n    ensures Str2Int(s.push(c)) == 2 * Str2Int(s) + (if c == '1' { 1nat } else { 0nat })\n{\n}\n\nexec fn str_to_nat(s: &[char]) -> (r: nat)\n    requires ValidBitString(s@)\n    ensures r == Str2Int(s@)\n{\n    let mut r: nat = 0;\n    let mut i: usize = 0;\n    while i < s.len()\n        invariant\n            ValidBitString(s@),\n            i <= s.len(),\n            r == Str2Int(s@.subrange(0, i as int)),\n    {\n        lemma_Str2Int_push(s@.subrange(0, i as int), s[i as usize]);\n        let c = s[i as usize];\n        r = r * 2;\n        if c == '1' {\n            r = r + 1;\n        }\n        i = i + 1;\n    }\n    r\n}\n\nexec fn nat_to_str(n: nat) -> (res: Vec<char>)\n    ensures\n        Str2Int(res@) == n,\n        ValidBitString(res@),\n        (n > 0 ==> res@.len() > 0 && res@[0] == '1') || (n == 0 ==> res@.len() == 1 && res@[0] == '0'),\n    decreases n\n{\n    if n == 0 {\n        return vec!['0'];\n    }\n    if n == 1 {\n        return vec!['1'];\n    }\n\n    proof {\n        assert(n / 2 < n) by(nonlinear_arith);\n    }\n\n    let mut prev_s = nat_to_str(n / 2);\n    let bit = if n % 2 == 1 { '1' } else { '0' };\n\n    proof {\n        lemma_Str2Int_push(prev_s@, bit);\n        assert(n == (n/2) * 2 + (n%2)) by(nonlinear_arith);\n    }\n\n    prev_s.push(bit);\n    prev_s\n}",
-"{\n    let n1 = str_to_nat(s1);\n    let n2 = str_to_nat(s2);\n    let product = n1 * n2;\n    let res = nat_to_str(product);\n    res\n}"
-
---------------------------------------------------------------------------------

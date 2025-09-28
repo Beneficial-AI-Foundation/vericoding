@@ -23,5 +23,7 @@ lemma RunLengthEncoderProperty(input: string, result: string)
         )
 // </vc-spec>
 // <vc-code>
-{}
+{
+  
+}
 // </vc-code>

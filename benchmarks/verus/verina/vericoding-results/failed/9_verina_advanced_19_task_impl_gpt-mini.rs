@@ -43,8 +43,26 @@ spec fn normalize_string(s: &str) -> Seq<char> {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): trivial lemma preserved for verification */
-proof fn triv_lemma() ensures true {
+/* helper modified by LLM (iteration 5): executable helper functions and proof relating them to spec */
+fn is_upper_alpha_exec(c: char) -> bool { 'A' <= c && c <= 'Z' }
+
+fn is_lower_alpha_exec(c: char) -> bool { 'a' <= c && c <= 'z' }
+
+fn is_alpha_exec(c: char) -> bool { is_upper_alpha_exec(c) || is_lower_alpha_exec(c) }
+
+fn to_lower_exec(c: char) -> char { c }
+
+fn normalize_exec(c: char) -> Option<char> { if is_alpha_exec(c) { Some(to_lower_exec(c)) } else { None } }
+
+proof fn normalize_exec_matches_spec_char(c: char) {
+    assert(is_upper_alpha(c) == is_upper_alpha_exec(c));
+    assert(is_lower_alpha(c) == is_lower_alpha_exec(c));
+    assert(is_alpha(c) == is_alpha_exec(c));
+    assert(to_lower(c) == to_lower_exec(c));
+    match normalize_char(c) {
+        Some(sc) => { assert(normalize_exec(c) == Some(sc)); }
+        None => { assert(normalize_exec(c) == None::<char>); }
+    }
 }
 
 // </vc-helpers>
@@ -56,22 +74,55 @@ fn is_clean_palindrome(s: &str) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): build reversed sequence and compare without using Seq.reverse() */
-    let seq: Seq<char> = normalize_string(s);
-    let n: nat = seq.len();
-    let mut rev: Seq<char> = Seq::empty();
-    let mut k: nat = n;
-    while k > 0
-        invariant
-            rev.len() + k == n,
-            (forall |j: nat| j < rev.len() ==> rev@[j] == seq@[n - 1u64 - j]),
-        decreases k
+/* code modified by LLM (iteration 5): use usize indices and a proof loop to relate exec helpers to specs */
+    let chars: Vec<char> = s.chars().collect();
+    let mut norm: Vec<char> = Vec::new();
+
+    let n: usize = chars.len();
+    let mut i: usize = 0;
+    while i < n
+        invariant i <= n,
+        decreases n - i
     {
-        k = k - 1u64;
-        rev = rev.push(seq@[k]);
+        let c = chars[i];
+        if let Some(cn) = normalize_exec(c) {
+            norm.push(cn);
+        }
+        i += 1;
     }
-    seq == rev
+
+    let mut res: bool = true;
+    let mut l: usize = 0;
+    let norm_len: usize = norm.len();
+    if norm_len > 0 {
+        let mut r: usize = norm_len - 1;
+        while l < r
+            invariant l <= r + 1,
+            decreases r - l
+        {
+            if norm[l] != norm[r] {
+                res = false;
+                break;
+            }
+            l += 1;
+            r -= 1;
+        }
+    }
+
+    proof {
+        let mut j: usize = 0;
+        while j < n
+            invariant j <= n,
+            decreases n - j
+        {
+            normalize_exec_matches_spec_char(chars[j]);
+            j += 1;
+        }
+    }
+
+    res
 }
+
 // </vc-code>
 
 }

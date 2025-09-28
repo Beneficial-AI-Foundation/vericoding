@@ -15,21 +15,20 @@ method AllCharactersSame(s: seq<char>) returns (result: bool)
 {
   if |s| == 0 {
     result := true;
-    return;
-  }
-  
-  var i := 1;
-  while i < |s|
-    invariant 1 <= i <= |s|
-    invariant forall j :: 0 <= j < i ==> s[j] == s[0]
-  {
-    if s[i] != s[0] {
-      result := false;
-      return;
+  } else {
+    result := true;
+    var first := s[0];
+    var i := 1;
+    while i < |s|
+      invariant 0 <= i <= |s|
+      invariant result <==> (forall j :: 0 <= j < i ==> s[j] == first)
+    {
+      if s[i] != first {
+        result := false;
+        break;
+      }
+      i := i + 1;
     }
-    i := i + 1;
   }
-  
-  result := true;
 }
 // </vc-code>

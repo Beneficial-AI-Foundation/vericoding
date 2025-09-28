@@ -1,7 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 984 characters
---------------------------------------------------------------------------------
-```json
-[
-    "{\n    let mut dividend_val: nat = 0;\n    let mut i = 0;\n    while i < dividend.len()\n        invariant\n            i <= dividend.len(),\n            ValidBitString(dividend@),\n            dividend_val == Str2Int(dividend@.subrange(0, i as int)),\n    {\n        dividend_val = dividend_val * 2;\n        if dividend[i] == '1' {\n            dividend_val = dividend_val + 1;\n        }\n        i = i + 1;\n    }\n\n    let mut divisor_val: nat = 0;\n    i = 0;\n    while i < divisor.len()\n        invariant\n            i <= divisor.len(),\n            ValidBitString(divisor@),\n            divisor_val == Str2Int(divisor@.subrange(0, i as int)),\n    {\n        divisor_val = divisor_val * 2;\n        if divisor[i] == '1' {\n            divisor_val = divisor_val + 1;\n        }\n        i = i + 1;\n    }\n\n    let quot_val = dividend_val / divisor_val;\n    let rem_val = dividend_val % divisor_val;\n\n    let quot_str = nat_to_string(quot_val);\n    let
---------------------------------------------------------------------------------

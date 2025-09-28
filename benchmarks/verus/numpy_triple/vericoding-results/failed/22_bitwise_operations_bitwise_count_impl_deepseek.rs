@@ -19,35 +19,52 @@ spec fn popcount(n: nat) -> nat
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): fix nat usage in exec code */
-fn abs(x: i32) -> (result: u32)
-    requires
-        x != -2147483648,
+
+proof fn lemma_popcount_nonnegative(n: nat)
     ensures
-        result == abs_spec(x),
+        popcount(n) >= 0,
+    decreases n
 {
-    if x >= 0 {
-        x as u32
-    } else {
-        (0 - x) as u32
+    if n > 0 {
+        lemma_popcount_nonnegative(n / 2);
     }
 }
 
-fn count_bits(n: u32) -> (count: u32)
+proof fn lemma_abs_spec_positive_if_nonzero(x: i32)
     ensures
-        count as nat == popcount(n as nat),
-    decreases n,
+        x != 0 ==> abs_spec(x) > 0,
 {
-    if n == 0 {
-        0
-    } else {
-        let remainder = n % 2;
-        let quotient = n / 2;
-        let sub_count = count_bits(quotient);
-        let count_val = if remainder == 0 { 0 } else { 1 };
-        count_val + sub_count
+}
+
+spec fn abs_u32(x: i32) -> u32
+    ensures
+        abs_u32(x) == abs_spec(x),
+{
+    if x >= 0 { x as u32 } else { (-x) as u32 }
+}
+
+proof fn lemma_abs_u32_equiv(x: i32)
+    ensures
+        abs_u32(x) == abs_spec(x),
+{
+}
+
+proof fn lemma_popcount_u32_to_nat(n: u32)
+    ensures
+        popcount(n as nat) == n.count_ones() as nat,
+    decreases n
+{
+    if n > 0 {
+        lemma_popcount_u32_to_nat(n / 2);
     }
 }
+
+proof fn lemma_cast_nat_equivalence(val: u32)
+    ensures
+        (val as nat) == (val as u32) as nat,
+{
+}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -59,28 +76,29 @@ fn bitwise_count(x: Vec<i32>) -> (result: Vec<nat>)
         forall|i: int| 0 <= i < result.len() ==> result[i] >= 0,
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): adapt to u32 return type from count_bits */
 {
-    let mut result: Vec<nat> = Vec::with_capacity(x.len());
-    let mut idx: usize = 0;
-
-    while idx < x.len()
+    /* code modified by LLM (iteration 5): Fixed ghost code compilation error by moving count conversion to proof context */
+    let mut result: Vec<nat> = Vec::new();
+    let mut i: usize = 0;
+    while i < x.len()
         invariant
-            0 <= idx <= x.len(),
-            result.len() == idx,
-            forall|i: int| 0 <= i < result.len() ==> result[i] == popcount(abs_spec(x[i])),
-            forall|i: int| 0 <= i < result.len() ==> x[i] == 0 ==> result[i] == 0,
-            forall|i: int| 0 <= i < result.len() ==> result[i] >= 0,
+            result.len() == i,
+            forall|j: int| 0 <= j < i ==> result@[j] == popcount(abs_spec(x@[j])),
+            forall|j: int| 0 <= j < i ==> x@[j] == 0 ==> result@[j] == 0,
+            forall|j: int| 0 <= j < i ==> result@[j] >= 0,
+        decreases x.len() - i
     {
-        let current = x[idx];
-        let abs_val = abs(current);
+        let abs_val: u32 = if x[i] >= 0 { x[i] as u32 } else { (-x[i]) as u32 };
+        proof { lemma_abs_u32_equiv(x[i]); }
+        let count = abs_val.count_ones();
         proof {
-            assert(abs_val == abs_spec(current));
+            lemma_popcount_u32_to_nat(abs_val);
+            lemma_cast_nat_equivalence(count);
+            assert(count as nat == popcount(abs_val as nat));
+            let count_nat: nat = count as nat;
+            result = result.push(count_nat);
         }
-        let count_u32 = count_bits(abs_val);
-        let count: nat = count_u32 as nat;
-        result.push(count);
-        idx = idx + 1;
+        i = i + 1;
     }
     result
 }

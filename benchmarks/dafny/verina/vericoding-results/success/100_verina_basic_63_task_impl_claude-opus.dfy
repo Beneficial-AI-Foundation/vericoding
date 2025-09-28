@@ -19,24 +19,24 @@ method HasCloseElements(numbers: array<int>, threshold: int) returns (result: bo
 // </vc-spec>
 // <vc-code>
 {
-  result := false;
-  var i := 0;
-  while i < numbers.Length
-    invariant 0 <= i <= numbers.Length
-    invariant !result <==> (forall p: int, q: int :: 0 <= p < i && 0 <= q < numbers.Length && p != q ==> AbsDiff(numbers[p], numbers[q]) >= threshold)
-  {
-    var j := 0;
-    while j < numbers.Length
-      invariant 0 <= j <= numbers.Length
-      invariant !result <==> (forall p: int, q: int :: (0 <= p < i && 0 <= q < numbers.Length && p != q) || (p == i && 0 <= q < j && p != q) ==> AbsDiff(numbers[p], numbers[q]) >= threshold)
+    result := false;
+    var i := 0;
+    while i < numbers.Length
+        invariant 0 <= i <= numbers.Length
+        invariant !result <==> (forall k: int, l: int :: 0 <= k < i && 0 <= l < numbers.Length && k != l ==> AbsDiff(numbers[k], numbers[l]) >= threshold)
     {
-      if i != j && AbsDiff(numbers[i], numbers[j]) < threshold {
-        result := true;
-        return;
-      }
-      j := j + 1;
+        var j := 0;
+        while j < numbers.Length
+            invariant 0 <= j <= numbers.Length
+            invariant !result <==> (forall k: int, l: int :: (0 <= k < i && 0 <= l < numbers.Length && k != l) || (k == i && 0 <= l < j && k != l) ==> AbsDiff(numbers[k], numbers[l]) >= threshold)
+        {
+            if i != j && AbsDiff(numbers[i], numbers[j]) < threshold {
+                result := true;
+                return;
+            }
+            j := j + 1;
+        }
+        i := i + 1;
     }
-    i := i + 1;
-  }
 }
 // </vc-code>

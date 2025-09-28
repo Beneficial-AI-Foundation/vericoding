@@ -1,0 +1,461 @@
+=== DAFNY PROCESSING SUMMARY (AGGREGATED) ===
+Selection method: best runs
+Total files: 430
+Successful: 335 (77.9%)
+Failed: 95
+
+Selected best runs:
+  - claude-opus: vericoder_claude-opus_19-09_09h04 (success rate: 64.9%)
+  - claude-sonnet: vericoder_claude-sonnet_19-09_09h05 (success rate: 69.3%)
+  - deepseek: vericoder_deepseek_19-09_09h06 (success rate: 43.0%)
+  - gemini: vericoder_gemini_19-09_13h59 (success rate: 60.2%)
+  - gemini-flash: vericoder_gemini-flash_19-09_09h06 (success rate: 34.4%)
+  - glm: vericoder_glm_19-09_09h06 (success rate: 41.4%)
+  - gpt: vericoder_gpt_19-09_14h00 (success rate: 56.3%)
+  - gpt-mini: vericoder_gpt-mini_19-09_14h00 (success rate: 56.3%)
+  - grok-code: vericoder_grok-code_19-09_09h07 (success rate: 47.0%)
+
+Per-LLM success rates:
+  - claude-opus: 279/430 (64.9%)
+  - claude-sonnet: 298/430 (69.3%)
+  - deepseek: 185/430 (43.0%)
+  - gemini: 259/430 (60.2%)
+  - gemini-flash: 148/430 (34.4%)
+  - glm: 178/430 (41.4%)
+  - gpt: 242/430 (56.3%)
+  - gpt-mini: 242/430 (56.3%)
+  - grok-code: 202/430 (47.0%)
+
+Successful files:
+✓ array_creation_array.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_creation_asanyarray.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_creation_asarray.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_creation_asmatrix.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_creation_bmat.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_creation_copy.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ array_creation_diag.dfy — by: claude-opus, claude-sonnet, gpt-mini
+✓ array_creation_empty.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_creation_empty_like.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_creation_from_dlpack.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ array_creation_frombuffer.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
+✓ array_creation_fromfile.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
+✓ array_creation_fromfunction.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ array_creation_fromiter.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_creation_full.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
+✓ array_creation_full_like.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_creation_identity.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini
+✓ array_creation_linspace.dfy — by: claude-opus, claude-sonnet, gemini-flash
+✓ array_creation_logspace.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt-mini, grok-code
+✓ array_creation_meshgrid.dfy — by: claude-opus, claude-sonnet, gpt, gpt-mini, grok-code
+✓ array_creation_mgrid.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ array_creation_ogrid.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ array_creation_ones.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ array_creation_ones_like.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, grok-code
+✓ array_creation_tri.dfy — by: claude-opus, claude-sonnet, deepseek, gpt, gpt-mini
+✓ array_creation_tril.dfy — by: claude-opus, claude-sonnet, gpt-mini
+✓ array_creation_triu.dfy — by: claude-sonnet, gpt, grok-code
+✓ array_creation_vander.dfy — by: claude-opus, claude-sonnet, gemini
+✓ array_creation_zeros.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ array_manipulation_append.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
+✓ array_manipulation_atleast_1d.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_manipulation_atleast_2d.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ array_manipulation_atleast_3d.dfy — by: claude-opus, claude-sonnet, gemini
+✓ array_manipulation_block.dfy — by: claude-sonnet, deepseek, gemini, glm
+✓ array_manipulation_broadcast_arrays.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ array_manipulation_concatenate.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_manipulation_copyto.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt-mini, grok-code
+✓ array_manipulation_dstack.dfy — by: claude-sonnet, deepseek, glm, gpt-mini
+✓ array_manipulation_expand_dims.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_manipulation_flip.dfy — by: claude-opus, claude-sonnet, deepseek, gpt-mini, grok-code
+✓ array_manipulation_fliplr.dfy — by: claude-opus, claude-sonnet
+✓ array_manipulation_flipud.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ array_manipulation_hstack.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_manipulation_insert.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ array_manipulation_moveaxis.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_manipulation_ndim.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_manipulation_ravel.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_manipulation_reshape.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_manipulation_resize.dfy — by: deepseek, gpt
+✓ array_manipulation_roll.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ array_manipulation_rollaxis.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_manipulation_rot90.dfy — by: claude-sonnet, gemini, gpt-mini
+✓ array_manipulation_row_stack.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ array_manipulation_shape.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_manipulation_size.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_manipulation_squeeze.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ array_manipulation_stack.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_manipulation_swapaxes.dfy — by: claude-sonnet, deepseek
+✓ array_manipulation_tile.dfy — by: claude-opus, deepseek
+✓ array_manipulation_transpose.dfy — by: claude-opus, claude-sonnet, grok-code
+✓ array_manipulation_unique.dfy — by: claude-opus, gpt-mini
+✓ array_manipulation_vstack.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ bitwise_operations_bitwise_and.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ bitwise_operations_bitwise_or.dfy — by: claude-opus, claude-sonnet, gemini, gpt-mini
+✓ bitwise_operations_left_shift.dfy — by: claude-opus, claude-sonnet, glm, gpt-mini
+✓ constants_NINF.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ constants_NPY_1_PI.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, grok-code
+✓ constants_NPY_2_PI.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ constants_NPY_LOG10E.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ constants_NPY_LOG2E.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ constants_NPY_LOGE2.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ constants_NPY_PI_2.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ constants_NPY_PI_4.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ constants_NZERO.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ constants_euler_gamma.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ constants_finfo.dfy — by: gemini, gpt
+✓ constants_iinfo.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ constants_inf.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ constants_nan.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ constants_newaxis.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ constants_pi.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ data_type_routines_as_strided.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt-mini, grok-code
+✓ data_type_routines_dtype.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ data_type_routines_find_common_type.dfy — by: claude-opus, claude-sonnet, deepseek, gpt, grok-code
+✓ data_type_routines_finfo.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini
+✓ data_type_routines_iinfo.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ data_type_routines_isdtype.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ data_type_routines_issctype.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ data_type_routines_issubclass_.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ data_type_routines_may_share_memory.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ data_type_routines_obj2sctype.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ data_type_routines_result_type.dfy — by: claude-opus, gemini, glm, gpt, gpt-mini
+✓ data_type_routines_sctype2char.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ data_type_routines_typecodes.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ data_type_routines_typename.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ datetime_support_datetime_as_string.dfy — by: claude-opus, claude-sonnet, gemini, gpt-mini
+✓ datetime_support_datetime_data.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ datetime_support_timedelta64.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ fft_fftfreq.dfy — by: claude-opus, claude-sonnet, deepseek, gpt-mini, grok-code
+✓ fft_hfft.dfy — by: claude-sonnet, gemini-flash, gpt-mini, grok-code
+✓ fft_ifftn.dfy — by: claude-sonnet, gemini, gpt, grok-code
+✓ fft_ifftshift.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt
+✓ fft_irfft2.dfy — by: claude-sonnet, glm
+✓ fft_rfftfreq.dfy — by: claude-sonnet, deepseek, gemini, gpt
+✓ indexing_slicing_argmax.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ indexing_slicing_argmin.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini
+✓ indexing_slicing_argwhere.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini
+✓ indexing_slicing_c_.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ indexing_slicing_choose.dfy — by: claude-opus, claude-sonnet, deepseek, gpt, gpt-mini, grok-code
+✓ indexing_slicing_compress.dfy — by: claude-sonnet
+✓ indexing_slicing_diagflat.dfy — by: claude-opus, claude-sonnet, gemini, gpt-mini, grok-code
+✓ indexing_slicing_diagonal.dfy — by: claude-sonnet, gpt, gpt-mini, grok-code
+✓ indexing_slicing_extract.dfy — by: claude-sonnet
+✓ indexing_slicing_fill_diagonal.dfy — by: claude-opus, claude-sonnet, gemini, gpt-mini, grok-code
+✓ indexing_slicing_flatiter.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ indexing_slicing_indices.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ indexing_slicing_ix_.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini
+✓ indexing_slicing_nanargmax.dfy — by: claude-opus, claude-sonnet, gemini, glm
+✓ indexing_slicing_nanargmin.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini
+✓ indexing_slicing_ndenumerate.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ indexing_slicing_nditer.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ indexing_slicing_putmask.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ indexing_slicing_r_.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
+✓ indexing_slicing_ravel_multi_index.dfy — by: claude-opus, claude-sonnet, deepseek, gpt, gpt-mini
+✓ indexing_slicing_select.dfy — by: claude-opus, claude-sonnet
+✓ indexing_slicing_take.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ indexing_slicing_triu.dfy — by: claude-opus, gpt, gpt-mini, grok-code
+✓ indexing_slicing_unravel_index.dfy — by: claude-opus, claude-sonnet, gemini, glm
+✓ indexing_slicing_where.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ io_operations_array2string.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ io_operations_array_str.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt
+✓ io_operations_fromfile.dfy — by: claude-opus, gemini, gpt, grok-code
+✓ io_operations_fromstring.dfy — by: claude-opus, claude-sonnet, deepseek, gemini-flash, glm, gpt-mini, grok-code
+✓ io_operations_genfromtxt.dfy — by: claude-opus, claude-sonnet, gemini-flash, gpt-mini
+✓ io_operations_get_printoptions.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ io_operations_loadtxt.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ io_operations_memmap.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
+✓ io_operations_printoptions.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ io_operations_set_printoptions.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini
+✓ linalg_LinAlgError.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ linalg_cond.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ linalg_cross.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
+✓ linalg_eigvals.dfy — by: claude-opus, claude-sonnet, gemini, gpt-mini
+✓ linalg_matmul.dfy — by: claude-sonnet, deepseek, gemini-flash, gpt, grok-code
+✓ linalg_outer.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, grok-code
+✓ linalg_pinv.dfy — by: gemini, glm, gpt-mini, grok-code
+✓ linalg_tensordot.dfy — by: claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ logic_functions_all.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ logic_functions_allclose.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ logic_functions_array_equal.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ logic_functions_array_equiv.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ logic_functions_bitwise_and.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ logic_functions_bitwise_not.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini
+✓ logic_functions_bitwise_or.dfy — by: claude-opus, claude-sonnet, gemini, gpt-mini
+✓ logic_functions_equal.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ logic_functions_greater.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ logic_functions_iscomplex.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ logic_functions_iscomplexobj.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
+✓ logic_functions_isfinite.dfy — by: claude-opus, claude-sonnet, deepseek, glm, gpt, gpt-mini, grok-code
+✓ logic_functions_isinf.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini
+✓ logic_functions_isneginf.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini
+✓ logic_functions_isposinf.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ logic_functions_isreal.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ logic_functions_less_equal.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, grok-code
+✓ logic_functions_logical_and.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ logic_functions_logical_not.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ logic_functions_logical_or.dfy — by: claude-opus, claude-sonnet, deepseek, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ logic_functions_logical_xor.dfy — by: claude-opus, claude-sonnet, deepseek, gemini-flash, glm, grok-code
+✓ logic_functions_not_equal.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ mathematical_functions_absolute.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt-mini, grok-code
+✓ mathematical_functions_add.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ mathematical_functions_arcsin.dfy — by: claude-opus, claude-sonnet, gpt, gpt-mini
+✓ mathematical_functions_arctanh.dfy — by: gemini-flash
+✓ mathematical_functions_clip.dfy — by: claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt
+✓ mathematical_functions_conj.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt-mini, grok-code
+✓ mathematical_functions_convolve.dfy — by: claude-sonnet, deepseek, gpt, gpt-mini, grok-code
+✓ mathematical_functions_cosh.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ mathematical_functions_cross.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ mathematical_functions_deg2rad.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt-mini, grok-code
+✓ mathematical_functions_diff.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ mathematical_functions_ediff1d.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini
+✓ mathematical_functions_exp2.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini
+✓ mathematical_functions_fabs.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ mathematical_functions_floor.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, grok-code
+✓ mathematical_functions_fmax.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ mathematical_functions_fmin.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ mathematical_functions_gradient.dfy — by: claude-sonnet, deepseek, gemini, gpt, grok-code
+✓ mathematical_functions_heaviside.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt-mini
+✓ mathematical_functions_i0.dfy — by: claude-sonnet, gpt
+✓ mathematical_functions_imag.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ mathematical_functions_log.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ mathematical_functions_log10.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ mathematical_functions_log1p.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt
+✓ mathematical_functions_log2.dfy — by: claude-sonnet, gemini, gpt-mini
+✓ mathematical_functions_logaddexp.dfy — by: claude-sonnet, gpt, gpt-mini
+✓ mathematical_functions_maximum.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ mathematical_functions_multiply.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ mathematical_functions_nancumprod.dfy — by: claude-sonnet, deepseek, gemini
+✓ mathematical_functions_nancumsum.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ mathematical_functions_nansum.dfy — by: claude-opus
+✓ mathematical_functions_negative.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ mathematical_functions_positive.dfy — by: claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ mathematical_functions_prod.dfy — by: gpt-mini
+✓ mathematical_functions_radians.dfy — by: claude-opus, claude-sonnet, deepseek, gpt, gpt-mini, grok-code
+✓ mathematical_functions_real_if_close.dfy — by: claude-opus, claude-sonnet, deepseek, gpt, gpt-mini, grok-code
+✓ mathematical_functions_reciprocal.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, grok-code
+✓ mathematical_functions_sign.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ mathematical_functions_sinc.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, grok-code
+✓ mathematical_functions_square.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ mathematical_functions_subtract.dfy — by: claude-opus, claude-sonnet, deepseek, glm, gpt, gpt-mini, grok-code
+✓ mathematical_functions_sum.dfy — by: claude-opus, gemini
+✓ mathematical_functions_tan.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ mathematical_functions_trapezoid.dfy — by: claude-sonnet, gemini, gpt, gpt-mini
+✓ mathematical_functions_true_divide.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt-mini, grok-code
+✓ ndarray_flat.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ ndarray_tofile.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ polynomial_chebyshev_Chebyshev.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ polynomial_chebyshev_chebadd.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt-mini
+✓ polynomial_chebyshev_chebline.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
+✓ polynomial_chebyshev_chebmul.dfy — by: gpt
+✓ polynomial_chebyshev_chebpts1.dfy — by: claude-sonnet, grok-code
+✓ polynomial_chebyshev_chebsub.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini
+✓ polynomial_chebyshev_poly2cheb.dfy — by: gpt
+✓ polynomial_hermite_e_hermeadd.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ polynomial_hermite_e_hermeline.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ polynomial_hermite_e_hermemul.dfy — by: claude-opus, claude-sonnet, gemini
+✓ polynomial_hermite_e_hermemulx.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ polynomial_hermite_e_hermepow.dfy — by: claude-opus, claude-sonnet, gemini, gpt-mini
+✓ polynomial_hermite_e_hermesub.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ polynomial_hermite_e_hermevander.dfy — by: claude-sonnet, gpt
+✓ polynomial_hermite_hermadd.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ polynomial_hermite_hermcompanion.dfy — by: claude-opus, gpt
+✓ polynomial_hermite_hermfromroots.dfy — by: claude-sonnet, gemini-flash, gpt
+✓ polynomial_hermite_hermline.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ polynomial_hermite_hermmul.dfy — by: claude-opus, claude-sonnet, gpt-mini
+✓ polynomial_hermite_hermmulx.dfy — by: claude-opus, deepseek, gemini
+✓ polynomial_hermite_hermsub.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini
+✓ polynomial_laguerre_lagadd.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ polynomial_laguerre_lagcompanion.dfy — by: claude-opus, claude-sonnet, gemini, glm, grok-code
+✓ polynomial_laguerre_lagint.dfy — by: claude-opus, claude-sonnet, gpt, gpt-mini, grok-code
+✓ polynomial_laguerre_lagline.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ polynomial_laguerre_lagmul.dfy — by: gemini, gpt
+✓ polynomial_laguerre_lagmulx.dfy — by: claude-opus, claude-sonnet, deepseek, gemini
+✓ polynomial_laguerre_lagpow.dfy — by: claude-opus, gemini-flash, gpt, gpt-mini, grok-code
+✓ polynomial_laguerre_lagsub.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini
+✓ polynomial_laguerre_lagval.dfy — by: claude-opus, gemini
+✓ polynomial_laguerre_lagweight.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ polynomial_legendre_legadd.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini
+✓ polynomial_legendre_legcompanion.dfy — by: claude-sonnet, gpt, grok-code
+✓ polynomial_legendre_legdiv.dfy — by: claude-sonnet, gpt, gpt-mini
+✓ polynomial_legendre_leggrid2d.dfy — by: claude-sonnet, gemini
+✓ polynomial_legendre_legint.dfy — by: claude-opus
+✓ polynomial_legendre_legline.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ polynomial_legendre_legmulx.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ polynomial_legendre_legvander.dfy — by: claude-sonnet, gemini-flash, gpt, gpt-mini, grok-code
+✓ polynomial_legendre_legvander2d.dfy — by: gpt
+✓ polynomial_legendre_legweight.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ polynomial_polynomial_Polynomial.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ polynomial_polynomial_polycompanion.dfy — by: claude-opus, claude-sonnet, gpt-mini
+✓ polynomial_polynomial_polyder.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini
+✓ polynomial_polynomial_polygrid2d.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ polynomial_polynomial_polygrid3d.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini
+✓ polynomial_polynomial_polyline.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ polynomial_polynomial_polymulx.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ polynomial_polynomial_polypow.dfy — by: claude-sonnet, gpt
+✓ polynomial_polynomial_polysub.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini
+✓ polynomial_polynomial_polyval3d.dfy — by: claude-opus, gemini, gpt, gpt-mini
+✓ polynomial_polynomial_polyvalfromroots.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt-mini, grok-code
+✓ polynomial_polynomial_polyvander.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt
+✓ polynomial_polynomial_polyvander2d.dfy — by: claude-opus, claude-sonnet
+✓ polynomial_polyutils_format_float.dfy — by: claude-opus, claude-sonnet, gemini
+✓ polynomial_polyutils_getdomain.dfy — by: claude-opus, claude-sonnet, deepseek, gpt, gpt-mini, grok-code
+✓ polynomial_polyutils_mapdomain.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ polynomial_polyutils_mapparms.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ polynomial_polyutils_trimseq.dfy — by: claude-sonnet, gemini, gpt
+✓ random_BitGenerator.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ random_MT19937.dfy — by: gemini
+✓ random_PCG64DXSM.dfy — by: gpt, gpt-mini
+✓ random_SFC64.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ random_SeedSequence.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini
+✓ random_default_rng.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ set_operations_in1d.dfy — by: claude-opus, claude-sonnet, gemini, gpt
+✓ set_operations_intersect1d.dfy — by: grok-code
+✓ set_operations_isin.dfy — by: claude-opus, claude-sonnet, deepseek, gpt, gpt-mini, grok-code
+✓ set_operations_setxor1d.dfy — by: gpt-mini
+✓ set_operations_unique.dfy — by: claude-opus
+✓ sorting_searching_argmax.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ sorting_searching_argmin.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini
+✓ sorting_searching_argwhere.dfy — by: claude-opus, gemini, glm, gpt, gpt-mini, grok-code
+✓ sorting_searching_bincount.dfy — by: claude-opus, claude-sonnet, gpt-mini
+✓ sorting_searching_count_nonzero.dfy — by: deepseek, gpt-mini
+✓ sorting_searching_flatnonzero.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ sorting_searching_nanargmax.dfy — by: claude-opus, claude-sonnet, gemini, gpt, grok-code
+✓ sorting_searching_nanargmin.dfy — by: claude-opus, claude-sonnet, deepseek
+✓ sorting_searching_nonzero.dfy — by: gemini, gemini-flash, gpt, grok-code
+✓ sorting_searching_unique.dfy — by: claude-sonnet, gpt
+✓ sorting_searching_where.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ statistics_amax.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, grok-code
+✓ statistics_amin.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ statistics_cov.dfy — by: claude-sonnet
+✓ statistics_histogram_bin_edges.dfy — by: claude-sonnet, gemini, gpt
+✓ statistics_mean.dfy — by: claude-sonnet, gpt-mini, grok-code
+✓ statistics_min.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt-mini, grok-code
+✓ statistics_nanmin.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini
+✓ statistics_nanstd.dfy — by: glm, gpt, gpt-mini
+✓ statistics_quantile.dfy — by: claude-opus, claude-sonnet, gemini, gpt
+✓ strings_encode.dfy — by: claude-opus, gemini, glm, gpt
+✓ strings_endswith.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt-mini
+✓ strings_equal.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ strings_greater.dfy — by: claude-sonnet, deepseek, gemini, glm, gpt
+✓ strings_index.dfy — by: claude-opus, gpt-mini
+✓ strings_isalnum.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini
+✓ strings_isalpha.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ strings_isdigit.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt
+✓ strings_islower.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ strings_istitle.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt-mini, grok-code
+✓ strings_isupper.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ strings_join.dfy — by: gpt
+✓ strings_lower.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm
+✓ strings_mod.dfy — by: gemini
+✓ strings_multiply.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt
+✓ strings_not_equal.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
+✓ strings_rjust.dfy — by: claude-opus, claude-sonnet, gemini, glm
+✓ strings_rstrip.dfy — by: claude-opus
+✓ strings_swapcase.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini
+✓ strings_upper.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini
+✓ ufunc___call__.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt
+✓ ufunc_accumulate.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini
+✓ ufunc_reduce.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ ufuncs_frompyfunc.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini
+✓ ufuncs_nargs.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ ufuncs_nout.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini
+✓ ufuncs_ntypes.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ ufuncs_signature.dfy — by: gpt, gpt-mini
+✓ ufuncs_types.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini
+
+Failed files:
+✗ array_creation_arange.dfy
+✗ array_creation_ascontiguousarray.dfy
+✗ array_creation_fromstring.dfy
+✗ array_manipulation_broadcast_to.dfy
+✗ array_manipulation_delete.dfy
+✗ bitwise_operations_bitwise_count.dfy
+✗ bitwise_operations_invert.dfy
+✗ bitwise_operations_right_shift.dfy
+✗ constants_NPY_LOGE10.dfy
+✗ constants_NPY_SQRT1_2.dfy
+✗ data_type_routines_can_cast.dfy
+✗ data_type_routines_maximum_sctype.dfy
+✗ datetime_support_datetime64.dfy
+✗ fft_fftshift.dfy
+✗ fft_irfft.dfy
+✗ indexing_slicing_mgrid.dfy
+✗ indexing_slicing_ndindex.dfy
+✗ io_operations_array_repr.dfy
+✗ io_operations_load.dfy
+✗ linalg_eigh.dfy
+✗ linalg_eigvalsh.dfy
+✗ linalg_lstsq.dfy
+✗ linalg_matrix_norm.dfy
+✗ linalg_matrix_rank.dfy
+✗ linalg_solve.dfy
+✗ linalg_svdvals.dfy
+✗ linalg_tensorsolve.dfy
+✗ linalg_trace.dfy
+✗ logic_functions_isclose.dfy
+✗ logic_functions_isnan.dfy
+✗ mathematical_functions_arccosh.dfy
+✗ mathematical_functions_arctan.dfy
+✗ mathematical_functions_cbrt.dfy
+✗ mathematical_functions_copysign.dfy
+✗ mathematical_functions_divide.dfy
+✗ mathematical_functions_expm1.dfy
+✗ mathematical_functions_logaddexp2.dfy
+✗ mathematical_functions_mod.dfy
+✗ mathematical_functions_nextafter.dfy
+✗ mathematical_functions_power.dfy
+✗ mathematical_functions_rint.dfy
+✗ mathematical_functions_sinh.dfy
+✗ mathematical_functions_sqrt.dfy
+✗ mathematical_functions_tanh.dfy
+✗ mathematical_functions_unwrap.dfy
+✗ polynomial_chebyshev_chebcompanion.dfy
+✗ polynomial_chebyshev_chebgauss.dfy
+✗ polynomial_chebyshev_chebinterpolate.dfy
+✗ polynomial_chebyshev_chebvander.dfy
+✗ polynomial_chebyshev_chebweight.dfy
+✗ polynomial_hermite_e_HermiteE.dfy
+✗ polynomial_hermite_e_hermediv.dfy
+✗ polynomial_hermite_e_hermefit.dfy
+✗ polynomial_hermite_e_hermefromroots.dfy
+✗ polynomial_hermite_e_hermeweight.dfy
+✗ polynomial_hermite_hermfit.dfy
+✗ polynomial_hermite_hermgauss.dfy
+✗ polynomial_hermite_hermvander2d.dfy
+✗ polynomial_laguerre_lag2poly.dfy
+✗ polynomial_laguerre_lagder.dfy
+✗ polynomial_laguerre_laggrid2d.dfy
+✗ polynomial_laguerre_laggrid3d.dfy
+✗ polynomial_laguerre_lagroots.dfy
+✗ polynomial_laguerre_poly2lag.dfy
+✗ polynomial_legendre_leg2poly.dfy
+✗ polynomial_legendre_legmul.dfy
+✗ polynomial_legendre_legvander3d.dfy
+✗ polynomial_polynomial_polyroots.dfy
+✗ polynomial_polynomial_polyvander3d.dfy
+✗ random_RandomState.dfy
+✗ set_operations_setdiff1d.dfy
+✗ set_operations_union1d.dfy
+✗ sorting_searching_extract.dfy
+✗ sorting_searching_lexsort.dfy
+✗ sorting_searching_msort.dfy
+✗ sorting_searching_partition.dfy
+✗ statistics_corrcoef.dfy
+✗ statistics_histogram.dfy
+✗ statistics_histogram2d.dfy
+✗ statistics_median.dfy
+✗ statistics_nanquantile.dfy
+✗ statistics_percentile.dfy
+✗ statistics_std.dfy
+✗ strings_count.dfy
+✗ strings_decode.dfy
+✗ strings_expandtabs.dfy
+✗ strings_find.dfy
+✗ strings_greater_equal.dfy
+✗ strings_partition.dfy
+✗ strings_rfind.dfy
+✗ strings_rindex.dfy
+✗ strings_split.dfy
+✗ strings_splitlines.dfy
+✗ ufunc_outer.dfy
+✗ ufunc_reduceat.dfy

@@ -5,7 +5,18 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): no helpers needed, proofs are inline */
+/* helper modified by LLM (iteration 5): removed `by(bit_vector)` which fails for `i32` */
+proof fn bitwise_xor_properties(a: i32, b: i32)
+    requires
+        a >= 0,
+        b >= 0,
+    ensures
+        a ^ b >= 0,
+        (a == 0) ==> (a ^ b == b),
+        (b == 0) ==> (a ^ b == a),
+        (a == b) ==> (a ^ b == 0),
+{
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -24,7 +35,7 @@ fn bitwise_xor(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): fixed bit_vector proofs by extracting spec values to local variables. */
+    /* code modified by LLM (iteration 5): added function preconditions to loop invariant and fixed proof call */
     let mut result: Vec<i32> = Vec::new();
     let mut i: usize = 0;
     while i < x1.len()
@@ -41,27 +52,11 @@ fn bitwise_xor(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
             forall|j: int| 0 <= j < i && x1@[j] == x2@[j] ==> result@[j] == 0,
         decreases x1.len() - i
     {
-        let val = x1[i] ^ x2[i];
+        let r = x1[i] ^ x2[i];
         proof {
-            let x1_i = x1@[i as int];
-            let x2_i = x2@[i as int];
-
-            assert(x1_i >= 0 && x2_i >= 0);
-            assert((x1_i ^ x2_i) >= 0) by(bit_vector);
-
-            if x1_i == 0 {
-                assert((x1_i ^ x2_i) == x2_i) by(bit_vector);
-            }
-            if x2_i == 0 {
-                assert((x1_i ^ x2_i) == x1_i) by(bit_vector);
-            }
-            if x1_i == x2_i {
-                assert((x1_i ^ x2_i) == 0) by(bit_vector);
-            }
-
-            assert(val == (x1_i ^ x2_i));
+            bitwise_xor_properties(x1@[i as int], x2@[i as int]);
         }
-        result.push(val);
+        result.push(r);
         i = i + 1;
     }
     result

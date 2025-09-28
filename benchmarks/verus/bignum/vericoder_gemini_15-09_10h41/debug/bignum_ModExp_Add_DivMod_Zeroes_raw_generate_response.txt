@@ -1,6 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 786 characters
---------------------------------------------------------------------------------
-```json
-["proof fn lemma_Str2Int_unfold(s: Seq<char>, i: int)\n    requires\n        0 <= i < s.len(),\n        ValidBitString(s),\n    ensures\n        Str2Int(s.subrange(0, i + 1)) == Str2Int(s.subrange(0, i)) * 2 + if s[i] == '1' { 1 } else { 0 },\n{\n    let prefix = s.subrange(0, i);\n    let new_s = s.subrange(0, i + 1);\n    assert(new_s.len() > 0);\n    assert(new_s.subrange(0, new_s.len() - 1) == prefix);\n    assert(new_s[new_s.len() - 1] == s[i]);\n}\n\nexec fn Str2Int_exec(s: &[char]) -> (res: nat)\n    requires ValidBitString(s@),\n    ensures res == Str2Int(s@),\n{\n    let mut res: nat = 0;\n    let mut i: int = 0;\n    while i < s.len()\n        invariant\n            ValidBitString(s@),\n            0 <= i <= s.len(),\n            res == Str2Int(s@.subrange(0
---------------------------------------------------------------------------------

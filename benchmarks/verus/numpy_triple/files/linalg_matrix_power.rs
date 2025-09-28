@@ -8,14 +8,13 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn matrix_power(a: Vec<Vec<f32>>) -> (result: Vec<Vec<f32>>)
+fn matrix_power(a: Vec<Vec<i8>>) -> (result: Vec<Vec<i8>>)
     requires 
         a.len() > 0,
-        forall|i: int| #![trigger a[i]] 0 <= i < a.len() ==> a[i].len() == a.len(),
+        forall|i: int| 0 <= i < a.len() ==> a@[i].len() == a.len(),
     ensures
         result.len() == a.len(),
-        forall|i: int| #![trigger result[i]] 0 <= i < result.len() ==> result[i].len() == a.len(),
-        true, // Result matrix elements exist (trivially true)
+        forall|i: int| 0 <= i < result.len() ==> result@[i].len() == a.len(),
 // </vc-spec>
 // <vc-code>
 {

@@ -1,6 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 711 characters
---------------------------------------------------------------------------------
-```json
-["proof fn lemma_mul_mod_p(a: int, b: int, p: int)\n    requires p > 0\n    ensures (a * b) % p == ((a % p) * (b % p)) % p\n{/* verus knows this */}\n\nproof fn lemma_exp_int_properties(x: nat, y: nat)\n    decreases y\n    ensures\n        (y > 0 && y % 2 == 0) ==> Exp_int(x, y) == Exp_int(x, y/2) * Exp_int(x, y/2),\n        (y > 0 && y % 2 != 0) ==> Exp_int(x, y) == x * Exp_int(x, y-1),\n        (y > 0 && y % 2 != 0) ==> Exp_int(x, y) == x * Exp_int(x, (y-1)/2) * Exp_int(x, (y-1)/2),\n{\n    if y > 0 && y % 2 != 0 {\n        lemma_exp_int_properties(x, (y-1) as nat);\n    }\n}\n\nexec fn ModMul(sa: &[char], sb: &[char], sz: &[char]) -> (res: Vec<char>)\n    requires ValidBitString(sa@), Valid
---------------------------------------------------------------------------------

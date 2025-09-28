@@ -1,0 +1,203 @@
+=== DAFNY PROCESSING SUMMARY (AGGREGATED) ===
+Selection method: latest runs
+Total files: 172
+Successful: 165 (95.9%)
+Failed: 7
+
+Selected latest runs:
+  - claude-opus: vericoder_claude-opus_13-09_17h24
+  - claude-sonnet: vericoder_claude-sonnet_14-09_11h32
+  - deepseek: vericoder_deepseek_14-09_11h33
+  - gemini: vericoder_gemini_14-09_11h33
+  - gemini-flash: vericoder_gemini-flash_14-09_11h33
+  - glm: vericoder_glm_14-09_11h33
+  - gpt: vericoder_gpt_14-09_11h33
+  - gpt-mini: vericoder_gpt-mini_14-09_11h33
+  - grok-code: vericoder_grok-code_14-09_11h34
+
+Per-LLM success rates:
+  - claude-opus: 156/172 (90.7%)
+  - claude-sonnet: 145/172 (84.3%)
+  - deepseek: 86/172 (50.0%)
+  - gemini: 137/172 (79.7%)
+  - gemini-flash: 98/172 (57.0%)
+  - glm: 116/172 (67.4%)
+  - gpt: 149/172 (86.6%)
+  - gpt-mini: 147/172 (85.5%)
+  - grok-code: 130/172 (75.6%)
+
+Successful files:
+✓ proofsynthesis_arg_free.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_binary_search.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt-mini, grok-code
+✓ proofsynthesis_brs1.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_brs2.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_brs3.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_brs4.dfy — by: claude-opus, claude-sonnet, deepseek, glm, gpt, gpt-mini
+✓ proofsynthesis_brs5.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_cell_2_sum.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_choose_odd.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_conda.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ proofsynthesis_condg.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_condm.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_condn.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_fib.dfy — by: claude-opus, deepseek, gemini, gpt, gpt-mini
+✓ proofsynthesis_filter.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_filter_v2.dfy — by: claude-opus, claude-sonnet, deepseek, glm, gpt, grok-code
+✓ proofsynthesis_filter_weak.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_findmax.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_linearsearch.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ proofsynthesis_map.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_max_index.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ proofsynthesis_ms1.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_ms2.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_ms3.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_ms4.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_ms5.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_res1.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_res1o.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ proofsynthesis_res2o.dfy — by: claude-opus, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s12if.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s1if.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s1lif.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s22if.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s2if.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s2lif.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s32if.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s3if.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s3lif.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s42if.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s4if.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s4lif.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s52if.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s5if.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_s5lif.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ proofsynthesis_simple_nested.dfy — by: claude-opus, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_sina1.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini
+✓ proofsynthesis_sina2.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, grok-code
+✓ proofsynthesis_sina3.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_sina4.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ proofsynthesis_sina5.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ proofsynthesis_tail_triangle.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_105.dfy — by: claude-opus
+✓ proofsynthesis_task_id_113.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_133.dfy — by: claude-opus, claude-sonnet, glm
+✓ proofsynthesis_task_id_142.dfy — by: claude-opus, claude-sonnet, grok-code
+✓ proofsynthesis_task_id_145.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_161.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ proofsynthesis_task_id_170.dfy — by: claude-opus, claude-sonnet, glm, gpt, gpt-mini
+✓ proofsynthesis_task_id_18.dfy — by: gpt-mini
+✓ proofsynthesis_task_id_2.dfy — by: claude-opus, gpt, gpt-mini
+✓ proofsynthesis_task_id_230.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt-mini, grok-code
+✓ proofsynthesis_task_id_240.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_249.dfy — by: claude-opus, gpt, gpt-mini
+✓ proofsynthesis_task_id_251.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_261.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ proofsynthesis_task_id_262.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_273.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_282.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini
+✓ proofsynthesis_task_id_284.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ proofsynthesis_task_id_3.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_307.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_399.dfy — by: deepseek, gemini, gpt, gpt-mini
+✓ proofsynthesis_task_id_412.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_414.dfy — by: claude-opus, deepseek, glm, gpt, grok-code
+✓ proofsynthesis_task_id_424.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_426.dfy — by: claude-opus, claude-sonnet
+✓ proofsynthesis_task_id_431.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini
+✓ proofsynthesis_task_id_433.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_436.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_445.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_447.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_454.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_460.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_461.dfy — by: claude-opus, gpt, gpt-mini
+✓ proofsynthesis_task_id_472.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_474.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini
+✓ proofsynthesis_task_id_476.dfy — by: claude-opus, claude-sonnet, glm, gpt, grok-code
+✓ proofsynthesis_task_id_477.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ proofsynthesis_task_id_554.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_557.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_567.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_572.dfy — by: gemini, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_576.dfy — by: claude-opus, gpt
+✓ proofsynthesis_task_id_576_v2.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini
+✓ proofsynthesis_task_id_578.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_579.dfy — by: claude-sonnet, gpt, grok-code
+✓ proofsynthesis_task_id_586.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_588.dfy — by: claude-opus, claude-sonnet, deepseek, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_602.dfy — by: claude-opus, gemini, gpt, gpt-mini
+✓ proofsynthesis_task_id_605.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_610.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_616.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_618.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_62.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_624.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, grok-code
+✓ proofsynthesis_task_id_629.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_644.dfy — by: gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_69.dfy — by: claude-sonnet, gpt
+✓ proofsynthesis_task_id_70.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_728.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_732.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_733.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_741.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_743.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_755.dfy — by: claude-opus
+✓ proofsynthesis_task_id_760.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ proofsynthesis_task_id_764.dfy — by: claude-opus, claude-sonnet, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_769.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt-mini, grok-code
+✓ proofsynthesis_task_id_775.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_790.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_798.dfy — by: claude-opus, claude-sonnet, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_8.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_804.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_807.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_808.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_809.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_94.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ proofsynthesis_task_id_95.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ proofsynthesis_trigger.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, grok-code
+✓ rustbench_abs.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ rustbench_arithmetic_weird.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ rustbench_array_append.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ rustbench_array_concat.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ rustbench_array_copy.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ rustbench_array_product.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ rustbench_barrier.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ rustbench_binary_search.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ rustbench_binary_search_recursive.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt-mini, grok-code
+✓ rustbench_cubes.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ rustbench_has_close_elements.dfy — by: claude-opus, claude-sonnet, deepseek, gemini-flash, gpt, gpt-mini
+✓ rustbench_has_only_one_distinct_element.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ rustbench_integer_square_root.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ rustbench_intersperse.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ rustbench_is_non_prime.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ rustbench_is_sorted.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt-mini, grok-code
+✓ rustbench_largest_prime_factor.dfy — by: claude-opus, claude-sonnet, glm, gpt, gpt-mini
+✓ rustbench_last_position.dfy — by: claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ rustbench_max_array.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ rustbench_max_dafny_lsp.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ rustbench_remove_duplicates.dfy — by: claude-opus, gemini, gpt, grok-code
+✓ rustbench_remove_element.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ rustbench_remove_elements.dfy — by: claude-opus, claude-sonnet, deepseek, gpt, gpt-mini, grok-code
+✓ rustbench_replace.dfy — by: claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ rustbench_replace_chars.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ rustbench_reverse.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ rustbench_rolling_max.dfy — by: gpt, gpt-mini
+✓ rustbench_smallest_list_length.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ rustbench_string_xor.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ rustbench_two_sum.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini
+✓ rustbench_two_way_sort.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, grok-code
+✓ rustbench_unique.dfy — by: gemini, gpt
+✓ rustbench_unique_better.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ rustbench_wip_max_segment_sum.dfy — by: gpt, gpt-mini
+✓ rustbench_wip_mcontained.dfy — by: claude-opus, gemini
+✓ rustbench_wip_transpose_matrix.dfy — by: claude-opus, claude-sonnet, deepseek, gpt, gpt-mini
+
+Failed files:
+✗ proofsynthesis_bubble_v1.dfy
+✗ proofsynthesis_bubble_v2.dfy
+✗ proofsynthesis_conditional_average.dfy
+✗ proofsynthesis_remove_all_greater.dfy
+✗ proofsynthesis_remove_all_greater_v2.dfy
+✗ rustbench_index_wise_addition.dfy
+✗ rustbench_smallest_missing_number.dfy

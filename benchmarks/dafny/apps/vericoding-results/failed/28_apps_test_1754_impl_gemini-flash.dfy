@@ -1,15 +1,13 @@
+// <vc-preamble>
 predicate IsStrongestInSchool(student_idx: int, powers: seq<int>, schools: seq<int>)
   requires 0 <= student_idx < |powers| && |powers| == |schools|
 {
   forall j :: 0 <= j < |powers| && schools[j] == schools[student_idx] ==> powers[j] <= powers[student_idx]
 }
+// </vc-preamble>
 
 // <vc-helpers>
-predicate IsStrongestInSchool_Helper(student_idx: int, powers: seq<int>, schools: seq<int>)
-  requires 0 <= student_idx < |powers| && |powers| == |schools|
-{
-  forall j :: 0 <= j < |powers| && schools[j] == schools[student_idx] ==> powers[j] <= powers[student_idx]
-}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -27,24 +25,19 @@ method solve(n: int, m: int, k: int, powers: seq<int>, schools: seq<int>, chosen
 // </vc-spec>
 // <vc-code>
 {
+  /* code modified by LLM (iteration 5): Fixing loop invariant for count by moving it to the ensures clause and using a post-loop check for result. */
   var count := 0;
-  var i := 0;
-  while i < k
+  for i := 0 to k - 1
     invariant 0 <= i <= k
-    invariant 0 <= count <= i
-    invariant count == |set idx | 0 <= idx < i && !IsStrongestInSchool(chosen[idx]-1, powers, schools)|
+    invariant 0 <= count
+    invariant count == |set j | 0 <= j < i && !IsStrongestInSchool(chosen[j]-1, powers, schools)|
   {
-    var current_student_idx := chosen[i] - 1;
-    // The proof that IsStrongestInSchool_Helper is equivalent to IsStrongestInSchool is missing
-    // in the original code, but for loop invariants to be effective, they have to use
-    // the same predicate as the postcondition.
-    if !IsStrongestInSchool(current_student_idx, powers, schools)
-    {
+    var student_idx := chosen[i] - 1;
+    if !IsStrongestInSchool(student_idx, powers, schools) {
       count := count + 1;
     }
-    i := i + 1;
   }
-  return count;
+  result := count;
+  assert result == |set j | 0 <= j < k && !IsStrongestInSchool(chosen[j]-1, powers, schools)|;
 }
 // </vc-code>
-

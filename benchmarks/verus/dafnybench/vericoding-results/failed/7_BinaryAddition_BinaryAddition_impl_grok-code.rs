@@ -1,0 +1,277 @@
+use vstd::prelude::*;
+
+verus! {
+
+/* 
+MIPS 0
+We implement the following with bitvectors in Verus.
+here s' and t' are converted to decimal scalars
+s = [1,1,1], t = [1,0,1], ys = [1, 0, 0], s' = 7, t' = 5, ys' = 4
+ys' % 2 ^ (len(s)) = (s' + t') % 2 ^ (len(s))
+4 % 8 = 12 % 8
+
+def f(s,t):
+    a = 0;b = 0;
+    ys = []
+    for i in range(10):
+        c = s[i]; d = t[i];
+        next_a = b ^ c ^ d
+        next_b = b+c+d>1
+        a = next_a;b = next_b;
+        y = a
+        ys.append(y)
+    return ys
+*/
+
+// Helper function to check if a bit is set
+spec fn is_bit_set(x: u16, bit_index: int) -> bool
+    recommends 0 <= bit_index < 10
+{
+    (x & (1u16 << bit_index)) != 0
+}
+
+// Convert u16 to sequence of 10 bools (LSB first)
+spec fn bv10_to_seq(x: u16) -> Seq<bool> {
+    seq![
+        is_bit_set(x, 0), is_bit_set(x, 1), is_bit_set(x, 2), is_bit_set(x, 3),
+        is_bit_set(x, 4), is_bit_set(x, 5), is_bit_set(x, 6), is_bit_set(x, 7),
+        is_bit_set(x, 8), is_bit_set(x, 9)
+    ]
+}
+
+// Convert array of bools to u16 bitvector
+spec fn array_to_bv10(arr: &[bool; 10]) -> u16
+{
+    array_to_bv10_helper(arr, 9)
+}
+
+spec fn array_to_bv10_helper(arr: &[bool; 10], index: nat) -> u16
+    recommends index < 10
+    decreases index
+{
+    if index == 0 {
+        if arr[index as int] { 1u16 } else { 0u16 }
+    } else {
+        let bit: u16 = if arr[index as int] { 1u16 } else { 0u16 };
+        #[verifier::truncate]
+        let shifted: u16 = (bit << (index as int));
+        #[verifier::truncate]
+        let result: u16 = (shifted as int + array_to_bv10_helper(arr, (index - 1) as nat) as int) as u16;
+        result
+    }
+}
+
+// Convert array to sequence
+fn array_to_sequence(arr: &[bool; 10]) -> (res: Vec<bool>)
+    ensures res.len() == 10,
+    ensures forall|k: int| 0 <= k < 10 ==> res[k] == arr[k]
+{
+    assume(false);
+    Vec::new()
+}
+
+// Boolean to integer conversion
+spec fn bool_to_int(a: bool) -> int {
+    if a { 1 } else { 0 }
+}
+
+// XOR operation
+spec fn xor_bool(a: bool, b: bool) -> bool {
+    (a || b) && !(a && b)
+}
+
+// Traditional bit addition using bitvectors
+spec fn bit_addition(s: &[bool; 10], t: &[bool; 10]) -> Seq<bool> {
+    let a: u16 = array_to_bv10(s);
+    let b: u16 = array_to_bv10(t);
+    #[verifier::truncate]
+    let c: u16 = (a as int + b as int) as u16;
+    bv10_to_seq(c)
+}
+
+// <vc-helpers>
+// Helper function to check if a bit is set
+spec fn is_bit_set(x: u16, bit_index: int) -> bool
+    recommends 0 <= bit_index < 10
+{
+    (x & (1u16 << bit_index)) != 0
+}
+
+// Convert u16 to sequence of 10 bools (LSB first)
+spec fn bv10_to_seq(x: u16) -> Seq<bool> {
+    seq![
+        is_bit_set(x, 0), is_bit_set(x, 1), is_bit_set(x, 2), is_bit_set(x, 3),
+        is_bit_set(x, 4), is_bit_set(x, 5), is_bit_set(x, 6), is_bit_set(x, 7),
+        is_bit_set(x, 8), is_bit_set(x, 9)
+    ]
+}
+
+// Convert array of bools to u16 bitvector
+spec fn array_to_bv10(arr: &[bool; 10]) -> u16
+{
+    array_to_bv10_helper(arr, 9)
+}
+
+spec fn array_to_bv10_helper(arr: &[bool; 10], index: nat) -> u16
+    recommends index < 10
+    decreases index
+{
+    if index == 0 {
+        if arr[index as int] { 1u16 } else { 0u16 }
+    } else {
+        let bit: u16 = if arr[index as int] { 1u16 } else { 0u16 };
+        let shifted: u16 = (bit << (index as int));
+        let result: u16 = (shifted as int + array_to_bv10_helper(arr, (index - 1) as nat) as int) as u16;
+        result
+    }
+}
+
+// Convert array to sequence
+fn array_to_sequence(arr: &[bool; 10]) -> (res: Vec<bool>)
+    ensures res.len() == 10,
+    ensures forall|k: int| 0 <= k < 10 ==> res@[k] == arr@[k]
+{
+    let mut v: Vec<bool> = Vec::new();
+    let mut i = 0;
+    while i < 10
+        invariant
+            0 <= i <= 10,
+            v.len() == i,
+            forall|k: int| 0 <= k < i ==> v@[k] == arr@[k]
+    {
+        v.push(arr[i as int]);
+        i = i + 1;
+    }
+    v
+}
+
+fn array_to_bv10_exec(arr: &[bool; 10]) -> (res: u16)
+    ensures res == array_to_bv10(arr)
+{
+    let mut result = 0u16;
+    let mut i = 0;
+    while i < 10
+        invariant
+            0 <= i <= 10,
+            result == array_to_bv10_helper(arr, (if i > 0 { (i as int - 1) as nat } else { 0 })) if i > 0 || i == 0
+            else 0u16,
+    {
+        if arr[i as int] {
+            result = result | (1u16 << i);
+        }
+        i = i + 1;
+    }
+    result
+}
+
+fn bv10_to_vec_exec(x: u16) -> (res: Vec<bool>)
+    ensures res.len() == 10,
+    ensures res@ == bv10_to_seq(x)
+{
+    let mut v: Vec<bool> = Vec::new();
+    let mut i = 0;
+    while i < 10
+        invariant
+            0 <= i <= 10,
+            v.len() == i,
+            forall|k: int| 0 <= k < i ==> v@[k] == is_bit
+// </vc-helpers>
+
+// <vc-spec>
+fn binary_addition(s: &[bool; 10], t: &[bool; 10]) -> (sresult: Vec<bool>) // Generated program for bit addition
+    requires s.len() == 10 && t.len() == 10
+    ensures sresult.len() == 10,
+    ensures bit_addition(s, t) == sresult@, // Verification of correctness
+// </vc-spec>
+// <vc-code>
+// Helper function to check if a bit is set
+spec fn is_bit_set(x: u16, bit_index: int) -> bool
+    recommends 0 <= bit_index < 10
+{
+    (x & (1u16 << bit_index)) != 0
+}
+
+// Convert u16 to sequence of 10 bools (LSB first)
+spec fn bv10_to_seq(x: u16) -> Seq<bool> {
+    seq![
+        is_bit_set(x, 0), is_bit_set(x, 1), is_bit_set(x, 2), is_bit_set(x, 3),
+        is_bit_set(x, 4), is_bit_set(x, 5), is_bit_set(x, 6), is_bit_set(x, 7),
+        is_bit_set(x, 8), is_bit_set(x, 9)
+    ]
+}
+
+// Convert array of bools to u16 bitvector
+spec fn array_to_bv10(arr: &[bool; 10]) -> u16
+{
+    array_to_bv10_helper(arr, 9)
+}
+
+spec fn array_to_bv10_helper(arr: &[bool; 10], index: nat) -> u16
+    recommends index < 10
+    decreases index
+{
+    if index == 0 {
+        if arr[index as int] { 1u16 } else { 0u16 }
+    } else {
+        let bit: u16 = if arr[index as int] { 1u16 } else { 0u16 };
+        let shifted: u16 = (bit << (index as int));
+        let result: u16 = (shifted as int + array_to_bv10_helper(arr, (index - 1) as nat) as int) as u16;
+        result
+    }
+}
+
+// Convert array to sequence
+fn array_to_sequence(arr: &[bool; 10]) -> (res: Vec<bool>)
+    ensures res.len() == 10,
+    ensures forall|k: int| 0 <= k < 10 ==> res@[k] == arr@[k]
+{
+    let mut v: Vec<bool> = Vec::new();
+    let mut i = 0;
+    while i < 10
+        invariant
+            0 <= i <= 10,
+            v.len() == i,
+            forall|k: int| 0 <= k < i ==> v@[k] == arr@[k]
+    {
+        v.push(arr[i as int]);
+        i = i + 1;
+    }
+    v
+}
+
+fn array_to_bv10_exec(arr: &[bool; 10]) -> (res: u16)
+    ensures res == array_to_bv10(arr)
+{
+    let mut result = 0u16;
+    let mut i = 0;
+    while i < 10
+        invariant
+            0 <= i <= 10,
+            result == array_to_bv10_helper(arr, (if i > 0 { (i as int - 1) as nat } else { 0 })) if i > 0 || i == 0
+            else 0u16,
+    {
+        if arr[i as int] {
+            result = result | (1u16 << i);
+        }
+        i = i + 1;
+    }
+    result
+}
+
+fn bv10_to_vec_exec(x: u16) -> (res: Vec<bool>)
+    ensures res.len() == 10,
+    ensures res@ == bv10_to_seq(x)
+{
+    let mut v: Vec<bool> = Vec::new();
+    let mut i = 0;
+    while i < 10
+        invariant
+            0 <= i <= 10,
+            v.len() == i,
+            forall|k: int| 0 <= k < i ==> v@[k] == is_bit
+// </vc-code>
+
+fn main() {
+}
+
+}

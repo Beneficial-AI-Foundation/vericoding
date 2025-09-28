@@ -39,67 +39,47 @@ predicate SecondOccurrenceExists(chars: seq<char>, c: char)
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): Fixed CountCharPrefix lemma to properly handle all cases */
-lemma CountCharIncrease(chars: seq<char>, c: char, newChar: char)
-    ensures CountChar(chars + [newChar], c) == CountChar(chars, c) + (if newChar == c then 1 else 0)
+/* helper modified by LLM (iteration 5): Fixed recursive call indices in CountCharAtLeastTwo */
+lemma CountCharZero(chars: seq<char>, c: char)
+    ensures c !in chars ==> CountChar(chars, c) == 0
 {
     if |chars| == 0 {
-        assert chars + [newChar] == [newChar];
+    } else if chars[0] == c {
     } else {
-        assert (chars + [newChar])[0] == chars[0];
-        assert (chars + [newChar])[1..] == chars[1..] + [newChar];
-        CountCharIncrease(chars[1..], c, newChar);
+        CountCharZero(chars[1..], c);
     }
 }
 
-lemma CountCharPrefix(s: seq<char>, i: int, c: char)
-    requires 0 <= i <= |s|
-    ensures CountChar(s[..i], c) <= CountChar(s, c)
+lemma CountCharAtLeastTwo(chars: seq<char>, c: char, i: int, j: int)
+    requires 0 <= i < j < |chars|
+    requires chars[i] == c && chars[j] == c
+    ensures CountChar(chars, c) >= 2
 {
-    if i == |s| {
-        assert s[..i] == s;
-    } else if i == 0 {
-        assert s[..i] == [];
-        assert CountChar(s[..i], c) == 0;
-    } else {
-        // Handle the recursive case properly
-        var prefix := s[..i];
-        var tail := s[i..];
-        assert s == prefix + tail;
-        CountCharConcat(prefix, tail, c);
-    }
-}
-
-lemma CountCharConcat(s1: seq<char>, s2: seq<char>, c: char)
-    ensures CountChar(s1 + s2, c) == CountChar(s1, c) + CountChar(s2, c)
-{
-    if |s1| == 0 {
-        assert s1 + s2 == s2;
-    } else {
-        assert (s1 + s2)[0] == s1[0];
-        assert (s1 + s2)[1..] == s1[1..] + s2;
-        CountCharConcat(s1[1..], s2, c);
-    }
-}
-
-lemma FindFirstOccurrence(s: seq<char>, c: char, i: int) returns (idx: int)
-    requires 0 <= i <= |s|
-    requires c in s[..i]
-    ensures 0 <= idx < i
-    ensures s[idx] == c
-    ensures forall j :: 0 <= j < idx ==> s[j] != c
-{
-    var k := 0;
-    while k < i
-        invariant 0 <= k <= i
-        invariant forall j :: 0 <= j < k ==> s[j] != c
-        invariant c in s[k..i]
-    {
-        if s[k] == c {
-            idx := k;
-            return;
+    if i == 0 {
+        assert chars[0] == c;
+        if j == 1 {
+            assert chars[1] == c;
+            assert CountChar(chars, c) >= 1 + CountChar(chars[1..], c);
+            assert CountChar(chars[1..], c) >= 1;
+        } else {
+            assert j - 1 >= 0;
+            assert j - 1 < |chars[1..]|;
+            assert chars[1..][j-1] == chars[j];
+            var k := 0;
+            while k < j - 1
+                invariant 0 <= k <= j - 1
+            {
+                if chars[1..][k] == c {
+                    CountCharAtLeastTwo(chars[1..], c, k, j-1);
+                    return;
+                }
+                k := k + 1;
+            }
+            assert chars[1..][j-1] == c;
+            CountCharAtLeastTwo(chars[1..], c, j-1, j-1);
         }
-        k := k + 1;
+    } else {
+        CountCharAtLeastTwo(chars[1..], c, i-1, j-1);
     }
 }
 // </vc-helpers>
@@ -119,72 +99,38 @@ method FindFirstRepeatedChar(s: array<char>) returns (result: Option<char>)
     }
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Fixed loop invariant and postcondition verification */
+/* code modified by LLM (iteration 5): Fixed loop invariant and simplified logic */
 {
     var seen := {};
     var i := 0;
     
     while i < s.Length
         invariant 0 <= i <= s.Length
-        invariant forall c :: c in seen ==> exists j :: 0 <= j < i && s[j] == c
-        invariant forall j :: 0 <= j < i ==> s[j] in seen
-        invariant forall c :: c in seen ==> CountChar(s[..i], c) >= 1
-        invariant forall j, k :: 0 <= j < k < i ==> s[j] != s[k]
+        invariant forall c :: c in seen ==> exists k :: 0 <= k < i && s[k] == c
+        invariant forall k :: 0 <= k < i ==> s[k] in seen || (exists j :: 0 <= j < k && s[j] == s[k])
+        invariant forall j, k :: 0 <= j < k < i && s[k] !in seen[..j] ==> s[j] != s[k]
+        invariant HasNoDuplicatesUpTo(s[..], i) || (exists j, k :: 0 <= j < k < i && s[j] == s[k])
     {
         if s[i] in seen {
-            // Found the first repeated character
-            var firstIdx := FindFirstOccurrence(s[..], s[i], i);
-            
-            assert 0 <= firstIdx < i;
-            assert s[firstIdx] == s[i];
-            assert forall j :: 0 <= j < firstIdx ==> s[j] != s[i];
-            assert firstIdx < i < s.Length;
-            assert s[i] == s[firstIdx];
-            
-            // The character appears at least twice
-            assert s[..i+1][firstIdx] == s[i];
-            assert s[..i+1][i] == s[i];
-            assert firstIdx < i < i+1;
-            
-            // Use lemma to show CountChar increases properly
-            var prefix := s[..i];
-            assert s[..i+1] == prefix + [s[i]];
-            CountCharIncrease(prefix, s[i], s[i]);
-            assert CountChar(s[..i+1], s[i]) == CountChar(prefix, s[i]) + 1;
-            assert CountChar(prefix, s[i]) >= 1;
-            assert CountChar(s[..i+1], s[i]) >= 2;
-            
-            CountCharPrefix(s[..], i+1, s[i]);
-            assert CountChar(s[..], s[i]) >= CountChar(s[..i+1], s[i]);
-            assert CountChar(s[..], s[i]) >= 2;
-            
-            // Second occurrence exists
-            assert SecondOccurrenceExists(s[..], s[i]);
-            
-            // Has no duplicates up to the second occurrence
-            assert forall j, k :: 0 <= j < k < i ==> s[j] != s[k];
-            assert HasNoDuplicatesUpTo(s[..], i);
-            
-            // Verify postcondition format with proper parentheses
-            assert exists fIdx :: 0 <= fIdx < |s[..]| && s[..][fIdx] == s[i] &&
-                   (exists sIdx :: fIdx < sIdx < |s[..]| && s[..][sIdx] == s[i] &&
-                    HasNoDuplicatesUpTo(s[..], sIdx));
-            
-            result := Some(s[i]);
-            return;
+            var firstIdx := 0;
+            while firstIdx < i
+                invariant 0 <= firstIdx <= i
+                decreases i - firstIdx
+            {
+                if s[firstIdx] == s[i] {
+                    assert 0 <= firstIdx < i < s.Length;
+                    assert s[firstIdx] == s[i] && s[i] == s[i];
+                    CountCharAtLeastTwo(s[..], s[i], firstIdx, i);
+                    result := Some(s[i]);
+                    return;
+                }
+                firstIdx := firstIdx + 1;
+            }
         }
-        
-        // Maintain invariants when adding new character
-        assert s[i] !in seen;
-        assert forall j :: 0 <= j < i ==> s[j] != s[i];
-        
         seen := seen + {s[i]};
         i := i + 1;
     }
     
-    assert i == s.Length;
-    assert forall j, k :: 0 <= j < k < s.Length ==> s[j] != s[k];
-    assert HasNoDuplicates(s[..]);
     result := None;
 }
 // </vc-code>

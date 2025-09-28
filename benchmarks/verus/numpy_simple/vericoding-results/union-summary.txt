@@ -1,0 +1,89 @@
+=== VERUS PROCESSING SUMMARY (AGGREGATED) ===
+Selection method: best runs
+Total files: 58
+Successful: 22 (37.9%)
+Failed: 36
+
+Selected best runs:
+  - claude-opus: vericoder_claude-opus_20-09_13h56 (success rate: 19.0%)
+  - claude-sonnet: vericoder_claude-sonnet_20-09_13h56 (success rate: 20.7%)
+  - deepseek: vericoder_deepseek_20-09_13h57 (success rate: 3.4%)
+  - gemini: vericoder_gemini_20-09_13h57 (success rate: 34.5%)
+  - gemini-flash: vericoder_gemini-flash_20-09_13h57 (success rate: 10.3%)
+  - glm: vericoder_glm_20-09_13h58 (success rate: 8.6%)
+  - gpt: vericoder_gpt_20-09_13h58 (success rate: 19.0%)
+  - gpt-mini: vericoder_gpt-mini_20-09_13h58 (success rate: 3.4%)
+  - grok-code: vericoder_grok-code_20-09_13h58 (success rate: 10.3%)
+
+Per-LLM success rates:
+  - claude-opus: 11/58 (19.0%)
+  - claude-sonnet: 12/58 (20.7%)
+  - deepseek: 2/58 (3.4%)
+  - gemini: 20/58 (34.5%)
+  - gemini-flash: 6/58 (10.3%)
+  - glm: 5/58 (8.6%)
+  - gpt: 11/58 (19.0%)
+  - gpt-mini: 2/58 (3.4%)
+  - grok-code: 6/58 (10.3%)
+
+Successful files:
+✓ NpArgmax-spec.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash
+✓ NpBitwiseAnd-spec.rs — by: claude-opus, gemini, grok-code
+✓ NpBitwiseOr-spec.rs — by: claude-sonnet, gemini, gemini-flash, gpt
+✓ NpBitwiseXor-spec.rs — by: claude-opus, claude-sonnet, deepseek, gemini
+✓ NpBroadcast-spec.rs — by: gemini
+✓ NpClip-spec.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt
+✓ NpColumnStack-spec.rs — by: gemini
+✓ NpCopy-spec.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt
+✓ NpEqual-spec.rs — by: claude-opus, claude-sonnet, gemini, glm, gpt, grok-code
+✓ NpGreater-spec.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt
+✓ NpGreaterEqual-spec.rs — by: claude-sonnet, gemini
+✓ NpHistogram-spec.rs — by: claude-sonnet, gemini, gpt, gpt-mini
+✓ NpIsclose-spec.rs — by: claude-opus, gemini
+✓ NpLcm-spec.rs — by: gpt
+✓ NpLess-spec.rs — by: gemini, gpt-mini
+✓ NpLessEqual-spec.rs — by: gemini, gpt
+✓ NpMax-spec.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, grok-code
+✓ NpMin-spec.rs — by: claude-opus, claude-sonnet, deepseek, gemini, glm, grok-code
+✓ NpNotEqual-spec.rs — by: gemini, gpt, grok-code
+✓ NpPolyder-spec.rs — by: gpt
+✓ NpSign-spec.rs — by: claude-opus, claude-sonnet, gemini, glm, gpt, grok-code
+✓ NpTranspose-spec.rs — by: gemini
+
+Failed files:
+✗ NpAbs-spec.rs
+✗ NpAdd-spec.rs
+✗ NpArange-spec.rs
+✗ NpArgsort-spec.rs
+✗ NpCenter-spec.rs
+✗ NpCountnonzero-spec.rs
+✗ NpCumProd-spec.rs
+✗ NpCumSum-spec.rs
+✗ NpDiagonal-spec.rs
+✗ NpFlatten-spec.rs
+✗ NpFloorDivide-spec.rs
+✗ NpGcd-spec.rs
+✗ NpIntersect-spec.rs
+✗ NpInvert-spec.rs
+✗ NpIsalpha-spec.rs
+✗ NpLeftShift-spec.rs
+✗ NpMod-spec.rs
+✗ NpMultiply-spec.rs
+✗ NpPiecewise-spec.rs
+✗ NpPoly-spec.rs
+✗ NpPower-spec.rs
+✗ NpProd-spec.rs
+✗ NpRavel-spec.rs
+✗ NpRemainder-spec.rs
+✗ NpReshape-spec.rs
+✗ NpRightShift-spec.rs
+✗ NpSelect-spec.rs
+✗ NpShape-spec.rs
+✗ NpSort-spec.rs
+✗ NpSquare-spec.rs
+✗ NpSubtract-spec.rs
+✗ NpSum-spec.rs
+✗ NpTril-spec.rs
+✗ NpUniqueall-spec.rs
+✗ NpWhere-spec.rs
+✗ NpZeros-spec.rs

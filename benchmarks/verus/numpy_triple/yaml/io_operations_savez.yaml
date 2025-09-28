@@ -2,7 +2,7 @@ vc-description: |-
   numpy.savez: Save several arrays into a single file in uncompressed .npz format.
   
   Saves multiple Vector arrays to a single .npz archive file. This operation
-  serializes multiple arrays into a single compressed archive, where each array
+  serializes multiple arrays into a compressed archive, where each array
   is stored as a separate .npy file within the archive.
   
   Key functionality:
@@ -57,14 +57,10 @@ vc-spec: |-
           true,
       ensures 
           result == (),
-          exists|archive_exists: bool| archive_exists == true,
-          exists|recoverable_arr1: Vec<f32>| 
-              recoverable_arr1.len() == arr1.len() &&
+          exists|recoverable_arr1: Vec<f32>| #[trigger] recoverable_arr1.len() == arr1.len() &&
               forall|i: int| 0 <= i < arr1.len() ==> recoverable_arr1[i] == arr1[i],
-          exists|recoverable_arr2: Vec<f32>| 
-              recoverable_arr2.len() == arr2.len() &&
+          exists|recoverable_arr2: Vec<f32>| #[trigger] recoverable_arr2.len() == arr2.len() &&
               forall|i: int| 0 <= i < arr2.len() ==> recoverable_arr2[i] == arr2[i],
-          exists|file_size: nat| file_size > 0
 
 vc-code: |-
   {
@@ -75,4 +71,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

@@ -5,37 +5,29 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 2): Fixed syntax errors and implemented proper helper functions */
-
-spec fn sorted(a: Seq<i32>) -> bool {
-    forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] <= a[j]
-}
-
-spec fn multiset_equals(a: Seq<i32>, b: Seq<i32>) -> bool {
-    a.to_multiset() =~= b.to_multiset()
-}
-
-proof fn lemma_insert_preserves_multiset(a: Seq<i32>, i: usize, v: i32)
+/* helper modified by LLM (iteration 5): Removed unsupported is_empty() call and fixed proof functions */
+proof fn lemma_insertion_preserves_multiset(v: Vec<i32>, idx: usize, value: i32) -> (result: Vec<i32>)
     ensures
-        a.insert(i, v)@.to_multiset() =~= a@.insert(v),
+        idx <= v.len(),
+        result@.to_multiset() == v@.to_multiset().insert(value),
+        result.len() == v.len() + 1
 {
+    let mut result = v.clone();
+    result.insert(idx, value);
+    result
 }
 
-proof fn lemma_remove_preserves_multiset(a: Seq<i32>, i: usize)
-    requires
-        0 <= i < a.len(),
+proof fn lemma_sorted_invariant(v: Vec<i32>, i: int, j: int) -> (result: bool)
     ensures
-        a.remove(i)@.to_multiset() =~= a@.remove(a[i]),
+        result == (
+            forall|k: int| i <= k < j ==> v[k] <= v[k + 1]
+        )
 {
-}
-
-proof fn lemma_multiset_transitive(a: Seq<i32>, b: Seq<i32>, c: Seq<i32>)
-    requires
-        multiset_equals(a, b),
-        multiset_equals(b, c),
-    ensures
-        multiset_equals(a, c),
-{
+    if i >= j {
+        true
+    } else {
+        v[i] <= v[i + 1] && lemma_sorted_invariant(v, i + 1, j)
+    }
 }
 // </vc-helpers>
 
@@ -48,36 +40,41 @@ fn insertion_sort(l: Vec<i32>) -> (result: Vec<i32>)
         result@.to_multiset() == l@.to_multiset(),
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 2): Simplified insertion sort implementation with proper verification */
+/* code modified by LLM (iteration 5): Replaced unsupported is_empty() with len() check */
 {
-    let mut arr = l;
-    let mut i: usize = 1;
+    let mut sorted = Vec::new();
+    let mut original = l;
     
-    while i < arr.len()
+    while original.len() > 0
         invariant
-            0 <= i <= arr.len(),
-            sorted(arr@.subrange(0, i)),
-            multiset_equals(arr@, l@),
+            sorted@.to_multiset().add(original@.to_multiset()) == l@.to_multiset(),
+            forall|i: int, j: int| 0 <= i < j < sorted.len() ==> sorted[i] <= sorted[j],
+            sorted.len() + original.len() == l.len()
+        decreases original.len()
     {
-        let key = arr[i];
-        let mut j = i;
+        let elem = match original.pop() {
+            Some(value) => value,
+            None => break,
+        };
         
-        while j > 0 && arr[j - 1] > key
+        let mut pos: usize = 0;
+        while pos < sorted.len()
             invariant
-                0 <= j <= i,
-                (forall|k: int| j <= k < i ==> arr[k] > key),
-                sorted(arr@.subrange(0, j)),
-                sorted(arr@.subrange(j, i)),
-                multiset_equals(arr@, l@),
+                0 <= pos <= sorted.len(),
+                forall|i: int| 0 <= i < pos ==> sorted[i] <= elem,
+                forall|i: int, j: int| 0 <= i < j < sorted.len() ==> sorted[i] <= sorted[j]
+            decreases sorted.len() - pos
         {
-            arr.swap(j, j - 1);
-            j -= 1;
+            if sorted[pos] > elem {
+                break;
+            }
+            pos += 1;
         }
         
-        i += 1;
+        sorted.insert(pos, elem);
     }
     
-    arr
+    sorted
 }
 // </vc-code>
 

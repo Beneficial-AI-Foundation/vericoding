@@ -33,7 +33,7 @@ method ToUppercase(s: string) returns (result: string)
   var res := [];
   for i := 0 to |s|
     invariant |res| == i
-    invariant forall j :: 0 <= j < i ==>
+    invariant forall j :: 0 <= j < i ==> 
       var c := s[j];
       var r := res[j];
       if IsLowerCase(c) then

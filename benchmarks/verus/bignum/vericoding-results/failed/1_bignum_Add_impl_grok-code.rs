@@ -1,84 +1,72 @@
+// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
-
-spec fn Str2Int(s: Seq<char>) -> nat
-  recommends ValidBitString(s)
+spec fn str2int(s: Seq<char>) -> nat
   decreases s.len()
 {
-  if s.len() == 0 {
-    0
-  } else {
-    2 * Str2Int(s.subrange(0, s.len() as int - 1))
-      + (if s.index(s.len() as int - 1) == '1' { 1nat } else { 0nat })
-  }
+  if s.len() == 0 { 0nat } else { 2nat * str2int(s.subrange(0, s.len() - 1)) + (if s[s.len() - 1] == '1' { 1nat } else { 0nat }) }
 }
 
-spec fn ValidBitString(s: Seq<char>) -> bool
+spec fn valid_bit_string(s: Seq<char>) -> bool
 {
-  // All characters must be '0' or '1'.
-  forall |i: int| 0 <= i && i < s.len() as int ==>
-    (s.index(i) == '0' || s.index(i) == '1')
+  forall|i: int| 0 <= i < s.len() ==> (s[i] == '0' || s[i] == '1')
 }
+// </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): kept unchanged as add_bits function is correct */
-fn add_bits(a: char, b: char, carry: usize) -> (char, usize) {
-    let a_val = if a == '0' { 0 } else { 1 };
-    let b_val = if b == '0' { 0 } else { 1 };
-    let sum = a_val + b_val + carry;
-    let bit = if sum % 2 == 0 { '0' } else { '1' };
-    let new_carry = sum / 2;
-    (bit, new_carry)
+/* helper modified by LLM (iteration 9): add str2int_low and fix pow2 to take int */
+spec fn pow2(i: int) -> nat
+    decreases i when i > 0
+{
+    if i <= 0 { 1nat } else { 2nat * pow2(i - 1) }
+}
+
+spec fn str2int_low(s: Seq<char>, k: int) -> nat
+    decreases k
+{
+    if k == 0 {0nat} else { if s[k-1] == '1' {1nat} else {0nat} + 2nat * str2int_low(s, k -1) }
 }
 // </vc-helpers>
 
 // <vc-spec>
-exec fn Add(s1: &[char], s2: &[char]) -> (res: Vec<char>)
-  requires ValidBitString(s1@),
-   ValidBitString(s2@),
-  ensures ValidBitString(res@), 
-    Str2Int(res@) == Str2Int(s1@) + Str2Int(s2@)
+fn add(s1: Vec<char>, s2: Vec<char>) -> (res: Vec<char>)
+  requires 
+    valid_bit_string(s1@) && valid_bit_string(s2@)
+  ensures 
+    valid_bit_string(res@) &&
+    str2int(res@) == str2int(s1@) + str2int(s2@)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): replaced result.reverse() with manual swap loop to reverse the vector */
-    let len1 = s1.len();
-    let len2 = s2.len();
+    /* code modified by LLM (iteration 9): fix invariant to use str2int_low and adjust types */
+    let max_len = s1.len().max(s2.len());
+    let mut res: Vec<char> = Vec::new();
     let mut carry: usize = 0;
-    let mut result: Vec<char> = Vec::<char>::new();
-    let max_len = if len1 > len2 { len1 } else { len2 };
-    let mut i = 0;
+    let mut i: usize = 0;
     while i < max_len
         invariant
-            carry <= 1,
-            ValidBitString(result@),
-        decreases max_len - i
+            i@ <= max_len@,
+            res@.len() == i@,
+            0 <= carry <= 2,
+            str2int_low(res@, i@) + (carry as nat) * pow2(i@) == str2int_low(s1@, if i@ <= s1@.len() { i@ } else { s1@.len() }) + str2int_low(s2@, if i@ <= s2@.len() { i@ } else { s2@.len() })
+        decreases max_len@ - i@
     {
-        let b1 = if i < len1 { s1[len1 - 1 - i] } else { '0' };
-        let b2 = if i < len2 { s2[len2 - 1 - i] } else { '0' };
-        let (bit, new_carry) = add_bits(b1, b2, carry);
-        result.push(bit);
-        carry = new_carry;
-        i += 1;
+        let bit1 = if i < s1.len() { if s1[i] == '1' { 1 } else { 0 } } else { 0 };
+        let bit2 = if i < s2.len() { if s2[i] == '1' { 1 } else { 0 } } else { 0 };
+        let sum = bit1 + bit2 + carry;
+        res.push(if sum % 2 == 0 { '0' } else { '1' });
+        carry = sum / 2;
+        i = i + 1;
     }
     if carry == 1 {
-        result.push('1');
+        res.push('1');
     }
-    if result.len() > 0 {
-        let mut j = 0;
-        let len = result.len();
-        while j < len / 2
-        {
-            let temp = result[j];
-            result[j] = result[len - 1 - j];
-            result[len - 1 - j] = temp;
-            j += 1;
-        }
-    }
-    result
+    res
 }
 // </vc-code>
 
-fn main() {}
+
 }
+
+fn main() {}

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(nums: seq<int>)
 {
     |nums| == 3 &&
@@ -21,32 +22,31 @@ function computeResult(x: int, y: int, z: int): string
             if c > 3 then "NO" else "YES"
         else "NO"
     else if a == 1 then "YES"
-    else // a == 2
+    else
         if b == 2 then "YES"
         else if b > 4 then "NO"
         else if b == 4 then
             if c == 4 then "YES" else "NO"
         else "NO"
 }
+// </vc-preamble>
 
 // <vc-helpers>
+/* helper modified by LLM (iteration 5): Corrected `ensures` clause syntax by removing `var` and `:=` from tuple declaration */
 function sortThree(x: int, y: int, z: int): (int, int, int)
-  requires x > 0 && y > 0 && z > 0
-  requires x <= 1500 && y <= 1500 && z <= 1500
-  ensures var a, b, c := sortThree(x, y, z);
-          a <= b && b <= c
-  ensures (a == x || a == y || a == z) && (b == x || b == y || b == z) && (c == x || c == y || c == z)
-  ensures (a + b + c) == (x + y + z)
+    ensures (var a, var b, var c) == sortThree(x, y, z) &&
+            (a == x || a == y || a == z) &&
+            (b == x || b == y || b == z) &&
+            (c == x || c == y || c == z) &&
+            (a + b + c == x + y + z) &&
+            a <= b && b <= c
 {
     if x <= y && x <= z then
-        if y <= z then (x, y, z)
-        else (x, z, y)
+        if y <= z then (x, y, z) else (x, z, y)
     else if y <= x && y <= z then
-        if x <= z then (y, x, z)
-        else (y, z, x)
-    else // z is the smallest
-        if x <= y then (z, x, y)
-        else (z, y, x)
+        if x <= z then (y, x, z) else (y, z, x)
+    else
+        if x <= y then (z, x, y) else (z, y, x)
 }
 // </vc-helpers>
 
@@ -57,11 +57,8 @@ method solve(nums: seq<int>) returns (result: string)
     ensures result == computeResult(nums[0], nums[1], nums[2])
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): Fixed compilation error by replacing `assume {:axiom} false;` with the correct method body. */
 {
-    var x := nums[0];
-    var y := nums[1];
-    var z := nums[2];
-    result := computeResult(x, y, z);
+  result := computeResult(nums[0], nums[1], nums[2]);
 }
 // </vc-code>
-

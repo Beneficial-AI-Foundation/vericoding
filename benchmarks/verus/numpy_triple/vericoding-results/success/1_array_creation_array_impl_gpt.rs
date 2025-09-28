@@ -5,7 +5,7 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-spec fn min(a: int, b: int) -> int { if a <= b { a } else { b } }
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -16,7 +16,8 @@ fn array(data: Vec<f64>) -> (result: Vec<f64>)
 // </vc-spec>
 // <vc-code>
 {
-    data
+    let r = data;
+    r
 }
 // </vc-code>
 

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int)
 {
     k >= 1 && n >= 1 && k <= n
@@ -14,15 +15,10 @@ predicate FirstPlayerWins(n: int, k: int)
 {
     TotalMoves(n, k) % 2 == 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
-lemma ParityOfTotalMoves(n: int, k: int)
-  requires ValidInput(n, k)
-  ensures FirstPlayerWins(n, k) <==> (n / k) % 2 == 1
-{
-  // This lemma directly follows from the definition of FirstPlayerWins and TotalMoves.
-  // No explicit proof steps are needed in Dafny as it can infer this.
-}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -33,11 +29,10 @@ method solve(n: int, k: int) returns (result: string)
 // </vc-spec>
 // <vc-code>
 {
-  if (FirstPlayerWins(n, k)) {
+  if FirstPlayerWins(n, k) {
     result := "YES";
   } else {
     result := "NO";
   }
 }
 // </vc-code>
-

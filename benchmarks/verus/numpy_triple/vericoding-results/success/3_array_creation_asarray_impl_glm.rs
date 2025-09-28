@@ -17,7 +17,19 @@ fn asarray(a: Vec<f32>) -> (result: Vec<f32>)
 // </vc-spec>
 // <vc-code>
 {
-    let result = a;
+    /* code modified by LLM (iteration 4): use a.len() directly and remove len variable */
+    let mut result = Vec::new();
+    let mut i = 0;
+    while i < a.len()
+        invariant
+            0 <= i <= a.len(),
+            result.len() == i,
+            forall|j: int| 0 <= j < i ==> result@[j] == a@[j],
+        decreases a.len() - i
+    {
+        result.push(a[i]);
+        i += 1;
+    }
     result
 }
 // </vc-code>

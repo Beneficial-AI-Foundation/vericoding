@@ -2,14 +2,28 @@
 // </vc-preamble>
 
 // <vc-helpers>
-predicate IsSorted(a: array<int>, low: int, high: int)
-    reads a
-    requires 0 <= low <= high <= a.Length
-{
-    forall i, j :: low <= i < j < high ==> a[i] <= a[j]
-}
+function min(a: int, b: int): int { if a < b then a else b }
 
-/* helper modified by LLM (iteration 2): added helper predicate for insertion sort */
+function insert(x: int, l: array<int>): array<int>
+    requires l != null
+    ensures insert(x, l).Length == l.Length + 1
+    ensures multiset(insert(x, l)) == multiset(l) + multiset([x])
+    ensures forall i, j :: 0 <= i < j < insert(x, l).Length ==> insert(x, l)[i] <= insert(x, l)[j]
+{
+    if l.Length == 0 then
+        [x]
+    else if x <= l[0] then
+        var r := new int[l.Length + 1];
+        r[0] := x;
+        forall k | 0 <= k < l.Length { r[k + 1] := l[k]; }
+        r
+    else
+        var r := new int[l.Length + 1];
+        r[0] := l[0];
+        var rest := insert(x, l[1..]);
+        forall k | 0 <= k < rest.Length { r[k + 1] := rest[k]; }
+        r
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -23,38 +37,18 @@ method insertion_sort(l: array<int>) returns (result: array<int>)
 // </vc-spec>
 // <vc-code>
 {
-  /* code modified by LLM (iteration 2): fixed insertion sort implementation */
-  result := new int[l.Length];
-  if l.Length == 0 {
-    return;
-  }
-  
-  // Initialize result with first element
-  result[0] := l[0];
-  
-  var i := 1;
-  while i < l.Length
-    invariant 1 <= i <= l.Length
-    invariant multiset(result[..i]) == multiset(l[..i])
-    invariant IsSorted(result, 0, i)
-  {
-    var key := l[i];
-    var j := i;
-    
-    // Shift elements greater than key to the right
-    while j > 0 && result[j-1] > key
-      invariant 0 <= j <= i
-      invariant IsSorted(result, 0, j)
-      invariant IsSorted(result, j, i)
-      invariant forall k :: 0 <= k < j ==> result[k] <= key
-      invariant multiset(result[..i]) == multiset(l[..i-1]) + multiset([key])
-    {
-      result[j] := result[j-1];
-      j := j - 1;
+    if l.Length == 0 {
+        result := new int[0];
+    } else {
+        var sorted := insert(l[0], new int[0]);
+        for i := 1 to l.Length
+            invariant sorted.Length == i
+            invariant multiset(sorted) == multiset(l[0..i])
+            invariant forall j, k :: 0 <= j < k < sorted.Length ==> sorted[j] <= sorted[k]
+        {
+            sorted := insert(l[i], sorted);
+        }
+        result := sorted;
     }
-    
-    result[j] := key;
-    i := i + 1;
-  }
 }
 // </vc-code>

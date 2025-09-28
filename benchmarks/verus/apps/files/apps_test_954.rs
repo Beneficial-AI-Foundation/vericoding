@@ -30,12 +30,12 @@ spec fn all_distinct_cyclic_shifts(s: Seq<char>) -> nat
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: usize)
+fn solve(s: Vec<char>) -> (result: usize)
     requires 
-        valid_input(s),
+        valid_input(s@),
     ensures 
         1 <= result <= s.len(),
-        result == all_distinct_cyclic_shifts(s),
+        result == all_distinct_cyclic_shifts(s@),
 // </vc-spec>
 // <vc-code>
 {

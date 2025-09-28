@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum(s: seq<int>): int
 {
     if |s| == 0 then 0 else s[0] + sum(s[1..])
@@ -16,15 +17,32 @@ predicate ValidOutput(a: seq<int>, finalSchedule: seq<int>, additionalWalks: int
     forall i :: 0 <= i < |a| - 1 ==> finalSchedule[i] + finalSchedule[i + 1] >= k &&
     additionalWalks == sum(finalSchedule) - sum(a)
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function min(a: int, b: int): int {
-    if a < b then a else b
-}
-
-function sum(s: seq<int>): int
+/* helper modified by LLM (iteration 5): Corrected sequence initialization syntax. */
+function ComputeSchedule(n: int, k: int, a: seq<int>): (finalSchedule: seq<int>)
+    requires ValidInput(n, k, a)
+    ensures |finalSchedule| == n
+    ensures forall i :: 0 <= i < n ==> finalSchedule[i] >= a[i]
+    ensures forall i :: 0 <= i < n - 1 ==> finalSchedule[i] + finalSchedule[i+1] >= k
 {
-    if |s| == 0 then 0 else s[0] + sum(s[1..])
+    var schedule_seq: seq<int> := (seq<int>(n, _ => 0));
+    schedule_seq := schedule_seq[0 := a[0]];
+
+    if n > 1 {
+        schedule_seq := schedule_seq[1 := max(a[1], k - schedule_seq[0])];
+        var i := 2;
+        while i < n
+            invariant 0 <= i <= n
+            invariant forall j :: 0 <= j < i ==> schedule_seq[j] >= a[j]
+            invariant forall j :: 0 <= j < i - 1 ==> schedule_seq[j] + schedule_seq[j+1] >= k
+        {
+            schedule_seq := schedule_seq[i := max(a[i], k - schedule_seq[i-1])];
+            i := i + 1;
+        }
+    }
+    return schedule_seq;
 }
 // </vc-helpers>
 
@@ -34,51 +52,10 @@ method solve(n: int, k: int, a: seq<int>) returns (additionalWalks: int, finalSc
     ensures ValidOutput(a, finalSchedule, additionalWalks, k)
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): No changes needed. */
 {
-    var currentSchedule: seq<int> := a;
-    additionalWalks := 0;
-
-    if n == 1 {
-        finalSchedule := currentSchedule;
-        return;
-    }
-
-    // Step 1: Ensure sum of adjacent elements is at least k, propagating from left to right
-    for i := 0 to n - 2
-        invariant 0 <= i < n
-        invariant |currentSchedule| == n
-        invariant forall j :: 0 <= j <= i ==> currentSchedule[j] >= a[j]
-        invariant forall j :: 0 <= j < i ==> currentSchedule[j] + currentSchedule[j+1] >= k
-        invariant additionalWalks == sum(currentSchedule) - sum(a)
-        invariant forall p :: i < p < n ==> currentSchedule[p] == a[p] || currentSchedule[p] >= a[p]
-        invariant forall j :: 0 <= j < |currentSchedule| ==> currentSchedule[j] >= 0
-    {
-        if currentSchedule[i] + currentSchedule[i+1] < k {
-            var diff := k - (currentSchedule[i] + currentSchedule[i+1]);
-            currentSchedule := currentSchedule[0..i+1] + [currentSchedule[i+1] + diff] + currentSchedule[i+2..];
-            additionalWalks := additionalWalks + diff;
-        }
-    }
-
-    // This handles cases where the last element might need to be increased to satisfy the k constraint with its left neighbor
-    // while ensuring previous adjustments are not violated.
-    for i := n - 2 downto 0
-        invariant -1 <= i < n - 1
-        invariant |currentSchedule| == n
-        invariant (forall j | i+1 <= j < n - 1 :: currentSchedule[j] + currentSchedule[j+1] >= k)
-        invariant (forall j | 0 <= j < |currentSchedule|-1 && j <= i :: currentSchedule[j] + currentSchedule[j+1] >= k)
-        invariant forall j :: 0 <= j < n ==> currentSchedule[j] >= a[j]
-        invariant additionalWalks == sum(currentSchedule) - sum(a)
-        invariant forall j :: 0 <= j < |currentSchedule| ==> currentSchedule[j] >= 0
-    {
-        if currentSchedule[i] + currentSchedule[i+1] < k {
-            var diff := k - (currentSchedule[i] + currentSchedule[i+1]);
-            currentSchedule := currentSchedule[0..i] + [currentSchedule[i] + diff] + currentSchedule[i+1..];
-            additionalWalks := additionalWalks + diff;
-        }
-    }
-
-    finalSchedule := currentSchedule;
+    var schedule := ComputeSchedule(n, k, a);
+    additionalWalks := sum(schedule) - sum(a);
+    finalSchedule := schedule;
 }
 // </vc-code>
-

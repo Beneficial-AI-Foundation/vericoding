@@ -1,5 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 283 characters
---------------------------------------------------------------------------------
-["", "{\n  let n = Str2Int(dividend@);\n  let d = Str2Int(divisor@);\n\n  let quotient_nat = n / d;\n  let remainder_nat = n % d;\n\n  let quotient_vec = int_to_bit_string(quotient_nat);\n  let remainder_vec = int_to_bit_string(remainder_nat);\n\n  (quotient_vec, remainder_vec)\n}"]
---------------------------------------------------------------------------------

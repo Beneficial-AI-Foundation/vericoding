@@ -1,6 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 777 characters
---------------------------------------------------------------------------------
-```json
-["proof fn lemma_horner(s: Seq<char>)\n    requires ValidBitString(s)\n    ensures Str2Int(s) == horner(s)\n    decreases s.len()\n{\n    if s.len() > 0 {\n        lemma_horner(s.subrange(0, s.len() as int - 1));\n    }\n}\n\nspec fn horner(s: Seq<char>) -> nat\n    decreases s.len()\n{\n    if s.len() == 0 {\n        0\n    } else {\n        horner(s.subrange(0, s.len() as int - 1)) * 2\n            + (if s.last() == '1' { 1 } else { 0 })\n    }\n}\n\nproof fn lemma_mul_distributive_add(a: nat, b: nat, c: nat)\n    ensures (a + b) * c == a * c + b * c\n{\n    vstd::arithmetic::mul::lemma_mul_is_distributive_add(c, a, b);\n}\n\nexec fn add(s1: &Vec<char>, s2: &Vec<char>) -> (res: Vec<char>)\n    requires\n        ValidBitString(s1@),\n        ValidBitString(s
---------------------------------------------------------------------------------

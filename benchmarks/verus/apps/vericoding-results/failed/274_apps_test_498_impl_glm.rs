@@ -1,0 +1,51 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+spec fn valid_input(n: int, m: int, k: int) -> bool {
+    1 <= n <= 10000 && 1 <= m <= 10000 && 1 <= k <= 2 * n * m
+}
+
+spec fn valid_output(n: int, m: int, lane: int, desk: int, side: char) -> bool {
+    1 <= lane <= n && 1 <= desk <= m && (side == 'L' || side == 'R')
+}
+
+spec fn correct_solution(n: int, m: int, k: int, lane: int, desk: int, side: char) -> bool
+    recommends valid_input(n, m, k)
+{
+    lane == (k - 1) / (2 * m) + 1 &&
+    desk == (k - 1) % (2 * m) / 2 + 1 &&
+    (side == 'L' <==> (k - 1) % (2 * m) % 2 == 0)
+}
+// </vc-preamble>
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(n: i32, m: i32, k: i32) -> (result: (i32, i32, char))
+    requires valid_input(n as int, m as int, k as int)
+    ensures ({
+        let (lane, desk, side) = result;
+        valid_output(n as int, m as int, lane as int, desk as int, side) &&
+        correct_solution(n as int, m as int, k as int, lane as int, desk as int, side)
+    })
+// </vc-spec>
+// <vc-code>
+{
+    /* code modified by LLM (iteration 5): use i32 arithmetic without ghost types */
+    let two_m = 2 * m;
+    let k_minus_1 = k - 1;
+    let lane = k_minus_1 / two_m + 1;
+    let remainder = k_minus_1 % two_m;
+    let desk = remainder / 2 + 1;
+    let side = if remainder % 2 == 0 { 'L' } else { 'R' };
+    (lane, desk, side)
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(input: string)
 {
     var lines := SplitByNewline(input);
@@ -112,12 +113,10 @@ function IntToStringHelper(n: int): string
     if n == 0 then ""
     else IntToStringHelper(n / 10) + [((n % 10) + '0' as int) as char]
 }
+// </vc-preamble>
 
 // <vc-helpers>
-// No changes needed to helper functions as they are already defined above and are correct.
-// The issue reported by the verifier about duplicate names is due to these functions being
-// defined here again, after they've been defined in the PREAMBLE.
-// Therefore, we will remove them from the helpers section.
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -128,14 +127,13 @@ method solve(input: string) returns (result: string)
 // </vc-spec>
 // <vc-code>
 {
-    var firstSum := GetFirstSum(input);
-    var secondSum := GetSecondSum(input);
-    var thirdSum := GetThirdSum(input);
+  var firstSum := GetFirstSum(input);
+  var secondSum := GetSecondSum(input);
+  var thirdSum := GetThirdSum(input);
 
-    var sub1 := firstSum - secondSum;
-    var sub2 := secondSum - thirdSum;
+  var diff1 := firstSum - secondSum;
+  var diff2 := secondSum - thirdSum;
 
-    result := IntToString(sub1) + "\n" + IntToString(sub2) + "\n";
+  result := IntToString(diff1) + "\n" + IntToString(diff2) + "\n";
 }
 // </vc-code>
-

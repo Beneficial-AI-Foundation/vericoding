@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(A: int, B: int, C: int) {
     0 <= A <= 50 && 0 <= B <= 50 && 0 <= C <= 50
 }
@@ -30,15 +31,10 @@ function MinOperations(A: int, B: int, C: int): int
 predicate AllEqual(A: int, B: int, C: int) {
     A == B && B == C
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function Max(a: int, b: int): int {
-    if a >= b then a else b
-}
-
-function Min(a: int, b: int): int {
-    if a <= b then a else b
-}
+function Max(a: int, b: int): int { if a > b then a else b }
 // </vc-helpers>
 
 // <vc-spec>
@@ -50,12 +46,6 @@ method solve(A: int, B: int, C: int) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    var (a0, a1, a2) := SortDescending(A, B, C);
-    var gap1 := a0 - a1;
-    var updated_smallest := a2 + gap1;
-    var remaining_gap := a0 - updated_smallest;
-
-    result := gap1 + remaining_gap / 2 + (remaining_gap % 2) * 2;
+  result := MinOperations(A, B, C);
 }
 // </vc-code>
-

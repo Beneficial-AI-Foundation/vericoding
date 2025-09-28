@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(r: int, g: int, b: int)
 {
     r >= 1 && g >= 1 && b >= 1
@@ -17,9 +18,10 @@ predicate CanArrange(r: int, g: int, b: int)
     var total := r + g + b;
     2 * maxCount <= total + 1
 }
+// </vc-preamble>
 
 // <vc-helpers>
-
+function Max(a: int, b: int): int { if a >= b then a else b }
 // </vc-helpers>
 
 // <vc-spec>
@@ -29,9 +31,8 @@ method CheckLampArrangement(r: int, g: int, b: int) returns (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-    var maxCount := MaxOf3(r, g, b);
-    var total := r + g + b;
-    result := 2 * maxCount <= total + 1;
+  var maxCount := MaxOf3(r, g, b);
+  var total := r + g + b;
+  result := 2 * maxCount <= total + 1;
 }
 // </vc-code>
-

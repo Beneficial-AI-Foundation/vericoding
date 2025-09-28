@@ -15,7 +15,7 @@ function NormalizeStr(s: string): seq<char>
 
 // <vc-helpers>
 
-function ContainsChar(s: seq<char>, c: char): bool
+function HasChar(s: seq<char>, c: char): bool
 {
     exists i | 0 <= i < |s| :: s[i] == c
 }
@@ -35,7 +35,7 @@ method AllVowels(s: string) returns (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-  var normalized := NormalizeStr(s);
-  result := ContainsChar(normalized, 'a') && ContainsChar(normalized, 'e') && ContainsChar(normalized, 'i') && ContainsChar(normalized, 'o') && ContainsChar(normalized, 'u');
+    var normalized := NormalizeStr(s);
+    result := HasChar(normalized, 'a') && HasChar(normalized, 'e') && HasChar(normalized, 'i') && HasChar(normalized, 'o') && HasChar(normalized, 'u');
 }
 // </vc-code>

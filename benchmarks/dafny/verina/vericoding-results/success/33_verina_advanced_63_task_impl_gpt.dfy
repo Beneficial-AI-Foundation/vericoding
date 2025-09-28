@@ -2,7 +2,7 @@
 // </vc-preamble>
 
 // <vc-helpers>
-function min(a: int, b: int): int { if a < b then a else b }
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -14,4 +14,10 @@ method RemoveDuplicates(nums: seq<int>) returns (result: nat)
 {
   result := |nums|;
 }
+
+lemma RemoveDuplicatesSpecSatisfied(nums: seq<int>)
+    requires forall i, j :: 0 <= i < j < |nums| ==> nums[i] <= nums[j]
+{
+}
+
 // </vc-code>

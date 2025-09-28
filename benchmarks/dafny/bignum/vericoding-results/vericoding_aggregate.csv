@@ -1,63 +1,63 @@
 filename,success_status,total_llms,successful_llms
 bignum_Add,SUCCESS,2,"claude-opus, glm"
-bignum_Add[NormalizeBitString],SUCCESS,2,"claude-opus, deepseek"
+bignum_Add_NormalizeBitString,SUCCESS,3,"claude-opus, deepseek, gemini"
 bignum_Compare,SUCCESS,2,"claude-opus, gpt"
-bignum_CompareUnequal,SUCCESS,3,"claude-opus, gpt-mini, grok-code"
-"bignum_Compare[CompareUnequal,NormalizeBitString]",FAILED,0,
-bignum_Compare[CompareUnequal],SUCCESS,2,"gpt, gpt-mini"
-bignum_Compare[NormalizeBitString],SUCCESS,1,claude-opus
+bignum_CompareUnequal,SUCCESS,5,"claude-opus, claude-sonnet, gemini, gpt-mini, grok-code"
+bignum_Compare_CompareUnequal,SUCCESS,2,"gpt, gpt-mini"
+bignum_Compare_CompareUnequal_NormalizeBitString,FAILED,0,
+bignum_Compare_NormalizeBitString,SUCCESS,1,claude-opus
 bignum_DivMod,FAILED,0,
-"bignum_DivMod[Compare,Sub]",SUCCESS,1,gpt-mini
-bignum_DivMod[Compare],SUCCESS,2,"gpt, gpt-mini"
-bignum_DivMod[Sub],FAILED,0,
+bignum_DivMod_Compare,SUCCESS,2,"gpt, gpt-mini"
+bignum_DivMod_Compare_Sub,SUCCESS,1,gpt-mini
+bignum_DivMod_Sub,FAILED,0,
 bignum_ModExp,SUCCESS,1,gpt
 bignum_ModExpPow2,FAILED,0,
-"bignum_ModExpPow2[Add,DivMod,Mul]",FAILED,0,
-"bignum_ModExpPow2[Add,DivMod]",FAILED,0,
-"bignum_ModExpPow2[Add,Mul]",FAILED,0,
-bignum_ModExpPow2[Add],FAILED,0,
-"bignum_ModExpPow2[DivMod,Mul]",FAILED,0,
-bignum_ModExpPow2[DivMod],SUCCESS,1,gpt
-bignum_ModExpPow2[Mul],FAILED,0,
+bignum_ModExpPow2_Add,FAILED,0,
+bignum_ModExpPow2_Add_DivMod,FAILED,0,
+bignum_ModExpPow2_Add_DivMod_Mul,FAILED,0,
+bignum_ModExpPow2_Add_Mul,FAILED,0,
+bignum_ModExpPow2_DivMod,SUCCESS,1,gpt
+bignum_ModExpPow2_DivMod_Mul,FAILED,0,
+bignum_ModExpPow2_Mul,FAILED,0,
 bignum_ModExpPow2_int,SUCCESS,1,gpt
-"bignum_ModExp[Add,DivMod,ModExpPow2,Mul]",FAILED,0,
-"bignum_ModExp[Add,DivMod,ModExpPow2,Zeroes]",FAILED,0,
-"bignum_ModExp[Add,DivMod,ModExpPow2]",FAILED,0,
-"bignum_ModExp[Add,DivMod,Mul,Zeroes]",SUCCESS,1,gpt-mini
-"bignum_ModExp[Add,DivMod,Mul]",SUCCESS,2,"gpt, gpt-mini"
-"bignum_ModExp[Add,DivMod,Zeroes]",SUCCESS,1,gpt-mini
-"bignum_ModExp[Add,DivMod]",FAILED,0,
-"bignum_ModExp[Add,ModExpPow2,Mul,Zeroes]",FAILED,0,
-"bignum_ModExp[Add,ModExpPow2,Mul]",FAILED,0,
-"bignum_ModExp[Add,ModExpPow2,Zeroes]",FAILED,0,
-"bignum_ModExp[Add,ModExpPow2]",FAILED,0,
-"bignum_ModExp[Add,Mul,Zeroes]",SUCCESS,1,gpt-mini
-"bignum_ModExp[Add,Mul]",FAILED,0,
-"bignum_ModExp[Add,Zeroes]",FAILED,0,
-bignum_ModExp[Add],FAILED,0,
-"bignum_ModExp[DivMod,ModExpPow2,Mul,Zeroes]",SUCCESS,1,gpt-mini
-"bignum_ModExp[DivMod,ModExpPow2,Mul]",SUCCESS,1,gpt
-"bignum_ModExp[DivMod,ModExpPow2,Zeroes]",SUCCESS,1,gpt-mini
-"bignum_ModExp[DivMod,ModExpPow2]",FAILED,0,
-"bignum_ModExp[DivMod,Mul,Zeroes]",SUCCESS,1,gpt-mini
-"bignum_ModExp[DivMod,Mul]",FAILED,0,
-"bignum_ModExp[DivMod,Zeroes]",FAILED,0,
-bignum_ModExp[DivMod],FAILED,0,
-"bignum_ModExp[ModExpPow2,Add,Zeroes,DivMod,Mul]",FAILED,0,
-"bignum_ModExp[ModExpPow2,Mul,Zeroes]",SUCCESS,1,gpt-mini
-"bignum_ModExp[ModExpPow2,Mul]",FAILED,0,
-"bignum_ModExp[ModExpPow2,Zeroes]",FAILED,0,
-bignum_ModExp[ModExpPow2],SUCCESS,1,gpt-mini
-"bignum_ModExp[Mul,Zeroes]",SUCCESS,1,gpt-mini
-bignum_ModExp[Mul],FAILED,0,
-bignum_ModExp[Zeroes],SUCCESS,1,gpt
+bignum_ModExp_Add,FAILED,0,
+bignum_ModExp_Add_DivMod,FAILED,0,
+bignum_ModExp_Add_DivMod_ModExpPow2,FAILED,0,
+bignum_ModExp_Add_DivMod_ModExpPow2_Mul,FAILED,0,
+bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes,FAILED,0,
+bignum_ModExp_Add_DivMod_Mul,SUCCESS,2,"gpt, gpt-mini"
+bignum_ModExp_Add_DivMod_Mul_Zeroes,SUCCESS,1,gpt-mini
+bignum_ModExp_Add_DivMod_Zeroes,SUCCESS,1,gpt-mini
+bignum_ModExp_Add_ModExpPow2,FAILED,0,
+bignum_ModExp_Add_ModExpPow2_Mul,FAILED,0,
+bignum_ModExp_Add_ModExpPow2_Mul_Zeroes,FAILED,0,
+bignum_ModExp_Add_ModExpPow2_Zeroes,FAILED,0,
+bignum_ModExp_Add_Mul,FAILED,0,
+bignum_ModExp_Add_Mul_Zeroes,SUCCESS,1,gpt-mini
+bignum_ModExp_Add_Zeroes,FAILED,0,
+bignum_ModExp_DivMod,FAILED,0,
+bignum_ModExp_DivMod_ModExpPow2,FAILED,0,
+bignum_ModExp_DivMod_ModExpPow2_Mul,SUCCESS,1,gpt
+bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes,SUCCESS,1,gpt-mini
+bignum_ModExp_DivMod_ModExpPow2_Zeroes,SUCCESS,1,gpt-mini
+bignum_ModExp_DivMod_Mul,FAILED,0,
+bignum_ModExp_DivMod_Mul_Zeroes,SUCCESS,1,gpt-mini
+bignum_ModExp_DivMod_Zeroes,FAILED,0,
+bignum_ModExp_ModExpPow2,SUCCESS,1,gpt-mini
+bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul,FAILED,0,
+bignum_ModExp_ModExpPow2_Mul,FAILED,0,
+bignum_ModExp_ModExpPow2_Mul_Zeroes,SUCCESS,1,gpt-mini
+bignum_ModExp_ModExpPow2_Zeroes,FAILED,0,
+bignum_ModExp_Mul,FAILED,0,
+bignum_ModExp_Mul_Zeroes,SUCCESS,1,gpt-mini
+bignum_ModExp_Zeroes,SUCCESS,1,gpt
 bignum_ModExp_int,SUCCESS,1,gpt
-bignum_ModExp_int[ModExpPow2_int],SUCCESS,1,gpt
-bignum_Mul,FAILED,0,
-"bignum_Mul[Add,NormalizeBitString]",SUCCESS,1,claude-opus
-bignum_Mul[Add],FAILED,0,
-bignum_Mul[NormalizeBitString],FAILED,0,
-bignum_NormalizeBitString,SUCCESS,2,"claude-opus, glm"
-bignums_Sub,SUCCESS,3,"claude-opus, gpt, gpt-mini"
-bignums_Sub[NormalizeBitstring],FAILED,0,
-bignums_Zeros,SUCCESS,6,"claude-opus, deepseek, gemini, glm, gpt-mini, grok-code"
+bignum_ModExp_int_ModExpPow2_int,SUCCESS,1,gpt
+bignum_Mul,SUCCESS,2,"claude-sonnet, gemini"
+bignum_Mul_Add,FAILED,0,
+bignum_Mul_Add_NormalizeBitString,SUCCESS,1,claude-opus
+bignum_Mul_NormalizeBitString,FAILED,0,
+bignum_NormalizeBitString,SUCCESS,3,"claude-opus, claude-sonnet, glm"
+bignum_Sub,SUCCESS,4,"claude-opus, claude-sonnet, gpt, gpt-mini"
+bignum_Sub_NormalizeBitstring,FAILED,0,
+bignum_Zeros,SUCCESS,7,"claude-opus, claude-sonnet, deepseek, gemini, glm, gpt-mini, grok-code"

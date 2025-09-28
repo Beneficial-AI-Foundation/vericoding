@@ -1,3 +1,4 @@
+// <vc-preamble>
 function sum_squares(p: int, a: seq<int>): int
 {
     if |a| == 0 then 0
@@ -16,48 +17,33 @@ predicate IsOptimalCost(result: int, a: seq<int>)
     exists p :: -100 <= p <= 100 && result == sum_squares(p, a) &&
     forall p :: -100 <= p <= 100 ==> result <= sum_squares(p, a)
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function sum_squares_iter(p: int, a: seq<int>, i: int): int
-    requires 0 <= i <= |a|
-    decreases |a| - i
+/* helper modified by LLM (iteration 5): no changes, passing through */
+function sum_squares_range(p: int, a: seq<int>, start: int, end: int): int
+decreases end - start
 {
-    if i == |a| then 0
-    else (p - a[i]) * (p - a[i]) + sum_squares_iter(p, a, i + 1)
+    if start >= end then 0
+    else (p - a[start]) * (p - a[start]) + sum_squares_range(p, a, start + 1, end)
 }
 
-lemma sum_squares_eq_sum_squares_iter(p: int, a: seq<int>)
-    ensures sum_squares(p, a) == sum_squares_iter(p, a, 0)
+lemma SumSquaresRangeProperty(p: int, a: seq<int>, start: int, end: int)
+  requires start <= end
+  requires end <= |a|
+  requires 0 <= start
+  ensures sum_squares_range(p, a, start, end) == sum_squares(p, a[start..end])
 {
-    if |a| == 0 {
-        assert sum_squares(p, a) == 0;
-        assert sum_squares_iter(p, a, 0) == 0;
-    } else {
-        calc {
-            sum_squares(p, a);
-            (p - a[0]) * (p - a[0]) + sum_squares(p, a[1..]);
-            {
-                sum_squares_eq_sum_squares_iter(p, a[1..]);
-            }
-            (p - a[0]) * (p - a[0]) + sum_squares_iter(p, a[1..], 0);
-            sum_squares_iter(p, a, 0);
-        }
+  if start < end {
+    calc {
+      sum_squares_range(p, a, start, end);
+      (p - a[start]) * (p - a[start]) + sum_squares_range(p, a, start + 1, end);
+      (p - a[start]) * (p - a[start]) + sum_squares(p, a[start+1..end]);
+      sum_squares(p, a[start..end]);
     }
+  }
 }
 
-lemma sum_squares_non_negative(p: int, a: seq<int>)
-    ensures sum_squares(p, a) >= 0
-{
-    if |a| == 0 {
-        assert sum_squares(p, a) == 0;
-    } else {
-        var term := (p - a[0]) * (p - a[0]);
-        assert term >= 0;
-        sum_squares_non_negative(p, a[1..]);
-        assert sum_squares(p, a[1..]) >= 0;
-        assert sum_squares(p, a) == term + sum_squares(p, a[1..]);
-    }
-}
 // </vc-helpers>
 
 // <vc-spec>
@@ -66,48 +52,37 @@ method solve(n: int, a: seq<int>) returns (result: int)
     ensures IsOptimalCost(result, a)
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): fixed ambiguous boolean expression with parentheses */
 {
-    var min_cost := sum_squares(0, a); // Initialize with cost for p=0
-    sum_squares_eq_sum_squares_iter(0, a); // Proof for initial assignment
-    sum_squares_non_negative(0, a);
+  var min_cost := sum_squares(-100, a); // Initialize with the cost for p = -100
+  var optimal_p := -100; // Initialize with p = -100
 
-    var p_optimal := 0;
-
-    ghost var min_cost_ghost := min_cost;
-    ghost var p_optimal_ghost := p_optimal;
-
-    for p' := -100 to 100
-        invariant -100 <= p' <= 101
-        invariant min_cost_ghost == sum_squares(p_optimal_ghost, a)
-        invariant -100 <= p_optimal_ghost <= p' -1 || (p_optimal_ghost == 0 && p' == -100)
-        invariant forall x :: -100 <= x < p' ==> min_cost_ghost <= sum_squares(x, a)
+  var p := -100;
+  while p <= 100
+    invariant -100 <= p <= 101
+    invariant (exists p_iter :: -100 <= p_iter < p && min_cost == sum_squares(p_iter, a)) || (p == -100 && min_cost == sum_squares(-100, a))
+    invariant forall p_iter :: -100 <= p_iter < p ==> min_cost <= sum_squares(p_iter, a)
+    invariant -100 <= optimal_p < p
+  {
+    var current_cost := 0;
+    var i := 0;
+    while i < n
+      invariant 0 <= i <= n
+      invariant current_cost == sum_squares_range(p, a, 0, i)
     {
-        var current_cost := sum_squares(p', a);
-        sum_squares_eq_sum_squares_iter(p', a); // Proof for current_cost calculation
-        sum_squares_non_negative(p', a);
-
-        if current_cost < min_cost_ghost {
-            min_cost_ghost := current_cost;
-            p_optimal_ghost := p';
-        }
+      current_cost := current_cost + (p - a[i]) * (p - a[i]);
+      i := i + 1;
     }
+    SumSquaresRangeProperty(p, a, 0, n);
+    assert current_cost == sum_squares(p, a);
 
-    result := min_cost_ghost;
-
-    // Post-condition proof: result >= 0
-    assert result >= 0 by { sum_squares_non_negative(p_optimal_ghost, a); }
-
-    // Post-condition proof: exists p :: -100 <= p <= 100 && result == sum_squares(p, a)
-    assert -100 <= p_optimal_ghost <= 100;
-    assert result == sum_squares(p_optimal_ghost, a);
-
-    // Post-condition proof: forall p :: -100 <= p <= 100 ==> result <= sum_squares(p, a)
-    forall p'' | -100 <= p'' <= 100
-        ensures result <= sum_squares(p'', a)
-    {
-        // This holds because `min_cost_ghost` was updated to be the minimum found.
-        assert sum_squares(p_optimal_ghost, a) <= sum_squares(p'', a);
+    if current_cost < min_cost {
+      min_cost := current_cost;
+      optimal_p := p;
     }
+    p := p + 1;
+  }
+
+  result := min_cost;
 }
 // </vc-code>
-

@@ -1,0 +1,41 @@
+use vstd::prelude::*;
+
+verus! {
+
+// This file shows how to specify and implement a function to compute the
+// largest element of a list. The function is fully specified by two
+// preconditions, as proved by the MaximumIsUnique lemma below.
+
+// <vc-helpers>
+spec fn spec_max(values: Seq<int>) -> int
+    requires
+        values.len() > 0,
+    decreases values.len()
+{
+    if values.len() == 1 {
+        values[0]
+    } else {
+// </vc-helpers>
+
+// <vc-spec>
+fn maximum(values: Seq<int>) -> (max: int)
+    requires
+        values.len() > 0,
+    ensures
+        values.contains(max),
+        forall|i: int| 0 <= i < values.len() ==> values[i] <= max,
+// </vc-spec>
+// <vc-code>
+spec fn spec_max(values: Seq<int>) -> int
+    requires
+        values.len() > 0,
+    decreases values.len()
+{
+    if values.len() == 1 {
+        values[0]
+    } else {
+// </vc-code>
+
+fn main() {}
+
+}

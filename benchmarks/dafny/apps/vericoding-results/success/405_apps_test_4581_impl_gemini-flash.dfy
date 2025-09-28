@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(s: string) {
     |s| == 3 && forall i :: 0 <= i < |s| ==> s[i] == 'o' || s[i] == 'x'
 }
@@ -32,14 +33,10 @@ function IntToStringHelper(n: int, acc: string) : string
     if n == 0 then acc
     else IntToStringHelper(n / 10, [((n % 10) + 48) as char] + acc)
 }
+// </vc-preamble>
 
 // <vc-helpers>
-function IntToString_NonNegative(n: int) : string
-    requires n >= 0
-{
-    if n == 0 then "0"
-    else IntToStringHelper(n, "")
-}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -50,8 +47,7 @@ method solve(s: string) returns (result: string)
 // </vc-spec>
 // <vc-code>
 {
-    var price := CalculatePrice(s);
-    result := IntToString_NonNegative(price) + "\n";
+  var price := CalculatePrice(s);
+  result := IntToString(price) + "\n";
 }
 // </vc-code>
-

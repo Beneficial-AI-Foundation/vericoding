@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int, k: int, numbers: seq<int>)
 {
     n >= 1 && k >= 0 && |numbers| == n && forall i :: 0 <= i < |numbers| ==> numbers[i] > 0
@@ -28,48 +29,20 @@ function countValidNumbers(numbers: seq<int>, k: int, upTo: int): int
         var prevCount := countValidNumbers(numbers, k, upTo - 1);
         if countLuckyDigits(numbers[upTo - 1]) <= k then prevCount + 1 else prevCount
 }
+// </vc-preamble>
 
 // <vc-helpers>
-lemma CountValidNumbersIsCorrect(numbers: seq<int>, k: int, i: int)
-  requires 0 <= i <= |numbers|
-  requires k >= 0
-  requires forall j :: 0 <= j < |numbers| ==> numbers[j] >= 0
-  ensures countValidNumbers(numbers, k, i) == |set j | 0 <= j < i && countLuckyDigits(numbers[j]) <= k|
+/* helper modified by LLM (iteration 5): fixed out of bounds access in loop */
+function countValidNumber (s: seq<int>, k: int): int
+ensures countValidNumber(s, k) == |set i | 0 <= i < |s| && countLuckyDigits(s[i]) <= k|
 {
-  if i == 0 {
-    // Base case: countValidNumbers(numbers, k, 0) is 0, and the set is empty.
-    assert countValidNumbers(numbers, k, 0) == 0;
-    assert |set j | 0 <= j < 0 && countLuckyDigits(numbers[j]) <= k| == 0;
-  } else {
-    // Inductive step
-    CountValidNumbersIsCorrect(numbers, k, i - 1);
-    var prevCount_val := countValidNumbers(numbers, k, i - 1);
-    var luckyCondition := countLuckyDigits(numbers[i - 1]) <= k;
-    
-    calc {
-      countValidNumbers(numbers, k, i);
-      // Definition of countValidNumbers
-      (if luckyCondition then prevCount_val + 1 else prevCount_val);
-      // By induction hypothesis
-      (if luckyCondition then (|set j | 0 <= j < i - 1 && countLuckyDigits(numbers[j]) <= k|) + 1 else (|set j | 0 <= j < i - 1 && countLuckyDigits(numbers[j]) <= k|));
-      // Show that this is equivalent to the set |set j | 0 <= j < i && countLuckyDigits(numbers[j]) <= k|
-      if luckyCondition then
-        assert (set j | 0 <= j < i - 1 && countLuckyDigits(numbers[j]) <= k) + {i - 1} == (set j | 0 <= j < i && countLuckyDigits(numbers[j]) <= k);
-        (|set j | 0 <= j < i - 1 && countLuckyDigits(numbers[j]) <= k|) + 1;
-      else
-        assert (set j | 0 <= j < i - 1 && countLuckyDigits(numbers[j]) <= k) == (set j | 0 <= j < i && countLuckyDigits(numbers[j]) <= k) by {
-            var S_i_minus_1 := set j | 0 <= j < i - 1 && countLuckyDigits(numbers[j]) <= k;
-            var S_i := set j | 0 <= j < i && countLuckyDigits(numbers[j]) <= k;
-            assert forall x :: x in S_i_minus_1 <==> (x in S_i && x != i - 1);
-            if !(countLuckyDigits(numbers[i - 1]) <= k) {
-                assert i - 1 !in S_i;
-                assert S_i == S_i_minus_1;
-            }
-        };
-        (|set j | 0 <= j < i - 1 && countLuckyDigits(numbers[j]) <= k|);
-      |set j | 0 <= j < i && countLuckyDigits(numbers[j]) <= k|;
+    var count := 0;
+    for i := 0 to |s| - 1 {
+        if countLuckyDigits(s[i]) <= k {
+            count := count + 1;
+        }
     }
-  }
+    return count;
 }
 // </vc-helpers>
 
@@ -80,10 +53,8 @@ method solve(n: int, k: int, numbers: seq<int>) returns (result: int)
     ensures result == |set i | 0 <= i < |numbers| && countLuckyDigits(numbers[i]) <= k|
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): calling fixed helper */
 {
-  assert forall i :: 0 <= i < |numbers| ==> numbers[i] >= 0; // Follows from ValidInput
-  CountValidNumbersIsCorrect(numbers, k, n);
-  return countValidNumbers(numbers, k, n);
+  result := countValidNumber(numbers, k);
 }
 // </vc-code>
-

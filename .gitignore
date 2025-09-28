@@ -59,6 +59,9 @@ lean/Generated
 # Verus
 verus-x86-linux/
 
+# Vericoder run directories (keep only vericoding-results, files, yaml)
+benchmarks/**/vericoder_*/
+
 # Terraform
 infrastructure*/.terraform/
 infrastructure*/.terraform.lock.hcl

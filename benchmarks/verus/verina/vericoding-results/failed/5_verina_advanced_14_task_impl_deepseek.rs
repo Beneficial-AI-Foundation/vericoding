@@ -6,32 +6,35 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): Fix type mismatches by using proper nat operations and remove invalid functions */
-proof fn lemma_pow4_greater_than_zero(m: nat) 
-    ensures pow(4, m) > 0
+proof fn lemma_pow4_ge1(m: nat) 
+    ensures pow(4, m) >= 1,
+    decreases m,
 {
-    if m > 0 {
-        lemma_pow4_greater_than_zero((m as int - 1) as nat);
+    if m == 0 {
+        assert(pow(4, 0) == 1) by (compute_only);
+    } else {
+        lemma_pow4_ge1((m - 1) as nat);
+        assert(pow(4, m) == 4 * pow(4, (m - 1) as nat));
     }
 }
 
-proof fn lemma_pow4_injective(m1: nat, m2: nat)
-    requires pow(4, m1) == pow(4, m2)
-    ensures m1 == m2
+proof fn lemma_div4_preserves_power(n: nat)
+    requires n > 1,
+    ensures (n % 4 == 0) ==> (exists|m: nat| n == pow(4, m) <==> exists|m: nat| n/4 == pow(4, m)),
+    decreases n,
 {
-    if m1 != m2 {
-        if m1 > m2 {
-            lemma_pow4_injective((m1 as int - 1) as nat, m2);
-        } else {
-            lemma_pow4_injective(m1, (m2 as int - 1) as nat);
+    if n % 4 == 0 {
+        let k = n / 4;
+        assert(n == 4 * k);
+        
+        if exists|m: nat| n == pow(4, m) {
+            assert(exists|m: nat| k == pow(4, (m as int - 1) as nat));
+        }
+        if exists|m: nat| k == pow(4, m) {
+            assert(exists|m: nat| n == pow(4, (m as int + 1) as nat));
         }
     }
 }
-
-spec fn is_nat_zero(n: nat) -> bool { n == 0 }
-spec fn is_nat_one(n: nat) -> bool { n == 1 }
-spec fn nat_mod_four(n: nat) -> nat { n % 4 }
-spec fn nat_div_four(n: nat) -> nat { n / 4 }
 // </vc-helpers>
 
 // <vc-spec>
@@ -39,21 +42,29 @@ fn if_power_of_four(n: nat) -> (result: bool)
     ensures result <==> (exists|m: nat| n == pow(4, m)),
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Use proper nat operations and add verification conditions */
 {
-    if n == 0 {
-        false
-    } else if n == 1 {
-        true
-    } else {
-        let mod_result = n % 4;
-        if mod_result != 0 {
-            false
-        } else {
-            let next_n = n / 4;
-            if_power_of_four(next_n)
-        }
+    /* code modified by LLM (iteration 5): Fixed type conversion issues by using u64 instead of nat */
+    let n_u64 = n as u64;
+    if n_u64 == 0 {
+        return false;
     }
+    if n_u64 == 1 {
+        return true;
+    }
+    
+    let mut x: u64 = n_u64;
+    while x > 1
+        invariant
+            x > 0,
+            exists|m: nat| n == pow(4, m) <==> exists|m: nat| x as nat == pow(4, m),
+        decreases x,
+    {
+        if x % 4 != 0 {
+            return false;
+        }
+        x = x / 4;
+    }
+    return x == 1;
 }
 // </vc-code>
 

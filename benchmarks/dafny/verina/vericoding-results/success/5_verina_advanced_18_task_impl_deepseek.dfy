@@ -22,32 +22,32 @@ function SumPowers(n: nat, k: nat): nat
 // </vc-preamble>
 
 // <vc-helpers>
-function DigitCountIsValid(n: nat): bool
+function CountDigitsHelper(n: nat, count: nat): nat
     decreases n
+    ensures CountDigitsHelper(n, count) == count + CountDigits(n)
 {
-    n >= 0
+    if n == 0 then
+        count + 1
+    else if n < 10 then
+        count + 1
+    else
+        CountDigitsHelper(n / 10, count + 1)
 }
 
-lemma DigitCountLemma(n: nat)
-    ensures CountDigits(n) > 0
+lemma SumPowersLemma(n: nat, k: nat, acc: nat)
     decreases n
+    ensures acc + SumPowers(n, k) == SumPowers(n, k) + acc
 {
-    if n == 0 {
-    } else if n < 10 {
-    } else {
-        DigitCountLemma(n / 10);
-    }
 }
 
-lemma SumPowersLemma(n: nat, k: nat)
-    requires k > 0
+function ComputeSum(n: nat, k: nat, sum: nat): nat
     decreases n
-    ensures SumPowers(n, k) >= 0
+    ensures ComputeSum(n, k, sum) == sum + SumPowers(n, k)
 {
-    if n == 0 {
-    } else {
-        SumPowersLemma(n / 10, k);
-    }
+    if n == 0 then
+        sum
+    else
+        ComputeSum(n / 10, k, sum + PowNat(n % 10, k))
 }
 // </vc-helpers>
 
@@ -59,7 +59,7 @@ method IsArmstrong(n: nat) returns (result: bool)
 // <vc-code>
 {
     var digitCount := CountDigits(n);
-    var sum := SumPowers(n, digitCount);
-    result := n == sum;
+    var totalSum := ComputeSum(n, digitCount, 0);
+    result := n == totalSum;
 }
 // </vc-code>

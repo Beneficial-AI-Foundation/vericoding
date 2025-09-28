@@ -1,5 +1,0 @@
-=== Raw LLM Generate Response ===
-Length: 146 characters
---------------------------------------------------------------------------------
-["spec fn min(a: int, b: int) -> int { if a < b { a } else { b } }","{\n    let mut res: Vec<char> = Vec::new();\n    res.push('0');\n    res\n}"]
---------------------------------------------------------------------------------

@@ -13,23 +13,16 @@ spec fn has_distinct_digits(n: int) -> bool {
 }
 
 spec fn number_to_digits(n: int) -> Seq<int> {
-    if n == 0 {
-        seq![0]
-    } else if n > 0 {
-        number_to_digits_helper(n, Seq::empty())
-    } else {
-        number_to_digits_helper(-n, Seq::empty())
-    }
+    if n == 0 { seq![0] }
+    else if n > 0 { number_to_digits_helper(n, seq![]) }
+    else { number_to_digits_helper(-n, seq![]) }
 }
 
 spec fn number_to_digits_helper(n: int, acc: Seq<int>) -> Seq<int>
-    decreases n
+    decreases n when n >= 0
 {
-    if n == 0 {
-        acc
-    } else {
-        number_to_digits_helper(n / 10, seq![n % 10].add(acc))
-    }
+    if n == 0 { acc }
+    else { number_to_digits_helper(n / 10, seq![n % 10].add(acc)) }
 }
 
 spec fn all_distinct(digits: Seq<int>) -> bool {
@@ -42,10 +35,11 @@ spec fn all_distinct(digits: Seq<int>) -> bool {
 
 // <vc-spec>
 fn solve(y: int) -> (result: int)
-requires valid_input(y)
-ensures result > y,
-    has_distinct_digits(result),
-    forall|n: int| y < n < result ==> !has_distinct_digits(n)
+    requires valid_input(y)
+    ensures 
+        result > y &&
+        has_distinct_digits(result) &&
+        forall|n: int| y < n < result ==> !has_distinct_digits(n)
 // </vc-spec>
 // <vc-code>
 {

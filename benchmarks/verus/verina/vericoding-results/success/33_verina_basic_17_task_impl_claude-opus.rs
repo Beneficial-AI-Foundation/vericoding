@@ -1,0 +1,63 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+
+spec fn is_uppercase(c: char) -> bool {
+    'A' <= c && c <= 'Z'
+}
+
+spec fn shift32(c: char) -> char {
+    ((c as int) + 32) as char
+}
+// </vc-preamble>
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+fn to_lowercase(s: &Vec<char>) -> (result: Vec<char>)
+    ensures
+        result.len() == s.len(),
+        forall|i: int| 0 <= i < s.len() ==> {
+            if is_uppercase(s[i]) {
+                result[i] == shift32(s[i])
+            } else {
+                result[i] == s[i]
+            }
+        },
+// </vc-spec>
+// <vc-code>
+{
+    /* code modified by LLM (iteration 2): Added decreases clause to fix loop verification */
+    let mut result = Vec::new();
+    let mut i = 0;
+    while i < s.len()
+        invariant
+            0 <= i <= s.len(),
+            result.len() == i,
+            forall|j: int| 0 <= j < i ==> {
+                if is_uppercase(s[j]) {
+                    result[j] == shift32(s[j])
+                } else {
+                    result[j] == s[j]
+                }
+            },
+        decreases s.len() - i
+    {
+        let c = s[i];
+        if 'A' <= c && c <= 'Z' {
+            let new_c = ((c as u8) + 32) as char;
+            result.push(new_c);
+        } else {
+            result.push(c);
+        }
+        i += 1;
+    }
+    result
+}
+// </vc-code>
+
+}
+fn main() {}

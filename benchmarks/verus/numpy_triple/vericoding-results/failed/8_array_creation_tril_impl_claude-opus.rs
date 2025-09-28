@@ -22,31 +22,42 @@ fn tril(m: Vec<Vec<f64>>, k: i32) -> (result: Vec<Vec<f64>>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): fix type error by avoiding explicit int type annotations */
+    /* code modified by LLM (iteration 4): Fixed type casting - use i32 for runtime comparison */
     let n = m.len();
     let m_cols = m[0].len();
     let mut result: Vec<Vec<f64>> = Vec::new();
     let mut i: usize = 0;
     while i < n
         invariant
-            i <= n,
+            0 <= i <= n,
+            n == m.len(),
+            m_cols == m[0].len(),
             result.len() == i,
-            forall|p: int| 0 <= p < i ==> #[trigger] result[p].len() == m_cols,
-            forall|p: int, q: int| 0 <= p < i && 0 <= q < result[p].len() ==> #[trigger] result[p][q] == if p >= q - k { m[p][q] } else { 0.0 },
+            forall|idx: int| 0 <= idx < i ==> #[trigger] result[idx].len() == m_cols,
+            forall|idx: int, jdx: int| 
+                0 <= idx < i && 0 <= jdx < result[idx].len() ==> 
+                #[trigger] result[idx][jdx] == if idx >= jdx - k { m[idx][jdx] } else { 0.0 },
         decreases n - i
     {
         let mut row: Vec<f64> = Vec::new();
         let mut j: usize = 0;
         while j < m_cols
             invariant
-                j <= m_cols,
+                0 <= i < n,
+                0 <= j <= m_cols,
+                m_cols == m[0].len(),
                 row.len() == j,
-                i < m.len(),
-                forall|q: int| 0 <= q < j ==> #[trigger] row[q] == if i as int >= q - k { m[i as int][q] } else { 0.0 },
+                forall|idx: int| 0 <= idx < m.len() ==> #[trigger] m[idx].len() == m[0].len(),
+                forall|jdx: int| 
+                    0 <= jdx < j ==> 
+                    #[trigger] row[jdx] == if (i as int) >= jdx - k { m[i as int][jdx] } else { 0.0 },
             decreases m_cols - j
         {
-            let val = if (i as int) >= (j as int) - k { m[i][j] } else { 0.0 };
-            row.push(val);
+            if i as i32 >= j as i32 - k {
+                row.push(m[i][j]);
+            } else {
+                row.push(0.0);
+            }
             j = j + 1;
         }
         result.push(row);

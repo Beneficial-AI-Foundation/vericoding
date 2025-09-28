@@ -1,168 +1,169 @@
 === DAFNY PROCESSING SUMMARY (AGGREGATED) ===
-Selection method: best runs
+Selection method: best (by union rate) runs
 Total files: 157
-Successful: 136 (86.6%)
-Failed: 21
+Successful: 137 (87.3%)
+Failed: 20
 
-Selected best runs:
+Selected best (by union rate) runs:
   - claude-opus: vericoder_claude-opus_13-09_17h57 (success rate: 73.2%)
   - claude-sonnet: vericoder_claude-sonnet_18-09_09h30 (success rate: 72.0%)
-  - deepseek: vericoder_deepseek_13-09_19h33 (success rate: 31.2%)
-  - gemini: vericoder_gemini_13-09_19h34 (success rate: 48.4%)
+  - deepseek: vericoder_deepseek_18-09_16h39 (success rate: 46.5%)
+  - gemini: vericoder_gemini_18-09_16h39 (success rate: 66.9%)
   - gemini-flash: vericoder_gemini-flash_18-09_09h17 (success rate: 45.9%)
-  - glm: vericoder_glm_13-09_19h34 (success rate: 31.2%)
-  - gpt: vericoder_gpt_13-09_19h34 (success rate: 52.9%)
+  - glm: vericoder_glm_18-09_16h39 (success rate: 51.0%)
+  - gpt: vericoder_gpt_18-09_16h39 (success rate: 76.4%)
   - gpt-mini: vericoder_gpt-mini_18-09_09h19 (success rate: 73.9%)
-  - grok-code: vericoder_grok-code_13-09_19h34 (success rate: 45.2%)
+  - grok-code: vericoder_grok-code_18-09_16h39 (success rate: 63.1%)
 
 Per-LLM success rates:
   - claude-opus: 115/157 (73.2%)
   - claude-sonnet: 113/157 (72.0%)
-  - deepseek: 49/157 (31.2%)
-  - gemini: 76/157 (48.4%)
+  - deepseek: 73/157 (46.5%)
+  - gemini: 105/157 (66.9%)
   - gemini-flash: 72/157 (45.9%)
-  - glm: 49/157 (31.2%)
-  - gpt: 83/157 (52.9%)
+  - glm: 80/157 (51.0%)
+  - gpt: 120/157 (76.4%)
   - gpt-mini: 116/157 (73.9%)
-  - grok-code: 71/157 (45.2%)
+  - grok-code: 99/157 (63.1%)
 
 Successful files:
-✓ verina_advanced_13_task.dfy — by: claude-opus, claude-sonnet, gpt, gpt-mini
-✓ verina_advanced_14_task.dfy — by: claude-opus
-✓ verina_advanced_15_task.dfy — by: claude-sonnet, gpt-mini
+✓ verina_advanced_13_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ verina_advanced_14_task.dfy — by: claude-opus, gemini
+✓ verina_advanced_15_task.dfy — by: claude-sonnet, gemini, gpt, gpt-mini
 ✓ verina_advanced_16_task.dfy — by: gpt, gpt-mini
 ✓ verina_advanced_18_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
 ✓ verina_advanced_19_task.dfy — by: gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_advanced_30_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
-✓ verina_advanced_32_task.dfy — by: claude-sonnet, deepseek, gpt, gpt-mini
-✓ verina_advanced_33_task.dfy — by: claude-opus, claude-sonnet, deepseek, gpt, gpt-mini
-✓ verina_advanced_34_task.dfy — by: claude-sonnet, gpt
-✓ verina_advanced_35_task.dfy — by: gpt-mini
+✓ verina_advanced_30_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_advanced_32_task.dfy — by: claude-sonnet, gpt, gpt-mini
+✓ verina_advanced_33_task.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini
+✓ verina_advanced_34_task.dfy — by: claude-sonnet, deepseek, gemini, gpt, grok-code
+✓ verina_advanced_35_task.dfy — by: gpt, gpt-mini
 ✓ verina_advanced_36_task.dfy — by: gpt, gpt-mini
 ✓ verina_advanced_38_task.dfy — by: claude-opus, claude-sonnet, gpt, gpt-mini
-✓ verina_advanced_39_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_advanced_40_task.dfy — by: claude-opus, claude-sonnet, gemini-flash, glm, gpt-mini
-✓ verina_advanced_41_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
-✓ verina_advanced_42_task.dfy — by: claude-opus
-✓ verina_advanced_43_task.dfy — by: claude-opus, claude-sonnet, gpt, gpt-mini
-✓ verina_advanced_44_task.dfy — by: claude-opus, claude-sonnet, gemini-flash, gpt, gpt-mini
+✓ verina_advanced_39_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_advanced_40_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_advanced_41_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_advanced_42_task.dfy — by: claude-opus, gpt
+✓ verina_advanced_43_task.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini
+✓ verina_advanced_44_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
 ✓ verina_advanced_45_task.dfy — by: claude-sonnet
-✓ verina_advanced_46_task.dfy — by: claude-sonnet
-✓ verina_advanced_49_task.dfy — by: claude-sonnet, gpt-mini
-✓ verina_advanced_4_task.dfy — by: claude-opus, deepseek, gpt, gpt-mini
+✓ verina_advanced_46_task.dfy — by: claude-sonnet, gemini
+✓ verina_advanced_49_task.dfy — by: claude-sonnet, gpt, gpt-mini
+✓ verina_advanced_4_task.dfy — by: claude-opus, gemini, gpt, gpt-mini, grok-code
 ✓ verina_advanced_51_task.dfy — by: claude-opus
-✓ verina_advanced_53_task.dfy — by: claude-opus, claude-sonnet, gpt-mini, grok-code
-✓ verina_advanced_55_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt-mini
-✓ verina_advanced_57_task.dfy — by: claude-opus, claude-sonnet, gemini-flash, gpt, gpt-mini, grok-code
-✓ verina_advanced_58_task.dfy — by: claude-sonnet, gemini-flash, gpt, gpt-mini, grok-code
-✓ verina_advanced_59_task.dfy — by: claude-opus, claude-sonnet, gemini-flash, gpt, gpt-mini, grok-code
-✓ verina_advanced_60_task.dfy — by: claude-opus, gpt
-✓ verina_advanced_61_task.dfy — by: claude-opus
-✓ verina_advanced_62_task.dfy — by: claude-opus, claude-sonnet, gpt-mini
-✓ verina_advanced_63_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini
-✓ verina_advanced_65_task.dfy — by: claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_advanced_66_task.dfy — by: claude-opus, gemini, gpt, gpt-mini
-✓ verina_advanced_68_task.dfy — by: claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_advanced_69_task.dfy — by: claude-opus, claude-sonnet, gemini-flash, gpt-mini, grok-code
-✓ verina_advanced_6_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_advanced_70_task.dfy — by: claude-opus, claude-sonnet, deepseek, gpt, gpt-mini
-✓ verina_advanced_74_task.dfy — by: claude-opus, claude-sonnet, gpt, gpt-mini, grok-code
+✓ verina_advanced_53_task.dfy — by: claude-opus, claude-sonnet, glm, gpt, gpt-mini
+✓ verina_advanced_55_task.dfy — by: claude-opus, claude-sonnet, gemini-flash, gpt-mini
+✓ verina_advanced_57_task.dfy — by: claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini
+✓ verina_advanced_58_task.dfy — by: claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ verina_advanced_59_task.dfy — by: claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_advanced_60_task.dfy — by: claude-opus, gemini
+✓ verina_advanced_61_task.dfy — by: claude-opus, gpt
+✓ verina_advanced_62_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini
+✓ verina_advanced_63_task.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ verina_advanced_65_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_advanced_66_task.dfy — by: claude-opus, gpt, gpt-mini, grok-code
+✓ verina_advanced_68_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_advanced_69_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_advanced_6_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ verina_advanced_70_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini
+✓ verina_advanced_74_task.dfy — by: claude-opus, claude-sonnet, deepseek, glm, gpt, gpt-mini, grok-code
+✓ verina_advanced_75_task.dfy — by: gpt
 ✓ verina_advanced_76_task.dfy — by: claude-opus
-✓ verina_advanced_77_task.dfy — by: claude-opus, claude-sonnet, deepseek, gpt-mini, grok-code
-✓ verina_advanced_78_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini
-✓ verina_advanced_79_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt-mini
-✓ verina_advanced_80_task.dfy — by: claude-opus, claude-sonnet, gemini-flash, glm, gpt-mini
-✓ verina_advanced_8_task.dfy — by: gpt-mini
-✓ verina_advanced_9_task.dfy — by: claude-opus, claude-sonnet, gemini, gpt-mini
-✓ verina_basic_100_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini-flash, gpt, gpt-mini, grok-code
+✓ verina_advanced_77_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ verina_advanced_78_task.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini
+✓ verina_advanced_79_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ verina_advanced_80_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini
+✓ verina_advanced_8_task.dfy — by: gpt, gpt-mini
+✓ verina_advanced_9_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_100_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
 ✓ verina_basic_101_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_102_task.dfy — by: claude-opus, claude-sonnet, gemini, gpt-mini
-✓ verina_basic_103_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
-✓ verina_basic_105_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt-mini
-✓ verina_basic_106_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_108_task.dfy — by: claude-opus, claude-sonnet, gemini, gpt-mini, grok-code
-✓ verina_basic_10_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_11_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
-✓ verina_basic_13_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini
-✓ verina_basic_14_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
-✓ verina_basic_15_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini
-✓ verina_basic_17_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt
-✓ verina_basic_18_task.dfy — by: gpt
-✓ verina_basic_19_task.dfy — by: claude-opus, claude-sonnet, gemini-flash, gpt, gpt-mini, grok-code
-✓ verina_basic_20_task.dfy — by: claude-sonnet, glm, gpt-mini, grok-code
-✓ verina_basic_21_task.dfy — by: claude-opus, claude-sonnet, gpt-mini
-✓ verina_basic_24_task.dfy — by: claude-opus, claude-sonnet, deepseek, gpt-mini, grok-code
+✓ verina_basic_102_task.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini
+✓ verina_basic_103_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_105_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ verina_basic_106_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ verina_basic_108_task.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ verina_basic_10_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_11_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_13_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ verina_basic_14_task.dfy — by: claude-opus, claude-sonnet, deepseek, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_15_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_17_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, grok-code
+✓ verina_basic_18_task.dfy — by: gemini, gpt
+✓ verina_basic_19_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_20_task.dfy — by: claude-sonnet, gpt-mini, grok-code
+✓ verina_basic_21_task.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini
+✓ verina_basic_24_task.dfy — by: claude-opus, claude-sonnet, deepseek, glm, gpt, gpt-mini, grok-code
 ✓ verina_basic_25_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
-✓ verina_basic_26_task.dfy — by: claude-opus, claude-sonnet, gemini, gpt-mini, grok-code
-✓ verina_basic_28_task.dfy — by: claude-opus, claude-sonnet, gemini, glm
-✓ verina_basic_2_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_30_task.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini
+✓ verina_basic_26_task.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_28_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, grok-code
+✓ verina_basic_2_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_30_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
 ✓ verina_basic_31_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini
-✓ verina_basic_32_task.dfy — by: claude-opus, claude-sonnet, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_36_task.dfy — by: claude-opus, claude-sonnet, deepseek, gpt-mini, grok-code
-✓ verina_basic_37_task.dfy — by: claude-sonnet, gemini, gpt, gpt-mini, grok-code
-✓ verina_basic_38_task.dfy — by: claude-opus, claude-sonnet, gemini, gpt-mini, grok-code
-✓ verina_basic_39_task.dfy — by: claude-sonnet, gemini, glm, gpt-mini
-✓ verina_basic_3_task.dfy — by: claude-opus, claude-sonnet, glm, gpt-mini, grok-code
-✓ verina_basic_40_task.dfy — by: claude-opus
-✓ verina_basic_41_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini
-✓ verina_basic_42_task.dfy — by: claude-opus, claude-sonnet, gemini-flash, gpt-mini, grok-code
-✓ verina_basic_43_task.dfy — by: claude-sonnet, deepseek, gemini-flash
-✓ verina_basic_44_task.dfy — by: claude-opus, claude-sonnet, gemini-flash, glm, gpt-mini, grok-code
-✓ verina_basic_45_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt-mini
-✓ verina_basic_46_task.dfy — by: gemini, gemini-flash, gpt-mini
-✓ verina_basic_47_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
-✓ verina_basic_48_task.dfy — by: claude-opus, claude-sonnet, gemini, gpt-mini
-✓ verina_basic_49_task.dfy — by: claude-opus, claude-sonnet, gemini-flash, gpt-mini, grok-code
-✓ verina_basic_4_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ verina_basic_32_task.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_36_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini, grok-code
+✓ verina_basic_37_task.dfy — by: claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_38_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt-mini, grok-code
+✓ verina_basic_39_task.dfy — by: claude-sonnet, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_3_task.dfy — by: claude-opus, claude-sonnet, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_40_task.dfy — by: claude-opus, gpt
+✓ verina_basic_41_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ verina_basic_42_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini-flash, gpt, gpt-mini, grok-code
+✓ verina_basic_43_task.dfy — by: claude-sonnet, gemini, gemini-flash, gpt, grok-code
+✓ verina_basic_44_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_45_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_46_task.dfy — by: gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ verina_basic_47_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_48_task.dfy — by: claude-opus, claude-sonnet, gemini, gpt-mini, grok-code
+✓ verina_basic_49_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_4_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
 ✓ verina_basic_50_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_51_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_52_task.dfy — by: gpt-mini
+✓ verina_basic_51_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_52_task.dfy — by: gemini, gpt-mini
 ✓ verina_basic_55_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_56_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini
-✓ verina_basic_57_task.dfy — by: claude-opus, deepseek, gpt, gpt-mini
-✓ verina_basic_58_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini
+✓ verina_basic_56_task.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_57_task.dfy — by: claude-opus, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_58_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini
 ✓ verina_basic_59_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_5_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini
+✓ verina_basic_5_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
 ✓ verina_basic_60_task.dfy — by: gpt, gpt-mini
-✓ verina_basic_62_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_63_task.dfy — by: claude-opus, claude-sonnet, gemini, gpt-mini
-✓ verina_basic_64_task.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_65_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini
+✓ verina_basic_62_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_63_task.dfy — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_64_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_65_task.dfy — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
 ✓ verina_basic_66_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_67_task.dfy — by: claude-opus, claude-sonnet, gemini-flash, gpt, gpt-mini, grok-code
+✓ verina_basic_67_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
 ✓ verina_basic_68_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_69_task.dfy — by: claude-opus, gemini, gpt-mini, grok-code
+✓ verina_basic_69_task.dfy — by: claude-opus, gemini, gpt, gpt-mini, grok-code
 ✓ verina_basic_6_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
-✓ verina_basic_70_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini, grok-code
-✓ verina_basic_71_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, grok-code
-✓ verina_basic_72_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
-✓ verina_basic_73_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini, grok-code
-✓ verina_basic_74_task.dfy — by: claude-opus, gpt, gpt-mini
-✓ verina_basic_75_task.dfy — by: claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini
-✓ verina_basic_76_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_77_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ verina_basic_70_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_71_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, grok-code
+✓ verina_basic_72_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_73_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_74_task.dfy — by: claude-opus, gemini, gpt, gpt-mini, grok-code
+✓ verina_basic_75_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ verina_basic_76_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_77_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
 ✓ verina_basic_78_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_7_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, grok-code
-✓ verina_basic_80_task.dfy — by: claude-opus, gpt
-✓ verina_basic_82_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_7_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini-flash, grok-code
+✓ verina_basic_80_task.dfy — by: claude-opus, grok-code
+✓ verina_basic_82_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
 ✓ verina_basic_83_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_84_task.dfy — by: claude-opus, claude-sonnet, gemini, gpt-mini
-✓ verina_basic_85_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt-mini, grok-code
+✓ verina_basic_84_task.dfy — by: claude-opus, claude-sonnet, gpt, gpt-mini, grok-code
+✓ verina_basic_85_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
 ✓ verina_basic_86_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
 ✓ verina_basic_88_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_8_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
-✓ verina_basic_90_task.dfy — by: gpt, gpt-mini
+✓ verina_basic_8_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_90_task.dfy — by: gpt-mini
 ✓ verina_basic_91_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_92_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, grok-code
-✓ verina_basic_93_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ verina_basic_92_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
+✓ verina_basic_93_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
 ✓ verina_basic_94_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_95_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, grok-code
-✓ verina_basic_96_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini, grok-code
-✓ verina_basic_97_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt-mini, grok-code
-✓ verina_basic_98_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini-flash, glm, gpt-mini
-✓ verina_basic_99_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini
-✓ verina_basic_9_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ verina_basic_95_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
+✓ verina_basic_96_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_97_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_98_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_99_task.dfy — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_9_task.dfy — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
 
 Failed files:
 ✗ verina_advanced_10_task.dfy
@@ -179,7 +180,6 @@ Failed files:
 ✗ verina_advanced_64_task.dfy
 ✗ verina_advanced_67_task.dfy
 ✗ verina_advanced_73_task.dfy
-✗ verina_advanced_75_task.dfy
 ✗ verina_advanced_81_task.dfy
 ✗ verina_basic_27_task.dfy
 ✗ verina_basic_34_task.dfy

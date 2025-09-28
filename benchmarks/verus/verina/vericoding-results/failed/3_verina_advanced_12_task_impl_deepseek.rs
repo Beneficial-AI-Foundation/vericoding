@@ -5,52 +5,28 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): Fixed function signature syntax */
-spec fn find_first_duplicate_index(lst: Seq<i32>) -> (i: int, j: int)
-    recommends
-        exists|i: int, j: int| 0 <= i < j < lst.len() && lst[i] == lst[j],
-    ensures
+proof fn has_duplicate_in_range(lst: Seq<i32>, start: int, end: int, val: i32) -> (found: bool) 
+    requires 0 <= start <= end <= lst.len()
+    ensures found == exists|i: int| start <= i < end && lst[i] == val
+{
+    if start == end {
+        false
+    } else {
+        has_duplicate_in_range(lst, start, end - 1, val) || lst[end - 1] == val
+    }
+}
+
+proof fn find_first_duplicate_index(lst: Seq<i32>, i: int, j: int) -> (k: int, l: int)
+    requires 
         0 <= i < j < lst.len(),
         lst[i] == lst[j],
-        forall|k: int, l: int| 0 <= k < l < lst.len() && lst[k] == lst[l] && l <= j ==> k >= i,
+        forall|k: int, l: int| 0 <= k < l < lst.len() && lst[k] == lst[l] && l <= i ==> k >= i
+    ensures 
+        0 <= k < l < lst.len(),
+        lst[k] == lst[l],
+        l == i
 {
-    if lst.len() == 0 {
-        (0, 1)
-    } else {
-        let mut min_j = lst.len() as int;
-        let mut min_i = lst.len() as int;
-        let mut found = false;
-        
-        #[verifier::spec] let mut j: int = 0;
-        #[verifier::spec] let ghost_outer_invariant = find_first_duplicate_index_outer_invariant(lst, found, min_i, min_j, j);
-        
-        while j < lst.len() as int
-            invariant ghost_outer_invariant,
-        {
-            #[verifier::spec] let mut i: int = 0;
-            #[verifier::spec] let ghost_inner_invariant = find_first_duplicate_index_inner_invariant(lst, found, min_i, min_j, j, i);
-            
-            while i < j
-                invariant ghost_inner_invariant,
-            {
-                if lst[i] == lst[j] {
-                    if !found || j < min_j || (j == min_j && i < min_i) {
-                        min_i = i;
-                        min_j = j;
-                        found = true;
-                    }
-                }
-                i = i + 1;
-            }
-            j = j + 1;
-        }
-        
-        if found {
-            (min_i, min_j)
-        } else {
-            (0, 1)
-        }
-    }
+    (i, j)
 }
 // </vc-helpers>
 
@@ -66,42 +42,45 @@ fn first_duplicate(lst: &Seq<i32>) -> (result: i32)
         ),
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Fixed compilation errors and verification logic */
 {
-    if lst.len() == 0 {
-        -1
-    } else {
-        let mut result = -1;
+    /* code modified by LLM (iteration 5): Fixed compilation error */
+    let mut i: usize = 0;
+    let n = lst.len() as usize;
+    let mut result = -1;
+    
+    while i < n
+        invariant
+            i <= n,
+            result == -1 ==> forall|k: int, l: int| 0 <= k < l < i as int ==> lst[k] != lst[l],
+            result != -1 ==> (
+                exists|k: int, l: int| 0 <= k < l < i as int && lst[k] == lst[l] && lst[k] == result &&
+                forall|m: int, p: int| 0 <= m < p < i as int && lst[m] == lst[p] && p <= k ==> m >= k
+            )
+        decreases n - i
+    {
+        let mut j: usize = i + 1;
         
-        #[verifier::spec] let mut j: int = 0;
-        #[verifier::spec] let ghost_outer_invariant = result == -1 ==> 
-            forall|i: int, k: int| 0 <= i < k < j ==> lst[i] != lst[k];
-        
-        while j < lst.len() as int
-            invariant ghost_outer_invariant,
+        while j < n
+            invariant
+                j <= n,
+                result == -1 ==> forall|k: int| i as int <= k < j as int ==> lst[k] != lst[i as int]
+            decreases n - j
         {
-            #[verifier::spec] let mut i: int = 0;
-            #[verifier::spec] let ghost_inner_invariant = result == -1 ==> 
-                forall|m: int, n: int| 0 <= m < n <= j && (m < i || n < j) ==> lst[m] != lst[n];
-            
-            while i < j
-                invariant ghost_inner_invariant,
-            {
-                if lst[i] == lst[j] {
-                    result = lst[i];
-                    break;
-                }
-                i = i + 1;
-            }
-            
-            if result != -1 {
+            if lst[i as int] == lst[j as int] {
+                result = lst[i as int];
                 break;
             }
-            j = j + 1;
+            j += 1;
         }
         
-        result
+        if result != -1 {
+            break;
+        }
+        
+        i += 1;
     }
+    
+    result
 }
 // </vc-code>
 

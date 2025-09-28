@@ -1,94 +1,105 @@
 === VERUS PROCESSING SUMMARY (AGGREGATED) ===
-Selection method: best runs
+Selection method: latest runs
 Total files: 156
-Successful: 62 (39.7%)
-Failed: 94
+Successful: 73 (46.8%)
+Failed: 83
 
-Selected best runs:
-  - claude-opus: vericoder_claude-opus_13-09_19h42 (success rate: 18.6%)
-  - claude-sonnet: vericoder_claude-sonnet_18-09_09h22 (success rate: 26.3%)
-  - deepseek: vericoder_deepseek_13-09_19h44 (success rate: 8.3%)
-  - gemini: vericoder_gemini_13-09_19h44 (success rate: 19.9%)
-  - gemini-flash: vericoder_gemini-flash_18-09_09h24 (success rate: 12.8%)
-  - glm: vericoder_glm_13-09_19h44 (success rate: 9.0%)
-  - gpt: vericoder_gpt_13-09_19h45 (success rate: 20.5%)
-  - gpt-mini: vericoder_gpt-mini_18-09_09h27 (success rate: 17.9%)
-  - grok-code: vericoder_grok-code_13-09_19h45 (success rate: 14.7%)
+Selected latest runs:
+  - claude-opus: vericoder_claude-opus_23-09_16h29 (success rate: 26.3%)
+  - claude-sonnet: vericoder_claude-sonnet_23-09_16h34 (success rate: 27.6%)
+  - deepseek: vericoder_deepseek_23-09_16h35 (success rate: 10.3%)
+  - gemini: vericoder_gemini_23-09_16h35 (success rate: 25.6%)
+  - gemini-flash: vericoder_gemini-flash_23-09_16h35 (success rate: 12.8%)
+  - glm: vericoder_glm_23-09_16h44 (success rate: 16.0%)
+  - gpt: vericoder_gpt_23-09_16h44 (success rate: 30.8%)
+  - gpt-mini: vericoder_gpt-mini_23-09_16h45 (success rate: 24.4%)
+  - grok-code: vericoder_grok-code_23-09_16h45 (success rate: 17.9%)
 
 Per-LLM success rates:
-  - claude-opus: 29/156 (18.6%)
-  - claude-sonnet: 41/156 (26.3%)
-  - deepseek: 13/156 (8.3%)
-  - gemini: 31/156 (19.9%)
+  - claude-opus: 41/156 (26.3%)
+  - claude-sonnet: 43/156 (27.6%)
+  - deepseek: 16/156 (10.3%)
+  - gemini: 40/156 (25.6%)
   - gemini-flash: 20/156 (12.8%)
-  - glm: 14/156 (9.0%)
-  - gpt: 32/156 (20.5%)
-  - gpt-mini: 28/156 (17.9%)
-  - grok-code: 23/156 (14.7%)
+  - glm: 25/156 (16.0%)
+  - gpt: 48/156 (30.8%)
+  - gpt-mini: 38/156 (24.4%)
+  - grok-code: 28/156 (17.9%)
 
 Successful files:
-✓ verina_advanced_30_task.rs — by: claude-opus, claude-sonnet, gemini, grok-code
-✓ verina_advanced_32_task.rs — by: gpt, gpt-mini
-✓ verina_advanced_33_task.rs — by: claude-sonnet, gpt
+✓ verina_advanced_30_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, grok-code
+✓ verina_advanced_32_task.rs — by: gemini, gpt
+✓ verina_advanced_33_task.rs — by: gpt, gpt-mini
+✓ verina_advanced_37_task.rs — by: gpt
 ✓ verina_advanced_38_task.rs — by: gpt, gpt-mini
-✓ verina_advanced_39_task.rs — by: claude-opus, claude-sonnet, gemini, gpt-mini
-✓ verina_advanced_40_task.rs — by: claude-opus, claude-sonnet, gpt-mini
-✓ verina_advanced_41_task.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_advanced_43_task.rs — by: claude-sonnet, gemini-flash
-✓ verina_advanced_44_task.rs — by: gpt
-✓ verina_advanced_4_task.rs — by: gpt, gpt-mini
-✓ verina_advanced_53_task.rs — by: gpt
-✓ verina_advanced_57_task.rs — by: claude-sonnet, gpt, gpt-mini
-✓ verina_advanced_58_task.rs — by: gpt
-✓ verina_advanced_62_task.rs — by: gpt
-✓ verina_advanced_63_task.rs — by: gpt, grok-code
-✓ verina_advanced_65_task.rs — by: claude-sonnet, gemini, gpt
-✓ verina_advanced_66_task.rs — by: gemini-flash
-✓ verina_advanced_68_task.rs — by: claude-sonnet, gpt, gpt-mini
+✓ verina_advanced_39_task.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ verina_advanced_40_task.rs — by: claude-opus, claude-sonnet, gemini, gpt-mini, grok-code
+✓ verina_advanced_41_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ verina_advanced_43_task.rs — by: claude-opus, claude-sonnet, glm, gpt, gpt-mini, grok-code
+✓ verina_advanced_44_task.rs — by: gemini, gpt, gpt-mini
+✓ verina_advanced_48_task.rs — by: gpt
+✓ verina_advanced_4_task.rs — by: gemini, gpt, gpt-mini
+✓ verina_advanced_53_task.rs — by: gpt, gpt-mini
+✓ verina_advanced_57_task.rs — by: gpt, gpt-mini
+✓ verina_advanced_58_task.rs — by: gpt, gpt-mini
+✓ verina_advanced_62_task.rs — by: gpt, grok-code
+✓ verina_advanced_63_task.rs — by: claude-opus, claude-sonnet, glm, gpt, grok-code
+✓ verina_advanced_65_task.rs — by: claude-sonnet, grok-code
+✓ verina_advanced_68_task.rs — by: claude-opus, claude-sonnet, gpt, gpt-mini, grok-code
+✓ verina_advanced_69_task.rs — by: gemini, gpt, gpt-mini
 ✓ verina_advanced_70_task.rs — by: gemini, gpt, gpt-mini
-✓ verina_advanced_74_task.rs — by: claude-sonnet, gpt, gpt-mini
-✓ verina_advanced_77_task.rs — by: claude-sonnet, gpt-mini
+✓ verina_advanced_74_task.rs — by: gpt, gpt-mini, grok-code
+✓ verina_advanced_77_task.rs — by: gpt
+✓ verina_advanced_79_task.rs — by: claude-opus, gemini-flash
 ✓ verina_advanced_80_task.rs — by: claude-opus
-✓ verina_advanced_9_task.rs — by: gpt, gpt-mini, grok-code
-✓ verina_basic_10_task.rs — by: claude-opus, claude-sonnet, gemini, gpt-mini, grok-code
-✓ verina_basic_17_task.rs — by: claude-sonnet
+✓ verina_advanced_9_task.rs — by: glm, gpt, gpt-mini
+✓ verina_basic_100_task.rs — by: claude-sonnet
+✓ verina_basic_101_task.rs — by: claude-sonnet
+✓ verina_basic_102_task.rs — by: claude-opus, glm
+✓ verina_basic_10_task.rs — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_14_task.rs — by: claude-opus
+✓ verina_basic_15_task.rs — by: gemini
+✓ verina_basic_17_task.rs — by: claude-opus, claude-sonnet, gemini, gpt
 ✓ verina_basic_18_task.rs — by: gpt
-✓ verina_basic_19_task.rs — by: claude-opus, claude-sonnet, deepseek
-✓ verina_basic_20_task.rs — by: gpt, gpt-mini
-✓ verina_basic_2_task.rs — by: claude-sonnet, gemini, gemini-flash
-✓ verina_basic_32_task.rs — by: claude-opus, claude-sonnet, gemini, glm, gpt
-✓ verina_basic_3_task.rs — by: grok-code
-✓ verina_basic_41_task.rs — by: claude-opus, grok-code
-✓ verina_basic_42_task.rs — by: claude-opus, gpt, gpt-mini
-✓ verina_basic_44_task.rs — by: gemini
-✓ verina_basic_49_task.rs — by: claude-opus, claude-sonnet, gemini, glm, grok-code
-✓ verina_basic_4_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gpt-mini, grok-code
-✓ verina_basic_51_task.rs — by: deepseek, gemini, gemini-flash
-✓ verina_basic_55_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_56_task.rs — by: gemini
-✓ verina_basic_64_task.rs — by: claude-opus, claude-sonnet, gemini-flash
-✓ verina_basic_68_task.rs — by: claude-sonnet, gemini, gemini-flash, gpt-mini, grok-code
-✓ verina_basic_69_task.rs — by: claude-sonnet
+✓ verina_basic_19_task.rs — by: claude-sonnet, gemini, grok-code
+✓ verina_basic_20_task.rs — by: glm, gpt, gpt-mini
+✓ verina_basic_2_task.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, grok-code
+✓ verina_basic_32_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini
+✓ verina_basic_3_task.rs — by: claude-sonnet, gpt-mini
+✓ verina_basic_41_task.rs — by: claude-sonnet, glm, gpt-mini
+✓ verina_basic_42_task.rs — by: gpt, gpt-mini, grok-code
+✓ verina_basic_44_task.rs — by: claude-opus, gemini
+✓ verina_basic_46_task.rs — by: gpt
+✓ verina_basic_49_task.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt
+✓ verina_basic_4_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_50_task.rs — by: claude-opus
+✓ verina_basic_51_task.rs — by: claude-opus, gpt
+✓ verina_basic_55_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini, grok-code
+✓ verina_basic_56_task.rs — by: claude-opus, gemini
+✓ verina_basic_60_task.rs — by: gpt
+✓ verina_basic_64_task.rs — by: claude-sonnet
+✓ verina_basic_68_task.rs — by: claude-sonnet, deepseek, gemini, gemini-flash, gpt, grok-code
+✓ verina_basic_69_task.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt-mini, grok-code
 ✓ verina_basic_6_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_71_task.rs — by: claude-sonnet, gemini
+✓ verina_basic_71_task.rs — by: claude-opus, claude-sonnet, gemini, glm, grok-code
 ✓ verina_basic_72_task.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_74_task.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash
-✓ verina_basic_75_task.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash
+✓ verina_basic_74_task.rs — by: claude-opus, claude-sonnet, gemini, gpt-mini
+✓ verina_basic_75_task.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm
 ✓ verina_basic_76_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_82_task.rs — by: claude-opus, claude-sonnet, gemini, grok-code
-✓ verina_basic_83_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt
-✓ verina_basic_84_task.rs — by: claude-sonnet
-✓ verina_basic_85_task.rs — by: claude-opus, claude-sonnet, grok-code
-✓ verina_basic_8_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ verina_basic_82_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt
+✓ verina_basic_83_task.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt
+✓ verina_basic_84_task.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ verina_basic_85_task.rs — by: claude-sonnet
+✓ verina_basic_8_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
 ✓ verina_basic_91_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
 ✓ verina_basic_92_task.rs — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
 ✓ verina_basic_93_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_94_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt-mini
-✓ verina_basic_95_task.rs — by: claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
-✓ verina_basic_96_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ verina_basic_97_task.rs — by: claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
-✓ verina_basic_98_task.rs — by: claude-sonnet
-✓ verina_basic_9_task.rs — by: claude-opus
+✓ verina_basic_94_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini
+✓ verina_basic_95_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
+✓ verina_basic_96_task.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ verina_basic_97_task.rs — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini
+✓ verina_basic_99_task.rs — by: claude-sonnet, deepseek
+✓ verina_basic_9_task.rs — by: claude-opus, claude-sonnet, gemini, gpt-mini
 
 Failed files:
 ✗ verina_advanced_10_task.rs
@@ -105,11 +116,9 @@ Failed files:
 ✗ verina_advanced_34_task.rs
 ✗ verina_advanced_35_task.rs
 ✗ verina_advanced_36_task.rs
-✗ verina_advanced_37_task.rs
 ✗ verina_advanced_42_task.rs
 ✗ verina_advanced_45_task.rs
 ✗ verina_advanced_46_task.rs
-✗ verina_advanced_48_task.rs
 ✗ verina_advanced_49_task.rs
 ✗ verina_advanced_50_task.rs
 ✗ verina_advanced_51_task.rs
@@ -120,27 +129,21 @@ Failed files:
 ✗ verina_advanced_60_task.rs
 ✗ verina_advanced_61_task.rs
 ✗ verina_advanced_64_task.rs
+✗ verina_advanced_66_task.rs
 ✗ verina_advanced_67_task.rs
-✗ verina_advanced_69_task.rs
 ✗ verina_advanced_6_task.rs
 ✗ verina_advanced_73_task.rs
 ✗ verina_advanced_75_task.rs
 ✗ verina_advanced_76_task.rs
 ✗ verina_advanced_78_task.rs
-✗ verina_advanced_79_task.rs
 ✗ verina_advanced_81_task.rs
 ✗ verina_advanced_8_task.rs
-✗ verina_basic_100_task.rs
-✗ verina_basic_101_task.rs
-✗ verina_basic_102_task.rs
 ✗ verina_basic_103_task.rs
 ✗ verina_basic_105_task.rs
 ✗ verina_basic_106_task.rs
 ✗ verina_basic_108_task.rs
 ✗ verina_basic_11_task.rs
 ✗ verina_basic_13_task.rs
-✗ verina_basic_14_task.rs
-✗ verina_basic_15_task.rs
 ✗ verina_basic_21_task.rs
 ✗ verina_basic_24_task.rs
 ✗ verina_basic_25_task.rs
@@ -157,16 +160,13 @@ Failed files:
 ✗ verina_basic_40_task.rs
 ✗ verina_basic_43_task.rs
 ✗ verina_basic_45_task.rs
-✗ verina_basic_46_task.rs
 ✗ verina_basic_47_task.rs
 ✗ verina_basic_48_task.rs
-✗ verina_basic_50_task.rs
 ✗ verina_basic_52_task.rs
 ✗ verina_basic_57_task.rs
 ✗ verina_basic_58_task.rs
 ✗ verina_basic_59_task.rs
 ✗ verina_basic_5_task.rs
-✗ verina_basic_60_task.rs
 ✗ verina_basic_62_task.rs
 ✗ verina_basic_63_task.rs
 ✗ verina_basic_65_task.rs
@@ -184,4 +184,4 @@ Failed files:
 ✗ verina_basic_88_task.rs
 ✗ verina_basic_89_task.rs
 ✗ verina_basic_90_task.rs
-✗ verina_basic_99_task.rs
+✗ verina_basic_98_task.rs

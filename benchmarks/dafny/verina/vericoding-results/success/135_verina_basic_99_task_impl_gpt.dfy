@@ -2,7 +2,7 @@
 // </vc-preamble>
 
 // <vc-helpers>
-function Times3(x: int): int { 3 * x }
+
 // </vc-helpers>
 
 // <vc-spec>

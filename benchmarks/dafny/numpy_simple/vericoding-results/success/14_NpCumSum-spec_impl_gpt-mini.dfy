@@ -1,0 +1,33 @@
+// <vc-preamble>
+// </vc-preamble>
+
+// <vc-helpers>
+function min(a: int, b: int): int { if a < b then a else b }
+// </vc-helpers>
+
+// <vc-spec>
+method CumSum(a: array<int>) returns (result: array<int>)
+    requires a.Length > 0
+    ensures 
+        result.Length == a.Length &&
+        result[0] == a[0] &&
+        forall i :: 1 <= i < a.Length ==> result[i] == result[i - 1] + a[i]
+// </vc-spec>
+// <vc-code>
+{
+  var n := a.Length;
+  var res := new int[n];
+  res[0] := a[0];
+  var i := 1;
+  while i < n
+    invariant 1 <= i <= n
+    invariant res.Length == n && a.Length == n
+    invariant res[0] == a[0]
+    invariant forall j :: 1 <= j < i ==> res[j] == res[j - 1] + a[j]
+  {
+    res[i] := res[i - 1] + a[i];
+    i := i + 1;
+  }
+  result := res;
+}
+// </vc-code>

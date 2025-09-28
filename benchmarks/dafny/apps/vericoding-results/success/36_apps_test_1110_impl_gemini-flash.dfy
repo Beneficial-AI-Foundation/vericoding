@@ -1,3 +1,4 @@
+// <vc-preamble>
 predicate ValidInput(n: int) {
     n >= 1
 }
@@ -7,9 +8,13 @@ function WorstCasePresses(n: int): int
 {
     n * (n * n + 5) / 6
 }
+// </vc-preamble>
 
 // <vc-helpers>
-
+function ComputeResult(n: int): int
+{
+  n * (n * n + 5) / 6
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -20,7 +25,6 @@ method solve(n: int) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    result := n * (n * n + 5) / 6;
+  result := ComputeResult(n);
 }
 // </vc-code>
-
