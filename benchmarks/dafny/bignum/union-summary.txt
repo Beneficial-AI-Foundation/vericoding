@@ -1,0 +1,70 @@
+=== DAFNY PROCESSING SUMMARY (AGGREGATED) ===
+Total files: 62
+Successful: 29 (46.8%)
+Failed: 33
+
+Successful files:
+✓ bignum_Add.yaml — by: claude-opus, glm
+✓ bignum_Add[NormalizeBitString].yaml — by: claude-opus, deepseek
+✓ bignum_Compare.yaml — by: claude-opus, gpt
+✓ bignum_CompareUnequal.yaml — by: claude-opus, gpt-mini, grok-code
+✓ bignum_Compare[CompareUnequal].yaml — by: gpt, gpt-mini
+✓ bignum_Compare[NormalizeBitString].yaml — by: claude-opus
+✓ bignum_DivMod[Compare,Sub].yaml — by: gpt-mini
+✓ bignum_DivMod[Compare].yaml — by: gpt, gpt-mini
+✓ bignum_ModExp.yaml — by: gpt
+✓ bignum_ModExpPow2[DivMod].yaml — by: gpt
+✓ bignum_ModExpPow2_int.yaml — by: gpt
+✓ bignum_ModExp[Add,DivMod,Mul,Zeroes].yaml — by: gpt-mini
+✓ bignum_ModExp[Add,DivMod,Mul].yaml — by: gpt, gpt-mini
+✓ bignum_ModExp[Add,DivMod,Zeroes].yaml — by: gpt-mini
+✓ bignum_ModExp[Add,Mul,Zeroes].yaml — by: gpt-mini
+✓ bignum_ModExp[DivMod,ModExpPow2,Mul,Zeroes].yaml — by: gpt-mini
+✓ bignum_ModExp[DivMod,ModExpPow2,Mul].yaml — by: gpt
+✓ bignum_ModExp[DivMod,ModExpPow2,Zeroes].yaml — by: gpt-mini
+✓ bignum_ModExp[DivMod,Mul,Zeroes].yaml — by: gpt-mini
+✓ bignum_ModExp[ModExpPow2,Mul,Zeroes].yaml — by: gpt-mini
+✓ bignum_ModExp[ModExpPow2].yaml — by: gpt-mini
+✓ bignum_ModExp[Mul,Zeroes].yaml — by: gpt-mini
+✓ bignum_ModExp[Zeroes].yaml — by: gpt
+✓ bignum_ModExp_int.yaml — by: gpt
+✓ bignum_ModExp_int[ModExpPow2_int].yaml — by: gpt
+✓ bignum_Mul[Add,NormalizeBitString].yaml — by: claude-opus
+✓ bignum_NormalizeBitString.yaml — by: claude-opus, glm
+✓ bignums_Sub.yaml — by: claude-opus, gpt, gpt-mini
+✓ bignums_Zeros.yaml — by: claude-opus, deepseek, gemini, glm, gpt-mini, grok-code
+
+Failed files:
+✗ bignum_Compare[CompareUnequal,NormalizeBitString].yaml
+✗ bignum_DivMod.yaml
+✗ bignum_DivMod[Sub].yaml
+✗ bignum_ModExpPow2.yaml
+✗ bignum_ModExpPow2[Add,DivMod,Mul].yaml
+✗ bignum_ModExpPow2[Add,DivMod].yaml
+✗ bignum_ModExpPow2[Add,Mul].yaml
+✗ bignum_ModExpPow2[Add].yaml
+✗ bignum_ModExpPow2[DivMod,Mul].yaml
+✗ bignum_ModExpPow2[Mul].yaml
+✗ bignum_ModExp[Add,DivMod,ModExpPow2,Mul].yaml
+✗ bignum_ModExp[Add,DivMod,ModExpPow2,Zeroes].yaml
+✗ bignum_ModExp[Add,DivMod,ModExpPow2].yaml
+✗ bignum_ModExp[Add,DivMod].yaml
+✗ bignum_ModExp[Add,ModExpPow2,Mul,Zeroes].yaml
+✗ bignum_ModExp[Add,ModExpPow2,Mul].yaml
+✗ bignum_ModExp[Add,ModExpPow2,Zeroes].yaml
+✗ bignum_ModExp[Add,ModExpPow2].yaml
+✗ bignum_ModExp[Add,Mul].yaml
+✗ bignum_ModExp[Add,Zeroes].yaml
+✗ bignum_ModExp[Add].yaml
+✗ bignum_ModExp[DivMod,ModExpPow2].yaml
+✗ bignum_ModExp[DivMod,Mul].yaml
+✗ bignum_ModExp[DivMod,Zeroes].yaml
+✗ bignum_ModExp[DivMod].yaml
+✗ bignum_ModExp[ModExpPow2,Add,Zeroes,DivMod,Mul].yaml
+✗ bignum_ModExp[ModExpPow2,Mul].yaml
+✗ bignum_ModExp[ModExpPow2,Zeroes].yaml
+✗ bignum_ModExp[Mul].yaml
+✗ bignum_Mul.yaml
+✗ bignum_Mul[Add].yaml
+✗ bignum_Mul[NormalizeBitString].yaml
+✗ bignums_Sub[NormalizeBitstring].yaml
