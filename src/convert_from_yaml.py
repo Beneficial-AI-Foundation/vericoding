@@ -1674,7 +1674,7 @@ def rename_tasks_with_new_id(language: str, dir_path: Path) -> None:
             print(f"  {file_path} - {reason}")
         print("=" * 50)
         return
-    
+
     renamed_count = 0
     skipped_count = 0
     for file_path, new_path in new_paths:
@@ -1687,7 +1687,7 @@ def rename_tasks_with_new_id(language: str, dir_path: Path) -> None:
             print(f"Error renaming {file_path}: {e}")
             skipped_count += 1
             continue
-    
+
     print(f"\nRenamed {renamed_count} files, skipped {skipped_count} files")
 
 
