@@ -1,0 +1,27 @@
+---
+vc-description: |-
+  Interpret a buffer as a 1-dimensional array.
+  Takes a buffer (represented as a sequence of bytes), the count of elements to read,
+  and an offset (starting position in bytes) to create a sequence of the specified type.
+  This models numpy.frombuffer which interprets raw bytes as typed array elements.
+vc-preamble: |-
+  
+vc-helpers: |-
+  
+vc-spec: |-
+  method frombuffer(buffer: seq<bv8>, count: nat, offset: nat) returns (result: seq<bv8>)
+      // Buffer must have sufficient bytes for the requested elements
+      requires offset + count <= |buffer|
+      // Offset must be within buffer bounds when count > 0
+      requires offset < |buffer| || count == 0
+      // Result has exactly 'count' elements
+      ensures |result| == count
+      // Elements are read sequentially from the buffer starting at offset
+      // Each output element corresponds to exactly one input buffer byte
+      ensures forall i :: 0 <= i < count ==> result[i] == buffer[offset + i]
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+vc-postamble: |-
+  

@@ -1,0 +1,24 @@
+---
+vc-description: |-
+  Dafny specification for numpy.diff: Calculate the discrete difference along a sequence.
+  Computes the difference between consecutive elements, producing a sequence with one less element.
+  This is useful for numerical analyses where understanding incremental changes within data is crucial.
+vc-preamble: |-
+  // Method to compute discrete differences between consecutive elements
+vc-helpers: |-
+  
+vc-spec: |-
+  method numpy_diff(a: seq<real>) returns (result: seq<real>)
+      // Input sequence must be non-empty
+      requires |a| >= 1
+      // Result has one less element than input
+      ensures |result| == |a| - 1
+      // Each result element is the difference between consecutive input elements
+      ensures forall i :: 0 <= i < |result| ==> result[i] == a[i+1] - a[i]
+      // Type preservation: result maintains the same numeric type as input (real)
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+vc-postamble: |-
+  
