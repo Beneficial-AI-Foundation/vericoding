@@ -30,26 +30,27 @@ DafnyBench is the largest benchmark of its kind for training and evaluating mach
 
 1. Install Dafny on your machine by following [this tutorial](https://dafny.org/dafny/Installation)
 2. Clone & `cd` into this repository
-3. Set up environment by running the following lines:
+3. Download the dataset from 🤗 Hugging Face or copy from https://github.com/sun-wendy/DafnyBench
+4. Set up environment by running the following lines:
 ```
 python -m venv stats
 source stats/bin/activate
 pip install -r requirements.txt
 cd eval
 ```
-4. Set up environment variable for the root directory:
+5. Set up environment variable for the root directory:
 ```
 export DAFNYBENCH_ROOT=
 ```
-5. Set up environment variable for path to Dafny executable on your machine (for example, `/opt/homebrew/bin/Dafny`):
+6. Set up environment variable for path to Dafny executable on your machine (for example, `/opt/homebrew/bin/Dafny`):
 ```
 export DAFNY_PATH=
 ```
-6. If you're evaluating an LLM through API access, set up API key. For example:
+7. If you're evaluating an LLM through API access, set up API key. For example:
 ```
 export OPENAI_API_KEY=
 ```
-7. You can choose to evaluate an LLM on a single test program, such as:
+8. You can choose to evaluate an LLM on a single test program, such as:
 ```
 python fill_hints.py --model "gpt-4o" --test_file "Clover_abs_no_hints.dfy" --feedback_turn 3 --dafny_path "$DAFNY_PATH"
 ```
