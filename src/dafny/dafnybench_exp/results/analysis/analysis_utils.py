@@ -57,11 +57,6 @@ def match_model_testfile_metadata(model):
 def bin_metadata(model_test_results, num_char_list, num_hint_char_list, num_lemma_list):
     # Define bin edges using quantiles to ensure each bin has approximately the same number of elements
 
-    epsilon = 1e-10
-    num_char_list_noisy = num_char_list + epsilon * np.random.randn(len(num_char_list))
-    num_hint_char_list_noisy = num_hint_char_list + epsilon * np.random.randn(len(num_hint_char_list))
-    num_lemma_list_noisy = num_lemma_list + epsilon * np.random.randn(len(num_lemma_list))
-
     bin_edges_num_char = np.quantile(num_char_list, np.linspace(0, 1, 11))
     bin_edges_num_hint_char = np.quantile(num_hint_char_list, np.linspace(0, 1, 11))
     bin_edges_num_lemma = np.quantile(num_lemma_list, np.linspace(0, 1, 11))
@@ -114,7 +109,7 @@ def scatter_num_attempts(error_y_mode=None, **kwargs):
     
     elif error_y_mode in {'band','bands'}:
         if 'error_y' not in kwargs:
-            raise ValueError(f"If you provide argument 'error_y_mode' you must also provide 'error_y'.")
+            raise ValueError("If you provide argument 'error_y_mode' you must also provide 'error_y'.")
         fig_with_error_bars = px.line(**kwargs)
         fig = px.line(**{arg: val for arg,val in kwargs.items() if arg != 'error_y'})
         for data in fig_with_error_bars.data:
@@ -162,7 +157,7 @@ def scatter_with_error_bands(bin_endpoints, error_y_mode=None, **kwargs):
     
     elif error_y_mode in {'band','bands'}:
         if 'error_y' not in kwargs:
-            raise ValueError(f"If you provide argument 'error_y_mode' you must also provide 'error_y'.")
+            raise ValueError("If you provide argument 'error_y_mode' you must also provide 'error_y'.")
         fig_with_error_bars = px.line(**kwargs)
         fig = px.line(**{arg: val for arg,val in kwargs.items() if arg != 'error_y'})
         for data in fig_with_error_bars.data:

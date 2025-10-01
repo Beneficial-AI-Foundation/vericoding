@@ -4,7 +4,7 @@ from sglang import OpenAI, Anthropic, VertexAI, Runtime, assistant, gen, set_def
 import os
 import logging
 from llm_providers import OpenRouterProvider
-from sys_prompts import *
+from sys_prompts import SYS_DAFNY, GEN_HINTS_FROM_BODY
 from utils import (
     extract_code_from_llm_output,
     run_dafny,
