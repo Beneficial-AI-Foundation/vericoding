@@ -183,7 +183,7 @@ def check_no_cheating(body, body_reconstructed):
     # Check if the specifications are preserved (same requires/ensures clauses)
     spec_preserved = spec_orig == spec_llm
     # Check that the LLM didn't use verification-disabling tricks
-    no_avoid_verify = not '{:verify false}' in body_reconstructed and not 'assume false' in body_reconstructed
+    no_avoid_verify = '{:verify false}' not in body_reconstructed and 'assume false' not in body_reconstructed
     return spec_preserved, no_avoid_verify
 
 
