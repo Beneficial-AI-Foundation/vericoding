@@ -96,7 +96,7 @@ def parse_arguments():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=f"""
 Supported languages: {", ".join(available_languages.keys())}
-Supported LLM providers: claude-sonnet, claude-opus, gpt, gpt-mini, o1, gemini, gemini-flash, grok, grok-code, deepseek, glm, mistral-medium, mistral-codestral, qwen-thinking, qwen-coder, claude-direct, openai-direct, grok-direct, claude, openai
+Supported LLM providers: claude-sonnet, claude-4.5-sonnet, claude-opus, gpt, gpt-mini, gpt-5-codex, o1, gemini, gemini-flash, grok, grok-code, deepseek, glm, mistral-medium, mistral-codestral, qwen-thinking, qwen-coder, claude-direct, openai-direct, grok-direct, claude, openai
 
 Examples:
   uv run vericoder.py dafny ./specs --llm gemini-flash

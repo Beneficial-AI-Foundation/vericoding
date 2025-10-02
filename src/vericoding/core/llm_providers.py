@@ -305,6 +305,11 @@ def create_llm_provider(llm_name: str) -> tuple[LLMProvider, str]:
             "default_model": "anthropic/claude-sonnet-4",
             "env_var": "OPENROUTER_API_KEY",
         },
+        "claude-4.5-sonnet": {
+            "class": OpenRouterProvider,
+            "default_model": "anthropic/claude-sonnet-4.5",
+            "env_var": "OPENROUTER_API_KEY",
+        },
         "claude-opus": {
             "class": OpenRouterProvider,
             "default_model": "anthropic/claude-opus-4.1",
@@ -318,6 +323,11 @@ def create_llm_provider(llm_name: str) -> tuple[LLMProvider, str]:
         "gpt-mini": {
             "class": OpenRouterProvider,
             "default_model": "openai/gpt-5-mini",
+            "env_var": "OPENROUTER_API_KEY",
+        },
+        "gpt-5-codex": {
+            "class": OpenRouterProvider,
+            "default_model": "openai/gpt-5-codex",
             "env_var": "OPENROUTER_API_KEY",
         },
         "o1": {
