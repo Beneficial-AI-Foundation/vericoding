@@ -1,4 +1,6 @@
 name: Vericoder Regression Tests
+permissions:
+  contents: read
 
 on:
   push:
