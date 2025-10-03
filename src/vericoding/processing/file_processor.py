@@ -24,6 +24,41 @@ from .cheat_checker import has_final_failure_cheats, check_for_cheats
 from ..preprocessing import preprocess_lean_file, ensure_mathlib_import
 
 
+def _get_path_relative_to_lean_root(file_path: str) -> Path | None:
+    """Get path relative to Lean library root (benchmarks/lean or lean/).
+
+    Returns None if no Lean library root found in path.
+
+    Examples:
+        benchmarks/lean/test/file.lean -> test/file.lean
+        lean/Generated/Module.lean -> Generated/Module.lean
+    """
+    file_obj = Path(file_path)
+    if "lean" in file_obj.parts:
+        lean_idx = file_obj.parts.index("lean")
+        return Path(*file_obj.parts[lean_idx + 1 :])
+    return None
+
+
+def get_relative_path_for_output(config: ProcessingConfig, file_path: str) -> Path:
+    """Get relative path for output files, preserving Lean library structure.
+
+    For Lean: preserves path relative to benchmarks/lean (library root)
+    For others: relative to config.files_dir
+
+    Examples:
+        Lean: benchmarks/lean/test/file.lean -> test/file.lean
+        Dafny: specs/subdir/file.dfy -> subdir/file.dfy (if files_dir=specs)
+    """
+    if config.language == "lean":
+        relative = _get_path_relative_to_lean_root(file_path)
+        if relative:
+            return relative
+
+    # Fallback to standard relative path
+    return Path(file_path).relative_to(Path(config.files_dir))
+
+
 def count_placeholders(original_code: str, language: str) -> int:
     """Count placeholders in original code for JSON array sizing.
 
@@ -144,7 +179,8 @@ def process_spec_file(
             original_code = preprocess_lean_file(original_code)
 
         # Calculate relative path from input directory to preserve hierarchy
-        relative_path = Path(file_path).relative_to(Path(config.files_dir))
+        # For Lean, this preserves path relative to benchmarks/lean (library root)
+        relative_path = get_relative_path_for_output(config, file_path)
         base_file_name = Path(file_path).stem
 
         # Track prompts for W&B logging
@@ -188,7 +224,7 @@ def process_spec_file(
 
         # IMMEDIATELY save raw response to debug folder before any parsing
         if config.debug_mode:
-            relative_path = Path(file_path).relative_to(Path(config.files_dir))
+            relative_path = get_relative_path_for_output(config, file_path)
             base_file_name = Path(file_path).stem
             debug_dir = (
                 Path(config.output_dir) / "debug" / relative_path.parent
@@ -635,7 +671,7 @@ def process_spec_file(
 
             # Save LLM responses to debug folder
             if config.debug_mode and llm_responses:
-                relative_path = Path(file_path).relative_to(Path(config.files_dir))
+                relative_path = get_relative_path_for_output(config, file_path)
                 base_file_name = Path(file_path).stem
                 debug_dir = (
                     Path(config.output_dir) / "debug" / relative_path.parent
@@ -706,7 +742,7 @@ def process_files_parallel(
 
             except Exception as e:
                 # Handle unexpected exceptions
-                relative_path = Path(file_path).relative_to(Path(config.files_dir))
+                relative_path = get_relative_path_for_output(config, file_path)
                 error_result = ProcessingResult(
                     success=False,
                     file=str(relative_path),

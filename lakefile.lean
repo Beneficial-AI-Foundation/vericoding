@@ -38,7 +38,8 @@ lean_lib Benchmarks where
     .submodules `numpy_simple.files,
     .submodules `numpy_triple.files,
     .submodules `verina.files,
-    -- Include all subdirectories (including vericoder_* dirs)
+    .submodules `test.files,
+    -- Include all subdirectories (including test and vericoder_* output dirs)
     .andSubmodules `apps,
     .andSubmodules `bignum,
     .andSubmodules `clever,
@@ -46,6 +47,7 @@ lean_lib Benchmarks where
     .andSubmodules `fvapps,
     .andSubmodules `numpy_simple,
     .andSubmodules `numpy_triple,
+    .andSubmodules `test,
     .andSubmodules `verified_cogen,
     .andSubmodules `verina,
   ]

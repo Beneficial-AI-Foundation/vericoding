@@ -9,6 +9,7 @@ import openai
 @dataclass
 class LLMResponse:
     """Response from LLM API including token usage information."""
+
     text: str
     input_tokens: int = 0
     output_tokens: int = 0
@@ -35,6 +36,7 @@ class LLMProvider(ABC):
         """Return the required environment variable name for API key."""
         pass
 
+
 class OpenRouterProvider(LLMProvider):
     """OpenRouter LLM provider."""
 
@@ -44,7 +46,9 @@ class OpenRouterProvider(LLMProvider):
             api_key=api_key, base_url="https://openrouter.ai/api/v1"
         )
 
-    def call_api(self, messages: list[dict], temperature: float = 0.3, max_tokens: int = None) -> LLMResponse:
+    def call_api(
+        self, messages: list[dict], temperature: float = 0.3, max_tokens: int = None
+    ) -> LLMResponse:
         try:
             response = self.client.chat.completions.create(
                 model=self.model,
@@ -58,15 +62,21 @@ class OpenRouterProvider(LLMProvider):
                 if not text or not str(text).strip():
                     print(response)
                     raise ValueError("Empty response from OpenRouter API")
-                
+
                 # Extract token usage (OpenRouter uses OpenAI-compatible format)
-                input_tokens = getattr(response.usage, 'prompt_tokens', 0) if hasattr(response, 'usage') else 0
-                output_tokens = getattr(response.usage, 'completion_tokens', 0) if hasattr(response, 'usage') else 0
-                
+                input_tokens = (
+                    getattr(response.usage, "prompt_tokens", 0)
+                    if hasattr(response, "usage")
+                    else 0
+                )
+                output_tokens = (
+                    getattr(response.usage, "completion_tokens", 0)
+                    if hasattr(response, "usage")
+                    else 0
+                )
+
                 return LLMResponse(
-                    text=text,
-                    input_tokens=input_tokens,
-                    output_tokens=output_tokens
+                    text=text, input_tokens=input_tokens, output_tokens=output_tokens
                 )
             else:
                 raise ValueError("Unexpected response format from OpenRouter API")
