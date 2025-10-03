@@ -39,14 +39,16 @@ SYS_DAFNY = "You are an expert in Dafny. \
 You will be given tasks dealing with Dafny programs including precise annotations.\n"
 
 
-GEN_HINTS_FROM_BODY = "Given a Dafny program with function signature, preconditions, postconditions, and code, but with annotations missing. \
+GEN_HINTS_FROM_BODY = (
+    "Given a Dafny program with function signature, preconditions, postconditions, and code, but with annotations missing. \
 Please return a complete Dafny program with the strongest possible annotations (loop invariants, assert statements, etc.) filled back in. \
 Do not explain. \
 Please use exactly the same function signature, preconditions, and postconditions. Do not ever modify the given lines. \
 Below is the program:\n"
+)
 
 
-'''
+"""
 Prompts for Claude & CodeLlama-7b:
 
 SYS_DAFNY = "You are an expert in Dafny. \
@@ -59,7 +61,7 @@ Do not explain or output any text. If you have to explain, put all explanations 
 There should only be code body in your output. \
 Please use exactly the same function signature, preconditions, and postconditions. Do not ever modify the given lines. \
 Below is the program:\n```dafny\n"
-'''
+"""
 
 
 if __name__ == "__main__":

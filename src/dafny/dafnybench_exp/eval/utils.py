@@ -98,13 +98,21 @@ def compile_dafny(body, dafny_path, keep_tmp_file=False):
         # )
 
         result = subprocess.run(
-            [dafny_path, "compile", tmp_file, "--compile:0", "--noVerify", "--deprecation:0"],
+            [
+                dafny_path,
+                "compile",
+                tmp_file,
+                "--compile:0",
+                "--noVerify",
+                "--deprecation:0",
+            ],
             capture_output=True,
         )
 
         if os.path.exists(tmp_file) and not keep_tmp_file:
-            os.remove(tmp_file) # no need to keep the tmp file if it won't be used again for now
-
+            os.remove(
+                tmp_file
+            )  # no need to keep the tmp file if it won't be used again for now
 
     except Exception as e:
         if os.path.exists(tmp_file) and not keep_tmp_file:
@@ -154,18 +162,22 @@ def check_no_cheating(body, body_reconstructed):
 
     # Extract specification lines from the original body
     for line in body.split("\n"):
-        # Toggle multi-line comment state when encountering /* 
+        # Toggle multi-line comment state when encountering /*
         if line.strip().startswith("/*"):
             in_doc = not in_doc
         # Check if this line is a single-line comment
         is_comment = line.strip().startswith("//")
         # Collect requires/ensures lines that are not in comments or multi-line docs
-        if ("requires" in line or "ensures" in line) and (not in_doc) and (not is_comment):
+        if (
+            ("requires" in line or "ensures" in line)
+            and (not in_doc)
+            and (not is_comment)
+        ):
             spec_orig.append(line.strip().replace(" ", ""))
         # Toggle multi-line comment state when encountering */
         if line.strip().endswith("*/"):
             in_doc = not in_doc
-    
+
     # Extract specification lines from the LLM-reconstructed body
     for line_hints in body_reconstructed.split("\n"):
         # Toggle multi-line comment state when encountering /*
@@ -174,42 +186,62 @@ def check_no_cheating(body, body_reconstructed):
         # Check if this line is a single-line comment
         is_comment_hints = line_hints.strip().startswith("//")
         # Collect requires/ensures lines that are not in comments or multi-line docs
-        if ("requires" in line_hints or "ensures" in line_hints) and (not in_doc_hints) and (not is_comment_hints):
+        if (
+            ("requires" in line_hints or "ensures" in line_hints)
+            and (not in_doc_hints)
+            and (not is_comment_hints)
+        ):
             spec_llm.append(line_hints.strip().replace(" ", ""))
         # Toggle multi-line comment state when encountering */
         if line_hints.strip().endswith("*/"):
             in_doc_hints = not in_doc_hints
-    
+
     # Check if the specifications are preserved (same requires/ensures clauses)
     spec_preserved = spec_orig == spec_llm
     # Check that the LLM didn't use verification-disabling tricks
-    no_avoid_verify = '{:verify false}' not in body_reconstructed and 'assume false' not in body_reconstructed
+    no_avoid_verify = (
+        "{:verify false}" not in body_reconstructed
+        and "assume false" not in body_reconstructed
+    )
     return spec_preserved, no_avoid_verify
 
 
 def save_result_stats(model, test_file, success_attempt):
     results_file = f"../results/results_summary/{model}_results.csv"
     df = pd.read_csv(results_file)
-    new_test_result = {"test_ID": get_test_ID(test_file), "test_file": test_file, "success_on_attempt_#": success_attempt}
+    new_test_result = {
+        "test_ID": get_test_ID(test_file),
+        "test_file": test_file,
+        "success_on_attempt_#": success_attempt,
+    }
     df = df._append(new_test_result, ignore_index=True)
     df["test_ID"] = df["test_ID"].apply(lambda x: f"{int(x):03d}")
     df.to_csv(results_file, index=False)
+
 
 def check_already_saved(model, test_file):
     results_file = f"../results/results_summary/{model}_results.csv"
     df = pd.read_csv(results_file)
     test_ID = get_test_ID(test_file)
     if test_ID in df["test_ID"].values or test_file in df["test_file"].values:
-        if df[df["test_file"] == test_file]["success_on_attempt_#"].values[0] == "failed api":
+        if (
+            df[df["test_file"] == test_file]["success_on_attempt_#"].values[0]
+            == "failed api"
+        ):
             return False
         else:
             return True
     return False
 
+
 def save_reconstructed_file(model, test_file, body_reconstructed):
     output_file = f"../results/reconstructed_files/{model}_outputs.json"
     test_ID = get_test_ID(test_file)
-    new_test_result = {"test_ID": test_ID, "test_file": test_file, "llm_output": body_reconstructed}
+    new_test_result = {
+        "test_ID": test_ID,
+        "test_file": test_file,
+        "llm_output": body_reconstructed,
+    }
 
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
     if os.path.exists(output_file):
@@ -222,10 +254,10 @@ def save_reconstructed_file(model, test_file, body_reconstructed):
                 data = {}
     else:
         data = {}
-    
+
     with open(output_file, "r") as f:
         data = json.load(f)
-    
+
     data[test_ID] = new_test_result
 
     with open(output_file, "w") as f:

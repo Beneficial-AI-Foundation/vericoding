@@ -24,27 +24,37 @@ from .cheat_checker import has_final_failure_cheats, check_for_cheats
 from ..preprocessing import preprocess_lean_file, ensure_mathlib_import
 
 
+def _get_path_relative_to_lean_root(file_path: str) -> Path | None:
+    """Get path relative to Lean library root (benchmarks/lean or lean/).
+
+    Returns None if no Lean library root found in path.
+
+    Examples:
+        benchmarks/lean/test/file.lean -> test/file.lean
+        lean/Generated/Module.lean -> Generated/Module.lean
+    """
+    file_obj = Path(file_path)
+    if "lean" in file_obj.parts:
+        lean_idx = file_obj.parts.index("lean")
+        return Path(*file_obj.parts[lean_idx + 1 :])
+    return None
+
+
 def get_relative_path_for_output(config: ProcessingConfig, file_path: str) -> Path:
     """Get relative path for output files, preserving Lean library structure.
-    
+
     For Lean: preserves path relative to benchmarks/lean (library root)
     For others: relative to config.files_dir
-    
+
     Examples:
         Lean: benchmarks/lean/test/file.lean -> test/file.lean
         Dafny: specs/subdir/file.dfy -> subdir/file.dfy (if files_dir=specs)
     """
     if config.language == "lean":
-        file_obj = Path(file_path)
-        # Find the Lean library root (benchmarks/lean or lean/)
-        if "benchmarks" in file_obj.parts and "lean" in file_obj.parts:
-            lean_idx = file_obj.parts.index("lean")
-            # Get path relative to benchmarks/lean (preserves subdirs like test/)
-            return Path(*file_obj.parts[lean_idx + 1:])
-        elif "lean" in file_obj.parts:
-            lean_idx = file_obj.parts.index("lean")
-            return Path(*file_obj.parts[lean_idx + 1:])
-    
+        relative = _get_path_relative_to_lean_root(file_path)
+        if relative:
+            return relative
+
     # Fallback to standard relative path
     return Path(file_path).relative_to(Path(config.files_dir))
 
