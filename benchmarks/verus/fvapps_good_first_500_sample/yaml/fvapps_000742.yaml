@@ -1,0 +1,54 @@
+vc-description: |-
+  Chef spent N days working really hard! He planned loads of tasks: as many as Ai tasks to do on the ith day! Chef's work was brutal, so he only managed to finish Bi tasks on the ith day.
+  The good news is that Chef has a Time Machine! 
+  The Time Machine has K white buttons and M black buttons. Each button has a positive integer printed on it. Now Chef goes through all N days consequently and presses buttons. Each day Chef can only press one button (either white or black). After using a button once, it becomes inactive.
+  Pressing a white button with integer x printed on it reduces the number of planned tasks on the day it was pressed by exactly x. Note that this white button can only be pressed if number of planned tasks on the day are greater than or equal to x.
+  Pressing a black button with integer x printed on it increases the number of completed tasks on the day it was pressed by exactly x. Note that this black button can only be pressed if after pressing it, number of completed tasks don't exceed the number of tasks.
+  Chef is interested in finding the minimum possible amount of total uncompleted tasks he will still be left with after N days using the Machine in the best way?
+  Be careful! Time is sensitive! Chef cannot make a day when he completed more tasks then planned, as this may result in a more-work-than-planned paradox, killing all lazy people on the planet!
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn min_uncompleted_tasks(n: u32, k: u32, m: u32, a: Vec<u32>, b: Vec<u32>, c: Vec<u32>, d: Vec<u32>) -> (result: u32)
+      requires 
+          n > 0,
+          n <= 100,
+          k <= 100,
+          m <= 100,
+          a.len() == n,
+          b.len() == n,
+          c.len() == k,
+          d.len() == m,
+          forall|i: int| 0 <= i < a.len() ==> a[i] >= 1 && a[i] <= 100000,
+          forall|i: int| 0 <= i < b.len() ==> b[i] >= 1 && b[i] <= 100000,
+          forall|i: int| 0 <= i < a.len() && 0 <= i < b.len() ==> b[i] <= a[i],
+          forall|i: int| 0 <= i < c.len() ==> c[i] >= 1 && c[i] <= 100000,
+          forall|i: int| 0 <= i < d.len() ==> d[i] >= 1 && d[i] <= 100000,
+      ensures
+          result >= 0
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // let result1 = min_uncompleted_tasks(4, 2, 2, vec![5, 7, 6, 1], vec![3, 3, 1, 1], vec![6, 3], vec![1, 4]);
+      // println!("Result 1: {}", result1); // Expected: 3
+      
+      // let result2 = min_uncompleted_tasks(2, 1, 1, vec![5, 3], vec![2, 1], vec![2], vec![1]);
+      // println!("Result 2: {}", result2); // Expected: 2
+  }

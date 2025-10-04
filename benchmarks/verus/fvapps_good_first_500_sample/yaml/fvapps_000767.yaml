@@ -1,0 +1,66 @@
+vc-description: |-
+  Limak is a little polar bear.
+  He is playing a video game and he needs your help.
+  There is a row with N cells, each either empty or occupied by a soldier, denoted by '0' and '1' respectively.
+  The goal of the game is to move all soldiers to the right (they should occupy some number of rightmost cells).
+  The only possible command is choosing a soldier and telling him to move to the right as far as possible.
+  Choosing a soldier takes 1 second, and a soldier moves with the speed of a cell per second.
+  The soldier stops immediately if he is in the last cell of the row or the next cell is already occupied.
+  Limak isn't allowed to choose a soldier that can't move at all (the chosen soldier must move at least one cell to the right).
+  Limak enjoys this game very much and wants to play as long as possible.
+  In particular, he doesn't start a new command while the previously chosen soldier moves.
+  Can you tell him, how many seconds he can play at most?
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn is_all_zeros(s: Seq<char>) -> bool {
+      forall|i: int| 0 <= i < s.len() ==> s[i] == '0'
+  }
+
+  spec fn is_all_ones(s: Seq<char>) -> bool {
+      forall|i: int| 0 <= i < s.len() ==> s[i] == '1'
+  }
+
+  spec fn count_ones(s: Seq<char>) -> int 
+      decreases s.len()
+  {
+      if s.len() == 0 {
+          0int
+      } else {
+          (if s[0] == '1' { 1int } else { 0int }) + count_ones(s.skip(1))
+      }
+  }
+
+  fn solve_moving_soldiers(s: Vec<char>) -> (result: usize)
+      ensures 
+          s.len() == 0 ==> result == 0,
+          is_all_zeros(s@) ==> result == 0,
+          is_all_ones(s@) ==> result == 0,
+          count_ones(s@) == 0 ==> result == 0
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+  }
+
+  fn main() {
+      // Test cases
+      // let test1: Vec<char> = "10100".chars().collect();
+      // println!("{}", solve_moving_soldiers(test1)); // Expected: 8
+      // let test2: Vec<char> = "1100001".chars().collect();
+      // println!("{}", solve_moving_soldiers(test2)); // Expected: 10  
+      // let test3: Vec<char> = "000000000111".chars().collect();
+      // println!("{}", solve_moving_soldiers(test3)); // Expected: 0
+  }

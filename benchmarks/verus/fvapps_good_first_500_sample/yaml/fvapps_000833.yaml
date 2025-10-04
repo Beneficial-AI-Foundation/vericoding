@@ -1,0 +1,51 @@
+vc-description: |-
+  Accepts a string from the user and print the reverse string as the output without using any built-in function.
+
+  -----Input:-----
+  Each testcase contains of a single line of input, a string.
+
+  -----Output:-----
+  For each testcase, output in a single line answer, the reverse string.
+
+  -----Sample Input:-----
+  1
+  Tracy
+
+  -----Sample Output:-----
+  ycarT
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn reverse_string(s: &str) -> (result: String)
+      ensures 
+          result@.len() == s@.len(),
+          forall|i: int| 0 <= i < s@.len() ==> result@[i] == s@[s@.len() - 1 - i]
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  
+  fn main() {
+      // let result1 = reverse_string("Tracy");
+      // println!("{}", result1);
+      // 
+      // let result2 = reverse_string("Hello");
+      // println!("{}", result2);
+      // 
+      // let result3 = reverse_string("Python");
+      // println!("{}", result3);
+  }

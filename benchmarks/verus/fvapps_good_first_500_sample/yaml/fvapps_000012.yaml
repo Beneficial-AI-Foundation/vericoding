@@ -1,0 +1,52 @@
+vc-description: |-
+  Once again, Boris needs the help of Anton in creating a task. This time Anton needs to solve the following problem:
+
+  There are two arrays of integers $a$ and $b$ of length $n$. It turned out that array $a$ contains only elements from the set $\{-1, 0, 1\}$.
+
+  Anton can perform the following sequence of operations any number of times:  Choose any pair of indexes $(i, j)$ such that $1 \le i < j \le n$. It is possible to choose the same pair $(i, j)$ more than once.   Add $a_i$ to $a_j$. In other words, $j$-th element of the array becomes equal to $a_i + a_j$. 
+
+  For example, if you are given array $[1, -1, 0]$, you can transform it only to $[1, -1, -1]$, $[1, 0, 0]$ and $[1, -1, 1]$ by one operation.
+
+  Anton wants to predict if it is possible to apply some number (zero or more) of these operations to the array $a$ so that it becomes equal to array $b$. Can you help him?
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn can_be_transformed(a: Seq<i32>, b: Seq<i32>) -> bool {
+      a.len() == b.len() && (a == b || exists_transformation_sequence(a, b))
+  }
+
+  spec fn exists_transformation_sequence(a: Seq<i32>, b: Seq<i32>) -> bool {
+      true  // Placeholder for actual transformation logic
+  }
+
+  fn can_transform_array(n: usize, a: Vec<i32>, b: Vec<i32>) -> (result: bool)
+      requires
+          a.len() == n,
+          b.len() == n,
+          forall|i: int| 0 <= i < a.len() ==> #[trigger] a[i] >= -1 && #[trigger] a[i] <= 1,
+      ensures
+          result == can_be_transformed(a@, b@)
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      false
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // Apps difficulty: interview
+      // Assurance level: unguarded
+      //
+      // Example tests:
+      // assert(can_transform_array(3, vec![1, -1, 0], vec![1, 1, -2]) == true);
+      // assert(can_transform_array(3, vec![0, 1, 1], vec![0, 2, 2]) == false);
+      // assert(can_transform_array(5, vec![0, 1, -1, 1, -1], vec![1, 1, -1, 1, -1]) == false);
+  }

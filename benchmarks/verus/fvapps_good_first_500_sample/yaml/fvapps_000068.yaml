@@ -1,0 +1,61 @@
+vc-description: |-
+  Bertown is a city with n buildings in a straight line.
+
+  The city's security service discovered that some buildings were mined. A map was compiled, which is a string of length n, where the i-th character is "1" if there is a mine under the building number i and "0" otherwise.
+
+  Bertown's best sapper knows how to activate mines so that the buildings above them are not damaged. When a mine under the building numbered x is activated, it explodes and activates two adjacent mines under the buildings numbered x-1 and x+1 (if there were no mines under the building, then nothing happens). Thus, it is enough to activate any one mine on a continuous segment of mines to activate all the mines of this segment. For manual activation of one mine, the sapper takes a coins. He can repeat this operation as many times as you want.
+
+  Also, a sapper can place a mine under a building if it wasn't there. For such an operation, he takes b coins. He can also repeat this operation as many times as you want.
+
+  The sapper can carry out operations in any order.
+
+  You want to blow up all the mines in the city to make it safe. Find the minimum number of coins that the sapper will have to pay so that after his actions there are no mines left in the city.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn has_mine(mine_map: Seq<char>) -> bool {
+      exists|i: int| 0 <= i < mine_map.len() && mine_map[i] == '1'
+  }
+
+  spec fn count_mines(mine_map: Seq<char>) -> nat
+      decreases mine_map.len()
+  {
+      if mine_map.len() == 0 {
+          0
+      } else {
+          let count_rest = count_mines(mine_map.skip(1));
+          if mine_map[0] == '1' {
+              count_rest + 1
+          } else {
+              count_rest
+          }
+      }
+  }
+
+  fn min_cost_clear_mines(a: u32, b: u32, mine_map: &str) -> (result: u32)
+      ensures
+          has_mine(mine_map@) ==> result >= a,
+          result <= a * count_mines(mine_map@) as u32
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // println!("{}", min_cost_clear_mines(1, 1, "01000010"));
+      // println!("{}", min_cost_clear_mines(5, 1, "01101110"));
+      // println!("{}", min_cost_clear_mines(3, 2, "1011"));
+  }

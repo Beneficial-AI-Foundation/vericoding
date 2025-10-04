@@ -1,0 +1,83 @@
+vc-description: |-
+  Given two positive integers n and k, the binary string Sn is formed as follows:
+
+  S1 = "0"
+  Si = Si-1 + "1" + reverse(invert(Si-1)) for i > 1
+
+  Where + denotes the concatenation operation, reverse(x) returns the reversed string x, and invert(x) inverts all the bits in x (0 changes to 1 and 1 changes to 0).
+  For example, the first 4 strings in the above sequence are:
+
+  S1 = "0"
+  S2 = "011"
+  S3 = "0111001"
+  S4 = "011100110110001"
+
+  Return the kth bit in Sn. It is guaranteed that k is valid for the given n.
+
+  Example 1:
+  Input: n = 3, k = 1
+  Output: "0"
+  Explanation: S3 is "0111001". The first bit is "0".
+
+  Example 2:
+  Input: n = 4, k = 11
+  Output: "1"
+  Explanation: S4 is "011100110110001". The 11th bit is "1".
+
+  Example 3:
+  Input: n = 1, k = 1
+  Output: "0"
+
+  Example 4:
+  Input: n = 2, k = 3
+  Output: "1"
+
+  Constraints:
+
+  1 <= n <= 20
+  1 <= k <= 2n - 1
+vc-preamble: |-
+  use vstd::prelude::*;
+  use vstd::arithmetic::power::pow;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn find_kth_bit_spec(n: nat, k: nat) -> char {
+      if n == 1 && k == 1 {
+          '0'
+      } else {
+          '0'
+      }
+  }
+
+  fn find_kth_bit(n: nat, k: nat) -> (result: char)
+      requires 
+          n > 0,
+          k > 0,
+          k <= pow(2, n) - 1,
+      ensures
+          result == '0' || result == '1',
+          find_kth_bit(n, k) == find_kth_bit_spec(n, k),
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      '0'
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // let result1 = find_kth_bit(3, 1);
+      // println!("find_kth_bit(3, 1) = {:?}", result1);
+      
+      // let result2 = find_kth_bit(4, 11);
+      // println!("find_kth_bit(4, 11) = {:?}", result2);
+      
+      // let result3 = find_kth_bit(1, 1);
+      // println!("find_kth_bit(1, 1) = {:?}", result3);
+  }

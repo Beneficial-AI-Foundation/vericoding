@@ -1,0 +1,50 @@
+vc-description: |-
+  Problem Statement
+  Write a program that accepts a number, n, and outputs the same.
+
+  Input
+  The only line contains a single integer. 
+
+  Output
+  Output the answer in a single line.
+
+  Constraints
+  - 0 ≤ n ≤ 105
+
+  Sample Input
+  123
+
+  Sample Output
+  123
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn return_number(n: i32) -> (result: i32)
+      ensures result == n
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  /* Apps difficulty: interview
+     Assurance level: guarded_and_plausible */
+
+  }
+
+  fn main() {
+      // println!("{}", return_number(123));
+      // println!("{}", return_number(0)); 
+      // println!("{}", return_number(99999));
+  }

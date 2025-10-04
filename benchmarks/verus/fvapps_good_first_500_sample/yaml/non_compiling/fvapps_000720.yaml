@@ -1,0 +1,90 @@
+vc-description: |-
+  Mr. X stays in a mansion whose door opens in the North. He travels every morning to meet his friend Ms. Y walking a predefined path.
+  
+  To cut the distance short, one day he decides to construct a skywalk from his place to his friend's place. Help him to find the shortest distance between the two residences.
+  
+  -----Input-----
+  
+  The first line contains a single positive integer T <= 100, the number of test cases. T test cases follow. The only line of each test case contains a string which is the path from X to Y. The integer value represents the distance. The character R or L represents a Right or a Left respectively.
+  
+  -----Output-----
+  
+  For each test case, output a single line containing the minimum distance and the direction(N,S,W,E,NE,NW,SE,SW) of Y's residence with respect to X's residence. The output distance should have only 1 decimal place with no approximation. Print "0.0" if X's and Y's residence coincide.
+  
+  -----Example-----
+  Input:
+  1
+  2 L 2 R 2 L 1
+  
+  Output:
+  5.0NW
+  
+  Explanation
+  Mr. X travels 2units and then takes a Left, and then he travels 2units and takes a Right, then after travelling 2units he takes a Left and finally travels 1unit to reach Y's residence.
+  (Unlike Input, Output does not have spaces between the distance and direction)
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn valid_direction(dir: &str) -> bool {
+      dir == "" || dir == "N" || dir == "S" || dir == "E" || dir == "W" || 
+      dir == "NE" || dir == "NW" || dir == "SE" || dir == "SW"
+  }
+
+  spec fn is_direction_char(s: &str) -> bool {
+      s == "L" || s == "R"
+  }
+
+  spec fn total_path_distance(moves: Seq<String>) -> nat
+      decreases moves.len()
+  {
+      if moves.len() == 0 {
+          0
+      } else {
+          let first = moves[0].as_str();
+          if is_direction_char(first) {
+              total_path_distance(moves.skip(1))
+          } else {
+              1 + total_path_distance(moves.skip(1))  /* simplified numeric parsing */
+          }
+      }
+  }
+
+  spec fn extract_distance_from_result(result: String) -> nat {
+      if result.as_str() == "0.0" {
+          0
+      } else {
+          1  /* simplified distance extraction */
+      }
+  }
+
+  spec fn has_valid_direction_suffix(result: String) -> bool {
+      exists|dir: String| valid_direction(dir.as_str()) && 
+          (result.len() >= dir.len() && 
+           result.subrange((result.len() - dir.len()) as int, result.len() as int) == dir.as_str())
+  }
+
+  fn process(moves: Vec<String>) -> (result: String)
+      ensures
+          has_valid_direction_suffix(result) || result.as_str() == "0.0",
+          extract_distance_from_result(result) <= total_path_distance(moves@),
+          (moves@ == seq!["1".to_string(), "R".to_string(), "1".to_string(), "R".to_string(), "1".to_string(), "R".to_string(), "1".to_string()]) ==> result.as_str() == "0.0",
+          (moves.len() == 1 && !is_direction_char(moves[0].as_str())) ==> has_valid_direction_suffix(result),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

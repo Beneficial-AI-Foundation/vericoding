@@ -1,0 +1,61 @@
+vc-description: |-
+  An encoder encodes the first 16 lowercase English letters using 4 bits each. The first bit (from the left) of the code is 0 if the letter lies among the first 8 letters, else it is 1, signifying that it lies among the last 8 letters. The second bit of the code is 0 if the letter lies among the first 4 letters of those 8 letters found in the previous step, else it's 1, signifying that it lies among the last 4 letters of those 8 letters. Similarly, the third and the fourth bit each signify the half in which the letter lies. 
+  For example, the letter j would be encoded as :
+  - Among (a,b,c,d,e,f,g,h | i,j,k,l,m,n,o,p), j appears in the second half. So the first bit of its encoding is 1.
+  - Now, among (i,j,k,l | m,n,o,p), j appears in the first half. So the second bit of its encoding is 0.
+  - Now, among (i,j | k,l), j appears in the first half. So the third bit of its encoding is 0.
+  - Now, among (i | j), j appears in the second half. So the fourth and last bit of its encoding is 1.
+  So j's encoding is 1001,
+  Given a binary encoded string S, of length at most 10^5, decode the string. That is, the first 4 bits are the encoding of the first letter of the secret message, the next 4 bits encode the second letter, and so on. It is guaranteed that the string's length is a multiple of 4.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn is_valid_letter(c: char) -> bool {
+      c == 'a' || c == 'b' || c == 'c' || c == 'd' ||
+      c == 'e' || c == 'f' || c == 'g' || c == 'h' ||
+      c == 'i' || c == 'j' || c == 'k' || c == 'l' ||
+      c == 'm' || c == 'n' || c == 'o' || c == 'p'
+  }
+
+  spec fn is_binary_char(c: char) -> bool {
+      c == '0' || c == '1'
+  }
+
+  fn decode_binary_string(s: Vec<char>) -> (result: Vec<char>)
+      requires 
+          s.len() % 4 == 0,
+          forall|i: int| 0 <= i < s.len() ==> is_binary_char(s[i]),
+      ensures
+          result.len() == s.len() / 4,
+          forall|i: int| 0 <= i < result.len() ==> is_valid_letter(result[i])
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let test1 = vec!['0', '0', '0', '0'];
+      // let result1 = decode_binary_string(test1);
+      // println!("{:?}", result1);
+      //
+      // let test2 = vec!['0', '0', '0', '0', '1', '1', '1', '1'];
+      // let result2 = decode_binary_string(test2);
+      // println!("{:?}", result2);
+      //
+      // let test3 = vec!['1', '0', '0', '1'];
+      // let result3 = decode_binary_string(test3);
+      // println!("{:?}", result3);
+  }

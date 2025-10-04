@@ -1,0 +1,71 @@
+vc-description: |-
+  Given two strings text1 and text2, return the length of their longest common subsequence.
+  A subsequence of a string is a new string generated from the original string with some characters(can be none) deleted without changing the relative order of the remaining characters. (eg, "ace" is a subsequence of "abcde" while "aec" is not). A common subsequence of two strings is a subsequence that is common to both strings.
+
+  If there is no common subsequence, return 0.
+
+  Example 1:
+  Input: text1 = "abcde", text2 = "ace" 
+  Output: 3  
+  Explanation: The longest common subsequence is "ace" and its length is 3.
+
+  Example 2:
+  Input: text1 = "abc", text2 = "abc"
+  Output: 3
+  Explanation: The longest common subsequence is "abc" and its length is 3.
+
+  Example 3:
+  Input: text1 = "abc", text2 = "def"
+  Output: 0
+  Explanation: There is no such common subsequence, so the result is 0.
+
+  Constraints:
+
+  1 <= text1.length <= 1000
+  1 <= text2.length <= 1000
+  The input strings consist of lowercase English characters only.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn longest_common_subsequence(s1: Vec<char>, s2: Vec<char>) -> (result: usize)
+      requires 
+          1 <= s1.len() <= 1000,
+          1 <= s2.len() <= 1000,
+      ensures 
+          result <= s1.len(),
+          result <= s2.len(),
+          s1.len() == 0 || s2.len() == 0 ==> result == 0,
+          s1 == s2 ==> result == s1.len(),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+  }
+  fn main() {
+      // let s1 = vec!['a', 'b', 'c', 'd', 'e'];
+      // let s2 = vec!['a', 'c', 'e'];
+      // let result1 = longest_common_subsequence(s1, s2);
+      // println!("Result 1: {}", result1); // Should be 3
+      
+      // let s3 = vec!['a', 'b', 'c'];
+      // let s4 = vec!['a', 'b', 'c'];
+      // let result2 = longest_common_subsequence(s3, s4);
+      // println!("Result 2: {}", result2); // Should be 3
+      
+      // let s5 = vec!['a', 'b', 'c'];
+      // let s6 = vec!['d', 'e', 'f'];
+      // let result3 = longest_common_subsequence(s5, s6);
+      // println!("Result 3: {}", result3); // Should be 0
+  }

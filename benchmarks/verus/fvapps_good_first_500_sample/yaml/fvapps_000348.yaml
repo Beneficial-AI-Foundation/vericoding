@@ -1,0 +1,77 @@
+vc-description: |-
+  You are given an array representing a row of seats where seats[i] = 1 represents a person sitting in the ith seat, and seats[i] = 0 represents that the ith seat is empty (0-indexed).
+  There is at least one empty seat, and at least one person sitting.
+  Alex wants to sit in the seat such that the distance between him and the closest person to him is maximized. 
+  Return that maximum distance to the closest person.
+
+  Example 1:
+
+  Input: seats = [1,0,0,0,1,0,1]
+  Output: 2
+  Explanation: 
+  If Alex sits in the second open seat (i.e. seats[2]), then the closest person has distance 2.
+  If Alex sits in any other open seat, the closest person has distance 1.
+  Thus, the maximum distance to the closest person is 2.
+
+  Example 2:
+  Input: seats = [1,0,0,0]
+  Output: 3
+  Explanation: 
+  If Alex sits in the last seat (i.e. seats[3]), the closest person is 3 seats away.
+  This is the maximum distance possible, so the answer is 3.
+
+  Example 3:
+  Input: seats = [0,1]
+  Output: 1
+
+  Constraints:
+
+  2 <= seats.length <= 2 * 104
+  seats[i] is 0 or 1.
+  At least one seat is empty.
+  At least one seat is occupied.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+  spec fn longest_consecutive_ones(xs: Seq<nat>, n: nat) -> nat {
+      0
+  }
+vc-spec: |-
+  fn max_dist_to_closest(seats: Vec<nat>) -> (result: nat)
+      requires 
+          seats.len() >= 2,
+          seats.len() <= 20000,
+          forall|i: int| 0 <= i < seats.len() ==> (seats[i] == 0 || seats[i] == 1),
+          exists|i: int| 0 <= i < seats.len() && seats[i] == 1,
+          exists|i: int| 0 <= i < seats.len() && seats[i] == 0,
+      ensures
+          result >= 0,
+          result <= seats.len(),
+          forall|i: int, j: int| (0 <= i < seats.len() && 0 <= j < seats.len() && 
+                                  i < j && seats[i] == 1 && seats[j] == 1) ==>
+                                 ((j - i - 1) + 1) / 2 <= result,
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let test1 = vec![1, 0, 0, 0, 1, 0, 1];
+      // let result1 = max_dist_to_closest(test1);
+      // println!("Test 1 result: {}", result1);
+
+      // let test2 = vec![1, 0, 0, 0];
+      // let result2 = max_dist_to_closest(test2);
+      // println!("Test 2 result: {}", result2);
+
+      // let test3 = vec![0, 1];
+      // let result3 = max_dist_to_closest(test3);
+      // println!("Test 3 result: {}", result3);
+  }

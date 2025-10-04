@@ -1,0 +1,49 @@
+vc-description: |-
+  Chef is playing a game on the non-negative x-axis. It takes him 1 second to reach from i-th position to (i-1)-th position or (i+1)-th position. The chef never goes to the negative x-axis. Also, Chef doesn't stop at any moment of time.
+  The movement of chef can be described as follows.
+  - At the start he is standing at x=0 at time 0.
+  - In the first round, he moves towards x=1 and comes back to the x=0 position. 
+  - In the second round, he moves towards the x=2 and comes back again to x=0. 
+  - Generalizing, in the k-th round, he moves from x=0 to x=k and then returns back to x=0 at the end of the round. This goes on as the game progresses.
+  For Example, the path of Chef for 3rd round is given below.
+  0 - 1 - 2 - 3 - 2 - 1 - 0 
+  The overall path followed by Chef would look somewhat like this:
+  0 - 1 - 0 - 1 - 2 - 1 - 0 - 1 - 2 - 3 - 2 - 1 - 0 - 1 - 2 - 3 - 4 - 3 - ...
+  You are given two non-negative integers N and K. You have to tell the time at which Chef arrives at x=N for the K-th time. 
+  Note - Chef can not skip a position while visiting the positions.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  const MOD: u32 = 1000000007;
+
+  fn calculate_time_at_position(n: u32, k: u32) -> (result: u32)
+      requires k > 0,
+      ensures result >= 0
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let test1 = calculate_time_at_position(0, 1);
+      // assert(test1 == 0);
+      
+      // let test2 = calculate_time_at_position(1, 1);
+      // assert(test2 == 1);
+      
+      // let test3 = calculate_time_at_position(1, 3);
+      // assert(test3 == 5);
+  }

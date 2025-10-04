@@ -1,0 +1,53 @@
+vc-description: |-
+  You are given an axis-aligned rectangle in a 2D Cartesian plane. The bottom left corner of this rectangle has coordinates (0,0) and the top right corner has coordinates (N-1,N-1). You are also given K light sources; each light source is a point inside or on the perimeter of the rectangle.
+  For each light source, let's divide the plane into four quadrants by a horizontal and a vertical line passing through this light source. The light source can only illuminate one of these quadrants (including its border, i.e. the point containing the light source and two half-lines), but the quadrants illuminated by different light sources may be different.
+  You want to assign a quadrant to each light source in such a way that when they illuminate their respective quadrants, the entire rectangle (including its perimeter) is illuminated. Find out whether it is possible to assign quadrants to light sources in such a way.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn is_corner_point(x: usize, y: usize, n: usize) -> bool {
+      (x == 0 && y == 0) || (x == 0 && y == n-1) || 
+      (x == n-1 && y == 0) || (x == n-1 && y == n-1)
+  }
+
+  fn assess_lights(k: usize, n: usize, points: Vec<(usize, usize)>) -> (result: &'static str)
+      requires 
+          1 <= k <= 100,
+          1 <= n <= 1000000000,
+          points.len() == k,
+          forall|i: int| 0 <= i < points.len() ==> #[trigger] points[i].0 < n && #[trigger] points[i].1 < n,
+      ensures 
+          result == "yes" || result == "no",
+          /* If k > 3, then result is "yes" */
+          k > 3 ==> result == "yes",
+          /* If any point is a corner, then result is "yes" */
+          (exists|i: int| 0 <= i < points.len() && #[trigger] is_corner_point(points[i].0, points[i].1, n)) ==> result == "yes",
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      "no"
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // Example usage:
+      // let result1 = assess_lights(2, 10, vec![(0, 0), (1, 0)]);
+      // println!("{}", result1); // Should print "yes"
+      // 
+      // let result2 = assess_lights(2, 10, vec![(1, 2), (1, 1)]);
+      // println!("{}", result2); // Should print "no"
+      //
+      // let result3 = assess_lights(3, 5, vec![(0, 0), (4, 2), (2, 4)]);
+      // println!("{}", result3); // Should print "yes"
+  }

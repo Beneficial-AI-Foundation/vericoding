@@ -1,0 +1,53 @@
+vc-description: |-
+  You are given three strings a, b and c of the same length n. The strings consist of lowercase English letters only. The i-th letter of a is a_i, the i-th letter of b is b_i, the i-th letter of c is c_i.
+
+  For every i (1 ≤ i ≤ n) you must swap (i.e. exchange) c_i with either a_i or b_i. So in total you'll perform exactly n swap operations, each of them either c_i ↔ a_i or c_i ↔ b_i (i iterates over all integers between 1 and n, inclusive).
+
+  For example, if a is "code", b is "true", and c is "help", you can make c equal to "crue" taking the 1-st and the 4-th letters from a and the others from b. In this way a becomes "hodp" and b becomes "tele".
+
+  Is it possible that after these swaps the string a becomes exactly the same as the string b?
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn can_strings_equal(s1: Vec<u8>, s2: Vec<u8>, target: Vec<u8>) -> (result: bool)
+      requires 
+          s1.len() == s2.len(),
+          s1.len() == target.len(),
+          s1.len() > 0,
+      ensures result == true ==> (
+          exists|choices: Seq<bool>| #[trigger] choices.len() == s1.len() &&
+          forall|i: int| 0 <= i < s1.len() ==> (
+              if choices[i] {
+                  s1[i] == target[i] &&
+                  s2[i] == s2[i]
+              } else {
+                  s1[i] == s1[i] &&
+                  s2[i] == target[i]
+              }
+          )
+      )
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      false
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // let test1 = can_strings_equal(b"aaa".to_vec(), b"bbb".to_vec(), b"ccc".to_vec());
+      // let test2 = can_strings_equal(b"abc".to_vec(), b"bca".to_vec(), b"bca".to_vec());
+      // let test3 = can_strings_equal(b"aabb".to_vec(), b"bbaa".to_vec(), b"baba".to_vec());
+      // let test4 = can_strings_equal(b"imi".to_vec(), b"mii".to_vec(), b"iim".to_vec());
+  }

@@ -1,0 +1,64 @@
+vc-description: |-
+  Tanish is the president of the chemistry club at his school. He considers everyone who doesn't like chemistry as his enemy. After years of research, he has invented a lethal poison, which he named success. Now Tanish plans to kill all his enemies with his success. Success is extremely deadly and is untraceable in small concentrations.
+  Tanish has N flasks lying on the shelf of his lab. All of these flasks contain the same volume of poison solution. The concentration of poison in the ith flask is a_i. In one move - Tanish picks up any two flasks, pours half of the contents of each of these flasks into a third initially empty flask, discards the two flasks and places the third flask (which now has the same volume of solution as all other flasks) on the shelf. He performs N-1 such moves to end up with only one flask of poison on the shelf. He wishes to perform these moves such that the concentration of poison in this flask is the minimum possible. What is the minimum concentration of poison that he can achieve?
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn minimum(l: Seq<nat>) -> nat 
+      decreases l.len()
+  {
+      if l.len() == 0 {
+          0
+      } else if l.len() == 1 {
+          l[0]
+      } else {
+          if l[0] <= minimum(l.skip(1)) {
+              l[0]
+          } else {
+              minimum(l.skip(1))
+          }
+      }
+  }
+
+  spec fn maximum(l: Seq<nat>) -> nat 
+      decreases l.len()
+  {
+      if l.len() == 0 {
+          0
+      } else if l.len() == 1 {
+          l[0]
+      } else {
+          if l[0] >= maximum(l.skip(1)) {
+              l[0]
+          } else {
+              maximum(l.skip(1))
+          }
+      }
+  }
+
+vc-spec: |-
+  fn min_poison_concentration(n: nat, concentrations: Vec<nat>) -> (result: nat)
+      requires 
+          1 <= n,
+          n <= concentrations.len(),
+          concentrations.len() > 0,
+      ensures
+          result >= minimum(concentrations@),
+          result <= maximum(concentrations@),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

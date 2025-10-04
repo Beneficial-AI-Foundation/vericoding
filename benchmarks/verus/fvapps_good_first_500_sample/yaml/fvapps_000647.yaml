@@ -1,0 +1,73 @@
+vc-description: |-
+  The chef is trying to solve some pattern problems, Chef wants your help to code it. Chef has one number K to form a new pattern. Help the chef to code this pattern problem.
+
+  -----Input:-----
+  - First-line will contain $T$, the number of test cases. Then the test cases follow. 
+  - Each test case contains a single line of input, one integer $K$. 
+
+  -----Output:-----
+  For each test case, output as the pattern.
+
+  -----Constraints-----
+  - $1 \leq T \leq 100$
+  - $1 \leq K \leq 100$
+
+  -----Sample Input:-----
+  4
+  1
+  2
+  3
+  4
+
+  -----Sample Output:-----
+  1
+  12
+  34
+  123
+  456
+  789
+  1234
+  5678
+  9101112
+  13141516
+
+  -----EXPLANATION:-----
+  No need, else pattern can be decode easily.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve_pattern(k: nat) -> (result: Vec<String>)
+      requires k > 0 && k <= 10,
+      ensures 
+          result.len() == k
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let test_result = solve_pattern(1);
+      // assert(test_result.len() == 1);
+      
+      // let test_result2 = solve_pattern(2);
+      // assert(test_result2.len() == 2);
+      
+      // let test_result3 = solve_pattern(3);
+      // assert(test_result3.len() == 3);
+      
+      // let test_result4 = solve_pattern(4);
+      // assert(test_result4.len() == 4);
+  }

@@ -1,0 +1,53 @@
+vc-description: |-
+  Ayoub thinks that he is a very smart person, so he created a function f(s), where s is a binary string (a string which contains only symbols "0" and "1"). The function f(s) is equal to the number of substrings in the string s that contains at least one symbol, that is equal to "1".
+
+  More formally, f(s) is equal to the number of pairs of integers (l, r), such that 1 ≤ l ≤ r ≤ |s| (where |s| is equal to the length of string s), such that at least one of the symbols s_l, s_{l+1}, ..., s_r is equal to "1". 
+
+  For example, if s = "01010" then f(s) = 12, because there are 12 such pairs (l, r): (1, 2), (1, 3), (1, 4), (1, 5), (2, 2), (2, 3), (2, 4), (2, 5), (3, 4), (3, 5), (4, 4), (4, 5).
+
+  Ayoub also thinks that he is smarter than Mahmoud so he gave him two integers n and m and asked him this problem. For all binary strings s of length n which contains exactly m symbols equal to "1", find the maximum value of f(s).
+
+  Mahmoud couldn't solve the problem so he asked you for help. Can you help him? 
+
+  Input: The input consists of multiple test cases. The first line contains a single integer t (1 ≤ t ≤ 10^5) — the number of test cases. The description of the test cases follows. The only line for each test case contains two integers n, m (1 ≤ n ≤ 10^9, 0 ≤ m ≤ n) — the length of the string and the number of symbols equal to "1" in it.
+
+  Output: For every test case print one integer number — the maximum value of f(s) over all strings s of length n, which has exactly m symbols, equal to "1".
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn max_substring_value(n: u64, m: u64) -> (result: u64)
+      requires m <= n,
+      ensures
+          /* If m=0, result should be 0 */
+          m == 0 ==> result == 0,
+          /* If m=n, result should be triangular number */
+          m == n ==> result == n * (n + 1) / 2,
+          /* Output should be between 0 and triangular number */
+          0 <= result && result <= n * (n + 1) / 2,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // Test cases from the problem
+      // assert(max_substring_value(3, 1) == 4);
+      // assert(max_substring_value(3, 2) == 5);
+      // assert(max_substring_value(3, 3) == 6);
+      // assert(max_substring_value(4, 0) == 0);
+      // assert(max_substring_value(5, 2) == 12);
+  }

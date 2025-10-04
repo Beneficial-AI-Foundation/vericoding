@@ -1,0 +1,45 @@
+vc-description: |-
+  Many internet protocols these days include the option of associating a
+  media type with the content being sent.
+  The type is usually inferred from the file extension.
+  You are to write a program that facilitates the lookup of media types for
+  a number of files.
+  You will be given a table of media type associations that associate a certain
+  file extension with a certain media type.
+  You will then be given a number of file names, and tasked to determine the correct
+  media type for each file.
+  A file extension is defined as the part of the file name after the final period.
+  If a file name has no periods, then it has no extension and the media type cannot
+  be determined.
+  If the file extension is not present in the table, then the media type cannot be
+  determined.
+  In such cases you will print "unknown" as the media type.
+  If the file extension does appear in the table (case matters), then print the associated
+  media type.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn determine_media_types(associations: Vec<(String, String)>, filenames: Vec<String>) -> (result: Vec<String>)
+      ensures 
+          result.len() == filenames.len(),
+          associations.len() == 0 ==> 
+              forall|i: int| 0 <= i < result.len() ==> result[i]@ == "unknown"@
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

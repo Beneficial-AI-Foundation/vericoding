@@ -1,0 +1,58 @@
+vc-description: |-
+  Given an array of integers arr and an integer k. Find the least number of unique integers after removing exactly k elements.
+
+  Example 1:
+  Input: arr = [5,5,4], k = 1
+  Output: 1
+  Explanation: Remove the single 4, only 5 is left.
+
+  Example 2:
+  Input: arr = [4,3,1,1,3,3,2], k = 3
+  Output: 2
+  Explanation: Remove 4, 2 and either one of the two 1s or three 3s. 1 and 3 will be left.
+
+  Constraints:
+
+  1 <= arr.length <= 10^5
+  1 <= arr[i] <= 10^9
+  0 <= k <= arr.length
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn find_least_num_unique_ints(arr: Vec<i32>, k: usize) -> (result: usize)
+      requires 
+          arr.len() > 0,
+          k <= arr.len(),
+      ensures 
+          result <= arr.len(),
+          k == arr.len() ==> result == 0,
+          k == 0 ==> result == arr.len(),
+          k > arr.len() ==> result == 0,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+  }
+
+  fn main() {
+      // let result1 = find_least_num_unique_ints(vec![5, 5, 4], 1);
+      // println!("Result 1: {}", result1); // Expected: 1
+      
+      // let result2 = find_least_num_unique_ints(vec![4, 3, 1, 1, 3, 3, 2], 3);
+      // println!("Result 2: {}", result2); // Expected: 2
+      
+      // let result3 = find_least_num_unique_ints(vec![2, 4, 1, 8, 3, 5, 1, 3], 3);
+      // println!("Result 3: {}", result3); // Expected: 3
+  }

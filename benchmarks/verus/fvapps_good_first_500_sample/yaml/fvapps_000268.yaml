@@ -1,0 +1,82 @@
+vc-description: |-
+  Given a string containing only three types of characters: '(', ')' and '*', write a function to check whether this string is valid. We define the validity of a string by these rules:
+
+  Any left parenthesis '(' must have a corresponding right parenthesis ')'.
+  Any right parenthesis ')' must have a corresponding left parenthesis '('.
+  Left parenthesis '(' must go before the corresponding right parenthesis ')'.
+  '*' could be treated as a single right parenthesis ')' or a single left parenthesis '(' or an empty string.
+  An empty string is also valid.
+
+  Example 1:
+
+  Input: "()"
+  Output: True
+
+  Example 2:
+
+  Input: "(*)"
+  Output: True
+
+  Example 3:
+
+  Input: "(*))"
+  Output: True
+
+  Note:
+
+  The string size will be in the range [1, 100].
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn count_char(s: Seq<char>, c: char) -> nat
+      decreases s.len()
+  {
+      if s.len() == 0 {
+          0nat
+      } else {
+          (if s[0] == c { 1nat } else { 0nat }) + count_char(s.skip(1), c)
+      }
+  }
+
+  #[verifier::external_body]
+  spec fn is_balanced_without_stars(s: Seq<char>) -> bool {
+      unimplemented!()
+  }
+
+  fn check_valid_string(s: &str) -> (result: bool)
+      ensures
+          s == "" ==> result == true,
+          s == "*" ==> result == true,
+          (forall|c: char| s@.contains(c) ==> (c == '(' || c == ')')) ==> 
+              result == is_balanced_without_stars(s@),
+          count_char(s@, ')') > count_char(s@, '(') + count_char(s@, '*') ==> 
+              result == false
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      false
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // let result1 = check_valid_string("()");
+      // println!("Result for '()': {}", result1);
+      
+      // let result2 = check_valid_string("(*)");
+      // println!("Result for '(*)': {}", result2);
+      
+      // let result3 = check_valid_string("(*))");
+      // println!("Result for '(*))': {}", result3);
+  }

@@ -1,0 +1,99 @@
+vc-description: |-
+  A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
+
+  The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below).
+
+  How many possible unique paths are there?
+
+  Above is a 7 x 3 grid. How many possible unique paths are there?
+
+  Note: m and n will be at most 100.
+
+  Example 1:
+
+  Input: m = 3, n = 2
+  Output: 3
+  Explanation:
+  From the top-left corner, there are a total of 3 ways to reach the bottom-right corner:
+  1. Right -> Right -> Down
+  2. Right -> Down -> Right
+  3. Down -> Right -> Right
+
+  Example 2:
+
+  Input: m = 7, n = 3
+  Output: 28
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn unique_paths_spec(m: nat, n: nat) -> nat
+      recommends m > 0 && n > 0
+      decreases m + n
+  {
+      if m == 1 || n == 1 {
+          1nat
+      } else if m > 1 && n > 1 {
+          unique_paths_spec(sub(m, 1nat), n) + unique_paths_spec(m, sub(n, 1nat))
+      } else {
+          0nat
+      }
+  }
+
+  fn unique_paths(m: u32, n: u32) -> (result: u32)
+      requires m > 0 && n > 0,
+      ensures 
+          result > 0,
+          result == unique_paths_spec(m as nat, n as nat) as u32
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+  proof fn unique_paths_positive(m: u32, n: u32)
+      requires m > 0 && n > 0,
+      ensures unique_paths_spec(m as nat, n as nat) > 0,
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  proof fn unique_paths_symmetry(m: u32, n: u32)
+      ensures unique_paths_spec(m as nat, n as nat) == unique_paths_spec(n as nat, m as nat),
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  proof fn unique_paths_single_row(n: u32)
+      requires n > 0,
+      ensures unique_paths_spec(1nat, n as nat) == 1nat,
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  proof fn unique_paths_single_col(n: u32)
+      requires n > 0,
+      ensures unique_paths_spec(n as nat, 1nat) == 1nat,
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  }
+
+  fn main() {
+      // Apps difficulty: interview
+      // Assurance level: guarded_and_plausible
+      
+      // assert(unique_paths(3, 2) == 3);
+      // assert(unique_paths(7, 3) == 28);
+      // assert(unique_paths(3, 7) == 28);
+  }

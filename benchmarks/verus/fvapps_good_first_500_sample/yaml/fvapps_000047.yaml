@@ -1,0 +1,67 @@
+vc-description: |-
+  This is the easy version of the problem. The difference between the versions is that the easy version has no swap operations. You can make hacks only if all versions of the problem are solved.
+
+  Pikachu is a cute and friendly pokémon living in the wild pikachu herd.
+
+  But it has become known recently that infamous team R wanted to steal all these pokémon! Pokémon trainer Andrew decided to help Pikachu to build a pokémon army to resist.
+
+  First, Andrew counted all the pokémon — there were exactly $n$ pikachu. The strength of the $i$-th pokémon is equal to $a_i$, and all these numbers are distinct.
+
+  As an army, Andrew can choose any non-empty subsequence of pokemons. In other words, Andrew chooses some array $b$ from $k$ indices such that $1 \le b_1 < b_2 < \dots < b_k \le n$, and his army will consist of pokémons with forces $a_{b_1}, a_{b_2}, \dots, a_{b_k}$.
+
+  The strength of the army is equal to the alternating sum of elements of the subsequence; that is, $a_{b_1} - a_{b_2} + a_{b_3} - a_{b_4} + \dots$.
+
+  Andrew is experimenting with pokémon order. He performs $q$ operations. In $i$-th operation Andrew swaps $l_i$-th and $r_i$-th pokémon.
+
+  Note: $q=0$ in this version of the task.
+
+  Andrew wants to know the maximal stregth of the army he can achieve with the initial pokémon placement. He also needs to know the maximal strength after each operation.
+
+  Help Andrew and the pokémon, or team R will realize their tricky plan!
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn list_maximum(xs: Seq<nat>) -> nat {
+      if xs.len() == 0 {
+          0
+      } else {
+          xs.fold_left(0, |acc: nat, x: nat| if x > acc { x } else { acc })
+      }
+  }
+
+vc-spec: |-
+  fn find_max_army_strength(n: usize, arr: Vec<nat>) -> (result: nat)
+      requires 
+          n == arr.len(),
+          arr.len() > 0,
+      ensures 
+          result >= list_maximum(arr@),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // Apps difficulty: interview
+      // Assurance level: guarded
+      
+      // let result1 = find_max_army_strength(3, vec![1, 3, 2]);
+      // println!("{}", result1); // Expected: 3
+      
+      // let result2 = find_max_army_strength(2, vec![1, 2]);
+      // println!("{}", result2); // Expected: 2
+      
+      // let result3 = find_max_army_strength(7, vec![1, 2, 5, 4, 3, 6, 7]);
+      // println!("{}", result3); // Expected: 9
+  }

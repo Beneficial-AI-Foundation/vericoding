@@ -1,0 +1,44 @@
+vc-description: |-
+  Your company was appointed to lay new asphalt on the highway of length $n$. You know that every day you can either repair one unit of the highway (lay new asphalt over one unit of the highway) or skip repairing.
+
+  Skipping the repair is necessary because of the climate. The climate in your region is periodical: there are $g$ days when the weather is good and if you lay new asphalt these days it becomes high-quality pavement; after that, the weather during the next $b$ days is bad, and if you lay new asphalt these days it becomes low-quality pavement; again $g$ good days, $b$ bad days and so on.
+
+  You can be sure that you start repairing at the start of a good season, in other words, days $1, 2, \dots, g$ are good.
+
+  You don't really care about the quality of the highway, you just want to make sure that at least half of the highway will have high-quality pavement. For example, if the $n = 5$ then at least $3$ units of the highway should have high quality; if $n = 4$ then at least $2$ units should have high quality.
+
+  What is the minimum number of days is needed to finish the repair of the whole highway?
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn calc_min_days(n: u64, g: u64, b: u64) -> (result: u64)
+      requires 
+          n > 0,
+          g > 0,
+          b > 0,
+      ensures 
+          result >= n,
+          result >= (n + 1) / 2,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // #eval calc_min_days 5 1 1
+      // #eval calc_min_days 8 10 10  
+      // #eval calc_min_days 1000000 1 1000000
+  }
