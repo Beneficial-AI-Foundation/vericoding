@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from .config import ProcessingConfig
+import logging
 
 
 @dataclass
@@ -90,14 +91,113 @@ def check_tool_availability(config: ProcessingConfig) -> ToolAvailabilityResult:
         )
 
 
+def file_path_to_lean_module(file_path: str) -> str:
+    """Convert a file path to a Lean module name.
+
+    Examples:
+        benchmarks/lean/test/file.lean -> Benchmarks.test.file
+        benchmarks/lean/verina/basic.lean -> Benchmarks.verina.basic
+        benchmarks/lean/vericoder_xxx/test/file.lean -> Benchmarks.test.file
+        lean/Generated/MyModule.lean -> Generated.MyModule
+    """
+    path = Path(file_path)
+
+    # Remove the .lean extension
+    parts = list(path.parts)
+    parts[-1] = path.stem
+
+    # Find the library root (benchmarks/lean or lean)
+    if "benchmarks" in parts and "lean" in parts:
+        # Find the index of "lean"
+        lean_idx = parts.index("lean")
+        # Take everything after "benchmarks/lean"
+        subpath_parts = parts[lean_idx + 1 :]
+
+        # HARDCODED: Filter out vericoder_* directories (they're not part of the module path)
+        filtered_parts = [p for p in subpath_parts if not p.startswith("vericoder_")]
+
+        # Prepend "Benchmarks" as the library name
+        module_parts = ["Benchmarks"] + filtered_parts
+    elif "lean" in parts:
+        # For files in lean/ directory (like lean/Generated/...)
+        lean_idx = parts.index("lean")
+        module_parts = parts[lean_idx + 1 :]
+    else:
+        # Fallback: just use the parts as-is
+        module_parts = parts
+
+    return ".".join(module_parts)
+
+
 def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
     """Verify a file and return the result."""
     tool_path = get_tool_path(config)
+
+    # For Lean, we need special handling because generated files in vericoder_*
+    # directories need to be copied to the registered library directories
+    temp_file_for_lean = None
+    path_to_use = file_path
+
+    if config.language == "lean":
+        file_obj = Path(file_path)
+
+        # Check if this is a generated file (in output directory, not in benchmarks/lean)
+        # by checking if path contains vericoder_*
+        if any(part.startswith("vericoder_") for part in file_obj.parts):
+            # This is a generated file - copy it to benchmarks/lean for verification
+            # Read the file content
+            try:
+                with open(file_path, "r") as f:
+                    content = f.read()
+
+                # Create a temp file in benchmarks/lean with _temp suffix
+                # Extract the relative path structure (skip vericoder_* dir but keep subdirs)
+                parts = list(file_obj.parts)
+                vericoder_idx = next(
+                    i for i, p in enumerate(parts) if p.startswith("vericoder_")
+                )
+                # Take parts after vericoder_* (includes subdirectories like 'test/files/')
+                relative_parts = parts[vericoder_idx + 1 :]
+
+                # Rebuild the path: benchmarks/lean/<subdirs>/filename_temp.lean
+                if len(relative_parts) > 1:
+                    # Has subdirectories - preserve them
+                    subdirs = relative_parts[:-1]  # All but the filename
+                    filename = relative_parts[-1]  # Just the filename
+                    temp_path = (
+                        Path("benchmarks/lean")
+                        / Path(*subdirs)
+                        / f"{Path(filename).stem}_temp{Path(filename).suffix}"
+                    )
+                else:
+                    # No subdirectories - file directly in vericoder_* root
+                    filename = relative_parts[0]
+                    temp_path = (
+                        Path("benchmarks/lean")
+                        / f"{Path(filename).stem}_temp{Path(filename).suffix}"
+                    )
+
+                temp_path.parent.mkdir(parents=True, exist_ok=True)
+
+                with open(temp_path, "w") as f:
+                    f.write(content)
+
+                temp_file_for_lean = temp_path
+                # Use the temp file path directly - lake build expects file paths, not module names!
+                path_to_use = str(temp_path)
+            except Exception as e:
+                return VerificationResult(
+                    success=False,
+                    output="",
+                    error=f"Failed to create temp file for Lean verification: {e}",
+                )
+        # else: Original spec file - use the file path as-is (lake build expects file paths)
+
     try:
         # First try compilation check if available
         if config.language_config.compile_check_command:
             cmd = [
-                part.format(tool_path=tool_path, file_path=file_path)
+                part.format(tool_path=tool_path, file_path=path_to_use)
                 for part in config.language_config.compile_check_command
             ]
             try:
@@ -120,7 +220,7 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
 
         # Try verification
         cmd = [
-            part.format(tool_path=tool_path, file_path=file_path)
+            part.format(tool_path=tool_path, file_path=path_to_use)
             for part in config.language_config.verify_command
         ]
         timeout_value = getattr(
@@ -150,6 +250,19 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
         return VerificationResult(success=False, output=str(e), error=timeout_msg)
     except Exception as e:
         return VerificationResult(success=False, output="", error=str(e))
+    finally:
+        # Clean up temp file if we created one for Lean
+        if temp_file_for_lean and temp_file_for_lean.exists():
+            try:
+                temp_file_for_lean.unlink()
+            except (FileNotFoundError, PermissionError) as e:
+                # File already deleted or permission issue - not critical
+                logging.debug(f"Could not clean up temp file {temp_file_for_lean}: {e}")
+            except OSError as e:
+                # Other OS errors during cleanup
+                logging.warning(
+                    f"Failed to clean up temp file {temp_file_for_lean}: {e}"
+                )
 
 
 def find_spec_files(config: ProcessingConfig) -> list[str]:

@@ -1,0 +1,214 @@
+name: Vericoder Regression Tests
+permissions:
+  contents: read
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'src/vericoder.py'
+      - 'src/vericoding/**'
+      - 'config/**'
+      - 'scripts/test_vericoder_smoke.py'
+      - '.github/workflows/vericoder-regression.yml'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - 'src/vericoder.py'
+      - 'src/vericoding/**'
+      - 'config/**'
+      - 'scripts/test_vericoder_smoke.py'
+      - '.github/workflows/vericoder-regression.yml'
+  workflow_dispatch:
+
+jobs:
+  test-lean:
+    name: Test Lean Integration
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Setup Lean
+      uses: leanprover/lean-action@v1
+      with:
+        auto-config: false
+    
+    - name: Install uv
+      uses: astral-sh/setup-uv@v6
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    - name: Install Python dependencies
+      run: uv sync
+    
+    - name: Run Lake update
+      run: lake update
+    
+    - name: Run Lean smoke test
+      env:
+        OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      run: uv run python scripts/test_vericoder_smoke.py lean
+
+  test-verus:
+    name: Test Verus Integration
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Setup Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        override: true
+    
+    - name: Install Rust toolchain for Verus
+      run: rustup install 1.88.0-x86_64-unknown-linux-gnu
+    
+    - name: Get latest Verus version
+      id: verus-version
+      run: |
+        # Get the latest release tag from GitHub API
+        LATEST_RELEASE=$(curl -s https://api.github.com/repos/verus-lang/verus/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+        # Extract version number (remove 'release/' prefix if present)
+        VERUS_VERSION="${LATEST_RELEASE#release/}"
+        echo "version=${VERUS_VERSION}" >> $GITHUB_OUTPUT
+        echo "Latest Verus version: ${VERUS_VERSION}"
+    
+    - name: Cache Verus installation
+      id: cache-verus
+      uses: actions/cache@v3
+      with:
+        path: ~/verus
+        key: verus-${{ runner.os }}-${{ steps.verus-version.outputs.version }}
+    
+    - name: Install Verus
+      if: steps.cache-verus.outputs.cache-hit != 'true'
+      run: |
+        # Download and extract Verus from official releases
+        VERUS_VERSION="${{ steps.verus-version.outputs.version }}"
+        VERUS_ZIP="verus-${VERUS_VERSION}-x86-linux.zip"
+        
+        echo "Downloading Verus ${VERUS_VERSION}..."
+        wget "https://github.com/verus-lang/verus/releases/download/release/${VERUS_VERSION}/${VERUS_ZIP}"
+        
+        echo "Extracting Verus..."
+        unzip -q "${VERUS_ZIP}"
+        
+        # Move entire directory to standard location
+        mkdir -p ~/verus
+        mv verus-x86-linux/* ~/verus/
+        
+        echo "Verus ${VERUS_VERSION} installed successfully"
+    
+    - name: Add Verus to PATH
+      run: echo "$HOME/verus" >> $GITHUB_PATH
+    
+    - name: Verify Verus installation
+      run: verus --version
+    
+    - name: Install uv
+      uses: astral-sh/setup-uv@v6
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    - name: Install Python dependencies
+      run: uv sync
+    
+    - name: Run Verus smoke test
+      env:
+        OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      run: uv run python scripts/test_vericoder_smoke.py verus
+
+  test-dafny:
+    name: Test Dafny Integration
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Install Dafny
+      run: |
+        cd /tmp
+        wget https://github.com/dafny-lang/dafny/releases/download/v4.11.0/dafny-4.11.0-x64-ubuntu-22.04.zip
+        unzip dafny-4.11.0-x64-ubuntu-22.04.zip
+        sudo apt-get update
+        sudo apt-get install -y libicu-dev
+        echo "/tmp/dafny" >> $GITHUB_PATH
+    
+    - name: Verify Dafny installation
+      run: dafny --version
+    
+    - name: Install uv
+      uses: astral-sh/setup-uv@v6
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    - name: Install Python dependencies
+      run: uv sync
+    
+    - name: Run Dafny smoke test
+      env:
+        OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      run: uv run python scripts/test_vericoder_smoke.py dafny
+
+  test-configuration:
+    name: Test Configuration Loading
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Install uv
+      uses: astral-sh/setup-uv@v6
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    - name: Install Python dependencies
+      run: uv sync
+    
+    - name: Run configuration tests
+      run: uv run python scripts/test_vericoder_smoke.py config
+
+  summary:
+    name: Test Summary
+    needs: [test-lean, test-verus, test-dafny, test-configuration]
+    if: always()
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Check test results
+      run: |
+        echo "Test Results Summary:"
+        echo "- Lean: ${{ needs.test-lean.result }}"
+        echo "- Verus: ${{ needs.test-verus.result }}"
+        echo "- Dafny: ${{ needs.test-dafny.result }}"
+        echo "- Configuration: ${{ needs.test-configuration.result }}"
+        
+        if [[ "${{ needs.test-lean.result }}" != "success" ]] || \
+           [[ "${{ needs.test-verus.result }}" != "success" ]] || \
+           [[ "${{ needs.test-dafny.result }}" != "success" ]] || \
+           [[ "${{ needs.test-configuration.result }}" != "success" ]]; then
+          echo "❌ Some tests failed"
+          exit 1
+        else
+          echo "✅ All tests passed"
+        fi
+
