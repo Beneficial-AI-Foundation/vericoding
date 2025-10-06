@@ -9,6 +9,7 @@ on:
       - 'src/vericoder.py'
       - 'src/vericoding/**'
       - 'config/**'
+      - 'scripts/test_vericoder_smoke.py'
       - '.github/workflows/vericoder-regression.yml'
   pull_request:
     branches: [ main, master ]
@@ -16,6 +17,7 @@ on:
       - 'src/vericoder.py'
       - 'src/vericoding/**'
       - 'config/**'
+      - 'scripts/test_vericoder_smoke.py'
       - '.github/workflows/vericoder-regression.yml'
   workflow_dispatch:
 
@@ -50,7 +52,7 @@ jobs:
     - name: Run Lean smoke test
       env:
         OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-      run: ./scripts/test_vericoder_smoke.sh lean
+      run: uv run python scripts/test_vericoder_smoke.py lean
 
   test-verus:
     name: Test Verus Integration
@@ -125,7 +127,7 @@ jobs:
     - name: Run Verus smoke test
       env:
         OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-      run: ./scripts/test_vericoder_smoke.sh verus
+      run: uv run python scripts/test_vericoder_smoke.py verus
 
   test-dafny:
     name: Test Dafny Integration
@@ -161,7 +163,7 @@ jobs:
     - name: Run Dafny smoke test
       env:
         OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-      run: ./scripts/test_vericoder_smoke.sh dafny
+      run: uv run python scripts/test_vericoder_smoke.py dafny
 
   test-configuration:
     name: Test Configuration Loading
@@ -183,7 +185,7 @@ jobs:
       run: uv sync
     
     - name: Run configuration tests
-      run: ./scripts/test_vericoder_smoke.sh config
+      run: uv run python scripts/test_vericoder_smoke.py config
 
   summary:
     name: Test Summary
@@ -200,10 +202,10 @@ jobs:
         echo "- Dafny: ${{ needs.test-dafny.result }}"
         echo "- Configuration: ${{ needs.test-configuration.result }}"
         
-        if [ "${{ needs.test-lean.result }}" != "success" ] || \
-           [ "${{ needs.test-verus.result }}" != "success" ] || \
-           [ "${{ needs.test-dafny.result }}" != "success" ] || \
-           [ "${{ needs.test-configuration.result }}" != "success" ]; then
+        if [[ "${{ needs.test-lean.result }}" != "success" ]] || \
+           [[ "${{ needs.test-verus.result }}" != "success" ]] || \
+           [[ "${{ needs.test-dafny.result }}" != "success" ]] || \
+           [[ "${{ needs.test-configuration.result }}" != "success" ]]; then
           echo "❌ Some tests failed"
           exit 1
         else
