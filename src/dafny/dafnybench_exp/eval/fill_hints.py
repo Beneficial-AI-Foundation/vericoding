@@ -13,6 +13,7 @@ from sglang import (
 )
 import os
 import logging
+from dotenv import load_dotenv
 from llm_providers import OpenRouterProvider
 from sys_prompts import SYS_DAFNY, GEN_HINTS_FROM_BODY
 from utils import (
@@ -24,6 +25,9 @@ from utils import (
     check_already_saved,
     get_test_ID,
 )
+
+# Load environment variables from .env file
+load_dotenv()
 
 
 # Function adapted from: https://github.com/ChuyueSun/Clover/blob/main/clover/clover.py
@@ -85,6 +89,14 @@ def fill_hints_llm_providers(
         )
         return True
 
+    # Validate OpenRouter API key once at the beginning
+    openrouter_api_key = os.getenv("OPENROUTER_API_KEY")
+    if not openrouter_api_key:
+        raise ValueError(
+            "OPENROUTER_API_KEY environment variable is not set. "
+            "Please set it in your .env file or environment."
+        )
+
     with open(program_path, "r") as file:
         body = file.read()
 
@@ -99,43 +111,43 @@ def fill_hints_llm_providers(
 
     if model.startswith("gpt"):
         openrouter_provider = OpenRouterProvider(
-            os.getenv("OPENROUTER_API_KEY"),
-            "openai/" + model,
+            openrouter_api_key,
+            f"openai/{model}",
             max_tokens=max_tokens,
             timeout=timeout,
         )
     elif model.startswith("claude"):
         openrouter_provider = OpenRouterProvider(
-            os.getenv("OPENROUTER_API_KEY"),
-            "anthropic/" + model,
+            openrouter_api_key,
+            f"anthropic/{model}",
             max_tokens=max_tokens,
             timeout=timeout,
         )
     elif model.startswith("gemini"):
         openrouter_provider = OpenRouterProvider(
-            os.getenv("OPENROUTER_API_KEY"),
-            "google/" + model,
+            openrouter_api_key,
+            f"google/{model}",
             max_tokens=max_tokens,
             timeout=timeout,
         )
     elif model.startswith("grok"):
         openrouter_provider = OpenRouterProvider(
-            os.getenv("OPENROUTER_API_KEY"),
-            "x-ai/" + model,
+            openrouter_api_key,
+            f"x-ai/{model}",
             max_tokens=max_tokens,
             timeout=timeout,
         )
     elif model.startswith("glm"):
         openrouter_provider = OpenRouterProvider(
-            os.getenv("OPENROUTER_API_KEY"),
-            "z-ai/" + model,
+            openrouter_api_key,
+            f"z-ai/{model}",
             max_tokens=max_tokens,
             timeout=timeout,
         )
     elif model.startswith("deepseek"):
         openrouter_provider = OpenRouterProvider(
-            os.getenv("OPENROUTER_API_KEY"),
-            "deepseek/" + model,
+            openrouter_api_key,
+            f"deepseek/{model}",
             max_tokens=max_tokens,
             timeout=timeout,
         )
