@@ -82,7 +82,7 @@ sphinxcontrib-jsmath==1.0.1
 sphinxcontrib-qthelp==2.0.0
 sphinxcontrib-serializinghtml==2.0.0
 stack-data==0.5.1
-starlette==0.45.2
+starlette==0.47.2
 statsmodels==0.14.4
 sympy==1.12
 synchronicity==0.6.1
@@ -99,14 +99,14 @@ toml==0.10.2
 tomli==2.0.1
 tomlkit==0.11.8
 toolz==0.12.1
-torch==2.7.1
+torch==2.8.0
 torch-optimizer==0.3.0
 torchmetrics==0.7.3
 torchvision==0.22.1
-tornado==6.4.2
+tornado==6.5
 tqdm==4.67.1
 traitlets==5.14.3
-transformers==4.48.2
+transformers==4.53.2
 typer
 types-awscrt
 types-certifi==2021.10.8.3
@@ -119,7 +119,7 @@ tzdata==2024.2
 tzlocal==5.3.1
 umap-learn==0.5.5
 uri-template==1.3.0
-urllib3==2.3.0
+urllib3==2.5.0
 Versio==0.5.0
 wandb==0.12.21
 watchfiles==0.21.0
