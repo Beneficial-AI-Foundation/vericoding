@@ -7,19 +7,24 @@ files-sampled:
   llm: gpt-5-mini
   issues-with-spec: None
   issues-with-implementation: None
+  id: LS0046
 - file: NpSign-spec.lean
   llm: claude-sonnet-4
   issues-with-spec: None
   issues-with-implementation: None
+  id: LS0049
 - file: NpEqual-spec.lean
   llm: 'glm-4.5 '
   issues-with-spec: None
   issues-with-implementation: None
+  id: LS0018
 - file: NpFloorDivide-spec.lean
   llm: 'glm-4.5 '
   issues-with-spec: None
   issues-with-implementation: None
+  id: LS0020
 - file: NpMultiply-spec.lean
   llm: gpt-5
   issues-with-spec: None
   issues-with-implementation: None
+  id: LS0036

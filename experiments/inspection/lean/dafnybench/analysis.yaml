@@ -7,20 +7,25 @@ files-sampled:
   llm: claude-sonnet-4
   issues-with-spec: None
   issues-with-implementation: None
+  id: LD0228
 - file: Clover_array_append_append.lean
   llm: gemini-2.5-pro
   issues-with-spec: spec can be used as implementation
   issues-with-implementation: None
+  id: LD0020
 - file: dafny-synthesis_task_id_606_DegreesToRadians.lean
   llm: 'glm-4.5 '
   issues-with-spec: spec can be used as implementation
   issues-with-implementation: None
+  id: LD0354
 - file: dafny-synthesis_task_id_770_SumOfFourthPowerOfOddNumbers.lean
   llm: gpt-5
   issues-with-spec: arguably the original spec is weak, wants a loop to calulate rather
     than the algebra?
   issues-with-implementation: None
+  id: LD0383
 - file: dafny-synthesis_task_id_127_Multiply.lean
   llm: gpt-5
   issues-with-spec: spec can be used as implementation
   issues-with-implementation: None
+  id: LD0283

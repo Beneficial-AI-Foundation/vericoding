@@ -7,19 +7,24 @@ files-sampled:
   llm: gpt-5
   issues-with-spec: spec can be used as implementation
   issues-with-implementation: None
+  id: LB0011
 - file: CompareUnequal.lean
   llm: gpt-5
   issues-with-spec: spec can be used as implementation
   issues-with-implementation: None
+  id: LB0003
 - file: ModExp_int.lean
   llm: claude-sonnet-4
   issues-with-spec: None
   issues-with-implementation: None
+  id: LB0011
 - file: Compare.lean
   llm: claude-opus-4.1
   issues-with-spec: None
   issues-with-implementation: None
+  id: LB0002
 - file: ModExpPow2_int.lean
   llm: gpt-5-mini
   issues-with-spec: spec can be used as implementation
   issues-with-implementation: None
+  id: LB0012

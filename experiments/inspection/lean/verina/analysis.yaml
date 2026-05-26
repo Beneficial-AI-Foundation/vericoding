@@ -7,20 +7,25 @@ files-sampled:
   llm: gpt-5
   issues-with-spec: None
   issues-with-implementation: None
+  id: LV0156
 - file: verina_basic_30_task.lean
   llm: gpt-5
   issues-with-spec: None
   issues-with-implementation: None
+  id: LV0110
 - file: verina_basic_91_task.lean
   llm: gemini-2.5-pro
   issues-with-spec: None
   issues-with-implementation: None
+  id: LV0171
 - file: verina_basic_60_task.lean
   llm: gpt-5-mini
   issues-with-spec: Spec clearly intended something different according to definition
     name. Problem present in the original
   issues-with-implementation: None
+  id: LV0140
 - file: verina_basic_59_task.lean
   llm: grok-code
   issues-with-spec: None
   issues-with-implementation: None
+  id: LV0139

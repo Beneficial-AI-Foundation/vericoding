@@ -7,21 +7,26 @@ files-sampled:
   llm: gemini-2.5-pro
   issues-with-spec: None
   issues-with-implementation: None
+  id: LC0053
 - file: HumanEval_46.lean
   llm: gpt-5
   issues-with-spec: Weakish – NL spec says “write a function to efficiently compute
     the n-th element of the fib4 number sequence. Do not use recursion.” but spec
     theorem doesn’t require this
   issues-with-implementation: Fine but functions which weren’t required were added
+  id: LC0045
 - file: HumanEval_63.lean
   llm: claude-sonnet-4
   issues-with-spec: None
   issues-with-implementation: Fine but functions which weren’t required were added
+  id: LC0062
 - file: HumanEval_53.lean
   llm: claude-opus-4.1
   issues-with-spec: None
   issues-with-implementation: None
+  id: LC0052
 - file: HumanEval_45.lean
   llm: gpt-5
   issues-with-spec: None
   issues-with-implementation: None
+  id: LC0044

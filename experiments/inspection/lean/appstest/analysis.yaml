@@ -7,20 +7,25 @@ files-sampled:
   llm: claude-sonnet-4
   issues-with-spec: spec can be used as implementation
   issues-with-implementation: None
+  id: LA0651
 - file: apps_test_228.lean
   llm: claude-opus-4.1
   issues-with-spec: None
   issues-with-implementation: None
+  id: LA0059
 - file: apps_test_4310.lean
   llm: 'glm-4.5 '
   issues-with-spec: spec can be used as implementation
   issues-with-implementation: None
+  id: LA0532
 - file: apps_test_985.lean
   llm: gpt-5-mini
   issues-with-spec: spec can be used as implementation
   issues-with-implementation: None
+  id: LA0199
 - file: apps_test_2209.lean
   llm: claude-sonnet-4
   issues-with-spec: Maybe there should be additional parts of the spec given the many
     introduced functions
   issues-with-implementation: None
+  id: LA0402

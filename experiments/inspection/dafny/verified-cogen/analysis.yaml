@@ -5,21 +5,26 @@ checking-successes: true
 files-sampled:
 - file: 65_proofsynthesis_task_id_261_impl_gemini.dfy
   llm: gemini
-  issues-with-spec: 'None, unmodified'
-  issues-with-implementation: 'None'
+  issues-with-spec: None, unmodified
+  issues-with-implementation: None
+  id: DJ0076
 - file: 12_proofsynthesis_condm_impl_gpt.dfy
   llm: gpt
-  issues-with-spec: 'None, unmodified'
-  issues-with-implementation: 'None, but defines pointless helper'
+  issues-with-spec: None, unmodified
+  issues-with-implementation: None, but defines pointless helper
+  id: DJ0014
 - file: 113_proofsynthesis_task_id_741_impl_gemini.dfy
   llm: gemini
-  issues-with-spec: 'None, unmodified'
-  issues-with-implementation: 'None'
+  issues-with-spec: None, unmodified
+  issues-with-implementation: None
+  id: DJ0120
 - file: 70_proofsynthesis_task_id_3_impl_gpt.dfy
   llm: gpt
-  issues-with-spec: 'None, unmodified'
-  issues-with-implementation: 'None, but solution is trivial. Defines pointless helpers.'
+  issues-with-spec: None, unmodified
+  issues-with-implementation: None, but solution is trivial. Defines pointless helpers.
+  id: DJ0057
 - file: 128_proofsynthesis_task_id_95_impl_claude-sonnet.dfy
   llm: claude-sonnet
-  issues-with-spec: 'None, unmodified'
-  issues-with-implementation: 'None'
+  issues-with-spec: None, unmodified
+  issues-with-implementation: None
+  id: DJ0064
