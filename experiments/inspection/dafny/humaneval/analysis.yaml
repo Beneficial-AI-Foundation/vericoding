@@ -5,28 +5,28 @@ checking-successes: true
 files-sampled:
 - file: 146_152-compare_impl_glm.dfy
   llm: glm
-  issues-with-spec: None, unmodified
-  issues-with-implementation: None
+  issues-with-spec: '[None] Unmodified'
+  issues-with-implementation: '[None]'
   id: DH0152
 - file: 61_059-largest-prime-factor__largest_prime_factor_impl_gpt.dfy
   llm: gpt
-  issues-with-spec: None, unmodified. However, the specification is arguably incorrect
-    w.r.t. the method name.
-  issues-with-implementation: None, but did add unused functions and predicates.
+  issues-with-spec: '[None] Unmodified. However, the specification is arguably incorrect
+    w.r.t. the method name.'
+  issues-with-implementation: '[Extra] Added unused functions and predicates'
   id: DH0062
 - file: 122_122-add_elements__select_at_most_two_digits_impl_gpt-mini.dfy
   llm: gpt-mini
-  issues-with-spec: None, unmodified
-  issues-with-implementation: None with the main method, but did implement |SumElementsWithAtMostTwoDigits|
-    (unused), with |assume false|
+  issues-with-spec: '[None] Unmodified'
+  issues-with-implementation: '[Others] Implemented unused SumElementsWithAtMostTwoDigits
+    with assume false'
   id: DH0123
 - file: 4_003-below_zero_impl_claude-sonnet.dfy
   llm: claude-sonnet
-  issues-with-spec: None, unmodified
-  issues-with-implementation: None, but did add unused lemma.
+  issues-with-spec: '[None] Unmodified'
+  issues-with-implementation: '[Extra] Added unused lemma'
   id: DH0003
 - file: 95_093-encode_impl_gemini.dfy
   llm: gemini
-  issues-with-spec: None, unmodified
-  issues-with-implementation: None
+  issues-with-spec: '[None] Unmodified'
+  issues-with-implementation: '[None]'
   id: DH0094

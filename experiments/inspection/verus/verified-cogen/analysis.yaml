@@ -5,26 +5,26 @@ checking-successes: true
 files-sampled:
 - file: 59_proofsynthesis_task_id_273_impl_claude-opus.rs
   llm: claude-opus
-  issues-with-spec: None, unmodified
-  issues-with-implementation: None
+  issues-with-spec: '[None] Unmodified'
+  issues-with-implementation: '[None]'
   id: VJ0078
 - file: 103_rustbench_arithmetic_weird_impl_gemini-flash.rs
   llm: gemini-flash
-  issues-with-spec: None, unmodified
-  issues-with-implementation: None
+  issues-with-spec: '[None] Unmodified'
+  issues-with-implementation: '[None]'
   id: VJ0135
 - file: 104_rustbench_array_append_impl_claude-sonnet.rs
   llm: claude-sonnet
-  issues-with-spec: None, unmodified
-  issues-with-implementation: None
+  issues-with-spec: '[None] Unmodified'
+  issues-with-implementation: '[None]'
   id: VJ0136
 - file: 4_proofsynthesis_brs2_impl_grok-code.rs
   llm: grok-code
-  issues-with-spec: None, unmodified
-  issues-with-implementation: None
+  issues-with-spec: '[None] Unmodified'
+  issues-with-implementation: '[None]'
   id: VJ0003
 - file: 78_proofsynthesis_task_id_578_impl_claude-opus.rs
   llm: claude-opus
-  issues-with-spec: None, unmodified
-  issues-with-implementation: None
+  issues-with-spec: '[None] Unmodified'
+  issues-with-implementation: '[None]'
   id: VJ0105

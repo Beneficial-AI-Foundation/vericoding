@@ -1,0 +1,47 @@
+benchmark: numpy_simple
+language: dafny
+is-transpiled: false
+checking-successes: true
+files-sampled:
+- file: 5_NpBitwiseAnd-spec_impl_claude-opus.dfy
+  llm: claude-opus
+  id: DS0005
+  issues-with-spec: '[None] Spec looks correct for element-wise bitwise AND on bv32
+    sequences. Precondition requires equal length arrays. Postcondition specifies
+    correct element-wise behavior.'
+  issues-with-implementation: '[None] Loop invariants correctly maintain the
+    postcondition.'
+- file: 6_NpBitwiseOr-spec_impl_claude-sonnet.dfy
+  llm: claude-sonnet
+  id: DS0006
+  issues-with-spec: '[None] Spec looks correct for element-wise bitwise OR on bv32
+    arrays. Similar structure to DS0005 but uses arrays instead of sequences.'
+  issues-with-implementation: '[None] Standard loop with correct invariants.'
+- file: 11_NpColumnStack-spec_impl_gpt-mini.dfy
+  llm: gpt-mini
+  id: DS0011
+  issues-with-spec: '[None] ColumnStack spec transposes a 2D sequence (input[i][j]
+    -> result[j][i]). The postcondition |result| * n == m * n is redundant given |result|
+    == m. Spec requires n > 0 but does not explicitly require m > 0 (though asserts
+    it).'
+  issues-with-implementation: '[Extra] Uses helper function GetElem that is defined but appears
+    unused in code. Multiple assertions (lines 30-33) seem like debugging artifacts
+    that could be removed.'
+- file: 20_NpHistogram-spec_impl_gemini-flash.dfy
+  llm: gemini-flash
+  id: DS0024
+  issues-with-spec: '[Weak] histogram_helper has weak spec - only ensures result
+    length, not actual histogram correctness. The main histogram method uses assume
+    {:axiom} false which means it is not actually verified. The spec does not relate
+    bin boundaries to count values.'
+  issues-with-implementation: '[Others] Missing loop invariants in histogram_helper - the while
+    loops have no invariants, so verification is incomplete. The code computes histogram
+    but does not prove anything about correctness.'
+- file: 38_NpShape-spec_impl_deepseek.dfy
+  llm: deepseek
+  id: DS0048
+  issues-with-spec: '[Weak] ShapeArrays is marked {:axiom} (unverified). ShapeMatrix
+    spec is straightforward - returns [m, n] for a Matrix. The Matrix datatype stores
+    m, n separately from data without consistency check.'
+  issues-with-implementation: '[Others] Implementation is trivial ([a.m, a.n]) and correct for
+    ShapeMatrix. Note that ShapeArrays has assume {:axiom} making it unverified.'
