@@ -1,0 +1,51 @@
+benchmark: numpy_triple
+language: dafny
+is-transpiled: false
+checking-successes: true
+files-sampled:
+- file: 7_array_creation_diag_impl_claude-opus.dfy
+  llm: claude-opus
+  id: DT0008
+  issues-with-spec: '[None] Diagonal matrix construction spec is comprehensive with
+    8 postconditions covering: diagonal elements, off-diagonal zeros, symmetry, and
+    uniqueness of non-zero elements. Some postconditions (4, 6) are commented out
+    (sum-based properties). The spec ensures forall i,j constraints which fully characterize
+    the diagonal matrix.'
+  issues-with-implementation: '[None] Uses seq comprehension with helper functions
+    buildRow and createRow which are well-specified. Clean functional implementation.'
+- file: 104_fft_rfftfreq_impl_deepseek.dfy
+  llm: deepseek
+  id: DT0163
+  issues-with-spec: '[None] rfftfreq spec is thorough: ensures correct length (n/2+1),
+    first element is 0, each element follows f[i] = i/(d*n), last is Nyquist frequency,
+    and frequencies are monotonically non-decreasing. Good mathematical spec.'
+  issues-with-implementation: '[None] Uses helper function freqVal with supporting
+    lemmas (DivPresLe, MonotoneFreqIndices, MonotoneFreqAll) to prove monotonicity.
+    Well-structured proof with appropriate lemma invocation.'
+- file: 131_io_operations_array_str_impl_gemini.dfy
+  llm: gemini
+  id: DT0202
+  issues-with-spec: '[Weak] ArrayStr spec is weak: only ensures non-empty result,
+    bracket structure, and a vague ordering property (exists pos_i, pos_j for elements).
+    Does not actually specify that the string representation is correct (i.e., contains
+    the actual values).'
+  issues-with-implementation: '[Others] RealToString helper is a stub (returns "0" or "1" regardless
+    of actual value) - this is clearly not a real implementation. The loop invariants
+    do not track content correctness, only structural properties.'
+- file: 164_logic_functions_less_equal_impl_claude-sonnet.dfy
+  llm: claude-sonnet
+  id: DT0275
+  issues-with-spec: '[None] LessEqual spec is thorough with multiple equivalent formulations
+    of the element-wise comparison (result[i] <==> x1[i] <= x2[i]). The redundant
+    postconditions (lines 17-21) are for clarity but logically follow from line 16.'
+  issues-with-implementation: '[None] Standard element-wise comparison loop
+    with correct invariants.'
+- file: 290_sorting_searching_bincount_impl_gpt-mini.dfy
+  llm: gpt-mini
+  id: DT0561
+  issues-with-spec: '[None] BinCount spec uses CountOccurrences defined via set cardinality.
+    Spec is correct: result[val] = count of val in input x. Precondition ensures all
+    values in x are within [0, max_val].'
+  issues-with-implementation: '[None] Uses seq comprehension with CountOccurrences directly
+    - elegant but relies on Dafny ability to compute set cardinality. Comment indicates
+    iteration 2 fix for type constraints. Implementation is concise.'
