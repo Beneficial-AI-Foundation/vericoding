@@ -5,41 +5,41 @@ checking-successes: true
 files-sampled:
 - file: apps_test_949.rs
   llm: grok-code
-  issues-with-spec: None, the only difference is that int is narrowed to i8 (this isneeded as int is only a verus type and cannot be used in a rust function). However, the original Dafny spec is trivially satisfiable.
+  issues-with-spec: '[Leak] The original Dafny spec is trivially satisfiable.
     gcd_of_range is not a GCD specification — it just hardcodes
     (if a == b then a else 1) with no connection to an actual GCD property.
-    The ensures clauses just ask the result to match this hardcoded function.
-  issues-with-implementation: Trivially copies the spec function's case split.
-    Not a GCD algorithm.
+    The ensures clauses just ask the result to match this hardcoded function.'
+  issues-with-implementation: '[None] Trivially copies the spec function''s case split.
+    Not a GCD algorithm.'
   id: VA0190
 - file: apps_test_449.rs
   llm: claude-opus-4.1
-  issues-with-spec: None, the only difference is that int is narrowed to i8 (this isneeded as int is only a verus type and cannot be used in a rust function). Both ensures clauses preserved. min_bills formula
-    identical. 
-  issues-with-implementation: None. Correct greedy change algorithm.
+  issues-with-spec: '[None] None, the only difference is that int is narrowed to i8 (this is needed as int is only a verus type and cannot be used in a rust function). Both ensures clauses preserved. min_bills formula
+    identical.'
+  issues-with-implementation: '[None] Correct greedy change algorithm.'
   id: VA0083
 - file: apps_test_1576.rs
   llm: claude-opus-4.1
-  issues-with-spec: None. Types narrowed (string -> Vec<char>).
+  issues-with-spec: '[Weak] Types narrowed (string -> Vec<char>).
     However, the original Dafny spec is trivially satisfiable:
-    it specifies that output length equals input length without any notion of decryption.
-  issues-with-implementation: Finds the trivial solution (copies input), which satisfies
-    the weak length-only spec.
+    it specifies that output length equals input length without any notion of decryption.'
+  issues-with-implementation: '[None] Finds the trivial solution (copies input), which satisfies
+    the weak length-only spec.'
   id: VA0306
 - file: apps_test_4443.rs
   llm: claude-sonnet-4
-  issues-with-spec: None. Types narrowed (string -> Vec<char>, int -> i8).
+  issues-with-spec: '[None] Types narrowed (string -> Vec<char>, int -> i8).
     All preamble functions (valid_input, next_char, valid_output) and the ensures
-    clause faithfully translated.
-  issues-with-implementation: None. Correct implementation.
+    clause faithfully translated.'
+  issues-with-implementation: '[None] Correct implementation.'
   id: VA0580
 - file: apps_test_4261.rs
   llm: claude-sonnet-4
-  issues-with-spec: '!!! Postconditions lost in transpilation. Types narrowed
+  issues-with-spec: '[Weak] Postconditions lost in transpilation. Types narrowed
     (string -> Vec<i8>). The Dafny spec requires parsing 3 space-separated integers
     and ensures output == IntToString(RemainingWater(a,b,c)) + newline. The Verus spec
     only has requires input.len() > 0 with no ensures whatsoever. Preamble functions
-    (valid_input, remaining_water) are present but unused in the spec !!!'
-  issues-with-implementation: LLM adds helper lemmas and implements the algorithm
-    correctly, but verification is vacuous due to missing postconditions.
+    (valid_input, remaining_water) are present but unused in the spec.'
+  issues-with-implementation: '[None] LLM adds helper lemmas and implements the algorithm
+    correctly, but verification is vacuous due to missing postconditions.'
   id: VA0514

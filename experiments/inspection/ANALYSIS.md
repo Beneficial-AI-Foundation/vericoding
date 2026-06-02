@@ -12,19 +12,19 @@ For each language (Dafny, Lean, Verus) and benchmark, 5 vericoding outputs were 
 
 | Classification | Count | Percentage |
 |----------------|-------|------------|
-| **[None]** | 87 | 72.5% |
-| **[Leak]** | 14 | 11.7% |
-| **[Weak]** | 13 | 10.8% |
-| **[Mistranslated]** | 6 | 5.0% |
+| **[None]** | 81 | 67.5% |
+| **[Leak]** | 15 | 12.5% |
+| **[Weak]** | 17 | 14.2% |
+| **[Mistranslated]** | 7 | 5.8% |
 | **Total** | 120 | 100% |
 
 ## Implementation Classification Summary
 
 | Classification | Count | Percentage |
 |----------------|-------|------------|
-| **[None]** | 92 | 76.7% |
-| **[Extra]** | 10 | 8.3% |
-| **[Others]** | 18 | 15.0% |
+| **[None]** | 103 | 85.8% |
+| **[Extra]** | 7 | 5.8% |
+| **[Others]** | 10 | 8.3% |
 | **Total** | 120 | 100% |
 
 ## Classification Definitions
@@ -134,29 +134,29 @@ Other issues with the implementation. Examples include:
 
 | Benchmark | [None] | [Leak] | [Weak] | [Mistranslated] |
 |-----------|--------|--------|--------|-----------------|
-| apps | 5 | 0 | 0 | 0 |
+| apps | 2 | 1 | 2 | 0 |
 | bignum | 3 | 0 | 0 | 2 |
-| dafnybench | 5 | 0 | 0 | 0 |
+| dafnybench | 4 | 0 | 0 | 1 |
 | humaneval | 3 | 0 | 0 | 2 |
-| numpy_simple | 5 | 0 | 0 | 0 |
+| numpy-simple | 3 | 0 | 2 | 0 |
 | numpy_triple | 1 | 0 | 3 | 1 |
 | verified-cogen | 5 | 0 | 0 | 0 |
 | verina | 4 | 0 | 1 | 0 |
-| **Total** | **31** | **0** | **4** | **5** |
+| **Total** | **25** | **1** | **8** | **6** |
 
 #### Verus Implementation Issues
 
 | Benchmark | [None] | [Extra] | [Others] |
 |-----------|--------|---------|----------|
-| apps | 1 | 1 | 3 |
+| apps | 5 | 0 | 0 |
 | bignum | 2 | 0 | 3 |
-| dafnybench | 2 | 0 | 3 |
+| dafnybench | 5 | 0 | 0 |
 | humaneval | 5 | 0 | 0 |
-| numpy_simple | 1 | 2 | 2 |
+| numpy-simple | 5 | 0 | 0 |
 | numpy_triple | 5 | 0 | 0 |
 | verified-cogen | 5 | 0 | 0 |
 | verina | 5 | 0 | 0 |
-| **Total** | **26** | **3** | **11** |
+| **Total** | **37** | **0** | **3** |
 
 ## Key Findings
 
@@ -166,7 +166,7 @@ Other issues with the implementation. Examples include:
 - This is a characteristic of how Lean specs were written, not a transpilation issue
 
 ### 2. Mistranslated Specs are Most Common in Verus
-- 5 out of 40 Verus samples (12.5%) have mistranslated specs
+- 6 out of 40 Verus samples (15%) have mistranslated specs
 - Primary causes:
   - Type system differences (Float → i32)
   - Return type changes (adding Option wrappers)
@@ -178,7 +178,7 @@ Other issues with the implementation. Examples include:
 
 ### 4. Implementation Issues by Language
 - **Lean has fewest implementation issues**: 38/40 (95%) have no issues
-- **Verus has most [Others] issues**: 11/40 (27.5%) - verbose proofs, overly restrictive preconditions, external_body usage
+- **Verus [Others] issues reduced**: 5/40 (12.5%) - verbose proofs, overly restrictive preconditions, external_body usage
 - **Dafny has some [Extra] issues**: 5/40 (12.5%) - unused helpers and lemmas
 
 ### 5. Notable Problem Patterns

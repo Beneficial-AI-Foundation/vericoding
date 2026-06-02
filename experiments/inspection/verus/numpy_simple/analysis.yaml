@@ -1,49 +1,30 @@
-benchmark: numpy_simple
+benchmark: numpy-simple
 language: verus
-is-transpiled: false
+is-transpiled: true
 checking-successes: true
 files-sampled:
-- file: 3_NpBitwiseOr-spec_impl_gemini.rs
-  llm: gemini
-  id: VS0006
-  issues-with-spec: '[None] Element-wise bitwise OR on u8 vectors. Spec ensures result
-    length matches and each element is a[i] | b[i] (cast to u32 for comparison). The
-    u32 cast in postcondition is slightly odd but works.'
-  issues-with-implementation: '[Extra] Helper or_u8_u32 is defined but not used in implementation
-    or spec verification. Loop with explicit assertions connecting exec indexing to
-    spec view (@). Verbose but correct.'
-- file: 4_NpBitwiseXor-spec_impl_claude-opus.rs
-  llm: claude-opus
-  id: VS0007
-  issues-with-spec: '[None] Element-wise bitwise XOR on u8 vectors. Requires a.len()
-    > 0 which is unnecessary for element-wise ops on equal-length arrays. Spec is
-    otherwise correct.'
-  issues-with-implementation: '[Others] Clean loop implementation. The a.len() > 0 precondition
-    is overly restrictive - empty arrays should be valid input. Otherwise correct.'
-- file: 10_NpGreater-spec_impl_claude-sonnet.rs
-  llm: claude-sonnet
-  id: VS0022
-  issues-with-spec: '[None] Element-wise greater-than comparison (a > b) returning
-    Vec<bool>. Uses i32 widening in postcondition which is correct for i8 comparison.'
-  issues-with-implementation: '[Extra] lemma_usize_lt_implies_int_lt is defined but assertion
-    achieves same thing inline. Proof block has redundant assertions. Loop is correct
-    with proper invariants.'
-- file: 13_NpIsclose-spec_impl_gemini.rs
-  llm: gemini
-  id: VS0028
-  issues-with-spec: '[None] np_isclose: checks if |a[i] - b[i]| < tol (strict inequality).
-    Uses int arithmetic in spec to avoid overflow. Requires a.len() > 0 which is unnecessarily
-    restrictive. tol > 0 is correctly required.'
-  issues-with-implementation: '[Others] Helper is_close_i8 uses i16 widening to avoid overflow
-    - correct approach. Loop invariant mirrors spec. Clean implementation but could
-    allow empty arrays.'
-- file: 22_NpTranspose-spec_impl_gemini.rs
-  llm: gemini
-  id: VS0054
-  issues-with-spec: '[None] Matrix transpose: ret[j][i] = arr[i][j]. Spec functions
-    matrix_get, matrix_rows, matrix_cols, matrix_size defined. Requires uniform row
-    lengths (all rows same length as first row). Postconditions ensure dimensions
-    and element transposition.'
-  issues-with-implementation: '[None] Nested loops building transposed matrix row by row.
-    Inner loop builds new_row, outer loop assembles result. Invariants include matrix_size
-    tracking. Well-structured with comprehensive invariants. Correct implementation.'
+- id: VS0024
+  file: NpHistogram-spec.rs
+  llm: claude-opus-4.1
+  issues-with-spec: '[Weak] Trivialized in transpilation. Helper and main function not adequately separated.'
+  issues-with-implementation: '[None] Vericoding solution is faithful to bad spec.'
+- id: VS0037
+  file: NpNotEqual-spec.rs
+  llm: claude-opus-4.1
+  issues-with-spec: '[None] Unmodified.'
+  issues-with-implementation: '[None]'
+- id: VS0040
+  file: NpPolyder-spec.rs
+  llm: claude-opus-4.1
+  issues-with-spec: '[Weak] Trivialized in transpilation. Any vector of acceptable length satisfies the spec.'
+  issues-with-implementation: '[None] Vericoding solution is faithful to bad spec.'
+- id: VS0018
+  file: NpEqual-spec.rs
+  llm: claude-opus-4.1
+  issues-with-spec: '[None] Unmodified.'
+  issues-with-implementation: '[None]'
+- id: VS0031
+  file: NpLess-spec.rs
+  llm: claude-opus-4.1
+  issues-with-spec: '[None] Unmodified.'
+  issues-with-implementation: '[None]'
