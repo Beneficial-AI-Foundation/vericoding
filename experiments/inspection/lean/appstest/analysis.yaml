@@ -3,29 +3,29 @@ language: lean
 is-transpiled: false
 checking-successes: true
 files-sampled:
-- file: apps_test_4676.lean
+- file: apps_test_4676_impl_claude-sonnet.lean
   llm: claude-sonnet-4
   issues-with-spec: '[Leak] Spec can be used as implementation'
   issues-with-implementation: '[None]'
   id: LA0651
-- file: apps_test_228.lean
+- file: apps_test_228_impl_claude-opus.lean
   llm: claude-opus-4.1
   issues-with-spec: '[None]'
   issues-with-implementation: '[None]'
   id: LA0059
-- file: apps_test_4310.lean
+- file: apps_test_4310_impl_glm.lean
   llm: glm-4.5
   issues-with-spec: '[Leak] Spec can be used as implementation'
   issues-with-implementation: '[None]'
   id: LA0532
-- file: apps_test_985.lean
+- file: apps_test_985_impl_gpt-mini.lean
   llm: gpt-5-mini
   issues-with-spec: '[Leak] Spec can be used as implementation'
   issues-with-implementation: '[None]'
   id: LA0199
-- file: apps_test_2209.lean
+- file: apps_test_2209_impl_claude-sonnet.lean
   llm: claude-sonnet-4
-  issues-with-spec: '[Weak] Maybe there should be additional parts of the spec
-    given the many introduced functions'
+  issues-with-spec: '[Weak] Maybe there should be additional parts of the spec given
+    the many introduced functions'
   issues-with-implementation: '[None]'
   id: LA0402
