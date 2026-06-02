@@ -5,41 +5,41 @@ checking-successes: true
 files-sampled:
 - file: Dafny-Projects_tmp_tmph399drhy_p2_arraySplit_ArraySplit.rs
   llm: claude-sonnet-4
-  issues-with-spec: None. Types narrowed (array<int> -> Vec<i32>).
+  issues-with-spec: '[None] Types narrowed (array<int> -> Vec<i32>).
     Dafny |ensures fresh(b/c)| correctly dropped (Verus uses ownership, not heap
-    references). All 4 remaining ensures preserved.
-  issues-with-implementation: None. Correct split-at-midpoint with loop invariants.
+    references). All 4 remaining ensures preserved.'
+  issues-with-implementation: '[None] Correct split-at-midpoint with loop invariants.'
   id: VD0149
 - file: cmsc433_tmp_tmpe3ob3a0o_dafny_project1_p1-assignment-2_Reverse.rs
   llm: claude-opus-4.1
-  issues-with-spec: None. Types narrowed (array<int> -> &Vec<i32>/Vec<i32>).
+  issues-with-spec: '[None] Types narrowed (array<int> -> &Vec<i32>/Vec<i32>).
     Dafny |ensures fresh(aRev)| correctly dropped. Both ensures (length, element-wise
-    reverse) preserved.
-  issues-with-implementation: None. Correct reverse loop. Output includes the full
-    CMSC433 assignment comments from preamble but this doesn't affect correctness.
+    reverse) preserved.'
+  issues-with-implementation: '[None] Correct reverse loop. Output includes the full
+    CMSC433 assignment comments from preamble but this doesn''t affect correctness.'
   id: VD0539
 - file: Clover_return_seven_M.rs
   llm: gemini-2.5-flash
-  issues-with-spec: The transpiled spec uses |fn M(x: int)| but |int| is a ghost type
+  issues-with-spec: '[Mistranslated] The transpiled spec uses |fn M(x: int)| but |int| is a ghost type
     in Verus, making this invalid for an exec function. The LLM changed it to
     |proof fn M(x: int)| to make it compile. This modifies the function kind
-    (exec -> proof) but preserves the ensures clause |seven == 7|.
-  issues-with-implementation: Returns 7. Trivially correct.
+    (exec -> proof) but preserves the ensures clause |seven == 7|.'
+  issues-with-implementation: '[None] Returns 7. Trivially correct.'
   id: VD0080
 - file: dafny-synthesis_task_id_751_IsMinHeap.rs
   llm: gemini-2.5-pro
-  issues-with-spec: None. Types narrowed (array<int> -> &Vec<i32>).
+  issues-with-spec: '[None] Types narrowed (array<int> -> &Vec<i32>).
     Dafny |requires a != null| transpiled to |requires a.len() > 0|, which is slightly
     stronger (non-empty vs non-null), but Verus references can never be null so the
     null check is unnecessary. Both ensures clauses (forall for true, exists for false)
-    faithfully translated.
-  issues-with-implementation: None. Correct iterative min-heap check with loop
-    invariants and trigger annotations.
+    faithfully translated.'
+  issues-with-implementation: '[None] Correct iterative min-heap check with loop
+    invariants and trigger annotations.'
   id: VD0787
 - file: dafny-exercise_tmp_tmpouftptir_reverse_Reverse.rs
   llm: gemini-2.5-pro
-  issues-with-spec: None. Types narrowed (array<char> -> &Vec<char>/Vec<char>).
+  issues-with-spec: '[None] Types narrowed (array<char> -> &Vec<char>/Vec<char>).
     Dafny |ensures a == old(a)| correctly dropped (Verus |&Vec| guarantees
-    immutability). Both ensures (length, element-wise reverse) preserved.
-  issues-with-implementation: None. Correct reverse loop.
+    immutability). Both ensures (length, element-wise reverse) preserved.'
+  issues-with-implementation: '[None] Correct reverse loop.'
   id: VD0588
