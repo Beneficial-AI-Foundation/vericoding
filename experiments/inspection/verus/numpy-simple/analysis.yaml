@@ -3,28 +3,28 @@ language: verus
 is-transpiled: true
 checking-successes: true
 files-sampled:
-- file: VS0024_vericoded.rs
-  spec: NpHistogram-spec.rs
+- id: VS0024
+  file: NpHistogram-spec.rs
   llm: claude-opus-4.1
   issues-with-spec: '!!!Trivialized in transpilation? Helper and main function not adequately separated!!!'
   issues-with-implementation: 'None, vericoding solution is faithful to bad spec'
-- file: VS0037_vericoded.rs
-  spec: NpNotEqual-spec.rs
+- id: VS0037
+  file: NpNotEqual-spec.rs
   llm: claude-opus-4.1
   issues-with-spec: 'None'
   issues-with-implementation: 'None'
-- file: VS0040_vericoded.rs
-  spec: NpPolyder-spec.rs
+- id: VS0040
+  file: NpPolyder-spec.rs
   llm: claude-opus-4.1
   issues-with-spec: '!!!Trivialized in transpilation. Any vector of acceptable length satisfies the spec.!!!'
   issues-with-implementation: 'None, vericoding solution is faithful to bad spec'
-- file: VS0018_vericoded.rs
-  spec: NpEqual-spec.rs
+- id: VS0018
+  file: NpEqual-spec.rs
   llm: claude-opus-4.1
   issues-with-spec: 'None'
   issues-with-implementation: 'None'
-- file: VS0031_vericoded.rs
-  spec: NpLess-spec.rs
+- id: VS0031
+  file: NpLess-spec.rs
   llm: claude-opus-4.1
   issues-with-spec: 'None'
   issues-with-implementation: 'None'
