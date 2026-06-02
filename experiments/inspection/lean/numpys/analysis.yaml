@@ -3,27 +3,27 @@ language: lean
 is-transpiled: false
 checking-successes: true
 files-sampled:
-- file: NpRightShift-spec.lean
+- file: NpRightShift-spec_impl_gpt-mini.lean
   llm: gpt-5-mini
   issues-with-spec: '[None]'
   issues-with-implementation: '[None]'
   id: LS0046
-- file: NpSign-spec.lean
+- file: NpSign-spec_impl_claude-sonnet.lean
   llm: claude-sonnet-4
   issues-with-spec: '[None]'
   issues-with-implementation: '[None]'
   id: LS0049
-- file: NpEqual-spec.lean
+- file: NpEqual-spec_impl_glm.lean
   llm: glm-4.5
   issues-with-spec: '[None]'
   issues-with-implementation: '[None]'
   id: LS0018
-- file: NpFloorDivide-spec.lean
+- file: NpFloorDivide-spec_impl_glm.lean
   llm: glm-4.5
   issues-with-spec: '[None]'
   issues-with-implementation: '[None]'
   id: LS0020
-- file: NpMultiply-spec.lean
+- file: NpMultiply-spec_impl_gpt.lean
   llm: gpt-5
   issues-with-spec: '[None]'
   issues-with-implementation: '[None]'

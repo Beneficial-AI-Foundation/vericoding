@@ -3,27 +3,27 @@ language: lean
 is-transpiled: false
 checking-successes: true
 files-sampled:
-- file: ModExp_int.lean
+- file: ModExp_int_impl_gpt.lean
   llm: gpt-5
   issues-with-spec: '[Leak] Spec can be used as implementation'
   issues-with-implementation: '[None]'
   id: LB0011
-- file: CompareUnequal.lean
+- file: CompareUnequal_impl_gpt.lean
   llm: gpt-5
   issues-with-spec: '[Leak] Spec can be used as implementation'
   issues-with-implementation: '[None]'
   id: LB0003
-- file: ModExp_int.lean
+- file: ModExp_int_impl_claude-sonnet.lean
   llm: claude-sonnet-4
   issues-with-spec: '[None]'
   issues-with-implementation: '[None]'
   id: LB0011
-- file: Compare.lean
+- file: Compare_impl_claude-opus.lean
   llm: claude-opus-4.1
   issues-with-spec: '[None]'
   issues-with-implementation: '[None]'
   id: LB0002
-- file: ModExpPow2_int.lean
+- file: ModExpPow2_int_impl_gpt-mini.lean
   llm: gpt-5-mini
   issues-with-spec: '[Leak] Spec can be used as implementation'
   issues-with-implementation: '[None]'
