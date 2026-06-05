@@ -26,6 +26,6 @@ files-sampled:
 - file: apps_test_2209_impl_claude-sonnet.lean
   llm: claude-sonnet-4
   issues-with-spec: '[Weak] Maybe there should be additional parts of the spec given
-    the many introduced functions'
+    the many introduced functions. Original Dafny problem has same issue.'
   issues-with-implementation: '[None]'
   id: LA0402

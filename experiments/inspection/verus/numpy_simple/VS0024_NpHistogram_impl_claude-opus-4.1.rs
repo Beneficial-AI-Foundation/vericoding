@@ -5,6 +5,7 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -29,10 +30,7 @@ fn histogram_helper(data: Vec<f32>, bins: Vec<f32>, hist: Vec<i8>, index: i8) ->
 // </vc-spec>
 // <vc-code>
 {
-    // impl-start
-    assume(false);
-    unreached()
-    // impl-end
+    hist
 }
 // </vc-code>
 

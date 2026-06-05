@@ -5,8 +5,9 @@ checking-successes: true
 files-sampled:
 - file: 18_053-add_impl_glm.rs
   llm: glm
-  issues-with-spec: '[Mistranslated] Spec stipulates return type to be an Option,
-    unlike the original Dafny'
+  issues-with-spec: '[None] Spec returns Option unlike original Dafny. This is necessary
+    because Verus requires overflow checking for i32 addition, as there is no unbounded
+    int exec type.'
   issues-with-implementation: '[None]'
   id: VH0055
 - file: 17_052-below-threshold_impl_claude-sonnet.rs
@@ -16,8 +17,9 @@ files-sampled:
   id: VH0054
 - file: 24_062-derivative_impl_claude-sonnet.rs
   llm: claude-sonnet
-  issues-with-spec: '[Mistranslated] Spec stipulates return type to be an Option,
-    unlike the original Dafny'
+  issues-with-spec: '[None] Spec returns Option unlike original Dafny. This is necessary
+    because Verus requires overflow checking for i32 multiplication, as there is no
+    unbounded int exec type.'
   issues-with-implementation: '[None]'
   id: VH0063
 - file: 28_070-strange_sort_list_impl_gpt-mini.rs

@@ -20,12 +20,13 @@ files-sampled:
   id: VT0002
 - file: 52_constants_PZERO_impl_glm.rs
   llm: glm
-  issues-with-spec: '[Weak] Trivialized in transpilation'
+  issues-with-spec: '[None] Original Lean problem has list of
+    properties of zero as post-conditions.'
   issues-with-implementation: '[None]'
   id: VT0086
 - file: 108_mathematical_functions_around_impl_gpt.rs
   llm: gpt
-  issues-with-spec: '[Weak] Inserts requires statement instead of default value.
-    However, both specs admit the same trivial solution regardless'
+  issues-with-spec: '[Weak] Inserts requires statement instead of default value. Original spec does
+    not ensure that entry is rounded to required decimal precision. Admits trivial solution.'
   issues-with-implementation: '[None]'
   id: VT0250
