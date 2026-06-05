@@ -9,8 +9,11 @@ files-sampled:
   issues-with-spec: '[None] Diagonal matrix construction spec is comprehensive with
     8 postconditions covering: diagonal elements, off-diagonal zeros, symmetry, and
     uniqueness of non-zero elements. Some postconditions (4, 6) are commented out
-    (sum-based properties). The spec ensures forall i,j constraints which fully characterize
-    the diagonal matrix.'
+    (sum-based properties), even though they were not commented out in the original
+    Lean problem. This is not a big issue since these extra postconditions do not 
+    affect the correctness of the implementation. The spec ensures forall i,j 
+    constraints which fully characterize the diagonal matrix. The comment in the 
+    preamble was not deleted; in vericoding, we do not allow natural language inputs.'
   issues-with-implementation: '[None] Uses seq comprehension with helper functions
     buildRow and createRow which are well-specified. Clean functional implementation.'
 - file: 104_fft_rfftfreq_impl_deepseek.dfy
@@ -18,17 +21,19 @@ files-sampled:
   id: DT0163
   issues-with-spec: '[None] rfftfreq spec is thorough: ensures correct length (n/2+1),
     first element is 0, each element follows f[i] = i/(d*n), last is Nyquist frequency,
-    and frequencies are monotonically non-decreasing. Good mathematical spec.'
+    and frequencies are monotonically non-decreasing. Strange to add Float as an alias 
+    for real in the translation.'
   issues-with-implementation: '[None] Uses helper function freqVal with supporting
     lemmas (DivPresLe, MonotoneFreqIndices, MonotoneFreqAll) to prove monotonicity.
-    Well-structured proof with appropriate lemma invocation.'
+    Well-structured proof with appropriate lemma invocation. Helper lemma MonotonicExtension
+    is trivial and also not used.'
 - file: 131_io_operations_array_str_impl_gemini.dfy
   llm: gemini
   id: DT0202
   issues-with-spec: '[Weak] ArrayStr spec is weak: only ensures non-empty result,
     bracket structure, and a vague ordering property (exists pos_i, pos_j for elements).
     Does not actually specify that the string representation is correct (i.e., contains
-    the actual values).'
+    the actual values). Original Lean problem also missing this last constraint.'
   issues-with-implementation: '[Others] RealToString helper is a stub (returns "0" or "1" regardless
     of actual value) - this is clearly not a real implementation. The loop invariants
     do not track content correctness, only structural properties.'
@@ -37,7 +42,8 @@ files-sampled:
   id: DT0275
   issues-with-spec: '[None] LessEqual spec is thorough with multiple equivalent formulations
     of the element-wise comparison (result[i] <==> x1[i] <= x2[i]). The redundant
-    postconditions (lines 17-21) are for clarity but logically follow from line 16.'
+    postconditions (lines 17-21) are for clarity but logically follow from line 16. The comment 
+    in the preamble was not deleted; in vericoding, we do not allow natural language inputs.'
   issues-with-implementation: '[None] Standard element-wise comparison loop
     with correct invariants.'
 - file: 290_sorting_searching_bincount_impl_gpt-mini.dfy
@@ -46,6 +52,6 @@ files-sampled:
   issues-with-spec: '[None] BinCount spec uses CountOccurrences defined via set cardinality.
     Spec is correct: result[val] = count of val in input x. Precondition ensures all
     values in x are within [0, max_val].'
-  issues-with-implementation: '[None] Uses seq comprehension with CountOccurrences directly
-    - elegant but relies on Dafny ability to compute set cardinality. Comment indicates
-    iteration 2 fix for type constraints. Implementation is concise.'
+  issues-with-implementation: '[None] Partial leak of spec to implementation, as CountOccurrences 
+    is used directly, which relies on Dafny ability to compute set cardinality. Ideally, 
+    implementation should run through the sequence once and update counts accordingly.'

@@ -12,9 +12,9 @@ For each language (Dafny, Lean, Verus) and benchmark, 5 vericoding outputs were 
 
 | Classification | Count | Percentage |
 |----------------|-------|------------|
-| **[None]** | 81 | 67.5% |
+| **[None]** | 84 | 70.0% |
 | **[Leak]** | 15 | 12.5% |
-| **[Weak]** | 17 | 14.2% |
+| **[Weak]** | 14 | 11.7% |
 | **[Mistranslated]** | 7 | 5.8% |
 | **Total** | 120 | 100% |
 
@@ -22,9 +22,9 @@ For each language (Dafny, Lean, Verus) and benchmark, 5 vericoding outputs were 
 
 | Classification | Count | Percentage |
 |----------------|-------|------------|
-| **[None]** | 103 | 85.8% |
+| **[None]** | 104 | 86.7% |
 | **[Extra]** | 7 | 5.8% |
-| **[Others]** | 10 | 8.3% |
+| **[Others]** | 9 | 7.5% |
 | **Total** | 120 | 100% |
 
 ## Classification Definitions
@@ -47,7 +47,6 @@ Spec has omissions leading to easier or trivial problems. Examples include:
 ### [Mistranslated]
 Type changes or semantic differences from the original spec. Examples include:
 - Float → i32 type changes during transpilation
-- Return type changes (e.g., adding Option wrapper)
 - Superimposes/merges functions incorrectly
 - Logical changes (e.g., `∃ k, x = 2*k` → `x % 2 == 0`)
 
@@ -82,11 +81,11 @@ Other issues with the implementation. Examples include:
 | bignum | 5 | 0 | 0 | 0 |
 | dafnybench | 5 | 0 | 0 | 0 |
 | humaneval | 5 | 0 | 0 | 0 |
-| numpy_simple | 3 | 0 | 2 | 0 |
+| numpy_simple | 3 | 0 | 0 | 2 |
 | numpy_triple | 4 | 0 | 1 | 0 |
 | verified-cogen | 5 | 0 | 0 | 0 |
 | verina | 3 | 1 | 0 | 1 |
-| **Total** | **33** | **1** | **5** | **1** |
+| **Total** | **33** | **1** | **3** | **3** |
 
 #### Dafny Implementation Issues
 
@@ -96,11 +95,11 @@ Other issues with the implementation. Examples include:
 | bignum | 5 | 0 | 0 |
 | dafnybench | 3 | 0 | 2 |
 | humaneval | 2 | 2 | 1 |
-| numpy_simple | 2 | 1 | 2 |
+| numpy_simple | 3 | 1 | 1 |
 | numpy_triple | 4 | 0 | 1 |
 | verified-cogen | 3 | 2 | 0 |
 | verina | 5 | 0 | 0 |
-| **Total** | **28** | **5** | **7** |
+| **Total** | **29** | **5** | **6** |
 
 ### Lean (40 samples)
 
@@ -137,12 +136,12 @@ Other issues with the implementation. Examples include:
 | apps | 2 | 1 | 2 | 0 |
 | bignum | 3 | 0 | 0 | 2 |
 | dafnybench | 4 | 0 | 0 | 1 |
-| humaneval | 3 | 0 | 0 | 2 |
+| humaneval | 5 | 0 | 0 | 0 |
 | numpy-simple | 3 | 0 | 2 | 0 |
-| numpy_triple | 1 | 0 | 3 | 1 |
+| numpy_triple | 2 | 0 | 2 | 1 |
 | verified-cogen | 5 | 0 | 0 | 0 |
 | verina | 4 | 0 | 1 | 0 |
-| **Total** | **25** | **1** | **8** | **6** |
+| **Total** | **28** | **1** | **7** | **4** |
 
 #### Verus Implementation Issues
 
@@ -166,11 +165,11 @@ Other issues with the implementation. Examples include:
 - This is a characteristic of how Lean specs were written, not a transpilation issue
 
 ### 2. Mistranslated Specs are Most Common in Verus
-- 6 out of 40 Verus samples (15%) have mistranslated specs
+- 4 out of 40 Verus samples (10%) have mistranslated specs
 - Primary causes:
   - Type system differences (Float → i32)
-  - Return type changes (adding Option wrappers)
   - Function merging issues in bignum benchmark
+  - Ghost type (`int`) used in exec function context
 
 ### 3. Dafny Has Fewest Issues
 - 33 out of 40 (82.5%) have no spec issues
@@ -178,7 +177,7 @@ Other issues with the implementation. Examples include:
 
 ### 4. Implementation Issues by Language
 - **Lean has fewest implementation issues**: 38/40 (95%) have no issues
-- **Verus [Others] issues reduced**: 5/40 (12.5%) - verbose proofs, overly restrictive preconditions, external_body usage
+- **Verus [Others] issues**: 3/40 (7.5%) - verbose proofs, overly restrictive preconditions, external_body usage
 - **Dafny has some [Extra] issues**: 5/40 (12.5%) - unused helpers and lemmas
 
 ### 5. Notable Problem Patterns
@@ -197,7 +196,6 @@ Some specs are weak enough to permit trivial solutions:
 
 #### Type Mismatches in Transpilation
 - VT0273: Floats change to i32 in transpilation
-- VH0055, VH0063: Return type changed to Option unlike original Dafny
 
 #### Task Function Absent
 Some Verus implementations fail to implement the required function:

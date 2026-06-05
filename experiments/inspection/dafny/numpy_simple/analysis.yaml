@@ -30,18 +30,25 @@ files-sampled:
 - file: 20_NpHistogram-spec_impl_gemini-flash.dfy
   llm: gemini-flash
   id: DS0024
-  issues-with-spec: '[Weak] histogram_helper has weak spec - only ensures result
+  issues-with-spec: '[Mistranslated] histogram_helper has weak spec - only ensures result
     length, not actual histogram correctness. The main histogram method uses assume
-    {:axiom} false which means it is not actually verified. The spec does not relate
-    bin boundaries to count values.'
+    {:axiom} false which means it is not actually verified. The original Lean problem actually 
+    asks for implementations for both the histogram and histogram_helper. The translation should
+    have asked for the histogram method without the histogram_helper. The spec does not relate
+    bin boundaries to count values. The original Lean problem requires the bin boundaries
+    to be totally ordered, but does not ensure that the values are correctly counted.'
   issues-with-implementation: '[Others] Missing loop invariants in histogram_helper - the while
     loops have no invariants, so verification is incomplete. The code computes histogram
     but does not prove anything about correctness.'
 - file: 38_NpShape-spec_impl_deepseek.dfy
   llm: deepseek
   id: DS0048
-  issues-with-spec: '[Weak] ShapeArrays is marked {:axiom} (unverified). ShapeMatrix
-    spec is straightforward - returns [m, n] for a Matrix. The Matrix datatype stores
-    m, n separately from data without consistency check.'
-  issues-with-implementation: '[Others] Implementation is trivial ([a.m, a.n]) and correct for
+  issues-with-spec: '[Mistranslated] The original Lean problem actually has two different 
+    subproblems, one for ShapeArrays and one for Matrix. The translation picked the Matrix
+    subproblem as the main problem. The Matrix object in the original Lean problem is defined
+    as a map from Fin m and Fin n to the entry type α. But in the translation, the Matrix 
+    datatype stores m, n separately from data without consistency check. ShapeArrays is 
+    marked {:axiom} (unverified). ShapeMatrix spec is straightforward - returns [m, n]
+    for a Matrix, but is incorrectly marked {:axiom} (unverified).'
+  issues-with-implementation: '[None] Implementation is trivial ([a.m, a.n]) and correct for
     ShapeMatrix. Note that ShapeArrays has assume {:axiom} making it unverified.'

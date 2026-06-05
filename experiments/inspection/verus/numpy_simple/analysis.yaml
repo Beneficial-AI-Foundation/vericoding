@@ -4,27 +4,27 @@ is-transpiled: true
 checking-successes: true
 files-sampled:
 - id: VS0024
-  file: NpHistogram-spec.rs
+  file: VS0024_NpHistogram_impl_claude-opus-4.1.rs
   llm: claude-opus-4.1
-  issues-with-spec: '[Weak] Trivialized in transpilation. Helper and main function not adequately separated.'
+  issues-with-spec: '[Weak] Helper and main function not adequately separated in original problem.'
   issues-with-implementation: '[None] Vericoding solution is faithful to bad spec.'
 - id: VS0037
-  file: NpNotEqual-spec.rs
+  file: VS0037_NpNotEqual_impl_claude-opus-4.1.rs
   llm: claude-opus-4.1
   issues-with-spec: '[None] Unmodified.'
   issues-with-implementation: '[None]'
 - id: VS0040
-  file: NpPolyder-spec.rs
+  file: VS0040_NpPolyder_impl_claude-opus-4.1.rs
   llm: claude-opus-4.1
-  issues-with-spec: '[Weak] Trivialized in transpilation. Any vector of acceptable length satisfies the spec.'
+  issues-with-spec: '[Weak] Original spec is weak. Any vector of acceptable length satisfies the spec.'
   issues-with-implementation: '[None] Vericoding solution is faithful to bad spec.'
 - id: VS0018
-  file: NpEqual-spec.rs
+  file: VS0018_NpEqual_impl_claude-opus-4.1.rs
   llm: claude-opus-4.1
   issues-with-spec: '[None] Unmodified.'
   issues-with-implementation: '[None]'
 - id: VS0031
-  file: NpLess-spec.rs
+  file: VS0031_NpLess_impl_claude-opus-4.1.rs
   llm: claude-opus-4.1
   issues-with-spec: '[None] Unmodified.'
   issues-with-implementation: '[None]'
