@@ -1,0 +1,77 @@
+vc-description: |-
+  In a network of nodes, each node i is directly connected to another node j if and only if graph[i][j] = 1.
+  Some nodes initial are initially infected by malware.  Whenever two nodes are directly connected and at least one of those two nodes is infected by malware, both nodes will be infected by malware.  This spread of malware will continue until no more nodes can be infected in this manner.
+  Suppose M(initial) is the final number of nodes infected with malware in the entire network, after the spread of malware stops.
+  We will remove one node from the initial list.  Return the node that if removed, would minimize M(initial).  If multiple nodes could be removed to minimize M(initial), return such a node with the smallest index.
+  Note that if a node was removed from the initial list of infected nodes, it may still be infected later as a result of the malware spread.
+
+  Example 1:
+  Input: graph = [[1,1,0],[1,1,0],[0,0,1]], initial = [0,1]
+  Output: 0
+
+  Example 2:
+  Input: graph = [[1,0,0],[0,1,0],[0,0,1]], initial = [0,2]
+  Output: 0
+
+  Example 3:
+  Input: graph = [[1,1,1],[1,1,1],[1,1,1]], initial = [1,2]
+  Output: 1
+
+  Note:
+
+  1 < graph.length = graph[0].length <= 300
+  0 <= graph[i][j] == graph[j][i] <= 1
+  graph[i][i] == 1
+  1 <= initial.length <= graph.length
+  0 <= initial[i] < graph.length
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn min_malware_spread(graph: Vec<Vec<usize>>, initial: Vec<usize>) -> (result: usize)
+      requires 
+          graph.len() > 0,
+          initial.len() > 0,
+          forall|i: int| 0 <= i < initial.len() ==> initial[i] < graph.len(),
+          forall|i: int| 0 <= i < graph.len() ==> graph[i].len() == graph.len(),
+          forall|i: int, j: int| 0 <= i < graph.len() && 0 <= j < graph.len() ==> 
+              graph[i][j] == graph[j][i],
+          forall|i: int| 0 <= i < graph.len() ==> graph[i][i] == 1,
+          forall|i: int, j: int| 0 <= i < graph.len() && 0 <= j < graph.len() ==> 
+              graph[i][j] <= 1,
+      ensures
+          exists|k: int| 0 <= k < initial.len() && initial[k] == result,
+          forall|x: int| 0 <= x < initial.len() ==> result <= initial[x],
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let test_graph1 = vec![vec![1, 1, 0], vec![1, 1, 0], vec![0, 0, 1]];
+      // let test_initial1 = vec![0, 1];
+      // let result1 = min_malware_spread(test_graph1, test_initial1);
+      // println!("Result 1: {}", result1);
+
+      // let test_graph2 = vec![vec![1, 0, 0], vec![0, 1, 0], vec![0, 0, 1]];
+      // let test_initial2 = vec![0, 2];
+      // let result2 = min_malware_spread(test_graph2, test_initial2);
+      // println!("Result 2: {}", result2);
+
+      // let test_graph3 = vec![vec![1, 1, 1], vec![1, 1, 1], vec![1, 1, 1]];
+      // let test_initial3 = vec![1, 2];
+      // let result3 = min_malware_spread(test_graph3, test_initial3);
+      // println!("Result 3: {}", result3);
+  }

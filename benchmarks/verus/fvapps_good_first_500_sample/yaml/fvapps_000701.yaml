@@ -1,0 +1,67 @@
+vc-description: |-
+  All strings in Chefland are beautiful because they are binary strings (a binary string contains only characters '0' and '1'). The beauty of a binary string S is defined as the number of pairs (i, j) (1 ≤ i ≤ j ≤ |S|) such that the substring S_i, S_{i+1}, ..., S_j is special.
+  For a binary string U, let's denote the number of occurrences of the characters '1' and '0' in U by cnt_1 and cnt_0 respectively; then, U is special if cnt_0 = cnt_1 * cnt_1.
+  Today, Chef's friend Araspa is celebrating her birthday. Chef wants to give Araspa the most beautiful binary string he can find. Currently, he is checking out binary strings in a shop, but he needs your help to calculate their beauties. Tell Chef the beauty of each binary string he gives you.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn is_binary_string(s: Seq<char>) -> bool {
+      forall|i: int| 0 <= i < s.len() ==> (s[i] == '0' || s[i] == '1')
+  }
+
+  spec fn count_zeros(s: Seq<char>) -> nat
+      decreases s.len()
+  {
+      if s.len() == 0 {
+          0nat
+      } else {
+          (if s[0] == '0' { 1nat } else { 0nat }) + count_zeros(s.skip(1))
+      }
+  }
+
+  spec fn count_ones(s: Seq<char>) -> nat
+      decreases s.len()
+  {
+      if s.len() == 0 {
+          0nat
+      } else {
+          (if s[0] == '1' { 1nat } else { 0nat }) + count_ones(s.skip(1))
+      }
+  }
+
+  spec fn is_special_substring(s: Seq<char>) -> bool {
+      let cnt_0 = count_zeros(s);
+      let cnt_1 = count_ones(s);
+      cnt_0 == cnt_1 * cnt_1
+  }
+
+vc-spec: |-
+  fn count_special_substrings(s: Vec<char>) -> (result: usize)
+      requires is_binary_string(s@),
+      ensures result <= s.len() * (s.len() + 1) / 2
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+  }
+
+  fn main() {
+      // let result1 = count_special_substrings(vec!['0', '1', '0', '0', '0', '1']);
+      // println!("Result for '010001': {}", result1); // Expected: 4
+      
+      // let result2 = count_special_substrings(vec!['1', '0']);
+      // println!("Result for '10': {}", result2); // Expected: 1
+      
+      // let result3 = count_special_substrings(vec!['1', '1', '0', '0']);
+      // println!("Result for '1100': {}", result3); // Expected: 1
+  }

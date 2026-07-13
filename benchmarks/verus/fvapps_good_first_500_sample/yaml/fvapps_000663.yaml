@@ -1,0 +1,70 @@
+vc-description: |-
+  Rohit collects coins: he has exactly one coin for every year from 1 to n. Naturally, Rohit keeps all the coins in his collection in the order in which they were released. Once Rohit's younger brother made a change — he took all the coins whose release year dated from l to r inclusively and put them in the reverse order. That is, he took a certain segment [l, r] and reversed it. At that, the segment's endpoints did not coincide. For example, if n = 8, then initially Rohit's coins were kept in the order 1 2 3 4 5 6 7 8. If Rohit's younger brother chose the segment [2, 6], then after the reversal the coin order will change to 1 6 5 4 3 2 7 8. Rohit suspects that someone else could have spoilt the permutation after his brother. Help him to find that out. Check if the given permutation can be obtained from the permutation 1 2 … n using exactly one segment reversal. If it is possible, find the segment itself.
+
+  -----Input:-----
+  - The first line contains an integer N which is the number of coins in Rohit's collection. 
+  - The second line contains space-separated n integers which are the spoilt sequence of coins. It is guaranteed that the given sequence is a permutation, i.e. it contains only integers from 1 to n, and every number is used exactly 1 time.
+
+  -----Output:-----
+  If it is impossible to obtain the given permutation from the original one in exactly one action, print 0 0. Otherwise, print two numbers l, r (1 ≤ l < r ≤ n) which are the endpoints of the segment that needs to be reversed to obtain from permutation 1 2 … n the given one.
+
+  -----Constraints-----
+  - $1 \leq N \leq 1000$
+  - $1 \leq A[N] \leq 10^9$
+
+  -----Sample Input:-----
+  8
+  1 6 5 4 3 2 7 8
+
+  -----Sample Output:-----
+  2 6
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(n: usize, seq: Vec<usize>) -> (result: (usize, usize))
+      requires 
+          n > 0,
+          seq.len() == n,
+      ensures
+          (result.0 == 0 && result.1 == 0) || (1 <= result.0 < result.1 <= n),
+  {
+      // impl-start
+      assume(false);
+      (0, 0)
+      // impl-end
+  }
+
+  fn is_valid_after_reverse(seq: Vec<usize>, l: usize, r: usize) -> (result: bool)
+      requires 
+          seq.len() > 0,
+          l > 0,
+          r <= seq.len(),
+          l < r,
+  {
+      // impl-start
+      assume(false);
+      false
+      // impl-end
+  }
+
+vc-code: |-
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let result = solve(8, vec![1, 6, 5, 4, 3, 2, 7, 8]);
+      // println!("{:?}", result);
+      // 
+      // let result2 = solve(4, vec![1, 2, 3, 4]);
+      // println!("{:?}", result2);
+      // 
+      // let result3 = solve(3, vec![3, 2, 1]);
+      // println!("{:?}", result3);
+  }

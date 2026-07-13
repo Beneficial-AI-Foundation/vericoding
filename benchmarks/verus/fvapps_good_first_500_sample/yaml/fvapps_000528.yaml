@@ -1,0 +1,41 @@
+vc-description: |-
+  Chef has just finished the construction of his new garden. He has sown the garden with patches of the most beautiful carpet grass he could find. He has filled it with patches of different color and now he wants to evaluate how elegant his garden is.
+  Chef's garden looks like a rectangular grid of cells with N rows and M columns. So there are N x M cells in total. In each cell Chef planted grass of some color.
+  The elegance of the garden is defined by the number of squares, composed of at least four garden cells, with edges parallel to the sides of the garden, that have four corner cells of the same color.
+  Given the description of Chef's garden, calculate how many such squares exist.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  type Grid = Vec<Vec<char>>;
+
+  fn count_colored_squares(grid: Grid) -> (result: usize)
+      requires grid.len() >= 2,
+      ensures 
+          result <= (grid.len() - 1) * (grid.len() - 1) * 4,
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let test1 = vec![vec!['a', 'a'], vec!['a', 'A']];
+      // let result1 = count_colored_squares(test1);
+      // assert(result1 == 0);
+      
+      // let test2 = vec![vec!['a', 'b', 'a'], vec!['b', 'a', 'b'], vec!['a', 'b', 'a']];
+      // let result2 = count_colored_squares(test2);
+      // assert(result2 == 1);
+      
+      // let test3 = vec![vec!['a', 'a', 'b', 'b'], vec!['a', 'a', 'b', 'b'], vec!['b', 'b', 'a', 'a'], vec!['b', 'b', 'a', 'a']];
+      // let result3 = count_colored_squares(test3);
+      // assert(result3 == 4);
+  }

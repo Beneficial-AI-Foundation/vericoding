@@ -1,0 +1,74 @@
+vc-description: |-
+  There are n engineers numbered from 1 to n and two arrays: speed and efficiency, where speed[i] and efficiency[i] represent the speed and efficiency for the i-th engineer respectively. Return the maximum performance of a team composed of at most k engineers, since the answer can be a huge number, return this modulo 10^9 + 7.
+  The performance of a team is the sum of their engineers' speeds multiplied by the minimum efficiency among their engineers. 
+
+  Example 1:
+  Input: n = 6, speed = [2,10,3,1,5,8], efficiency = [5,4,3,9,7,2], k = 2
+  Output: 60
+  Explanation: 
+  We have the maximum performance of the team by selecting engineer 2 (with speed=10 and efficiency=4) and engineer 5 (with speed=5 and efficiency=7). That is, performance = (10 + 5) * min(4, 7) = 60.
+
+  Example 2:
+  Input: n = 6, speed = [2,10,3,1,5,8], efficiency = [5,4,3,9,7,2], k = 3
+  Output: 68
+  Explanation:
+  This is the same example as the first but k = 3. We can select engineer 1, engineer 2 and engineer 5 to get the maximum performance of the team. That is, performance = (2 + 10 + 5) * min(5, 4, 7) = 68.
+
+  Example 3:
+  Input: n = 6, speed = [2,10,3,1,5,8], efficiency = [5,4,3,9,7,2], k = 4
+  Output: 72
+
+  Constraints:
+
+  1 <= n <= 10^5
+  speed.length == n
+  efficiency.length == n
+  1 <= speed[i] <= 10^5
+  1 <= efficiency[i] <= 10^8
+  1 <= k <= n
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  const MOD: u64 = 1000000007;
+
+  fn max_performance(n: u32, speeds: Vec<u32>, efficiencies: Vec<u32>, k: u32) -> (result: u64)
+      requires 
+          n > 0,
+          speeds.len() == n,
+          efficiencies.len() == n,
+          k > 0,
+          k <= n,
+          forall|i: int| 0 <= i < speeds.len() ==> speeds[i] >= 1 && speeds[i] <= 100000,
+          forall|i: int| 0 <= i < efficiencies.len() ==> efficiencies[i] >= 1 && efficiencies[i] <= 100000000,
+      ensures 
+          result < MOD,
+          exists|max_single: u64| max_single == 
+              (forall|i: int| 0 <= i < speeds.len() ==> 
+                  (speeds[i] as u64) * (efficiencies[i] as u64) <= max_single) &&
+              (exists|j: int| 0 <= j < speeds.len() && 
+                  (speeds[j] as u64) * (efficiencies[j] as u64) == max_single) &&
+              result >= max_single,
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let result1 = max_performance(6, vec![2, 10, 3, 1, 5, 8], vec![5, 4, 3, 9, 7, 2], 2);
+      // println!("Result 1: {}", result1); // Expected: 60
+
+      // let result2 = max_performance(6, vec![2, 10, 3, 1, 5, 8], vec![5, 4, 3, 9, 7, 2], 3);
+      // println!("Result 2: {}", result2); // Expected: 68
+
+      // let result3 = max_performance(6, vec![2, 10, 3, 1, 5, 8], vec![5, 4, 3, 9, 7, 2], 4);
+      // println!("Result 3: {}", result3); // Expected: 72
+  }

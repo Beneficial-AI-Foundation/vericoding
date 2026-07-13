@@ -1,0 +1,59 @@
+vc-description: |-
+  Initially on a notepad only one character 'A' is present. You can perform two operations on this notepad for each step: 
+
+  Copy All: You can copy all the characters present on the notepad (partial copy is not allowed).
+  Paste: You can paste the characters which are copied last time.
+
+  Given a number n. You have to get exactly n 'A' on the notepad by performing the minimum number of steps permitted. Output the minimum number of steps to get n 'A'. 
+
+  Example 1:
+
+  Input: 3
+  Output: 3
+  Explanation:
+  Intitally, we have one character 'A'.
+  In step 1, we use Copy All operation.
+  In step 2, we use Paste operation to get 'AA'.
+  In step 3, we use Paste operation to get 'AAA'.
+
+  Note:
+
+  The n will be in the range [1, 1000].
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn is_prime(n: nat) -> bool {
+      n >= 2 && forall|k: nat| 2 <= k < n ==> #[trigger] (n % k) != 0
+  }
+
+  fn min_steps(n: nat) -> (result: nat)
+      requires n >= 1
+      ensures 
+          result >= 0 &&
+          (n >= 2 ==> result <= n) &&
+          (n == 1 ==> result == 0) &&
+          (n == 2 ==> result == 2) &&
+          (n == 4 ==> result == 4)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // #eval min_steps 3
+      // #eval min_steps 1  
+      // #eval min_steps 9
+  }

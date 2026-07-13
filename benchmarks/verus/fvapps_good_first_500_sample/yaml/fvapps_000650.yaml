@@ -1,0 +1,36 @@
+vc-description: |-
+  Nadaca is a country with N cities. These cities are numbered 1 through N and connected by M bidirectional roads. Each city can be reached from every other city using these roads.
+  Initially, Ryan is in city 1. At each of the following K seconds, he may move from his current city to an adjacent city (a city connected by a road to his current city) or stay at his current city. Ryan also has Q conditions (a1,b1),(a2,b2),…,(aQ,bQ) meaning that during this K-second trip, for each valid i, he wants to be in city ai after exactly bi seconds.
+  Since you are very good with directions, Ryan asked you to tell him how many different trips he could make while satisfying all conditions. Compute this number modulo 10^9 + 7. A trip is a sequence of Ryan's current cities after 1, 2, …, K seconds.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve_path_conditions(n: usize, m: usize, k: usize, roads: Vec<(usize, usize)>, q: usize, conditions: Vec<(usize, usize)>) -> (result: usize)
+      requires
+          n >= 1,
+          k >= 0,
+          q >= 0,
+          roads.len() == m,
+          conditions.len() == q,
+      ensures
+          result >= 0,
+          result < 1000000007,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

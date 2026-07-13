@@ -1,0 +1,68 @@
+vc-description: |-
+  You are given an array consisting of n integers.
+
+  Each position i (1 ≤ i ≤ n) of the array is either locked or unlocked. You can take the values on the unlocked positions, rearrange them in any order and place them back into the unlocked positions. You are not allowed to remove any values, add the new ones or rearrange the values on the locked positions. You are allowed to leave the values in the same order as they were.
+
+  For example, let a = [-1, 1, 3, 2, -2, 1, -4, 0], the underlined positions are locked. You can obtain various arrays by rearranging unlocked positions.
+
+  Let p be a sequence of prefix sums of the array a after the rearrangement. So p_1 = a_1, p_2 = a_1 + a_2, p_3 = a_1 + a_2 + a_3, ..., p_n = a_1 + a_2 + ... + a_n.
+
+  Let k be the maximum j (1 ≤ j ≤ n) such that p_j < 0. If there are no j such that p_j < 0, then k = 0.
+
+  Your goal is to rearrange the values in such a way that k is minimum possible.
+
+  Output the array a after the rearrangement such that the value k for it is minimum possible. If there are multiple answers then print any of them.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn prefix_sum(arr: Seq<i32>, idx: int) -> int
+      decreases idx
+  {
+      if idx <= 0 {
+          0
+      } else if idx > arr.len() {
+          prefix_sum(arr, arr.len() as int)
+      } else {
+          prefix_sum(arr, idx - 1) + arr[(idx - 1) as int]
+      }
+  }
+
+  spec fn multiset_equivalent_except_locked(original: Seq<i32>, result: Seq<i32>, locks: Seq<bool>) -> bool {
+      true
+  }
+
+  spec fn is_valid_rearrangement(original: Seq<i32>, locks: Seq<bool>, result: Seq<i32>) -> bool {
+      &&& original.len() == locks.len()
+      &&& result.len() == original.len()
+      &&& forall|i: int| 0 <= i < locks.len() && locks[i] ==> result[i] == original[i]
+      &&& multiset_equivalent_except_locked(original, result, locks)
+  }
+
+  fn rearrange_array(n: usize, arr: Vec<i32>, can: Vec<bool>) -> (result: Vec<i32>)
+      requires 
+          n == arr.len(),
+          n == can.len(),
+          n > 0,
+      ensures 
+          result.len() == n,
+          is_valid_rearrangement(arr@, can@, result@),
+          forall|i: int| 0 <= i < n as int && can@[i] ==> result@[i] == arr@[i],
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

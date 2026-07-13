@@ -1,0 +1,60 @@
+vc-description: |-
+  Harry Potter has one biscuit and zero rupee in his pocket. He will perform the following operations exactly K times in total, in the order he likes:
+  - Hit his pocket, which magically increases the number of biscuits by one.
+  - Exchange A biscuits to 1 rupee.
+  - Exchange 1 rupee to B biscuits.
+  Find the maximum possible number of biscuits in Harry's pocket after K operations.
+
+  Input is given in the following format:
+  K A B
+
+  Print the maximum possible number of biscuits in Harry's pocket after K operations.
+
+  Constraints:
+  - 1 ≤ K, A, B ≤ 10^9
+  - K, A and B are integers.
+
+  Sample Input:
+  4 2 6
+
+  Sample Output:
+  7
+
+  EXPLANATION:
+  The number of biscuits in Harry's pocket after K operations is maximized as follows:
+  - Hit his pocket. Now he has 2 biscuits and 0 rupee.
+  - Exchange 2 biscuits to 1 rupee in his pocket. Now he has 0 biscuits and 1 rupee.
+  - Hit his pocket. Now he has 1 biscuits and 1 rupee.
+  - Exchange 1 rupee to 6 biscuits. his pocket. Now he has 7 biscuits and 0 rupee.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn harry_biscuits(k: u32, a: u32, b: u32) -> (result: u32)
+      requires a > 0 && b > 0,
+      ensures result >= 1
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let result1 = harry_biscuits(4, 2, 6);
+      // assert(result1 == 7);
+      // let result2 = harry_biscuits(3, 3, 4);
+      // assert(result2 == 4);
+      // let result3 = harry_biscuits(5, 2, 3);
+      // assert(result3 == 6);
+  }

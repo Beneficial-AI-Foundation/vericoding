@@ -1,0 +1,82 @@
+vc-description: |-
+  You are given coins of different denominations and a total amount of money amount. Write a function to compute the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.
+  You may assume that you have an infinite number of each kind of coin.
+
+  Example 1:
+  Input: coins = [1,2,5], amount = 11
+  Output: 3
+  Explanation: 11 = 5 + 5 + 1
+
+  Example 2:
+  Input: coins = [2], amount = 3
+  Output: -1
+
+  Example 3:
+  Input: coins = [1], amount = 0
+  Output: 0
+
+  Example 4:
+  Input: coins = [1], amount = 1
+  Output: 1
+
+  Example 5:
+  Input: coins = [1], amount = 2
+  Output: 2
+
+  Constraints:
+
+  1 <= coins.length <= 12
+  1 <= coins[i] <= 231 - 1
+  0 <= amount <= 104
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn list_min(coins: Seq<u32>) -> u32
+      decreases coins.len()
+  {
+      if coins.len() == 0 {
+          0
+      } else if coins.len() == 1 {
+          coins[0]
+      } else {
+          let x = coins[0];
+          let min_rest = list_min(coins.skip(1));
+          if x < min_rest { x } else { min_rest }
+      }
+  }
+
+vc-spec: |-
+  fn coin_change(coins: Vec<u32>, amount: u32) -> (result: i32)
+      requires 
+          coins.len() > 0,
+          forall|i: int| 0 <= i < coins.len() ==> coins[i] > 0 && coins[i] <= 20,
+      ensures 
+          result >= -1,
+          result != -1 ==> result <= amount,
+          amount == 0 ==> result == 0,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let result1 = coin_change(vec![1, 2, 5], 11);
+      // println!("{}", result1); // Should print 3
+
+      // let result2 = coin_change(vec![2], 3);
+      // println!("{}", result2); // Should print -1
+
+      // let result3 = coin_change(vec![1], 0);
+      // println!("{}", result3); // Should print 0
+  }

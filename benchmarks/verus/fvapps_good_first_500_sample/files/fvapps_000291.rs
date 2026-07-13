@@ -1,0 +1,65 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+spec fn string_to_nat(s: Seq<char>) -> nat
+    decreases s.len()
+{
+    if s.len() == 0 {
+        0
+    } else {
+        let digit = (s[0] as u8 - '0' as u8) as nat;
+        digit * pow(10, (s.len() - 1) as nat) + string_to_nat(s.skip(1))
+    }
+}
+
+spec fn pow(base: nat, exp: nat) -> nat
+    decreases exp
+{
+    if exp == 0 {
+        1
+    } else {
+        base * pow(base, (exp - 1) as nat)
+    }
+}
+
+spec fn valid_digit_string(s: Seq<char>) -> bool {
+    s.len() > 0 && forall|i: int| 0 <= i < s.len() ==> #[trigger] s[i] >= '0' && #[trigger] s[i] <= '9'
+}
+
+fn multiply(a: String, b: String) -> (result: String)
+    requires 
+        valid_digit_string(a@),
+        valid_digit_string(b@),
+    ensures 
+        valid_digit_string(result@),
+        string_to_nat(result@) == string_to_nat(a@) * string_to_nat(b@),
+// </vc-spec>
+// <vc-code>
+{
+    // impl-start
+    assume(false);
+    unreached()
+    // impl-end
+}
+// </vc-code>
+
+
+}
+
+fn main() {
+    // let result1 = multiply("2".to_string(), "3".to_string());
+    // println!("{}", result1); // Should print "6"
+    
+    // let result2 = multiply("123".to_string(), "456".to_string());
+    // println!("{}", result2); // Should print "56088"
+    
+    // let result3 = multiply("0".to_string(), "0".to_string());
+    // println!("{}", result3); // Should print "0"
+}

@@ -1,0 +1,46 @@
+vc-description: |-
+  Lately, Mr. Chanek frequently plays the game Arena of Greed. As the name implies, the game's goal is to find the greediest of them all, who will then be crowned king of Compfestnesia.
+
+  The game is played by two people taking turns, where Mr. Chanek takes the first turn. Initially, there is a treasure chest containing N gold coins. The game ends if there are no more gold coins in the chest. In each turn, the players can make one of the following moves: Take one gold coin from the chest. Take half of the gold coins on the chest. This move is only available if the number of coins in the chest is even.
+
+  Both players will try to maximize the number of coins they have. Mr. Chanek asks your help to find the maximum number of coins he can get at the end of the game if both he and the opponent plays optimally.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  use vstd::arithmetic::power::pow;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn is_pow2(n: nat) -> bool {
+      exists|k: nat| n == pow(2, k)
+  }
+
+  fn solve_arena_of_greed(n: nat) -> (result: nat)
+      requires n > 0,
+      ensures 
+          result <= n,
+          result <= (n + 1) / 2 + n / 2,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0nat
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // Apps difficulty: interview
+      // Assurance level: guarded_and_plausible
+      
+      // Example test cases:
+      // solve_arena_of_greed(5) should return 2
+      // solve_arena_of_greed(6) should return 4  
+      // solve_arena_of_greed(8) should return 5
+  }

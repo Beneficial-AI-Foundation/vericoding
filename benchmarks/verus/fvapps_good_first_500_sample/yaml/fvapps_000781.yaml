@@ -1,0 +1,45 @@
+vc-description: |-
+  Chefina has two sequences A₁, A₂, …, Aₙ and B₁, B₂, …, Bₙ. She views two sequences with length N as identical if, after they are sorted in non-decreasing order, the i-th element of one sequence is equal to the i-th element of the other sequence for each i (1 ≤ i ≤ N).
+  To impress Chefina, Chef wants to make the sequences identical. He may perform the following operation zero or more times: choose two integers i and j (1 ≤ i,j ≤ N) and swap Aᵢ with Bⱼ. The cost of each such operation is min(Aᵢ, Bⱼ).
+  You have to find the minimum total cost with which Chef can make the two sequences identical.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn is_sorted(l: Seq<u32>) -> bool {
+      forall|i: int, j: int| 0 <= i < j < l.len() ==> l[i] <= l[j]
+  }
+
+  spec fn sorted_seq(l: Seq<u32>) -> Seq<u32>;
+
+  spec fn sequences_identical_when_sorted(a: Seq<u32>, b: Seq<u32>) -> bool {
+      sorted_seq(a) =~= sorted_seq(b)
+  }
+
+vc-spec: |-
+  fn solve_sequence_swap(n: usize, a: Vec<u32>, b: Vec<u32>) -> (result: i32)
+      requires 
+          n > 0,
+          a.len() == n,
+          b.len() == n,
+      ensures 
+          result == -1 || result >= 0,
+          (result == -1) ==> !sequences_identical_when_sorted(a@, b@),
+          (result == 0) ==> sequences_identical_when_sorted(a@, b@),
+          (result > 0) ==> sequences_identical_when_sorted(a@, b@),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      -1
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

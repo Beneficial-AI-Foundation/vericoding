@@ -1,0 +1,124 @@
+vc-description: |-
+  Saket loves to play with strings. One day , while he was having fun with Cyclic Permutations of available strings to him, he observed that despite being scarce in numbers Vowels were really clingy.Being clingy means for almost every given string, there was a Cyclic Permutation in which atleast two vowels were together.
+  So he decided to check this property for all the available strings to him. As the number of strings can be very large, help Saket determine whether the given string is clingy or not.
+
+  -----Input:-----
+  The first line of the input contains a single integer T$T$ denoting the number of test cases. The description of T$T$ test cases follows.
+  First line of every test case contains an integer N$N$ denoting the length of the string.
+  Second line contains a string S$S$ of length N$N$, consisting only of uppercase english alphabets.
+
+  -----Output:-----
+  For each test case, print a single line containing "Yes" if any of the cyclic permutations of the string is clingy else print "No".
+
+  -----Constraints-----
+  - 1≤T≤1000$1 \leq T \leq 1000$
+  - 1≤N≤1000$1 \leq N \leq 1000$
+  - String S$S$ consists of only upper case english alphabets.
+
+  -----Subtasks-----
+  - 20 points : 1≤N≤5$1 \leq N \leq 5$
+  - 80 points : Original$Original$ Constraints$Constraints$
+
+  -----Sample Input:-----
+  2
+  5
+  AUXFC
+  6
+  XBCDEF
+
+  -----Sample Output:-----
+  Yes
+
+  No
+
+  -----EXPLANATION:-----
+  Example$Example$ case1:$ case 1: $ One of the cyclic permutation is the original string itself, which has "A" and "U" together.
+  Example$Example$ case2:$ case 2: $     None of the cyclic permutation will have 2 vowels together.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn vowels() -> Set<char> {
+      set!['A', 'E', 'I', 'O', 'U']
+  }
+
+  spec fn is_vowel(c: char) -> bool {
+      vowels().contains(c)
+  }
+
+  spec fn is_uppercase_char(c: char) -> bool {
+      c >= 'A' && c <= 'Z'
+  }
+
+  spec fn has_adjacent_vowels(s: Seq<char>) -> bool 
+      decreases s.len()
+  {
+      if s.len() < 2 {
+          false
+      } else {
+          (is_vowel(s[0]) && is_vowel(s[1])) || has_adjacent_vowels(s.skip(1))
+      }
+  }
+
+  spec fn rotate_string(s: Seq<char>, i: nat) -> Seq<char> {
+      if i >= s.len() {
+          s
+      } else {
+          s.subrange(i as int, s.len() as int) + s.subrange(0, i as int)
+      }
+  }
+
+  spec fn exists_clingy_rotation(s: Seq<char>) -> bool {
+      exists|i: nat| i < s.len() && has_adjacent_vowels(rotate_string(s, i))
+  }
+
+  spec fn all_uppercase(s: Seq<char>) -> bool {
+      forall|i: int| 0 <= i < s.len() ==> is_uppercase_char(s[i])
+  }
+
+  spec fn all_vowels(s: Seq<char>) -> bool {
+      forall|i: int| 0 <= i < s.len() ==> is_vowel(s[i])
+  }
+
+  spec fn all_consonants(s: Seq<char>) -> bool {
+      forall|i: int| 0 <= i < s.len() ==> !is_vowel(s[i])
+  }
+
+vc-spec: |-
+  fn is_clingy(s: Vec<char>) -> (result: bool)
+      requires all_uppercase(s@),
+      ensures 
+          result <==> exists_clingy_rotation(s@),
+          all_vowels(s@) && s@.len() >= 2 ==> result == true,
+          all_consonants(s@) ==> result == false,
+          s@.len() == 1 ==> result == false
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      false
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  /* Apps difficulty: interview */
+  /* Assurance level: unguarded */
+
+  /*
+  fn test_is_clingy() {
+      assert(is_clingy(vec!['A', 'U', 'X', 'F', 'C']));
+      assert(!is_clingy(vec!['X', 'B', 'C', 'D', 'E', 'F']));
+      assert(is_clingy(vec!['A', 'E', 'I', 'O', 'U']));
+  }
+  */
+
+  }
+
+  fn main() {
+      // test_is_clingy();
+  }

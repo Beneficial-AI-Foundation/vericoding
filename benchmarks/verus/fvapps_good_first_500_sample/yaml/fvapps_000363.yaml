@@ -1,0 +1,100 @@
+vc-description: |-
+  Given an input string (s) and a pattern (p), implement regular expression matching with support for '.' and '*'.
+
+  '.' Matches any single character.
+  '*' Matches zero or more of the preceding element.
+
+  The matching should cover the entire input string (not partial).
+
+  Note:
+
+         s could be empty and contains only lowercase letters a-z.
+         p could be empty and contains only lowercase letters a-z, and characters like . or *.
+
+  Example 1:
+
+  Input:
+  s = "aa"
+  p = "a"
+  Output: false
+  Explanation: "a" does not match the entire string "aa".
+
+  Example 2:
+
+  Input:
+  s = "aa"
+  p = "a*"
+  Output: true
+  Explanation: '*' means zero or more of the precedeng element, 'a'. Therefore, by repeating 'a' once, it becomes "aa".
+
+  Example 3:
+
+  Input:
+  s = "ab"
+  p = ".*"
+  Output: true
+  Explanation: ".*" means "zero or more (*) of any character (.)".
+
+  Example 4:
+
+  Input:
+  s = "aab"
+  p = "c*a*b"
+  Output: true
+  Explanation: c can be repeated 0 times, a can be repeated 1 time. Therefore it matches "aab".
+
+  Example 5:
+
+  Input:
+  s = "mississippi"
+  p = "mis*is*p*."
+  Output: false
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn is_match(s: Vec<char>, p: Vec<char>) -> (result: bool)
+      ensures 
+          /* empty pattern matches only empty string */
+          p.len() == 0 ==> (result == (s.len() == 0)),
+          /* dot-star pattern matches everything */
+          (p.len() == 2 && p[0] == '.' && p[1] == '*') ==> result == true,
+          /* self matching */
+          s@ == p@ ==> result == true,
+          /* empty string edge cases */
+          (s.len() == 0 && p.len() == 0) ==> result == true,
+          (s.len() == 0 && p.len() == 2 && p[0] == 'a' && p[1] == '*') ==> result == true,
+          (s.len() > 0 && p.len() == 0) ==> result == false
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      false
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let s1 = vec!['a', 'a'];
+      // let p1 = vec!['a'];
+      // let result1 = is_match(s1, p1);
+      // println!("is_match([a,a], [a]) = {}", result1);
+      
+      // let s2 = vec!['a', 'a'];
+      // let p2 = vec!['a', '*'];
+      // let result2 = is_match(s2, p2);
+      // println!("is_match([a,a], [a,*]) = {}", result2);
+      
+      // let s3 = vec!['a', 'b'];
+      // let p3 = vec!['.', '*'];
+      // let result3 = is_match(s3, p3);
+      // println!("is_match([a,b], [.,*]) = {}", result3);
+  }

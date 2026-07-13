@@ -1,0 +1,125 @@
+vc-description: |-
+  Skier rides on a snowy field. Its movements can be described by a string of characters 'S', 'N', 'W', 'E' (which correspond to $1$ meter movement in the south, north, west or east direction respectively).
+
+  It is known that if he moves along a previously unvisited segment of a path (i.e. this segment of the path is visited the first time), then the time of such movement is $5$ seconds. If he rolls along previously visited segment of a path (i.e., this segment of the path has been covered by his path before), then it takes $1$ second.
+
+  Find the skier's time to roll all the path.
+
+  -----Input-----
+
+  The first line contains an integer $t$ ($1 \le t \le 10^4$) — the number of test cases in the input. Then $t$ test cases follow.
+
+  Each set is given by one nonempty string of the characters 'S', 'N', 'W', 'E'. The length of the string does not exceed $10^5$ characters.
+
+  The sum of the lengths of $t$ given lines over all test cases in the input does not exceed $10^5$.
+
+  -----Output-----
+
+  For each test case, print the desired path time in seconds.
+
+  -----Example-----
+  Input
+  5
+  NNN
+  NS
+  WWEN
+  WWEE
+  NWNWS
+
+  Output
+  15
+  6
+  16
+  12
+  25
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn calculate_ski_time(path: Seq<char>) -> nat
+      decreases path.len()
+  {
+      if path.len() == 0 {
+          0
+      } else {
+          5 // Placeholder - actual implementation would track visited segments
+      }
+  }
+
+  fn calculate_ski_time_exec(path: Seq<char>) -> (result: nat)
+      requires path.len() > 0,
+      ensures 
+          result > 0,
+          result >= path.len(),
+          result <= path.len() * 5,
+          result == calculate_ski_time(path),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+  /* Time should always be positive */
+  proof fn ski_time_positive(path: Seq<char>)
+      requires path.len() > 0,
+      ensures calculate_ski_time(path) > 0,
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  /* Time is at least path length */  
+  proof fn ski_time_lower_bound(path: Seq<char>)
+      requires path.len() > 0,
+      ensures calculate_ski_time(path) >= path.len(),
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  /* Time is at most path length * 5 */
+  proof fn ski_time_upper_bound(path: Seq<char>)
+      requires path.len() > 0,
+      ensures calculate_ski_time(path) <= path.len() * 5,
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  /* Concatenated paths are bounded by sum of individual path times */
+  proof fn ski_time_composition_bound(path1: Seq<char>, path2: Seq<char>)
+      requires path1.len() > 0 && path2.len() > 0,
+      ensures calculate_ski_time(path1.add(path2)) <= calculate_ski_time(path1) + calculate_ski_time(path2),
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  /* Edge cases */
+  proof fn north_direction_time()
+      ensures calculate_ski_time(seq!['N']) == 5,
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  proof fn north_south_time()
+      ensures calculate_ski_time(seq!['N', 'S']) == 6,
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  /* Apps difficulty: interview */
+  /* Assurance level: guarded_and_plausible */
+
+  }
+
+  fn main() {
+      // println!("{}", calculate_ski_time_exec(seq!['N', 'N', 'N']));  // Should output: 15
+      // println!("{}", calculate_ski_time_exec(seq!['N', 'S']));   // Should output: 6
+      // println!("{}", calculate_ski_time_exec(seq!['N', 'W', 'N', 'W', 'S'])); // Should output: 25
+  }

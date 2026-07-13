@@ -1,0 +1,92 @@
+vc-description: |-
+  Given the string croakOfFrogs, which represents a combination of the string "croak" from different frogs, that is, multiple frogs can croak at the same time, so multiple "croak" are mixed. Return the minimum number of different frogs to finish all the croak in the given string.
+  A valid "croak" means a frog is printing 5 letters 'c', 'r', 'o', 'a', 'k' sequentially. The frogs have to print all five letters to finish a croak. If the given string is not a combination of valid "croak" return -1.
+
+  Example 1:
+  Input: croakOfFrogs = "croakcroak"
+  Output: 1 
+  Explanation: One frog yelling "croak" twice.
+
+  Example 2:
+  Input: croakOfFrogs = "crcoakroak"
+  Output: 2 
+  Explanation: The minimum number of frogs is two. 
+  The first frog could yell "crcoakroak".
+  The second frog could yell later "crcoakroak".
+
+  Example 3:
+  Input: croakOfFrogs = "croakcrook"
+  Output: -1
+  Explanation: The given string is an invalid combination of "croak" from different frogs.
+
+  Example 4:
+  Input: croakOfFrogs = "croakcroa"
+  Output: -1
+
+  Constraints:
+
+  1 <= croakOfFrogs.length <= 10^5
+  All characters in the string are: 'c', 'r', 'o', 'a' or 'k'.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn count_char(s: Seq<char>, c: char) -> nat
+      decreases s.len()
+  {
+      if s.len() == 0 {
+          0nat
+      } else {
+          (if s[0] == c { 1nat } else { 0nat }) + count_char(s.skip(1), c)
+      }
+  }
+
+  spec fn is_valid_croak_string(s: Seq<char>) -> bool {
+      let c_count = count_char(s, 'c');
+      let r_count = count_char(s, 'r');
+      let o_count = count_char(s, 'o');
+      let a_count = count_char(s, 'a');
+      let k_count = count_char(s, 'k');
+      
+      c_count == r_count && r_count == o_count && o_count == a_count && a_count == k_count &&
+      s.len() % 5 == 0 &&
+      (s.len() > 0 ==> s[0] == 'c') &&
+      (s.len() > 0 ==> s[s.len() - 1] == 'k')
+  }
+
+  fn min_number_of_frogs(s: &str) -> (result: i32)
+      ensures result >= -1
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+  fn is_valid_croak(s: &str) -> (result: bool)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      false
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // Apps difficulty: interview
+      // Assurance level: guarded_and_plausible
+
+      // println!("{}", min_number_of_frogs("croakcroak"));   // Expected: 1
+      // println!("{}", min_number_of_frogs("crcoakroak"));   // Expected: 2  
+      // println!("{}", min_number_of_frogs("croakcrook"));   // Expected: -1
+  }

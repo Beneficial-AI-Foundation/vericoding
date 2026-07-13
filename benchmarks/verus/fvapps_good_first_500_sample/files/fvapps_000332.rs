@@ -1,0 +1,59 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+spec fn is_ugly_number(x: int) -> bool {
+    x > 0 && exists|a: nat, b: nat, c: nat| x == pow(2int, a) * pow(3int, b) * pow(5int, c)
+}
+
+spec fn pow(base: int, exp: nat) -> int 
+    decreases exp
+{
+    if exp == 0 {
+        1int
+    } else {
+        base * pow(base, (exp - 1) as nat)
+    }
+}
+
+fn nth_ugly_number(n: i32) -> (result: Option<i32>)
+    ensures
+        n <= 0 ==> result.is_none(),
+        n > 0 ==> match result {
+            Some(x) => x > 0 && is_ugly_number(x as int),
+            None => false,
+        },
+        n == 1 ==> result == Some(1i32),
+// </vc-spec>
+// <vc-code>
+{
+    // impl-start
+    if n <= 0 {
+        None
+    } else {
+        assume(false);
+        Some(0i32)
+    }
+    // impl-end
+}
+// </vc-code>
+
+
+}
+
+fn main() {
+    // let result1 = nth_ugly_number(10);
+    // println!("{:?}", result1);
+    
+    // let result2 = nth_ugly_number(1);
+    // println!("{:?}", result2);
+    
+    // let result3 = nth_ugly_number(7);
+    // println!("{:?}", result3);
+}

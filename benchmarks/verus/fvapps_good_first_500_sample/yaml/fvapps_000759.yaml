@@ -1,0 +1,71 @@
+vc-description: |-
+  Given an Integer N, write a program to reverse it.
+
+  -----Input-----
+
+  The first line contains an integer T, total number of testcases. Then follow T lines, each line contains an integer N. 
+
+  -----Output-----
+  For each test case, display the reverse of the given number N, in a new line.
+
+  -----Constraints-----
+  - 1 ≤ T ≤ 1000
+  - 1 ≤ N ≤ 1000000
+
+  -----Example-----
+  Input
+  4
+  12345
+  31203
+  2123
+  2300
+  Output
+  54321
+  30213
+  3212
+  32
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn reverse_numbers(nums: Vec<String>) -> (result: Vec<i32>)
+      ensures result.len() == nums.len()
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+  fn is_palindrome(s: String) -> (result: bool)
+  {
+      // impl-start
+      assume(false);
+      false
+      // impl-end
+  }
+
+vc-code: |-
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // let test_cases = vec!["12345".to_string(), "31203".to_string(), "2123".to_string(), "2300".to_string()];
+      // let result = reverse_numbers(test_cases);
+      // println!("{:?}", result); // Should output [54321, 30213, 3212, 32]
+      
+      // let test_cases2 = vec!["100".to_string(), "200".to_string(), "300".to_string()];
+      // let result2 = reverse_numbers(test_cases2);
+      // println!("{:?}", result2); // Should output [1, 2, 3]
+      
+      // let test_cases3 = vec!["1234".to_string()];
+      // let result3 = reverse_numbers(test_cases3);
+      // println!("{:?}", result3); // Should output [4321]
+  }

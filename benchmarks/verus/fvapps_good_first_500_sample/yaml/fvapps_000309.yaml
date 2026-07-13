@@ -1,0 +1,66 @@
+vc-description: |-
+  We are given S, a length n string of characters from the set {'D', 'I'}. (These letters stand for "decreasing" and "increasing".)
+  A valid permutation is a permutation P[0], P[1], ..., P[n] of integers {0, 1, ..., n}, such that for all i:
+
+  If S[i] == 'D', then P[i] > P[i+1], and;
+  If S[i] == 'I', then P[i] < P[i+1].
+
+  How many valid permutations are there?  Since the answer may be large, return your answer modulo 10^9 + 7.
+
+  Example 1:
+  Input: "DID"
+  Output: 5
+  Explanation: 
+  The 5 valid permutations of (0, 1, 2, 3) are:
+  (1, 0, 3, 2)
+  (2, 0, 3, 1)
+  (2, 1, 3, 0)
+  (3, 0, 2, 1)
+  (3, 1, 2, 0)
+
+  Note:
+
+  1 <= S.length <= 200
+  S consists only of characters from the set {'D', 'I'}.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  const MOD: u32 = 1000000007;
+
+  fn num_perms_di_sequence(s: Vec<u8>) -> (result: u32)
+      requires 
+          s.len() > 0,
+          s.len() <= 200,
+          forall|i: int| 0 <= i < s.len() ==> (s[i] == 68u8 || s[i] == 73u8),
+      ensures 
+          result < MOD,
+          (forall|i: int| 0 <= i < s.len() ==> s[i] == 68u8) ==> result == 1,
+          (forall|i: int| 0 <= i < s.len() ==> s[i] == 73u8) ==> result == 1,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let result1 = num_perms_di_sequence(vec![68u8, 73u8, 68u8]); // "DID"
+      // println!("Result for 'DID': {}", result1); // Expected: 5
+      
+      // let result2 = num_perms_di_sequence(vec![68u8]); // "D"
+      // println!("Result for 'D': {}", result2); // Expected: 1
+      
+      // let result3 = num_perms_di_sequence(vec![73u8, 73u8, 73u8]); // "III"
+      // println!("Result for 'III': {}", result3); // Expected: 1
+  }

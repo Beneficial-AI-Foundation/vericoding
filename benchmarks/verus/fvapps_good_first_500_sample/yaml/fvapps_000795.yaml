@@ -1,0 +1,72 @@
+vc-description: |-
+  Johnny has some difficulty memorizing the small prime numbers. So, his computer science teacher has asked him to play with the following puzzle game frequently.
+  The puzzle is a 3x3 board consisting of numbers from 1 to 9. The objective of the puzzle is to swap the tiles until the following final state is reached:
+  1 2 3
+  4 5 6
+  7 8 9
+
+  At each step, Johnny may swap two adjacent tiles if their sum is a prime number. Two tiles are considered adjacent if they have a common edge.
+  Help Johnny to find the shortest number of steps needed to reach the goal state.
+
+  -----Input-----
+  The first line contains t, the number of test cases (about 50). Then t test cases follow. Each test case consists of a 3x3 table describing a puzzle which Johnny would like to solve.
+  The input data for successive test cases is separated by a blank line.
+
+  -----Output-----
+  For each test case print a single line containing the shortest number of steps needed to solve the corresponding puzzle. If there is no way to reach the final state, print the number -1.
+
+  -----Example-----
+  Input:
+  2
+
+  7 3 2 
+  4 1 5 
+  6 8 9 
+
+  9 8 5 
+  2 4 1 
+  3 7 6  
+
+  Output:
+  6
+  -1
+
+  -----Output details-----
+  The possible 6 steps in the first test case are described in the following figure:
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve_prime_grid_puzzle(grid: Vec<nat>) -> (result: i32)
+      ensures 
+          grid@ == seq![1nat, 2nat, 3nat, 4nat, 5nat, 6nat, 7nat, 8nat, 9nat] ==> result == 0,
+          grid@ == seq![7nat, 3nat, 2nat, 4nat, 1nat, 5nat, 6nat, 8nat, 9nat] ==> result == 6,
+          grid@ == seq![9nat, 8nat, 5nat, 2nat, 4nat, 1nat, 3nat, 7nat, 6nat] ==> result == -1,
+          grid.len() != 9 ==> result == -1,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+  }
+
+  fn main() {
+      // let test1 = vec![7nat, 3nat, 2nat, 4nat, 1nat, 5nat, 6nat, 8nat, 9nat];
+      // println!("{}", solve_prime_grid_puzzle(test1));
+      
+      // let test2 = vec![9nat, 8nat, 5nat, 2nat, 4nat, 1nat, 3nat, 7nat, 6nat];
+      // println!("{}", solve_prime_grid_puzzle(test2));
+      
+      // let test3 = vec![1nat, 2nat, 3nat, 4nat, 5nat, 6nat, 7nat, 8nat, 9nat];
+      // println!("{}", solve_prime_grid_puzzle(test3));
+  }

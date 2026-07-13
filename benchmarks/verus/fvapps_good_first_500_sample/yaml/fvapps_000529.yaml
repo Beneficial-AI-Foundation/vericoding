@@ -1,0 +1,49 @@
+vc-description: |-
+  Ram and Shyam are playing a game of Truth and Dare. In this game, Shyam will ask Ram to perform tasks of two types:
+  - Truth task: Ram has to truthfully answer a question.
+  - Dare task: Ram has to perform a given task.
+  Each task is described by an integer. (If a truth task and a dare task are described by the same integer, they are still different tasks.) You are given four lists of tasks:
+  - T_r,1, T_r,2, ..., T_r,t_r: the truth tasks Ram can perform.
+  - D_r,1, D_r,2, ..., D_r,d_r: the dare tasks Ram can perform.
+  - T_s,1, T_s,2, ..., T_s,t_s: the truth tasks Shyam can ask Ram to perform.
+  - D_s,1, D_s,2, ..., D_s,d_s: the dare tasks Shyam can ask Ram to perform.
+  Note that the elements of these lists are not necessarily distinct, each task may be repeated any number of times in each list.
+  Shyam wins the game if he can find a task Ram cannot perform. Ram wins if he performs all tasks Shyam asks him to. Find the winner of the game.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn contains_all(tr_list: Seq<i32>, ts_list: Seq<i32>) -> bool {
+      forall|t: i32| ts_list.contains(t) ==> tr_list.contains(t)
+  }
+
+  fn can_ram_win(tr_list: Vec<i32>, dr_list: Vec<i32>, ts_list: Vec<i32>, ds_list: Vec<i32>) -> (result: String)
+      ensures
+          (result@ == "yes"@) || (result@ == "no"@),
+          (result@ == "yes"@) <==> (
+              contains_all(tr_list@, ts_list@) && 
+              contains_all(dr_list@, ds_list@)
+          )
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let result1 = can_ram_win(vec![1, 2], vec![1, 3, 2], vec![2], vec![3, 2]);
+      // println!("{}", result1);
+      
+      // let result2 = can_ram_win(vec![1, 2], vec![1, 3, 2], vec![2], vec![3, 2, 4]);
+      // println!("{}", result2);
+      
+      // let result3 = can_ram_win(vec![3, 2, 5], vec![2, 100], vec![2], vec![100]);
+      // println!("{}", result3);
+  }

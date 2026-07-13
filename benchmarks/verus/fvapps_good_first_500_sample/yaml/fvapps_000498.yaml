@@ -1,0 +1,63 @@
+vc-description: |-
+  Given is an undirected connected graph with N vertices numbered 1 to N, and M edges numbered 1 to M.
+  The given graph may contain multi-edges but not self loops.
+  Each edge has an integer label between 1 and N (inclusive).
+  Edge i has a label c_i, and it connects Vertex u_i and v_i bidirectionally.
+  Snuke will write an integer between 1 and N (inclusive) on each vertex (multiple vertices may have the same integer written on them) and then keep only the edges satisfying the condition below, removing the other edges.
+  Condition: Let x and y be the integers written on the vertices that are the endpoints of the edge. Exactly one of x and y equals the label of the edge.
+  We call a way of writing integers on the vertices good if (and only if) the graph is still connected after removing the edges not satisfying the condition above. Determine whether a good way of writing integers exists, and present one such way if it exists.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn is_valid_edge_condition(vertex_labels: Seq<nat>, u: nat, v: nat, edge_label: nat) -> bool {
+      u > 0 && v > 0 && u <= vertex_labels.len() && v <= vertex_labels.len() &&
+      ((vertex_labels[u - 1] == edge_label) != (vertex_labels[v - 1] == edge_label))
+  }
+
+  spec fn count_valid_edges(vertex_labels: Seq<nat>, edges: Seq<(nat, nat, nat)>) -> nat 
+      decreases edges.len()
+  {
+      if edges.len() == 0 {
+          0
+      } else {
+          let (u, v, c) = edges[0];
+          let count_rest = count_valid_edges(vertex_labels, edges.skip(1));
+          if is_valid_edge_condition(vertex_labels, u, v, c) {
+              count_rest + 1
+          } else {
+              count_rest
+          }
+      }
+  }
+
+  fn solve_graph_labeling(n: nat, edges: Vec<(nat, nat, nat)>) -> (result: Vec<nat>)
+      requires 
+          n >= 2,
+          edges.len() >= n - 1,
+          forall|i: int| 0 <= i < edges.len() ==> {
+              let (u, v, c) = #[trigger] edges[i];
+              1 <= u <= n && 1 <= v <= n && 1 <= c <= n && u != v
+          },
+      ensures
+          result.len() == 0 || result.len() == n,
+          result.len() == n ==> forall|i: int| 0 <= i < n ==> 1 <= #[trigger] result[i] <= n,
+          result.len() == n ==> count_valid_edges(result@, edges@) >= n - 1,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

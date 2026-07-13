@@ -1,0 +1,52 @@
+vc-description: |-
+  Karlsson has recently discovered a huge stock of berry jam jars in the basement of the house. More specifically, there were 2n jars of strawberry and blueberry jam.
+
+  All the 2n jars are arranged in a row. The stairs to the basement are exactly in the middle of that row. So when Karlsson enters the basement, he sees exactly n jars to his left and n jars to his right.
+
+  Being the straightforward man he is, he immediately starts eating the jam. In one minute he chooses to empty either the first non-empty jar to his left or the first non-empty jar to his right.
+
+  Finally, Karlsson decided that at the end the amount of full strawberry and blueberry jam jars should become the same.
+
+  Jars are numbered from 1 to 2n from left to right, so Karlsson initially stands between jars n and n+1.
+
+  What is the minimum number of jars Karlsson is required to empty so that an equal number of full strawberry and blueberry jam jars is left?
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve_jams(n: usize, jams: Vec<usize>) -> (result: usize)
+      requires 
+          n > 0,
+          jams.len() == 2 * n,
+          forall|i: int| 0 <= i < jams.len() ==> (jams[i] == 1 || jams[i] == 2),
+      ensures 
+          result >= 0,
+          result <= 2 * n,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // let result1 = solve_jams(6, vec![1, 1, 1, 2, 2, 1, 2, 1, 2, 1, 1, 2]);
+      // println!("{}", result1); // Expected: 6
+      
+      // let result2 = solve_jams(2, vec![1, 2, 1, 2]);
+      // println!("{}", result2); // Expected: 0
+      
+      // let result3 = solve_jams(3, vec![1, 1, 1, 1, 1, 1]);
+      // println!("{}", result3); // Expected: 6
+  }

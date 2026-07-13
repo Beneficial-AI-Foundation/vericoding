@@ -1,0 +1,82 @@
+vc-description: |-
+  Given two words (beginWord and endWord), and a dictionary's word list, find the length of shortest transformation sequence from beginWord to endWord, such that:
+
+         Only one letter can be changed at a time.
+         Each transformed word must exist in the word list. Note that beginWord is not a transformed word.
+
+  Note:
+
+         Return 0 if there is no such transformation sequence.
+         All words have the same length.
+         All words contain only lowercase alphabetic characters.
+         You may assume no duplicates in the word list.
+         You may assume beginWord and endWord are non-empty and are not the same.
+
+  Example 1:
+
+  Input:
+  beginWord = "hit",
+  endWord = "cog",
+  wordList = ["hot","dot","dog","lot","log","cog"]
+
+  Output: 5
+
+  Explanation: As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog",
+  return its length 5.
+
+  Example 2:
+
+  Input:
+  beginWord = "hit"
+  endWord = "cog"
+  wordList = ["hot","dot","dog","lot","log"]
+
+  Output: 0
+
+  Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn chars_differ_by_one(s1: Seq<char>, s2: Seq<char>) -> bool {
+      s1.len() == s2.len() && 
+      (exists|i: int| 0 <= i < s1.len() && 
+       s1[i] != s2[i] && 
+       (forall|j: int| 0 <= j < s1.len() && j != i ==> s1[j] == s2[j]))
+  }
+
+  spec fn word_list_contains(word_list: Seq<Seq<char>>, word: Seq<char>) -> bool {
+      exists|i: int| 0 <= i < word_list.len() && word_list[i] == word
+  }
+
+  fn ladder_length(begin_word: &str, end_word: &str, word_list: &Vec<String>) -> (result: usize)
+      ensures
+          result >= 0,
+          (!word_list_contains(word_list@.map(|i: int, s: String| s@), end_word@)) ==> result == 0,
+          (begin_word@.len() != end_word@.len()) ==> result == 0,
+          (word_list_contains(word_list@.map(|i: int, s: String| s@), end_word@) && 
+           begin_word@.len() == end_word@.len() && 
+           chars_differ_by_one(begin_word@, end_word@)) ==> result == 2
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let result1 = ladder_length("hit", "cog", &vec!["hot".to_string(), "dot".to_string(), "dog".to_string(), "lot".to_string(), "log".to_string(), "cog".to_string()]);
+      // println!("{}", result1); // Should print 5
+      
+      // let result2 = ladder_length("hit", "cog", &vec!["hot".to_string(), "dot".to_string(), "dog".to_string(), "lot".to_string(), "log".to_string()]);
+      // println!("{}", result2); // Should print 0
+      
+      // let result3 = ladder_length("dog", "cog", &vec!["cog".to_string()]);
+      // println!("{}", result3); // Should print 2
+  }

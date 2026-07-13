@@ -1,0 +1,48 @@
+vc-description: |-
+  Being tired of participating in too many Codeforces rounds, Gildong decided to take some rest in a park. He sat down on a bench, and soon he found two rabbits hopping around. One of the rabbits was taller than the other.
+
+  He noticed that the two rabbits were hopping towards each other. The positions of the two rabbits can be represented as integer coordinates on a horizontal line. The taller rabbit is currently on position x, and the shorter rabbit is currently on position y (x < y). Every second, each rabbit hops to another position. The taller rabbit hops to the positive direction by a, and the shorter rabbit hops to the negative direction by b.
+
+  For example, let's say x=0, y=10, a=2, and b=3. At the 1-st second, each rabbit will be at position 2 and 7. At the 2-nd second, both rabbits will be at position 4.
+
+  Gildong is now wondering: Will the two rabbits be at the same position at the same moment? If so, how long will it take? Let's find a moment in time (in seconds) after which the rabbits will be at the same point.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve_rabbits(x: i32, y: i32, a: i32, b: i32) -> (result: i32)
+      requires 
+          x < y,
+          a > 0,
+          b > 0,
+      ensures
+          (result == -1) || (result >= 0 && x + a * result == y - b * result),
+          result == -1 <==> ((y - x) % (a + b) != 0),
+          result >= 0 ==> (result == (y - x) / (a + b)),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let result1 = solve_rabbits(0, 10, 2, 3);
+      // assert(result1 == 2);
+      
+      // let result2 = solve_rabbits(0, 10, 3, 3);
+      // assert(result2 == -1);
+      
+      // let result3 = solve_rabbits(900000000, 1000000000, 1, 9999999);
+      // assert(result3 == 10);
+  }

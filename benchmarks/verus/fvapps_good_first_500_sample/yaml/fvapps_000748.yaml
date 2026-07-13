@@ -1,0 +1,44 @@
+vc-description: |-
+  Indian National Olympiad in Informatics 2012
+  The Republic of Tutaria is celebrating its 37th year of independence. To mark the occasion, the nation is organising a contest where all its N citizens take part. The event has three tracks, a COBOL programming competition, pole vault, and a doughnut-eating competition. Each citizen takes part in these three tracks in the same order—a citizen starts with the programming competition, continues with the pole vault as soon as his or her COBOL masterpiece is ready, and then starts gorging on doughnuts as soon as the pole vault is done.
+  The Supreme Leader of Tutaria closely monitors all citizens and knows the exact amount of time each citizen will take in each of the three tracks. She wants to schedule the event so that it will finish as early as possible. However, the Republic of Tutaria has only one computer, and, as a result, only one person can participate in the COBOL programming event at a time. However, any number of people may simultaneously participate in the pole vault and doughnut-eating competitions.
+  The event works as follows. The Supreme Leader fixes the order in which contestants get access to the computer. At time 0, the first citizen in the list starts writing his or her COBOL program, while the remaining citizens wait for the computer to be free. As soon as the first citizen is done, he or she proceeds to the pole vault, and the second citizen gets the computer for the programming round. In general whenever the computer becomes free, the next citizen gets to use it. Whenever a citizen is done using the computer, he or she proceeds to the pole vault immediately, regardless of what the other citizens are doing. Similarly, whenever a citizen is done with the pole vault, he or she proceeds to the doughnut- eating track immediately, independently of the others. The event ends as soon as all the citizens have finished all the three tracks of the event.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn sum(xs: Seq<nat>) -> nat 
+      decreases xs.len()
+  {
+      if xs.len() == 0 {
+          0
+      } else {
+          xs[0] + sum(xs.skip(1))
+      }
+  }
+
+vc-spec: |-
+  fn find_min_event_time(n: nat, times: Vec<Vec<nat>>) -> (result: nat)
+      requires 
+          n == times.len(),
+          forall|i: int| 0 <= i < times.len() ==> times[i].len() == 3,
+      ensures result >= 0
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+  }
+
+  fn main() {
+      // let result = find_min_event_time(3, vec![vec![18, 7, 6], vec![23, 10, 27], vec![20, 9, 14]]);
+      // println!("Result: {}", result);
+  }

@@ -1,0 +1,63 @@
+vc-description: |-
+  The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.
+  
+  Given an integer n, return the number of distinct solutions to the n-queens puzzle.
+  
+  Example:
+  
+  Input: 4
+  Output: 2
+  Explanation: There are two distinct solutions to the 4-queens puzzle as shown below.
+  [
+   [".Q..",  // Solution 1
+    "...Q",
+    "Q...",
+    "..Q."],
+  
+   ["..Q.",  // Solution 2
+    "Q...",
+    "...Q",
+    ".Q.."]
+  ]
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn total_n_queens_spec(n: usize) -> usize
+  {
+      0  // Placeholder specification
+  }
+
+  fn total_n_queens(n: usize) -> (result: usize)
+      ensures result >= 0 && result == total_n_queens_spec(n)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+  proof fn total_n_queens_nonneg(n: usize)
+      ensures total_n_queens_spec(n) >= 0
+  {
+      assume(false);
+  }
+
+  proof fn total_n_queens_unique(n1: usize, n2: usize)
+      requires n1 == n2
+      ensures total_n_queens_spec(n1) == total_n_queens_spec(n2)
+  {
+      assume(false);
+  }
+
+  }
+
+  fn main() {}

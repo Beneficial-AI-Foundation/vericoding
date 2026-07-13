@@ -1,0 +1,53 @@
+vc-description: |-
+  Phoenix loves beautiful arrays. An array is beautiful if all its subarrays of length k have the same sum. A subarray of an array is any sequence of consecutive elements.
+
+  Phoenix currently has an array a of length n. He wants to insert some number of integers, possibly zero, into his array such that it becomes beautiful. The inserted integers must be between 1 and n inclusive. Integers may be inserted anywhere (even before the first or after the last element), and he is not trying to minimize the number of inserted integers.
+
+  Input: The input consists of multiple test cases. The first line contains an integer t (1 ≤ t ≤ 50) — the number of test cases. The first line of each test case contains two integers n and k (1 ≤ k ≤ n ≤ 100). The second line of each test case contains n space-separated integers (1 ≤ a_i ≤ n) — the array that Phoenix currently has. This array may or may not be already beautiful.
+
+  Output: For each test case, if it is impossible to create a beautiful array, print -1. Otherwise, print two lines. The first line should contain the length of the beautiful array m (n ≤ m ≤ 10^4). You don't need to minimize m. The second line should contain m space-separated integers (1 ≤ b_i ≤ n) — a beautiful array that Phoenix can obtain after inserting some, possibly zero, integers into his array a. You may print integers that weren't originally in array a.
+
+  If there are multiple solutions, print any. It's guaranteed that if we can make array a beautiful, we can always make it with resulting length no more than 10^4.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn count_distinct(l: Seq<u32>) -> nat {
+      l.to_set().len() as nat
+  }
+
+vc-spec: |-
+  fn solve_beautiful_array(n: u32, k: u32, a: Vec<u32>) -> (result: Vec<u32>)
+      requires 
+          n > 0,
+          k > 0,
+          n <= 10,
+          k <= 10,
+          forall|i: int| 0 <= i < a.len() ==> #[trigger] a[i] >= 1 && #[trigger] a[i] <= 10,
+          a.len() > 0,
+          a.len() <= 20,
+      ensures
+          match result.len() {
+              0 => count_distinct(a@) > k,
+              _ => result.len() == n * k &&
+                   (forall|x: u32| a@.contains(x) ==> result@.contains(x)) &&
+                   count_distinct(result@) <= k &&
+                   (forall|i: int| 0 <= i < n && i * k as int + k as int <= result.len() ==> 
+                       #[trigger] result@.subrange(0, k as int) =~= #[trigger] result@.subrange(i * k as int, i * k as int + k as int))
+          }
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

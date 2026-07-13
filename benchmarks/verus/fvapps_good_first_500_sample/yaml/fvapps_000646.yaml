@@ -1,0 +1,43 @@
+vc-description: |-
+  Chef organised a chess tournament, which spanned over M months. There were N players, and player i was rated R_i before the start of the tournament. To see the progress of the players, he noted their rating changes at the end of each month.
+  After the tournament, FIDE asked Chef to find the number of players whose peak rating and peak ranking did not occur in the same month. In other words, Chef was asked to find the ratings and ranking of each player after each of the M months. Then, using this data, he should find the number of players, such that the month in which they achieved their highest rating over all the months, was different from the month in which they achieved their best rank (based on ratings), over all the months. Note that we do not consider the initial rating/ranking, but only the rating and rankings after each of the M months. 
+  For a particular player, if there are multiple peak rating or peak ranking months, Chef was to consider the earliest of them. If multiple players had the same rating at the end of some month, they were to be given the same rank. For example, if there were 5 players, and their ratings at the end of some month were (2600, 2590, 2600, 2600 and 2590), players 1, 3 and 4 were to be given the first rank, while players 2 and 5 should be given the fourth rank.
+  As Chef hates statistics, he asks you, his friend, to help him find this. Can you help Chef?
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve_chess_tournament(n: usize, m: usize, initial_ratings: Vec<usize>, rating_changes: Vec<Vec<i32>>) -> (result: usize)
+      requires
+          n >= 1,
+          m >= 1,
+          initial_ratings.len() == n,
+          rating_changes.len() == n,
+          forall|i: int| 0 <= i < n ==> #[trigger] rating_changes[i].len() == m,
+      ensures
+          result <= n,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // Test cases from the problem
+      // let result1 = solve_chess_tournament(3, 3, vec![2500, 2500, 2520], vec![vec![10, -5, -20], vec![10, 15, 20], vec![-15, 17, 13]]);
+      // assert(result1 == 2);
+      
+      // let result2 = solve_chess_tournament(2, 3, vec![2125, 2098], vec![vec![-20, 10, -10], vec![10, 10, -20]]);
+      // assert(result2 == 2);
+  }

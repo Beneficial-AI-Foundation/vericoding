@@ -1,0 +1,78 @@
+vc-description: |-
+  A string is called a happy prefix if is a non-empty prefix which is also a suffix (excluding itself).
+  Given a string s. Return the longest happy prefix of s .
+  Return an empty string if no such prefix exists.
+
+  Example 1:
+  Input: s = "level"
+  Output: "l"
+  Explanation: s contains 4 prefix excluding itself ("l", "le", "lev", "leve"), and suffix ("l", "el", "vel", "evel"). The largest prefix which is also suffix is given by "l".
+
+  Example 2:
+  Input: s = "ababab"
+  Output: "abab"
+  Explanation: "abab" is the largest prefix which is also suffix. They can overlap in the original string.
+
+  Example 3:
+  Input: s = "leetcodeleet"
+  Output: "leet"
+
+  Example 4:
+  Input: s = "a"
+  Output: ""
+
+  Constraints:
+
+  1 <= s.length <= 10^5
+  s contains only lowercase English letters.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  use vstd::string::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn is_prefix_of(prefix: Seq<char>, s: Seq<char>) -> bool {
+      prefix.len() <= s.len() && 
+      forall|i: int| 0 <= i < prefix.len() ==> prefix[i] == s[i]
+  }
+
+  spec fn is_suffix_of(suffix: Seq<char>, s: Seq<char>) -> bool {
+      suffix.len() <= s.len() && 
+      forall|i: int| 0 <= i < suffix.len() ==> suffix[i] == s[s.len() - suffix.len() + i]
+  }
+
+  fn longest_prefix(s: Vec<char>) -> (result: Vec<char>)
+      requires s.len() > 0,
+      ensures
+          result.len() < s.len(),
+          is_prefix_of(result@, s@),
+          result.len() == 0 || is_suffix_of(result@, s@),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let s1: Vec<char> = "level".chars().collect();
+      // let result1 = longest_prefix(s1);
+      // println!("{:?}", result1);
+      
+      // let s2: Vec<char> = "ababab".chars().collect();
+      // let result2 = longest_prefix(s2);
+      // println!("{:?}", result2);
+      
+      // let s3: Vec<char> = "leetcodeleet".chars().collect();
+      // let result3 = longest_prefix(s3);
+      // println!("{:?}", result3);
+  }

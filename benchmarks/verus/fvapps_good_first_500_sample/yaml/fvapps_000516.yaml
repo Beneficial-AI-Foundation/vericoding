@@ -1,0 +1,65 @@
+vc-description: |-
+  The median of a sequence is the element in the middle of the sequence after it is sorted. For a sequence with even size, the median is the average of the two middle elements of the sequence after sorting. For example, for a sequence A = [1, 3, 3, 5, 4, 7, 11], the median is equal to 4, and for A = [2, 3, 4, 5], the median is equal to (3+4)/2 = 3.5.
+  Fulu is a famous programmer in his country. He wrote the following program (given in pseudocode) for finding the median in a sequence A with length N:
+  read(N)
+  read(A[0], A[1], ..., A[N-1])
+  sort(A)
+  # simultaneously remove elements A[K] and A[N mod K] from the array A
+  # the order of the remaining N-2 elements is unchanged
+  remove(A[K], A[N mod K])
+  return A[(N-2)/2] # integer division
+  
+  The program takes an integer K as a parameter. Fulu can choose this integer arbitrarily between 1 and N-1 inclusive.
+  Little Lima, Fulu's friend, thinks Fulu's program is wrong (as always). As finding one counterexample would be an easy task for Lima (he has already found the sequence A = [34, 23, 35, 514], which is a counterexample for any K ≤ 3), Lima decided to make hacking more interesting. Fulu should give him four parameters S, K, m, M (in addition to N) and Lima should find the lexicographically smallest proper sequence A with length N as a counterexample.
+  We say that a sequence A with length N (0-indexed) is proper if it satisfies the following conditions:
+  - it contains only positive integers
+  - A_0 + A_1 +A_2 + ... + A_{N-1} = S
+  - m ≤ A_i ≤ M for each 0 ≤ i < N
+  - the number returned by Fulu's program, ran with the given parameter K, is different from the correct median of the sequence A
+  Can you help Lima find the lexicographically smallest counterexample or determine that Fulu's program works perfectly for the given parameters?
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+  spec fn list_sum(a: Seq<nat>) -> nat
+      decreases a.len()
+  {
+      if a.len() == 0 {
+          0
+      } else {
+          a[0] + list_sum(a.skip(1))
+      }
+  }
+vc-spec: |-
+  fn find_sequence(n: nat, s: nat, k: nat, m: nat, M: nat) -> (result: Option<Vec<nat>>)
+      requires 
+          n >= 3,
+          n <= 20,
+          k >= 1,
+          k <= 20,
+          m <= 10,
+          M <= 20,
+          s <= 200,
+          m <= M,
+          k <= n - 2,
+          n * m <= s && s <= n * M,
+      ensures 
+          match result {
+              Some(seq) => 
+                  seq.len() == n &&
+                  forall|i: int| 0 <= i < seq.len() ==> m <= seq[i] && seq[i] <= M &&
+                  list_sum(seq@) == s,
+              None => true
+          }
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

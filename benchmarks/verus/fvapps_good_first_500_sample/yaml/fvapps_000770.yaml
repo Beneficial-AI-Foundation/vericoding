@@ -1,0 +1,87 @@
+vc-description: |-
+  Bob has n heap(s) of gravel (initially there are exactly c piece(s) in each). He wants to do m operation(s) with that heaps, each maybe:
+
+  - adding pieces of gravel onto the heaps from u to v, exactly k pieces for each,
+  - or querying "how many pieces of gravel are there in the heap p now?".
+
+  -----Request-----
+  Help Bob do operations of the second type.
+
+  -----Input-----
+
+  - The first line contains the integers n,m,c, respectively.
+  - m following lines, each forms:
+
+  - S u v k to describe an operation of the first type.
+  - Q p to describe an operation of the second type.
+  (Each integer on a same line, or between the characters S, Q and the integers is separated by at least one space character)
+
+  -----Output-----
+  For each operation of the second type, output (on a single line) an integer answering to the respective query (follows the respective Input order).
+
+  -----Example-----Input:
+  7 5 0
+  Q 7
+  S 1 7 1
+  Q 3
+  S 1 3 1
+  Q 3
+  Output:
+  0
+  1
+  2
+
+  -----Limitations-----
+  - 0<n≤106
+  - 0<m≤250 000
+  - 0<u≤v≤n
+  - 0≤c,k≤109
+  - 0<p≤n
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn starts_with_q(s: Seq<char>) -> bool {
+      s.len() > 0 && s[0] == 'Q'
+  }
+
+  spec fn count_query_ops(ops: Seq<Seq<char>>) -> nat
+      decreases ops.len()
+  {
+      if ops.len() == 0 {
+          0
+      } else {
+          let rest_count = count_query_ops(ops.skip(1));
+          if starts_with_q(ops[0]) {
+              rest_count + 1
+          } else {
+              rest_count
+          }
+      }
+  }
+
+  fn fenwick_operations(n: u32, m: u32, c: i64, ops: Vec<String>) -> (results: Vec<i64>)
+      requires 
+          n > 0,
+          m >= 0,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let test_result = fenwick_operations(7, 5, 0, vec!["Q 7".to_string(), "S 1 7 1".to_string(), "Q 3".to_string(), "S 1 3 1".to_string(), "Q 3".to_string()]);
+      // println!("{:?}", test_result);
+  }

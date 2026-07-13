@@ -1,0 +1,95 @@
+vc-description: |-
+  We all know how great ABD aka AB-DE-VILLIERS is. However his team mates were jealous of him and posed a problem for him to solve.The problem description is as follows :
+
+  Given an array of integers,find the length of the largest subarray(contiguous) of the given array with the maximum possible GCD (Greatest Common Divisor).
+
+  For info on GCD ,see this link: https://en.wikipedia.org/wiki/Greatest_common_divisor
+
+  GCD of the subarray is defined as the GCD of all the elements of the subarray.
+  As ABD is not aware of competitive programming he asks your help. Help him!
+
+  -----Input-----
+  First line will contain integer N denoting the size of array.
+
+  Second line will contain N integers denoting array elements.
+
+  -----Output-----
+  The answer as specified in the problem statement .
+
+  -----Constraints-----
+  1 <= N <= 1000000
+
+  1 <= array[i] <=100000000000
+
+  -----Example-----
+  Input:
+  4
+  2 4 8 3
+
+  Output:
+  1
+
+  Explanation
+  GCD of all possible subarrays of the given array are : 2 , 2 , 2 , 1 , 4 , 4, 1 , 8 , 1 , 3
+
+  Largest GCD possible : 8
+
+  Length of the largest subarray with GCD as 8 is 1
+
+  Hence answer is 1 .
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn gcd(a: nat, b: nat) -> nat 
+      decreases b
+  {
+      if b == 0 {
+          a
+      } else {
+          gcd(b, a % b)
+      }
+  }
+
+  spec fn subarray_gcd(arr: Seq<nat>, start: int, end: int) -> nat 
+      decreases end - start
+  {
+      if start >= end || start < 0 || end > arr.len() {
+          0
+      } else if start + 1 == end {
+          arr[start]
+      } else {
+          gcd(arr[start], subarray_gcd(arr, start + 1, end))
+      }
+  }
+
+  fn find_largest_gcd_subarray(n: usize, arr: Vec<nat>) -> (result: usize)
+      requires 
+          n > 0,
+          arr.len() == n,
+          forall|i: int| 0 <= i < n ==> arr[i] > 0
+      ensures
+          result > 0,
+          result <= n
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+  }
+
+  fn main() {
+      // println!("{}", find_largest_gcd_subarray(4, vec![2, 4, 8, 3]));
+      // println!("{}", find_largest_gcd_subarray(5, vec![10, 10, 10, 5, 5]));
+      // println!("{}", find_largest_gcd_subarray(3, vec![6, 12, 6]));
+  }

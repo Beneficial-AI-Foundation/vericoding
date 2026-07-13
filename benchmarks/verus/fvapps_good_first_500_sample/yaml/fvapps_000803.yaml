@@ -1,0 +1,58 @@
+vc-description: |-
+  Chef likes problems which using some math. Now he asks you to solve next one. You have 4 integers, Chef wondering is there non-empty subset which has sum equals 0.
+  
+  -----Input-----
+  The first line of input contains T - number of test cases. 
+  Each of the next T lines containing four pairwise distinct integer numbers - a, b, c, d.
+  
+  -----Output-----
+  For each test case output "Yes", if possible to get 0 by choosing non-empty subset of {a, b, c, d} with sum equal 0, or "No" in another case.
+  
+  -----Constraints-----
+  - 1 ≤ T ≤ 103
+  - -106 ≤ a, b, c, d ≤ 106 
+  
+  -----Example-----
+  Input:
+  3
+  1 2 0 3
+  1 2 4 -1
+  1 2 3 4
+  
+  Output:
+  Yes
+  Yes
+  No
+  
+  -----Explanation-----
+  Example case 1. We can choose subset {0} 
+  Example case 2. We can choose subset {-1, 1}
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn can_get_zero_sum_subset(a: i32, b: i32, c: i32, d: i32) -> (result: &'static str)
+      ensures 
+          result == "Yes" || result == "No",
+          (a == 0 || b == 0 || c == 0 || d == 0) ==> result == "Yes",
+          (a == -b || a == -c || a == -d || b == -c || b == -d || c == -d) ==> result == "Yes",
+          (a > 0 && b > 0 && c > 0 && d > 0) ==> result == "No",
+          (a < 0 && b < 0 && c < 0 && d < 0) ==> result == "No"
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      "No"
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

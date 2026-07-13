@@ -1,0 +1,85 @@
+vc-description: |-
+  Given n orders, each order consist in pickup and delivery services. 
+  Count all valid pickup/delivery possible sequences such that delivery(i) is always after of pickup(i). 
+  Since the answer may be too large, return it modulo 10^9 + 7.
+
+  Example 1:
+  Input: n = 1
+  Output: 1
+  Explanation: Unique order (P1, D1), Delivery 1 always is after of Pickup 1.
+
+  Example 2:
+  Input: n = 2
+  Output: 6
+  Explanation: All possible orders: 
+  (P1,P2,D1,D2), (P1,P2,D2,D1), (P1,D1,P2,D2), (P2,P1,D1,D2), (P2,P1,D2,D1) and (P2,D2,P1,D1).
+  This is an invalid order (P1,D2,P2,D1) because Pickup 2 is after of Delivery 2.
+
+  Example 3:
+  Input: n = 3
+  Output: 90
+
+  Constraints:
+
+  1 <= n <= 500
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  const M: u64 = 1000000007;
+
+vc-spec: |-
+  spec fn count_valid_delivery_orders_spec(n: nat) -> nat
+      decreases n
+  {
+      if n == 0 {
+          0
+      } else if n == 1 {
+          1
+      } else {
+          // This is a placeholder specification - actual combinatorial formula would go here
+          n * count_valid_delivery_orders_spec((n - 1) as nat)
+      }
+  }
+
+  fn count_valid_delivery_orders(n: usize) -> (result: usize)
+      requires n > 0,
+      ensures 
+          result > 0,
+          result == count_valid_delivery_orders_spec(n as nat)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+  proof fn count_valid_delivery_orders_positive(n: usize)
+      requires n > 0,
+      ensures count_valid_delivery_orders_spec(n as nat) > 0
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  proof fn count_valid_delivery_orders_base_case()
+      ensures count_valid_delivery_orders_spec(1) == 1
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+vc-postamble: |-
+  }
+
+  fn main() {
+      // Apps difficulty: interview
+      // Assurance level: guarded_and_plausible
+
+      // assert(count_valid_delivery_orders(1) == 1);
+      // assert(count_valid_delivery_orders(2) == 6);
+      // assert(count_valid_delivery_orders(3) == 90);
+  }

@@ -1,0 +1,47 @@
+vc-description: |-
+  Chef's new hobby is painting, but he learned the fact that it's not easy to paint 2D pictures in a hard way, after wasting a lot of canvas paper, paint and of course time. From now on, he decided to paint 1D pictures only.
+  Chef's canvas is N millimeters long and is initially all white. For simplicity, colors will be represented by an integer between 0 and 105. 0 indicates white. The picture he is envisioning is also N millimeters long and the ith millimeter consists purely of the color Ci. Unfortunately, his brush isn't fine enough to paint every millimeter one by one. The brush is 3 millimeters wide and so it can only paint three millimeters at a time with the same color. Painting over the same place completely replaces the color by the new one. Also, Chef has lots of bottles of paints of each color, so he will never run out of paint of any color.
+  Chef also doesn't want to ruin the edges of the canvas, so he doesn't want to paint any part beyond the painting. This means, for example, Chef cannot paint just the first millimeter of the canvas, or just the last two millimeters, etc.
+  Help Chef by telling him whether he can finish the painting or not with these restrictions.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+  spec fn has_three_consecutive_helper(arr: Seq<i32>, i: int) -> bool {
+      1 <= i < arr.len() - 1 && arr[i-1] == arr[i] && arr[i] == arr[i+1]
+  }
+
+  spec fn has_three_consecutive(arr: Seq<i32>) -> bool {
+      exists|i: int| #[trigger] has_three_consecutive_helper(arr, i)
+  }
+vc-spec: |-
+  fn can_chef_paint(arr: Vec<i32>) -> (result: bool)
+      requires 
+          arr.len() >= 3,
+          forall|i: int| 0 <= i < arr.len() ==> 1 <= arr[i] && arr[i] <= 100000,
+      ensures 
+          result <==> has_three_consecutive(arr@)
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      false
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let test1 = vec![1, 5, 5, 5];
+      // let result1 = can_chef_paint(test1);
+      // println!("{}", if result1 { "Yes" } else { "No" }); // Should print "Yes"
+      
+      // let test2 = vec![1, 1, 1, 5];
+      // let result2 = can_chef_paint(test2);
+      // println!("{}", if result2 { "Yes" } else { "No" }); // Should print "Yes"
+      
+      // let test3 = vec![5, 5, 2];
+      // let result3 = can_chef_paint(test3);
+      // println!("{}", if result3 { "Yes" } else { "No" }); // Should print "No"
+  }

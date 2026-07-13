@@ -1,0 +1,59 @@
+vc-description: |-
+  You have n tiles, where each tile has one letter tiles[i] printed on it.
+  Return the number of possible non-empty sequences of letters you can make using the letters printed on those tiles.
+
+  Example 1:
+  Input: tiles = "AAB"
+  Output: 8
+  Explanation: The possible sequences are "A", "B", "AA", "AB", "BA", "AAB", "ABA", "BAA".
+
+  Example 2:
+  Input: tiles = "AAABBC"
+  Output: 188
+
+  Example 3:
+  Input: tiles = "V"
+  Output: 1
+
+  Constraints:
+
+  1 <= tiles.length <= 7
+  tiles consists of uppercase English letters.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn num_tile_possibilities(s: &str) -> (result: usize)
+      requires 
+          s@.len() >= 1,
+          s@.len() <= 7,
+      ensures 
+          result >= 1,
+          s@.len() == 1 ==> result == 1,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let result1 = num_tile_possibilities("AAB");
+      // println!("Result 1: {}", result1); // Should be 8
+      
+      // let result2 = num_tile_possibilities("AAABBC");
+      // println!("Result 2: {}", result2); // Should be 188
+      
+      // let result3 = num_tile_possibilities("V");
+      // println!("Result 3: {}", result3); // Should be 1
+  }

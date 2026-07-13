@@ -1,0 +1,52 @@
+vc-description: |-
+  Polycarp lives on the coordinate axis Ox and travels from the point x=a to x=b. It moves uniformly rectilinearly at a speed of one unit of distance per minute.
+
+  On the axis Ox at the point x=c the base station of the mobile operator is placed. It is known that the radius of its coverage is r. Thus, if Polycarp is at a distance less than or equal to r from the point x=c, then he is in the network coverage area, otherwise — no. The base station can be located both on the route of Polycarp and outside it.
+
+  Print the time in minutes during which Polycarp will not be in the coverage area of the network, with a rectilinear uniform movement from x=a to x=b. His speed — one unit of distance per minute.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn abs_spec(x: int) -> int {
+      if x >= 0 { x } else { -x }
+  }
+
+  spec fn max_spec(x: int, y: int) -> int {
+      if x >= y { x } else { y }
+  }
+
+  spec fn time_without_coverage_spec(a: int, b: int, c: int, r: int) -> int;
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn time_without_coverage(a: i32, b: i32, c: i32, r: i32) -> (result: i32)
+      ensures 
+          result >= 0,
+          time_without_coverage_spec(a as int, b as int, c as int, r as int) == 
+          time_without_coverage_spec(b as int, a as int, c as int, r as int)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // Apps difficulty: interview
+      // Assurance level: guarded_and_plausible
+
+      // Example test cases:
+      // time_without_coverage(1, 10, 7, 1) should return 7
+      // time_without_coverage(3, 3, 3, 0) should return 0
+      // time_without_coverage(8, 2, 10, 4) should return 4
+  }

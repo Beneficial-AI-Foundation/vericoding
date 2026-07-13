@@ -1,0 +1,68 @@
+vc-description: |-
+  You need to find a string which has exactly K positions in it such that the character at that position comes alphabetically later than the character immediately after it. If there are many such strings, print the one which has the shortest length. If there is still a tie, print the string which comes the lexicographically earliest (would occur earlier in a dictionary).
+
+  Input: The first line contains the number of test cases T. Each test case contains an integer K (≤ 100).
+
+  Output: Output T lines, one for each test case, containing the required string. Use only lower-case letters a-z.
+
+  Sample Input:
+  2
+  1
+  2
+
+  Sample Output:
+  ba
+  cba
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn is_lowercase_letter(c: char) -> bool {
+      let n = c as u32;
+      97 <= n && n <= 122
+  }
+
+  spec fn count_descending_pairs(s: Seq<char>) -> nat 
+      decreases s.len()
+  {
+      if s.len() <= 1 {
+          0
+      } else {
+          let first_pair: nat = if s[0] > s[1] { 1 } else { 0 };
+          first_pair + count_descending_pairs(s.skip(1))
+      }
+  }
+
+vc-spec: |-
+  fn find_k_descending_pairs(k: u32) -> (result: Vec<char>)
+      requires k > 0,
+      ensures 
+          count_descending_pairs(result@) == k,
+          forall|c: char| result@.contains(c) ==> is_lowercase_letter(c),
+          result.len() == k + 1 + (if k > 25 { (k - 26) / 25 + 1 } else { 0 }),
+          forall|c: char| result@.contains(c) ==> (97 <= c as u32 && c as u32 <= 122)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let result1 = find_k_descending_pairs(1);
+      // println!("{:?}", result1.iter().collect::<String>());
+      
+      // let result2 = find_k_descending_pairs(2); 
+      // println!("{:?}", result2.iter().collect::<String>());
+      
+      // let result3 = find_k_descending_pairs(3);
+      // println!("{:?}", result3.iter().collect::<String>());
+  }

@@ -1,0 +1,58 @@
+vc-description: |-
+  Given an unsorted array return whether an increasing subsequence of length 3 exists or not in the array.
+
+  Formally the function should:
+  Return true if there exists i, j, k  
+  such that arr[i] < arr[j] < arr[k] given 0 ≤ i < j < k ≤ n-1 
+  else return false.
+
+  Your algorithm should run in O(n) time complexity and O(1) space complexity.
+
+  Examples:
+  Given [1, 2, 3, 4, 5],
+  return true.
+
+  Given [5, 4, 3, 2, 1],
+  return false.
+
+  Credits:Special thanks to @DjangoUnchained for adding this problem and creating all test cases.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn has_increasing_triplet_spec(nums: Seq<i32>) -> bool {
+      exists|i: int, j: int, k: int| 
+          0 <= i < j && j < k && k < nums.len() &&
+          nums[i] < nums[j] && nums[j] < nums[k]
+  }
+
+  fn has_increasing_triplet(nums: Vec<i32>) -> (result: bool)
+      ensures result == has_increasing_triplet_spec(nums@)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      false
+      // impl-end
+  }
+
+vc-postamble: |-
+  
+  }
+
+  fn main() {
+      // let test1 = vec![1, 2, 3, 4, 5];
+      // println!("{}", has_increasing_triplet(test1));
+      
+      // let test2 = vec![5, 4, 3, 2, 1];
+      // println!("{}", has_increasing_triplet(test2));
+      
+      // let test3 = vec![2, 1, 5, 0, 4, 6];
+      // println!("{}", has_increasing_triplet(test3));
+  }

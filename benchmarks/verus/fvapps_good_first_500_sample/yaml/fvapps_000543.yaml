@@ -1,0 +1,54 @@
+vc-description: |-
+  The city of Siruseri is impeccably planned. The city is divided into a rectangular array of cells with M rows and N columns. Each cell has a metro station. There is one train running left to right and back along each row, and one running top to bottom and back along each column. Each trains starts at some time T and goes back and forth along its route (a row or a column) forever.
+  Ordinary trains take two units of time to go from one station to the next. There are some fast trains that take only one unit of time to go from one station to the next. Finally, there are some slow trains that take three units of time to go from one station the next. You may assume that the halting time at any station is negligible.
+  Here is a description of a metro system with 3 rows and 4 columns:
+  
+  S(1)  F(2)  O(2)  F(4)
+  F(3)    .     .     .     .
+  S(2)    .     .     .     .
+  O(2)    .     .     .     .
+  
+  The label at the beginning of each row/column indicates the type of train (F for fast, O for ordinary, S for slow) and its starting time. Thus, the train that travels along row 1 is a fast train and it starts at time 3. It starts at station (1, 1) and moves right, visiting the stations along this row at times 3, 4, 5 and 6 respectively. It then returns back visiting the stations from right to left at times 6, 7, 8 and 9. It again moves right now visiting the stations at times 9, 10, 11 and 12, and so on. Similarly, the train along column 3 is an ordinary train starting at time 2. So, starting at the station (3,1), it visits the three stations on column 3 at times 2, 4 and 6, returns back to the top of the column visiting them at times 6,8 and 10, and so on.
+  Given a starting station, the starting time and a destination station, your task is to determine the earliest time at which one can reach the destination using these trains.
+  For example suppose we start at station (2,3) at time 8 and our aim is to reach the station (1,1). We may take the slow train of the second row at time 8 and reach (2,4) at time 11. It so happens that at time 11, the fast train on column 4 is at (2,4) travelling upwards, so we can take this fast train and reach (1,4) at time 12. Once again we are lucky and at time 12 the fast train on row 1 is at (1,4), so we can take this fast train and reach (1, 1) at time 15. An alternative route would be to take the ordinary train on column 3 from (2,3) at time 8 and reach (1,3) at time 10. We then wait there till time 13 and take the fast train on row 1 going left, reaching (1,1) at time 15. You can verify that there is no way of reaching (1,1) earlier than that.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve_metro_system(m: usize, n: usize, row_trains: Vec<(usize, usize)>, 
+                        col_trains: Vec<(usize, usize)>, start_x: usize, start_y: usize, 
+                        start_time: usize, end_x: usize, end_y: usize) -> (result: usize)
+      requires 
+          m > 0,
+          n > 0,
+          row_trains.len() > 0,
+          col_trains.len() > 0,
+          start_x <= m,
+          start_y <= n,
+          end_x <= m,
+          end_y <= n,
+      ensures 
+          result >= start_time,
+          (start_x == end_x && start_y == end_y) ==> result == start_time,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // Apps difficulty: interview
+      // Assurance level: unguarded
+  }

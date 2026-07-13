@@ -1,0 +1,57 @@
+vc-description: |-
+  An agent called Cypher is decrypting a message, that contains a composite number n. All divisors of n, which are greater than 1, are placed in a circle. Cypher can choose the initial order of numbers in the circle.
+
+  In one move Cypher can choose two adjacent numbers in a circle and insert their least common multiple between them. He can do that move as many times as needed.
+
+  A message is decrypted, if every two adjacent numbers are not coprime. Note that for such constraints it's always possible to decrypt the message.
+
+  Find the minimal number of moves that Cypher should do to decrypt the message, and show the initial order of numbers in the circle for that.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn get_prime_factors(n: nat) -> Seq<nat> {
+      Seq::empty()
+  }
+
+  fn get_prime_factors_impl(n: u32) -> (result: Vec<u32>)
+      requires n >= 4,
+      ensures forall|x: u32| result@.contains(x) ==> (n % x == 0 && x > 1)
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+  fn solve_cipher(n: u32) -> (result: (Vec<u32>, u32))
+      requires n >= 4 && n <= 10000,
+      ensures
+          forall|x: u32| result.0@.contains(x) ==> (n % x == 0 && x > 1),
+          forall|i: int, j: int| 0 <= i < result.0.len() && 0 <= j < result.0.len() && i != j 
+              ==> result.0[i] != result.0[j],
+          (get_prime_factors(n as nat).len() == 2) ==> (
+              result.1 == 1 &&
+              (exists|x: u32, y: u32, z: u32| 
+                  result.0@.contains(x) && result.0@.contains(y) && result.0@.contains(z) &&
+                  x * y == z)
+          ),
+          (get_prime_factors(n as nat).len() != 2) ==> result.1 == 0
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      (Vec::new(), 0)
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

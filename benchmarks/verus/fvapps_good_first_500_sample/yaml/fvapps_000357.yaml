@@ -1,0 +1,62 @@
+vc-description: |-
+  Find the length of the longest substring T of a given string (consists of lowercase letters only) such that every character in T appears no less than k times.
+
+  Example 1:
+
+  Input:
+  s = "aaabb", k = 3
+
+  Output:
+  3
+
+  The longest substring is "aaa", as 'a' is repeated 3 times.
+
+  Example 2:
+
+  Input:
+  s = "ababbc", k = 2
+
+  Output:
+  5
+
+  The longest substring is "ababb", as 'a' is repeated 2 times and 'b' is repeated 3 times.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn longest_substring_with_k_occurrences(s: Vec<char>, k: usize) -> (result: usize)
+      requires k > 0,
+      ensures
+          result <= s.len(),
+          (s.len() == 1 && k == 1) ==> result == 1,
+          (s.len() == 1 && k > 1) ==> result == 0
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // Apps difficulty: interview
+      // Assurance level: guarded_and_plausible
+
+      // info: 3
+      // println!("{}", longest_substring_with_k_occurrences("aaabb".chars().collect(), 3));
+
+      // info: 5
+      // println!("{}", longest_substring_with_k_occurrences("ababbc".chars().collect(), 2));
+
+      // info: 0
+      // println!("{}", longest_substring_with_k_occurrences("abcdef".chars().collect(), 2));
+  }

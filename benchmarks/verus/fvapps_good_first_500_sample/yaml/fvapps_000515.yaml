@@ -1,0 +1,64 @@
+vc-description: |-
+  Given an integer N. Integers A and B are chosen randomly in the range [1..N]. Calculate the probability that the Greatest Common Divisor(GCD) of A and B equals to B.
+
+  -----Input-----
+  The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows. Each test case consists of a single integer N on a separate line.
+
+  -----Output-----
+  For each test case, output a single line containing probability as an irreducible fraction. 
+
+  -----Example-----
+  Input:
+  3
+  1
+  2
+  3
+
+  Output:
+  1/1
+  3/4
+  5/9
+
+  -----Constraints-----
+
+  1<=T<=103
+
+  1<=N<=109
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn parse_fraction_parts(result: String) -> (u32, u32);
+
+  spec fn gcd_spec(a: u32, b: u32) -> u32;
+
+  fn calc_gcd_prob(n: u32) -> (result: String)
+      requires n > 0 && n <= 1000,
+      ensures 
+          parse_fraction_parts(result).1 > 0,
+          gcd_spec(parse_fraction_parts(result).0, parse_fraction_parts(result).1) == 1,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+  /* Apps difficulty: interview */
+  /* Assurance level: unguarded */
+
+  fn main() {
+      // println!("{}", calc_gcd_prob(1)); // Should output "1/1"
+      // println!("{}", calc_gcd_prob(2)); // Should output "3/4"
+      // println!("{}", calc_gcd_prob(3)); // Should output "5/9"
+  }
+
+  }

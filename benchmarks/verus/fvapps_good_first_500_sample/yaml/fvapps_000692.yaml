@@ -1,0 +1,50 @@
+vc-description: |-
+  The notorious hacker group "Sed" managed to obtain a string S from their secret sources. The string contains only lowercase English letters along with the character '?'.
+  A substring of S is a contiguous subsequence of that string. For example, the string "chef" is a substring of the string "codechef", but the string "codeh" is not a substring of "codechef".
+  A substring of S is good if it is possible to choose a lowercase English letter C such that the following process succeeds:
+  - Create a string R, which is a copy of the substring, but with each '?' replaced by the letter c. Note that all occurrences of '?' must be replaced by the same letter.
+  - For each lowercase English letter:
+  - Compute the number of times it occurs in S and the number of times it occurs in R; let's denote them by A and B respectively. The '?' characters in the original string S are ignored when computing A.
+  - Check the parity of A and B. If they do not have the same parity, i.e. one of them is even while the other is odd, then this process fails.
+  - If the parities of the number of occurrences in S and R are the same for each letter, the process succeeds.
+  For different substrings, we may choose different values of C.
+  Help Sed find the number of good substrings in the string S.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn count_char(s: Seq<char>, c: char) -> nat
+      decreases s.len()
+  {
+      if s.len() == 0 {
+          0nat
+      } else {
+          (if s[0] == c { 1nat } else { 0nat }) + count_char(s.skip(1), c)
+      }
+  }
+
+  spec fn is_good_substring(s: Seq<char>, start: int, end: int) -> bool {
+      0 <= start <= end <= s.len()
+  }
+
+  fn solve(s: Vec<char>) -> (result: usize)
+      requires s.len() > 0,
+      ensures result <= s.len() * (s.len() + 1) / 2
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

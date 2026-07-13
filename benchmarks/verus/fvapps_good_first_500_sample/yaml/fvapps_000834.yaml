@@ -1,0 +1,47 @@
+vc-description: |-
+  You are given a dataset consisting of N items. Each item is a pair of a word and a boolean denoting whether the given word is a spam word or not.
+  We want to use this dataset for training our latest machine learning model. Thus we want to choose some subset of this dataset as training dataset. We want to make sure that there are no contradictions in our training set, i.e. there shouldn't be a word included in the training set that's marked both as spam and not-spam. For example item {"fck", 1}, and item {"fck, 0"} can't be present in the training set, because first item says the word "fck" is a spam, whereas the second item says it is not, which is a contradiction.
+  Your task is to select the maximum number of items in the training set.
+  Note that same pair of {word, bool} can appear multiple times in input. The training set can also contain the same pair multiple times.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn make_word_label(word: String, label: String) -> (result: String)
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+  fn solve_spam_dataset(cases: Vec<Vec<String>>) -> (result: Vec<nat>)
+      ensures result.len() == cases.len()
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let test1 = vec![/* test case 1 data */];
+      // let test2 = vec![/* test case 2 data */];
+      // let test3 = vec![/* test case 3 data */];
+      // 
+      // let result1 = solve_spam_dataset(vec![test1]);
+      // let result2 = solve_spam_dataset(vec![test2]);
+      // let result3 = solve_spam_dataset(vec![test3]);
+      // 
+      // println!("Results: {:?}, {:?}, {:?}", result1, result2, result3);
+  }

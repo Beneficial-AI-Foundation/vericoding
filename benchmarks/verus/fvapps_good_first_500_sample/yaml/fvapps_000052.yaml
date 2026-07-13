@@ -1,0 +1,45 @@
+vc-description: |-
+  Harry Water, Ronaldo, Her-my-oh-knee and their friends have started a new school year at their MDCS School of Speechcraft and Misery. At the time, they are very happy to have seen each other after a long time. The sun is shining, birds are singing, flowers are blooming, and their Potions class teacher, professor Snipe is sulky as usual. Due to his angst fueled by disappointment in his own life, he has given them a lot of homework in Potions class. 
+
+  Each of the n students has been assigned a single task. Some students do certain tasks faster than others. Thus, they want to redistribute the tasks so that each student still does exactly one task, and that all tasks are finished. Each student has their own laziness level, and each task has its own difficulty level. Professor Snipe is trying hard to improve their work ethics, so each student's laziness level is equal to their task's difficulty level. Both sets of values are given by the sequence a, where a_{i} represents both the laziness level of the i-th student and the difficulty of his task. 
+
+  The time a student needs to finish a task is equal to the product of their laziness level and the task's difficulty. They are wondering, what is the minimum possible total time they must spend to finish all tasks if they distribute them in the optimal way. Each person should receive one task and each task should be given to one person. Print the answer modulo 10 007.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn min_time_tasks(n: usize, difficulties: Vec<usize>) -> (result: usize)
+      requires 
+          n > 0,
+          difficulties.len() == n,
+          forall|i: int| 0 <= i < difficulties.len() ==> #[trigger] difficulties[i] >= 1 && #[trigger] difficulties[i] <= 100000,
+      ensures 
+          result < 10007,
+          result >= 0,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let result1 = min_time_tasks(2, vec![1, 3]);
+      // assert(result1 == 6);
+      // 
+      // let result2 = min_time_tasks(3, vec![1, 2, 3]);
+      // assert(result2 == 10);
+      // 
+      // let result3 = min_time_tasks(4, vec![1, 2, 3, 4]);
+      // assert(result3 == 20);
+  }

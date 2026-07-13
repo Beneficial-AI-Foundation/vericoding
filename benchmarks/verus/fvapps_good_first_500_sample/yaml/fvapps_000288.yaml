@@ -1,0 +1,69 @@
+vc-description: |-
+  You are given an array x of n positive numbers. You start at point (0,0) and moves x[0] metres to the north, then x[1] metres to the west,
+      x[2] metres to the south,
+      x[3] metres to the east and so on. In other words, after each move your direction changes
+      counter-clockwise.
+
+      Write a one-pass algorithm with O(1) extra space to determine, if your path crosses itself, or not.
+
+  Example 1:
+
+  Given x = [2, 1, 1, 2],
+  ┌───┐
+  │   │
+  └──→┘>
+      │
+
+  Return true (self crossing)
+
+  Example 2:
+
+  Given x = [1, 2, 3, 4],
+  ┌──────┐
+  │      │
+  │
+  │
+  └─────────>
+
+  Return false (not self crossing)
+
+  Example 3:
+
+  Given x = [1, 1, 1, 1],
+  ┌───┐
+  │   │
+  └──→┘>
+
+  Return true (self crossing)
+
+  Credits:Special thanks to @dietpepsi for adding this problem and creating all test cases.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn is_self_crossing(moves: Vec<i32>) -> (result: bool)
+      requires forall|i: int| 0 <= i < moves.len() ==> moves[i] >= 0,
+      ensures 
+          moves.len() < 4 ==> result == false,
+          (moves.len() == 4 && forall|i: int, j: int| 0 <= i < moves.len() && 0 <= j < moves.len() ==> moves[i] == moves[j] && moves[i] > 0) ==> result == true,
+          (moves.len() == 4 && moves[0] > 0 && moves[1] > 0 && moves[2] > 0 && moves[3] > 0 && moves[0] < moves[1] && moves[1] < moves[2] && moves[2] < moves[3]) ==> result == false,
+          (exists|x: int| 0 <= x < moves.len() && moves[x] < 0) ==> result == false,
+          (moves.len() >= 6 && forall|i: int| #[trigger] moves[i] >= 0 && moves.len() >= 6 && moves[5] >= moves[3] && moves[4] == moves[2]) ==> result == true
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      false
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {
+      // #eval is_self_crossing [2, 1, 1, 2]
+      // #eval is_self_crossing [1, 2, 3, 4]
+      // #eval is_self_crossing [1, 1, 1, 1]
+  }

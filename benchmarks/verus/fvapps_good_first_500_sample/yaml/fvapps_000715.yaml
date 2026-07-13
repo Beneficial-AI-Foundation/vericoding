@@ -1,0 +1,74 @@
+vc-description: |-
+  Chef has N markers. There is a cap on each marker. For each valid i, the i-th marker has colour a_i. Initially, for each valid i, the colour of the cap on the i-th marker is also a_i.
+  Chef wants to rearrange the caps in such a way that no marker has the same colour as its cap. (Obviously, each marker must have exactly one cap.) Can he do that? If he can, find one such way to rearrange the caps. If there are multiple solutions, you may find any one.
+  
+  -----Input-----
+  - The first line of the input contains a single integer T denoting the number of test cases. The description of T test cases follows.
+  - The first line of each test case contains a single integer N.
+  - The second line contains N space-separated integers a_1, a_2, ..., a_N.
+  
+  -----Output-----
+  - For each test case:
+  - If Chef cannot successfully rearrange the caps, print a single line containing the string "No" (without quotes).
+  - Otherwise, print two lines. The first line should contain the string "Yes" (without quotes). The second line should contain N space-separated integers describing a valid rearrangement of caps. For each valid i, the i-th of these integers should denote the final colour of the cap on the i-th marker.
+  
+  -----Constraints-----
+  - 1 ≤ T ≤ 10
+  - 1 ≤ N ≤ 10^5
+  - 1 ≤ a_i ≤ 10^9 for each valid i
+  
+  -----Example Input-----
+  2
+  9
+  1 1 1 2 2 2 3 3 3
+  2
+  1 1
+  
+  -----Example Output-----
+  Yes
+  2 2 2 3 3 3 1 1 1
+  No
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn count_occurrences(nums: Seq<u32>, value: u32) -> nat
+      decreases nums.len()
+  {
+      if nums.len() == 0 {
+          0nat
+      } else {
+          (if nums[0] == value { 1nat } else { 0nat }) + count_occurrences(nums.skip(1), value)
+      }
+  }
+
+  fn rearrange_caps(nums: Vec<u32>) -> (result: Option<Vec<u32>>)
+      ensures 
+          match result {
+              Some(caps) => {
+                  &&& caps.len() == nums.len()
+                  &&& (forall|i: int| 0 <= i < caps.len() ==> caps[i] != nums[i])
+                  &&& (forall|value: u32| count_occurrences(nums@, value) == count_occurrences(caps@, value))
+              },
+              None => {
+                  exists|majority_value: u32| count_occurrences(nums@, majority_value) > nums.len() / 2
+              }
+          }
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      None
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

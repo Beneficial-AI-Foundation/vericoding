@@ -1,0 +1,79 @@
+vc-description: |-
+  Naturally, the magical girl is very good at performing magic. She recently met her master wizard Devu, who gifted her R potions of red liquid, 
+  B potions of blue liquid, and G potions of green liquid.
+
+  The red liquid potions have liquid amounts given by r[1], ..., r[R] liters. 
+
+  The green liquid potions have liquid amounts given by g[1], ..., g[G] liters. 
+
+  The blue liquid potions have liquid amounts given by b[1], ..., b[B] liters. 
+
+  She want to play with the potions by applying magic tricks on them. In a single magic trick, she will choose a particular color. Then she will pick all the potions of the chosen color and decrease the amount of liquid in them to half (i.e. if initial amount 
+  of liquid is x, then the amount after decrement will be x / 2  where division is integer division, e.g. 3 / 2 = 1 and 4 / 2 = 2). 
+
+  Because she has to go out of station to meet her uncle Churu, a wannabe wizard, only M minutes are left for her. In a single minute, she can perform at most one magic trick. Hence, she can perform at most M magic tricks.
+
+  She would like to minimize the maximum amount of liquid among all of Red, Green and Blue colored potions. Formally Let v be the maximum value of amount of liquid in any potion. We want to minimize the value of v.
+  Please help her.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn list_max(l: Seq<nat>) -> nat 
+      decreases l.len()
+  {
+      if l.len() == 0 {
+          0
+      } else if l.len() == 1 {
+          l[0]
+      } else {
+          let rest_max = list_max(l.skip(1));
+          if l[0] > rest_max { l[0] } else { rest_max }
+      }
+  }
+
+vc-spec: |-
+  fn solve_magic_potions(R: nat, G: nat, B: nat, M: nat, r: Vec<nat>, g: Vec<nat>, b: Vec<nat>) -> (result: nat)
+      requires 
+          R > 0,
+          G > 0,
+          B > 0,
+          r.len() == R,
+          g.len() == G,
+          b.len() == B,
+          forall|x: nat| r@.contains(x) || g@.contains(x) || b@.contains(x) ==> x > 0,
+      ensures
+          result >= 0,
+          result <= {
+              let max_r = list_max(r@);
+              let max_g = list_max(g@);
+              let max_b = list_max(b@);
+              if max_r >= max_g && max_r >= max_b { max_r }
+              else if max_g >= max_b { max_g }
+              else { max_b }
+          },
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+  }
+
+  fn main() {
+      // let result1 = solve_magic_potions(1, 1, 1, 1, vec![1], vec![2], vec![3]);
+      // println!("Result 1: {}", result1);
+      
+      // let result2 = solve_magic_potions(1, 1, 1, 1, vec![2], vec![4], vec![6]);
+      // println!("Result 2: {}", result2);
+      
+      // let result3 = solve_magic_potions(3, 2, 2, 2, vec![1, 2, 3], vec![2, 4], vec![6, 8]);
+      // println!("Result 3: {}", result3);
+  }

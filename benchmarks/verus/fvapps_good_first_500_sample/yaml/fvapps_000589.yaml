@@ -1,0 +1,60 @@
+vc-description: |-
+  Consider the infinite x axis. There are N impacts on this X-axis at integral points (X1,X2,....XN) (all distinct) . An impact at a point Xi propagates such that at a point X0, the effect of the impact is K|Xi−X0|. Given the point X0, N and K. Assume the total impact on X0 is M, find if it is possible to do so.Note: You are not required to find the set X
+
+  Formally print "yes" if this is possible and "no" if not possible.
+
+  -----Input:-----
+  - First line will contain T, number of testcases. Then the testcases follow. 
+  -  Each testcase contains of a single line of input, four integers N,K,M,X0 
+
+  -----Output:-----
+  -  The output of each test case is either "yes" or "no"
+
+  -----Constraints -----
+  -  1≤T≤1000
+  -  1≤N≤100
+  -  1≤K≤1000
+  -  1≤M≤10^18
+  -  −10^9≤X0≤10^9 
+
+  -----Sample Input:-----
+  	2
+
+  4 3 10 10
+
+  2 3 10 10
+
+  -----Sample Output:-----
+  	no
+
+  yes
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve_impact_points(n: u32, k: u32, m: u64, x0: i64) -> (result: String)
+      requires 
+          1 <= n && n <= 100,
+          1 <= k && k <= 1000,
+          1 <= m && m <= 1000000000000000000u64,
+          -1000000000i64 <= x0 && x0 <= 1000000000i64,
+      ensures
+          equal(result@, seq!['y', 'e', 's']) || equal(result@, seq!['n', 'o']),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      "no".to_string()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}
