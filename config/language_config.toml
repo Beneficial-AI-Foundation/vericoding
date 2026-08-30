@@ -133,6 +133,58 @@ spec_patterns = [
 ]
 
 
+[spark]
+name = "SPARK"
+file_extension = ".ada"
+tool_path_env = "GNATPROVE_PATH"
+default_tool_path = "gnatprove"
+prompts_file = "prompts-spark.yaml"
+
+# Verification command patterns
+#
+# GNATprove needs a project file and a chopped source tree rather than a
+# single loose file, and a clean exit status is not on its own a pass: it
+# also exits 0 for code it never analysed. scripts/spark_verify.py wraps
+# both concerns - it chops the multi-unit task file, writes a throwaway
+# project, runs the tool, and requires a non-zero check count with nothing
+# unproved and nothing justified.
+verify_command = ["python", "scripts/spark_verify.py", "{file_path}"]
+compile_check_command = ["gnatchop", "-q", "-w", "{file_path}"]
+
+# Code extraction patterns
+code_block_patterns = [
+    "ada",
+    "spark"
+]
+
+# Language-specific keywords for code detection
+keywords = [
+    "package ",
+    "package body ",
+    "procedure ",
+    "function ",
+    "with SPARK_Mode",
+    "Pre =>",
+    "Post =>",
+    "Contract_Cases",
+    "pragma Loop_Invariant",
+    "pragma Loop_Variant",
+    "pragma Assert",
+    "Subprogram_Variant",
+    "Ghost",
+    "subtype ",
+    "type ",
+    "is",
+    "begin",
+    "end "
+]
+
+# Specification preservation patterns
+spec_patterns = [
+    "function\\s+\\w+[^;]*?\\bis\\b\\s*\\([^;]*\\);",  # expression functions
+    "\\bwith\\s+Ghost\\b"  # ghost declarations
+]
+
 
 [common]
 # Common error patterns across all languages

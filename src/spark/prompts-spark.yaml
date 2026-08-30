@@ -1,0 +1,93 @@
+generate_code: |
+  CRITICAL: Respond with ONLY a JSON array. No explanations, reasoning, or markdown. Start with [ and end with ].
+
+  The task is to generate implementations for `<vc-helpers>` and `<vc-code>` sections in a SPARK/Ada file.
+
+  TURN 1 of {max_iterations}: This is the initial code generation phase. You have {max_iterations} total turns to get this right, so you can iterate and improve.
+
+  INPUT: a SPARK/Ada file containing {placeholder_count} placeholder sections (`<vc-helpers>` and/or `<vc-code>` tags) that need to be filled in. The file holds a package specification followed by its body; the specification, including every `Pre` and `Post` aspect, is fixed and must not be changed.
+
+  OUTPUT: Return a JSON array with EXACTLY {placeholder_count} replacements (one for each placeholder section in the file), in order from top to bottom:
+  ```json
+  ["   function Min (A : Integer; B : Integer) return Integer is\n     (if A < B then A else B);\n", "   procedure Op (A : Int_Array; Result : out Int_Array) is\n   begin\n      Result := (others => 0);\n   end Op;\n"]
+  ```
+
+  SECTION-SPECIFIC RULES:
+
+  **For `<vc-helpers>` sections:**
+  - Provide COMPLETE helper declarations ONLY, legal in a package body's declarative part
+  - Each helper should be a standalone function, expression function or ghost function with a full profile
+  - Example: `function Min (A : Integer; B : Integer) return Integer is (if A < B then A else B);`
+  - Example: `function Is_Valid (X : Integer) return Boolean is (X >= 0);`
+  - Leave the section empty if no helper is needed
+  - DO NOT put the body of the specified subprogram here
+
+  **For `<vc-code>` sections:**
+  - Provide the complete body of the subprogram declared in the `<vc-spec>` section
+  - The profile must match the declaration exactly, followed by `is`, `begin`, statements and `end Name;`
+  - This is where loop invariants (`pragma Loop_Invariant`) and assertions (`pragma Assert`) go
+  - Include local declarations, assignments and control flow
+
+  CRITICAL RULES:
+  - The ORIGINAL file contains EXACTLY {placeholder_count} placeholder sections - your JSON array must have EXACTLY {placeholder_count} elements
+  - Provide exactly one replacement for each placeholder section in the file, in the exact order they appear (top to bottom)
+  - Each replacement should be the exact code that will replace everything between the tags
+  - NEVER use verification bypasses: `pragma Assume`, `pragma Annotate (GNATprove, False_Positive, ...)`, `pragma Annotate (GNATprove, Intentional, ...)`, `SPARK_Mode => Off`, `pragma Suppress`, `pragma Warnings (Off)`, or `Unchecked_Conversion`
+  - Implement actual proofs and logic instead of bypassing verification
+  - `pragma Assert` and `pragma Loop_Invariant` are NOT bypasses and are encouraged where they help the prover
+  - Use valid Ada 2022 syntax accepted in SPARK_Mode
+  - An `out` parameter must be fully initialised on every path
+  - Satisfy all `Pre` and `Post` aspects from the subprogram specification
+  - Every run-time check (array index, range, overflow, division) must be provable, not merely absent
+  - Do not add trivial or unnecessary annotations
+  - Return ONLY a valid JSON array, no explanations or markdown
+  - DO NOT include any reasoning, explanations, or commentary
+  - DO NOT use markdown code blocks around the JSON
+  - Your response must start with [ and end with ]
+  - Each JSON string must be properly escaped with double quotes
+
+  CRITICAL: Your entire response must be ONLY the JSON array. Any text before or after the JSON will cause parsing failure.
+
+  CRITICAL: Do NOT use `pragma Assume` or any verification bypass. Implement real logic!
+
+  SPARK FILE WITH PLACEHOLDER SECTIONS:
+  {code}
+
+fix_verification: |
+  CRITICAL: Respond with ONLY a JSON array. No explanations, reasoning, or markdown. Start with [ and end with ].
+
+  The task is to fix implementations in `<vc-helpers>` and `<vc-code>` sections that failed verification.
+
+  TURN {iteration} of {max_iterations}: You are making progress and have multiple turns to iterate and improve your implementation.
+
+  INPUT: The ORIGINAL file contains {placeholder_count} placeholder sections (`<vc-helpers>` and/or `<vc-code>` tags) that need to be fixed based on the GNATprove output.
+
+  OUTPUT: Return a JSON array with EXACTLY {placeholder_count} fixed replacements (one for each placeholder section in the ORIGINAL file), in order from top to bottom.
+
+  READING GNATPROVE OUTPUT:
+  - `error:` means the file did not compile - fix that first, before anything else
+  - `high:` means a check is certainly false; the implementation is wrong
+  - `medium:` means a check could not be proved; usually a missing or too-weak `pragma Loop_Invariant`, or a missing bound on an intermediate value
+  - "might not be initialized" means an `out` parameter or local is not written on every path
+  - "postcondition might fail" means the loop invariant is not strong enough to imply the `Post` aspect on exit
+
+  CRITICAL RULES:
+  - The ORIGINAL file contains EXACTLY {placeholder_count} placeholder sections - your JSON array must have EXACTLY {placeholder_count} elements
+  - PRIORITY: If the error is a compilation error (syntax, type, resolution), fix it first before addressing verification issues
+  - NEVER use verification bypasses: `pragma Assume`, `pragma Annotate (GNATprove, False_Positive, ...)`, `pragma Annotate (GNATprove, Intentional, ...)`, `SPARK_Mode => Off`, `pragma Suppress`, `pragma Warnings (Off)`, or `Unchecked_Conversion`
+  - Do NOT change the package specification, the subprogram profile, or any `Pre` or `Post` aspect
+  - Implement actual proofs and logic instead of bypassing verification
+  - Use valid Ada 2022 syntax accepted in SPARK_Mode
+  - Return ONLY a valid JSON array, no explanations or markdown
+  - Your response must start with [ and end with ]
+
+  CRITICAL: Do NOT use `pragma Assume` or any verification bypass. Implement real logic!
+
+  ERROR DETAILS from GNATprove:
+  {errorDetails}
+
+  ORIGINAL FILE (for context):
+  {original_code}
+
+  CURRENT ITERATION FILE (with failed implementations to learn from):
+  {code}

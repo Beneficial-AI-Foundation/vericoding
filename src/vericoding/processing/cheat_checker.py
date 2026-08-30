@@ -127,6 +127,67 @@ def check_for_cheats(code: str, language: str) -> List[Tuple[str, str]]:
                     break  # Only add each pattern once
 
         return detected_cheats
+    elif language.lower() == "spark":
+        cheat_patterns = [
+            (r"pragma\s+Assume\b", "uses 'pragma Assume' to bypass verification"),
+            (
+                r"pragma\s+Annotate\s*\(\s*GNATprove\s*,\s*(?:False_Positive|Intentional)",
+                "justifies a check away with 'pragma Annotate (GNATprove, False_Positive|Intentional)'",
+            ),
+            (
+                r"SPARK_Mode\s*(?:=>|\()\s*Off",
+                "switches SPARK_Mode off, removing the code from analysis",
+            ),
+            (
+                r"pragma\s+Suppress\b",
+                "suppresses run-time checks instead of proving them",
+            ),
+            (
+                r"pragma\s+Warnings\s*\(\s*Off",
+                "suppresses warnings, which can hide analysis messages",
+            ),
+            (
+                r"\bUnchecked_Conversion\b",
+                "uses Unchecked_Conversion to escape the type system",
+            ),
+            (
+                r"pragma\s+Import\b",
+                "imports an external body that GNATprove cannot analyse",
+            ),
+        ]
+
+        # For SPARK, only check for cheats inside editable sections (vc-code,
+        # vc-helpers). Cheats are OK everywhere else - the unfilled task
+        # template itself carries a `pragma Assume (False)` placeholder, in
+        # the same spirit as Dafny's `assume {:axiom} false`.
+        #
+        # Note that `pragma Assert` and `pragma Loop_Invariant` are NOT
+        # bypasses: GNATprove proves them like any other check, so they are
+        # deliberately absent from this list.
+        detected_cheats = []
+
+        # SPARK task files mark their sections with Ada comments, so the tags
+        # appear as `--  <vc-code>` rather than as bare angle brackets.
+        editable_sections = []
+        for section_name in ["vc-code", "vc-helpers"]:
+            pattern = rf"<{section_name}>(.*?)</{section_name}>"
+            matches = list(re.finditer(pattern, code, re.DOTALL))
+            editable_sections.extend(
+                [(match.start(), match.end()) for match in matches]
+            )
+
+        for pattern, description in cheat_patterns:
+            for match in re.finditer(pattern, code, re.IGNORECASE):
+                match_pos = match.start()
+
+                in_editable_section = any(
+                    start <= match_pos < end for start, end in editable_sections
+                )
+                if in_editable_section:
+                    detected_cheats.append((pattern, description))
+                    break  # Only add each pattern once
+
+        return detected_cheats
     else:
         raise ValueError(
             f"Unsupported language: {language}. Supported languages are: lean, dafny, verus"
