@@ -1,0 +1,45 @@
+--  <vc-preamble>
+package Np_Multiply_Spec with SPARK_Mode is
+
+   Max_Index : constant := 1_000;
+   Max_Value : constant := 10_000;
+
+   subtype Index_Type is Natural range 0 .. Max_Index;
+   subtype Value_Type is Integer range -Max_Value .. Max_Value;
+
+   type Int_Array is array (Index_Type range <>) of Value_Type;
+
+   subtype Prod_Type is Integer range -(Max_Value ** 2) .. Max_Value ** 2;
+   type Prod_Array is array (Index_Type range <>) of Prod_Type;
+--  </vc-preamble>
+
+--  <vc-spec>
+   procedure Multiply (A : Int_Array; B : Int_Array; Result : out Prod_Array) with
+     Pre  => A'First = B'First and then A'Last = B'Last
+             and then Result'First = A'First and then Result'Last = A'Last,
+     Post => (for all I in A'Range => Result (I) = A (I) * B (I));
+
+end Np_Multiply_Spec;
+
+package body Np_Multiply_Spec with SPARK_Mode is
+--  </vc-spec>
+
+--  <vc-helpers>
+
+--  </vc-helpers>
+
+--  <vc-code>
+   procedure Multiply (A : Int_Array; B : Int_Array; Result : out Prod_Array) is
+   begin
+      Result := (others => 0);
+      for I in A'Range loop
+         Result (I) := A (I) * B (I);
+         pragma Loop_Invariant
+           (for all J in A'First .. I => Result (J) = A (J) * B (J));
+      end loop;
+   end Multiply;
+--  </vc-code>
+
+--  <vc-postamble>
+end Np_Multiply_Spec;
+--  </vc-postamble>
